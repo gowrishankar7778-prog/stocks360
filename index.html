@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stay Updated with the Stock Market While Learning - Stocks 360</title>
+  <meta name="description" content="Stocks 360 helps you stay updated with the stock market while learning. Educational content with enhanced accessibility features.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Disclaimer -->
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="container">
+      <button id="accessibility-toggle" aria-pressed="false">
+        Turn On Special Accessibility Features
+      </button>
+
+      <div class="search-section">
+        <label for="stock-search" class="visually-hidden">Search for a stock</label>
+        <input type="text" id="stock-search" placeholder="Search stock (Example: Eternal)" aria-label="Search for a stock">
+        <button id="search-button">Search</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stock Result - Appears immediately after search -->
+  <section id="stock-result" class="container" aria-live="polite" hidden style="margin-top: 20px;">
+    <h2 id="stock-name">Stock Name</h2>
+    <p><strong>Exchange:</strong> <span id="stock-exchange">NSE</span></p>
+    <p><strong>Live Price:</strong> <span id="live-price">--</span></p>
+    <p><strong>Change:</strong> <span id="price-change">--</span></p>
+    <p><strong>Previous Close:</strong> <span id="previous-close">--</span></p>
+    <p><strong>Today’s Open:</strong> <span id="today-open">--</span></p>
+    <p><strong>Today’s High:</strong> <span id="today-high">--</span></p>
+    <p><strong>Today’s Low:</strong> <span id="today-low">--</span></p>
+
+    <h3>Historical Prices</h3>
+    <label for="historical-period">Select period</label>
+    <select id="historical-period">
+      <option value="">-- Select --</option>
+      <option value="5days">Last 5 Days</option>
+      <option value="1month">Last 1 Month</option>
+      <option value="3months">Last 3 Months</option>
+      <option value="1year">Last 1 Year</option>
+    </select>
+    <div id="historical-data" aria-live="polite"></div>
+  </section>
+
+  <!-- Navigation -->
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="newsletter.html">Newsletter</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="ask.html">Ask</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <div class="container">
+      <h1>Welcome to Stocks 360</h1>
+      <p>Stocks 360 helps you stay updated with the stock market while learning. It offers clear educational content and enhanced accessibility features for everyone.</p>
+
+      <section id="default-content">
+        <h2>How to use this website</h2>
+        <ol>
+          <li>Use the search box above to find any stock.</li>
+          <li>Turn on Special Accessibility Features if you want extra support.</li>
+          <li>Explore News, Newsletter and Learn sections.</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/stock-search.js"></script>
+</body>
+</html>

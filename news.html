@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News - Stocks 360</title>
+  <meta name="description" content="Latest educational stock market news on Stocks 360.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Disclaimer -->
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="container">
+      <button id="accessibility-toggle" aria-pressed="false">
+        Turn On Special Accessibility Features
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html" aria-current="page">News</a></li>
+      <li><a href="newsletter.html">Newsletter</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="ask.html">Ask</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <div class="container">
+
+      <h1>News</h1>
+
+      <!-- Continuous list of only news headings -->
+      <ul class="news-headings-list" id="news-list">
+        <li>
+          <a href="#" class="news-heading-link" data-news-id="news-1">
+            Indian markets show mixed performance this week
+          </a>
+        </li>
+        <li>
+          <a href="#" class="news-heading-link" data-news-id="news-2">
+            Global cues continue to influence market sentiment
+          </a>
+        </li>
+        <li>
+          <a href="#" class="news-heading-link" data-news-id="news-3">
+            Understanding market volatility in simple terms
+          </a>
+        </li>
+      </ul>
+
+      <!-- News Detail Section (shown when a heading is clicked) -->
+      <section id="news-detail" class="news-detail" hidden aria-live="polite">
+
+        <h2 id="detail-title"></h2>
+
+        <p class="news-meta">
+          <span id="detail-read-time"></span><br>
+          <span id="detail-published-time"></span>
+        </p>
+
+        <!-- Ask 360 appears before the news content -->
+        <button class="ask360-btn" id="detail-ask360-btn" aria-expanded="false">
+          Ask 360
+        </button>
+
+        <div class="ask360-box" id="detail-ask360-box" hidden>
+          <label for="detail-ask360-input" class="visually-hidden">Ask 360 AI about this news</label>
+          <textarea 
+            id="detail-ask360-input" 
+            class="ask360-input" 
+            rows="4" 
+            placeholder="Ask 360 AI about this news"
+            aria-label="Ask 360 AI about this news"></textarea>
+          <button class="ask360-send" id="detail-ask360-send">Send</button>
+          <div class="ask360-response" id="detail-ask360-response" aria-live="polite"></div>
+        </div>
+
+        <div id="detail-content" class="news-content" style="margin-top: 20px;"></div>
+
+        <p style="margin-top: 20px;">
+          <a href="#" id="back-to-list">← Back to News List</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/news.js"></script>
+</body>
+</html>
