@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Update Contact Us - Stocks 360</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <header class="admin-header">
+    <div class="container">
+      <h1>Admin Panel - Contact Us</h1>
+      <p>Logged in as Admin | <a href="admin-login.html" style="color:#fff;">Logout</a></p>
+    </div>
+  </header>
+
+  <nav class="admin-nav">
+    <ul>
+      <li><a href="admin-news.html">News</a></li>
+      <li><a href="admin-newsletter.html">Newsletter</a></li>
+      <li><a href="admin-learn.html">Learn</a></li>
+      <li><a href="admin-ask.html">Ask / Comments</a></li>
+      <li><a href="admin-about.html">About Us</a></li>
+      <li><a href="admin-contact.html" class="active">Contact Us</a></li>
+      <li><a href="index.html">View Website</a></li>
+    </ul>
+  </nav>
+
+  <main class="container admin-main">
+
+    <h2>Update Contact Details</h2>
+
+    <div class="publish-form-section">
+      <div class="form-group">
+        <label for="contact-email">Email Address</label>
+        <input type="email" id="contact-email" class="multi-input" placeholder="Enter your email address" value="contact@stocks360.com" style="max-width: 400px;">
+      </div>
+
+      <div class="form-group">
+        <label for="contact-phone">Phone Number</label>
+        <input type="tel" id="contact-phone" class="multi-input" placeholder="Enter your phone number" value="+91 98765 43210" style="max-width: 400px;">
+      </div>
+
+      <button id="update-contact-btn" class="admin-btn success large">Update</button>
+    </div>
+
+  </main>
+
+  <script>
+    document.getElementById("update-contact-btn").addEventListener("click", function () {
+      const email = document.getElementById("contact-email").value.trim();
+      const phone = document.getElementById("contact-phone").value.trim();
+
+      if (email === "" && phone === "") {
+        alert("Please enter at least Email or Phone Number.");
+        return;
+      }
+
+      alert("Contact details updated successfully!\n\nEmail: " + email + "\nPhone: " + phone + "\n\n(This is temporary. Real saving will work after Firebase integration.)");
+    });
+  </script>
+</body>
+</html>

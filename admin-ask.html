@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Manage Ask / Comments - Stocks 360</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <header class="admin-header">
+    <div class="container">
+      <h1>Admin Panel - Ask / Comments</h1>
+      <p>Logged in as Admin | <a href="admin-login.html" style="color:#fff;">Logout</a></p>
+    </div>
+  </header>
+
+  <nav class="admin-nav">
+    <ul>
+      <li><a href="admin-news.html">News</a></li>
+      <li><a href="admin-newsletter.html">Newsletter</a></li>
+      <li><a href="admin-learn.html">Learn</a></li>
+      <li><a href="admin-ask.html" class="active">Ask / Comments</a></li>
+      <li><a href="admin-about.html">About Us</a></li>
+      <li><a href="admin-contact.html">Contact Us</a></li>
+      <li><a href="index.html">View Website</a></li>
+    </ul>
+  </nav>
+
+  <main class="container admin-main">
+
+    <h2>All Comments (Most recent first)</h2>
+    <p>Comments from Learn lessons and from the Ask tab appear here.</p>
+
+    <div class="admin-news-list" id="comments-admin-list">
+
+      <!-- Comment 1 (Most recent) -->
+      <div class="admin-news-item comment-item">
+        <p class="comment-meta">
+          <strong>Rahul S.</strong> · From: Learn → Unit 1 → Why Stock Market? · 28 Oct 2026, 11:45 AM
+        </p>
+        <p class="comment-text">Can you explain the difference between primary market and secondary market in simple words?</p>
+
+        <div class="news-menu">
+          <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
+          <ul class="menu-options" hidden>
+            <li><button class="menu-action reply-btn" data-user="Rahul S.">Reply</button></li>
+            <li><button class="menu-action delete-btn">Delete</button></li>
+          </ul>
+        </div>
+
+        <!-- Reply box (hidden by default) -->
+        <div class="reply-box" hidden>
+          <label class="visually-hidden">Write your reply</label>
+          <textarea class="multi-input reply-input" rows="3" placeholder="Write your reply here..."></textarea>
+          <button class="admin-btn success send-reply-btn">Send Reply</button>
+          <button class="admin-btn secondary cancel-reply-btn">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Comment 2 -->
+      <div class="admin-news-item comment-item">
+        <p class="comment-meta">
+          <strong>Priya N.</strong> · From: Ask Tab · 28 Oct 2026, 10:20 AM
+        </p>
+        <p class="comment-text">I am new to stock market. Where should I start learning?</p>
+
+        <div class="news-menu">
+          <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
+          <ul class="menu-options" hidden>
+            <li><button class="menu-action reply-btn" data-user="Priya N.">Reply</button></li>
+            <li><button class="menu-action delete-btn">Delete</button></li>
+          </ul>
+        </div>
+
+        <div class="reply-box" hidden>
+          <label class="visually-hidden">Write your reply</label>
+          <textarea class="multi-input reply-input" rows="3" placeholder="Write your reply here..."></textarea>
+          <button class="admin-btn success send-reply-btn">Send Reply</button>
+          <button class="admin-btn secondary cancel-reply-btn">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Comment 3 -->
+      <div class="admin-news-item comment-item">
+        <p class="comment-meta">
+          <strong>Amit K.</strong> · From: Learn → Unit 1 → The Regulators of the Stock Market · 27 Oct 2026, 6:10 PM
+        </p>
+        <p class="comment-text">Thank you for the clear explanation about SEBI.</p>
+
+        <div class="news-menu">
+          <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
+          <ul class="menu-options" hidden>
+            <li><button class="menu-action reply-btn" data-user="Amit K.">Reply</button></li>
+            <li><button class="menu-action delete-btn">Delete</button></li>
+          </ul>
+        </div>
+
+        <div class="reply-box" hidden>
+          <label class="visually-hidden">Write your reply</label>
+          <textarea class="multi-input reply-input" rows="3" placeholder="Write your reply here..."></textarea>
+          <button class="admin-btn success send-reply-btn">Send Reply</button>
+          <button class="admin-btn secondary cancel-reply-btn">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/admin-menu.js"></script>
+  <script src="js/admin-ask.js"></script>
+</body>
+</html>
