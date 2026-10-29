@@ -109,30 +109,40 @@ body {
   background-color: #157347;
 }
 
-/* ========== NAVIGATION - Strongly remove bullets ========== */
+/* ========== NAVIGATION - Force remove all bullets ========== */
 nav {
   background-color: #212529;
   padding: 15px 0;
 }
 
-nav ul {
+nav ul,
+nav ul li,
+ul.news-headings-list,
+ul.news-headings-list li {
   list-style: none !important;
   list-style-type: none !important;
-  margin: 0;
-  padding: 0;
+  list-style-image: none !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+}
+
+nav ul {
   text-align: center;
+  padding: 0 !important;
 }
 
 nav ul li {
-  list-style: none !important;
-  list-style-type: none !important;
-  display: block;
-  margin: 6px 0;
-  padding: 0;
+  display: block !important;
+  margin: 6px 0 !important;
+  padding: 0 !important;
 }
 
-nav ul li::before {
-  content: none !important;
+nav ul li::before,
+nav ul li::after,
+ul.news-headings-list li::before,
+ul.news-headings-list li::after {
+  content: "" !important;
+  display: none !important;
 }
 
 nav a {
@@ -148,6 +158,12 @@ nav a:hover,
 nav a:focus,
 nav a[aria-current="page"] {
   background-color: #0d6efd;
+}
+
+/* Extra safety for any list */
+ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
 }
 
 /* Main Content */
