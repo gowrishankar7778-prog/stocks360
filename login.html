@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Stocks 360</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <main class="admin-login-container">
+    <div class="admin-login-box">
+      <h1>Admin Login</h1>
+      <p>Enter your admin credentials to continue.</p>
+
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label for="admin-email">Email</label>
+          <input type="email" id="admin-email" required placeholder="Enter admin email">
+        </div>
+
+        <div class="form-group">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" required placeholder="Enter password">
+        </div>
+
+        <button type="submit" class="admin-btn primary">Login</button>
+      </form>
+
+      <p id="login-message" aria-live="polite"></p>
+      <p><a href="../index.html">Back to Website</a></p>
+    </div>
+  </main>
+
+  <script src="../js/admin-login.js"></script>
+</body>
+</html>

@@ -3,121 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn - Stocks 360</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/admin.css">
+  <title>Admin - Manage Learn - Stocks 360</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
 <body>
-
-  <a class="skip-link" href="#page-heading">Skip to Learn heading</a>
-
   <div class="top-disclaimer" role="note">
     <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
-
-  <header class="top-bar">
+  <header class="admin-header">
     <div class="container">
-      <button id="accessibility-toggle" aria-pressed="false">
-        Turn On Special Accessibility Features
-      </button>
+      <h1>Admin Panel - Learn</h1>
+      <p>Logged in as Admin | <a href="login.html" style="color:#fff;">Logout</a></p>
     </div>
   </header>
-
-  <nav id="main-navigation" aria-label="Main navigation">
+  <nav class="admin-nav">
     <ul>
-      <li><a href="index.html">Home</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="newsletter.html">Newsletter</a></li>
-      <li><a href="learn.html" aria-current="page">Learn</a></li>
-      <li><a href="ask.html">Ask</a></li>
+      <li><a href="learn.html" class="active">Learn</a></li>
+      <li><a href="ask.html">Ask / Comments</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="../index.html">View Website</a></li>
     </ul>
   </nav>
-
-  <main id="main-content">
-    <div class="container">
-
-      <h1 id="page-heading" tabindex="-1">Learn</h1>
-
-      <!-- Units List -->
-      <div id="units-list">
-        <ul class="news-headings-list">
-          <li>
-            <a href="#" class="unit-link" data-unit-id="unit-1">
-              Unit 1: Introduction to Stock Markets
-            </a>
-          </li>
-          <li>
-            <a href="#" class="unit-link" data-unit-id="unit-2">
-              Unit 2: Understanding Market Participants
-            </a>
-          </li>
-        </ul>
+  <main class="container admin-main">
+    <div class="admin-top-actions">
+      <button id="start-unit-btn" class="admin-btn primary large">Start New Unit</button>
+    </div>
+    <section id="unit-form-section" class="publish-form-section" hidden>
+      <h2>Create New Unit</h2>
+      <div class="form-group">
+        <label for="unit-name">1. Unit / Topic Name <span class="required">*</span></label>
+        <textarea id="unit-name" class="multi-input" rows="2" placeholder="Example: Unit 1: Introduction to Stock Markets" required></textarea>
       </div>
-
-      <!-- Sub-units List (shown after clicking a unit) -->
-      <div id="subunits-list" hidden>
-        <h2 id="unit-title"></h2>
-        <ul class="news-headings-list" id="subunits-ul"></ul>
-        <p style="margin-top: 20px;"><a href="#" id="back-to-units">← Back to Units</a></p>
+      <div class="form-group">
+        <label>2. Body <span class="required">*</span></label>
+        <p style="font-size:14px; color:#555; margin-bottom:8px;">You can paste tables and formatted content from Word here.</p>
+        <div id="unit-body-editor" style="height: 250px; background:#fff;"></div>
       </div>
-
-      <!-- Sub-unit Detail -->
-      <section id="subunit-detail" class="news-detail" hidden aria-live="polite">
-        <h2 id="subunit-title"></h2>
-
-        <div class="prev-next" style="margin: 15px 0;">
-          <button id="prev-btn" class="admin-btn secondary">Previous</button>
-          <button id="next-btn" class="admin-btn secondary">Next</button>
-        </div>
-
-        <!-- Ask 360 -->
-        <button class="ask360-btn" id="learn-ask360-btn" aria-expanded="false">Ask 360</button>
-
-        <div class="ask360-box" id="learn-ask360-box" hidden>
-          <label for="learn-ask360-input" class="visually-hidden">Ask 360 AI about this lesson</label>
-          <textarea id="learn-ask360-input" class="ask360-input" rows="4" placeholder="Ask 360 AI about this lesson" aria-label="Ask 360 AI about this lesson"></textarea>
-          <button class="ask360-send" id="learn-ask360-send">Send</button>
-          <div class="ask360-response" id="learn-ask360-response" aria-live="polite"></div>
-        </div>
-
-        <div id="subunit-body" class="news-content" style="margin-top: 20px;"></div>
-
-        <div id="subunit-takeaways" class="news-glossary" hidden></div>
-
-        <!-- Comments Section -->
-        <section class="comments-section" style="margin-top: 30px;">
-          <h3>Comments</h3>
-          <div id="comments-list"></div>
-
-          <div style="margin-top: 15px;">
-            <label for="comment-name">Your Name <span style="color:#6c757d; font-weight:normal;">(Optional)</span></label>
-            <input type="text" id="comment-name" class="ask360-input" placeholder="Enter your name (optional)" style="margin-bottom: 10px;">
-
-            <label for="comment-input">Your Comment</label>
-            <textarea id="comment-input" class="ask360-input" rows="3" placeholder="Write your comment here..."></textarea>
-            <button id="post-comment-btn" class="admin-btn primary" style="margin-top: 8px;">Post Comment</button>
+      <div class="form-group">
+        <label for="unit-glossary">3. Glossary <span class="optional">(Optional)</span></label>
+        <textarea id="unit-glossary" class="multi-input" rows="3" placeholder="Enter glossary (optional)"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="unit-takeaways">4. Key Takeaways <span class="optional">(Optional)</span></label>
+        <textarea id="unit-takeaways" class="multi-input" rows="3" placeholder="Enter key takeaways (optional)"></textarea>
+      </div>
+      <button id="preview-unit-btn" class="admin-btn secondary large">Preview</button>
+      <button id="publish-unit-btn" class="admin-btn success large">Publish Unit</button>
+      <button id="cancel-unit-btn" class="admin-btn secondary">Cancel</button>
+    </section>
+    <section class="recent-news-section">
+      <h2>Existing Units</h2>
+      <div class="admin-news-list">
+        <div class="admin-news-item">
+          <a href="#" class="admin-news-link">Unit 1: Introduction to Stock Markets</a>
+          <div class="news-menu">
+            <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
+            <ul class="menu-options" hidden>
+              <li><button class="menu-action watch-btn">Watch Unit</button></li>
+              <li><button class="menu-action edit-btn">Update Unit</button></li>
+              <li><button class="menu-action delete-btn">Delete</button></li>
+            </ul>
           </div>
-        </section>
-
-        <p style="margin-top: 25px;">
-          <a href="#" id="back-to-subunits">← Back to Sub-units</a>
-        </p>
-      </section>
-
-    </div>
+        </div>
+      </div>
+    </section>
+    <section id="subunit-form-section" class="publish-form-section" hidden>
+      <h2>Create New Sub-unit</h2>
+      <div class="form-group">
+        <label for="subunit-name">1. Sub-unit Title <span class="required">*</span></label>
+        <textarea id="subunit-name" class="multi-input" rows="2" placeholder="Example: 1. Why Stock Market?" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>2. Body <span class="required">*</span></label>
+        <p style="font-size:14px; color:#555; margin-bottom:8px;">You can paste tables and formatted content from Word here.</p>
+        <div id="subunit-body-editor" style="height: 250px; background:#fff;"></div>
+      </div>
+      <div class="form-group">
+        <label for="subunit-takeaways">3. Key Takeaways <span class="optional">(Optional)</span></label>
+        <textarea id="subunit-takeaways" class="multi-input" rows="3" placeholder="Enter key takeaways (optional)"></textarea>
+      </div>
+      <button id="preview-subunit-btn" class="admin-btn secondary large">Preview</button>
+      <button id="publish-subunit-btn" class="admin-btn success large">Publish Sub-unit</button>
+      <button id="cancel-subunit-btn" class="admin-btn secondary">Cancel</button>
+    </section>
   </main>
-
-  <footer>
-    <div class="container">
-      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/learn.js"></script>
-<script src="js/smart-assist.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+  <script src="../js/admin-menu.js"></script>
+  <script>
+    let unitBodyEditor = null;
+    let subunitBodyEditor = null;
+    document.getElementById("start-unit-btn").addEventListener("click", function () {
+      document.getElementById("unit-form-section").hidden = false;
+      document.getElementById("start-unit-btn").hidden = true;
+      if (!unitBodyEditor) {
+        unitBodyEditor = new Quill("#unit-body-editor", {
+          theme: "snow",
+          modules: {
+            toolbar: [
+              [{ header: [1, 2, 3, false] }],
+              ["bold", "italic", "underline"],
+              [{ list: "ordered" }, { list: "bullet" }],
+              ["link"], ["clean"]
+            ]
+          },
+          placeholder: "Paste or type the unit body. Tables from Word can be pasted."
+        });
+      }
+    });
+    document.getElementById("cancel-unit-btn").addEventListener("click", function () {
+      document.getElementById("unit-form-section").hidden = true;
+      document.getElementById("start-unit-btn").hidden = false;
+    });
+    document.getElementById("publish-unit-btn").addEventListener("click", function () {
+      const name = document.getElementById("unit-name").value.trim();
+      const body = unitBodyEditor ? unitBodyEditor.root.innerHTML : "";
+      if (!name || !body || body === "<p><br></p>") {
+        alert("Please fill Unit Name and Body.");
+        return;
+      }
+      alert("Unit published successfully! (Temporary message)");
+      document.getElementById("unit-form-section").hidden = true;
+      document.getElementById("start-unit-btn").hidden = false;
+    });
+    document.getElementById("cancel-subunit-btn").addEventListener("click", function () {
+      document.getElementById("subunit-form-section").hidden = true;
+    });
+    document.getElementById("publish-subunit-btn").addEventListener("click", function () {
+      const name = document.getElementById("subunit-name").value.trim();
+      const body = subunitBodyEditor ? subunitBodyEditor.root.innerHTML : "";
+      if (!name || !body || body === "<p><br></p>") {
+        alert("Please fill Sub-unit Title and Body.");
+        return;
+      }
+      alert("Sub-unit published successfully! (Temporary message)");
+      document.getElementById("subunit-form-section").hidden = true;
+    });
+  </script>
 </body>
 </html>
+
+<script>
+  document.getElementById("preview-unit-btn")?.addEventListener("click", function () {
+    const name = document.getElementById("unit-name").value.trim() || "(No name)";
+    const body = unitBodyEditor ? unitBodyEditor.getText() : "(No body)";
+    const glossary = document.getElementById("unit-glossary").value.trim();
+    const takeaways = document.getElementById("unit-takeaways").value.trim();
+
+    let previewText = "=== UNIT PREVIEW ===\n\n";
+    previewText += "Unit Name: " + name + "\n\n";
+    previewText += "Body:\n" + body + "\n\n";
+    if (glossary) previewText += "Glossary: " + glossary + "\n\n";
+    if (takeaways) previewText += "Key Takeaways: " + takeaways + "\n";
+
+    alert(previewText);
+  });
+
+  document.getElementById("preview-subunit-btn")?.addEventListener("click", function () {
+    const name = document.getElementById("subunit-name").value.trim() || "(No title)";
+    const body = subunitBodyEditor ? subunitBodyEditor.getText() : "(No body)";
+    const takeaways = document.getElementById("subunit-takeaways").value.trim();
+
+    let previewText = "=== SUB-UNIT PREVIEW ===\n\n";
+    previewText += "Title: " + name + "\n\n";
+    previewText += "Body:\n" + body + "\n\n";
+    if (takeaways) previewText += "Key Takeaways: " + takeaways + "\n";
+
+    alert(previewText);
+  });
+</script>
+<script>
+document.getElementById("preview-unit-btn")?.addEventListener("click", function () {
+  const name = document.getElementById("unit-name").value.trim() || "(No name)";
+  const body = (typeof unitBodyEditor !== "undefined" && unitBodyEditor) ? unitBodyEditor.root.innerHTML : "<p>No body</p>";
+  const glossary = document.getElementById("unit-glossary").value.trim();
+  const takeaways = document.getElementById("unit-takeaways").value.trim();
+
+  const previewData = {
+    title: name,
+    author: "",
+    published: "Unit Preview",
+    body: body,
+    glossary: glossary,
+    takeaways: takeaways
+  };
+  localStorage.setItem("previewData", JSON.stringify(previewData));
+  window.open("preview.html", "_blank");
+});
+
+document.getElementById("preview-subunit-btn")?.addEventListener("click", function () {
+  const name = document.getElementById("subunit-name").value.trim() || "(No title)";
+  const body = (typeof subunitBodyEditor !== "undefined" && subunitBodyEditor) ? subunitBodyEditor.root.innerHTML : "<p>No body</p>";
+  const takeaways = document.getElementById("subunit-takeaways").value.trim();
+
+  const previewData = {
+    title: name,
+    author: "",
+    published: "Sub-unit Preview",
+    body: body,
+    takeaways: takeaways
+  };
+  localStorage.setItem("previewData", JSON.stringify(previewData));
+  window.open("preview.html", "_blank");
+});
+</script>
