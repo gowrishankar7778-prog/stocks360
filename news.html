@@ -3,205 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Manage News - Stocks 360</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/admin.css">
-  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+  <title>News - Stocks 360</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#page-heading">Skip to News heading</a>
+
   <div class="top-disclaimer" role="note">
     <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
-  <header class="admin-header">
+  <header class="top-bar">
     <div class="container">
-      <h1>Admin Panel - News</h1>
-      <p>Logged in as Admin | <a href="login.html" style="color:#fff;">Logout</a></p>
+      <button id="accessibility-toggle" aria-pressed="false">
+        Turn On Special Accessibility Features
+      </button>
     </div>
   </header>
 
-  <nav class="admin-nav">
+  <nav id="main-navigation" aria-label="Main navigation">
     <ul>
-      <li><a href="news.html" class="active">News</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html" aria-current="page">News</a></li>
       <li><a href="newsletter.html">Newsletter</a></li>
       <li><a href="learn.html">Learn</a></li>
-      <li><a href="ask.html">Ask / Comments</a></li>
+      <li><a href="ask.html">Ask</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="../index.html">View Website</a></li>
     </ul>
   </nav>
 
-  <main class="container admin-main">
-    <div class="admin-top-actions">
-      <button id="publish-new-btn" class="admin-btn primary large">Publish New News Article</button>
-    </div>
+  <main id="main-content">
+    <div class="container">
 
-    <section id="publish-form-section" class="publish-form-section" hidden>
-      <h2>Publish New News Article</h2>
+      <h1 id="page-heading" tabindex="-1">News</h1>
 
-      <div class="form-group">
-        <label for="news-heading">1. News Heading <span class="required">*</span></label>
-        <textarea id="news-heading" class="multi-input" rows="2" placeholder="Enter the news heading" required></textarea>
-      </div>
+      <ul class="news-headings-list" id="news-list">
+        <li>
+          <a href="#" class="news-heading-link" data-news-id="news-1">
+            Indian markets show mixed performance this week
+          </a>
+        </li>
+        <li>
+          <a href="#" class="news-heading-link" data-news-id="news-2">
+            Global cues continue to influence market sentiment
+          </a>
+        </li>
+        <li>
+          <a href="#" class="news-heading-link" data-news-id="news-3">
+            Understanding market volatility in simple terms
+          </a>
+        </li>
+      </ul>
 
-      <div class="form-group">
-        <label for="writer-name">2. Writer’s Name <span class="required">*</span></label>
-        <textarea id="writer-name" class="multi-input" rows="1" placeholder="Enter writer’s name" required></textarea>
-      </div>
+      <section id="news-detail" class="news-detail" hidden aria-live="polite">
+        <h2 id="detail-title"></h2>
+        <p class="news-author" id="detail-author"></p>
+        <p class="news-meta">
+          <span id="detail-read-time"></span><br>
+          <span id="detail-published-time"></span>
+        </p>
 
-      <div class="form-group">
-        <label for="synopsis">3. Synopsis <span class="optional">(Optional)</span></label>
-        <textarea id="synopsis" class="multi-input" rows="3" placeholder="Enter short synopsis (optional)"></textarea>
-      </div>
+        <button class="ask360-btn" id="detail-ask360-btn" aria-expanded="false">Ask 360</button>
 
-      <div class="form-group">
-        <label>4. Main Body of the News <span class="required">*</span></label>
-        <p style="font-size:14px; color:#555; margin-bottom:8px;">You can paste tables and formatted content from Word here.</p>
-        <div id="news-body-editor" style="height: 280px; background:#fff;"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="glossary">5. Glossary <span class="optional">(Optional)</span></label>
-        <textarea id="glossary" class="multi-input" rows="3" placeholder="Enter glossary terms (optional)"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="keywords">6. Keywords <span class="optional">(Optional)</span></label>
-        <textarea id="keywords" class="multi-input" rows="2" placeholder="Enter keywords separated by comma (optional)"></textarea>
-      </div>
-
-      <button id="preview-btn" class="admin-btn secondary large">Preview</button>
-      <button id="final-publish-btn" class="admin-btn success large">Publish</button>
-      <button id="cancel-publish-btn" class="admin-btn secondary">Cancel</button>
-    </section>
-
-    <section class="recent-news-section">
-      <h2>Recent News</h2>
-      <div class="admin-news-list">
-        <div class="admin-news-item">
-          <a href="#" class="admin-news-link">Indian markets show mixed performance this week</a>
-          <div class="news-menu">
-            <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
-            <ul class="menu-options" hidden>
-              <li><label><input type="checkbox"> Keep it private</label></li>
-              <li><button class="menu-action edit-btn">Edit</button></li>
-              <li><button class="menu-action delete-btn">Delete</button></li>
-            </ul>
-          </div>
+        <div class="ask360-box" id="detail-ask360-box" hidden>
+          <label for="detail-ask360-input" class="visually-hidden">Ask 360 AI about this news</label>
+          <textarea id="detail-ask360-input" class="ask360-input" rows="4" placeholder="Ask 360 AI about this news" aria-label="Ask 360 AI about this news"></textarea>
+          <button class="ask360-send" id="detail-ask360-send">Send</button>
+          <div class="ask360-response" id="detail-ask360-response" aria-live="polite"></div>
         </div>
-      </div>
-    </section>
+
+        <div id="detail-synopsis" class="news-synopsis" hidden></div>
+        <div id="detail-content" class="news-content" style="margin-top: 20px;"></div>
+        <div id="detail-glossary" class="news-glossary" hidden></div>
+        <div id="detail-keywords" class="news-keywords" hidden></div>
+
+        <p style="margin-top: 25px;">
+          <a href="#" id="back-to-list">← Back to News List</a>
+        </p>
+      </section>
+
+    </div>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-  <script src="../js/admin-menu.js"></script>
-  <script>
-    let newsBodyEditor = null;
-    document.getElementById("publish-new-btn").addEventListener("click", function () {
-      document.getElementById("publish-form-section").hidden = false;
-      document.getElementById("publish-new-btn").hidden = true;
-      if (!newsBodyEditor) {
-        newsBodyEditor = new Quill("#news-body-editor", {
-          theme: "snow",
-          modules: {
-            toolbar: [
-              [{ header: [1, 2, 3, false] }],
-              ["bold", "italic", "underline"],
-              [{ list: "ordered" }, { list: "bullet" }],
-              ["link"], ["clean"]
-            ]
-          },
-          placeholder: "Paste or type the main body here. Tables from Word can be pasted."
-        });
-      }
-    });
-    document.getElementById("cancel-publish-btn").addEventListener("click", function () {
-      document.getElementById("publish-form-section").hidden = true;
-      document.getElementById("publish-new-btn").hidden = false;
-    });
-    document.getElementById("final-publish-btn").addEventListener("click", function () {
-      const heading = document.getElementById("news-heading").value.trim();
-      const writer = document.getElementById("writer-name").value.trim();
-      const body = newsBodyEditor ? newsBodyEditor.root.innerHTML : "";
-      if (!heading || !writer || !body || body === "<p><br></p>") {
-        alert("Please fill Heading, Writer’s Name and Main Body.");
-        return;
-      }
-      alert("News published successfully! (Temporary message. Real saving will work after Firebase integration.)");
-      document.getElementById("publish-form-section").hidden = true;
-      document.getElementById("publish-new-btn").hidden = false;
-    });
-  </script>
+  <footer>
+    <div class="container">
+      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/news.js"></script>
+<script src="js/smart-assist.js"></script>
 </body>
 </html>
-
-<script>
-  // Preview functionality for News
-  document.getElementById("preview-btn")?.addEventListener("click", function () {
-    const heading = document.getElementById("news-heading").value.trim() || "(No heading)";
-    const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-    const synopsis = document.getElementById("synopsis").value.trim();
-    const body = newsBodyEditor ? newsBodyEditor.root.innerHTML : "<p>No body</p>";
-    const glossary = document.getElementById("glossary").value.trim();
-    const keywords = document.getElementById("keywords").value.trim();
-
-    const previewData = {
-      title: heading,
-      author: "Written by: " + writer,
-      published: "Published: Preview",
-      synopsis: synopsis,
-      body: body,
-      glossary: glossary,
-      keywords: keywords
-    };
-    localStorage.setItem("previewData", JSON.stringify(previewData));
-    window.open("preview.html", "_blank");
-  });
-  });
-</script>
-
-<script>
-document.getElementById("preview-btn")?.addEventListener("click", function () {
-    const heading = document.getElementById("news-heading").value.trim() || "(No heading)";
-    const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-    const synopsis = document.getElementById("synopsis").value.trim();
-    const body = newsBodyEditor ? newsBodyEditor.root.innerHTML : "<p>No body</p>";
-    const glossary = document.getElementById("glossary").value.trim();
-    const keywords = document.getElementById("keywords").value.trim();
-
-    const previewData = {
-      title: heading,
-      author: "Written by: " + writer,
-      published: "Published: Preview",
-      synopsis: synopsis,
-      body: body,
-      glossary: glossary,
-      keywords: keywords
-    };
-    localStorage.setItem("previewData", JSON.stringify(previewData));
-    window.open("preview.html", "_blank");
-  });
-</script>
-<script>
-document.getElementById("preview-btn")?.addEventListener("click", function () {
-  const heading = document.getElementById("news-heading").value.trim() || "(No heading)";
-  const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-  const synopsis = document.getElementById("synopsis").value.trim();
-  const body = (typeof newsBodyEditor !== "undefined" && newsBodyEditor) ? newsBodyEditor.root.innerHTML : "<p>No body</p>";
-  const glossary = document.getElementById("glossary").value.trim();
-  const keywords = document.getElementById("keywords").value.trim();
-
-  const previewData = {
-    title: heading,
-    author: "Written by: " + writer,
-    published: "Published: Preview",
-    synopsis: synopsis,
-    body: body,
-    glossary: glossary,
-    keywords: keywords
-  };
-  localStorage.setItem("previewData", JSON.stringify(previewData));
-  window.open("preview.html", "_blank");
-});
-</script>

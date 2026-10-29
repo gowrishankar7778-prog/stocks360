@@ -3,116 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Manage Ask / Comments - Stocks 360</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/admin.css">
+  <title>Ask - Stocks 360</title>
+  <meta name="description" content="Ask your educational questions about the stock market on Stocks 360.">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#page-heading">Skip to page heading</a>
+
+  <!-- Disclaimer -->
   <div class="top-disclaimer" role="note">
     <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
-  <header class="admin-header">
+  <!-- Top Bar -->
+  <header class="top-bar">
     <div class="container">
-      <h1>Admin Panel - Ask / Comments</h1>
-      <p>Logged in as Admin | <a href="login.html" style="color:#fff;">Logout</a></p>
+      <button id="accessibility-toggle" aria-pressed="false">
+        Turn On Special Accessibility Features
+      </button>
     </div>
   </header>
 
-  <nav class="admin-nav">
+  <!-- Navigation -->
+  <nav id="main-navigation" aria-label="Main navigation">
     <ul>
+      <li><a href="index.html">Home</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="newsletter.html">Newsletter</a></li>
       <li><a href="learn.html">Learn</a></li>
-      <li><a href="ask.html" class="active">Ask / Comments</a></li>
+      <li><a href="ask.html" aria-current="page">Ask</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="../index.html">View Website</a></li>
     </ul>
   </nav>
 
-  <main class="container admin-main">
+  <!-- Main Content -->
+  <main id="main-content">
+    <div class="container">
 
-    <h2>All Comments (Most recent first)</h2>
-    <p>Comments from Learn lessons and from the Ask tab appear here.</p>
+      <h1 id="page-heading" tabindex="-1">Ask</h1>
 
-    <div class="admin-news-list" id="comments-admin-list">
+      <p>This page is for users to ask educational questions related to the stock market.</p>
 
-      <!-- Comment 1 (Most recent) -->
-      <div class="admin-news-item comment-item">
-        <p class="comment-meta">
-          <strong>Rahul S.</strong> · From: Learn → Unit 1 → Why Stock Market? · 28 Oct 2026, 11:45 AM
-        </p>
-        <p class="comment-text">Can you explain the difference between primary market and secondary market in simple words?</p>
-
-        <div class="news-menu">
-          <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
-          <ul class="menu-options" hidden>
-            <li><button class="menu-action reply-btn" data-user="Rahul S.">Reply</button></li>
-            <li><button class="menu-action delete-btn">Delete</button></li>
-          </ul>
+      <form action="#" method="post">
+        <div style="margin-bottom: 15px;">
+          <label for="user-name">Your Name (optional)</label><br>
+          <input type="text" id="user-name" name="user-name" style="width: 100%; max-width: 400px; padding: 10px; font-size: 16px;">
         </div>
 
-        <!-- Reply box (hidden by default) -->
-        <div class="reply-box" hidden>
-          <label class="visually-hidden">Write your reply</label>
-          <textarea class="multi-input reply-input" rows="3" placeholder="Write your reply here..."></textarea>
-          <button class="admin-btn success send-reply-btn">Send Reply</button>
-          <button class="admin-btn secondary cancel-reply-btn">Cancel</button>
-        </div>
-      </div>
-
-      <!-- Comment 2 -->
-      <div class="admin-news-item comment-item">
-        <p class="comment-meta">
-          <strong>Priya N.</strong> · From: Ask Tab · 28 Oct 2026, 10:20 AM
-        </p>
-        <p class="comment-text">I am new to stock market. Where should I start learning?</p>
-
-        <div class="news-menu">
-          <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
-          <ul class="menu-options" hidden>
-            <li><button class="menu-action reply-btn" data-user="Priya N.">Reply</button></li>
-            <li><button class="menu-action delete-btn">Delete</button></li>
-          </ul>
+        <div style="margin-bottom: 15px;">
+          <label for="user-question">Your Question</label><br>
+          <textarea id="user-question" name="user-question" rows="6" style="width: 100%; max-width: 500px; padding: 10px; font-size: 16px;" required></textarea>
         </div>
 
-        <div class="reply-box" hidden>
-          <label class="visually-hidden">Write your reply</label>
-          <textarea class="multi-input reply-input" rows="3" placeholder="Write your reply here..."></textarea>
-          <button class="admin-btn success send-reply-btn">Send Reply</button>
-          <button class="admin-btn secondary cancel-reply-btn">Cancel</button>
-        </div>
-      </div>
-
-      <!-- Comment 3 -->
-      <div class="admin-news-item comment-item">
-        <p class="comment-meta">
-          <strong>Amit K.</strong> · From: Learn → Unit 1 → The Regulators of the Stock Market · 27 Oct 2026, 6:10 PM
-        </p>
-        <p class="comment-text">Thank you for the clear explanation about SEBI.</p>
-
-        <div class="news-menu">
-          <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
-          <ul class="menu-options" hidden>
-            <li><button class="menu-action reply-btn" data-user="Amit K.">Reply</button></li>
-            <li><button class="menu-action delete-btn">Delete</button></li>
-          </ul>
-        </div>
-
-        <div class="reply-box" hidden>
-          <label class="visually-hidden">Write your reply</label>
-          <textarea class="multi-input reply-input" rows="3" placeholder="Write your reply here..."></textarea>
-          <button class="admin-btn success send-reply-btn">Send Reply</button>
-          <button class="admin-btn secondary cancel-reply-btn">Cancel</button>
-        </div>
-      </div>
+        <button type="submit" style="padding: 12px 25px; font-size: 16px; background-color: #0d6efd; color: white; border: none; border-radius: 6px; cursor: pointer;">
+          Submit Question
+        </button>
+      </form>
 
     </div>
-
   </main>
 
-  <script src="../js/admin-menu.js"></script>
-  <script src="../js/admin-ask.js"></script>
+  <footer>
+    <div class="container">
+      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/accessibility.js"></script>
 </body>
 </html>
