@@ -3,211 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Manage Learn - Stocks 360</title>
+  <title>Admin - Manage Learn Modules - Stocks 360</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/admin.css">
-  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
-<body>
+<body class="admin-body">
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
+
   <header class="admin-header">
-    <div class="container">
-      <h1>Admin Panel - Learn</h1>
-      <p>Logged in as Admin | <a href="admin-login.html" style="color:#fff;">Logout</a></p>
+    <div class="container admin-header-flex">
+      <div>
+        <h1>Stocks 360 &bull; Admin Panel</h1>
+        <p class="admin-subtitle">Manage Learn Units &amp; Lessons</p>
+      </div>
+      <p class="admin-user-info">Logged in as Admin | <a href="admin-login.html" id="logout-btn">Logout</a></p>
     </div>
   </header>
-  <nav class="admin-nav">
-    <ul>
-      <li><a href="admin-news.html">News</a></li>
-      <li><a href="admin-newsletter.html">Newsletter</a></li>
-      <li><a href="admin-learn.html" class="active">Learn</a></li>
-      <li><a href="admin-ask.html">Ask / Comments</a></li>
-      <li><a href="admin-about.html">About Us</a></li>
-      <li><a href="admin-contact.html">Contact Us</a></li>
-      <li><a href="index.html">View Website</a></li>
-    </ul>
+
+  <nav class="admin-nav" aria-label="Admin Navigation">
+    <div class="container">
+      <ul>
+        <li><a href="admin-news.html">News</a></li>
+        <li><a href="admin-newsletter.html">Newsletter</a></li>
+        <li><a href="admin-learn.html" class="active" aria-current="page">Learn Modules</a></li>
+        <li><a href="admin-ask.html">Ask / Comments</a></li>
+        <li><a href="admin-about.html">About &amp; Team</a></li>
+        <li><a href="admin-contact.html">Contact Info</a></li>
+        <li><a href="admin-settings.html">Backup &amp; Settings</a></li>
+        <li class="nav-public-link"><a href="learn.html" target="_blank" rel="noopener">View Live Learn &rarr;</a></li>
+      </ul>
+    </div>
   </nav>
+
   <main class="container admin-main">
     <div class="admin-top-actions">
-      <button id="start-unit-btn" class="admin-btn primary large">Start New Unit</button>
+      <button id="start-unit-btn" class="admin-btn primary large">+ Create New Learn Unit</button>
+      <a href="learn.html" class="admin-btn secondary" target="_blank" rel="noopener">Preview Public Learn Page</a>
     </div>
+
+    <!-- NEW UNIT FORM -->
     <section id="unit-form-section" class="publish-form-section" hidden>
-      <h2>Create New Unit</h2>
+      <h2>Create New Educational Unit</h2>
       <div class="form-group">
-        <label for="unit-name">1. Unit / Topic Name <span class="required">*</span></label>
-        <textarea id="unit-name" class="multi-input" rows="2" placeholder="Example: Unit 1: Introduction to Stock Markets" required></textarea>
+        <label for="unit-name">Unit Title <span class="required">*</span></label>
+        <textarea id="unit-name" class="multi-input" rows="2" placeholder="e.g. Unit 3: Technical Analysis &amp; Chart Patterns" required></textarea>
       </div>
+
       <div class="form-group">
-        <label>2. Body <span class="required">*</span></label>
-        <p style="font-size:14px; color:#555; margin-bottom:8px;">You can paste tables and formatted content from Word here.</p>
-        <div id="unit-body-editor" style="height: 250px; background:#fff;"></div>
+        <label for="unit-body">Unit Description / Summary</label>
+        <textarea id="unit-body" class="multi-input" rows="3" placeholder="Brief explanation of what learners will master in this unit"></textarea>
       </div>
-      <div class="form-group">
-        <label for="unit-glossary">3. Glossary <span class="optional">(Optional)</span></label>
-        <textarea id="unit-glossary" class="multi-input" rows="3" placeholder="Enter glossary (optional)"></textarea>
+
+      <div class="form-actions-row">
+        <button type="button" id="publish-unit-btn" class="admin-btn success large">Save Unit</button>
+        <button type="button" id="cancel-unit-btn" class="admin-btn danger">Cancel</button>
       </div>
-      <div class="form-group">
-        <label for="unit-takeaways">4. Key Takeaways <span class="optional">(Optional)</span></label>
-        <textarea id="unit-takeaways" class="multi-input" rows="3" placeholder="Enter key takeaways (optional)"></textarea>
-      </div>
-      <button id="preview-unit-btn" class="admin-btn secondary large">Preview</button>
-      <button id="publish-unit-btn" class="admin-btn success large">Publish Unit</button>
-      <button id="cancel-unit-btn" class="admin-btn secondary">Cancel</button>
     </section>
-    <section class="recent-news-section">
-      <h2>Existing Units</h2>
-      <div class="admin-news-list">
-        <div class="admin-news-item">
-          <a href="#" class="admin-news-link">Unit 1: Introduction to Stock Markets</a>
-          <div class="news-menu">
-            <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
-            <ul class="menu-options" hidden>
-              <li><button class="menu-action watch-btn">Watch Unit</button></li>
-              <li><button class="menu-action edit-btn">Update Unit</button></li>
-              <li><button class="menu-action delete-btn">Delete</button></li>
-            </ul>
-          </div>
+
+    <!-- LESSONS / SUBUNITS MANAGER -->
+    <section id="watch-unit-section" class="watch-unit-section" hidden>
+      <div class="section-header-row">
+        <div>
+          <h2 id="watching-unit-title">Managing Lessons</h2>
+          <p class="field-hint">Add individual lessons, explanations, and key takeaways for this unit.</p>
+        </div>
+        <button id="close-watch-btn" class="admin-btn secondary small">&times; Close Manager</button>
+      </div>
+
+      <div id="subunits-admin-list" class="subunits-admin-list" style="margin: 15px 0;"></div>
+
+      <button id="add-subunit-btn" class="admin-btn primary small">+ Add New Lesson</button>
+
+      <div id="subunit-form-section" class="publish-form-section" hidden style="margin-top:20px; border-top: 2px dashed #cbd5e1;">
+        <h3>Add Lesson to Unit</h3>
+        <div class="form-group">
+          <label for="sub-name">Lesson Title <span class="required">*</span></label>
+          <input type="text" id="sub-name" placeholder="e.g. 1. Candlestick Basics &amp; Trend Identification" required>
+        </div>
+        <div class="form-group">
+          <label for="sub-body">Lesson Content &amp; Explanation <span class="required">*</span></label>
+          <textarea id="sub-body" class="multi-input" rows="6" placeholder="Explain the concept clearly in simple terms for beginners..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="sub-takeaways">Key Takeaways <span class="optional">(Optional)</span></label>
+          <textarea id="sub-takeaways" class="multi-input" rows="2" placeholder="Summarize 1-2 core insights for quick revision"></textarea>
+        </div>
+        <div class="form-actions-row">
+          <button type="button" id="publish-subunit-btn" class="admin-btn success">Add Lesson</button>
+          <button type="button" id="cancel-subunit-btn" class="admin-btn danger">Cancel</button>
         </div>
       </div>
     </section>
-    <section id="subunit-form-section" class="publish-form-section" hidden>
-      <h2>Create New Sub-unit</h2>
-      <div class="form-group">
-        <label for="subunit-name">1. Sub-unit Title <span class="required">*</span></label>
-        <textarea id="subunit-name" class="multi-input" rows="2" placeholder="Example: 1. Why Stock Market?" required></textarea>
+
+    <!-- UNITS TABLE -->
+    <section class="recent-news-section">
+      <div class="section-header-row">
+        <h2>Curriculum &amp; Learning Units</h2>
+        <span class="live-status-pill">Interactive Course</span>
       </div>
-      <div class="form-group">
-        <label>2. Body <span class="required">*</span></label>
-        <p style="font-size:14px; color:#555; margin-bottom:8px;">You can paste tables and formatted content from Word here.</p>
-        <div id="subunit-body-editor" style="height: 250px; background:#fff;"></div>
+      <div class="admin-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th style="width: 15%;">Unit</th>
+              <th style="width: 45%;">Title &amp; Scope</th>
+              <th style="width: 15%;">Lessons</th>
+              <th style="width: 25%;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Injected by admin-learn.js -->
+          </tbody>
+        </table>
       </div>
-      <div class="form-group">
-        <label for="subunit-takeaways">3. Key Takeaways <span class="optional">(Optional)</span></label>
-        <textarea id="subunit-takeaways" class="multi-input" rows="3" placeholder="Enter key takeaways (optional)"></textarea>
-      </div>
-      <button id="preview-subunit-btn" class="admin-btn secondary large">Preview</button>
-      <button id="publish-subunit-btn" class="admin-btn success large">Publish Sub-unit</button>
-      <button id="cancel-subunit-btn" class="admin-btn secondary">Cancel</button>
     </section>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-  <script src="js/admin-menu.js"></script>
-  <script>
-    let unitBodyEditor = null;
-    let subunitBodyEditor = null;
-    document.getElementById("start-unit-btn").addEventListener("click", function () {
-      document.getElementById("unit-form-section").hidden = false;
-      document.getElementById("start-unit-btn").hidden = true;
-      if (!unitBodyEditor) {
-        unitBodyEditor = new Quill("#unit-body-editor", {
-          theme: "snow",
-          modules: {
-            toolbar: [
-              [{ header: [1, 2, 3, false] }],
-              ["bold", "italic", "underline"],
-              [{ list: "ordered" }, { list: "bullet" }],
-              ["link"], ["clean"]
-            ]
-          },
-          placeholder: "Paste or type the unit body. Tables from Word can be pasted."
-        });
-      }
-    });
-    document.getElementById("cancel-unit-btn").addEventListener("click", function () {
-      document.getElementById("unit-form-section").hidden = true;
-      document.getElementById("start-unit-btn").hidden = false;
-    });
-    document.getElementById("publish-unit-btn").addEventListener("click", function () {
-      const name = document.getElementById("unit-name").value.trim();
-      const body = unitBodyEditor ? unitBodyEditor.root.innerHTML : "";
-      if (!name || !body || body === "<p><br></p>") {
-        alert("Please fill Unit Name and Body.");
-        return;
-      }
-      alert("Unit published successfully! (Temporary message)");
-      document.getElementById("unit-form-section").hidden = true;
-      document.getElementById("start-unit-btn").hidden = false;
-    });
-    document.getElementById("cancel-subunit-btn").addEventListener("click", function () {
-      document.getElementById("subunit-form-section").hidden = true;
-    });
-    document.getElementById("publish-subunit-btn").addEventListener("click", function () {
-      const name = document.getElementById("subunit-name").value.trim();
-      const body = subunitBodyEditor ? subunitBodyEditor.root.innerHTML : "";
-      if (!name || !body || body === "<p><br></p>") {
-        alert("Please fill Sub-unit Title and Body.");
-        return;
-      }
-      alert("Sub-unit published successfully! (Temporary message)");
-      document.getElementById("subunit-form-section").hidden = true;
-    });
-  </script>
+
+  <footer class="admin-footer">
+    <div class="container">
+      <p>Stocks 360 Management System &bull; Learning Curriculum Desk</p>
+    </div>
+  </footer>
+
+  <script src="js/data-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-learn.js"></script>
 </body>
 </html>
-
-<script>
-  document.getElementById("preview-unit-btn")?.addEventListener("click", function () {
-    const name = document.getElementById("unit-name").value.trim() || "(No name)";
-    const body = unitBodyEditor ? unitBodyEditor.getText() : "(No body)";
-    const glossary = document.getElementById("unit-glossary").value.trim();
-    const takeaways = document.getElementById("unit-takeaways").value.trim();
-
-    let previewText = "=== UNIT PREVIEW ===\n\n";
-    previewText += "Unit Name: " + name + "\n\n";
-    previewText += "Body:\n" + body + "\n\n";
-    if (glossary) previewText += "Glossary: " + glossary + "\n\n";
-    if (takeaways) previewText += "Key Takeaways: " + takeaways + "\n";
-
-    alert(previewText);
-  });
-
-  document.getElementById("preview-subunit-btn")?.addEventListener("click", function () {
-    const name = document.getElementById("subunit-name").value.trim() || "(No title)";
-    const body = subunitBodyEditor ? subunitBodyEditor.getText() : "(No body)";
-    const takeaways = document.getElementById("subunit-takeaways").value.trim();
-
-    let previewText = "=== SUB-UNIT PREVIEW ===\n\n";
-    previewText += "Title: " + name + "\n\n";
-    previewText += "Body:\n" + body + "\n\n";
-    if (takeaways) previewText += "Key Takeaways: " + takeaways + "\n";
-
-    alert(previewText);
-  });
-</script>
-<script>
-document.getElementById("preview-unit-btn")?.addEventListener("click", function () {
-  const name = document.getElementById("unit-name").value.trim() || "(No name)";
-  const body = (typeof unitBodyEditor !== "undefined" && unitBodyEditor) ? unitBodyEditor.root.innerHTML : "<p>No body</p>";
-  const glossary = document.getElementById("unit-glossary").value.trim();
-  const takeaways = document.getElementById("unit-takeaways").value.trim();
-
-  const previewData = {
-    title: name,
-    author: "",
-    published: "Unit Preview",
-    body: body,
-    glossary: glossary,
-    takeaways: takeaways
-  };
-  localStorage.setItem("previewData", JSON.stringify(previewData));
-  window.open("admin-preview.html", "_blank");
-});
-
-document.getElementById("preview-subunit-btn")?.addEventListener("click", function () {
-  const name = document.getElementById("subunit-name").value.trim() || "(No title)";
-  const body = (typeof subunitBodyEditor !== "undefined" && subunitBodyEditor) ? subunitBodyEditor.root.innerHTML : "<p>No body</p>";
-  const takeaways = document.getElementById("subunit-takeaways").value.trim();
-
-  const previewData = {
-    title: name,
-    author: "",
-    published: "Sub-unit Preview",
-    body: body,
-    takeaways: takeaways
-  };
-  localStorage.setItem("previewData", JSON.stringify(previewData));
-  window.open("admin-preview.html", "_blank");
-});
-</script>

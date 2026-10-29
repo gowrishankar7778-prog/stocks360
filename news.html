@@ -3,86 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News - Stocks 360</title>
+  <title>Market News &amp; Educational Insights - Stocks 360</title>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
   <a class="skip-link" href="#page-heading">Skip to News heading</a>
 
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
   <header class="top-bar">
-    <div class="container">
-      <button id="accessibility-toggle" aria-pressed="false">
+    <div class="container top-bar-flex">
+      <div class="brand-title"><a href="index.html">Stocks 360</a></div>
+      <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
         Turn On Special Accessibility Features
       </button>
     </div>
   </header>
 
   <nav id="main-navigation" aria-label="Main navigation">
-    <ul style="list-style:none;padding:0;margin:0;">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="news.html" aria-current="page">News</a></li>
-      <li><a href="newsletter.html">Newsletter</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="ask.html">Ask</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html" aria-current="page" class="active">News</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="ask.html">Ask 360</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li class="admin-portal-link"><a href="admin-login.html">&#128274; Admin Login</a></li>
+      </ul>
+    </div>
   </nav>
 
   <main id="main-content">
     <div class="container">
 
-      <h1 id="page-heading" tabindex="-1">News</h1>
-
-      <ul class="news-headings-list" style="list-style:none;padding:0;margin:0;" id="news-list">
-        <li>
-          <a href="#" class="news-heading-link" data-news-id="news-1">
-            Indian markets show mixed performance this week
-          </a>
-        </li>
-        <li>
-          <a href="#" class="news-heading-link" data-news-id="news-2">
-            Global cues continue to influence market sentiment
-          </a>
-        </li>
-        <li>
-          <a href="#" class="news-heading-link" data-news-id="news-3">
-            Understanding market volatility in simple terms
-          </a>
-        </li>
-      </ul>
-
-      <section id="news-detail" class="news-detail" hidden aria-live="polite">
-        <h2 id="detail-title"></h2>
-        <p class="news-author" id="detail-author"></p>
-        <p class="news-meta">
-          <span id="detail-read-time"></span><br>
-          <span id="detail-published-time"></span>
-        </p>
-
-        <button class="ask360-btn" id="detail-ask360-btn" aria-expanded="false">Ask 360</button>
-
-        <div class="ask360-box" id="detail-ask360-box" hidden>
-          <label for="detail-ask360-input" class="visually-hidden">Ask 360 AI about this news</label>
-          <textarea id="detail-ask360-input" class="ask360-input" rows="4" placeholder="Ask 360 AI about this news" aria-label="Ask 360 AI about this news"></textarea>
-          <button class="ask360-send" id="detail-ask360-send">Send</button>
-          <div class="ask360-response" id="detail-ask360-response" aria-live="polite"></div>
+      <!-- LIST VIEW -->
+      <section id="news-list" aria-labelledby="page-heading">
+        <div class="page-title-banner">
+          <h1 id="page-heading" tabindex="-1">Market News &amp; Insights</h1>
+          <p class="subtitle">Latest updates explained simply for learners. Select an article to read in full.</p>
         </div>
 
-        <div id="detail-synopsis" class="news-synopsis" hidden></div>
-        <div id="detail-content" class="news-content" style="margin-top: 20px;"></div>
-        <div id="detail-glossary" class="news-glossary" hidden></div>
-        <div id="detail-keywords" class="news-keywords" hidden></div>
+        <ul class="news-headings-list">
+          <!-- Injected dynamically by news.js from StocksDataStore -->
+        </ul>
+      </section>
 
-        <p style="margin-top: 25px;">
-          <a href="#" id="back-to-list">← Back to News List</a>
-        </p>
+      <!-- DETAIL VIEW -->
+      <section id="news-detail" hidden aria-labelledby="detail-title">
+        <div class="detail-container">
+          <a href="#" id="back-to-list" class="back-link">&larr; Back to News List</a>
+
+          <article class="news-article-view">
+            <h1 id="detail-title" tabindex="-1">Title</h1>
+            <div class="article-meta-row">
+              <span id="detail-author" class="meta-item">Author</span>
+              <span class="meta-separator">&bull;</span>
+              <span id="detail-published-time" class="meta-item">Date</span>
+              <span class="meta-separator">&bull;</span>
+              <span id="detail-read-time" class="meta-item badge">Read time: 2 min</span>
+            </div>
+
+            <div id="detail-synopsis" class="news-synopsis" hidden></div>
+
+            <button id="detail-ask360-btn" class="ask360-trigger-btn" aria-expanded="false" aria-controls="detail-ask360-box">
+              &#129302; Ask 360 About This Article
+            </button>
+
+            <div id="detail-ask360-box" class="ask360-box" hidden>
+              <label for="detail-ask360-input" class="visually-hidden">Ask a question about this article</label>
+              <input type="text" id="detail-ask360-input" placeholder="Ask anything about terms or concepts in this article...">
+              <button id="detail-ask360-send" class="btn-primary">Ask</button>
+              <div id="detail-ask360-response" aria-live="polite"></div>
+            </div>
+
+            <div id="detail-content" class="article-main-body"></div>
+
+            <div id="detail-glossary" class="news-glossary" hidden></div>
+            <div id="detail-keywords" class="news-keywords" hidden></div>
+          </article>
+        </div>
       </section>
 
     </div>
@@ -90,13 +94,14 @@
 
   <footer>
     <div class="container">
-      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+      <p>Stocks 360 &bull; Stay updated with the stock market while learning. For educational purposes only.</p>
     </div>
   </footer>
 
+  <script src="js/data-store.js"></script>
   <script src="js/main.js"></script>
   <script src="js/accessibility.js"></script>
   <script src="js/news.js"></script>
-<script src="js/smart-assist.js"></script>
+  <script src="js/smart-assist.js"></script>
 </body>
 </html>

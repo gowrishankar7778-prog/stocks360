@@ -7,35 +7,59 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/admin.css">
 </head>
-<body>
+<body class="admin-login-body">
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
   <main class="admin-login-container">
     <div class="admin-login-box">
-      <h1>Admin Login</h1>
-      <p>Enter your admin credentials to continue.</p>
+      <div class="admin-brand-header">
+        <div class="brand-badge">ADMIN PORTAL</div>
+        <h1>Stocks 360</h1>
+        <p class="subtitle">Secure Content & Website Management</p>
+      </div>
 
-      <form id="admin-login-form">
+      <div id="login-message" aria-live="polite" class="login-feedback"></div>
+
+      <form id="admin-login-form" novalidate>
         <div class="form-group">
-          <label for="admin-email">Email</label>
-          <input type="email" id="admin-email" required placeholder="Enter admin email">
+          <label for="admin-email">Admin Email <span class="required">*</span></label>
+          <input type="email" id="admin-email" required placeholder="admin@stocks360.com" autocomplete="email">
         </div>
 
-        <div class="form-group">
-          <label for="admin-password">Password</label>
-          <input type="password" id="admin-password" required placeholder="Enter password">
+        <div class="form-group password-group">
+          <div class="label-row">
+            <label for="admin-password">Password <span class="required">*</span></label>
+            <button type="button" id="toggle-password-btn" class="toggle-password-btn" aria-label="Show password">Show</button>
+          </div>
+          <input type="password" id="admin-password" required placeholder="Enter admin password" autocomplete="current-password">
         </div>
 
-        <button type="submit" class="admin-btn primary">Login</button>
+        <div class="form-group-inline">
+          <label class="checkbox-label">
+            <input type="checkbox" id="admin-remember">
+            <span>Remember me on this browser</span>
+          </label>
+        </div>
+
+        <button type="submit" class="admin-btn primary large full-width">Sign In as Admin</button>
       </form>
 
-      <p id="login-message" aria-live="polite"></p>
-      <p><a href="index.html">Back to Website</a></p>
+      <div class="demo-creds-box">
+        <p><strong>Quick Demo Access:</strong></p>
+        <p>Email: <code>gowrishankar7778@gmail.com</code></p>
+        <p>Password: <code>Stocks360@Admin</code></p>
+        <button type="button" id="fill-demo-creds" class="admin-btn secondary small" style="margin-top: 8px;">Fill Demo Credentials</button>
+      </div>
+
+      <div class="admin-login-footer">
+        <a href="index.html">&larr; Back to Public Website</a>
+      </div>
     </div>
   </main>
 
+  <script src="js/admin-auth.js"></script>
   <script src="js/admin-login.js"></script>
 </body>
 </html>

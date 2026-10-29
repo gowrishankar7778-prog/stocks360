@@ -3,80 +3,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stay Updated with the Stock Market While Learning - Stocks 360</title>
-  <meta name="description" content="Stocks 360 helps you stay updated with the stock market while learning. Educational content with enhanced accessibility features.">
+  <title>Stocks 360 - Stay Updated with the Stock Market While Learning</title>
+  <meta name="description" content="Stocks 360 helps you understand the Indian stock market through accessible learning modules, audio assistance, and real-time news updates.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <a class="skip-link" href="#home-link">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
+  <!-- TOP REGULATORY DISCLAIMER -->
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <div class="container">
+      <p><strong>Educational Disclaimer:</strong> Stocks 360 is strictly designed for educational purposes and financial literacy. None of the content constitutes investment advice or trading recommendations.</p>
+    </div>
   </div>
 
+  <!-- TOP BAR WITH BRAND AND ACCESSIBILITY BUTTON -->
   <header class="top-bar">
-    <div class="container">
-      <button id="accessibility-toggle" aria-pressed="false">
-        Turn On Special Accessibility Features
-      </button>
+    <div class="container top-bar-flex">
+      <div class="brand-group">
+        <a href="index.html" class="brand-logo">Stocks 360</a>
+        <span class="brand-tagline">Learn &bull; Track &bull; Understand</span>
+      </div>
 
-      <div class="search-section">
-        <label for="stock-search" class="visually-hidden">Search for a stock</label>
-        <input type="text" id="stock-search" placeholder="Search stock (Example: Eternal)" aria-label="Search for a stock">
-        <button id="search-button">Search</button>
+      <div class="top-controls">
+        <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
+          Turn On Special Accessibility Features
+        </button>
       </div>
     </div>
   </header>
 
-  <section id="stock-result" class="container" aria-live="polite" hidden style="margin-top: 20px;">
-    <h2 id="stock-name">Stock Name</h2>
-    <p><strong>Exchange:</strong> <span id="stock-exchange">NSE</span></p>
-    <p><strong>Live Price:</strong> <span id="live-price">--</span></p>
-    <p><strong>Change:</strong> <span id="price-change">--</span></p>
-    <p><strong>Previous Close:</strong> <span id="previous-close">--</span></p>
-    <p><strong>Today’s Open:</strong> <span id="today-open">--</span></p>
-    <p><strong>Today’s High:</strong> <span id="today-high">--</span></p>
-    <p><strong>Today’s Low:</strong> <span id="today-low">--</span></p>
-
-    <h3>Historical Prices</h3>
-    <label for="historical-period">Select period</label>
-    <select id="historical-period">
-      <option value="">-- Select --</option>
-      <option value="5days">Last 5 Days</option>
-      <option value="1month">Last 1 Month</option>
-      <option value="3months">Last 3 Months</option>
-      <option value="1year">Last 1 Year</option>
-    </select>
-    <div id="historical-data" aria-live="polite"></div>
-  </section>
-
+  <!-- MAIN NAVIGATION -->
   <nav id="main-navigation" aria-label="Main navigation">
-    <ul style="list-style:none;padding:0;margin:0;">
-      <li><a href="index.html" id="home-link" aria-current="page">Home</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="newsletter.html">Newsletter</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="ask.html">Ask</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+    <div class="container">
+      <ul>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="learn.html">Learn Modules</a></li>
+        <li><a href="ask.html">Ask 360</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li class="admin-portal-link"><a href="admin-login.html">&#128274; Admin Login</a></li>
+      </ul>
+    </div>
   </nav>
+
+  <!-- LIVE INDICES TICKER -->
+  <div class="market-ticker-bar" aria-label="Major Indices Overview">
+    <div class="container ticker-flex">
+      <div class="ticker-item">
+        <span class="ticker-name">NIFTY 50</span>
+        <span class="ticker-val">24,413.50</span>
+        <span class="ticker-change up">+158.40 (+0.65%)</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-name">SENSEX</span>
+        <span class="ticker-val">80,220.70</span>
+        <span class="ticker-change up">+528.30 (+0.66%)</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-name">BANK NIFTY</span>
+        <span class="ticker-val">52,320.10</span>
+        <span class="ticker-change up">+310.20 (+0.60%)</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-name">INDIA VIX</span>
+        <span class="ticker-val">14.25</span>
+        <span class="ticker-change down">-0.42 (-2.86%)</span>
+      </div>
+    </div>
+  </div>
 
   <main id="main-content">
     <div class="container">
-      <h1>Home</h1>
+
+      <!-- HERO & SEARCH SECTION -->
+      <section class="hero-search-section">
+        <div class="hero-text-block">
+          <h1>Stock Market Knowledge, Simplified &amp; Accessible</h1>
+          <p class="hero-subtitle">Interactive quotes, audio-pitch feedback for visually impaired learners, and jargon-free market education.</p>
+        </div>
+
+        <div class="stock-search-card">
+          <label for="stock-search" class="search-label">Look Up Indian Stocks (NSE / BSE)</label>
+          <div class="search-input-wrapper">
+            <input type="text" id="stock-search" placeholder="Type stock name or symbol (e.g., RELIANCE, TCS, INFY)" aria-label="Search for a stock">
+            <button id="search-button" class="btn-primary">Search Stock</button>
+          </div>
+
+          <div class="quick-tickers-row" aria-label="Suggested popular stocks">
+            <span class="suggest-label">Try searching:</span>
+            <button class="quick-ticker-pill" data-symbol="RELIANCE">RELIANCE</button>
+            <button class="quick-ticker-pill" data-symbol="TCS">TCS</button>
+            <button class="quick-ticker-pill" data-symbol="INFY">INFY</button>
+            <button class="quick-ticker-pill" data-symbol="HDFCBANK">HDFCBANK</button>
+            <button class="quick-ticker-pill" data-symbol="TATAMOTORS">TATAMOTORS</button>
+            <button class="quick-ticker-pill" data-symbol="ITC">ITC</button>
+          </div>
+        </div>
+
+        <!-- SEARCH RESULT CARD (AUDIO PITCH INTEGRATED) -->
+        <section id="stock-result" class="stock-result-card" aria-live="polite" hidden>
+          <div class="result-header">
+            <div>
+              <h2 id="stock-name">Stock Name</h2>
+              <span id="stock-exchange" class="exchange-badge">NSE</span>
+            </div>
+            <div class="live-price-box">
+              <span class="live-indicator"><span class="pulse-dot"></span> LIVE</span>
+              <div id="live-price" class="main-price">--</div>
+              <div id="price-change" class="price-change-pill">--</div>
+            </div>
+          </div>
+
+          <div class="price-metrics-grid">
+            <div class="metric-box">
+              <span class="label">Previous Close</span>
+              <span id="previous-close" class="val">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Today's Open</span>
+              <span id="today-open" class="val">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Day's High</span>
+              <span id="today-high" class="val">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Day's Low</span>
+              <span id="today-low" class="val">--</span>
+            </div>
+          </div>
+
+          <!-- HISTORICAL DATA SELECTOR -->
+          <div class="historical-control-box">
+            <label for="historical-period">View Historical Price Table:</label>
+            <select id="historical-period">
+              <option value="">-- Select History Range --</option>
+              <option value="5days">Last 5 Trading Days</option>
+              <option value="1month">Last 1 Month</option>
+              <option value="3months">Last 3 Months</option>
+              <option value="1year">Last 1 Year</option>
+            </select>
+          </div>
+
+          <div id="historical-data" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <!-- FEATURED EDUCATIONAL HIGHLIGHTS -->
+      <section class="home-features-section">
+        <div class="feature-card">
+          <div class="feature-icon">&#128218;</div>
+          <h3>Curated Learn Modules</h3>
+          <p>Step-by-step units covering stock basics, market regulators like SEBI, and investment concepts with key takeaways.</p>
+          <a href="learn.html" class="feature-link">Browse Learn Modules &rarr;</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#128240;</div>
+          <h3>Daily Market News</h3>
+          <p>Read time indicators, clear glossary breakdowns, and daily summaries designed for easy digestion without financial noise.</p>
+          <a href="news.html" class="feature-link">Read Latest News &rarr;</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#128172;</div>
+          <h3>Ask 360 AI Assistant</h3>
+          <p>Type any question about financial terminology and get straightforward, educational answers instantly.</p>
+          <a href="ask.html" class="feature-link">Try Ask 360 &rarr;</a>
+        </div>
+      </section>
+
+      <!-- KEYBOARD ACCESSIBILITY HELPER BANNER -->
+      <aside class="a11y-helper-banner" aria-label="Accessibility Shortcut Guide">
+        <strong>&#9855; Keyboard &amp; Audio Shortcuts:</strong>
+        <span><code>Alt + 3</code> Financial Synonyms &bull; <code>Alt + 6</code> Ask 360 Assistant &bull; <code>Ctrl</code> Stop Speech &bull; Dynamic pitch rises on price gains.</span>
+      </aside>
+
     </div>
   </main>
 
   <footer>
-    <div class="container">
-      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+    <div class="container footer-grid">
+      <div>
+        <h4>Stocks 360</h4>
+        <p>Stay updated with the stock market while learning. Built with a passion for digital accessibility and investor literacy.</p>
+      </div>
+      <div>
+        <h4>Quick Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="news.html">Latest News</a></li>
+          <li><a href="newsletter.html">Weekly Newsletter</a></li>
+          <li><a href="learn.html">Curriculum Modules</a></li>
+          <li><a href="about.html">About &amp; Mission</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admin-login.html">Admin Portal</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
+  <script src="js/data-store.js"></script>
   <script src="js/main.js"></script>
   <script src="js/accessibility.js"></script>
   <script src="js/stock-search.js"></script>
+  <script src="js/smart-assist.js"></script>
 </body>
 </html>

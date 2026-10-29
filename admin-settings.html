@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Settings &amp; Credentials - Stocks 360</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <header class="admin-header">
+    <div class="container admin-header-flex">
+      <div>
+        <h1>Stocks 360 &bull; Admin Panel</h1>
+        <p class="admin-subtitle">Admin Credentials &amp; Database Backups</p>
+      </div>
+      <p class="admin-user-info">Logged in as Admin | <a href="admin-login.html" id="logout-btn">Logout</a></p>
+    </div>
+  </header>
+
+  <nav class="admin-nav" aria-label="Admin Navigation">
+    <div class="container">
+      <ul>
+        <li><a href="admin-news.html">News</a></li>
+        <li><a href="admin-newsletter.html">Newsletter</a></li>
+        <li><a href="admin-learn.html">Learn Modules</a></li>
+        <li><a href="admin-ask.html">Ask / Comments</a></li>
+        <li><a href="admin-about.html">About &amp; Team</a></li>
+        <li><a href="admin-contact.html">Contact Info</a></li>
+        <li><a href="admin-settings.html" class="active" aria-current="page">Backup &amp; Settings</a></li>
+        <li class="nav-public-link"><a href="index.html" target="_blank" rel="noopener">View Public Website &rarr;</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container admin-main">
+    <!-- SYSTEM OVERVIEW METRICS -->
+    <section class="admin-overview-grid">
+      <div class="metric-card">
+        <span class="metric-label">Published News</span>
+        <div class="metric-value" id="metric-news-count">0</div>
+        <span class="metric-sub">Articles live on site</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Newsletters</span>
+        <div class="metric-value" id="metric-nl-count">0</div>
+        <span class="metric-sub">Weekly editions</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Learn Units</span>
+        <div class="metric-value" id="metric-unit-count">0</div>
+        <span class="metric-sub">Active modules</span>
+      </div>
+      <div class="metric-card highlight">
+        <span class="metric-label">Server Status</span>
+        <div class="metric-value" style="font-size: 20px; color: #16a34a;">Operational</div>
+        <span class="metric-sub">Render &amp; GitHub Synced</span>
+      </div>
+    </section>
+
+    <!-- ADMIN CREDENTIALS & SECURITY -->
+    <section class="admin-section-box">
+      <h2>Admin Credentials &amp; Security</h2>
+      <p>Logged in as: <strong id="current-admin-email">admin@stocks360.com</strong></p>
+
+      <form id="change-password-form" class="settings-form" style="max-width: 500px; margin-top: 20px;">
+        <div id="password-feedback" class="feedback-box" hidden></div>
+
+        <div class="form-group">
+          <label for="current-password">Current Password <span class="required">*</span></label>
+          <input type="password" id="current-password" required placeholder="Enter current password">
+        </div>
+
+        <div class="form-group">
+          <label for="new-password">New Password <span class="required">*</span></label>
+          <input type="password" id="new-password" required placeholder="Minimum 6 characters">
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-new-password">Confirm New Password <span class="required">*</span></label>
+          <input type="password" id="confirm-new-password" required placeholder="Re-type new password">
+        </div>
+
+        <button type="submit" class="admin-btn primary">Update Admin Password</button>
+      </form>
+    </section>
+
+    <!-- DATA BACKUP & RESTORE -->
+    <section class="admin-section-box" style="margin-top: 30px;">
+      <h2>Website Database &amp; Backup Manager</h2>
+      <p>Download a full snapshot of your website's news, newsletters, and learn modules to your computer, or restore an earlier backup file.</p>
+
+      <div class="backup-actions-grid" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <button type="button" id="export-backup-btn" class="admin-btn success large">&#128190; Export Website Data (JSON)</button>
+          <p class="field-hint" style="margin-top: 5px;">Downloads all articles, lessons, and newsletters as a JSON file.</p>
+        </div>
+
+        <div>
+          <input type="file" id="import-file-input" accept=".json" style="display: none;">
+          <button type="button" id="import-backup-btn" class="admin-btn secondary large">&#128229; Restore from Backup File</button>
+          <p class="field-hint" style="margin-top: 5px;">Upload a previously downloaded backup JSON file.</p>
+        </div>
+
+        <div>
+          <button type="button" id="reset-default-btn" class="admin-btn danger large">&#8635; Reset to Default Sample Data</button>
+          <p class="field-hint" style="margin-top: 5px;">Restores initial educational content.</p>
+        </div>
+      </div>
+
+      <div id="import-feedback" class="feedback-box" hidden style="margin-top: 15px;"></div>
+    </section>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="container">
+      <p>Stocks 360 Management System &bull; System Settings &amp; Security</p>
+    </div>
+  </footer>
+
+  <script src="js/data-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-settings.js"></script>
+</body>
+</html>

@@ -11,62 +11,83 @@
 
   <a class="skip-link" href="#page-heading">Skip to page heading</a>
 
-  <!-- Disclaimer -->
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
-  <!-- Top Bar -->
   <header class="top-bar">
-    <div class="container">
-      <button id="accessibility-toggle" aria-pressed="false">
+    <div class="container top-bar-flex">
+      <div class="brand-title"><a href="index.html">Stocks 360</a></div>
+      <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
         Turn On Special Accessibility Features
       </button>
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav id="main-navigation" aria-label="Main navigation">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="newsletter.html">Newsletter</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="ask.html">Ask</a></li>
-      <li><a href="about.html" aria-current="page">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="ask.html">Ask 360</a></li>
+        <li><a href="about.html" aria-current="page" class="active">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li class="admin-portal-link"><a href="admin-login.html">&#128274; Admin Login</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Main Content -->
   <main id="main-content">
     <div class="container">
+      <div class="detail-container">
+        <h1 id="page-heading" tabindex="-1">About Stocks 360</h1>
+        
+        <div id="dynamic-about-container" class="article-main-body">
+          <p>Stocks 360 is an educational platform created to help people understand the stock market in a simple, clear, and inclusive way. We are passionate about making financial education accessible to everyone, including learners with visual impairments or reading difficulties.</p>
 
-      <h1 id="page-heading" tabindex="-1">About Us</h1>
+          <h2>Our Focus &amp; Core Mission</h2>
+          <p>Financial news and analysis can often feel intimidating with complicated terminology and visual-heavy charts. Stocks 360 is built with modern web accessibility principles, featuring:</p>
+          <ul class="styled-bullet-list">
+            <li><strong>Audio-Pitch Speech Synthesis:</strong> Distinct rising audio tones for positive stocks and lower tones for declining stocks.</li>
+            <li><strong>High-Contrast Mode:</strong> WCAG AAA compliant color contrasts with clear borders.</li>
+            <li><strong>Instant Shortcuts:</strong> Press <code>Alt + 3</code> for financial synonyms, <code>Alt + 6</code> for inline AI explanations, and <code>Ctrl</code> to stop voice audio.</li>
+            <li><strong>Curated Learning Curriculum:</strong> Beginner-friendly explanations of markets, institutional participants, and SEBI regulations.</li>
+          </ul>
 
-      <p>Stocks 360 is an educational website created to help people understand the stock market in a simple and clear way. It includes enhanced accessibility features so that a wider range of users can use it comfortably.</p>
-
-      <h2>Our Focus</h2>
-      <p>The website is designed with good accessibility practices. Features such as clear structure, keyboard navigation, screen reader support, and a special accessibility mode are included to improve the experience for everyone.</p>
-
-      <h2>What We Offer</h2>
-      <ul>
-        <li>Simple explanations about the stock market</li>
-        <li>Educational news and weekly market overview</li>
-        <li>Stock search with live and historical data (after API integration)</li>
-        <li>Enhanced accessibility features</li>
-      </ul>
-
+          <h2>What We Offer</h2>
+          <ul class="styled-bullet-list">
+            <li>Structured stock market curriculum with lesson takeaways and discussion forums.</li>
+            <li>Educational market news and weekly newsletter digests.</li>
+            <li>Interactive stock search with day's metrics and historical price tables.</li>
+            <li>Ask 360 AI Assistant for financial questions.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </main>
 
   <footer>
     <div class="container">
-      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+      <p>Stocks 360 &bull; Stay updated with the stock market while learning. For educational purposes only.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/accessibility.js"></script>
+  <script src="js/smart-assist.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedAbout = localStorage.getItem("stocks360_about_content");
+      if (savedAbout) {
+        const container = document.getElementById("dynamic-about-container");
+        if (container) {
+          const paragraphs = savedAbout.split("\n\n").map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
+          container.innerHTML = paragraphs;
+        }
+      }
+    });
+  </script>
 </body>
 </html>

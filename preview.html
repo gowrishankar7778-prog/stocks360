@@ -2,113 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview - Stocks 360</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/admin.css">
-  <style>
-    .preview-banner {
-      background: #fff3cd;
-      color: #856404;
-      text-align: center;
-      padding: 12px;
-      font-weight: bold;
-      border-bottom: 2px solid #ffc107;
-    }
-    .preview-content {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      line-height: 1.7;
-    }
-    .preview-content table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 15px 0;
-    }
-    .preview-content th,
-    .preview-content td {
-      border: 1px solid #ccc;
-      padding: 8px 12px;
-      text-align: left;
-    }
-    .preview-content th {
-      background: #f1f3f5;
-    }
-    .preview-meta {
-      color: #555;
-      margin-bottom: 20px;
-      font-size: 15px;
-    }
-    .back-btn {
-      display: inline-block;
-      margin: 20px 0;
-      padding: 10px 20px;
-      background: #6c757d;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-  </style>
+  <meta http-equiv="refresh" content="0; url=admin-preview.html">
+  <title>Redirecting to Preview...</title>
+  <script>window.location.href = "admin-preview.html";</script>
 </head>
 <body>
-
-  <div class="preview-banner">
-    PREVIEW MODE – This is how the content will appear to users
-  </div>
-
-  <div class="preview-content">
-    <a href="#" class="back-btn" onclick="window.close(); return false;">← Close Preview</a>
-
-    <h1 id="preview-title">Title</h1>
-    <p class="preview-meta" id="preview-meta"></p>
-
-    <div id="preview-synopsis" class="news-synopsis" style="display:none;"></div>
-
-    <div id="preview-body"></div>
-
-    <div id="preview-glossary" class="news-glossary" style="display:none; margin-top:25px;"></div>
-    <div id="preview-keywords" class="news-keywords" style="display:none; margin-top:15px;"></div>
-    <div id="preview-takeaways" class="news-glossary" style="display:none; margin-top:25px;"></div>
-  </div>
-
-  <script>
-    // Load preview data from localStorage
-    const data = JSON.parse(localStorage.getItem("previewData") || "{}");
-
-    document.getElementById("preview-title").textContent = data.title || "No Title";
-
-    let meta = "";
-    if (data.author) meta += data.author;
-    if (data.readTime) meta += (meta ? " | " : "") + data.readTime;
-    if (data.published) meta += (meta ? " | " : "") + data.published;
-    document.getElementById("preview-meta").textContent = meta;
-
-    if (data.synopsis) {
-      const el = document.getElementById("preview-synopsis");
-      el.textContent = data.synopsis;
-      el.style.display = "block";
-    }
-
-    document.getElementById("preview-body").innerHTML = data.body || "<p>No content</p>";
-
-    if (data.glossary) {
-      const el = document.getElementById("preview-glossary");
-      el.innerHTML = "<strong>Glossary:</strong><br>" + data.glossary;
-      el.style.display = "block";
-    }
-
-    if (data.keywords) {
-      const el = document.getElementById("preview-keywords");
-      el.innerHTML = "<strong>Keywords:</strong> " + data.keywords;
-      el.style.display = "block";
-    }
-
-    if (data.takeaways) {
-      const el = document.getElementById("preview-takeaways");
-      el.innerHTML = "<strong>Key Takeaways:</strong><br>" + data.takeaways;
-      el.style.display = "block";
-    }
-  </script>
+  <p>Redirecting to <a href="admin-preview.html">Admin Preview</a>...</p>
 </body>
 </html>

@@ -7,62 +7,97 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/admin.css">
 </head>
-<body>
+<body class="admin-body">
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
   <header class="admin-header">
-    <div class="container">
-      <h1>Admin Panel - About Us</h1>
-      <p>Logged in as Admin | <a href="admin-login.html" style="color:#fff;">Logout</a></p>
+    <div class="container admin-header-flex">
+      <div>
+        <h1>Stocks 360 &bull; Admin Panel</h1>
+        <p class="admin-subtitle">Update About Us Content</p>
+      </div>
+      <p class="admin-user-info">Logged in as Admin | <a href="admin-login.html" id="logout-btn">Logout</a></p>
     </div>
   </header>
 
-  <nav class="admin-nav">
-    <ul>
-      <li><a href="admin-news.html">News</a></li>
-      <li><a href="admin-newsletter.html">Newsletter</a></li>
-      <li><a href="admin-learn.html">Learn</a></li>
-      <li><a href="admin-ask.html">Ask / Comments</a></li>
-      <li><a href="admin-about.html" class="active">About Us</a></li>
-      <li><a href="admin-contact.html">Contact Us</a></li>
-      <li><a href="index.html">View Website</a></li>
-    </ul>
+  <nav class="admin-nav" aria-label="Admin Navigation">
+    <div class="container">
+      <ul>
+        <li><a href="admin-news.html">News</a></li>
+        <li><a href="admin-newsletter.html">Newsletter</a></li>
+        <li><a href="admin-learn.html">Learn Modules</a></li>
+        <li><a href="admin-ask.html">Ask / Comments</a></li>
+        <li><a href="admin-about.html" class="active" aria-current="page">About &amp; Team</a></li>
+        <li><a href="admin-contact.html">Contact Info</a></li>
+        <li><a href="admin-settings.html">Backup &amp; Settings</a></li>
+        <li class="nav-public-link"><a href="about.html" target="_blank" rel="noopener">View Public Page &rarr;</a></li>
+      </ul>
+    </div>
   </nav>
 
   <main class="container admin-main">
-
-    <h2>Update About Us Content</h2>
-
-    <div class="publish-form-section">
-      <div class="form-group">
-        <label for="about-content">About Us Content</label>
-        <textarea id="about-content" class="multi-input" rows="12" placeholder="Enter or update the About Us content here...">Stocks 360 is an educational website created to help people understand the stock market in a simple and clear way. It includes enhanced accessibility features so that a wider range of users can use it comfortably.
-
-Our Focus
-The website is designed with good accessibility practices. Features such as clear structure, keyboard navigation, screen reader support, and a special accessibility mode are included to improve the experience for everyone.
-
-What We Offer
-- Simple explanations about the stock market
-- Educational news and weekly market overview
-- Stock search with live and historical data (after API integration)
-- Enhanced accessibility features</textarea>
-      </div>
-
-      <button id="update-about-btn" class="admin-btn success large">Update About Us</button>
+    <div class="admin-top-actions">
+      <h2>Update About Us Page Content</h2>
+      <p class="field-hint">Edit the mission, story, and accessibility commitment displayed on the public About page.</p>
     </div>
 
+    <div class="publish-form-section">
+      <div id="about-feedback" class="feedback-box" hidden></div>
+
+      <div class="form-group">
+        <label for="about-content">About Us Main Content <span class="required">*</span></label>
+        <textarea id="about-content" class="multi-input" rows="12" placeholder="Enter or update the About Us content here..."></textarea>
+      </div>
+
+      <div class="form-actions-row">
+        <button id="update-about-btn" class="admin-btn success large">Save &amp; Publish Changes</button>
+        <a href="about.html" class="admin-btn secondary" target="_blank" rel="noopener">Preview Public Page</a>
+      </div>
+    </div>
   </main>
 
+  <footer class="admin-footer">
+    <div class="container">
+      <p>Stocks 360 Management System &bull; Content Desk</p>
+    </div>
+  </footer>
+
+  <script src="js/admin-auth.js"></script>
   <script>
-    document.getElementById("update-about-btn").addEventListener("click", function () {
-      const content = document.getElementById("about-content").value.trim();
-      if (content === "") {
-        alert("About Us content cannot be empty.");
-        return;
-      }
-      alert("About Us updated successfully!\n\n(This is temporary. Real saving will work after Firebase integration.)");
+    document.addEventListener("DOMContentLoaded", function () {
+      AdminAuth.protectPage();
+
+      const defaultText = `Stocks 360 is an educational platform created to make learning the stock market simple, accessible, and intuitive for everyone.
+
+Our Focus & Accessibility Mission:
+Financial education should be accessible to all learners. Stocks 360 incorporates pitch-modulated screen reader speech, high-contrast themes, keyboard shortcuts (Alt+3 for synonyms, Alt+6 for Ask 360 AI explanations), and uncluttered interfaces.
+
+What We Offer:
+- Beginner-friendly explanations of market mechanics and SEBI regulations.
+- Educational stock search with high/low visual indicators and audio pitch cues.
+- Curated weekly newsletters summarizing major market movements.
+- An interactive 'Ask 360' assistant for financial terminology.`;
+
+      const saved = localStorage.getItem("stocks360_about_content") || defaultText;
+      const textarea = document.getElementById("about-content");
+      const feedback = document.getElementById("about-feedback");
+      textarea.value = saved;
+
+      document.getElementById("update-about-btn").addEventListener("click", function () {
+        const content = textarea.value.trim();
+        if (!content) {
+          alert("About Us content cannot be empty.");
+          return;
+        }
+
+        localStorage.setItem("stocks360_about_content", content);
+        feedback.textContent = "About Us content updated and live on website!";
+        feedback.className = "feedback-box success";
+        feedback.hidden = false;
+        setTimeout(() => { feedback.hidden = true; }, 4000);
+      });
     });
   </script>
 </body>

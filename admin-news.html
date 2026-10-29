@@ -8,200 +8,100 @@
   <link rel="stylesheet" href="css/admin.css">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
-<body>
+<body class="admin-body">
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
   <header class="admin-header">
-    <div class="container">
-      <h1>Admin Panel - News</h1>
-      <p>Logged in as Admin | <a href="admin-login.html" style="color:#fff;">Logout</a></p>
+    <div class="container admin-header-flex">
+      <div>
+        <h1>Stocks 360 &bull; Admin Panel</h1>
+        <p class="admin-subtitle">Live Content & Website Management</p>
+      </div>
+      <p class="admin-user-info">Logged in as Admin | <a href="admin-login.html" id="logout-btn">Logout</a></p>
     </div>
   </header>
 
-  <nav class="admin-nav">
-    <ul>
-      <li><a href="admin-news.html" class="active">News</a></li>
-      <li><a href="admin-newsletter.html">Newsletter</a></li>
-      <li><a href="admin-learn.html">Learn</a></li>
-      <li><a href="admin-ask.html">Ask / Comments</a></li>
-      <li><a href="admin-about.html">About Us</a></li>
-      <li><a href="admin-contact.html">Contact Us</a></li>
-      <li><a href="index.html">View Website</a></li>
-    </ul>
+  <nav class="admin-nav" aria-label="Admin Navigation">
+    <div class="container">
+      <ul>
+        <li><a href="admin-news.html" class="active" aria-current="page">News</a></li>
+        <li><a href="admin-newsletter.html">Newsletter</a></li>
+        <li><a href="admin-learn.html">Learn Modules</a></li>
+        <li><a href="admin-ask.html">Ask / Comments</a></li>
+        <li><a href="admin-about.html">About &amp; Team</a></li>
+        <li><a href="admin-contact.html">Contact Info</a></li>
+        <li><a href="admin-settings.html">Backup &amp; Settings</a></li>
+        <li class="nav-public-link"><a href="news.html" target="_blank" rel="noopener">View Live News &rarr;</a></li>
+      </ul>
+    </div>
   </nav>
 
   <main class="container admin-main">
     <div class="admin-top-actions">
-      <button id="publish-new-btn" class="admin-btn primary large">Publish New News Article</button>
+      <button id="publish-new-btn" class="admin-btn primary large">+ Publish New News Article</button>
+      <a href="index.html" class="admin-btn secondary" target="_blank" rel="noopener">Open Public Website</a>
     </div>
 
+    <!-- PUBLISH / EDIT FORM SECTION -->
     <section id="publish-form-section" class="publish-form-section" hidden>
       <h2>Publish New News Article</h2>
+      <p class="form-instruction">All fields marked with <span class="required">*</span> are required. Content published here immediately reflects on the live website.</p>
 
       <div class="form-group">
         <label for="news-heading">1. News Heading <span class="required">*</span></label>
-        <textarea id="news-heading" class="multi-input" rows="2" placeholder="Enter the news heading" required></textarea>
+        <textarea id="news-heading" class="multi-input" rows="2" placeholder="e.g. Indian markets reach new milestones amid tech sector rally" required></textarea>
       </div>
 
       <div class="form-group">
-        <label for="writer-name">2. Writer’s Name <span class="required">*</span></label>
-        <textarea id="writer-name" class="multi-input" rows="1" placeholder="Enter writer’s name" required></textarea>
+        <label for="writer-name">2. Writer / Reviewer Name <span class="required">*</span></label>
+        <textarea id="writer-name" class="multi-input" rows="1" placeholder="e.g. Meenugula Gowrishankar" required></textarea>
       </div>
 
       <div class="form-group">
-        <label for="synopsis">3. Synopsis <span class="optional">(Optional)</span></label>
-        <textarea id="synopsis" class="multi-input" rows="3" placeholder="Enter short synopsis (optional)"></textarea>
+        <label for="synopsis">3. Synopsis / Quick Summary <span class="optional">(Optional)</span></label>
+        <textarea id="synopsis" class="multi-input" rows="2" placeholder="Brief 1-2 sentence overview for the article preview card"></textarea>
       </div>
 
       <div class="form-group">
         <label>4. Main Body of the News <span class="required">*</span></label>
-        <p style="font-size:14px; color:#555; margin-bottom:8px;">You can paste tables and formatted content from Word here.</p>
-        <div id="news-body-editor" style="height: 280px; background:#fff;"></div>
+        <p class="field-hint">You can format text, add bullet points, quotes, and paste formatted content or tables here.</p>
+        <div id="news-body-editor" style="height: 260px; background:#fff; border-radius: 0 0 8px 8px;"></div>
       </div>
 
       <div class="form-group">
-        <label for="glossary">5. Glossary <span class="optional">(Optional)</span></label>
-        <textarea id="glossary" class="multi-input" rows="3" placeholder="Enter glossary terms (optional)"></textarea>
+        <label for="glossary">5. Educational Glossary Terms <span class="optional">(Optional)</span></label>
+        <textarea id="glossary" class="multi-input" rows="2" placeholder="e.g. Bull Market: A financial market characterized by rising prices."></textarea>
       </div>
 
       <div class="form-group">
-        <label for="keywords">6. Keywords <span class="optional">(Optional)</span></label>
-        <textarea id="keywords" class="multi-input" rows="2" placeholder="Enter keywords separated by comma (optional)"></textarea>
+        <label for="keywords">6. Search Keywords &amp; Tags <span class="optional">(Optional)</span></label>
+        <textarea id="keywords" class="multi-input" rows="2" placeholder="e.g. markets, Nifty, banking, IT, investing"></textarea>
       </div>
 
-      <button id="preview-btn" class="admin-btn secondary large">Preview</button>
-      <button id="final-publish-btn" class="admin-btn success large">Publish</button>
-      <button id="cancel-publish-btn" class="admin-btn secondary">Cancel</button>
+      <div class="form-actions-row">
+        <button type="button" id="final-publish-btn" class="admin-btn success large">Publish to Live Website</button>
+        <button type="button" id="preview-btn" class="admin-btn secondary large">Preview Article</button>
+        <button type="button" id="cancel-publish-btn" class="admin-btn danger">Cancel</button>
+      </div>
     </section>
 
+    <!-- RECENT NEWS SECTION (DYNAMIC FROM DATASTORE) -->
     <section class="recent-news-section">
-      <h2>Recent News</h2>
-      <div class="admin-news-list">
-        <div class="admin-news-item">
-          <a href="#" class="admin-news-link">Indian markets show mixed performance this week</a>
-          <div class="news-menu">
-            <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
-            <ul class="menu-options" hidden>
-              <li><label><input type="checkbox"> Keep it private</label></li>
-              <li><button class="menu-action edit-btn">Edit</button></li>
-              <li><button class="menu-action delete-btn">Delete</button></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <!-- Injected dynamically by admin-news.js -->
     </section>
   </main>
 
+  <footer class="admin-footer">
+    <div class="container">
+      <p>Stocks 360 Management System &bull; Educational Platform for Stock Market Learners</p>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-  <script src="js/admin-menu.js"></script>
-  <script>
-    let newsBodyEditor = null;
-    document.getElementById("publish-new-btn").addEventListener("click", function () {
-      document.getElementById("publish-form-section").hidden = false;
-      document.getElementById("publish-new-btn").hidden = true;
-      if (!newsBodyEditor) {
-        newsBodyEditor = new Quill("#news-body-editor", {
-          theme: "snow",
-          modules: {
-            toolbar: [
-              [{ header: [1, 2, 3, false] }],
-              ["bold", "italic", "underline"],
-              [{ list: "ordered" }, { list: "bullet" }],
-              ["link"], ["clean"]
-            ]
-          },
-          placeholder: "Paste or type the main body here. Tables from Word can be pasted."
-        });
-      }
-    });
-    document.getElementById("cancel-publish-btn").addEventListener("click", function () {
-      document.getElementById("publish-form-section").hidden = true;
-      document.getElementById("publish-new-btn").hidden = false;
-    });
-    document.getElementById("final-publish-btn").addEventListener("click", function () {
-      const heading = document.getElementById("news-heading").value.trim();
-      const writer = document.getElementById("writer-name").value.trim();
-      const body = newsBodyEditor ? newsBodyEditor.root.innerHTML : "";
-      if (!heading || !writer || !body || body === "<p><br></p>") {
-        alert("Please fill Heading, Writer’s Name and Main Body.");
-        return;
-      }
-      alert("News published successfully! (Temporary message. Real saving will work after Firebase integration.)");
-      document.getElementById("publish-form-section").hidden = true;
-      document.getElementById("publish-new-btn").hidden = false;
-    });
-  </script>
+  <script src="js/data-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-news.js"></script>
 </body>
 </html>
-
-<script>
-  // Preview functionality for News
-  document.getElementById("preview-btn")?.addEventListener("click", function () {
-    const heading = document.getElementById("news-heading").value.trim() || "(No heading)";
-    const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-    const synopsis = document.getElementById("synopsis").value.trim();
-    const body = newsBodyEditor ? newsBodyEditor.root.innerHTML : "<p>No body</p>";
-    const glossary = document.getElementById("glossary").value.trim();
-    const keywords = document.getElementById("keywords").value.trim();
-
-    const previewData = {
-      title: heading,
-      author: "Written by: " + writer,
-      published: "Published: Preview",
-      synopsis: synopsis,
-      body: body,
-      glossary: glossary,
-      keywords: keywords
-    };
-    localStorage.setItem("previewData", JSON.stringify(previewData));
-    window.open("admin-preview.html", "_blank");
-  });
-  });
-</script>
-
-<script>
-document.getElementById("preview-btn")?.addEventListener("click", function () {
-    const heading = document.getElementById("news-heading").value.trim() || "(No heading)";
-    const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-    const synopsis = document.getElementById("synopsis").value.trim();
-    const body = newsBodyEditor ? newsBodyEditor.root.innerHTML : "<p>No body</p>";
-    const glossary = document.getElementById("glossary").value.trim();
-    const keywords = document.getElementById("keywords").value.trim();
-
-    const previewData = {
-      title: heading,
-      author: "Written by: " + writer,
-      published: "Published: Preview",
-      synopsis: synopsis,
-      body: body,
-      glossary: glossary,
-      keywords: keywords
-    };
-    localStorage.setItem("previewData", JSON.stringify(previewData));
-    window.open("admin-preview.html", "_blank");
-  });
-</script>
-<script>
-document.getElementById("preview-btn")?.addEventListener("click", function () {
-  const heading = document.getElementById("news-heading").value.trim() || "(No heading)";
-  const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-  const synopsis = document.getElementById("synopsis").value.trim();
-  const body = (typeof newsBodyEditor !== "undefined" && newsBodyEditor) ? newsBodyEditor.root.innerHTML : "<p>No body</p>";
-  const glossary = document.getElementById("glossary").value.trim();
-  const keywords = document.getElementById("keywords").value.trim();
-
-  const previewData = {
-    title: heading,
-    author: "Written by: " + writer,
-    published: "Published: Preview",
-    synopsis: synopsis,
-    body: body,
-    glossary: glossary,
-    keywords: keywords
-  };
-  localStorage.setItem("previewData", JSON.stringify(previewData));
-  window.open("admin-preview.html", "_blank");
-});
-</script>

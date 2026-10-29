@@ -6,154 +6,93 @@
   <title>Admin - Manage Newsletter - Stocks 360</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/admin.css">
-  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
-<body>
+<body class="admin-body">
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
+
   <header class="admin-header">
-    <div class="container">
-      <h1>Admin Panel - Newsletter</h1>
-      <p>Logged in as Admin | <a href="admin-login.html" style="color:#fff;">Logout</a></p>
+    <div class="container admin-header-flex">
+      <div>
+        <h1>Stocks 360 &bull; Admin Panel</h1>
+        <p class="admin-subtitle">Manage Weekly Newsletters</p>
+      </div>
+      <p class="admin-user-info">Logged in as Admin | <a href="admin-login.html" id="logout-btn">Logout</a></p>
     </div>
   </header>
-  <nav class="admin-nav">
-    <ul>
-      <li><a href="admin-news.html">News</a></li>
-      <li><a href="admin-newsletter.html" class="active">Newsletter</a></li>
-      <li><a href="admin-learn.html">Learn</a></li>
-      <li><a href="admin-ask.html">Ask / Comments</a></li>
-      <li><a href="admin-about.html">About Us</a></li>
-      <li><a href="admin-contact.html">Contact Us</a></li>
-      <li><a href="index.html">View Website</a></li>
-    </ul>
+
+  <nav class="admin-nav" aria-label="Admin Navigation">
+    <div class="container">
+      <ul>
+        <li><a href="admin-news.html">News</a></li>
+        <li><a href="admin-newsletter.html" class="active" aria-current="page">Newsletter</a></li>
+        <li><a href="admin-learn.html">Learn Modules</a></li>
+        <li><a href="admin-ask.html">Ask / Comments</a></li>
+        <li><a href="admin-about.html">About &amp; Team</a></li>
+        <li><a href="admin-contact.html">Contact Info</a></li>
+        <li><a href="admin-settings.html">Backup &amp; Settings</a></li>
+        <li class="nav-public-link"><a href="newsletter.html" target="_blank" rel="noopener">View Live Newsletter &rarr;</a></li>
+      </ul>
+    </div>
   </nav>
+
   <main class="container admin-main">
     <div class="admin-top-actions">
-      <button id="publish-new-btn" class="admin-btn primary large">Publish New Newsletter</button>
+      <button id="publish-new-btn" class="admin-btn primary large">+ Publish New Newsletter</button>
+      <a href="newsletter.html" class="admin-btn secondary" target="_blank" rel="noopener">Preview Live Page</a>
     </div>
+
+    <!-- PUBLISH / EDIT FORM -->
     <section id="publish-form-section" class="publish-form-section" hidden>
-      <h2>Publish New Newsletter</h2>
+      <h2>Publish New Weekly Newsletter</h2>
+      <p class="form-instruction">Weekly newsletters provide learners with a weekend wrap-up of trends and insights.</p>
+
       <div class="form-group">
-        <label for="newsletter-heading">1. Newsletter Heading <span class="required">*</span></label>
-        <textarea id="newsletter-heading" class="multi-input" rows="2" placeholder="Enter the newsletter heading" required></textarea>
+        <label for="news-heading">1. Newsletter Heading / Edition <span class="required">*</span></label>
+        <textarea id="news-heading" class="multi-input" rows="2" placeholder="e.g. Weekly Market Overview - 29 Oct 2026" required></textarea>
       </div>
+
       <div class="form-group">
-        <label for="writer-name">2. Writer’s Name <span class="required">*</span></label>
-        <textarea id="writer-name" class="multi-input" rows="1" placeholder="Enter writer’s name" required></textarea>
+        <label for="writer-name">2. Author / Reviewer Name <span class="required">*</span></label>
+        <textarea id="writer-name" class="multi-input" rows="1" placeholder="e.g. Meenugula Gowrishankar" required></textarea>
       </div>
+
       <div class="form-group">
-        <label>3. Body of the Newsletter <span class="required">*</span></label>
-        <p style="font-size:14px; color:#555; margin-bottom:8px;">You can paste tables and formatted content from Word here.</p>
-        <div id="newsletter-body-editor" style="height: 280px; background:#fff;"></div>
+        <label for="main-body">3. Newsletter Content <span class="required">*</span></label>
+        <textarea id="main-body" class="multi-input" rows="8" placeholder="Enter the detailed weekly market summary and educational takeaways..." required></textarea>
       </div>
+
       <div class="form-group">
-        <label for="glossary">4. Glossary <span class="optional">(Optional)</span></label>
-        <textarea id="glossary" class="multi-input" rows="3" placeholder="Enter glossary terms (optional)"></textarea>
+        <label for="glossary">4. Key Financial Terms Explained <span class="optional">(Optional)</span></label>
+        <textarea id="glossary" class="multi-input" rows="2" placeholder="e.g. Index: A benchmark indicator reflecting market performance."></textarea>
       </div>
+
       <div class="form-group">
         <label for="keywords">5. Keywords <span class="optional">(Optional)</span></label>
-        <textarea id="keywords" class="multi-input" rows="2" placeholder="Enter keywords separated by comma (optional)"></textarea>
+        <textarea id="keywords" class="multi-input" rows="2" placeholder="e.g. weekly overview, indices, banking, learning"></textarea>
       </div>
-      <button id="preview-btn" class="admin-btn secondary large">Preview</button>
-      <button id="final-publish-btn" class="admin-btn success large">Publish</button>
-      <button id="cancel-publish-btn" class="admin-btn secondary">Cancel</button>
+
+      <div class="form-actions-row">
+        <button type="button" id="final-publish-btn" class="admin-btn success large">Publish Newsletter</button>
+        <button type="button" id="cancel-publish-btn" class="admin-btn danger">Cancel</button>
+      </div>
     </section>
+
+    <!-- LIST OF PUBLISHED NEWSLETTERS -->
     <section class="recent-news-section">
-      <h2>Recent Newsletters</h2>
-      <div class="admin-news-list">
-        <div class="admin-news-item">
-          <a href="#" class="admin-news-link">Weekly Market Overview - 27 Oct 2026</a>
-          <div class="news-menu">
-            <button class="menu-toggle" aria-expanded="false" aria-haspopup="true">Menu</button>
-            <ul class="menu-options" hidden>
-              <li><label><input type="checkbox"> Keep it private</label></li>
-              <li><button class="menu-action edit-btn">Edit</button></li>
-              <li><button class="menu-action delete-btn">Delete</button></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <!-- Injected by admin-newsletter.js -->
     </section>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-  <script src="js/admin-menu.js"></script>
-  <script>
-    let newsletterBodyEditor = null;
-    document.getElementById("publish-new-btn").addEventListener("click", function () {
-      document.getElementById("publish-form-section").hidden = false;
-      document.getElementById("publish-new-btn").hidden = true;
-      if (!newsletterBodyEditor) {
-        newsletterBodyEditor = new Quill("#newsletter-body-editor", {
-          theme: "snow",
-          modules: {
-            toolbar: [
-              [{ header: [1, 2, 3, false] }],
-              ["bold", "italic", "underline"],
-              [{ list: "ordered" }, { list: "bullet" }],
-              ["link"], ["clean"]
-            ]
-          },
-          placeholder: "Paste or type the newsletter body. Tables from Word can be pasted."
-        });
-      }
-    });
-    document.getElementById("cancel-publish-btn").addEventListener("click", function () {
-      document.getElementById("publish-form-section").hidden = true;
-      document.getElementById("publish-new-btn").hidden = false;
-    });
-    document.getElementById("final-publish-btn").addEventListener("click", function () {
-      const heading = document.getElementById("newsletter-heading").value.trim();
-      const writer = document.getElementById("writer-name").value.trim();
-      const body = newsletterBodyEditor ? newsletterBodyEditor.root.innerHTML : "";
-      if (!heading || !writer || !body || body === "<p><br></p>") {
-        alert("Please fill Heading, Writer’s Name and Body.");
-        return;
-      }
-      alert("Newsletter published successfully! (Temporary message)");
-      document.getElementById("publish-form-section").hidden = true;
-      document.getElementById("publish-new-btn").hidden = false;
-    });
-  </script>
+
+  <footer class="admin-footer">
+    <div class="container">
+      <p>Stocks 360 Management System &bull; Weekly Newsletter Desk</p>
+    </div>
+  </footer>
+
+  <script src="js/data-store.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-newsletter.js"></script>
 </body>
 </html>
-
-<script>
-  document.getElementById("preview-btn")?.addEventListener("click", function () {
-    const heading = document.getElementById("newsletter-heading").value.trim() || "(No heading)";
-    const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-    const body = newsletterBodyEditor ? newsletterBodyEditor.getText() : "(No body)";
-    const glossary = document.getElementById("glossary").value.trim();
-    const keywords = document.getElementById("keywords").value.trim();
-
-    let previewText = "=== PREVIEW ===\n\n";
-    previewText += "Heading: " + heading + "\n";
-    previewText += "Written by: " + writer + "\n\n";
-    previewText += "Body:\n" + body + "\n\n";
-    if (glossary) previewText += "Glossary: " + glossary + "\n\n";
-    if (keywords) previewText += "Keywords: " + keywords + "\n";
-
-    alert(previewText);
-  });
-</script>
-<script>
-document.getElementById("preview-btn")?.addEventListener("click", function () {
-  const heading = document.getElementById("newsletter-heading").value.trim() || "(No heading)";
-  const writer = document.getElementById("writer-name").value.trim() || "(No writer)";
-  const body = (typeof newsletterBodyEditor !== "undefined" && newsletterBodyEditor) ? newsletterBodyEditor.root.innerHTML : "<p>No body</p>";
-  const glossary = document.getElementById("glossary").value.trim();
-  const keywords = document.getElementById("keywords").value.trim();
-
-  const previewData = {
-    title: heading,
-    author: "Written by: " + writer,
-    published: "Published: Preview",
-    body: body,
-    glossary: glossary,
-    keywords: keywords
-  };
-  localStorage.setItem("previewData", JSON.stringify(previewData));
-  window.open("admin-preview.html", "_blank");
-});
-</script>

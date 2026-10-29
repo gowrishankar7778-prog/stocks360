@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ask - Stocks 360</title>
+  <title>Ask 360 - Financial Learning Assistant - Stocks 360</title>
   <meta name="description" content="Ask your educational questions about the stock market on Stocks 360.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -11,67 +11,139 @@
 
   <a class="skip-link" href="#page-heading">Skip to page heading</a>
 
-  <!-- Disclaimer -->
   <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
-  <!-- Top Bar -->
   <header class="top-bar">
-    <div class="container">
-      <button id="accessibility-toggle" aria-pressed="false">
+    <div class="container top-bar-flex">
+      <div class="brand-title"><a href="index.html">Stocks 360</a></div>
+      <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
         Turn On Special Accessibility Features
       </button>
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav id="main-navigation" aria-label="Main navigation">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="newsletter.html">Newsletter</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="ask.html" aria-current="page">Ask</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="ask.html" aria-current="page" class="active">Ask 360</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li class="admin-portal-link"><a href="admin-login.html">&#128274; Admin Login</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Main Content -->
   <main id="main-content">
     <div class="container">
+      <div class="detail-container">
+        <h1 id="page-heading" tabindex="-1">Ask 360 &bull; Learning Assistant</h1>
+        <p class="subtitle">Have questions about stock terminology, IPOs, market regulators, or trading terms? Ask below for instant explanations.</p>
 
-      <h1 id="page-heading" tabindex="-1">Ask</h1>
+        <div class="ask-card-wrapper" style="margin-top: 25px;">
+          <form id="ask-main-form" class="public-form">
+            <div class="form-group">
+              <label for="ask-user-name">Your Name <span class="optional">(Optional)</span></label>
+              <input type="text" id="ask-user-name" placeholder="Learner name (e.g. Ramesh)">
+            </div>
 
-      <p>This page is for users to ask educational questions related to the stock market.</p>
+            <div class="form-group">
+              <label for="ask-user-question">Your Stock Market Question <span class="required">*</span></label>
+              <textarea id="ask-user-question" rows="4" placeholder="e.g. What is the difference between BSE and NSE? What is market capitalization?" required></textarea>
+            </div>
 
-      <form action="#" method="post">
-        <div style="margin-bottom: 15px;">
-          <label for="user-name">Your Name (optional)</label><br>
-          <input type="text" id="user-name" name="user-name" style="width: 100%; max-width: 400px; padding: 10px; font-size: 16px;">
+            <button type="submit" class="btn-primary large">&#129302; Get Instant Answer</button>
+          </form>
+
+          <div id="ask-response-box" class="ask360-ai-card" aria-live="polite" hidden style="margin-top: 25px;">
+            <div class="ai-header">
+              <span class="ai-badge">Ask 360 Assistant</span>
+              <span id="ai-timestamp" class="meta-date">Just now</span>
+            </div>
+            <h3 id="ai-question-echo" style="margin: 10px 0 6px 0; font-size: 18px;"></h3>
+            <div id="ai-answer-body" class="ai-answer-text" style="font-size: 16px; line-height: 1.6; color: #1e293b;"></div>
+          </div>
         </div>
 
-        <div style="margin-bottom: 15px;">
-          <label for="user-question">Your Question</label><br>
-          <textarea id="user-question" name="user-question" rows="6" style="width: 100%; max-width: 500px; padding: 10px; font-size: 16px;" required></textarea>
-        </div>
-
-        <button type="submit" style="padding: 12px 25px; font-size: 16px; background-color: #0d6efd; color: white; border: none; border-radius: 6px; cursor: pointer;">
-          Submit Question
-        </button>
-      </form>
-
+        <!-- POPULAR QUESTIONS -->
+        <section class="faq-section" style="margin-top: 40px;">
+          <h2>Common Learner Inquiries</h2>
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h3>What is SEBI?</h3>
+              <p>The Securities and Exchange Board of India (SEBI) is the statutory regulator for securities and commodity markets, protecting investor interests and enforcing market regulations.</p>
+            </div>
+            <div class="faq-item">
+              <h3>What does NIFTY 50 represent?</h3>
+              <p>NIFTY 50 is the benchmark index of the National Stock Exchange of India (NSE), tracking the 50 largest and most actively traded companies across various sectors.</p>
+            </div>
+            <div class="faq-item">
+              <h3>What is a Bull vs. Bear market?</h3>
+              <p>A <strong>Bull market</strong> describes sustained market rises and optimistic investor sentiment. A <strong>Bear market</strong> describes a downturn with prolonged price declines (typically 20%+).</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   </main>
 
   <footer>
     <div class="container">
-      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+      <p>Stocks 360 &bull; Stay updated with the stock market while learning. For educational purposes only.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/accessibility.js"></script>
+  <script src="js/smart-assist.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("ask-main-form");
+      const questionInput = document.getElementById("ask-user-question");
+      const nameInput = document.getElementById("ask-user-name");
+      const resBox = document.getElementById("ask-response-box");
+      const questionEcho = document.getElementById("ai-question-echo");
+      const answerBody = document.getElementById("ai-answer-body");
+
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const q = questionInput.value.trim();
+          if (!q) return;
+
+          resBox.hidden = false;
+          questionEcho.textContent = `Q: "${q}"`;
+
+          // Generate educational explanation
+          let responseText = `Thank you for asking! In financial literacy, understanding concepts is the first step. `;
+          const lowerQ = q.toLowerCase();
+
+          if (lowerQ.includes("nifty") || lowerQ.includes("sensex") || lowerQ.includes("index")) {
+            responseText += `An index like Nifty 50 or Sensex represents a basket of prominent stocks, functioning like a thermometer for market health.`;
+          } else if (lowerQ.includes("sebi") || lowerQ.includes("regulat")) {
+            responseText += `SEBI ensures complete transparency and prevents fraud so retail investors can participate with confidence.`;
+          } else if (lowerQ.includes("dividend") || lowerQ.includes("profit")) {
+            responseText += `Dividends are portions of company profits distributed to shareholders as a reward for their ownership.`;
+          } else if (lowerQ.includes("risk") || lowerQ.includes("loss")) {
+            responseText += `All financial investments carry market risk. Diversification across multiple sectors helps balance risk and return.`;
+          } else {
+            responseText += `Stock markets function as a capital allocation exchange connecting growing companies with public investors. Continue exploring our Learn modules for in-depth coverage.`;
+          }
+
+          answerBody.innerHTML = `<p>${responseText}</p>`;
+          resBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+          if (typeof window.speakWithPitch === "function") {
+            window.speakWithPitch(responseText, true);
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

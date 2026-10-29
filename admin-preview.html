@@ -8,80 +8,90 @@
   <link rel="stylesheet" href="css/admin.css">
   <style>
     .preview-banner {
-      background: #fff3cd;
-      color: #856404;
+      background: #eff6ff;
+      color: #1e40af;
       text-align: center;
-      padding: 12px;
-      font-weight: bold;
-      border-bottom: 2px solid #ffc107;
+      padding: 14px;
+      font-weight: 700;
+      border-bottom: 2px solid #3b82f6;
     }
     .preview-content {
-      max-width: 800px;
+      max-width: 820px;
       margin: 30px auto;
-      padding: 20px;
-      line-height: 1.7;
+      padding: 24px;
+      line-height: 1.75;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08);
     }
     .preview-content table {
       border-collapse: collapse;
       width: 100%;
-      margin: 15px 0;
+      margin: 18px 0;
     }
     .preview-content th,
     .preview-content td {
-      border: 1px solid #ccc;
-      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
       text-align: left;
     }
     .preview-content th {
-      background: #f1f3f5;
+      background: #f1f5f9;
+      font-weight: 700;
     }
     .preview-meta {
-      color: #555;
+      color: #64748b;
       margin-bottom: 20px;
-      font-size: 15px;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 12px;
     }
     .back-btn {
       display: inline-block;
-      margin: 20px 0;
-      padding: 10px 20px;
-      background: #6c757d;
-      color: white;
+      margin-bottom: 20px;
+      padding: 10px 18px;
+      background: #334155;
+      color: #ffffff;
       text-decoration: none;
       border-radius: 6px;
+      font-weight: 600;
+    }
+    .back-btn:hover {
+      background: #1e293b;
     }
   </style>
 </head>
-<body>
+<body style="background: #f8fafc;">
 
   <div class="preview-banner">
-    PREVIEW MODE – This is how the content will appear to users
+    &#128065; PREVIEW MODE &bull; This is exactly how your article will look on the live website
   </div>
 
   <div class="preview-content">
-    <a href="#" class="back-btn" onclick="window.close(); return false;">← Close Preview</a>
+    <a href="#" class="back-btn" onclick="window.close(); return false;">&larr; Close Preview Window</a>
 
-    <h1 id="preview-title">Title</h1>
+    <h1 id="preview-title" style="font-size: 2.2rem; color: #0f172a; margin-bottom: 10px;">Title</h1>
     <p class="preview-meta" id="preview-meta"></p>
 
     <div id="preview-synopsis" class="news-synopsis" style="display:none;"></div>
 
-    <div id="preview-body"></div>
+    <div id="preview-body" class="article-main-body"></div>
 
     <div id="preview-glossary" class="news-glossary" style="display:none; margin-top:25px;"></div>
     <div id="preview-keywords" class="news-keywords" style="display:none; margin-top:15px;"></div>
-    <div id="preview-takeaways" class="news-glossary" style="display:none; margin-top:25px;"></div>
+    <div id="preview-takeaways" class="lesson-takeaways-card" style="display:none; margin-top:25px;"></div>
   </div>
 
   <script>
-    // Load preview data from localStorage
-    const data = JSON.parse(localStorage.getItem("previewData") || "{}");
+    // Load preview data from sessionStorage or localStorage
+    const rawData = sessionStorage.getItem("stocks360_preview_data") || localStorage.getItem("previewData") || "{}";
+    const data = JSON.parse(rawData);
 
-    document.getElementById("preview-title").textContent = data.title || "No Title";
+    document.getElementById("preview-title").textContent = data.title || "Untitled Article";
 
     let meta = "";
-    if (data.author) meta += data.author;
-    if (data.readTime) meta += (meta ? " | " : "") + data.readTime;
-    if (data.published) meta += (meta ? " | " : "") + data.published;
+    if (data.author) meta += "By " + data.author;
+    if (data.published) meta += (meta ? " • " : "") + data.published;
     document.getElementById("preview-meta").textContent = meta;
 
     if (data.synopsis) {
@@ -90,11 +100,12 @@
       el.style.display = "block";
     }
 
-    document.getElementById("preview-body").innerHTML = data.body || "<p>No content</p>";
+    const bodyContent = data.content || data.body || "<p>No content written yet.</p>";
+    document.getElementById("preview-body").innerHTML = bodyContent;
 
     if (data.glossary) {
       const el = document.getElementById("preview-glossary");
-      el.innerHTML = "<strong>Glossary:</strong><br>" + data.glossary;
+      el.innerHTML = "<strong>Glossary Terms:</strong><br>" + data.glossary.replace(/\n/g, "<br>");
       el.style.display = "block";
     }
 
@@ -106,7 +117,7 @@
 
     if (data.takeaways) {
       const el = document.getElementById("preview-takeaways");
-      el.innerHTML = "<strong>Key Takeaways:</strong><br>" + data.takeaways;
+      el.innerHTML = "<strong>Key Takeaways:</strong><br>" + data.takeaways.replace(/\n/g, "<br>");
       el.style.display = "block";
     }
   </script>
