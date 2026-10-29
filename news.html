@@ -4,19 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News - Stocks 360</title>
-  <meta name="description" content="Latest educational stock market news on Stocks 360.">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#page-heading">Skip to News heading</a>
 
-  <!-- Disclaimer -->
   <div class="top-disclaimer" role="note">
     <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
   </div>
 
-  <!-- Top Bar -->
   <header class="top-bar">
     <div class="container">
       <button id="accessibility-toggle" aria-pressed="false">
@@ -25,8 +23,7 @@
     </div>
   </header>
 
-  <!-- Navigation -->
-  <nav aria-label="Main navigation">
+  <nav id="main-navigation" aria-label="Main navigation">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="news.html" aria-current="page">News</a></li>
@@ -38,13 +35,11 @@
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <main id="main-content">
     <div class="container">
 
-      <h1>News</h1>
+      <h1 id="page-heading" tabindex="-1">News</h1>
 
-      <!-- Continuous list of only news headings -->
       <ul class="news-headings-list" id="news-list">
         <li>
           <a href="#" class="news-heading-link" data-news-id="news-1">
@@ -63,36 +58,29 @@
         </li>
       </ul>
 
-      <!-- News Detail Section (shown when a heading is clicked) -->
       <section id="news-detail" class="news-detail" hidden aria-live="polite">
-
         <h2 id="detail-title"></h2>
-
+        <p class="news-author" id="detail-author"></p>
         <p class="news-meta">
           <span id="detail-read-time"></span><br>
           <span id="detail-published-time"></span>
         </p>
 
-        <!-- Ask 360 appears before the news content -->
-        <button class="ask360-btn" id="detail-ask360-btn" aria-expanded="false">
-          Ask 360
-        </button>
+        <button class="ask360-btn" id="detail-ask360-btn" aria-expanded="false">Ask 360</button>
 
         <div class="ask360-box" id="detail-ask360-box" hidden>
           <label for="detail-ask360-input" class="visually-hidden">Ask 360 AI about this news</label>
-          <textarea 
-            id="detail-ask360-input" 
-            class="ask360-input" 
-            rows="4" 
-            placeholder="Ask 360 AI about this news"
-            aria-label="Ask 360 AI about this news"></textarea>
+          <textarea id="detail-ask360-input" class="ask360-input" rows="4" placeholder="Ask 360 AI about this news" aria-label="Ask 360 AI about this news"></textarea>
           <button class="ask360-send" id="detail-ask360-send">Send</button>
           <div class="ask360-response" id="detail-ask360-response" aria-live="polite"></div>
         </div>
 
+        <div id="detail-synopsis" class="news-synopsis" hidden></div>
         <div id="detail-content" class="news-content" style="margin-top: 20px;"></div>
+        <div id="detail-glossary" class="news-glossary" hidden></div>
+        <div id="detail-keywords" class="news-keywords" hidden></div>
 
-        <p style="margin-top: 20px;">
+        <p style="margin-top: 25px;">
           <a href="#" id="back-to-list">← Back to News List</a>
         </p>
       </section>
@@ -109,5 +97,6 @@
   <script src="js/main.js"></script>
   <script src="js/accessibility.js"></script>
   <script src="js/news.js"></script>
+<script src="js/smart-assist.js"></script>
 </body>
 </html>

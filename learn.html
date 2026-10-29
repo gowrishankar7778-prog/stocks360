@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn - Stocks 360</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#page-heading">Skip to Learn heading</a>
+
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <header class="top-bar">
+    <div class="container">
+      <button id="accessibility-toggle" aria-pressed="false">
+        Turn On Special Accessibility Features
+      </button>
+    </div>
+  </header>
+
+  <nav id="main-navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="newsletter.html">Newsletter</a></li>
+      <li><a href="learn.html" aria-current="page">Learn</a></li>
+      <li><a href="ask.html">Ask</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <div class="container">
+
+      <h1 id="page-heading" tabindex="-1">Learn</h1>
+
+      <!-- Units List -->
+      <div id="units-list">
+        <ul class="news-headings-list">
+          <li>
+            <a href="#" class="unit-link" data-unit-id="unit-1">
+              Unit 1: Introduction to Stock Markets
+            </a>
+          </li>
+          <li>
+            <a href="#" class="unit-link" data-unit-id="unit-2">
+              Unit 2: Understanding Market Participants
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sub-units List (shown after clicking a unit) -->
+      <div id="subunits-list" hidden>
+        <h2 id="unit-title"></h2>
+        <ul class="news-headings-list" id="subunits-ul"></ul>
+        <p style="margin-top: 20px;"><a href="#" id="back-to-units">← Back to Units</a></p>
+      </div>
+
+      <!-- Sub-unit Detail -->
+      <section id="subunit-detail" class="news-detail" hidden aria-live="polite">
+        <h2 id="subunit-title"></h2>
+
+        <div class="prev-next" style="margin: 15px 0;">
+          <button id="prev-btn" class="admin-btn secondary">Previous</button>
+          <button id="next-btn" class="admin-btn secondary">Next</button>
+        </div>
+
+        <!-- Ask 360 -->
+        <button class="ask360-btn" id="learn-ask360-btn" aria-expanded="false">Ask 360</button>
+
+        <div class="ask360-box" id="learn-ask360-box" hidden>
+          <label for="learn-ask360-input" class="visually-hidden">Ask 360 AI about this lesson</label>
+          <textarea id="learn-ask360-input" class="ask360-input" rows="4" placeholder="Ask 360 AI about this lesson" aria-label="Ask 360 AI about this lesson"></textarea>
+          <button class="ask360-send" id="learn-ask360-send">Send</button>
+          <div class="ask360-response" id="learn-ask360-response" aria-live="polite"></div>
+        </div>
+
+        <div id="subunit-body" class="news-content" style="margin-top: 20px;"></div>
+
+        <div id="subunit-takeaways" class="news-glossary" hidden></div>
+
+        <!-- Comments Section -->
+        <section class="comments-section" style="margin-top: 30px;">
+          <h3>Comments</h3>
+          <div id="comments-list"></div>
+
+          <div style="margin-top: 15px;">
+            <label for="comment-name">Your Name <span style="color:#6c757d; font-weight:normal;">(Optional)</span></label>
+            <input type="text" id="comment-name" class="ask360-input" placeholder="Enter your name (optional)" style="margin-bottom: 10px;">
+
+            <label for="comment-input">Your Comment</label>
+            <textarea id="comment-input" class="ask360-input" rows="3" placeholder="Write your comment here..."></textarea>
+            <button id="post-comment-btn" class="admin-btn primary" style="margin-top: 8px;">Post Comment</button>
+          </div>
+        </section>
+
+        <p style="margin-top: 25px;">
+          <a href="#" id="back-to-subunits">← Back to Sub-units</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/learn.js"></script>
+<script src="js/smart-assist.js"></script>
+</body>
+</html>

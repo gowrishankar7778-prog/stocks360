@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter - Stocks 360</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#page-heading">Skip to Newsletter heading</a>
+
+  <div class="top-disclaimer" role="note">
+    <p><strong>Disclaimer:</strong> This website is only for educational purposes and does not constitute investment advice in any manner.</p>
+  </div>
+
+  <header class="top-bar">
+    <div class="container">
+      <button id="accessibility-toggle" aria-pressed="false">
+        Turn On Special Accessibility Features
+      </button>
+    </div>
+  </header>
+
+  <nav id="main-navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="newsletter.html" aria-current="page">Newsletter</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="ask.html">Ask</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <div class="container">
+
+      <h1 id="page-heading" tabindex="-1">Newsletter</h1>
+
+      <ul class="news-headings-list" id="newsletter-list">
+        <li>
+          <a href="#" class="news-heading-link" data-newsletter-id="nl-1">
+            Weekly Market Overview - 27 Oct 2026
+          </a>
+        </li>
+        <li>
+          <a href="#" class="news-heading-link" data-newsletter-id="nl-2">
+            Weekly Market Overview - 20 Oct 2026
+          </a>
+        </li>
+        <li>
+          <a href="#" class="news-heading-link" data-newsletter-id="nl-3">
+            Weekly Market Overview - 13 Oct 2026
+          </a>
+        </li>
+      </ul>
+
+      <section id="newsletter-detail" class="news-detail" hidden aria-live="polite">
+        <h2 id="nl-detail-title"></h2>
+        <p class="news-author" id="nl-detail-author"></p>
+        <p class="news-meta">
+          <span id="nl-detail-read-time"></span><br>
+          <span id="nl-detail-published-time"></span>
+        </p>
+
+        <!-- Ask 360 -->
+        <button class="ask360-btn" id="nl-ask360-btn" aria-expanded="false">Ask 360</button>
+
+        <div class="ask360-box" id="nl-ask360-box" hidden>
+          <label for="nl-ask360-input" class="visually-hidden">Ask 360 AI about this newsletter</label>
+          <textarea id="nl-ask360-input" class="ask360-input" rows="4" placeholder="Ask 360 AI about this newsletter" aria-label="Ask 360 AI about this newsletter"></textarea>
+          <button class="ask360-send" id="nl-ask360-send">Send</button>
+          <div class="ask360-response" id="nl-ask360-response" aria-live="polite"></div>
+        </div>
+
+        <div id="nl-detail-content" class="news-content" style="margin-top: 20px;"></div>
+        <div id="nl-detail-glossary" class="news-glossary" hidden></div>
+        <div id="nl-detail-keywords" class="news-keywords" hidden></div>
+
+        <p style="margin-top: 25px;">
+          <a href="#" id="nl-back-to-list">← Back to Newsletter List</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Stocks 360 – Stay updated with the stock market while learning.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/newsletter.js"></script>
+<script src="js/smart-assist.js"></script>
+</body>
+</html>
