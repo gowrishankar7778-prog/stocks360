@@ -57,8 +57,8 @@
       </div>
       <div class="metric-card highlight">
         <span class="metric-label">Database Mode</span>
-        <div class="metric-value" id="metric-db-mode" style="font-size: 20px; color: #0284c7;">Cloud Ready</div>
-        <span class="metric-sub">Firebase / High-Speed Cache</span>
+        <div class="metric-value" id="metric-db-mode" style="font-size: 20px; color: #0284c7;">Local Cache</div>
+        <span class="metric-sub" id="metric-db-sub">High-Speed Offline Fallback</span>
       </div>
     </section>
 
@@ -122,6 +122,11 @@
     </div>
   </footer>
 
+  <!-- Firebase Cloud SDKs & Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
   <script src="js/data-store.js"></script>
   <script src="js/admin-auth.js"></script>
   <script src="js/admin-settings.js"></script>

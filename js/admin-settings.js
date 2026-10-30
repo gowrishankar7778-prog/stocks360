@@ -108,6 +108,21 @@ document.addEventListener("DOMContentLoaded", function () {
   if (nlCount) nlCount.textContent = StocksDataStore.getNewsletters().length;
   if (unitCount) unitCount.textContent = StocksDataStore.getUnits().length;
 
+  // Database Mode status update
+  const dbModeVal = document.getElementById("metric-db-mode");
+  const dbModeSub = document.getElementById("metric-db-sub");
+  if (dbModeVal) {
+    if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+      dbModeVal.textContent = "Cloud Active";
+      dbModeVal.style.color = "#16a34a";
+      if (dbModeSub) dbModeSub.textContent = "Firestore Real-Time Sync";
+    } else {
+      dbModeVal.textContent = "Local Cache";
+      dbModeVal.style.color = "#0284c7";
+      if (dbModeSub) dbModeSub.textContent = "High-Speed Offline Fallback";
+    }
+  }
+
   function showFeedback(el, message, type) {
     if (!el) return;
     el.textContent = message;
