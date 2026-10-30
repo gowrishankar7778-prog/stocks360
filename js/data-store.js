@@ -1,7 +1,9 @@
 /**
  * Stocks 360 - Unified Data Store (data-store.js)
- * Manages client-side persistence for News, Newsletters, Learning Units, and Settings.
- * Supports localStorage with automatic seed data, full CRUD, and JSON import/export.
+ * Manages persistence for News, Newsletters, Learning Units, and Settings.
+ * Supports:
+ * 1. Google Cloud Firebase Firestore (Real-time cloud database across all devices)
+ * 2. High-speed local cache & seed data fallback (so the site always works without errors)
  */
 
 const StocksDataStore = (function () {
@@ -13,7 +15,7 @@ const StocksDataStore = (function () {
     SITE_SETTINGS: "stocks360_site_settings"
   };
 
-  // Default seed data
+  // Default initial seed data
   const SEED_NEWS = [
     {
       id: "news-1",
@@ -118,13 +120,11 @@ const StocksDataStore = (function () {
     }
   ];
 
-  // Helper getters and setters
   function getItem(key, fallback) {
     try {
       const data = localStorage.getItem(key);
       return data ? JSON.parse(data) : fallback;
     } catch (e) {
-      console.error("StocksDataStore read error:", e);
       return fallback;
     }
   }
@@ -134,12 +134,11 @@ const StocksDataStore = (function () {
       localStorage.setItem(key, JSON.stringify(value));
       return true;
     } catch (e) {
-      console.error("StocksDataStore write error:", e);
       return false;
     }
   }
 
-  // Initialize seed data if not present
+  // Initialize seed data
   function init() {
     if (!localStorage.getItem(STORAGE_KEYS.NEWS)) {
       setItem(STORAGE_KEYS.NEWS, SEED_NEWS);
@@ -149,6 +148,42 @@ const StocksDataStore = (function () {
     }
     if (!localStorage.getItem(STORAGE_KEYS.LEARN_UNITS)) {
       setItem(STORAGE_KEYS.LEARN_UNITS, SEED_UNITS);
+    }
+
+    // Try cloud sync if Firebase is configured
+    syncWithFirebase();
+  }
+
+  // Cloud sync helper
+  function syncWithFirebase() {
+    if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+      const db = StocksFirebase.getDb();
+
+      // Listen to real-time updates from Firebase
+      db.collection("news").onSnapshot(snapshot => {
+        if (!snapshot.empty) {
+          const cloudNews = [];
+          snapshot.forEach(doc => cloudNews.push(doc.data()));
+          cloudNews.sort((a, b) => (b.publishedAt || 0) - (a.publishedAt || 0));
+          setItem(STORAGE_KEYS.NEWS, cloudNews);
+        }
+      }, err => console.log("Firebase sync note:", err.message));
+
+      db.collection("newsletters").onSnapshot(snapshot => {
+        if (!snapshot.empty) {
+          const cloudNL = [];
+          snapshot.forEach(doc => cloudNL.push(doc.data()));
+          setItem(STORAGE_KEYS.NEWSLETTERS, cloudNL);
+        }
+      }, err => console.log("Firebase sync note:", err.message));
+
+      db.collection("learn_units").onSnapshot(snapshot => {
+        if (!snapshot.empty) {
+          const cloudUnits = [];
+          snapshot.forEach(doc => cloudUnits.push(doc.data()));
+          setItem(STORAGE_KEYS.LEARN_UNITS, cloudUnits);
+        }
+      }, err => console.log("Firebase sync note:", err.message));
     }
   }
 
@@ -180,15 +215,21 @@ const StocksDataStore = (function () {
         category: article.category || "General"
       };
 
-      // Check if update or insert
       const existingIdx = allNews.findIndex(n => n.id === newArticle.id);
       if (existingIdx >= 0) {
         allNews[existingIdx] = newArticle;
       } else {
-        allNews.unshift(newArticle); // newest first
+        allNews.unshift(newArticle);
       }
 
       setItem(STORAGE_KEYS.NEWS, allNews);
+
+      // Write to Firebase Firestore if connected
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("news").doc(newArticle.id).set(newArticle)
+          .catch(err => console.error("Firebase write error:", err));
+      }
+
       return newArticle;
     },
 
@@ -196,6 +237,11 @@ const StocksDataStore = (function () {
       let allNews = this.getNews();
       allNews = allNews.filter(n => n.id !== id);
       setItem(STORAGE_KEYS.NEWS, allNews);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("news").doc(id).delete()
+          .catch(err => console.error("Firebase delete error:", err));
+      }
       return true;
     },
 
@@ -229,6 +275,12 @@ const StocksDataStore = (function () {
       }
 
       setItem(STORAGE_KEYS.NEWSLETTERS, all);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("newsletters").doc(newNl.id).set(newNl)
+          .catch(err => console.error("Firebase write error:", err));
+      }
+
       return newNl;
     },
 
@@ -236,6 +288,11 @@ const StocksDataStore = (function () {
       let all = this.getNewsletters();
       all = all.filter(n => n.id !== id);
       setItem(STORAGE_KEYS.NEWSLETTERS, all);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("newsletters").doc(id).delete()
+          .catch(err => console.error("Firebase delete error:", err));
+      }
       return true;
     },
 
@@ -266,6 +323,12 @@ const StocksDataStore = (function () {
       }
 
       setItem(STORAGE_KEYS.LEARN_UNITS, units);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("learn_units").doc(newUnit.id).set(newUnit)
+          .catch(err => console.error("Firebase write error:", err));
+      }
+
       return newUnit;
     },
 
@@ -273,6 +336,11 @@ const StocksDataStore = (function () {
       let units = this.getUnits();
       units = units.filter(u => u.id !== unitId);
       setItem(STORAGE_KEYS.LEARN_UNITS, units);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("learn_units").doc(unitId).delete()
+          .catch(err => console.error("Firebase delete error:", err));
+      }
       return true;
     },
 
@@ -298,10 +366,16 @@ const StocksDataStore = (function () {
       }
 
       setItem(STORAGE_KEYS.LEARN_UNITS, units);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("learn_units").doc(targetUnit.id).set(targetUnit)
+          .catch(err => console.error("Firebase write error:", err));
+      }
+
       return newSubunit;
     },
 
-    // ---------------- EXPORT / IMPORT (BACKUP) ----------------
+    // ---------------- BACKUP & RESTORE ----------------
     exportBackup: function () {
       const payload = {
         version: "1.0",
@@ -333,7 +407,6 @@ const StocksDataStore = (function () {
   };
 })();
 
-// Attach to window
 if (typeof window !== "undefined") {
   window.StocksDataStore = StocksDataStore;
 }
