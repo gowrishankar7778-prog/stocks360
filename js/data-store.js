@@ -35,22 +35,22 @@ const StocksDataStore = (function () {
       published: "26 Oct 2026, 4:15 PM",
       publishedAt: 1793097900000,
       synopsis: "International developments and global indices guide domestic market movements.",
-      content: "Global cues and domestic economic data continued to influence market sentiment. International developments and movements in global markets played an important role in shaping investor mood. Learners should understand that short-term movements are normal and focus on long-term learning.",
+      content: "Global cues and domestic economic data continued to influence market sentiment. International developments and movements in global markets played an important role in shaping investor mood. Analysts noted that short-term fluctuations remain in line with broader macroeconomic trends and quarterly earnings expectations.",
       glossary: "Global Cues: Signals from international financial markets such as US, Europe, and Asia.",
       keywords: "global cues, sentiment, markets",
       category: "Global Economy"
     },
     {
       id: "news-3",
-      title: "Understanding market volatility in simple terms",
+      title: "Mid-cap and banking stocks witness steady institutional activity",
       author: "Priya Nair",
       published: "25 Oct 2026, 11:00 AM",
       publishedAt: 1793002200000,
-      synopsis: "A simple educational explanation of why stock prices move up and down.",
-      content: "Market volatility means the speed and amount of price changes. High volatility means prices are moving up and down quickly. Low volatility means prices are more stable. Understanding volatility helps learners stay calm during market ups and downs and focus on education rather than short-term noise.",
-      glossary: "Volatility: How much and how quickly prices change. Stable: Prices that do not move much.",
-      keywords: "volatility, education, learning",
-      category: "Educational"
+      synopsis: "Domestic institutional flows supported key sectoral indices amid steady quarterly results.",
+      content: "Domestic institutional investors remained net buyers across banking, capital goods, and technology counters this session. Market breadth stayed balanced as quarterly corporate earnings and macroeconomic indicators guided trading volumes across major exchanges.",
+      glossary: "Institutional Investors: Organizations such as mutual funds and insurance companies that invest large sums in the market. Market Breadth: Comparison of the number of advancing stocks to declining stocks.",
+      keywords: "institutional activity, banking, mid-cap, earnings",
+      category: "Market Update"
     }
   ];
 
@@ -60,8 +60,8 @@ const StocksDataStore = (function () {
       title: "Weekly Market Overview - 27 Oct 2026",
       author: "Rahul Sharma",
       published: "27 Oct 2026, 10:00 AM",
-      content: "This week the market showed mixed trends. Major indices moved in a narrow range. Banking and IT sectors remained active. Global cues had a moderate impact on investor sentiment. Learners are advised to focus on understanding the reasons behind market movements rather than short-term price changes.",
-      glossary: "Index: A group of stocks that represent a section of the market. Sentiment: Overall mood of investors.",
+      content: "This week the market showed mixed trends. Major indices moved in a narrow range. Banking and IT sectors remained active. Global cues had a moderate impact on investor sentiment. Domestic institutional flows and upcoming corporate earnings announcements are expected to set the direction for the coming week.",
+      glossary: "Index: A group of stocks that represent a section of the market. Sentiment: Overall mood of market participants.",
       keywords: "weekly overview, markets, banking, IT"
     },
     {
@@ -69,7 +69,7 @@ const StocksDataStore = (function () {
       title: "Weekly Market Overview - 20 Oct 2026",
       author: "Priya Nair",
       published: "20 Oct 2026, 10:00 AM",
-      content: "Markets remained cautious during the week. Investors waited for important economic data. Selective buying was seen in a few quality stocks. Understanding these patterns helps in building long-term knowledge.",
+      content: "Markets remained cautious during the week. Investors waited for important economic data. Selective buying was seen in a few quality stocks. Sectoral rotation into defensive and large-cap counters remained the key theme through the week.",
       glossary: "",
       keywords: "markets, cautious, economic data"
     },
@@ -78,9 +78,9 @@ const StocksDataStore = (function () {
       title: "Weekly Market Overview - 13 Oct 2026",
       author: "Meenugula Gowrishankar",
       published: "13 Oct 2026, 10:00 AM",
-      content: "The week started on a positive note but later saw some profit booking. Overall, the market remained range-bound. Educational focus should remain on learning concepts rather than predicting short-term moves.",
+      content: "The week started on a positive note but later saw some profit booking. Overall, the market remained range-bound. Market participants closely tracked central bank policy commentary, crude oil prices, and global bond yields.",
       glossary: "Profit booking: Selling stocks after a rise in price to lock gains.",
-      keywords: "range-bound, profit booking, education"
+      keywords: "range-bound, profit booking, market overview"
     }
   ];
 
@@ -167,10 +167,12 @@ const StocksDataStore = (function () {
   }
 
   function init() {
-    if (!localStorage.getItem(STORAGE_KEYS.NEWS)) {
+    const rawNews = localStorage.getItem(STORAGE_KEYS.NEWS);
+    if (!rawNews || rawNews.includes("Learners should understand") || rawNews.includes("Understanding market volatility in simple terms")) {
       setItem(STORAGE_KEYS.NEWS, SEED_NEWS);
     }
-    if (!localStorage.getItem(STORAGE_KEYS.NEWSLETTERS)) {
+    const rawNL = localStorage.getItem(STORAGE_KEYS.NEWSLETTERS);
+    if (!rawNL || rawNL.includes("Learners are advised") || rawNL.includes("Educational focus should remain")) {
       setItem(STORAGE_KEYS.NEWSLETTERS, SEED_NEWSLETTERS);
     }
     if (!localStorage.getItem(STORAGE_KEYS.LEARN_UNITS)) {

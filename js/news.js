@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="ask360-ai-card">
           <p><strong>Ask 360 AI Assistant:</strong></p>
           <p>Question: "${escapeHtml(question)}"</p>
-          <p style="margin-top:6px; color:#1e40af;">In the stock market, terms and movements reflect market supply, demand, and economic fundamentals. Keep exploring the glossary terms below for structured learning.</p>
+          <p style="margin-top:6px; color:#1e40af;">This news update covers recent market movements, sector performance, and macroeconomic factors shaping market activity.</p>
         </div>
       `;
       ask360Input.value = "";
