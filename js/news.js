@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       ask360Response.innerHTML = `
         <div class="ask360-ai-card">
-          <p><strong>Ask 360 AI Assistant:</strong></p>
+          <p><strong>Stocks 360 AI:</strong></p>
           <p>Question: "${escapeHtml(question)}"</p>
           <p style="margin-top:6px; color:#1e40af;">This news update covers recent market movements, sector performance, and macroeconomic factors shaping market activity.</p>
         </div>

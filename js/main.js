@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!askInput || !askResponse) return;
     const q = askInput.value.trim();
     if (!q) {
-      askResponse.innerHTML = `<p class="ask360-error">Please enter a question for Stock 360 AI.</p>`;
+      askResponse.innerHTML = `<p class="ask360-error">Please enter a question for Stocks 360 AI.</p>`;
       return;
     }
 
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     askResponse.innerHTML = `
       <div class="ask360-ai-card" tabindex="-1">
         <div class="ai-header">
-          <span class="ai-badge">Stock 360 AI Response</span>
+          <span class="ai-badge">Stocks 360 AI Response</span>
         </div>
         <p class="ai-question-echo"><strong>Question:</strong> "${safeQ}"</p>
         <p class="ai-answer-text">${answer}</p>

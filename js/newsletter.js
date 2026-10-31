@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!q) return;
       ask360Response.innerHTML = `
         <div class="ask360-ai-card">
-          <p><strong>Ask 360 AI Assistant:</strong></p>
+          <p><strong>Stocks 360 AI:</strong></p>
           <p>Question: "${escapeHtml(q)}"</p>
           <p style="margin-top:6px; color:#1e40af;">Market trends in weekly newsletters highlight overall sector performances and index benchmarks. Refer to the glossary terms below for fundamental definitions.</p>
         </div>

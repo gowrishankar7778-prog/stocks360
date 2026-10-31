@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!q) return;
       ask360Response.innerHTML = `
         <div class="ask360-ai-card">
-          <p><strong>Ask 360 AI Assistant:</strong></p>
+          <p><strong>Stocks 360 AI:</strong></p>
           <p>Question: "<em>${escapeHtml(q)}</em>"</p>
           <p style="margin-top:6px; color:#1e40af;">In this learning unit, remember that market concepts operate on strict regulatory and mathematical principles. Try re-reading the Key Takeaways box above.</p>
         </div>

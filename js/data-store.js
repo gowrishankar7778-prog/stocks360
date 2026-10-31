@@ -139,7 +139,7 @@ const StocksDataStore = (function () {
     {
       id: "cmt-2",
       lessonId: "ask360",
-      badge: "Ask 360 Query",
+      badge: "Stocks 360 AI Query",
       name: "Ananya Verma",
       text: "How does inflation affect the stock market prices of banking stocks?",
       reply: "",
