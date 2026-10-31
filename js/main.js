@@ -2,14 +2,45 @@
 // Common functions and Stock 360 AI top assistant handler for Stocks 360
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Skip to main content -> jumps directly to the Home link
+  // Skip to main content:
+  // On index.html (href="#home-nav-link"), jump to the Home link.
+  // On all subpages (href="#page-heading" / "#main-content"), jump directly to the subpage's active main content heading.
   const skipLink = document.querySelector(".skip-link");
-  const homeNavLink = document.getElementById("home-nav-link") || document.querySelector('#main-navigation a[href="index.html"]');
-  if (skipLink && homeNavLink) {
+  if (skipLink) {
     skipLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      homeNavLink.focus();
-      homeNavLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const targetHref = skipLink.getAttribute("href");
+      if (targetHref === "#home-nav-link") {
+        const homeNavLink = document.getElementById("home-nav-link") || document.querySelector('#main-navigation a[href="index.html"]');
+        if (homeNavLink) {
+          e.preventDefault();
+          homeNavLink.focus();
+          homeNavLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+        return;
+      }
+
+      // Subpages: find the currently visible heading inside #main-content
+      const mainEl = document.getElementById("main-content");
+      if (mainEl) {
+        e.preventDefault();
+        const candidateIds = ["page-heading", "detail-title", "nl-detail-title", "unit-title", "subunit-title"];
+        let focusTarget = null;
+        for (let i = 0; i < candidateIds.length; i++) {
+          const el = document.getElementById(candidateIds[i]);
+          if (el && el.offsetParent !== null) {
+            focusTarget = el;
+            break;
+          }
+        }
+        if (!focusTarget) {
+          focusTarget = mainEl.querySelector("h1, h2") || mainEl;
+        }
+        if (!focusTarget.hasAttribute("tabindex")) {
+          focusTarget.setAttribute("tabindex", "-1");
+        }
+        focusTarget.focus();
+        focusTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
   }
 
