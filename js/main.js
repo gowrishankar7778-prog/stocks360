@@ -2,44 +2,48 @@
 // Common functions and Stock 360 AI top assistant handler for Stocks 360
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Skip to main content:
-  // On index.html (href="#home-nav-link"), jump to the Home link.
-  // On all subpages (href="#page-heading" / "#main-content"), jump directly to the subpage's active main content heading.
   const skipLink = document.querySelector(".skip-link");
   if (skipLink) {
     skipLink.addEventListener("click", function (e) {
       const targetHref = skipLink.getAttribute("href");
+
+      // Only on index.html where href="#home-nav-link"
       if (targetHref === "#home-nav-link") {
-        const homeNavLink = document.getElementById("home-nav-link") || document.querySelector('#main-navigation a[href="index.html"]');
+        const homeNavLink = document.getElementById("home-nav-link");
         if (homeNavLink) {
-          e.preventDefault();
           homeNavLink.focus();
           homeNavLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
         return;
       }
 
-      // Subpages: find the currently visible heading inside #main-content
-      const mainEl = document.getElementById("main-content");
-      if (mainEl) {
-        e.preventDefault();
-        const candidateIds = ["page-heading", "detail-title", "nl-detail-title", "unit-title", "subunit-title"];
-        let focusTarget = null;
-        for (let i = 0; i < candidateIds.length; i++) {
-          const el = document.getElementById(candidateIds[i]);
-          if (el && el.offsetParent !== null) {
-            focusTarget = el;
-            break;
-          }
+      // On all subpages (News, Newsletter, Learn, About, Contact):
+      // Jump directly to the visible page/article heading inside #main-content
+      const candidateIds = ["detail-title", "nl-detail-title", "subunit-title", "unit-title", "page-heading"];
+      let focusTarget = null;
+      for (let i = 0; i < candidateIds.length; i++) {
+        const el = document.getElementById(candidateIds[i]);
+        if (el && !el.hidden && el.offsetParent !== null) {
+          focusTarget = el;
+          break;
         }
-        if (!focusTarget) {
-          focusTarget = mainEl.querySelector("h1, h2") || mainEl;
-        }
+      }
+
+      if (!focusTarget) {
+        focusTarget = document.getElementById("page-heading") || document.getElementById("main-content");
+      }
+
+      if (focusTarget) {
         if (!focusTarget.hasAttribute("tabindex")) {
           focusTarget.setAttribute("tabindex", "-1");
         }
-        focusTarget.focus();
-        focusTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (focusTarget.id) {
+          skipLink.setAttribute("href", "#" + focusTarget.id);
+        }
+        setTimeout(function () {
+          focusTarget.focus();
+          focusTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 10);
       }
     });
   }
