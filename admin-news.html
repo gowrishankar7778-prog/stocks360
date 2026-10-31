@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
   <title>Admin - Manage News - Stocks 360</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/admin.css">
@@ -80,6 +81,31 @@
         <textarea id="keywords" class="multi-input" rows="2" placeholder="e.g. markets, Nifty, banking, IT, investing"></textarea>
       </div>
 
+      <div class="form-group admin-audio-studio-box">
+        <label for="voice-profile-select">7. Google Cloud Voice &amp; Compressed MP3 Audio <span class="live-status-pill" style="margin-left:8px;">Firestore Cost-Saver (32kbps Mono MP3)</span></label>
+        <p class="field-hint">Automatically narrates the news article with a pleasant Google Cloud voice and compresses MP3 audio by ~75% in a dedicated on-demand Firestore collection + browser cache to avoid heavy database costs.</p>
+
+        <div class="admin-audio-controls-grid">
+          <div>
+            <label for="voice-profile-select" style="font-size:0.88rem;">Select Pleasant Google Cloud Voice:</label>
+            <select id="voice-profile-select" class="multi-input" style="padding:10px 12px;">
+              <option value="en-IN" selected>Google Cloud Neural2 &bull; Pleasant English (India - Warm &amp; Clear)</option>
+              <option value="en-GB">Google Cloud WaveNet &bull; Pleasant English (UK - Calm Broadcast)</option>
+              <option value="en-US">Google Cloud Journey &bull; Pleasant English (US - Natural Studio)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="custom-mp3-upload" style="font-size:0.88rem;">Or Upload / Compress Custom MP3 (Optional):</label>
+            <input type="file" id="custom-mp3-upload" accept="audio/*" class="multi-input" style="padding:8px 12px;">
+          </div>
+        </div>
+
+        <div id="admin-audio-compression-status" class="field-hint" style="margin-top:10px; color:#15803d; font-weight:600;">
+          &#10003; Ready: Pleasant Google Cloud Voice MP3 will be attached automatically on publish.
+        </div>
+      </div>
+
       <div class="form-actions-row">
         <button type="button" id="final-publish-btn" class="admin-btn success large">Publish to Live Website</button>
         <button type="button" id="preview-btn" class="admin-btn secondary large">Preview Article</button>
@@ -100,13 +126,15 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
   <!-- Firebase Cloud SDKs & Configuration -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js"></script>
-  <script src="js/data-store.js"></script>
-  <script src="js/admin-auth.js"></script>
-  <script src="js/admin-news.js"></script>
+  <script src="js/firebase-config.js?v=6"></script>
+  <script src="js/data-store.js?v=6"></script>
+  <script src="js/audio-engine.js?v=6"></script>
+  <script src="js/admin-auth.js?v=6"></script>
+  <script src="js/admin-news.js?v=6"></script>
 </body>
 </html>

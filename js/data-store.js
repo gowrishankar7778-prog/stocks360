@@ -26,7 +26,10 @@ const StocksDataStore = (function () {
       content: "Indian stock markets showed mixed performance this week. Banking and IT sectors remained in focus as markets moved in a narrow range. Investors stayed cautious ahead of important economic data. Overall sentiment remained balanced with selective buying in quality stocks.",
       glossary: "Volatility: The degree of variation in trading prices. Sensex: Benchmark index of BSE.",
       keywords: "markets, banking, IT, performance",
-      category: "Market Update"
+      category: "Market Update",
+      audioUrl: "assets/audio/news-1.mp3",
+      audioVoiceLang: "en-IN",
+      hasCompressedAudio: true
     },
     {
       id: "news-2",
@@ -38,7 +41,10 @@ const StocksDataStore = (function () {
       content: "Global cues and domestic economic data continued to influence market sentiment. International developments and movements in global markets played an important role in shaping investor mood. Analysts noted that short-term fluctuations remain in line with broader macroeconomic trends and quarterly earnings expectations.",
       glossary: "Global Cues: Signals from international financial markets such as US, Europe, and Asia.",
       keywords: "global cues, sentiment, markets",
-      category: "Global Economy"
+      category: "Global Economy",
+      audioUrl: "assets/audio/news-2.mp3",
+      audioVoiceLang: "en-IN",
+      hasCompressedAudio: true
     },
     {
       id: "news-3",
@@ -50,7 +56,10 @@ const StocksDataStore = (function () {
       content: "Domestic institutional investors remained net buyers across banking, capital goods, and technology counters this session. Market breadth stayed balanced as quarterly corporate earnings and macroeconomic indicators guided trading volumes across major exchanges.",
       glossary: "Institutional Investors: Organizations such as mutual funds and insurance companies that invest large sums in the market. Market Breadth: Comparison of the number of advancing stocks to declining stocks.",
       keywords: "institutional activity, banking, mid-cap, earnings",
-      category: "Market Update"
+      category: "Market Update",
+      audioUrl: "assets/audio/news-3.mp3",
+      audioVoiceLang: "en-IN",
+      hasCompressedAudio: true
     }
   ];
 
@@ -250,7 +259,22 @@ const StocksDataStore = (function () {
   return {
     // ---------------- NEWS API ----------------
     getNews: function () {
-      return getItem(STORAGE_KEYS.NEWS, SEED_NEWS);
+      const list = getItem(STORAGE_KEYS.NEWS, SEED_NEWS);
+      const seedAudioMap = {
+        "news-1": "assets/audio/news-1.mp3",
+        "news-2": "assets/audio/news-2.mp3",
+        "news-3": "assets/audio/news-3.mp3"
+      };
+      return list.map(item => {
+        if (seedAudioMap[item.id] && !item.audioUrl) {
+          return Object.assign({}, item, {
+            audioUrl: seedAudioMap[item.id],
+            audioVoiceLang: item.audioVoiceLang || "en-IN",
+            hasCompressedAudio: true
+          });
+        }
+        return item;
+      });
     },
 
     getNewsById: function (id) {
@@ -270,7 +294,11 @@ const StocksDataStore = (function () {
         content: article.content || "",
         glossary: article.glossary || "",
         keywords: article.keywords || "",
-        category: article.category || "General"
+        category: article.category || "General",
+        audioUrl: article.audioUrl || "",
+        audioVoiceLang: article.audioVoiceLang || "en-IN",
+        hasCompressedAudio: article.hasCompressedAudio !== undefined ? article.hasCompressedAudio : true,
+        audioSizeKb: article.audioSizeKb || ""
       };
 
       const existingIdx = allNews.findIndex(n => n.id === newArticle.id);
@@ -298,6 +326,8 @@ const StocksDataStore = (function () {
       if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
         StocksFirebase.getDb().collection("news").doc(id).delete()
           .catch(err => console.error("Firebase delete error:", err));
+        StocksFirebase.getDb().collection("news_audio").doc(id).delete()
+          .catch(() => {});
       }
       return true;
     },

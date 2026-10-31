@@ -1,4 +1,4 @@
-// news.js - Connected with StocksDataStore for live public updates
+// news.js - Connected with StocksDataStore and StocksAudioEngine for live public updates & compressed MP3 playback
 document.addEventListener("DOMContentLoaded", function () {
   const newsList = document.getElementById("news-list");
   const newsDetail = document.getElementById("news-detail");
@@ -18,12 +18,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const ask360Send = document.getElementById("detail-ask360-send");
   const ask360Response = document.getElementById("detail-ask360-response");
 
+  // Audio Player DOM Elements
+  const audioPlayerCard = document.getElementById("news-audio-player-card");
+  const audioEl = document.getElementById("news-html5-audio");
+  const playPauseBtn = document.getElementById("audio-play-pause-btn");
+  const playPauseIcon = document.getElementById("audio-play-icon");
+  const playPauseLabel = document.getElementById("audio-play-label");
+  const rewind10Btn = document.getElementById("audio-rewind-10-btn");
+  const forward10Btn = document.getElementById("audio-forward-10-btn");
+  const seekSlider = document.getElementById("audio-seek-slider");
+  const currentTimeEl = document.getElementById("audio-current-time");
+  const totalDurationEl = document.getElementById("audio-total-duration");
+  const speedSelect = document.getElementById("audio-speed-select");
+  const statusBadgeEl = document.getElementById("audio-status-badge");
+
   function calculateReadTime(text) {
     if (!text) return "Read time: 1 min";
     const plain = text.replace(/<[^>]*>/g, " ");
     const words = plain.trim().split(/\s+/).length;
     const minutes = Math.max(1, Math.ceil(words / 180));
     return `Read time: ${minutes} min`;
+  }
+
+  function renderArticleBodyHtml(rawContent) {
+    if (!rawContent) return "<p>No content available.</p>";
+    const trimmed = String(rawContent).trim();
+    // If content already contains HTML block tags from Quill editor, render safely
+    if (/<(p|div|ul|ol|li|h[1-6]|blockquote|table|br)\b/i.test(trimmed)) {
+      return trimmed;
+    }
+    return `<p>${escapeHtml(trimmed)}</p>`;
   }
 
   function renderPublicNewsList() {
@@ -64,6 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showList() {
+    if (typeof StocksAudioEngine !== "undefined") {
+      StocksAudioEngine.stopActivePlayer();
+    }
     newsDetail.hidden = true;
     newsList.hidden = false;
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -82,7 +109,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (detailSynopsis) {
       detailSynopsis.hidden = true;
     }
-    detailContent.innerHTML = `<p>${escapeHtml(news.content)}</p>`;
+
+    // News content stays clearly visible below the audio player controls
+    detailContent.innerHTML = renderArticleBodyHtml(news.content);
 
     if (news.glossary && news.glossary.trim() !== "") {
       detailGlossary.innerHTML = "<h2>Glossary</h2><p>" + escapeHtml(news.glossary) + "</p>";
@@ -111,8 +140,22 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
     detailTitle.focus();
 
-    if (typeof window.speakWithPitch === "function") {
-      window.speakWithPitch(news.title, true);
+    // Mount Google Cloud Voice Compressed MP3 Audio Player right above the article text
+    if (typeof StocksAudioEngine !== "undefined") {
+      StocksAudioEngine.mountArticlePlayer(news, {
+        containerEl: audioPlayerCard,
+        audioEl: audioEl,
+        playPauseBtn: playPauseBtn,
+        playPauseIcon: playPauseIcon,
+        playPauseLabel: playPauseLabel,
+        rewind10Btn: rewind10Btn,
+        forward10Btn: forward10Btn,
+        seekSlider: seekSlider,
+        currentTimeEl: currentTimeEl,
+        totalDurationEl: totalDurationEl,
+        speedSelect: speedSelect,
+        statusBadgeEl: statusBadgeEl
+      });
     }
   }
 
@@ -129,6 +172,12 @@ document.addEventListener("DOMContentLoaded", function () {
       showDetail(e.state.id);
     } else {
       showList();
+    }
+  });
+
+  window.addEventListener("stocks360:sync", function (e) {
+    if (e.detail && e.detail.collection === "news") {
+      renderPublicNewsList();
     }
   });
 

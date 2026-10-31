@@ -1,4 +1,4 @@
-// admin-news.js - Connected with StocksDataStore and AdminAuth
+// admin-news.js - Connected with StocksDataStore, StocksAudioEngine, and AdminAuth
 document.addEventListener("DOMContentLoaded", function () {
   // Protect this admin page
   if (typeof AdminAuth !== "undefined") {
@@ -16,12 +16,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const headingInput = document.getElementById("news-heading");
   const writerInput = document.getElementById("writer-name");
   const synopsisInput = document.getElementById("synopsis");
-  const bodyTextarea = document.getElementById("main-body") || document.getElementById("news-body-editor");
   const glossaryInput = document.getElementById("glossary");
   const keywordsInput = document.getElementById("keywords");
+  const voiceProfileSelect = document.getElementById("voice-profile-select");
+  const customMp3Upload = document.getElementById("custom-mp3-upload");
+  const audioStatusText = document.getElementById("admin-audio-compression-status");
 
-  // Track if we are editing an existing article
+  // Track if we are editing an existing article & any pending compressed MP3 payload
   let editingArticleId = null;
+  let pendingCompressedMp3 = null;
 
   // Initialize Quill editor if present
   let quillInstance = null;
@@ -38,6 +41,36 @@ document.addEventListener("DOMContentLoaded", function () {
           ["blockquote", "code-block"],
           ["link", "clean"]
         ]
+      }
+    });
+  }
+
+  // Handle custom audio file upload & client-side 32kbps Mono MP3 compression
+  if (customMp3Upload && typeof StocksAudioEngine !== "undefined") {
+    customMp3Upload.addEventListener("change", async function () {
+      const file = this.files && this.files[0];
+      if (!file) {
+        pendingCompressedMp3 = null;
+        return;
+      }
+      const originalKb = (file.size / 1024).toFixed(1);
+      if (audioStatusText) {
+        audioStatusText.style.color = "#0284c7";
+        audioStatusText.textContent = `Compressing "${file.name}" (${originalKb} KB) into 32kbps Mono MP3 for Firestore...`;
+      }
+      try {
+        const compressed = await StocksAudioEngine.compressAudioBlobToMp3(file, 32);
+        pendingCompressedMp3 = compressed;
+        if (audioStatusText) {
+          audioStatusText.style.color = "#15803d";
+          audioStatusText.textContent = `✓ Compressed MP3 Ready: ${compressed.sizeKb} KB (reduced from ${originalKb} KB • ~${compressed.durationSec}s duration) — ready for Firestore!`;
+        }
+      } catch (err) {
+        console.warn("Audio compression error:", err);
+        if (audioStatusText) {
+          audioStatusText.style.color = "#dc2626";
+          audioStatusText.textContent = `Could not compress uploaded file (${err.message}). Defaulting to automatic Google Cloud Voice MP3.`;
+        }
       }
     });
   }
@@ -81,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         listHtml += `
           <div class="admin-article-card" id="card-${item.id}">
             <div class="card-meta">
-              <span class="meta-badge">${item.category || "News"}</span>
+              <span class="meta-badge">${item.category || "News"} &bull; &#128266; Cloud MP3</span>
               <span class="meta-date">${item.published || "Recent"}</span>
             </div>
             <h3 class="card-title">${escapeHtml(item.title)}</h3>
@@ -98,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
       listHtml += `</div>`;
     }
 
-    // Keep the heading/container clean
     const existingSection = document.querySelector(".admin-news-cards-wrapper");
     if (existingSection) {
       existingSection.innerHTML = listHtml;
@@ -113,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function attachCardHandlers() {
-    // Edit buttons
     document.querySelectorAll(".edit-btn").forEach(btn => {
       btn.addEventListener("click", function () {
         const id = this.getAttribute("data-id");
@@ -121,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Delete buttons
     document.querySelectorAll(".delete-btn").forEach(btn => {
       btn.addEventListener("click", function () {
         const id = this.getAttribute("data-id");
@@ -135,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Preview individual item buttons
     document.querySelectorAll(".preview-item-btn").forEach(btn => {
       btn.addEventListener("click", function () {
         const id = this.getAttribute("data-id");
@@ -153,16 +182,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!article) return;
 
     editingArticleId = id;
+    pendingCompressedMp3 = null;
     publishFormSection.hidden = false;
     publishNewBtn.hidden = true;
 
-    // Fill form
     headingInput.value = article.title;
     writerInput.value = article.author;
     if (synopsisInput) synopsisInput.value = article.synopsis || "";
     setEditorContent(article.content);
     if (glossaryInput) glossaryInput.value = article.glossary || "";
     if (keywordsInput) keywordsInput.value = article.keywords || "";
+    if (voiceProfileSelect) voiceProfileSelect.value = article.audioVoiceLang || "en-IN";
 
     const formHeading = publishFormSection.querySelector("h2");
     if (formHeading) formHeading.textContent = `Edit Article: ${article.title}`;
@@ -171,10 +201,10 @@ document.addEventListener("DOMContentLoaded", function () {
     publishFormSection.scrollIntoView({ behavior: "smooth" });
   }
 
-  // Show publish form
   if (publishNewBtn) {
     publishNewBtn.addEventListener("click", function () {
       editingArticleId = null;
+      pendingCompressedMp3 = null;
       clearForm();
       const formHeading = publishFormSection.querySelector("h2");
       if (formHeading) formHeading.textContent = "Publish New News Article";
@@ -185,17 +215,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Cancel form
   if (cancelBtn) {
     cancelBtn.addEventListener("click", function () {
       publishFormSection.hidden = true;
       publishNewBtn.hidden = false;
       editingArticleId = null;
+      pendingCompressedMp3 = null;
       clearForm();
     });
   }
 
-  // Preview Form Data
   if (previewBtn) {
     previewBtn.addEventListener("click", function () {
       const heading = headingInput.value.trim();
@@ -214,7 +243,8 @@ document.addEventListener("DOMContentLoaded", function () {
         synopsis: synopsisInput ? synopsisInput.value.trim() : "",
         content: body || "Article content preview...",
         glossary: glossaryInput ? glossaryInput.value.trim() : "",
-        keywords: keywordsInput ? keywordsInput.value.trim() : ""
+        keywords: keywordsInput ? keywordsInput.value.trim() : "",
+        audioVoiceLang: voiceProfileSelect ? voiceProfileSelect.value : "en-IN"
       };
 
       sessionStorage.setItem("stocks360_preview_data", JSON.stringify(previewPayload));
@@ -222,9 +252,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Publish button (Save or Update)
   if (finalPublishBtn) {
-    finalPublishBtn.addEventListener("click", function (e) {
+    finalPublishBtn.addEventListener("click", async function (e) {
       e.preventDefault();
 
       const heading = headingInput.value.trim();
@@ -233,14 +262,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const synopsis = synopsisInput ? synopsisInput.value.trim() : "";
       const glossary = glossaryInput ? glossaryInput.value.trim() : "";
       const keywords = keywordsInput ? keywordsInput.value.trim() : "";
+      const voiceLang = voiceProfileSelect ? voiceProfileSelect.value : "en-IN";
 
       if (!heading || !writer || !body || body === "<p><br></p>") {
         alert("Please fill all required fields: News Heading, Writer’s Name, and Main Body.");
         return;
       }
 
+      finalPublishBtn.disabled = true;
+      finalPublishBtn.textContent = "Compressing MP3 & Publishing...";
+
+      const existingArticle = editingArticleId ? StocksDataStore.getNewsById(editingArticleId) : null;
       const articlePayload = {
-        id: editingArticleId || undefined,
+        id: editingArticleId || "news-" + Date.now(),
         title: heading,
         author: writer,
         content: body,
@@ -248,17 +282,50 @@ document.addEventListener("DOMContentLoaded", function () {
         glossary: glossary,
         keywords: keywords,
         published: new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }),
-        publishedAt: Date.now()
+        publishedAt: Date.now(),
+        audioUrl: existingArticle && existingArticle.audioUrl ? existingArticle.audioUrl : "",
+        audioVoiceLang: voiceLang,
+        hasCompressedAudio: true
       };
 
+      // If no custom MP3 was uploaded, try synthesizing & compressing via Cloud TTS API if enabled
+      if (!pendingCompressedMp3 && typeof StocksAudioEngine !== "undefined") {
+        const narrationScript = StocksAudioEngine.buildNarrationScript(articlePayload);
+        const synthesized = await StocksAudioEngine.synthesizeCloudTtsMp3(narrationScript, {
+          lang: voiceLang,
+          name: voiceLang === "en-GB" ? "en-GB-Neural2-A" : voiceLang === "en-US" ? "en-US-Journey-F" : "en-IN-Neural2-A"
+        });
+        if (synthesized) {
+          pendingCompressedMp3 = synthesized;
+        }
+      }
+
+      if (pendingCompressedMp3 && typeof StocksAudioEngine !== "undefined") {
+        articlePayload.audioSizeKb = pendingCompressedMp3.sizeKb;
+        await StocksAudioEngine.saveArticleAudioToFirestore(articlePayload.id, {
+          dataUrl: pendingCompressedMp3.dataUrl,
+          sizeKb: pendingCompressedMp3.sizeKb,
+          voice: voiceLang
+        });
+      }
+
+      const wasEditing = Boolean(editingArticleId);
       StocksDataStore.saveNews(articlePayload);
 
-      showNotification(editingArticleId ? "Article updated successfully!" : "Article published to website!", "success");
+      finalPublishBtn.disabled = false;
+      finalPublishBtn.textContent = "Publish to Live Website";
+      showNotification(
+        wasEditing
+          ? "Article & Google Cloud MP3 Audio updated!"
+          : "Article & Google Cloud MP3 Audio published to live website!",
+        "success"
+      );
 
       clearForm();
       publishFormSection.hidden = true;
       publishNewBtn.hidden = false;
       editingArticleId = null;
+      pendingCompressedMp3 = null;
 
       renderNewsList();
     });
@@ -271,6 +338,12 @@ document.addEventListener("DOMContentLoaded", function () {
     setEditorContent("");
     if (glossaryInput) glossaryInput.value = "";
     if (keywordsInput) keywordsInput.value = "";
+    if (voiceProfileSelect) voiceProfileSelect.value = "en-IN";
+    if (customMp3Upload) customMp3Upload.value = "";
+    if (audioStatusText) {
+      audioStatusText.style.color = "#15803d";
+      audioStatusText.textContent = "✓ Ready: Pleasant Google Cloud Voice MP3 will be attached automatically on publish.";
+    }
   }
 
   function showNotification(text, type) {
@@ -288,6 +361,5 @@ document.addEventListener("DOMContentLoaded", function () {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  // Initial render
   renderNewsList();
 });

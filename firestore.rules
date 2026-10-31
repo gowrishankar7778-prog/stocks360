@@ -4,6 +4,9 @@ service cloud.firestore {
     match /news/{docId} {
       allow read, write: if true;
     }
+    match /news_audio/{docId} {
+      allow read, write: if true;
+    }
     match /newsletters/{docId} {
       allow read, write: if true;
     }
