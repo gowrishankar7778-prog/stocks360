@@ -903,16 +903,21 @@ body {
   margin-bottom: 14px;
 }
 
-.article-meta-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 22px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border-light);
+.article-meta-line {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.news-article-view .ask360-trigger-btn {
+  margin-top: 12px;
+}
+
+.news-glossary h2,
+.lesson-takeaways-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
 }
 
 .article-main-body, .lesson-body-content {

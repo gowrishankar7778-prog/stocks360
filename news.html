@@ -139,9 +139,9 @@
           <p class="subtitle">Latest updates explained simply for learners. Select an article to read in full.</p>
         </div>
 
-        <ul class="news-headings-list">
+        <div class="news-headings-list">
           <!-- Injected dynamically by news.js from StocksDataStore -->
-        </ul>
+        </div>
       </section>
 
       <!-- DETAIL VIEW -->
@@ -151,31 +151,26 @@
 
           <article class="news-article-view">
             <h1 id="detail-title" tabindex="-1">Title</h1>
-            <div class="article-meta-row">
-              <span id="detail-author" class="meta-item">Author</span>
-              <span class="meta-separator">&bull;</span>
-              <span id="detail-published-time" class="meta-item">Date</span>
-              <span class="meta-separator">&bull;</span>
-              <span id="detail-read-time" class="meta-item badge">Read time: 2 min</span>
-            </div>
+            <p id="detail-read-time" class="article-meta-line">Read time: 2 min</p>
+            <p id="detail-published-time" class="article-meta-line">Published on: Date</p>
+            <p id="detail-author" class="article-meta-line" hidden></p>
 
-            <div id="detail-synopsis" class="news-synopsis" hidden></div>
-
-            <button id="detail-ask360-btn" class="ask360-trigger-btn" aria-expanded="false" aria-controls="detail-ask360-box">
-              Ask 360 About This Article
+            <button id="detail-ask360-btn" class="ask360-btn ask360-trigger-btn" aria-expanded="false" aria-controls="detail-ask360-box">
+              Ask 360 AI
             </button>
 
             <div id="detail-ask360-box" class="ask360-box" hidden>
               <label for="detail-ask360-input" class="visually-hidden">Ask a question about this article</label>
               <input type="text" id="detail-ask360-input" placeholder="Ask anything about terms or concepts in this article...">
-              <button id="detail-ask360-send" class="btn-primary">Ask</button>
+              <button id="detail-ask360-send" class="btn-primary">Ask 360 AI</button>
               <div id="detail-ask360-response" aria-live="polite"></div>
             </div>
 
+            <div id="detail-synopsis" class="news-synopsis" hidden></div>
             <div id="detail-content" class="article-main-body"></div>
 
             <div id="detail-glossary" class="news-glossary" hidden></div>
-            <div id="detail-keywords" class="news-keywords" hidden></div>
+            <div id="detail-keywords" class="lesson-takeaways-card" hidden></div>
           </article>
         </div>
       </section>

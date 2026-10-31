@@ -27,42 +27,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function renderPublicNewsletters() {
     const all = typeof StocksDataStore !== "undefined" ? StocksDataStore.getNewsletters() : [];
-    const ul = document.querySelector(".news-headings-list") || (list ? list.querySelector("ul") : null);
+    const container = document.querySelector(".news-headings-list");
 
-    if (!ul) return;
-    ul.innerHTML = "";
+    if (!container) return;
+    container.innerHTML = "";
 
     if (all.length === 0) {
-      ul.innerHTML = `<li style="padding:20px; text-align:center; color:#64748b;">No weekly newsletters published yet.</li>`;
+      container.innerHTML = `<p style="padding:20px; text-align:center; color:#64748b;">No weekly newsletters published yet.</p>`;
       return;
     }
 
     all.forEach(item => {
-      const li = document.createElement("li");
-      li.className = "news-card-item";
-      li.innerHTML = `
-        <article class="public-news-card">
-          <div class="news-card-top">
-            <span class="news-tag newsletter-tag">Weekly Wrap</span>
-            <span class="news-date">${escapeHtml(item.published || "")}</span>
-          </div>
-          <h2 class="news-card-heading">
-            <a href="#" class="news-heading-link" data-newsletter-id="${item.id}">
-              ${escapeHtml(item.title)}
-            </a>
-          </h2>
-          <p class="news-card-author">By <strong>${escapeHtml(item.author)}</strong></p>
-          <p class="news-card-synopsis">${escapeHtml(item.content.substring(0, 160))}...</p>
-          <div class="news-card-footer">
-            <span class="read-time-pill">${calculateReadTime(item.content)}</span>
-            <a href="#" class="read-article-link" data-newsletter-id="${item.id}">Read Full Edition &rarr;</a>
-          </div>
-        </article>
+      const card = document.createElement("article");
+      card.className = "public-news-card";
+      card.innerHTML = `
+        <h2 class="news-card-heading">
+          <a href="#" class="news-heading-link" data-newsletter-id="${item.id}">
+            ${escapeHtml(item.title)}
+          </a>
+        </h2>
+        <p class="article-meta-line">${calculateReadTime(item.content)}</p>
+        <p class="article-meta-line">Published on: ${escapeHtml(item.published || "Recent")}</p>
       `;
-      ul.appendChild(li);
+      container.appendChild(card);
     });
 
-    ul.querySelectorAll("[data-newsletter-id]").forEach(link => {
+    container.querySelectorAll("[data-newsletter-id]").forEach(link => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
         const id = this.getAttribute("data-newsletter-id");
@@ -83,20 +73,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!item) return;
 
     titleEl.textContent = item.title;
-    authorEl.textContent = "Written by: " + item.author;
-    publishedEl.textContent = "Published: " + item.published;
-    contentEl.textContent = item.content;
     readTimeEl.textContent = calculateReadTime(item.content);
+    publishedEl.textContent = "Published on: " + (item.published || "Recent");
+    if (authorEl) {
+      authorEl.hidden = true;
+    }
+    contentEl.innerHTML = `<p>${escapeHtml(item.content)}</p>`;
 
     if (item.glossary && item.glossary.trim() !== "") {
-      glossaryEl.innerHTML = "<strong>Glossary &amp; Terms:</strong><br>" + escapeHtml(item.glossary);
+      glossaryEl.innerHTML = "<h2>Glossary</h2><p>" + escapeHtml(item.glossary) + "</p>";
       glossaryEl.hidden = false;
     } else {
       glossaryEl.hidden = true;
     }
 
-    if (item.keywords && item.keywords.trim() !== "") {
-      keywordsEl.innerHTML = "<strong>Keywords:</strong> " + escapeHtml(item.keywords);
+    const takeawaysText = item.takeaways || "";
+    if (takeawaysText && takeawaysText.trim() !== "") {
+      keywordsEl.innerHTML = "<h2>Key Takeaways</h2><p>" + escapeHtml(takeawaysText) + "</p>";
       keywordsEl.hidden = false;
     } else {
       keywordsEl.hidden = true;
@@ -151,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
       ask360Response.innerHTML = `
         <div class="ask360-ai-card">
           <p><strong>Ask 360 AI Assistant:</strong></p>
-          <p>Question: "<em>${escapeHtml(q)}</em>"</p>
-          <p style="margin-top:6px; color:#1e40af;">Market trends in weekly newsletters highlight overall sector performances and index benchmarks. Refer to the key glossary terms for fundamental definitions.</p>
+          <p>Question: "${escapeHtml(q)}"</p>
+          <p style="margin-top:6px; color:#1e40af;">Market trends in weekly newsletters highlight overall sector performances and index benchmarks. Refer to the glossary terms below for fundamental definitions.</p>
         </div>
       `;
       ask360Input.value = "";

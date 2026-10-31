@@ -139,9 +139,9 @@
           <p class="subtitle">Comprehensive weekly summaries to help you understand market sentiment and structural shifts.</p>
         </div>
 
-        <ul class="news-headings-list">
+        <div class="news-headings-list">
           <!-- Injected dynamically by newsletter.js from StocksDataStore -->
-        </ul>
+        </div>
       </section>
 
       <!-- DETAIL VIEW -->
@@ -151,29 +151,25 @@
 
           <article class="news-article-view">
             <h1 id="nl-detail-title" tabindex="-1">Weekly Overview</h1>
-            <div class="article-meta-row">
-              <span id="nl-detail-author" class="meta-item">Author</span>
-              <span class="meta-separator">&bull;</span>
-              <span id="nl-detail-published-time" class="meta-item">Date</span>
-              <span class="meta-separator">&bull;</span>
-              <span id="nl-detail-read-time" class="meta-item badge">Read time: 2 min</span>
-            </div>
+            <p id="nl-detail-read-time" class="article-meta-line">Read time: 2 min</p>
+            <p id="nl-detail-published-time" class="article-meta-line">Published on: Date</p>
+            <p id="nl-detail-author" class="article-meta-line" hidden></p>
 
-            <button id="nl-ask360-btn" class="ask360-trigger-btn" aria-expanded="false" aria-controls="nl-ask360-box">
-              Ask 360 About This Overview
+            <button id="nl-ask360-btn" class="ask360-btn ask360-trigger-btn" aria-expanded="false" aria-controls="nl-ask360-box">
+              Ask 360 AI
             </button>
 
             <div id="nl-ask360-box" class="ask360-box" hidden>
               <label for="nl-ask360-input" class="visually-hidden">Ask a question</label>
               <input type="text" id="nl-ask360-input" placeholder="Ask about terms or trends in this weekly summary...">
-              <button id="nl-ask360-send" class="btn-primary">Ask</button>
+              <button id="nl-ask360-send" class="btn-primary">Ask 360 AI</button>
               <div id="nl-ask360-response" aria-live="polite"></div>
             </div>
 
             <div id="nl-detail-content" class="article-main-body"></div>
 
             <div id="nl-detail-glossary" class="news-glossary" hidden></div>
-            <div id="nl-detail-keywords" class="news-keywords" hidden></div>
+            <div id="nl-detail-keywords" class="lesson-takeaways-card" hidden></div>
           </article>
         </div>
       </section>

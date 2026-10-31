@@ -28,43 +28,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function renderPublicNewsList() {
     const allNews = typeof StocksDataStore !== "undefined" ? StocksDataStore.getNews() : [];
-    const listUl = document.querySelector(".news-headings-list") || newsList.querySelector("ul");
+    const listContainer = document.querySelector(".news-headings-list");
 
-    if (!listUl) return;
-    listUl.innerHTML = "";
+    if (!listContainer) return;
+    listContainer.innerHTML = "";
 
     if (allNews.length === 0) {
-      listUl.innerHTML = `<li style="padding:20px; text-align:center; color:#64748b;">No news articles published yet. Check back soon!</li>`;
+      listContainer.innerHTML = `<p style="padding:20px; text-align:center; color:#64748b;">No news articles published yet. Check back soon!</p>`;
       return;
     }
 
     allNews.forEach(item => {
-      const li = document.createElement("li");
-      li.className = "news-card-item";
-      li.innerHTML = `
-        <article class="public-news-card">
-          <div class="news-card-top">
-            <span class="news-tag">${escapeHtml(item.category || "Market News")}</span>
-            <span class="news-date">${escapeHtml(item.published || "")}</span>
-          </div>
-          <h2 class="news-card-heading">
-            <a href="#" class="news-heading-link" data-news-id="${item.id}">
-              ${escapeHtml(item.title)}
-            </a>
-          </h2>
-          <p class="news-card-author">By <strong>${escapeHtml(item.author)}</strong></p>
-          ${item.synopsis ? `<p class="news-card-synopsis">${escapeHtml(item.synopsis)}</p>` : ""}
-          <div class="news-card-footer">
-            <span class="read-time-pill">${calculateReadTime(item.content)}</span>
-            <a href="#" class="read-article-link" data-news-id="${item.id}">Read Full Article &rarr;</a>
-          </div>
-        </article>
+      const card = document.createElement("article");
+      card.className = "public-news-card";
+      card.innerHTML = `
+        <h2 class="news-card-heading">
+          <a href="#" class="news-heading-link" data-news-id="${item.id}">
+            ${escapeHtml(item.title)}
+          </a>
+        </h2>
+        <p class="article-meta-line">${calculateReadTime(item.content)}</p>
+        <p class="article-meta-line">Published on: ${escapeHtml(item.published || "Recent")}</p>
       `;
-      listUl.appendChild(li);
+      listContainer.appendChild(card);
     });
 
-    // Attach click listeners to all article links
-    listUl.querySelectorAll("[data-news-id]").forEach(link => {
+    listContainer.querySelectorAll("[data-news-id]").forEach(link => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
         const newsId = this.getAttribute("data-news-id");
@@ -85,27 +74,26 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!news) return;
 
     detailTitle.textContent = news.title;
-    detailAuthor.textContent = "Written by: " + news.author;
-    detailPublishedTime.textContent = "Published: " + (news.published || "Recent");
-    detailContent.innerHTML = news.content;
     detailReadTime.textContent = calculateReadTime(news.content);
-
-    if (news.synopsis && news.synopsis.trim() !== "") {
-      detailSynopsis.textContent = news.synopsis;
-      detailSynopsis.hidden = false;
-    } else {
+    detailPublishedTime.textContent = "Published on: " + (news.published || "Recent");
+    if (detailAuthor) {
+      detailAuthor.hidden = true;
+    }
+    if (detailSynopsis) {
       detailSynopsis.hidden = true;
     }
+    detailContent.innerHTML = `<p>${escapeHtml(news.content)}</p>`;
 
     if (news.glossary && news.glossary.trim() !== "") {
-      detailGlossary.innerHTML = "<strong>Glossary &amp; Key Terms:</strong><br>" + escapeHtml(news.glossary);
+      detailGlossary.innerHTML = "<h2>Glossary</h2><p>" + escapeHtml(news.glossary) + "</p>";
       detailGlossary.hidden = false;
     } else {
       detailGlossary.hidden = true;
     }
 
-    if (news.keywords && news.keywords.trim() !== "") {
-      detailKeywords.innerHTML = "<strong>Keywords:</strong> " + escapeHtml(news.keywords);
+    const takeawaysText = news.takeaways || news.synopsis || "";
+    if (takeawaysText && takeawaysText.trim() !== "") {
+      detailKeywords.innerHTML = "<h2>Key Takeaways</h2><p>" + escapeHtml(takeawaysText) + "</p>";
       detailKeywords.hidden = false;
     } else {
       detailKeywords.hidden = true;
@@ -123,9 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
     detailTitle.focus();
 
-    // Voice announcement if special accessibility is on
     if (typeof window.speakWithPitch === "function") {
-      window.speakWithPitch(news.title + ". Written by " + news.author, true);
+      window.speakWithPitch(news.title, true);
     }
   }
 
@@ -145,7 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Ask 360 Drawer
   if (ask360Btn) {
     ask360Btn.addEventListener("click", function () {
       const isHidden = ask360Box.hidden;
@@ -166,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ask360Response.innerHTML = `
         <div class="ask360-ai-card">
           <p><strong>Ask 360 AI Assistant:</strong></p>
-          <p>Analyzing: "<em>${escapeHtml(question)}</em>"</p>
+          <p>Question: "${escapeHtml(question)}"</p>
           <p style="margin-top:6px; color:#1e40af;">In the stock market, terms and movements reflect market supply, demand, and economic fundamentals. Keep exploring the glossary terms below for structured learning.</p>
         </div>
       `;
@@ -179,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  // Check URL hash for direct article link (#news-news-1)
   const hash = window.location.hash;
   renderPublicNewsList();
 
