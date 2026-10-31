@@ -1,10 +1,10 @@
 // main.js
-// Common functions and Stock 360 AI top assistant handler for Stocks 360
+// Common functions and Stock 360 AI assistant controller for Stocks 360
 
 document.addEventListener("DOMContentLoaded", function () {
   const skipLink = document.querySelector(".skip-link");
   if (skipLink) {
-    skipLink.addEventListener("click", function (e) {
+    skipLink.addEventListener("click", function () {
       const targetHref = skipLink.getAttribute("href");
 
       // Only on index.html where href="#home-nav-link"
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Top Stock 360 AI drawer toggle & response handler
   const askBtn = document.getElementById("home-ask360-btn");
   const askDrawer = document.getElementById("home-ask360-drawer");
   const askInput = document.getElementById("home-ask360-input");
@@ -85,14 +86,14 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (lowerQ.includes("bull") || lowerQ.includes("bear")) {
       answer += "A Bull market refers to a period of rising prices and positive sentiment, whereas a Bear market refers to sustained price declines.";
     } else if (lowerQ.includes("volatility") || lowerQ.includes("risk")) {
-      answer += "Market volatility measures how quickly and significantly prices fluctuate. Understanding risk helps learners focus on fundamentals rather than short-term noise.";
+      answer += "Market volatility measures how quickly and significantly prices fluctuate. Understanding risk helps focus on fundamentals rather than short-term noise.";
     } else {
-      answer += "Stock markets connect companies seeking capital with investors. Remember that all explanations on Stocks 360 are strictly for educational purposes only and do not constitute investment advice in any manner.";
+      answer += "Stock markets connect companies seeking capital with market participants. Remember that all explanations on Stocks 360 are strictly for educational purposes only and do not constitute investment advice in any manner.";
     }
 
     const safeQ = q.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     askResponse.innerHTML = `
-      <div class="ask360-ai-card">
+      <div class="ask360-ai-card" tabindex="-1">
         <div class="ai-header">
           <span class="ai-badge">Stock 360 AI Response</span>
         </div>
@@ -118,4 +119,88 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // =========================================================================
+  // Global Auto-Collapse Controller for ALL Ask 360 AI Boxes Across the Site
+  // Collapses the expanded AI box back into a button when:
+  // 1. User presses Escape
+  // 2. User clicks outside the AI box / trigger button with the mouse
+  // 3. User navigates / moves focus outside the AI box to another area
+  // =========================================================================
+  const AI_PAIRS = [
+    { btnId: "home-ask360-btn", boxId: "home-ask360-drawer" },
+    { btnId: "detail-ask360-btn", boxId: "detail-ask360-box" },
+    { btnId: "nl-ask360-btn", boxId: "nl-ask360-box" },
+    { btnId: "learn-ask360-btn", boxId: "learn-ask360-box" }
+  ];
+
+  function collapseAiPair(pair, returnFocusToBtn) {
+    const btn = document.getElementById(pair.btnId);
+    const box = document.getElementById(pair.boxId);
+    if (!box || box.hidden) return;
+
+    box.hidden = true;
+    if (btn) {
+      btn.setAttribute("aria-expanded", "false");
+      if (returnFocusToBtn) {
+        btn.focus();
+      }
+    }
+  }
+
+  function isInsideAiPair(pair, targetNode) {
+    if (!targetNode) return false;
+    const btn = document.getElementById(pair.btnId);
+    const box = document.getElementById(pair.boxId);
+    return Boolean((btn && btn.contains(targetNode)) || (box && box.contains(targetNode)));
+  }
+
+  // 1. Press Escape -> collapse open AI box and return focus to its Ask 360 AI button
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" || e.key === "Esc") {
+      AI_PAIRS.forEach(function (pair) {
+        const box = document.getElementById(pair.boxId);
+        if (box && !box.hidden) {
+          e.preventDefault();
+          collapseAiPair(pair, true);
+        }
+      });
+    }
+  });
+
+  // 2. Click outside with mouse -> collapse open AI box back into button
+  document.addEventListener("mousedown", function (e) {
+    AI_PAIRS.forEach(function (pair) {
+      const box = document.getElementById(pair.boxId);
+      if (box && !box.hidden && !isInsideAiPair(pair, e.target)) {
+        collapseAiPair(pair, false);
+      }
+    });
+  });
+
+  // 3. Navigate / Tab / Focus to another area outside the AI box -> collapse open AI box
+  document.addEventListener("focusin", function (e) {
+    AI_PAIRS.forEach(function (pair) {
+      const box = document.getElementById(pair.boxId);
+      if (box && !box.hidden && !isInsideAiPair(pair, e.target)) {
+        collapseAiPair(pair, false);
+      }
+    });
+  });
+
+  AI_PAIRS.forEach(function (pair) {
+    const box = document.getElementById(pair.boxId);
+    if (!box) return;
+    if (!box.hasAttribute("tabindex")) {
+      box.setAttribute("tabindex", "-1");
+    }
+    box.addEventListener("focusout", function () {
+      setTimeout(function () {
+        const active = document.activeElement;
+        if ( active && active !== document.body && !isInsideAiPair(pair, active) ) {
+          collapseAiPair(pair, false);
+        }
+      }, 80);
+    });
+  });
 });
