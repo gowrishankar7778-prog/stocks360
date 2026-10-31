@@ -2,6 +2,17 @@
 // Common functions and Stock 360 AI top assistant handler for Stocks 360
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Skip to main content -> jumps directly to the Home link
+  const skipLink = document.querySelector(".skip-link");
+  const homeNavLink = document.getElementById("home-nav-link") || document.querySelector('#main-navigation a[href="index.html"]');
+  if (skipLink && homeNavLink) {
+    skipLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      homeNavLink.focus();
+      homeNavLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+
   const askBtn = document.getElementById("home-ask360-btn");
   const askDrawer = document.getElementById("home-ask360-drawer");
   const askInput = document.getElementById("home-ask360-input");
@@ -48,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     askResponse.innerHTML = `
       <div class="ask360-ai-card">
         <div class="ai-header">
-          <span class="ai-badge">&#10024; Stock 360 AI Response</span>
+          <span class="ai-badge">Stock 360 AI Response</span>
         </div>
         <p class="ai-question-echo"><strong>Question:</strong> "${safeQ}"</p>
         <p class="ai-answer-text">${answer}</p>

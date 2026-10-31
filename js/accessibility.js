@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateButton() {
     if (!toggleButton) return;
     if (isOn) {
-      toggleButton.innerHTML = "&#9855; Turn Off Special Accessibility";
+      toggleButton.textContent = "Turn Off Special Accessibility";
       toggleButton.setAttribute("aria-pressed", "true");
       document.body.classList.add("high-contrast");
     } else {
-      toggleButton.innerHTML = "&#9855; Turn On Special Accessibility";
+      toggleButton.textContent = "Turn On Special Accessibility";
       toggleButton.setAttribute("aria-pressed", "false");
       document.body.classList.remove("high-contrast");
     }

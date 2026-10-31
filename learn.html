@@ -9,15 +9,15 @@
 </head>
 <body>
 
-  <!-- 1. SKIP TO MAIN CONTENT LINK -->
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <!-- 1. SKIP TO MAIN CONTENT LINK (JUMPS TO HOME LINK) -->
+  <a class="skip-link" href="#home-nav-link">Skip to main content</a>
 
   <!-- 2. TOP ACCESSIBILITY BUTTON & HEADER BAR -->
   <header class="top-bar">
     <div class="container top-bar-flex">
       <div class="top-controls">
         <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
-          &#9855; Turn On Special Accessibility Features
+          Turn On Special Accessibility
         </button>
       </div>
       <div class="brand-group">
@@ -94,12 +94,12 @@
     <div class="container">
       <div class="stock360-ai-banner">
         <div class="stock360-ai-info">
-          <span class="ai-pill-badge">&#10024; Stock 360 AI</span>
+          <span class="ai-pill-badge">Stock 360 AI</span>
           <p class="stock360-ai-desc">Have a question about market concepts or financial terms? Ask our educational AI assistant instantly.</p>
         </div>
         <div class="stock360-ai-actions">
           <button type="button" id="home-ask360-btn" class="ask360-btn btn-ask360-ai" aria-expanded="false" aria-controls="home-ask360-drawer">
-            &#129302; Ask 360 AI
+            Ask 360 AI
           </button>
         </div>
       </div>
@@ -119,23 +119,15 @@
   <nav id="main-navigation" aria-label="Main navigation">
     <div class="container">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" id="home-nav-link">Home</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="newsletter.html">Newsletter</a></li>
         <li><a href="learn.html" aria-current="page" class="active">Learn Modules</a></li>
-        <li><a href="ask.html">Ask 360 AI</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
   </nav>
-
-  <!-- EDUCATIONAL DISCLAIMER -->
-  <div class="top-disclaimer" role="note" aria-label="Educational Disclaimer">
-    <div class="container">
-      <p><strong>Disclaimer:</strong> Any article or learning material published on this website is purely meant for educational purposes only and does not constitute investment advice in any manner.</p>
-    </div>
-  </div>
 
   <main id="main-content">
     <div class="container">
@@ -171,7 +163,7 @@
             <h1 id="subunit-title" tabindex="-1">Lesson Title</h1>
 
             <button id="learn-ask360-btn" class="ask360-trigger-btn" aria-expanded="false" aria-controls="learn-ask360-box">
-              &#129302; Ask 360 About This Lesson
+              Ask 360 About This Lesson
             </button>
 
             <div id="learn-ask360-box" class="ask360-box" hidden>
