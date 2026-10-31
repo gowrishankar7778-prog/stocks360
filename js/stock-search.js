@@ -1,5 +1,12 @@
 // stock-search.js - Accessible Stock Search with Audio Pitch Feedback
+// Set ENABLE_PUBLIC_STOCK_SEARCH = true once the live stock quotes API key is configured.
+const ENABLE_PUBLIC_STOCK_SEARCH = false;
+
 document.addEventListener("DOMContentLoaded", function () {
+  const searchSection = document.querySelector(".top-search-section");
+  if (searchSection) {
+    searchSection.hidden = !ENABLE_PUBLIC_STOCK_SEARCH;
+  }
   const searchInput = document.getElementById("stock-search");
   const searchButton = document.getElementById("search-button");
   const stockResult = document.getElementById("stock-result");
