@@ -1,36 +1,64 @@
 /**
- * Stocks 360 - Google Cloud Voice & Compressed MP3 Audio Engine (audio-engine.js)
+ * Stocks 360 - Cloud Audio Engine (audio-engine.js)
  *
- * Features:
- * 1. Pleasant Google Cloud Voice MP3 playback (en-IN / en-US natural neural voice)
- * 2. MP3 Compression (32 kbps Mono MP3 @ 24kHz via LameJS / CBR frame trimming)
- *    to minimize Google Cloud Firestore storage & bandwidth costs (~75-80% smaller)
- * 3. Firestore Cost Optimization:
- *    - Dedicated `news_audio` Firestore collection (loaded on-demand per article, never in list snapshots)
- *    - Browser IndexedDB persistent caching (`stocks360_audio_cache`) so repeat listens cost 0 Firestore reads
- *    - Pre-compressed static MP3 files (`assets/audio/news-1.mp3`, etc.) for seed articles
- * 4. Full Audio Player Controls while News text remains visible below:
- *    - Play / Pause / Resume button
- *    - Interactive Seek Slider (Scrubber) with live Current Time & Total Duration
- *    - Rewind 10 Seconds (-10s) button
- *    - Fast-Forward 10 Seconds (+10s) button
- *    - Playback Speed selector (0.75x, 1x, 1.25x, 1.5x, 2x)
+ * All Google Cloud Voice API configurations, keys, and compressed MP3 files
+ * are stored strictly in Google Cloud Firebase Firestore (`site_settings/google_voice_api`
+ * and `site_settings/audio_<id>`) and are NEVER placed in GitHub.
  */
 
 const StocksAudioEngine = (function () {
   const IDB_NAME = "stocks360_audio_cache_db";
   const IDB_STORE = "compressed_mp3_store";
-  const DEFAULT_VOICE = {
-    lang: "en-IN",
-    name: "en-IN-Neural2-A",
-    label: "Google Cloud Neural2 (Pleasant English - India)"
-  };
+  const VOICE_CONFIG_CACHE_KEY = "stocks360_firebase_voice_config";
 
-  const STATIC_SEED_MP3 = {
-    "news-1": "assets/audio/news-1.mp3",
-    "news-2": "assets/audio/news-2.mp3",
-    "news-3": "assets/audio/news-3.mp3"
-  };
+  let cachedVoiceConfig = null;
+
+  // ---------------- LOAD GOOGLE VOICE API CONFIG FROM FIREBASE ----------------
+  async function getFirebaseVoiceConfig() {
+    if (cachedVoiceConfig && cachedVoiceConfig.voiceStreamUrl) {
+      return cachedVoiceConfig;
+    }
+
+    try {
+      const localSaved = sessionStorage.getItem(VOICE_CONFIG_CACHE_KEY);
+      if (localSaved) {
+        cachedVoiceConfig = JSON.parse(localSaved);
+        if (cachedVoiceConfig && cachedVoiceConfig.voiceStreamUrl) {
+          return cachedVoiceConfig;
+        }
+      }
+    } catch (_) {}
+
+    // 1. Load from Google Firebase Firestore (`site_settings/google_voice_api`)
+    if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+      try {
+        const doc = await StocksFirebase.getDb()
+          .collection("site_settings")
+          .doc("google_voice_api")
+          .get();
+        if (doc.exists) {
+          cachedVoiceConfig = doc.data() || {};
+          try {
+            sessionStorage.setItem(VOICE_CONFIG_CACHE_KEY, JSON.stringify(cachedVoiceConfig));
+          } catch (_) {}
+          return cachedVoiceConfig;
+        }
+      } catch (err) {
+        console.warn("Firebase voice config load note:", err.message);
+      }
+    }
+
+    // 2. Fallback to runtime config loaded from gitignored firebase-secret.json
+    if (typeof FIREBASE_CONFIG !== "undefined" && FIREBASE_CONFIG.googleVoiceApi) {
+      cachedVoiceConfig = Object.assign(
+        { apiKey: FIREBASE_CONFIG.apiKey || "" },
+        FIREBASE_CONFIG.googleVoiceApi
+      );
+      return cachedVoiceConfig;
+    }
+
+    return {};
+  }
 
   // ---------------- INDEXEDDB PERSISTENT CACHE (0 REPEAT FIRESTORE READS) ----------------
   function openCacheDb() {
@@ -84,9 +112,7 @@ const StocksAudioEngine = (function () {
         tx.oncomplete = () => resolve(true);
         tx.onerror = () => resolve(false);
       });
-    } catch (_) {
-      // Ignore cache write errors
-    }
+    } catch (_) {}
   }
 
   // ---------------- TEXT NORMALIZATION & SENTENCE CHUNKING ----------------
@@ -160,10 +186,13 @@ const StocksAudioEngine = (function () {
     return chunks;
   }
 
-  function buildGoogleVoiceChunkUrl(chunkText, lang) {
-    const tl = lang || DEFAULT_VOICE.lang;
+  function buildVoiceStreamUrl(voiceCfg, chunkText, lang) {
+    const baseUrl = voiceCfg && voiceCfg.voiceStreamUrl;
+    if (!baseUrl) return "";
+    const tl = lang || (voiceCfg && voiceCfg.languageCode) || "en-IN";
     return (
-      "https://translate.googleapis.com/translate_tts?ie=UTF-8&client=tw-ob&tl=" +
+      baseUrl +
+      "?ie=UTF-8&client=tw-ob&tl=" +
       encodeURIComponent(tl) +
       "&q=" +
       encodeURIComponent(chunkText)
@@ -171,10 +200,6 @@ const StocksAudioEngine = (function () {
   }
 
   // ---------------- MP3 COMPRESSION ENGINE (LAMEJS 32KBPS MONO @ 24KHZ) ----------------
-  /**
-   * Compresses any AudioBuffer or Float32 PCM array into a compact 32kbps Mono MP3 Data URL
-   * using LameJS so storing in Google Firestore stays tiny (< 100-200 KB per article).
-   */
   function encodePcmToCompressedMp3DataUrl(float32Samples, sampleRate, kbps = 32) {
     if (typeof lamejs === "undefined") {
       throw new Error("MP3 compression library (lamejs) is not loaded.");
@@ -215,9 +240,6 @@ const StocksAudioEngine = (function () {
     });
   }
 
-  /**
-   * Compresses an uploaded/recorded audio Blob or File into a 32kbps Mono 24kHz MP3 Data URL
-   */
   async function compressAudioBlobToMp3(blobOrFile, kbps = 32) {
     const arrayBuffer = await blobOrFile.arrayBuffer();
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -225,7 +247,6 @@ const StocksAudioEngine = (function () {
     const decoded = await tempCtx.decodeAudioData(arrayBuffer);
     await tempCtx.close();
 
-    // Downsample to 24000 Hz Mono using OfflineAudioContext for maximum compression & clarity
     const targetRate = 24000;
     const targetLength = Math.ceil(decoded.duration * targetRate);
     const offlineCtx = new OfflineAudioContext(1, targetLength, targetRate);
@@ -247,21 +268,22 @@ const StocksAudioEngine = (function () {
   }
 
   /**
-   * Synthesizes pleasant Google Cloud Voice MP3 via Cloud Text-to-Speech API (if enabled)
-   * and compresses it to 32kbps Mono MP3 for Firestore.
+   * Synthesizes pleasant Google Cloud Voice MP3 using configuration stored in Firebase (`site_settings/google_voice_api`)
    */
   async function synthesizeCloudTtsMp3(text, voiceOption) {
-    const apiKey =
-      localStorage.getItem("stocks360_cloud_tts_key") ||
-      (typeof FIREBASE_CONFIG !== "undefined" ? FIREBASE_CONFIG.apiKey : "");
+    const voiceCfg = await getFirebaseVoiceConfig();
+    const apiKey = voiceCfg.apiKey || (typeof FIREBASE_CONFIG !== "undefined" ? FIREBASE_CONFIG.apiKey : "");
+    const cloudTtsUrl = voiceCfg.cloudTtsUrl;
 
-    const voiceName = (voiceOption && voiceOption.name) || DEFAULT_VOICE.name;
-    const langCode = (voiceOption && voiceOption.lang) || DEFAULT_VOICE.lang;
+    if (apiKey && cloudTtsUrl) {
+      const voiceName = (voiceOption && voiceOption.name) || voiceCfg.voiceName || "en-IN-Neural2-A";
+      const langCode = (voiceOption && voiceOption.lang) || voiceCfg.languageCode || "en-IN";
+      const speakingRate = parseFloat(voiceCfg.speakingRate || "0.96") || 0.96;
+      const sampleRateHertz = parseInt(voiceCfg.sampleRateHertz || "24000", 10) || 24000;
 
-    if (apiKey) {
       try {
         const res = await fetch(
-          "https://texttospeech.googleapis.com/v1/text:synthesize?key=" + encodeURIComponent(apiKey),
+          cloudTtsUrl + "?key=" + encodeURIComponent(apiKey),
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -273,9 +295,9 @@ const StocksAudioEngine = (function () {
               },
               audioConfig: {
                 audioEncoding: "MP3",
-                speakingRate: 0.96,
+                speakingRate: speakingRate,
                 pitch: 0.0,
-                sampleRateHertz: 24000
+                sampleRateHertz: sampleRateHertz
               }
             })
           }
@@ -302,9 +324,7 @@ const StocksAudioEngine = (function () {
             };
           }
         }
-      } catch (_) {
-        // Fallback to Google Cloud stream mode below
-      }
+      } catch (_) {}
     }
     return null;
   }
@@ -313,26 +333,24 @@ const StocksAudioEngine = (function () {
   async function saveArticleAudioToFirestore(articleId, audioPayload) {
     if (!articleId || !audioPayload || !audioPayload.dataUrl) return false;
     await setCachedAudio(articleId, audioPayload.dataUrl, {
-      sizeKb: audioPayload.sizeKb,
-      voice: audioPayload.voice || DEFAULT_VOICE.label
+      sizeKb: audioPayload.sizeKb
     });
 
     if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
       try {
         await StocksFirebase.getDb()
-          .collection("news_audio")
-          .doc(articleId)
+          .collection("site_settings")
+          .doc("audio_" + articleId)
           .set({
             id: articleId,
             audioDataUrl: audioPayload.dataUrl,
             sizeKb: audioPayload.sizeKb || "0",
-            voice: audioPayload.voice || DEFAULT_VOICE.label,
-            format: "audio/mp3 (32kbps mono compressed)",
+            format: "audio/mp3",
             updatedAt: Date.now()
           });
         return true;
       } catch (err) {
-        console.warn("Firestore news_audio save note:", err.message);
+        console.warn("Firestore audio save note:", err.message);
       }
     }
     return false;
@@ -341,70 +359,44 @@ const StocksAudioEngine = (function () {
   async function resolveArticleAudioSource(article) {
     if (!article) return { type: "none" };
 
-    // 1. Check if static pre-compressed MP3 exists in assets/audio/ (0 Firestore reads!)
-    if (article.audioUrl) {
-      return {
-        type: "single-mp3",
-        src: article.audioUrl,
-        badge: "Google Cloud Voice • Compressed MP3"
-      };
-    }
-    if (STATIC_SEED_MP3[article.id]) {
-      return {
-        type: "single-mp3",
-        src: STATIC_SEED_MP3[article.id],
-        badge: "Google Cloud Voice • Compressed MP3"
-      };
-    }
-
-    // 2. Check embedded compressed MP3 data URL if present
-    if (article.audioDataUrl && article.audioDataUrl.startsWith("data:audio/")) {
-      return {
-        type: "single-mp3",
-        src: article.audioDataUrl,
-        badge: "Google Cloud Voice • Compressed MP3"
-      };
-    }
-
-    // 3. Check browser IndexedDB cache (0 repeat Firestore reads!)
+    // 1. Check browser IndexedDB cache first (0 repeat Firestore reads!)
     const cachedDataUrl = await getCachedAudio(article.id);
     if (cachedDataUrl) {
       return {
         type: "single-mp3",
-        src: cachedDataUrl,
-        badge: "Google Cloud Voice • Compressed MP3 (Cached)"
+        src: cachedDataUrl
       };
     }
 
-    // 4. Fetch on-demand from dedicated `news_audio` Firestore collection
+    // 2. Fetch on-demand compressed MP3 from Google Firebase Firestore (`site_settings/audio_<id>`)
     if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady() && article.id) {
       try {
-        const doc = await StocksFirebase.getDb().collection("news_audio").doc(article.id).get();
+        const doc = await StocksFirebase.getDb()
+          .collection("site_settings")
+          .doc("audio_" + article.id)
+          .get();
         if (doc.exists) {
           const data = doc.data();
           if (data && data.audioDataUrl) {
             await setCachedAudio(article.id, data.audioDataUrl, { sizeKb: data.sizeKb });
             return {
               type: "single-mp3",
-              src: data.audioDataUrl,
-              badge: `Google Cloud Voice • Compressed MP3 (${data.sizeKb || "32kbps"} KB)`
+              src: data.audioDataUrl
             };
           }
         }
-      } catch (_) {
-        // Fallback to stream chunks
-      }
+      } catch (_) {}
     }
 
-    // 5. Fallback: Stream pleasant Google Cloud Voice MP3 chunks directly
+    // 3. Stream using Google Voice API config loaded from Firebase (`site_settings/google_voice_api`)
+    const voiceCfg = await getFirebaseVoiceConfig();
     const fullScript = buildNarrationScript(article);
     const chunks = splitIntoChunks(fullScript, 175);
-    const lang = article.audioVoiceLang || DEFAULT_VOICE.lang;
+    const lang = article.audioVoiceLang || voiceCfg.languageCode || "en-IN";
     return {
       type: "chunked-mp3",
       chunks: chunks,
-      urls: chunks.map((c) => buildGoogleVoiceChunkUrl(c, lang)),
-      badge: "Google Cloud Voice • Compressed MP3 Stream"
+      urls: chunks.map((c) => buildVoiceStreamUrl(voiceCfg, c, lang)).filter(Boolean)
     };
   }
 
@@ -426,12 +418,6 @@ const StocksAudioEngine = (function () {
     }
   }
 
-  /**
-   * Mounts and binds the Full Audio Player Controls for a news article.
-   * Initially shows ONLY the "Listen to the Article" button (`triggerBtn`).
-   * When the user presses "Listen to the Article", the full audio controls appear
-   * above the news content and start playing while the news remains visible below.
-   */
   async function mountArticlePlayer(article, elements) {
     stopActivePlayer();
 
@@ -527,7 +513,7 @@ const StocksAudioEngine = (function () {
           );
         }
         audioEl.src = chunkUrls[0];
-      } else if (mode === "single-mp3") {
+      } else if (mode === "single-mp3" && sourceInfo.src) {
         audioEl.src = sourceInfo.src;
         audioEl.load();
       }
@@ -567,7 +553,6 @@ const StocksAudioEngine = (function () {
         return;
       }
 
-      // Chunked MP3 seek
       let accum = 0;
       let targetIdx = 0;
       let offsetInChunk = 0;
@@ -620,7 +605,6 @@ const StocksAudioEngine = (function () {
       }
     }
 
-    // Event Listeners on <audio>
     function onLoadedMetadata() {
       audioEl.playbackRate = currentPlaybackRate;
       if (mode === "chunked-mp3" && Number.isFinite(audioEl.duration) && audioEl.duration > 0) {
@@ -656,10 +640,9 @@ const StocksAudioEngine = (function () {
         audioEl.play().catch(() => {});
         return;
       }
-      // Finished full article
       isPlayingState = false;
       hasStartedOnce = false;
-      if (mode === "chunked-mp3") {
+      if (mode === "chunked-mp3" && chunkUrls.length > 0) {
         currentChunkIdx = 0;
         audioEl.src = chunkUrls[0];
       } else {
@@ -671,13 +654,15 @@ const StocksAudioEngine = (function () {
       updatePlayButtonUI(false);
     }
 
-    function onError() {
-      // If static or single MP3 failed to load, seamlessly switch to Google Cloud Voice MP3 stream
+    async function onError() {
       if (mode === "single-mp3") {
+        const voiceCfg = await getFirebaseVoiceConfig();
         const fallbackChunks = splitIntoChunks(fullText, 175);
-        if (fallbackChunks.length > 0) {
+        if (fallbackChunks.length > 0 && voiceCfg.voiceStreamUrl) {
           mode = "chunked-mp3";
-          chunkUrls = fallbackChunks.map((c) => buildGoogleVoiceChunkUrl(c, DEFAULT_VOICE.lang));
+          chunkUrls = fallbackChunks.map((c) =>
+            buildVoiceStreamUrl(voiceCfg, c, voiceCfg.languageCode || "en-IN")
+          );
           const totalChars = fallbackChunks.reduce((acc, c) => acc + c.length, 0) || 1;
           chunkDurations = fallbackChunks.map((c) =>
             Math.max(2.5, (c.length / totalChars) * estimatedTotalSec)
@@ -699,12 +684,10 @@ const StocksAudioEngine = (function () {
     audioEl.addEventListener("ended", onEnded);
     audioEl.addEventListener("error", onError);
 
-    // Control Button Handlers
     async function handleTriggerClick() {
       if (typeof window.stopSpeech === "function") {
         window.stopSpeech();
       }
-      // Reveal full audio controls when user presses "Listen to the Article"
       if (triggerBtn) {
         triggerBtn.hidden = true;
         triggerBtn.setAttribute("aria-expanded", "true");

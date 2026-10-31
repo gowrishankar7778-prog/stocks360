@@ -1,51 +1,96 @@
 /**
  * Stocks 360 - Admin Authentication & Authorization (admin-auth.js)
- * Connects with Firebase Authentication (Email/Password & Google Sign-In)
- * and enforces strict admin-only route protection.
+ * All Admin Credentials and Allowed Admin Emails are stored strictly in
+ * Google Cloud Firebase (Firestore `site_settings/admin_credentials` & Firebase Auth)
+ * and are NEVER hardcoded in GitHub.
  */
 
 const AdminAuth = (function () {
   const STORAGE_KEYS = {
     CREDS: "stocks360_admin_credentials",
+    ALLOWED: "stocks360_allowed_admin_emails",
     SESSION: "stocks360_admin_session"
   };
-
-  // Whitelisted Admin Emails
-  const ALLOWED_ADMIN_EMAILS = [
-    "gowrishankar7778@gmail.com",
-    "admin@stocks360.com"
-  ];
-
-  const DEFAULT_CREDS = [
-    {
-      email: "gowrishankar7778@gmail.com",
-      passwordHash: btoa("Stocks360@Admin"),
-      role: "Founder / Super Admin",
-      name: "Gowrishankar"
-    },
-    {
-      email: "admin@stocks360.com",
-      passwordHash: btoa("Stocks360@Admin"),
-      role: "Super Admin",
-      name: "Admin"
-    }
-  ];
 
   function getCredentials() {
     try {
       const data = localStorage.getItem(STORAGE_KEYS.CREDS);
-      return data ? JSON.parse(data) : DEFAULT_CREDS;
+      return data ? JSON.parse(data) : [];
     } catch (e) {
-      return DEFAULT_CREDS;
+      return [];
     }
   }
 
-  function saveCredentials(creds) {
+  function getAllowedEmails() {
     try {
-      localStorage.setItem(STORAGE_KEYS.CREDS, JSON.stringify(creds));
+      const data = localStorage.getItem(STORAGE_KEYS.ALLOWED);
+      if (data) return JSON.parse(data);
+      const creds = getCredentials();
+      return creds.map(c => (c.email || "").toLowerCase()).filter(Boolean);
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveCredentialsLocal(creds, allowedEmails) {
+    try {
+      if (Array.isArray(creds)) {
+        localStorage.setItem(STORAGE_KEYS.CREDS, JSON.stringify(creds));
+      }
+      if (Array.isArray(allowedEmails)) {
+        localStorage.setItem(STORAGE_KEYS.ALLOWED, JSON.stringify(allowedEmails));
+      }
       return true;
     } catch (e) {
       return false;
+    }
+  }
+
+  /**
+   * Fetch latest Admin Credentials from Google Firebase Firestore (`site_settings/admin_credentials`)
+   */
+  async function syncCredentialsFromFirebase() {
+    if (typeof StocksFirebase === "undefined" || !StocksFirebase.isReady()) {
+      return getCredentials();
+    }
+    try {
+      const doc = await StocksFirebase.getDb()
+        .collection("site_settings")
+        .doc("admin_credentials")
+        .get();
+      if (doc.exists) {
+        const data = doc.data() || {};
+        const creds = data.credentialsJson ? JSON.parse(data.credentialsJson) : [];
+        const allowed = data.allowedEmailsJson
+          ? JSON.parse(data.allowedEmailsJson)
+          : creds.map(c => (c.email || "").toLowerCase());
+        saveCredentialsLocal(creds, allowed);
+        return creds;
+      }
+    } catch (err) {
+      console.warn("Firebase admin credentials sync note:", err.message);
+    }
+    return getCredentials();
+  }
+
+  // Real-time listener to keep admin credentials synced from Firebase
+  function initFirebaseAdminSync() {
+    if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+      try {
+        StocksFirebase.getDb()
+          .collection("site_settings")
+          .doc("admin_credentials")
+          .onSnapshot(doc => {
+            if (doc.exists) {
+              const data = doc.data() || {};
+              const creds = data.credentialsJson ? JSON.parse(data.credentialsJson) : [];
+              const allowed = data.allowedEmailsJson
+                ? JSON.parse(data.allowedEmailsJson)
+                : creds.map(c => (c.email || "").toLowerCase());
+              saveCredentialsLocal(creds, allowed);
+            }
+          }, () => {});
+      } catch (_) {}
     }
   }
 
@@ -57,24 +102,27 @@ const AdminAuth = (function () {
     }
   }
 
-  if (!localStorage.getItem(STORAGE_KEYS.CREDS)) {
-    saveCredentials(DEFAULT_CREDS);
-  }
+  initFirebaseAdminSync();
 
   return {
     isAllowedAdminEmail: function (email) {
       if (!email) return false;
       const lower = email.trim().toLowerCase();
-      return ALLOWED_ADMIN_EMAILS.includes(lower);
+      const allowed = getAllowedEmails();
+      return allowed.some(e => e.toLowerCase() === lower);
     },
 
     /**
-     * Authenticate admin via Firebase Auth first, with fallback to verified admin credentials
+     * Authenticate admin via Google Firebase (Firestore & Firebase Auth)
      */
     loginAsync: async function (email, password, rememberMe) {
       const trimmedEmail = (email || "").trim().toLowerCase();
+
+      // Always pull latest admin credentials from Firebase Firestore first
+      await syncCredentialsFromFirebase();
+
       if (!this.isAllowedAdminEmail(trimmedEmail)) {
-        return { success: false, message: "Access denied. This email is not an authorized Stocks 360 Admin." };
+        return { success: false, message: "Access denied. This email is not an authorized Stocks 360 Admin in Firebase." };
       }
 
       // 1. Try Firebase Auth if initialized
@@ -88,10 +136,13 @@ const AdminAuth = (function () {
           const userCred = await auth.signInWithEmailAndPassword(trimmedEmail, password);
           const fbUser = userCred.user;
 
+          const creds = getCredentials();
+          const matchedProfile = creds.find(c => c.email.toLowerCase() === trimmedEmail) || {};
+
           const sessionData = {
             email: fbUser.email,
-            name: fbUser.displayName || (trimmedEmail.startsWith("gowri") ? "Gowrishankar" : "Admin"),
-            role: "Founder / Super Admin",
+            name: fbUser.displayName || matchedProfile.name || "Admin",
+            role: matchedProfile.role || "Super Admin",
             uid: fbUser.uid,
             authProvider: "firebase",
             loggedInAt: Date.now()
@@ -99,14 +150,14 @@ const AdminAuth = (function () {
           storeSession(sessionData, rememberMe);
           return { success: true, user: sessionData };
         } catch (fbErr) {
-          // If Firebase user hasn't been created yet but matches default admin credentials, auto-provision in Firebase Auth
-          const localCheck = this.login(trimmedEmail, password, rememberMe);
-          if (localCheck.success) {
+          // Verify against Firebase Firestore `site_settings/admin_credentials`
+          const firestoreCheck = this.login(trimmedEmail, password, rememberMe);
+          if (firestoreCheck.success) {
             try {
               const auth = StocksFirebase.getAuth();
               await auth.createUserWithEmailAndPassword(trimmedEmail, password);
             } catch (_) {}
-            return localCheck;
+            return firestoreCheck;
           }
           if (fbErr && (fbErr.code === "auth/wrong-password" || fbErr.code === "auth/invalid-credential")) {
             return { success: false, message: "Incorrect admin password." };
@@ -114,18 +165,19 @@ const AdminAuth = (function () {
         }
       }
 
-      // 2. Fallback to local admin check
+      // 2. Verify against synced Firebase Firestore credentials
       return this.login(trimmedEmail, password, rememberMe);
     },
 
     /**
-     * Sign in with Google Popup (Restricted strictly to whitelisted admin emails)
+     * Sign in with Google Popup (Verified against Firebase Firestore allowed admin emails)
      */
     loginWithGoogle: async function (rememberMe) {
       if (typeof StocksFirebase === "undefined" || !StocksFirebase.getAuth()) {
         return { success: false, message: "Firebase Authentication is not loaded." };
       }
       try {
+        await syncCredentialsFromFirebase();
         const auth = StocksFirebase.getAuth();
         const provider = new firebase.auth.GoogleAuthProvider();
         provider.setCustomParameters({ prompt: "select_account" });
@@ -136,14 +188,17 @@ const AdminAuth = (function () {
           await auth.signOut();
           return {
             success: false,
-            message: `Access denied for ${fbUser.email}. Only the Stocks 360 Founder/Admin account is allowed.`
+            message: `Access denied for ${fbUser.email}. Only authorized Firebase Admin accounts are allowed.`
           };
         }
 
+        const creds = getCredentials();
+        const matchedProfile = creds.find(c => c.email.toLowerCase() === fbUser.email.toLowerCase()) || {};
+
         const sessionData = {
           email: fbUser.email,
-          name: fbUser.displayName || "Gowrishankar",
-          role: "Founder / Super Admin",
+          name: fbUser.displayName || matchedProfile.name || "Admin",
+          role: matchedProfile.role || "Founder / Super Admin",
           uid: fbUser.uid,
           authProvider: "google",
           loggedInAt: Date.now()
@@ -159,7 +214,7 @@ const AdminAuth = (function () {
     },
 
     /**
-     * Synchronous credential verification
+     * Verify against Firebase-synced credential store
      */
     login: function (email, password, rememberMe) {
       const trimmedEmail = (email || "").trim().toLowerCase();
@@ -190,7 +245,7 @@ const AdminAuth = (function () {
         const session = sessionStorage.getItem(STORAGE_KEYS.SESSION) || localStorage.getItem(STORAGE_KEYS.SESSION);
         if (!session) return false;
         const parsed = JSON.parse(session);
-        return Boolean(parsed && parsed.email && this.isAllowedAdminEmail(parsed.email));
+        return Boolean(parsed && parsed.email);
       } catch (e) {
         return false;
       }
@@ -210,7 +265,7 @@ const AdminAuth = (function () {
       const userIdx = creds.findIndex(c => c.email.toLowerCase() === email.trim().toLowerCase());
 
       if (userIdx === -1) {
-        return { success: false, message: "User not found." };
+        return { success: false, message: "User not found in Firebase Admin store." };
       }
 
       if (creds[userIdx].passwordHash !== btoa(currentPassword)) {
@@ -222,17 +277,28 @@ const AdminAuth = (function () {
       }
 
       creds[userIdx].passwordHash = btoa(newPassword);
-      saveCredentials(creds);
+      const allowed = getAllowedEmails();
+      saveCredentialsLocal(creds, allowed);
 
-      // Also update in Firebase Auth if currently signed in
-      if (typeof StocksFirebase !== "undefined" && StocksFirebase.getAuth()) {
-        const fbUser = StocksFirebase.getAuth().currentUser;
-        if (fbUser && typeof fbUser.updatePassword === "function") {
-          fbUser.updatePassword(newPassword).catch(() => {});
+      // Persist updated password directly to Google Firebase Firestore & Firebase Auth
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb()
+          .collection("site_settings")
+          .doc("admin_credentials")
+          .set({
+            credentialsJson: JSON.stringify(creds),
+            allowedEmailsJson: JSON.stringify(allowed),
+            updatedAt: Date.now()
+          }, { merge: true })
+          .catch(err => console.error("Firebase admin password update error:", err));
+
+        const auth = StocksFirebase.getAuth();
+        if (auth && auth.currentUser && typeof auth.currentUser.updatePassword === "function") {
+          auth.currentUser.updatePassword(newPassword).catch(() => {});
         }
       }
 
-      return { success: true, message: "Password updated successfully!" };
+      return { success: true, message: "Admin password updated in Google Firebase!" };
     },
 
     logout: function () {

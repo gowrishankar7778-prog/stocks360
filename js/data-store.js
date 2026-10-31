@@ -27,7 +27,6 @@ const StocksDataStore = (function () {
       glossary: "Volatility: The degree of variation in trading prices. Sensex: Benchmark index of BSE.",
       keywords: "markets, banking, IT, performance",
       category: "Market Update",
-      audioUrl: "assets/audio/news-1.mp3",
       audioVoiceLang: "en-IN",
       hasCompressedAudio: true
     },
@@ -42,7 +41,6 @@ const StocksDataStore = (function () {
       glossary: "Global Cues: Signals from international financial markets such as US, Europe, and Asia.",
       keywords: "global cues, sentiment, markets",
       category: "Global Economy",
-      audioUrl: "assets/audio/news-2.mp3",
       audioVoiceLang: "en-IN",
       hasCompressedAudio: true
     },
@@ -57,7 +55,6 @@ const StocksDataStore = (function () {
       glossary: "Institutional Investors: Organizations such as mutual funds and insurance companies that invest large sums in the market. Market Breadth: Comparison of the number of advancing stocks to declining stocks.",
       keywords: "institutional activity, banking, mid-cap, earnings",
       category: "Market Update",
-      audioUrl: "assets/audio/news-3.mp3",
       audioVoiceLang: "en-IN",
       hasCompressedAudio: true
     }
@@ -259,22 +256,7 @@ const StocksDataStore = (function () {
   return {
     // ---------------- NEWS API ----------------
     getNews: function () {
-      const list = getItem(STORAGE_KEYS.NEWS, SEED_NEWS);
-      const seedAudioMap = {
-        "news-1": "assets/audio/news-1.mp3",
-        "news-2": "assets/audio/news-2.mp3",
-        "news-3": "assets/audio/news-3.mp3"
-      };
-      return list.map(item => {
-        if (seedAudioMap[item.id] && !item.audioUrl) {
-          return Object.assign({}, item, {
-            audioUrl: seedAudioMap[item.id],
-            audioVoiceLang: item.audioVoiceLang || "en-IN",
-            hasCompressedAudio: true
-          });
-        }
-        return item;
-      });
+      return getItem(STORAGE_KEYS.NEWS, SEED_NEWS);
     },
 
     getNewsById: function (id) {
@@ -326,7 +308,7 @@ const StocksDataStore = (function () {
       if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
         StocksFirebase.getDb().collection("news").doc(id).delete()
           .catch(err => console.error("Firebase delete error:", err));
-        StocksFirebase.getDb().collection("news_audio").doc(id).delete()
+        StocksFirebase.getDb().collection("site_settings").doc("audio_" + id).delete()
           .catch(() => {});
       }
       return true;
