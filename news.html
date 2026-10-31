@@ -167,53 +167,51 @@
               <div id="detail-ask360-response" aria-live="polite"></div>
             </div>
 
-            <!-- GOOGLE CLOUD VOICE COMPRESSED MP3 PLAYER (ABOVE NEWS CONTENT) -->
-            <section id="news-audio-player-card" class="news-audio-player-card" aria-label="Article Audio Player">
-              <div class="audio-player-header">
-                <div class="audio-player-title-group">
-                  <span class="audio-wave-icon" aria-hidden="true">&#128266;</span>
-                  <span class="audio-player-heading">Listen to this News Article</span>
+            <!-- LISTEN TO THE ARTICLE BUTTON & EXPANDABLE AUDIO CONTROLS (ABOVE NEWS CONTENT) -->
+            <div class="article-listen-wrapper">
+              <button type="button" id="listen-article-btn" class="listen-article-trigger-btn" aria-expanded="false" aria-controls="news-audio-player-card">
+                Listen to the Article
+              </button>
+
+              <section id="news-audio-player-card" class="news-audio-player-card" aria-label="Article Audio Controls" hidden>
+                <audio id="news-html5-audio" preload="none" hidden></audio>
+
+                <div class="audio-controls-bar">
+                  <div class="audio-transport-group">
+                    <button type="button" id="audio-play-pause-btn" class="audio-btn audio-btn-play" aria-label="Pause">
+                      <span id="audio-play-icon" aria-hidden="true">&#10074;&#10074;</span>
+                      <span id="audio-play-label">Pause</span>
+                    </button>
+
+                    <button type="button" id="audio-rewind-10-btn" class="audio-btn audio-btn-skip" aria-label="Rewind 10 seconds" title="Rewind 10 seconds">
+                      &#8630; -10s
+                    </button>
+
+                    <button type="button" id="audio-forward-10-btn" class="audio-btn audio-btn-skip" aria-label="Fast forward 10 seconds" title="Fast forward 10 seconds">
+                      +10s &#8631;
+                    </button>
+                  </div>
+
+                  <div class="audio-seek-group">
+                    <span id="audio-current-time" class="audio-time-label" aria-live="off">0:00</span>
+                    <label for="audio-seek-slider" class="visually-hidden">Seek position</label>
+                    <input type="range" id="audio-seek-slider" class="audio-seek-slider" min="0" max="100" step="0.1" value="0" aria-label="Seek position">
+                    <span id="audio-total-duration" class="audio-time-label">0:00</span>
+                  </div>
+
+                  <div class="audio-speed-group">
+                    <label for="audio-speed-select" class="audio-speed-label">Speed:</label>
+                    <select id="audio-speed-select" class="audio-speed-select" aria-label="Playback speed">
+                      <option value="0.75">0.75x</option>
+                      <option value="1" selected>1x</option>
+                      <option value="1.25">1.25x</option>
+                      <option value="1.5">1.5x</option>
+                      <option value="2">2x</option>
+                    </select>
+                  </div>
                 </div>
-                <span id="audio-status-badge" class="audio-voice-badge">Google Cloud Voice &bull; Compressed MP3</span>
-              </div>
-
-              <audio id="news-html5-audio" preload="metadata" hidden></audio>
-
-              <div class="audio-controls-bar">
-                <div class="audio-transport-group">
-                  <button type="button" id="audio-play-pause-btn" class="audio-btn audio-btn-play" aria-label="Play news audio">
-                    <span id="audio-play-icon" aria-hidden="true">&#9654;</span>
-                    <span id="audio-play-label">Play Audio</span>
-                  </button>
-
-                  <button type="button" id="audio-rewind-10-btn" class="audio-btn audio-btn-skip" aria-label="Rewind 10 seconds" title="Rewind 10 seconds">
-                    &#8630; -10s
-                  </button>
-
-                  <button type="button" id="audio-forward-10-btn" class="audio-btn audio-btn-skip" aria-label="Fast forward 10 seconds" title="Fast forward 10 seconds">
-                    +10s &#8631;
-                  </button>
-                </div>
-
-                <div class="audio-seek-group">
-                  <span id="audio-current-time" class="audio-time-label" aria-live="off">0:00</span>
-                  <label for="audio-seek-slider" class="visually-hidden">Seek audio position</label>
-                  <input type="range" id="audio-seek-slider" class="audio-seek-slider" min="0" max="100" step="0.1" value="0" aria-label="Seek audio position">
-                  <span id="audio-total-duration" class="audio-time-label">0:00</span>
-                </div>
-
-                <div class="audio-speed-group">
-                  <label for="audio-speed-select" class="audio-speed-label">Speed:</label>
-                  <select id="audio-speed-select" class="audio-speed-select" aria-label="Playback speed">
-                    <option value="0.75">0.75x</option>
-                    <option value="1" selected>1x</option>
-                    <option value="1.25">1.25x</option>
-                    <option value="1.5">1.5x</option>
-                    <option value="2">2x</option>
-                  </select>
-                </div>
-              </div>
-            </section>
+              </section>
+            </div>
 
             <!-- NEWS TEXT CONTENT APPEARS DIRECTLY BELOW PLAYER CONTROLS -->
             <div id="detail-synopsis" class="news-synopsis" hidden></div>
@@ -238,13 +236,13 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=6"></script>
-  <script src="js/data-store.js?v=6"></script>
-  <script src="js/main.js?v=6"></script>
-  <script src="js/accessibility.js?v=6"></script>
-  <script src="js/stock-search.js?v=6"></script>
-  <script src="js/audio-engine.js?v=6"></script>
-  <script src="js/news.js?v=6"></script>
-  <script src="js/smart-assist.js?v=6"></script>
+  <script src="js/firebase-config.js?v=7"></script>
+  <script src="js/data-store.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
+  <script src="js/accessibility.js?v=7"></script>
+  <script src="js/stock-search.js?v=7"></script>
+  <script src="js/audio-engine.js?v=7"></script>
+  <script src="js/news.js?v=7"></script>
+  <script src="js/smart-assist.js?v=7"></script>
 </body>
 </html>

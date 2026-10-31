@@ -1001,14 +1001,39 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-/* ---------- GOOGLE CLOUD VOICE FULL AUDIO PLAYER CARD ---------- */
+/* ---------- LISTEN TO THE ARTICLE BUTTON & FULL AUDIO CONTROLS ---------- */
+.article-listen-wrapper {
+  margin: 14px 0 22px 0;
+}
+
+.listen-article-trigger-btn {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: 2px solid var(--primary);
+  padding: 10px 22px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.listen-article-trigger-btn:hover,
+.listen-article-trigger-btn:focus-visible {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
 .news-audio-player-card {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #f8fafc;
   border: 2px solid #334155;
   border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  margin: 18px 0 26px 0;
+  padding: 16px 22px;
+  margin: 0;
   box-shadow: var(--shadow-md);
 }
 
@@ -1551,6 +1576,7 @@ body.high-contrast select {
 body.high-contrast .btn-primary,
 body.high-contrast .btn-ask360-ai,
 body.high-contrast .a11y-toggle-btn,
+body.high-contrast .listen-article-trigger-btn,
 body.high-contrast .audio-btn-play {
   background-color: #facc15 !important;
   color: #000000 !important;

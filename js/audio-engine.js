@@ -428,12 +428,15 @@ const StocksAudioEngine = (function () {
 
   /**
    * Mounts and binds the Full Audio Player Controls for a news article.
-   * Ensures controls sit ABOVE the article content while the news text remains visible below.
+   * Initially shows ONLY the "Listen to the Article" button (`triggerBtn`).
+   * When the user presses "Listen to the Article", the full audio controls appear
+   * above the news content and start playing while the news remains visible below.
    */
   async function mountArticlePlayer(article, elements) {
     stopActivePlayer();
 
     const {
+      triggerBtn,
       containerEl,
       audioEl,
       playPauseBtn,
@@ -444,36 +447,40 @@ const StocksAudioEngine = (function () {
       seekSlider,
       currentTimeEl,
       totalDurationEl,
-      speedSelect,
-      statusBadgeEl
+      speedSelect
     } = elements;
 
     if (!containerEl || !audioEl) return;
 
-    containerEl.hidden = false;
+    // Initially keep audio controls hidden and show ONLY the "Listen to the Article" button
+    containerEl.hidden = true;
+    if (triggerBtn) {
+      triggerBtn.hidden = false;
+      triggerBtn.setAttribute("aria-expanded", "false");
+    }
 
-    // Reset UI to initial state
     let hasStartedOnce = false;
     let isSeeking = false;
+    let sourceInitialized = false;
     let currentPlaybackRate = parseFloat(speedSelect ? speedSelect.value : "1") || 1.0;
 
     function updatePlayButtonUI(isPlaying) {
       if (!playPauseBtn) return;
       if (isPlaying) {
-        playPauseBtn.setAttribute("aria-label", "Pause news audio");
+        playPauseBtn.setAttribute("aria-label", "Pause");
         playPauseBtn.setAttribute("data-state", "playing");
         if (playPauseIcon) playPauseIcon.innerHTML = "&#10074;&#10074;";
         if (playPauseLabel) playPauseLabel.textContent = "Pause";
       } else if (hasStartedOnce && getCurrentTime() > 0 && getCurrentTime() < getTotalDuration() - 0.3) {
-        playPauseBtn.setAttribute("aria-label", "Resume news audio");
+        playPauseBtn.setAttribute("aria-label", "Resume");
         playPauseBtn.setAttribute("data-state", "paused");
         if (playPauseIcon) playPauseIcon.innerHTML = "&#9654;";
         if (playPauseLabel) playPauseLabel.textContent = "Resume";
       } else {
-        playPauseBtn.setAttribute("aria-label", "Play news audio");
+        playPauseBtn.setAttribute("aria-label", "Play");
         playPauseBtn.setAttribute("data-state", "idle");
         if (playPauseIcon) playPauseIcon.innerHTML = "&#9654;";
-        if (playPauseLabel) playPauseLabel.textContent = "Play Audio";
+        if (playPauseLabel) playPauseLabel.textContent = "Play";
       }
     }
 
@@ -489,45 +496,43 @@ const StocksAudioEngine = (function () {
       updateSliderFill(0);
     }
     if (currentTimeEl) currentTimeEl.textContent = "0:00";
-    if (totalDurationEl) totalDurationEl.textContent = "--:--";
 
-    const sourceInfo = await resolveArticleAudioSource(article);
-    if (statusBadgeEl && sourceInfo.badge) {
-      statusBadgeEl.textContent = sourceInfo.badge;
-    }
-
-    // Estimate duration from word count until metadata loads
     const fullText = buildNarrationScript(article);
     const wordCount = fullText.split(/\s+/).filter(Boolean).length;
     const estimatedTotalSec = Math.max(8, Math.round(wordCount / 2.45));
+    if (totalDurationEl) totalDurationEl.textContent = formatTime(estimatedTotalSec);
 
-    // State for single-mp3 vs chunked-mp3
-    let mode = sourceInfo.type;
-    let chunkUrls = sourceInfo.urls || [];
+    let mode = "single-mp3";
+    let chunkUrls = [];
     let chunkDurations = [];
     let currentChunkIdx = 0;
     let isPlayingState = false;
 
-    if (mode === "chunked-mp3" && chunkUrls.length > 0) {
-      const totalChars = sourceInfo.chunks.reduce((acc, c) => acc + c.length, 0) || 1;
-      chunkDurations = sourceInfo.chunks.map((c) =>
-        Math.max(2.5, (c.length / totalChars) * estimatedTotalSec)
-      );
-      if (totalDurationEl) {
-        totalDurationEl.textContent = formatTime(
-          chunkDurations.reduce((a, b) => a + b, 0)
-        );
-      }
-      audioEl.src = chunkUrls[0];
-    } else if (mode === "single-mp3") {
-      if (totalDurationEl) {
-        totalDurationEl.textContent = formatTime(estimatedTotalSec);
-      }
-      audioEl.src = sourceInfo.src;
-      audioEl.load();
-    }
+    async function ensureAudioSourceLoaded() {
+      if (sourceInitialized) return;
+      sourceInitialized = true;
 
-    audioEl.playbackRate = currentPlaybackRate;
+      const sourceInfo = await resolveArticleAudioSource(article);
+      mode = sourceInfo.type;
+      chunkUrls = sourceInfo.urls || [];
+
+      if (mode === "chunked-mp3" && chunkUrls.length > 0) {
+        const totalChars = sourceInfo.chunks.reduce((acc, c) => acc + c.length, 0) || 1;
+        chunkDurations = sourceInfo.chunks.map((c) =>
+          Math.max(2.5, (c.length / totalChars) * estimatedTotalSec)
+        );
+        if (totalDurationEl) {
+          totalDurationEl.textContent = formatTime(
+            chunkDurations.reduce((a, b) => a + b, 0)
+          );
+        }
+        audioEl.src = chunkUrls[0];
+      } else if (mode === "single-mp3") {
+        audioEl.src = sourceInfo.src;
+        audioEl.load();
+      }
+      audioEl.playbackRate = currentPlaybackRate;
+    }
 
     function getTotalDuration() {
       if (mode === "single-mp3") {
@@ -695,10 +700,32 @@ const StocksAudioEngine = (function () {
     audioEl.addEventListener("error", onError);
 
     // Control Button Handlers
-    function handlePlayPauseClick() {
+    async function handleTriggerClick() {
       if (typeof window.stopSpeech === "function") {
         window.stopSpeech();
       }
+      // Reveal full audio controls when user presses "Listen to the Article"
+      if (triggerBtn) {
+        triggerBtn.hidden = true;
+        triggerBtn.setAttribute("aria-expanded", "true");
+      }
+      containerEl.hidden = false;
+
+      await ensureAudioSourceLoaded();
+      audioEl.playbackRate = currentPlaybackRate;
+      audioEl.play().catch((err) => {
+        console.warn("Audio playback start note:", err.message);
+      });
+      if (playPauseBtn) {
+        playPauseBtn.focus();
+      }
+    }
+
+    async function handlePlayPauseClick() {
+      if (typeof window.stopSpeech === "function") {
+        window.stopSpeech();
+      }
+      await ensureAudioSourceLoaded();
       if (!audioEl.paused) {
         audioEl.pause();
       } else {
@@ -738,6 +765,7 @@ const StocksAudioEngine = (function () {
       audioEl.playbackRate = rate;
     }
 
+    if (triggerBtn) triggerBtn.addEventListener("click", handleTriggerClick);
     if (playPauseBtn) playPauseBtn.addEventListener("click", handlePlayPauseClick);
     if (rewind10Btn) rewind10Btn.addEventListener("click", handleRewind10);
     if (forward10Btn) forward10Btn.addEventListener("click", handleForward10);
@@ -761,6 +789,7 @@ const StocksAudioEngine = (function () {
         audioEl.removeEventListener("ended", onEnded);
         audioEl.removeEventListener("error", onError);
 
+        if (triggerBtn) triggerBtn.removeEventListener("click", handleTriggerClick);
         if (playPauseBtn) playPauseBtn.removeEventListener("click", handlePlayPauseClick);
         if (rewind10Btn) rewind10Btn.removeEventListener("click", handleRewind10);
         if (forward10Btn) forward10Btn.removeEventListener("click", handleForward10);

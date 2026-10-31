@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         listHtml += `
           <div class="admin-article-card" id="card-${item.id}">
             <div class="card-meta">
-              <span class="meta-badge">${item.category || "News"} &bull; &#128266; Cloud MP3</span>
+              <span class="meta-badge">${item.category || "News"}</span>
               <span class="meta-date">${item.published || "Recent"}</span>
             </div>
             <h3 class="card-title">${escapeHtml(item.title)}</h3>
@@ -316,8 +316,8 @@ document.addEventListener("DOMContentLoaded", function () {
       finalPublishBtn.textContent = "Publish to Live Website";
       showNotification(
         wasEditing
-          ? "Article & Google Cloud MP3 Audio updated!"
-          : "Article & Google Cloud MP3 Audio published to live website!",
+          ? "Article updated successfully!"
+          : "Article published to website!",
         "success"
       );
 

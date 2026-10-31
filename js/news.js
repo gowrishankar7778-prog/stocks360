@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const ask360Response = document.getElementById("detail-ask360-response");
 
   // Audio Player DOM Elements
+  const listenArticleBtn = document.getElementById("listen-article-btn");
   const audioPlayerCard = document.getElementById("news-audio-player-card");
   const audioEl = document.getElementById("news-html5-audio");
   const playPauseBtn = document.getElementById("audio-play-pause-btn");
@@ -30,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const currentTimeEl = document.getElementById("audio-current-time");
   const totalDurationEl = document.getElementById("audio-total-duration");
   const speedSelect = document.getElementById("audio-speed-select");
-  const statusBadgeEl = document.getElementById("audio-status-badge");
 
   function calculateReadTime(text) {
     if (!text) return "Read time: 1 min";
@@ -140,9 +140,10 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
     detailTitle.focus();
 
-    // Mount Google Cloud Voice Compressed MP3 Audio Player right above the article text
+    // Mount "Listen to the Article" button & expandable audio controls above the article text
     if (typeof StocksAudioEngine !== "undefined") {
       StocksAudioEngine.mountArticlePlayer(news, {
+        triggerBtn: listenArticleBtn,
         containerEl: audioPlayerCard,
         audioEl: audioEl,
         playPauseBtn: playPauseBtn,
@@ -153,8 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
         seekSlider: seekSlider,
         currentTimeEl: currentTimeEl,
         totalDurationEl: totalDurationEl,
-        speedSelect: speedSelect,
-        statusBadgeEl: statusBadgeEl
+        speedSelect: speedSelect
       });
     }
   }
