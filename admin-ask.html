@@ -40,43 +40,11 @@
   <main class="container admin-main">
     <div class="admin-top-actions">
       <h2>Learner Inquiries &amp; Questions</h2>
-      <p class="field-hint">Manage questions submitted through the Ask 360 prompt and comments under learning units.</p>
+      <p class="field-hint">Manage questions submitted through Ask 360, Contact Us, and comments under learning units (Real-Time Firestore Sync).</p>
     </div>
 
     <div class="admin-news-list" id="comments-admin-list">
-      <!-- Comment 1 -->
-      <div class="admin-article-card comment-item">
-        <div class="card-meta">
-          <span class="meta-badge">Learn &bull; Unit 1</span>
-          <span class="meta-date">28 Oct 2026, 11:45 AM</span>
-        </div>
-        <p class="comment-author"><strong>Rahul S.</strong> asked about <em>Why Stock Market?</em>:</p>
-        <p class="comment-text" style="font-size: 16px; margin: 8px 0; color: #1e293b;">"Can you explain the difference between primary market (IPO) and secondary market in simple words?"</p>
-        <div class="reply-container" style="margin-top: 10px;">
-          <textarea class="multi-input reply-input" rows="2" placeholder="Write mentor reply for Rahul..."></textarea>
-          <div style="margin-top: 6px;">
-            <button class="admin-btn small success send-reply-btn">Send Reply</button>
-            <button class="admin-btn small danger delete-comment-btn">Delete</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Comment 2 -->
-      <div class="admin-article-card comment-item" style="margin-top: 15px;">
-        <div class="card-meta">
-          <span class="meta-badge">Ask 360 Query</span>
-          <span class="meta-date">27 Oct 2026, 3:20 PM</span>
-        </div>
-        <p class="comment-author"><strong>Ananya Verma</strong> asked:</p>
-        <p class="comment-text" style="font-size: 16px; margin: 8px 0; color: #1e293b;">"How does inflation affect the stock market prices of banking stocks?"</p>
-        <div class="reply-container" style="margin-top: 10px;">
-          <textarea class="multi-input reply-input" rows="2" placeholder="Write mentor reply for Ananya..."></textarea>
-          <div style="margin-top: 6px;">
-            <button class="admin-btn small success send-reply-btn">Send Reply</button>
-            <button class="admin-btn small danger delete-comment-btn">Delete</button>
-          </div>
-        </div>
-      </div>
+      <!-- Dynamically populated by admin-ask.js from StocksDataStore -->
     </div>
   </main>
 
@@ -86,6 +54,12 @@
     </div>
   </footer>
 
+  <!-- Firebase Cloud SDKs & Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/data-store.js"></script>
   <script src="js/admin-auth.js"></script>
   <script src="js/admin-menu.js"></script>
   <script src="js/admin-ask.js"></script>

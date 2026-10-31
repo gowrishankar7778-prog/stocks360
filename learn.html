@@ -4,39 +4,138 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learn Stock Market - Stocks 360</title>
+  <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <a class="skip-link" href="#page-heading">Skip to Learn modules</a>
+  <!-- 1. SKIP TO MAIN CONTENT LINK -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <div class="top-disclaimer" role="note">
-    <p><strong>Disclaimer:</strong> This website is for educational purposes and does not constitute investment advice in any manner.</p>
-  </div>
-
+  <!-- 2. TOP ACCESSIBILITY BUTTON & HEADER BAR -->
   <header class="top-bar">
     <div class="container top-bar-flex">
-      <div class="brand-title"><a href="index.html">Stocks 360</a></div>
-      <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
-        Turn On Special Accessibility Features
-      </button>
+      <div class="top-controls">
+        <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
+          &#9855; Turn On Special Accessibility Features
+        </button>
+      </div>
+      <div class="brand-group">
+        <img src="assets/stocks360-mark.svg" alt="Stocks 360 Logo" class="brand-logo-img" width="46" height="46">
+        <div class="brand-text-stack">
+          <span class="brand-logo">Stocks <span class="brand-accent">360&deg;</span></span>
+          <span class="brand-tagline">Learn &bull; Track &bull; Understand</span>
+        </div>
+      </div>
     </div>
   </header>
 
+  <!-- 3. SEARCH FOR STOCKS SECTION -->
+  <section class="top-search-section" aria-label="Search for Stocks">
+    <div class="container">
+      <div class="stock-search-card">
+        <label for="stock-search" class="search-label">Search for Stocks</label>
+        <div class="search-input-wrapper">
+          <input type="search" id="stock-search" placeholder="Enter stock name or symbol..." aria-label="Search for stocks">
+          <button type="button" id="search-button" class="btn-primary">Search for Stocks</button>
+        </div>
+
+        <section id="stock-result" class="stock-result-card" aria-live="polite" hidden>
+          <div class="result-header">
+            <div>
+              <h2 id="stock-name">Stock Name</h2>
+              <span id="stock-exchange" class="exchange-badge">NSE</span>
+            </div>
+            <div class="live-price-box">
+              <span class="live-indicator"><span class="pulse-dot"></span> LIVE</span>
+              <div id="live-price" class="main-price">--</div>
+              <div id="price-change" class="price-change-pill">--</div>
+            </div>
+          </div>
+
+          <div class="price-metrics-grid">
+            <div class="metric-box">
+              <span class="label">Previous Close</span>
+              <span id="previous-close" class="val">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Today's Open</span>
+              <span id="today-open" class="val">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Day's High</span>
+              <span id="today-high" class="val">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Day's Low</span>
+              <span id="today-low" class="val">--</span>
+            </div>
+          </div>
+
+          <div class="historical-control-box">
+            <label for="historical-period">View Historical Price Table:</label>
+            <select id="historical-period">
+              <option value="">-- Select History Range --</option>
+              <option value="5days">Last 5 Trading Days</option>
+              <option value="1month">Last 1 Month</option>
+              <option value="3months">Last 3 Months</option>
+              <option value="1year">Last 1 Year</option>
+            </select>
+          </div>
+
+          <div id="historical-data" aria-live="polite"></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. STOCK 360 AI / ASK 360 AI (BEFORE MAIN LINKS) -->
+  <section class="stock360-ai-section" aria-label="Stock 360 AI Assistant">
+    <div class="container">
+      <div class="stock360-ai-banner">
+        <div class="stock360-ai-info">
+          <span class="ai-pill-badge">&#10024; Stock 360 AI</span>
+          <p class="stock360-ai-desc">Have a question about market concepts or financial terms? Ask our educational AI assistant instantly.</p>
+        </div>
+        <div class="stock360-ai-actions">
+          <button type="button" id="home-ask360-btn" class="ask360-btn btn-ask360-ai" aria-expanded="false" aria-controls="home-ask360-drawer">
+            &#129302; Ask 360 AI
+          </button>
+        </div>
+      </div>
+
+      <div id="home-ask360-drawer" class="ask360-box stock360-ai-drawer" hidden>
+        <label for="home-ask360-input" class="search-label">Ask Stock 360 AI a Question</label>
+        <div class="search-input-wrapper">
+          <input type="text" id="home-ask360-input" placeholder="Type any question about stock market concepts or terminology...">
+          <button type="button" id="home-ask360-send" class="btn-primary">Ask 360 AI</button>
+        </div>
+        <div id="home-ask360-response" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MAIN NAVIGATION LINKS -->
   <nav id="main-navigation" aria-label="Main navigation">
     <div class="container">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="newsletter.html">Newsletter</a></li>
-        <li><a href="learn.html" aria-current="page" class="active">Learn</a></li>
-        <li><a href="ask.html">Ask 360</a></li>
+        <li><a href="learn.html" aria-current="page" class="active">Learn Modules</a></li>
+        <li><a href="ask.html">Ask 360 AI</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
-
       </ul>
     </div>
   </nav>
+
+  <!-- EDUCATIONAL DISCLAIMER -->
+  <div class="top-disclaimer" role="note" aria-label="Educational Disclaimer">
+    <div class="container">
+      <p><strong>Disclaimer:</strong> Any article or learning material published on this website is purely meant for educational purposes only and does not constitute investment advice in any manner.</p>
+    </div>
+  </div>
 
   <main id="main-content">
     <div class="container">
@@ -120,7 +219,8 @@
 
   <footer>
     <div class="container">
-      <p>Stocks 360 &bull; Stay updated with the stock market while learning. For educational purposes only.</p>
+      <p><strong>Stocks 360</strong> &bull; Stay updated with the stock market while learning.</p>
+      <p class="footer-disclaimer"><strong>Disclaimer:</strong> Any article or learning material published on this website is purely meant for educational purposes only and does not constitute investment advice in any manner.</p>
     </div>
   </footer>
 
@@ -132,6 +232,7 @@
   <script src="js/data-store.js"></script>
   <script src="js/main.js"></script>
   <script src="js/accessibility.js"></script>
+  <script src="js/stock-search.js"></script>
   <script src="js/learn.js"></script>
   <script src="js/smart-assist.js"></script>
 </body>

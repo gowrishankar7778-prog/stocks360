@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Stocks 360 Emblem">
+  <defs>
+    <linearGradient id="bgGradMark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+    <linearGradient id="ringGradMark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="55%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#16a34a" />
+    </linearGradient>
+    <linearGradient id="barGradMark" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="growthGradMark" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#4ade80" />
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="29" fill="url(#bgGradMark)" />
+  <path d="M 32 6 A 26 26 0 1 1 8.5 20.5" fill="none" stroke="url(#ringGradMark)" stroke-width="3.6" stroke-linecap="round" />
+  <polygon points="5.5,14.5 13,19 6,23.5" fill="#38bdf8" />
+  <rect x="18" y="34" width="5.5" height="12" rx="1.5" fill="url(#barGradMark)" />
+  <rect x="27" y="27" width="5.5" height="19" rx="1.5" fill="url(#barGradMark)" />
+  <rect x="36" y="19" width="5.5" height="27" rx="1.5" fill="url(#growthGradMark)" />
+  <path d="M 16.5 30.5 L 26.5 23 L 34 25 L 45 14" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="45" cy="14" r="3.2" fill="#4ade80" />
+</svg>

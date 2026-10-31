@@ -4,104 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stocks 360 - Stay Updated with the Stock Market While Learning</title>
-  <meta name="description" content="Stocks 360 helps you understand the Indian stock market through accessible learning modules, audio assistance, and real-time news updates.">
+  <meta name="description" content="Stocks 360 helps you understand the stock market through accessible learning modules, audio assistance, and educational insights.">
+  <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+  <!-- 1. SKIP TO MAIN CONTENT LINK -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- TOP REGULATORY DISCLAIMER -->
-  <div class="top-disclaimer" role="note">
-    <div class="container">
-      <p><strong>Educational Disclaimer:</strong> Stocks 360 is strictly designed for educational purposes and financial literacy. None of the content constitutes investment advice or trading recommendations.</p>
-    </div>
-  </div>
-
-  <!-- TOP BAR WITH BRAND AND ACCESSIBILITY BUTTON -->
+  <!-- 2. TOP ACCESSIBILITY BUTTON & HEADER BAR -->
   <header class="top-bar">
     <div class="container top-bar-flex">
-      <div class="brand-group">
-        <a href="index.html" class="brand-logo">Stocks 360</a>
-        <span class="brand-tagline">Learn &bull; Track &bull; Understand</span>
-      </div>
-
       <div class="top-controls">
         <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
-          Turn On Special Accessibility Features
+          &#9855; Turn On Special Accessibility Features
         </button>
+      </div>
+
+      <div class="brand-group">
+        <img src="assets/stocks360-mark.svg" alt="Stocks 360 Logo" class="brand-logo-img" width="46" height="46">
+        <div class="brand-text-stack">
+          <span class="brand-logo">Stocks <span class="brand-accent">360&deg;</span></span>
+          <span class="brand-tagline">Learn &bull; Track &bull; Understand</span>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN NAVIGATION -->
-  <nav id="main-navigation" aria-label="Main navigation">
+  <!-- 3. SEARCH FOR STOCKS SECTION -->
+  <section class="top-search-section" aria-label="Search for Stocks">
     <div class="container">
-      <ul>
-        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
-        <li><a href="learn.html">Learn Modules</a></li>
-        <li><a href="ask.html">Ask 360</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-
-      </ul>
-    </div>
-  </nav>
-
-  <!-- LIVE INDICES TICKER -->
-  <div class="market-ticker-bar" aria-label="Major Indices Overview">
-    <div class="container ticker-flex">
-      <div class="ticker-item">
-        <span class="ticker-name">NIFTY 50</span>
-        <span class="ticker-val">24,413.50</span>
-        <span class="ticker-change up">+158.40 (+0.65%)</span>
-      </div>
-      <div class="ticker-item">
-        <span class="ticker-name">SENSEX</span>
-        <span class="ticker-val">80,220.70</span>
-        <span class="ticker-change up">+528.30 (+0.66%)</span>
-      </div>
-      <div class="ticker-item">
-        <span class="ticker-name">BANK NIFTY</span>
-        <span class="ticker-val">52,320.10</span>
-        <span class="ticker-change up">+310.20 (+0.60%)</span>
-      </div>
-      <div class="ticker-item">
-        <span class="ticker-name">INDIA VIX</span>
-        <span class="ticker-val">14.25</span>
-        <span class="ticker-change down">-0.42 (-2.86%)</span>
-      </div>
-    </div>
-  </div>
-
-  <main id="main-content">
-    <div class="container">
-
-      <!-- HERO & SEARCH SECTION -->
-      <section class="hero-search-section">
-        <div class="hero-text-block">
-          <h1>Stock Market Knowledge, Simplified &amp; Accessible</h1>
-          <p class="hero-subtitle">Interactive quotes, audio-pitch feedback for visually impaired learners, and jargon-free market education.</p>
-        </div>
-
-        <div class="stock-search-card">
-          <label for="stock-search" class="search-label">Look Up Indian Stocks (NSE / BSE)</label>
-          <div class="search-input-wrapper">
-            <input type="text" id="stock-search" placeholder="Type stock name or symbol (e.g., RELIANCE, TCS, INFY)" aria-label="Search for a stock">
-            <button id="search-button" class="btn-primary">Search Stock</button>
-          </div>
-
-          <div class="quick-tickers-row" aria-label="Suggested popular stocks">
-            <span class="suggest-label">Try searching:</span>
-            <button class="quick-ticker-pill" data-symbol="RELIANCE">RELIANCE</button>
-            <button class="quick-ticker-pill" data-symbol="TCS">TCS</button>
-            <button class="quick-ticker-pill" data-symbol="INFY">INFY</button>
-            <button class="quick-ticker-pill" data-symbol="HDFCBANK">HDFCBANK</button>
-            <button class="quick-ticker-pill" data-symbol="TATAMOTORS">TATAMOTORS</button>
-            <button class="quick-ticker-pill" data-symbol="ITC">ITC</button>
-          </div>
+      <div class="stock-search-card">
+        <label for="stock-search" class="search-label">Search for Stocks</label>
+        <div class="search-input-wrapper">
+          <input type="search" id="stock-search" placeholder="Enter stock name or symbol..." aria-label="Search for stocks">
+          <button type="button" id="search-button" class="btn-primary">Search for Stocks</button>
         </div>
 
         <!-- SEARCH RESULT CARD (AUDIO PITCH INTEGRATED) -->
@@ -151,36 +89,98 @@
 
           <div id="historical-data" aria-live="polite"></div>
         </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. STOCK 360 AI / ASK 360 AI (BEFORE MAIN LINKS) -->
+  <section class="stock360-ai-section" aria-label="Stock 360 AI Assistant">
+    <div class="container">
+      <div class="stock360-ai-banner">
+        <div class="stock360-ai-info">
+          <span class="ai-pill-badge">&#10024; Stock 360 AI</span>
+          <p class="stock360-ai-desc">Have a question about market concepts or financial terms? Ask our educational AI assistant instantly.</p>
+        </div>
+        <div class="stock360-ai-actions">
+          <button type="button" id="home-ask360-btn" class="ask360-btn btn-ask360-ai" aria-expanded="false" aria-controls="home-ask360-drawer">
+            &#129302; Ask 360 AI
+          </button>
+        </div>
+      </div>
+
+      <div id="home-ask360-drawer" class="ask360-box stock360-ai-drawer" hidden>
+        <label for="home-ask360-input" class="search-label">Ask Stock 360 AI a Question</label>
+        <div class="search-input-wrapper">
+          <input type="text" id="home-ask360-input" placeholder="Type any question about stock market concepts or terminology...">
+          <button type="button" id="home-ask360-send" class="btn-primary">Ask 360 AI</button>
+        </div>
+        <div id="home-ask360-response" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MAIN NAVIGATION LINKS -->
+  <nav id="main-navigation" aria-label="Main navigation">
+    <div class="container">
+      <ul>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="learn.html">Learn Modules</a></li>
+        <li><a href="ask.html">Ask 360 AI</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- EDUCATIONAL DISCLAIMER -->
+  <div class="top-disclaimer" role="note" aria-label="Educational Disclaimer">
+    <div class="container">
+      <p><strong>Disclaimer:</strong> Any article or learning material published on this website is purely meant for educational purposes only and does not constitute investment advice in any manner.</p>
+    </div>
+  </div>
+
+  <!-- 6. MAIN CONTENT -->
+  <main id="main-content" tabindex="-1">
+    <div class="container">
+
+      <!-- HERO SECTION -->
+      <section class="hero-search-section">
+        <div class="hero-text-block">
+          <h1>Stock Market Knowledge, Simplified &amp; Accessible</h1>
+          <p class="hero-subtitle">Interactive stock lookup, audio-pitch feedback for visually impaired learners, and jargon-free market education.</p>
+        </div>
       </section>
 
       <!-- FEATURED EDUCATIONAL HIGHLIGHTS -->
-      <section class="home-features-section">
+      <section class="home-features-section" aria-label="Platform Features">
         <div class="feature-card">
-          <div class="feature-icon">&#128218;</div>
-          <h3>Curated Learn Modules</h3>
-          <p>Step-by-step units covering stock basics, market regulators like SEBI, and investment concepts with key takeaways.</p>
+          <div class="feature-icon" aria-hidden="true">&#128218;</div>
+          <h2>Curated Learn Modules</h2>
+          <p>Step-by-step units covering stock basics, market regulators like SEBI, and core financial concepts with clear takeaways.</p>
           <a href="learn.html" class="feature-link">Browse Learn Modules &rarr;</a>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">&#128240;</div>
-          <h3>Daily Market News</h3>
+          <div class="feature-icon" aria-hidden="true">&#128240;</div>
+          <h2>Daily Market News</h2>
           <p>Read time indicators, clear glossary breakdowns, and daily summaries designed for easy digestion without financial noise.</p>
           <a href="news.html" class="feature-link">Read Latest News &rarr;</a>
         </div>
 
         <div class="feature-card">
-          <div class="feature-icon">&#128172;</div>
-          <h3>Ask 360 AI Assistant</h3>
-          <p>Type any question about financial terminology and get straightforward, educational answers instantly.</p>
-          <a href="ask.html" class="feature-link">Try Ask 360 &rarr;</a>
+          <div class="feature-icon" aria-hidden="true">&#128172;</div>
+          <h2>Stock 360 AI Assistant</h2>
+          <p>Type any question about financial terminology and receive straightforward, educational explanations instantly.</p>
+          <a href="ask.html" class="feature-link">Open Ask 360 AI &rarr;</a>
         </div>
       </section>
 
       <!-- KEYBOARD ACCESSIBILITY HELPER BANNER -->
       <aside class="a11y-helper-banner" aria-label="Accessibility Shortcut Guide">
         <strong>&#9855; Keyboard &amp; Audio Shortcuts:</strong>
-        <span><code>Alt + 3</code> Financial Synonyms &bull; <code>Alt + 6</code> Ask 360 Assistant &bull; <code>Ctrl</code> Stop Speech &bull; Dynamic pitch rises on price gains.</span>
+        <span><code>Alt + A</code> Toggle Accessibility &bull; <code>Alt + 3</code> Financial Synonyms &bull; <code>Alt + 6</code> Ask 360 AI &bull; <code>Ctrl</code> Stop Speech</span>
       </aside>
 
     </div>
@@ -189,18 +189,23 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <h4>Stocks 360</h4>
-        <p>Stay updated with the stock market while learning. Built with a passion for digital accessibility and investor literacy.</p>
+        <div class="footer-brand-row">
+          <img src="assets/stocks360-mark.svg" alt="Stocks 360 Logo" class="footer-logo-img" width="34" height="34">
+          <h4 style="margin-bottom: 0;">Stocks 360&deg;</h4>
+        </div>
+        <p>Stay updated with the stock market while learning. Built with a focus on digital accessibility and investor literacy.</p>
+        <p class="footer-disclaimer"><strong>Disclaimer:</strong> Any article or learning material published on this website is purely meant for educational purposes only and does not constitute investment advice in any manner.</p>
       </div>
       <div>
         <h4>Quick Navigation</h4>
         <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
           <li><a href="news.html">Latest News</a></li>
           <li><a href="newsletter.html">Weekly Newsletter</a></li>
-          <li><a href="learn.html">Curriculum Modules</a></li>
-          <li><a href="about.html">About &amp; Mission</a></li>
+          <li><a href="learn.html">Learn Modules</a></li>
+          <li><a href="ask.html">Ask 360 AI</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
-
         </ul>
       </div>
     </div>

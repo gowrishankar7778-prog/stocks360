@@ -79,39 +79,52 @@ body {
   position: absolute;
   top: -60px;
   left: 15px;
-  background: #000000;
+  background: #0f172a;
   color: #ffffff;
-  padding: 12px 18px;
+  padding: 12px 20px;
   font-weight: 700;
   z-index: 9999;
   text-decoration: none;
   border-radius: var(--radius-sm);
-  transition: top 0.15s ease;
+  border: 2px solid var(--border-focus);
+  box-shadow: var(--shadow-md);
+  transition: top 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease;
 }
 
 .skip-link:focus {
-  top: 15px;
+  top: 14px;
 }
 
 /* ---------- TOP REGULATORY DISCLAIMER ---------- */
 .top-disclaimer {
   background-color: var(--warning-bg);
   color: #92400e;
-  padding: 10px 15px;
-  font-size: 0.95rem;
+  padding: 12px 16px;
+  font-size: 0.98rem;
   border-bottom: 1px solid #fde68a;
   text-align: center;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .top-disclaimer strong {
   color: #78350f;
 }
 
+.footer-disclaimer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #1e293b;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
 /* ---------- TOP BAR & BRAND ---------- */
 .top-bar {
   background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-light);
-  padding: 14px 0;
+  padding: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .top-bar-flex {
@@ -119,55 +132,221 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 16px;
 }
 
 .brand-group {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo-img {
+  width: 46px;
+  height: 46px;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+}
+
+.brand-group:hover .brand-logo-img {
+  transform: scale(1.06) rotate(4deg);
+  box-shadow: var(--shadow-md);
+}
+
+.brand-text-stack {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
 }
 
 .brand-logo, .brand-title a {
   font-size: 1.65rem;
   font-weight: 800;
-  color: var(--primary);
+  color: #0f172a;
   text-decoration: none;
   letter-spacing: -0.5px;
+  transition: color 0.2s ease;
+}
+
+.brand-logo .brand-accent {
+  color: var(--primary);
 }
 
 .brand-tagline {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.footer-brand-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-logo-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
 }
 
 /* ---------- ACCESSIBILITY TOGGLE BUTTON ---------- */
 .a11y-toggle-btn, #accessibility-toggle {
-  background-color: #1e293b;
+  background-color: #0f172a;
   color: #ffffff;
   border: 2px solid #334155;
-  padding: 10px 20px;
+  padding: 10px 22px;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  box-shadow: var(--shadow-sm);
 }
 
 .a11y-toggle-btn:hover, #accessibility-toggle:hover {
-  background-color: #0f172a;
-  border-color: #475569;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- TOP SEARCH FOR STOCKS SECTION ---------- */
+.top-search-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+  padding: 22px 0 14px 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.25s ease;
+}
+
+.top-search-section .stock-search-card {
+  margin-bottom: 0;
+  padding: 22px 26px;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.top-search-section .stock-search-card:focus-within {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- STOCK 360 AI / ASK 360 AI BAR (BEFORE MAIN LINKS) ---------- */
+.stock360-ai-section {
+  background-color: #eff6ff;
+  border-bottom: 1px solid #bfdbfe;
+  padding: 14px 0;
+  transition: background-color 0.25s ease;
+}
+
+.stock360-ai-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #bfdbfe;
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.stock360-ai-banner:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.stock360-ai-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ai-pill-badge {
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.2px;
+}
+
+.stock360-ai-desc {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.btn-ask360-ai {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: 2px solid var(--primary);
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-ask360-ai:hover,
+.btn-ask360-ai:focus {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.stock360-ai-drawer {
+  margin-top: 14px;
+  margin-bottom: 0;
+  background: #ffffff;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.25s ease;
+}
+
+.stock360-ai-drawer .search-input-wrapper {
+  margin-bottom: 10px;
+}
+
+.stock360-ai-drawer .search-input-wrapper input {
+  width: auto;
+  margin-right: 0;
+}
+
+.ask360-error {
+  color: var(--danger);
+  font-weight: 600;
+  margin-top: 8px;
 }
 
 /* ---------- NAVIGATION BAR ---------- */
 #main-navigation {
   background-color: #0f172a; /* Deep navy */
   padding: 0;
-  border-bottom: 2px solid var(--primary);
+  border-bottom: 3px solid var(--primary);
+  box-shadow: var(--shadow-sm);
 }
 
 #main-navigation ul {
@@ -176,17 +355,17 @@ body {
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  gap: 2px;
+  gap: 4px;
 }
 
 #main-navigation li a {
   display: block;
-  color: #cbd5e1;
+  color: #e2e8f0;
   text-decoration: none;
-  padding: 14px 18px;
+  padding: 14px 20px;
   font-size: 1.05rem;
   font-weight: 600;
-  transition: color 0.15s, background-color 0.15s;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
@@ -547,6 +726,7 @@ body {
   margin-bottom: 15px;
 }
 
+.feature-card h2,
 .feature-card h3 {
   font-size: 1.35rem;
   color: var(--text-primary);
@@ -1111,12 +1291,17 @@ body.high-contrast * {
   border-color: #facc15 !important; /* Stark contrast yellow borders */
 }
 
-body.high-contrast a {
-  color: #38bdf8 !important; /* Cyan links */
-  text-decoration: underline !important;
+body.high-contrast a,
+body.high-contrast .brand-logo,
+body.high-contrast .brand-logo .brand-accent {
+  color: #38bdf8 !important; /* Cyan links & brand */
 }
 
 body.high-contrast .top-bar,
+body.high-contrast .top-search-section,
+body.high-contrast .stock360-ai-section,
+body.high-contrast .stock360-ai-banner,
+body.high-contrast .stock360-ai-drawer,
 body.high-contrast #main-navigation,
 body.high-contrast .market-ticker-bar,
 body.high-contrast .stock-search-card,
@@ -1128,6 +1313,7 @@ body.high-contrast .contact-card,
 body.high-contrast .faq-item,
 body.high-contrast .detail-container,
 body.high-contrast footer {
+  background: #000000 !important;
   background-color: #000000 !important;
   color: #ffffff !important;
   border: 2px solid #ffffff !important;
@@ -1148,6 +1334,7 @@ body.high-contrast select {
 }
 
 body.high-contrast .btn-primary,
+body.high-contrast .btn-ask360-ai,
 body.high-contrast .a11y-toggle-btn {
   background-color: #facc15 !important;
   color: #000000 !important;

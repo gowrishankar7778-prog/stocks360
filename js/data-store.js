@@ -1,9 +1,9 @@
 /**
  * Stocks 360 - Unified Data Store (data-store.js)
- * Manages persistence for News, Newsletters, Learning Units, and Settings.
+ * Manages persistence for News, Newsletters, Learning Units, Comments/Inquiries, and Site Settings.
  * Supports:
  * 1. Google Cloud Firebase Firestore (Real-time cloud database across all devices)
- * 2. High-speed local cache & seed data fallback (so the site always works without errors)
+ * 2. High-speed local cache & seed data fallback
  */
 
 const StocksDataStore = (function () {
@@ -15,7 +15,6 @@ const StocksDataStore = (function () {
     SITE_SETTINGS: "stocks360_site_settings"
   };
 
-  // Default initial seed data
   const SEED_NEWS = [
     {
       id: "news-1",
@@ -120,6 +119,29 @@ const StocksDataStore = (function () {
     }
   ];
 
+  const SEED_COMMENTS = [
+    {
+      id: "cmt-1",
+      lessonId: "su-1",
+      badge: "Learn • Unit 1",
+      name: "Rahul S.",
+      text: "Can you explain the difference between primary market (IPO) and secondary market in simple words?",
+      reply: "",
+      date: "28 Oct 2026, 11:45 AM",
+      createdAt: 1793210700000
+    },
+    {
+      id: "cmt-2",
+      lessonId: "ask360",
+      badge: "Ask 360 Query",
+      name: "Ananya Verma",
+      text: "How does inflation affect the stock market prices of banking stocks?",
+      reply: "",
+      date: "27 Oct 2026, 3:20 PM",
+      createdAt: 1793137200000
+    }
+  ];
+
   function getItem(key, fallback) {
     try {
       const data = localStorage.getItem(key);
@@ -138,7 +160,12 @@ const StocksDataStore = (function () {
     }
   }
 
-  // Initialize seed data
+  function emitSync(collection) {
+    if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
+      window.dispatchEvent(new CustomEvent("stocks360:sync", { detail: { collection: collection } }));
+    }
+  }
+
   function init() {
     if (!localStorage.getItem(STORAGE_KEYS.NEWS)) {
       setItem(STORAGE_KEYS.NEWS, SEED_NEWS);
@@ -149,41 +176,70 @@ const StocksDataStore = (function () {
     if (!localStorage.getItem(STORAGE_KEYS.LEARN_UNITS)) {
       setItem(STORAGE_KEYS.LEARN_UNITS, SEED_UNITS);
     }
+    if (!localStorage.getItem(STORAGE_KEYS.COMMENTS)) {
+      setItem(STORAGE_KEYS.COMMENTS, SEED_COMMENTS);
+    }
 
-    // Try cloud sync if Firebase is configured
     syncWithFirebase();
   }
 
-  // Cloud sync helper
   function syncWithFirebase() {
     if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
       const db = StocksFirebase.getDb();
 
-      // Listen to real-time updates from Firebase
+      // 1. News real-time listener
       db.collection("news").onSnapshot(snapshot => {
         if (!snapshot.empty) {
           const cloudNews = [];
           snapshot.forEach(doc => cloudNews.push(doc.data()));
           cloudNews.sort((a, b) => (b.publishedAt || 0) - (a.publishedAt || 0));
           setItem(STORAGE_KEYS.NEWS, cloudNews);
+          emitSync("news");
         }
-      }, err => console.log("Firebase sync note:", err.message));
+      }, err => console.log("Firebase news sync note:", err.message));
 
+      // 2. Newsletters real-time listener
       db.collection("newsletters").onSnapshot(snapshot => {
         if (!snapshot.empty) {
           const cloudNL = [];
           snapshot.forEach(doc => cloudNL.push(doc.data()));
           setItem(STORAGE_KEYS.NEWSLETTERS, cloudNL);
+          emitSync("newsletters");
         }
-      }, err => console.log("Firebase sync note:", err.message));
+      }, err => console.log("Firebase newsletters sync note:", err.message));
 
+      // 3. Learn units real-time listener
       db.collection("learn_units").onSnapshot(snapshot => {
         if (!snapshot.empty) {
           const cloudUnits = [];
           snapshot.forEach(doc => cloudUnits.push(doc.data()));
           setItem(STORAGE_KEYS.LEARN_UNITS, cloudUnits);
+          emitSync("learn_units");
         }
-      }, err => console.log("Firebase sync note:", err.message));
+      }, err => console.log("Firebase learn_units sync note:", err.message));
+
+      // 4. Comments & Ask inquiries real-time listener
+      db.collection("comments").onSnapshot(snapshot => {
+        if (!snapshot.empty) {
+          const cloudComments = [];
+          snapshot.forEach(doc => cloudComments.push(doc.data()));
+          cloudComments.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+          setItem(STORAGE_KEYS.COMMENTS, cloudComments);
+          emitSync("comments");
+        }
+      }, err => console.log("Firebase comments sync note:", err.message));
+
+      // 5. Site settings (About Us & Contact details) real-time listener
+      db.collection("site_settings").doc("main").onSnapshot(doc => {
+        if (doc.exists) {
+          const data = doc.data() || {};
+          if (data.aboutContent) localStorage.setItem("stocks360_about_content", data.aboutContent);
+          if (data.contactEmail) localStorage.setItem("stocks360_contact_email", data.contactEmail);
+          if (data.contactPhone) localStorage.setItem("stocks360_contact_phone", data.contactPhone);
+          if (data.contactHours) localStorage.setItem("stocks360_contact_hours", data.contactHours);
+          emitSync("site_settings");
+        }
+      }, err => console.log("Firebase site_settings sync note:", err.message));
     }
   }
 
@@ -224,7 +280,6 @@ const StocksDataStore = (function () {
 
       setItem(STORAGE_KEYS.NEWS, allNews);
 
-      // Write to Firebase Firestore if connected
       if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
         StocksFirebase.getDb().collection("news").doc(newArticle.id).set(newArticle)
           .catch(err => console.error("Firebase write error:", err));
@@ -375,6 +430,74 @@ const StocksDataStore = (function () {
       return newSubunit;
     },
 
+    // ---------------- COMMENTS & INQUIRIES API ----------------
+    getComments: function (lessonId) {
+      const all = getItem(STORAGE_KEYS.COMMENTS, SEED_COMMENTS);
+      if (!lessonId) return all;
+      return all.filter(c => c.lessonId === lessonId);
+    },
+
+    saveComment: function (comment) {
+      const all = getItem(STORAGE_KEYS.COMMENTS, SEED_COMMENTS);
+      const item = {
+        id: comment.id || "cmt-" + Date.now(),
+        lessonId: comment.lessonId || "ask360",
+        badge: comment.badge || "Learner Question",
+        name: comment.name || "Learner",
+        text: comment.text || "",
+        reply: comment.reply || "",
+        date: comment.date || new Date().toLocaleString("en-IN", { dateStyle: "short", timeStyle: "short" }),
+        createdAt: comment.createdAt || Date.now()
+      };
+
+      const idx = all.findIndex(c => c.id === item.id);
+      if (idx >= 0) {
+        all[idx] = item;
+      } else {
+        all.unshift(item);
+      }
+      setItem(STORAGE_KEYS.COMMENTS, all);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("comments").doc(item.id).set(item)
+          .catch(err => console.error("Firebase comment write error:", err));
+      }
+      return item;
+    },
+
+    deleteComment: function (id) {
+      let all = getItem(STORAGE_KEYS.COMMENTS, SEED_COMMENTS);
+      all = all.filter(c => c.id !== id);
+      setItem(STORAGE_KEYS.COMMENTS, all);
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("comments").doc(id).delete()
+          .catch(err => console.error("Firebase comment delete error:", err));
+      }
+      return true;
+    },
+
+    // ---------------- SITE SETTINGS API (ABOUT & CONTACT) ----------------
+    saveSiteSettings: function (partialSettings) {
+      if (partialSettings.aboutContent !== undefined) {
+        localStorage.setItem("stocks360_about_content", partialSettings.aboutContent);
+      }
+      if (partialSettings.contactEmail !== undefined) {
+        localStorage.setItem("stocks360_contact_email", partialSettings.contactEmail);
+      }
+      if (partialSettings.contactPhone !== undefined) {
+        localStorage.setItem("stocks360_contact_phone", partialSettings.contactPhone);
+      }
+      if (partialSettings.contactHours !== undefined) {
+        localStorage.setItem("stocks360_contact_hours", partialSettings.contactHours);
+      }
+
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        StocksFirebase.getDb().collection("site_settings").doc("main").set(partialSettings, { merge: true })
+          .catch(err => console.error("Firebase settings write error:", err));
+      }
+    },
+
     // ---------------- BACKUP & RESTORE ----------------
     exportBackup: function () {
       const payload = {
@@ -382,7 +505,8 @@ const StocksDataStore = (function () {
         exportedAt: new Date().toISOString(),
         news: this.getNews(),
         newsletters: this.getNewsletters(),
-        units: this.getUnits()
+        units: this.getUnits(),
+        comments: this.getComments()
       };
       return JSON.stringify(payload, null, 2);
     },
@@ -393,6 +517,7 @@ const StocksDataStore = (function () {
         if (payload.news) setItem(STORAGE_KEYS.NEWS, payload.news);
         if (payload.newsletters) setItem(STORAGE_KEYS.NEWSLETTERS, payload.newsletters);
         if (payload.units) setItem(STORAGE_KEYS.LEARN_UNITS, payload.units);
+        if (payload.comments) setItem(STORAGE_KEYS.COMMENTS, payload.comments);
         return { success: true };
       } catch (err) {
         return { success: false, error: err.message };
@@ -403,6 +528,7 @@ const StocksDataStore = (function () {
       setItem(STORAGE_KEYS.NEWS, SEED_NEWS);
       setItem(STORAGE_KEYS.NEWSLETTERS, SEED_NEWSLETTERS);
       setItem(STORAGE_KEYS.LEARN_UNITS, SEED_UNITS);
+      setItem(STORAGE_KEYS.COMMENTS, SEED_COMMENTS);
     }
   };
 })();

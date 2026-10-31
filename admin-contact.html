@@ -74,6 +74,12 @@
     </div>
   </footer>
 
+  <!-- Firebase Cloud SDKs & Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/data-store.js"></script>
   <script src="js/admin-auth.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -84,7 +90,6 @@
       const hoursInput = document.getElementById("contact-hours");
       const feedback = document.getElementById("contact-feedback");
 
-      // Load saved values
       emailInput.value = localStorage.getItem("stocks360_contact_email") || "gowrishankar7778@gmail.com";
       phoneInput.value = localStorage.getItem("stocks360_contact_phone") || "+91 98765 43210";
       hoursInput.value = localStorage.getItem("stocks360_contact_hours") || "Monday to Friday, 9:30 AM - 5:30 PM IST";
@@ -99,11 +104,13 @@
           return;
         }
 
-        localStorage.setItem("stocks360_contact_email", email);
-        localStorage.setItem("stocks360_contact_phone", phone);
-        localStorage.setItem("stocks360_contact_hours", hours);
+        StocksDataStore.saveSiteSettings({
+          contactEmail: email,
+          contactPhone: phone,
+          contactHours: hours
+        });
 
-        feedback.textContent = "Contact details updated successfully on the public website!";
+        feedback.textContent = "Contact details updated and synced to Firebase Firestore!";
         feedback.className = "feedback-box success";
         feedback.hidden = false;
         setTimeout(() => { feedback.hidden = true; }, 4000);

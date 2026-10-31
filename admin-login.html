@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login - Stocks 360</title>
+  <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/admin.css">
 </head>
@@ -15,17 +16,26 @@
   <main class="admin-login-container">
     <div class="admin-login-box">
       <div class="admin-brand-header">
-        <div class="brand-badge">ADMIN PORTAL</div>
+        <div class="brand-badge">RESTRICTED ADMIN PORTAL</div>
         <h1>Stocks 360</h1>
-        <p class="subtitle">Secure Content & Website Management</p>
+        <p class="subtitle">Private Administrator Sign-In (Firebase Auth Protected)</p>
       </div>
 
       <div id="login-message" aria-live="polite" class="login-feedback"></div>
 
+      <!-- GOOGLE SIGN-IN FOR ADMIN -->
+      <div style="margin-bottom: 18px;">
+        <button type="button" id="google-admin-login-btn" class="admin-btn secondary large full-width" style="display:flex; align-items:center; justify-content:center; gap:10px; font-weight:600; border:2px solid #cbd5e1;">
+          <span>&#128274; Sign in with Google (Founder / Admin)</span>
+        </button>
+      </div>
+
+      <div style="text-align:center; color:#64748b; font-size:13px; margin: 12px 0;">&mdash; OR SIGN IN WITH ADMIN EMAIL &mdash;</div>
+
       <form id="admin-login-form" novalidate>
         <div class="form-group">
           <label for="admin-email">Admin Email <span class="required">*</span></label>
-          <input type="email" id="admin-email" required placeholder="admin@stocks360.com" autocomplete="email">
+          <input type="email" id="admin-email" required placeholder="Enter authorized admin email" autocomplete="email">
         </div>
 
         <div class="form-group password-group">
@@ -38,20 +48,13 @@
 
         <div class="form-group-inline">
           <label class="checkbox-label">
-            <input type="checkbox" id="admin-remember">
-            <span>Remember me on this browser</span>
+            <input type="checkbox" id="admin-remember" checked>
+            <span>Keep me signed in on this browser</span>
           </label>
         </div>
 
-        <button type="submit" class="admin-btn primary large full-width">Sign In as Admin</button>
+        <button type="submit" class="admin-btn primary large full-width">Sign In to Admin Panel</button>
       </form>
-
-      <div class="demo-creds-box">
-        <p><strong>Quick Demo Access:</strong></p>
-        <p>Email: <code>gowrishankar7778@gmail.com</code></p>
-        <p>Password: <code>Stocks360@Admin</code></p>
-        <button type="button" id="fill-demo-creds" class="admin-btn secondary small" style="margin-top: 8px;">Fill Demo Credentials</button>
-      </div>
 
       <div class="admin-login-footer">
         <a href="index.html">&larr; Back to Public Website</a>
@@ -59,6 +62,11 @@
     </div>
   </main>
 
+  <!-- Firebase Cloud SDKs & Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
   <script src="js/admin-auth.js"></script>
   <script src="js/admin-login.js"></script>
 </body>

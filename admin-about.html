@@ -64,6 +64,12 @@
     </div>
   </footer>
 
+  <!-- Firebase Cloud SDKs & Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/data-store.js"></script>
   <script src="js/admin-auth.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -92,8 +98,8 @@ What We Offer:
           return;
         }
 
-        localStorage.setItem("stocks360_about_content", content);
-        feedback.textContent = "About Us content updated and live on website!";
+        StocksDataStore.saveSiteSettings({ aboutContent: content });
+        feedback.textContent = "About Us content updated and synced to Firebase Firestore!";
         feedback.className = "feedback-box success";
         feedback.hidden = false;
         setTimeout(() => { feedback.hidden = true; }, 4000);

@@ -1,11 +1,10 @@
-// stock-search.js - Refined Stock Search with Audio Pitch & Realistic NSE Quotes
+// stock-search.js - Accessible Stock Search with Audio Pitch Feedback
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("stock-search");
   const searchButton = document.getElementById("search-button");
   const stockResult = document.getElementById("stock-result");
   const historicalSelect = document.getElementById("historical-period");
 
-  // Sample database of popular Indian stocks for realistic educational search
   const STOCK_DATABASE = {
     "RELIANCE": {
       name: "Reliance Industries Limited",
@@ -84,19 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
       high: 495.00,
       low: 486.20,
       volume: "88,20,100"
-    },
-    "ETERNAL": {
-      name: "Eternal Energies Limited",
-      symbol: "ETERNAL",
-      exchange: "NSE",
-      price: 245.60,
-      change: 3.40,
-      percent: 1.40,
-      prevClose: 242.20,
-      open: 243.00,
-      high: 247.80,
-      low: 241.50,
-      volume: "12,40,300"
     }
   };
 
@@ -111,21 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
   if (searchInput) {
     searchInput.addEventListener("keypress", function (event) {
       if (event.key === "Enter") {
+        event.preventDefault();
         performSearch();
       }
     });
   }
-
-  // Quick ticker pill clicks
-  document.querySelectorAll(".quick-ticker-pill").forEach(pill => {
-    pill.addEventListener("click", function () {
-      const sym = this.getAttribute("data-symbol");
-      if (searchInput && sym) {
-        searchInput.value = sym;
-        performSearch();
-      }
-    });
-  });
 
   if (historicalSelect) {
     historicalSelect.addEventListener("change", function () {
@@ -137,19 +113,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function performSearch() {
+    if (!searchInput) return;
     const rawQuery = searchInput.value.trim();
     if (!rawQuery) {
-      alert("Please enter a stock name or symbol (e.g. RELIANCE, TCS, INFY, HDFCBANK).");
+      alert("Please enter a stock name or symbol to search.");
+      searchInput.focus();
       return;
     }
 
     const cleanKey = rawQuery.toUpperCase().replace(/\s+/g, "");
-
-    // Find stock or build dynamic placeholder
     let stock = STOCK_DATABASE[cleanKey];
 
     if (!stock) {
-      // Find partial match
       const matchedKey = Object.keys(STOCK_DATABASE).find(k =>
         k.includes(cleanKey) || STOCK_DATABASE[k].name.toUpperCase().includes(cleanKey)
       );
@@ -157,10 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (matchedKey) {
         stock = STOCK_DATABASE[matchedKey];
       } else {
-        // Fallback for custom searched name
         stock = {
           name: rawQuery.toUpperCase() + " Limited",
-          symbol: cleanKey.substring(0, 8),
+          symbol: cleanKey.substring(0, 10),
           exchange: "NSE",
           price: 350.00,
           change: 5.25,
@@ -191,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const changeEl = document.getElementById("price-change");
     changeEl.textContent = `${sign}${stock.change.toFixed(2)} (${sign}${stock.percent.toFixed(2)}%)`;
-    changeEl.className = isPositive ? "stat-positive" : "stat-negative";
+    changeEl.className = "price-change-pill " + (isPositive ? "stat-positive" : "stat-negative");
 
     document.getElementById("previous-close").textContent = `₹ ${stock.prevClose.toFixed(2)}`;
     document.getElementById("today-open").textContent = `₹ ${stock.open.toFixed(2)}`;
@@ -202,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (histData) histData.innerHTML = "";
     if (historicalSelect) historicalSelect.value = "";
 
-    // Speech audio with pitch modulation
     if (typeof window.speakWithPitch === "function") {
       const speechText = `${stock.name}. Live price ${stock.price.toFixed(2)} rupees. Price is ${isPositive ? "rising by " + stock.change.toFixed(2) : "down by " + Math.abs(stock.change).toFixed(2)} rupees.`;
       window.speakWithPitch(speechText, isPositive);

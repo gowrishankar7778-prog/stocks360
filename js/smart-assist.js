@@ -144,32 +144,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Open Ask 360 inline (click the visible button)
   function openAsk360() {
-    const buttons = document.querySelectorAll(".ask360-btn");
+    const buttons = document.querySelectorAll(".ask360-btn, .ask360-trigger-btn");
     let found = false;
 
     buttons.forEach(function (btn) {
-      if (btn.offsetParent !== null) {
-        // If already open, just focus the input
+      if (!found && btn.offsetParent !== null) {
         const expanded = btn.getAttribute("aria-expanded") === "true";
         if (!expanded) {
           btn.click();
         }
-        // Focus the textarea
         setTimeout(function () {
-          const box = btn.nextElementSibling;
+          const targetId = btn.getAttribute("aria-controls");
+          const box = targetId ? document.getElementById(targetId) : btn.nextElementSibling;
           if (box) {
-            const textarea = box.querySelector("textarea");
-            if (textarea) textarea.focus();
+            const field = box.querySelector("input, textarea");
+            if (field) field.focus();
           }
         }, 100);
         found = true;
-        
       }
     });
-
-    if (!found) {
-      
-    }
   }
 
   // Keyboard shortcuts
