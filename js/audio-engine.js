@@ -1,17 +1,49 @@
 /**
- * Stocks 360 - Cloud Audio Engine (audio-engine.js)
+ * Stocks 360 - Cloud & Natural Voice Audio Engine (audio-engine.js)
  *
- * All Google Cloud Voice API configurations, keys, and compressed MP3 files
- * are stored strictly in Google Cloud Firebase Firestore (`site_settings/google_voice_api`
- * and `site_settings/audio_<id>`) and are NEVER placed in GitHub.
+ * Multi-tier resilient audio playback across all devices (Android, iPhone, iPad, MacBook, Windows):
+ * 1. Browser IndexedDB persistent MP3 cache (`stocks360_audio_cache_db` -> 0 repeat Firestore reads)
+ * 2. Google Cloud Firebase Firestore on-demand MP3 (`site_settings/audio_<id>`)
+ * 3. Pre-bundled compressed MP3 (`assets/audio/<id>.mp3` or `article.audioUrl`)
+ * 4. Automatic seamless fallback to Natural Web Speech Synthesis (`window.speechSynthesis`)
+ *    with full Play/Pause/Resume, -10s/+10s skip, interactive seek bar, and 0.75x-2x speed control.
  */
 
 const StocksAudioEngine = (function () {
   const IDB_NAME = "stocks360_audio_cache_db";
   const IDB_STORE = "compressed_mp3_store";
   const VOICE_CONFIG_CACHE_KEY = "stocks360_firebase_voice_config";
+  const BUNDLED_AUDIO_IDS = { "news-1": true, "news-2": true, "news-3": true };
+
+  const DEFAULT_VOICE_CONFIG = {
+    cloudTtsUrl: "https://texttospeech.googleapis.com/v1/text:synthesize",
+    voiceStreamUrl: "https://translate.googleapis.com/translate_tts",
+    languageCode: "en-IN",
+    voiceName: "en-IN-Neural2-A",
+    speakingRate: 0.96,
+    audioEncoding: "MP3",
+    sampleRateHertz: 24000,
+    compressionKbps: 32
+  };
 
   let cachedVoiceConfig = null;
+  let cachedVoicesList = [];
+
+  if (typeof window !== "undefined" && "speechSynthesis" in window) {
+    try {
+      cachedVoicesList = window.speechSynthesis.getVoices() || [];
+      window.speechSynthesis.addEventListener("voiceschanged", function () {
+        cachedVoicesList = window.speechSynthesis.getVoices() || [];
+      });
+    } catch (_) {}
+  }
+
+  function withTimeout(promise, ms, fallbackValue) {
+    return Promise.race([
+      promise,
+      new Promise((resolve) => setTimeout(() => resolve(fallbackValue), ms))
+    ]);
+  }
 
   // ---------------- LOAD GOOGLE VOICE API CONFIG FROM FIREBASE ----------------
   async function getFirebaseVoiceConfig() {
@@ -22,22 +54,24 @@ const StocksAudioEngine = (function () {
     try {
       const localSaved = sessionStorage.getItem(VOICE_CONFIG_CACHE_KEY);
       if (localSaved) {
-        cachedVoiceConfig = JSON.parse(localSaved);
-        if (cachedVoiceConfig && cachedVoiceConfig.voiceStreamUrl) {
-          return cachedVoiceConfig;
-        }
+        cachedVoiceConfig = Object.assign({}, DEFAULT_VOICE_CONFIG, JSON.parse(localSaved));
+        return cachedVoiceConfig;
       }
     } catch (_) {}
 
     // 1. Load from Google Firebase Firestore (`site_settings/google_voice_api`)
     if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
       try {
-        const doc = await StocksFirebase.getDb()
-          .collection("site_settings")
-          .doc("google_voice_api")
-          .get();
-        if (doc.exists) {
-          cachedVoiceConfig = doc.data() || {};
+        const doc = await withTimeout(
+          StocksFirebase.getDb()
+            .collection("site_settings")
+            .doc("google_voice_api")
+            .get(),
+          2200,
+          null
+        );
+        if (doc && doc.exists) {
+          cachedVoiceConfig = Object.assign({}, DEFAULT_VOICE_CONFIG, doc.data() || {});
           try {
             sessionStorage.setItem(VOICE_CONFIG_CACHE_KEY, JSON.stringify(cachedVoiceConfig));
           } catch (_) {}
@@ -48,16 +82,19 @@ const StocksAudioEngine = (function () {
       }
     }
 
-    // 2. Fallback to runtime config loaded from gitignored firebase-secret.json
-    if (typeof FIREBASE_CONFIG !== "undefined" && FIREBASE_CONFIG.googleVoiceApi) {
+    // 2. Fallback to runtime config loaded from gitignored firebase-secret.json or defaults
+    if (typeof FIREBASE_CONFIG !== "undefined") {
       cachedVoiceConfig = Object.assign(
+        {},
+        DEFAULT_VOICE_CONFIG,
         { apiKey: FIREBASE_CONFIG.apiKey || "" },
-        FIREBASE_CONFIG.googleVoiceApi
+        FIREBASE_CONFIG.googleVoiceApi || {}
       );
       return cachedVoiceConfig;
     }
 
-    return {};
+    cachedVoiceConfig = Object.assign({}, DEFAULT_VOICE_CONFIG);
+    return cachedVoiceConfig;
   }
 
   // ---------------- INDEXEDDB PERSISTENT CACHE (0 REPEAT FIRESTORE READS) ----------------
@@ -83,8 +120,10 @@ const StocksAudioEngine = (function () {
   }
 
   async function getCachedAudio(articleId) {
+    if (!articleId) return null;
     try {
-      const db = await openCacheDb();
+      const db = await withTimeout(openCacheDb(), 1200, null);
+      if (!db) return null;
       return await new Promise((resolve) => {
         const tx = db.transaction(IDB_STORE, "readonly");
         const store = tx.objectStore(IDB_STORE);
@@ -98,8 +137,10 @@ const StocksAudioEngine = (function () {
   }
 
   async function setCachedAudio(articleId, audioDataUrl, meta) {
+    if (!articleId || !audioDataUrl) return;
     try {
-      const db = await openCacheDb();
+      const db = await withTimeout(openCacheDb(), 1200, null);
+      if (!db) return;
       await new Promise((resolve) => {
         const tx = db.transaction(IDB_STORE, "readwrite");
         const store = tx.objectStore(IDB_STORE);
@@ -122,8 +163,9 @@ const StocksAudioEngine = (function () {
     if (article.title) {
       parts.push(cleanHtmlToText(article.title) + ".");
     }
-    if (article.content) {
-      parts.push(cleanHtmlToText(article.content));
+    const bodyText = article.content || article.body || "";
+    if (bodyText) {
+      parts.push(cleanHtmlToText(bodyText));
     }
     if (article.glossary && article.glossary.trim()) {
       parts.push("Glossary. " + cleanHtmlToText(article.glossary));
@@ -186,17 +228,61 @@ const StocksAudioEngine = (function () {
     return chunks;
   }
 
-  function buildVoiceStreamUrl(voiceCfg, chunkText, lang) {
-    const baseUrl = voiceCfg && voiceCfg.voiceStreamUrl;
-    if (!baseUrl) return "";
-    const tl = lang || (voiceCfg && voiceCfg.languageCode) || "en-IN";
-    return (
-      baseUrl +
-      "?ie=UTF-8&client=tw-ob&tl=" +
-      encodeURIComponent(tl) +
-      "&q=" +
-      encodeURIComponent(chunkText)
-    );
+  function selectBestNaturalVoice(preferredLang) {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return null;
+    const voices =
+      cachedVoicesList.length > 0
+        ? cachedVoicesList
+        : window.speechSynthesis.getVoices() || [];
+    if (!voices || voices.length === 0) return null;
+
+    const targetLang = (preferredLang || "en-IN").toLowerCase();
+    const langPrefix = targetLang.split("-")[0] || "en";
+
+    let bestVoice = null;
+    let bestScore = -999;
+
+    for (let i = 0; i < voices.length; i++) {
+      const v = voices[i];
+      const vLang = (v.lang || "").toLowerCase().replace("_", "-");
+      const vName = (v.name || "").toLowerCase();
+
+      if (!vLang.startsWith(langPrefix) && !vName.includes("english") && !vName.includes("india")) {
+        continue;
+      }
+
+      let score = 0;
+      if (vLang === targetLang) score += 35;
+      else if (vLang.startsWith("en-in")) score += 30;
+      else if (vLang.startsWith("en-gb") || vLang.startsWith("en-us")) score += 22;
+      else if (vLang.startsWith("en")) score += 15;
+
+      // Prefer natural / neural / assistant voices across Chrome, Android, Edge, macOS, and iOS
+      if (vName.includes("natural") || vName.includes("neural")) score += 45;
+      if (vName.includes("google")) score += 40;
+      if (vName.includes("online")) score += 25;
+      if (vName.includes("premium") || vName.includes("enhanced") || vName.includes("siri")) score += 35;
+      if (
+        vName.includes("neerja") ||
+        vName.includes("prabhat") ||
+        vName.includes("rishi") ||
+        vName.includes("veena") ||
+        vName.includes("samantha") ||
+        vName.includes("aria") ||
+        vName.includes("jenny") ||
+        vName.includes("daniel")
+      ) {
+        score += 28;
+      }
+      if (!v.localService) score += 10;
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestVoice = v;
+      }
+    }
+
+    return bestVoice || voices[0] || null;
   }
 
   // ---------------- MP3 COMPRESSION ENGINE (LAMEJS 32KBPS MONO @ 24KHZ) ----------------
@@ -272,19 +358,22 @@ const StocksAudioEngine = (function () {
    */
   async function synthesizeCloudTtsMp3(text, voiceOption) {
     const voiceCfg = await getFirebaseVoiceConfig();
-    const apiKey = voiceCfg.apiKey || (typeof FIREBASE_CONFIG !== "undefined" ? FIREBASE_CONFIG.apiKey : "");
-    const cloudTtsUrl = voiceCfg.cloudTtsUrl;
+    const apiKey =
+      voiceCfg.apiKey ||
+      (typeof FIREBASE_CONFIG !== "undefined" ? FIREBASE_CONFIG.apiKey : "");
+    const cloudTtsUrl = voiceCfg.cloudTtsUrl || DEFAULT_VOICE_CONFIG.cloudTtsUrl;
 
     if (apiKey && cloudTtsUrl) {
-      const voiceName = (voiceOption && voiceOption.name) || voiceCfg.voiceName || "en-IN-Neural2-A";
-      const langCode = (voiceOption && voiceOption.lang) || voiceCfg.languageCode || "en-IN";
+      const voiceName =
+        (voiceOption && voiceOption.name) || voiceCfg.voiceName || "en-IN-Neural2-A";
+      const langCode =
+        (voiceOption && voiceOption.lang) || voiceCfg.languageCode || "en-IN";
       const speakingRate = parseFloat(voiceCfg.speakingRate || "0.96") || 0.96;
       const sampleRateHertz = parseInt(voiceCfg.sampleRateHertz || "24000", 10) || 24000;
 
       try {
-        const res = await fetch(
-          cloudTtsUrl + "?key=" + encodeURIComponent(apiKey),
-          {
+        const res = await withTimeout(
+          fetch(cloudTtsUrl + "?key=" + encodeURIComponent(apiKey), {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -300,10 +389,12 @@ const StocksAudioEngine = (function () {
                 sampleRateHertz: sampleRateHertz
               }
             })
-          }
+          }),
+          3500,
+          null
         );
 
-        if (res.ok) {
+        if (res && res.ok) {
           const data = await res.json();
           if (data && data.audioContent) {
             const rawBinary = atob(data.audioContent);
@@ -359,23 +450,37 @@ const StocksAudioEngine = (function () {
   async function resolveArticleAudioSource(article) {
     if (!article) return { type: "none" };
 
-    // 1. Check browser IndexedDB cache first (0 repeat Firestore reads!)
-    const cachedDataUrl = await getCachedAudio(article.id);
-    if (cachedDataUrl) {
+    // 1. Direct inline audioDataUrl if attached to the object
+    if (article.audioDataUrl && String(article.audioDataUrl).startsWith("data:audio")) {
       return {
         type: "single-mp3",
-        src: cachedDataUrl
+        src: article.audioDataUrl
       };
     }
 
-    // 2. Fetch on-demand compressed MP3 from Google Firebase Firestore (`site_settings/audio_<id>`)
+    // 2. Check browser IndexedDB cache first (0 repeat Firestore reads!)
+    if (article.id) {
+      const cachedDataUrl = await getCachedAudio(article.id);
+      if (cachedDataUrl) {
+        return {
+          type: "single-mp3",
+          src: cachedDataUrl
+        };
+      }
+    }
+
+    // 3. Fetch on-demand compressed MP3 from Google Firebase Firestore (`site_settings/audio_<id>`)
     if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady() && article.id) {
       try {
-        const doc = await StocksFirebase.getDb()
-          .collection("site_settings")
-          .doc("audio_" + article.id)
-          .get();
-        if (doc.exists) {
+        const doc = await withTimeout(
+          StocksFirebase.getDb()
+            .collection("site_settings")
+            .doc("audio_" + article.id)
+            .get(),
+          2200,
+          null
+        );
+        if (doc && doc.exists) {
           const data = doc.data();
           if (data && data.audioDataUrl) {
             await setCachedAudio(article.id, data.audioDataUrl, { sizeKb: data.sizeKb });
@@ -388,15 +493,73 @@ const StocksAudioEngine = (function () {
       } catch (_) {}
     }
 
-    // 3. Stream using Google Voice API config loaded from Firebase (`site_settings/google_voice_api`)
-    const voiceCfg = await getFirebaseVoiceConfig();
+    // 4. Check explicit audioUrl or bundled local MP3 (`assets/audio/news-1.mp3`, `news-2.mp3`, `news-3.mp3`)
+    //    and auto-backfill into Firebase Firestore (`site_settings/audio_<id>`) so all future users stream from Firebase!
+    const staticUrl =
+      (article.audioUrl && String(article.audioUrl).trim()) ||
+      (article.id && BUNDLED_AUDIO_IDS[article.id] ? "assets/audio/" + article.id + ".mp3" : "");
+
+    if (staticUrl) {
+      if (article.id && typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        // Asynchronously compress & store into Firebase Firestore on first play if not in Firestore yet
+        setTimeout(async function () {
+          try {
+            const resp = await fetch(staticUrl);
+            if (resp.ok) {
+              const blob = await resp.blob();
+              let payload = null;
+              if (typeof lamejs !== "undefined") {
+                payload = await compressAudioBlobToMp3(blob, 32);
+              } else {
+                const dataUrl = await blobToDataUrl(blob);
+                payload = { dataUrl: dataUrl, sizeKb: (blob.size / 1024).toFixed(1) };
+              }
+              if (payload && payload.dataUrl) {
+                await saveArticleAudioToFirestore(article.id, payload);
+              }
+            }
+          } catch (_) {}
+        }, 50);
+      }
+      return {
+        type: "single-mp3",
+        src: staticUrl
+      };
+    }
+
+    // 5. On-Demand First-User-Play MP3 Generation & Auto-Save to Firebase Firestore!
+    //    If Admin didn't play/generate the MP3 earlier, the very first user who plays the article
+    //    triggers automatic MP3 synthesis, compresses it to 32kbps Mono MP3, and saves it to
+    //    Firebase Firestore (`site_settings/audio_<id>`) for all subsequent users!
     const fullScript = buildNarrationScript(article);
+    const lang = article.audioVoiceLang || "en-IN";
+    if (fullScript && article.id) {
+      try {
+        const synthesized = await synthesizeCloudTtsMp3(fullScript, {
+          lang: lang,
+          name:
+            lang === "en-GB"
+              ? "en-GB-Neural2-A"
+              : lang === "en-US"
+              ? "en-US-Neural2-F"
+              : "en-IN-Neural2-A"
+        });
+        if (synthesized && synthesized.dataUrl) {
+          await saveArticleAudioToFirestore(article.id, synthesized);
+          return {
+            type: "single-mp3",
+            src: synthesized.dataUrl
+          };
+        }
+      } catch (_) {}
+    }
+
+    // 6. Fallback to cross-device Natural Speech Synthesis Engine (`window.speechSynthesis`)
     const chunks = splitIntoChunks(fullScript, 175);
-    const lang = article.audioVoiceLang || voiceCfg.languageCode || "en-IN";
     return {
-      type: "chunked-mp3",
+      type: "speech-synthesis",
       chunks: chunks,
-      urls: chunks.map((c) => buildVoiceStreamUrl(voiceCfg, c, lang)).filter(Boolean)
+      lang: lang
     };
   }
 
@@ -418,6 +581,12 @@ const StocksAudioEngine = (function () {
     }
   }
 
+  function pauseActivePlayer() {
+    if (activeController && typeof activeController.pause === "function") {
+      activeController.pause();
+    }
+  }
+
   async function mountArticlePlayer(article, elements) {
     stopActivePlayer();
 
@@ -434,7 +603,7 @@ const StocksAudioEngine = (function () {
       currentTimeEl,
       totalDurationEl,
       speedSelect
-    } = elements;
+    } = elements || {};
 
     if (!containerEl || !audioEl) return;
 
@@ -448,7 +617,45 @@ const StocksAudioEngine = (function () {
     let hasStartedOnce = false;
     let isSeeking = false;
     let sourceInitialized = false;
+    let preloadPromise = null;
     let currentPlaybackRate = parseFloat(speedSelect ? speedSelect.value : "1") || 1.0;
+
+    const fullText = buildNarrationScript(article);
+    const speechChunks = splitIntoChunks(fullText, 175);
+    const voiceLang = (article && article.audioVoiceLang) || "en-IN";
+    const wordCount = fullText.split(/\s+/).filter(Boolean).length;
+    const estimatedTotalSec = Math.max(6, Math.round(wordCount / 2.45));
+    const totalChars = speechChunks.reduce((acc, c) => acc + c.length, 0) || 1;
+    const chunkDurations = speechChunks.map((c) =>
+      Math.max(1.8, (c.length / totalChars) * estimatedTotalSec)
+    );
+
+    let mode = "single-mp3";
+    let currentChunkIdx = 0;
+    let isPlayingState = false;
+    let activeUtteranceToken = 0;
+    let speechTimerId = null;
+    let chunkStartedAtMs = 0;
+    let chunkPausedOffsetSec = 0;
+    let internalSpeechCancel = false;
+
+    function clearSpeechTimer() {
+      if (speechTimerId) {
+        clearInterval(speechTimerId);
+        speechTimerId = null;
+      }
+    }
+
+    function cancelBrowserSpeechQuietly() {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        internalSpeechCancel = true;
+        activeUtteranceToken++;
+        try {
+          window.speechSynthesis.cancel();
+        } catch (_) {}
+        internalSpeechCancel = false;
+      }
+    }
 
     function updatePlayButtonUI(isPlaying) {
       if (!playPauseBtn) return;
@@ -457,7 +664,11 @@ const StocksAudioEngine = (function () {
         playPauseBtn.setAttribute("data-state", "playing");
         if (playPauseIcon) playPauseIcon.innerHTML = "&#10074;&#10074;";
         if (playPauseLabel) playPauseLabel.textContent = "Pause";
-      } else if (hasStartedOnce && getCurrentTime() > 0 && getCurrentTime() < getTotalDuration() - 0.3) {
+      } else if (
+        hasStartedOnce &&
+        getCurrentTime() > 0 &&
+        getCurrentTime() < getTotalDuration() - 0.3
+      ) {
         playPauseBtn.setAttribute("aria-label", "Resume");
         playPauseBtn.setAttribute("data-state", "paused");
         if (playPauseIcon) playPauseIcon.innerHTML = "&#9654;";
@@ -482,43 +693,7 @@ const StocksAudioEngine = (function () {
       updateSliderFill(0);
     }
     if (currentTimeEl) currentTimeEl.textContent = "0:00";
-
-    const fullText = buildNarrationScript(article);
-    const wordCount = fullText.split(/\s+/).filter(Boolean).length;
-    const estimatedTotalSec = Math.max(8, Math.round(wordCount / 2.45));
     if (totalDurationEl) totalDurationEl.textContent = formatTime(estimatedTotalSec);
-
-    let mode = "single-mp3";
-    let chunkUrls = [];
-    let chunkDurations = [];
-    let currentChunkIdx = 0;
-    let isPlayingState = false;
-
-    async function ensureAudioSourceLoaded() {
-      if (sourceInitialized) return;
-      sourceInitialized = true;
-
-      const sourceInfo = await resolveArticleAudioSource(article);
-      mode = sourceInfo.type;
-      chunkUrls = sourceInfo.urls || [];
-
-      if (mode === "chunked-mp3" && chunkUrls.length > 0) {
-        const totalChars = sourceInfo.chunks.reduce((acc, c) => acc + c.length, 0) || 1;
-        chunkDurations = sourceInfo.chunks.map((c) =>
-          Math.max(2.5, (c.length / totalChars) * estimatedTotalSec)
-        );
-        if (totalDurationEl) {
-          totalDurationEl.textContent = formatTime(
-            chunkDurations.reduce((a, b) => a + b, 0)
-          );
-        }
-        audioEl.src = chunkUrls[0];
-      } else if (mode === "single-mp3" && sourceInfo.src) {
-        audioEl.src = sourceInfo.src;
-        audioEl.load();
-      }
-      audioEl.playbackRate = currentPlaybackRate;
-    }
 
     function getTotalDuration() {
       if (mode === "single-mp3") {
@@ -538,59 +713,15 @@ const StocksAudioEngine = (function () {
       for (let i = 0; i < currentChunkIdx; i++) {
         elapsedBefore += chunkDurations[i] || 0;
       }
-      return elapsedBefore + (audioEl.currentTime || 0);
-    }
-
-    function seekToSeconds(targetSeconds) {
-      const total = getTotalDuration();
-      const clamped = Math.max(0, Math.min(total, targetSeconds));
-
-      if (mode === "single-mp3") {
-        try {
-          audioEl.currentTime = clamped;
-        } catch (_) {}
-        syncProgressUI(clamped, total);
-        return;
-      }
-
-      let accum = 0;
-      let targetIdx = 0;
-      let offsetInChunk = 0;
-      for (let i = 0; i < chunkDurations.length; i++) {
-        const d = chunkDurations[i];
-        if (clamped <= accum + d || i === chunkDurations.length - 1) {
-          targetIdx = i;
-          offsetInChunk = Math.max(0, clamped - accum);
-          break;
-        }
-        accum += d;
-      }
-
-      const wasPlaying = isPlayingState;
-      if (targetIdx !== currentChunkIdx) {
-        currentChunkIdx = targetIdx;
-        audioEl.src = chunkUrls[currentChunkIdx];
-        audioEl.playbackRate = currentPlaybackRate;
-        audioEl.addEventListener(
-          "loadedmetadata",
-          function onMeta() {
-            audioEl.removeEventListener("loadedmetadata", onMeta);
-            try {
-              audioEl.currentTime = Math.min(offsetInChunk, audioEl.duration || offsetInChunk);
-            } catch (_) {}
-            if (wasPlaying) {
-              audioEl.play().catch(() => {});
-            }
-          },
-          { once: true }
+      let inChunk = chunkPausedOffsetSec;
+      if (isPlayingState && chunkStartedAtMs > 0) {
+        const deltaSec = ((Date.now() - chunkStartedAtMs) / 1000) * currentPlaybackRate;
+        inChunk = Math.min(
+          chunkDurations[currentChunkIdx] || 3,
+          chunkPausedOffsetSec + deltaSec
         );
-        audioEl.load();
-      } else {
-        try {
-          audioEl.currentTime = offsetInChunk;
-        } catch (_) {}
       }
-      syncProgressUI(clamped, total);
+      return Math.min(getTotalDuration(), elapsedBefore + inChunk);
     }
 
     function syncProgressUI(cur, tot) {
@@ -605,22 +736,223 @@ const StocksAudioEngine = (function () {
       }
     }
 
-    function onLoadedMetadata() {
-      audioEl.playbackRate = currentPlaybackRate;
-      if (mode === "chunked-mp3" && Number.isFinite(audioEl.duration) && audioEl.duration > 0) {
-        chunkDurations[currentChunkIdx] = audioEl.duration;
+    // ---------------- SPEECH SYNTHESIS PLAYBACK ENGINE ----------------
+    function startSpeechFromCurrentChunk() {
+      if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+      if (speechChunks.length === 0) return;
+
+      cancelBrowserSpeechQuietly();
+      clearSpeechTimer();
+
+      if (currentChunkIdx < 0 || currentChunkIdx >= speechChunks.length) {
+        currentChunkIdx = 0;
+        chunkPausedOffsetSec = 0;
       }
+
+      const chunkText = speechChunks[currentChunkIdx];
+      const chunkDur = chunkDurations[currentChunkIdx] || 3;
+
+      // If resuming mid-chunk, slice text proportionally by word boundary
+      let textToSpeak = chunkText;
+      if (chunkPausedOffsetSec > 0.4 && chunkPausedOffsetSec < chunkDur - 0.3) {
+        const ratio = Math.max(0, Math.min(0.85, chunkPausedOffsetSec / chunkDur));
+        const charOffset = Math.floor(chunkText.length * ratio);
+        const spaceIdx = chunkText.indexOf(" ", charOffset);
+        if (spaceIdx > 0 && spaceIdx < chunkText.length - 3) {
+          textToSpeak = chunkText.slice(spaceIdx + 1);
+        }
+      } else {
+        chunkPausedOffsetSec = 0;
+      }
+
+      const myToken = ++activeUtteranceToken;
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      const preferredVoice = selectBestNaturalVoice(voiceLang);
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+        utterance.lang = preferredVoice.lang || voiceLang;
+      } else {
+        utterance.lang = voiceLang;
+      }
+
+      // Clamp rate to safe natural bounds supported across iOS/Android/Desktop
+      utterance.rate = Math.max(0.5, Math.min(2.0, currentPlaybackRate * 0.96));
+      utterance.pitch = 1.0;
+
+      hasStartedOnce = true;
+      isPlayingState = true;
+      chunkStartedAtMs = Date.now();
+      updatePlayButtonUI(true);
+      syncProgressUI();
+
+      speechTimerId = setInterval(function () {
+        if (!isPlayingState || mode !== "speech-synthesis") return;
+        // Chrome desktop workaround: keep speechSynthesis alive past 14 seconds
+        if (
+          typeof window !== "undefined" &&
+          "speechSynthesis" in window &&
+          window.speechSynthesis.speaking &&
+          !window.speechSynthesis.paused
+        ) {
+          try {
+            window.speechSynthesis.resume();
+          } catch (_) {}
+        }
+        syncProgressUI();
+      }, 250);
+
+      utterance.onend = function () {
+        if (myToken !== activeUtteranceToken || internalSpeechCancel) return;
+        chunkPausedOffsetSec = 0;
+        if (currentChunkIdx < speechChunks.length - 1) {
+          currentChunkIdx++;
+          startSpeechFromCurrentChunk();
+          return;
+        }
+        // Finished entire article
+        clearSpeechTimer();
+        isPlayingState = false;
+        hasStartedOnce = false;
+        currentChunkIdx = 0;
+        chunkPausedOffsetSec = 0;
+        chunkStartedAtMs = 0;
+        syncProgressUI(0, getTotalDuration());
+        updatePlayButtonUI(false);
+      };
+
+      utterance.onerror = function (ev) {
+        if (myToken !== activeUtteranceToken || internalSpeechCancel) return;
+        const errType = ev && ev.error ? String(ev.error) : "";
+        if (errType === "canceled" || errType === "interrupted") return;
+        chunkPausedOffsetSec = 0;
+        if (currentChunkIdx < speechChunks.length - 1) {
+          currentChunkIdx++;
+          startSpeechFromCurrentChunk();
+        } else {
+          clearSpeechTimer();
+          isPlayingState = false;
+          updatePlayButtonUI(false);
+        }
+      };
+
+      try {
+        window.speechSynthesis.resume();
+        window.speechSynthesis.speak(utterance);
+      } catch (_) {}
+    }
+
+    function pauseSpeechSynthesis() {
+      if (!isPlayingState) return;
+      if (chunkStartedAtMs > 0) {
+        const deltaSec = ((Date.now() - chunkStartedAtMs) / 1000) * currentPlaybackRate;
+        chunkPausedOffsetSec = Math.min(
+          chunkDurations[currentChunkIdx] || 3,
+          chunkPausedOffsetSec + deltaSec
+        );
+      }
+      chunkStartedAtMs = 0;
+      isPlayingState = false;
+      clearSpeechTimer();
+      cancelBrowserSpeechQuietly();
+      syncProgressUI();
+      updatePlayButtonUI(false);
+    }
+
+    function switchToSpeechSynthesis(shouldAutoPlay) {
+      try {
+        audioEl.pause();
+        audioEl.removeAttribute("src");
+      } catch (_) {}
+      mode = "speech-synthesis";
+      if (totalDurationEl) {
+        totalDurationEl.textContent = formatTime(getTotalDuration());
+      }
+      if (shouldAutoPlay) {
+        startSpeechFromCurrentChunk();
+      } else {
+        syncProgressUI();
+      }
+    }
+
+    async function ensureAudioSourceLoaded() {
+      if (sourceInitialized) return;
+      if (preloadPromise) return preloadPromise;
+
+      preloadPromise = (async function () {
+        const sourceInfo = await resolveArticleAudioSource(article);
+        sourceInitialized = true;
+
+        if (sourceInfo.type === "single-mp3" && sourceInfo.src) {
+          mode = "single-mp3";
+          audioEl.src = sourceInfo.src;
+          audioEl.playbackRate = currentPlaybackRate;
+          try {
+            audioEl.load();
+          } catch (_) {}
+        } else {
+          mode = "speech-synthesis";
+          if (totalDurationEl) {
+            totalDurationEl.textContent = formatTime(getTotalDuration());
+          }
+        }
+      })();
+
+      return preloadPromise;
+    }
+
+    // Begin pre-resolving audio source immediately on mount so user click has zero network wait
+    ensureAudioSourceLoaded();
+
+    function seekToSeconds(targetSeconds) {
+      const total = getTotalDuration();
+      const clamped = Math.max(0, Math.min(total, targetSeconds));
+
+      if (mode === "single-mp3") {
+        try {
+          audioEl.currentTime = clamped;
+        } catch (_) {}
+        syncProgressUI(clamped, total);
+        return;
+      }
+
+      // Speech synthesis seek: locate exact sentence chunk and offset
+      let accum = 0;
+      let targetIdx = 0;
+      let offsetInChunk = 0;
+      for (let i = 0; i < chunkDurations.length; i++) {
+        const d = chunkDurations[i];
+        if (clamped <= accum + d || i === chunkDurations.length - 1) {
+          targetIdx = i;
+          offsetInChunk = Math.max(0, clamped - accum);
+          break;
+        }
+        accum += d;
+      }
+
+      currentChunkIdx = targetIdx;
+      chunkPausedOffsetSec = offsetInChunk;
+      chunkStartedAtMs = Date.now();
+      syncProgressUI(clamped, total);
+
+      if (isPlayingState) {
+        startSpeechFromCurrentChunk();
+      }
+    }
+
+    function onLoadedMetadata() {
+      if (mode !== "single-mp3") return;
+      audioEl.playbackRate = currentPlaybackRate;
       syncProgressUI();
     }
 
     function onTimeUpdate() {
+      if (mode !== "single-mp3") return;
       syncProgressUI();
     }
 
     function onPlay() {
-      if (typeof window.stopSpeech === "function") {
-        window.stopSpeech();
-      }
+      if (mode !== "single-mp3") return;
+      cancelBrowserSpeechQuietly();
       hasStartedOnce = true;
       isPlayingState = true;
       audioEl.playbackRate = currentPlaybackRate;
@@ -628,52 +960,26 @@ const StocksAudioEngine = (function () {
     }
 
     function onPause() {
+      if (mode !== "single-mp3") return;
       isPlayingState = false;
       updatePlayButtonUI(false);
     }
 
     function onEnded() {
-      if (mode === "chunked-mp3" && currentChunkIdx < chunkUrls.length - 1) {
-        currentChunkIdx++;
-        audioEl.src = chunkUrls[currentChunkIdx];
-        audioEl.playbackRate = currentPlaybackRate;
-        audioEl.play().catch(() => {});
-        return;
-      }
+      if (mode !== "single-mp3") return;
       isPlayingState = false;
       hasStartedOnce = false;
-      if (mode === "chunked-mp3" && chunkUrls.length > 0) {
-        currentChunkIdx = 0;
-        audioEl.src = chunkUrls[0];
-      } else {
-        try {
-          audioEl.currentTime = 0;
-        } catch (_) {}
-      }
+      try {
+        audioEl.currentTime = 0;
+      } catch (_) {}
       syncProgressUI(0, getTotalDuration());
       updatePlayButtonUI(false);
     }
 
-    async function onError() {
+    function onError() {
       if (mode === "single-mp3") {
-        const voiceCfg = await getFirebaseVoiceConfig();
-        const fallbackChunks = splitIntoChunks(fullText, 175);
-        if (fallbackChunks.length > 0 && voiceCfg.voiceStreamUrl) {
-          mode = "chunked-mp3";
-          chunkUrls = fallbackChunks.map((c) =>
-            buildVoiceStreamUrl(voiceCfg, c, voiceCfg.languageCode || "en-IN")
-          );
-          const totalChars = fallbackChunks.reduce((acc, c) => acc + c.length, 0) || 1;
-          chunkDurations = fallbackChunks.map((c) =>
-            Math.max(2.5, (c.length / totalChars) * estimatedTotalSec)
-          );
-          currentChunkIdx = 0;
-          audioEl.src = chunkUrls[0];
-          audioEl.playbackRate = currentPlaybackRate;
-          if (isPlayingState) {
-            audioEl.play().catch(() => {});
-          }
-        }
+        // Automatic seamless fallback to Natural Speech Synthesis if MP3 is missing or blocked
+        switchToSpeechSynthesis(isPlayingState || !containerEl.hidden);
       }
     }
 
@@ -684,38 +990,60 @@ const StocksAudioEngine = (function () {
     audioEl.addEventListener("ended", onEnded);
     audioEl.addEventListener("error", onError);
 
-    async function handleTriggerClick() {
-      if (typeof window.stopSpeech === "function") {
-        window.stopSpeech();
+    async function startOrResumePlayback() {
+      // Stop any accessibility announcement speech before playing article
+      cancelBrowserSpeechQuietly();
+
+      if (!sourceInitialized) {
+        await ensureAudioSourceLoaded();
       }
+
+      if (mode === "single-mp3" && audioEl.src) {
+        isPlayingState = true;
+        hasStartedOnce = true;
+        audioEl.playbackRate = currentPlaybackRate;
+        updatePlayButtonUI(true);
+        try {
+          await audioEl.play();
+        } catch (err) {
+          console.warn("MP3 playback fallback to natural voice:", err && err.message);
+          switchToSpeechSynthesis(true);
+        }
+      } else {
+        switchToSpeechSynthesis(true);
+      }
+    }
+
+    async function handleTriggerClick() {
       if (triggerBtn) {
         triggerBtn.hidden = true;
         triggerBtn.setAttribute("aria-expanded", "true");
       }
       containerEl.hidden = false;
 
-      await ensureAudioSourceLoaded();
-      audioEl.playbackRate = currentPlaybackRate;
-      audioEl.play().catch((err) => {
-        console.warn("Audio playback start note:", err.message);
-      });
+      await startOrResumePlayback();
       if (playPauseBtn) {
         playPauseBtn.focus();
       }
     }
 
     async function handlePlayPauseClick() {
-      if (typeof window.stopSpeech === "function") {
-        window.stopSpeech();
+      if (!sourceInitialized) {
+        await ensureAudioSourceLoaded();
       }
-      await ensureAudioSourceLoaded();
-      if (!audioEl.paused) {
-        audioEl.pause();
+
+      if (mode === "single-mp3") {
+        if (!audioEl.paused) {
+          audioEl.pause();
+        } else {
+          await startOrResumePlayback();
+        }
       } else {
-        audioEl.playbackRate = currentPlaybackRate;
-        audioEl.play().catch((err) => {
-          console.warn("Audio playback start note:", err.message);
-        });
+        if (isPlayingState) {
+          pauseSpeechSynthesis();
+        } else {
+          startSpeechFromCurrentChunk();
+        }
       }
     }
 
@@ -745,7 +1073,18 @@ const StocksAudioEngine = (function () {
     function handleSpeedChange() {
       const rate = parseFloat(speedSelect.value) || 1.0;
       currentPlaybackRate = rate;
-      audioEl.playbackRate = rate;
+      if (mode === "single-mp3") {
+        audioEl.playbackRate = rate;
+      } else if (isPlayingState) {
+        if (chunkStartedAtMs > 0) {
+          const deltaSec = ((Date.now() - chunkStartedAtMs) / 1000) * currentPlaybackRate;
+          chunkPausedOffsetSec = Math.min(
+            chunkDurations[currentChunkIdx] || 3,
+            chunkPausedOffsetSec + deltaSec
+          );
+        }
+        startSpeechFromCurrentChunk();
+      }
     }
 
     if (triggerBtn) triggerBtn.addEventListener("click", handleTriggerClick);
@@ -761,7 +1100,18 @@ const StocksAudioEngine = (function () {
     }
 
     activeController = {
+      pause: function () {
+        if (mode === "single-mp3") {
+          try {
+            if (!audioEl.paused) audioEl.pause();
+          } catch (_) {}
+        } else {
+          pauseSpeechSynthesis();
+        }
+      },
       destroy: function () {
+        clearSpeechTimer();
+        cancelBrowserSpeechQuietly();
         try {
           audioEl.pause();
         } catch (_) {}
@@ -794,10 +1144,7 @@ const StocksAudioEngine = (function () {
     saveArticleAudioToFirestore: saveArticleAudioToFirestore,
     resolveArticleAudioSource: resolveArticleAudioSource,
     mountArticlePlayer: mountArticlePlayer,
+    pauseActivePlayer: pauseActivePlayer,
     stopActivePlayer: stopActivePlayer
   };
 })();
-
-if (typeof window !== "undefined") {
-  window.StocksAudioEngine = StocksAudioEngine;
-}

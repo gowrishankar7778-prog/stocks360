@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (publishSubunitBtn) {
-    publishSubunitBtn.addEventListener("click", function () {
+    publishSubunitBtn.addEventListener("click", async function () {
       if (!activeViewingUnitId) return;
 
       const title = subNameInput.value.trim();
@@ -188,11 +188,35 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      StocksDataStore.saveSubunit(activeViewingUnitId, {
+      publishSubunitBtn.disabled = true;
+      publishSubunitBtn.textContent = "Generating MP3 & Saving...";
+
+      const savedSub = StocksDataStore.saveSubunit(activeViewingUnitId, {
         title: title,
         body: body,
         takeaways: takeaways
       });
+
+      if (savedSub && typeof StocksAudioEngine !== "undefined") {
+        try {
+          const script = StocksAudioEngine.buildNarrationScript({
+            id: savedSub.id,
+            title: savedSub.title,
+            content: savedSub.body,
+            takeaways: savedSub.takeaways
+          });
+          const synthesized = await StocksAudioEngine.synthesizeCloudTtsMp3(script, {
+            lang: "en-IN",
+            name: "en-IN-Neural2-A"
+          });
+          if (synthesized && synthesized.dataUrl) {
+            await StocksAudioEngine.saveArticleAudioToFirestore(savedSub.id, synthesized);
+          }
+        } catch (_) {}
+      }
+
+      publishSubunitBtn.disabled = false;
+      publishSubunitBtn.textContent = "Add Lesson";
 
       alert("Lesson added to unit successfully!");
       subNameInput.value = "";

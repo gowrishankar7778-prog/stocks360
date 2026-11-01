@@ -56,6 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function stopSpeech() {
+    if (typeof StocksAudioEngine !== "undefined" && typeof StocksAudioEngine.pauseActivePlayer === "function") {
+      StocksAudioEngine.pauseActivePlayer();
+    }
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }

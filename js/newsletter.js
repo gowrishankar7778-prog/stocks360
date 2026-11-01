@@ -17,6 +17,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const ask360Send = document.getElementById("nl-ask360-send");
   const ask360Response = document.getElementById("nl-ask360-response");
 
+  // Audio Player DOM Elements
+  const listenArticleBtn = document.getElementById("nl-listen-article-btn");
+  const audioPlayerCard = document.getElementById("nl-audio-player-card");
+  const audioEl = document.getElementById("nl-html5-audio");
+  const playPauseBtn = document.getElementById("nl-audio-play-pause-btn");
+  const playPauseIcon = document.getElementById("nl-audio-play-icon");
+  const playPauseLabel = document.getElementById("nl-audio-play-label");
+  const rewind10Btn = document.getElementById("nl-audio-rewind-10-btn");
+  const forward10Btn = document.getElementById("nl-audio-forward-10-btn");
+  const seekSlider = document.getElementById("nl-audio-seek-slider");
+  const currentTimeEl = document.getElementById("nl-audio-current-time");
+  const totalDurationEl = document.getElementById("nl-audio-total-duration");
+  const speedSelect = document.getElementById("nl-audio-speed-select");
+
   function calculateReadTime(text) {
     if (!text) return "Read time: 2 min";
     const plain = text.replace(/<[^>]*>/g, " ");
@@ -63,14 +77,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showList() {
+    if (typeof StocksAudioEngine !== "undefined") {
+      StocksAudioEngine.stopActivePlayer();
+    }
     detail.hidden = true;
     list.hidden = false;
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  let currentNewsletterItem = null;
+
   function showDetail(id) {
     const item = typeof StocksDataStore !== "undefined" ? StocksDataStore.getNewsletterById(id) : null;
     if (!item) return;
+    currentNewsletterItem = item;
 
     titleEl.textContent = item.title;
     readTimeEl.textContent = calculateReadTime(item.content);
@@ -107,8 +127,21 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
     titleEl.focus();
 
-    if (typeof window.speakWithPitch === "function") {
-      window.speakWithPitch(item.title, true);
+    if (typeof StocksAudioEngine !== "undefined") {
+      StocksAudioEngine.mountArticlePlayer(item, {
+        triggerBtn: listenArticleBtn,
+        containerEl: audioPlayerCard,
+        audioEl: audioEl,
+        playPauseBtn: playPauseBtn,
+        playPauseIcon: playPauseIcon,
+        playPauseLabel: playPauseLabel,
+        rewind10Btn: rewind10Btn,
+        forward10Btn: forward10Btn,
+        seekSlider: seekSlider,
+        currentTimeEl: currentTimeEl,
+        totalDurationEl: totalDurationEl,
+        speedSelect: speedSelect
+      });
     }
   }
 
@@ -137,18 +170,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  async function handleNewsletterAsk() {
+    if (!ask360Input || !ask360Response) return;
+    const q = ask360Input.value.trim();
+    if (!q) {
+      ask360Response.innerHTML = `<p class="ask360-error">Please type your question about this newsletter first.</p>`;
+      return;
+    }
+
+    ask360Response.innerHTML = `<div class="ask360-ai-card"><p style="color:#2563eb; font-weight:600;">Checking this newsletter for your answer...</p></div>`;
+
+    if (typeof StocksGeminiAI !== "undefined" && currentNewsletterItem) {
+      const result = await StocksGeminiAI.askGroundedContentQuestion(
+        q,
+        currentNewsletterItem,
+        "newsletter"
+      );
+      if (result) {
+        ask360Input.value = "";
+        StocksGeminiAI.renderAiResponseCard(ask360Response, result, function (followUpQ) {
+          ask360Input.value = followUpQ;
+          handleNewsletterAsk();
+        });
+        return;
+      }
+    }
+  }
+
   if (ask360Send) {
-    ask360Send.addEventListener("click", function () {
-      const q = ask360Input.value.trim();
-      if (!q) return;
-      ask360Response.innerHTML = `
-        <div class="ask360-ai-card">
-          <p><strong>Stocks 360 AI:</strong></p>
-          <p>Question: "${escapeHtml(q)}"</p>
-          <p style="margin-top:6px; color:#1e40af;">Market trends in weekly newsletters highlight overall sector performances and index benchmarks. Refer to the glossary terms below for fundamental definitions.</p>
-        </div>
-      `;
-      ask360Input.value = "";
+    ask360Send.addEventListener("click", handleNewsletterAsk);
+  }
+
+  if (ask360Input) {
+    ask360Input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleNewsletterAsk();
+      }
     });
   }
 

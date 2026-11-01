@@ -23,6 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const ask360Send = document.getElementById("learn-ask360-send");
   const ask360Response = document.getElementById("learn-ask360-response");
 
+  // Audio Player DOM Elements
+  const listenArticleBtn = document.getElementById("learn-listen-article-btn");
+  const audioPlayerCard = document.getElementById("learn-audio-player-card");
+  const audioEl = document.getElementById("learn-html5-audio");
+  const playPauseBtn = document.getElementById("learn-audio-play-pause-btn");
+  const playPauseIcon = document.getElementById("learn-audio-play-icon");
+  const playPauseLabel = document.getElementById("learn-audio-play-label");
+  const rewind10Btn = document.getElementById("learn-audio-rewind-10-btn");
+  const forward10Btn = document.getElementById("learn-audio-forward-10-btn");
+  const seekSlider = document.getElementById("learn-audio-seek-slider");
+  const currentTimeEl = document.getElementById("learn-audio-current-time");
+  const totalDurationEl = document.getElementById("learn-audio-total-duration");
+  const speedSelect = document.getElementById("learn-audio-speed-select");
+
   const commentsList = document.getElementById("comments-list");
   const commentName = document.getElementById("comment-name");
   const commentInput = document.getElementById("comment-input");
@@ -72,6 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showUnits() {
+    if (typeof StocksAudioEngine !== "undefined") {
+      StocksAudioEngine.stopActivePlayer();
+    }
     subunitsList.hidden = true;
     subunitDetail.hidden = true;
     unitsList.hidden = false;
@@ -79,6 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showSubunits(unitId) {
+    if (typeof StocksAudioEngine !== "undefined") {
+      StocksAudioEngine.stopActivePlayer();
+    }
     currentUnitId = unitId;
     const units = getUnits();
     const unit = units.find(u => u.id === unitId);
@@ -154,8 +174,29 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
     subunitTitle.focus();
 
-    if (typeof window.speakWithPitch === "function") {
-      window.speakWithPitch(su.title, true);
+    if (typeof StocksAudioEngine !== "undefined") {
+      StocksAudioEngine.mountArticlePlayer(
+        {
+          id: su.id,
+          title: su.title,
+          content: su.body,
+          takeaways: su.takeaways || ""
+        },
+        {
+          triggerBtn: listenArticleBtn,
+          containerEl: audioPlayerCard,
+          audioEl: audioEl,
+          playPauseBtn: playPauseBtn,
+          playPauseIcon: playPauseIcon,
+          playPauseLabel: playPauseLabel,
+          rewind10Btn: rewind10Btn,
+          forward10Btn: forward10Btn,
+          seekSlider: seekSlider,
+          currentTimeEl: currentTimeEl,
+          totalDurationEl: totalDurationEl,
+          speedSelect: speedSelect
+        }
+      );
     }
   }
 
@@ -257,18 +298,54 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  async function handleLearnLessonAsk() {
+    if (!ask360Input || !ask360Response) return;
+    const q = ask360Input.value.trim();
+    if (!q) {
+      ask360Response.innerHTML = `<p class="ask360-error">Please type your question about this lesson first.</p>`;
+      return;
+    }
+
+    const units = getUnits();
+    const unit = units.find((u) => u.id === currentUnitId);
+    const su = unit && unit.subunits ? unit.subunits[currentSubIndex] : null;
+    if (!su) return;
+
+    ask360Response.innerHTML = `<div class="ask360-ai-card"><p style="color:#2563eb; font-weight:600;">Checking this learning module lesson for your answer...</p></div>`;
+
+    if (typeof StocksGeminiAI !== "undefined") {
+      const lessonContext = {
+        id: su.id,
+        title: (unit ? unit.title + " — " : "") + su.title,
+        content: su.body,
+        takeaways: su.takeaways || ""
+      };
+      const result = await StocksGeminiAI.askGroundedContentQuestion(
+        q,
+        lessonContext,
+        "learning module lesson"
+      );
+      if (result) {
+        ask360Input.value = "";
+        StocksGeminiAI.renderAiResponseCard(ask360Response, result, function (followUpQ) {
+          ask360Input.value = followUpQ;
+          handleLearnLessonAsk();
+        });
+        return;
+      }
+    }
+  }
+
   if (ask360Send) {
-    ask360Send.addEventListener("click", function () {
-      const q = ask360Input.value.trim();
-      if (!q) return;
-      ask360Response.innerHTML = `
-        <div class="ask360-ai-card">
-          <p><strong>Stocks 360 AI:</strong></p>
-          <p>Question: "<em>${escapeHtml(q)}</em>"</p>
-          <p style="margin-top:6px; color:#1e40af;">In this learning unit, remember that market concepts operate on strict regulatory and mathematical principles. Try re-reading the Key Takeaways box above.</p>
-        </div>
-      `;
-      ask360Input.value = "";
+    ask360Send.addEventListener("click", handleLearnLessonAsk);
+  }
+
+  if (ask360Input) {
+    ask360Input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleLearnLessonAsk();
+      }
     });
   }
 

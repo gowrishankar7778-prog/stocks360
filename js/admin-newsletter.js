@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (finalPublishBtn) {
-    finalPublishBtn.addEventListener("click", function () {
+    finalPublishBtn.addEventListener("click", async function () {
       const heading = headingInput.value.trim();
       const writer = writerInput.value.trim();
       const body = mainBody.value.trim();
@@ -133,7 +133,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      StocksDataStore.saveNewsletter({
+      finalPublishBtn.disabled = true;
+      finalPublishBtn.textContent = "Generating MP3 & Publishing...";
+
+      const savedNl = StocksDataStore.saveNewsletter({
         id: editingId || undefined,
         title: heading,
         author: writer,
@@ -142,6 +145,22 @@ document.addEventListener("DOMContentLoaded", function () {
         keywords: keywordsInput ? keywordsInput.value.trim() : "",
         published: new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })
       });
+
+      if (savedNl && typeof StocksAudioEngine !== "undefined") {
+        try {
+          const script = StocksAudioEngine.buildNarrationScript(savedNl);
+          const synthesized = await StocksAudioEngine.synthesizeCloudTtsMp3(script, {
+            lang: "en-IN",
+            name: "en-IN-Neural2-A"
+          });
+          if (synthesized && synthesized.dataUrl) {
+            await StocksAudioEngine.saveArticleAudioToFirestore(savedNl.id, synthesized);
+          }
+        } catch (_) {}
+      }
+
+      finalPublishBtn.disabled = false;
+      finalPublishBtn.textContent = "Publish Newsletter";
 
       alert(editingId ? "Newsletter updated!" : "Newsletter published to website!");
       clearForm();

@@ -10,6 +10,43 @@ document.addEventListener("DOMContentLoaded", function () {
     emailDisplay.textContent = currentUser.email;
   }
 
+  // Gemini AI & Cost Control Settings
+  const geminiForm = document.getElementById("gemini-settings-form");
+  const geminiKeyInput = document.getElementById("gemini-api-key");
+  const geminiModelSelect = document.getElementById("gemini-model-select");
+  const geminiDailyLimitInput = document.getElementById("gemini-daily-limit");
+  const geminiUsageSummary = document.getElementById("gemini-usage-summary");
+  const geminiFeedback = document.getElementById("gemini-settings-feedback");
+
+  if (typeof StocksGeminiAI !== "undefined") {
+    StocksGeminiAI.loadConfig().then(function (cfg) {
+      if (geminiKeyInput && cfg.apiKey) geminiKeyInput.value = cfg.apiKey;
+      if (geminiModelSelect && cfg.model) geminiModelSelect.value = cfg.model;
+      if (geminiDailyLimitInput && cfg.dailyLimit) geminiDailyLimitInput.value = cfg.dailyLimit;
+    });
+
+    const stats = StocksGeminiAI.getUsageStats();
+    if (geminiUsageSummary) {
+      geminiUsageSummary.textContent = `Today's Usage (${stats.date}): ${stats.requests} API requests • ${stats.cacheHits} Free Cache Hits`;
+    }
+  }
+
+  if (geminiForm && typeof StocksGeminiAI !== "undefined") {
+    geminiForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      StocksGeminiAI.saveConfig({
+        apiKey: geminiKeyInput ? geminiKeyInput.value.trim() : "",
+        model: geminiModelSelect ? geminiModelSelect.value : "gemini-3.5-flash-lite",
+        dailyLimit: geminiDailyLimitInput ? parseInt(geminiDailyLimitInput.value, 10) || 500 : 500
+      });
+      showFeedback(
+        geminiFeedback,
+        "Gemini AI model & daily cost guardrails saved and synced!",
+        "success"
+      );
+    });
+  }
+
   // Password Change Form
   const passForm = document.getElementById("change-password-form");
   const passMsg = document.getElementById("password-feedback");

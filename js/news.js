@@ -96,9 +96,12 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  let currentNewsArticle = null;
+
   function showDetail(newsId) {
     const news = typeof StocksDataStore !== "undefined" ? StocksDataStore.getNewsById(newsId) : null;
     if (!news) return;
+    currentNewsArticle = news;
 
     detailTitle.textContent = news.title;
     detailReadTime.textContent = calculateReadTime(news.content);
@@ -190,22 +193,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (ask360Send) {
-    ask360Send.addEventListener("click", function () {
-      const question = ask360Input.value.trim();
-      if (question === "") {
-        ask360Response.textContent = "Please type your question first.";
+  async function handleNewsArticleAsk() {
+    if (!ask360Input || !ask360Response) return;
+    const question = ask360Input.value.trim();
+    if (question === "") {
+      ask360Response.innerHTML = `<p class="ask360-error">Please type your question about this news article first.</p>`;
+      return;
+    }
+
+    ask360Response.innerHTML = `<div class="ask360-ai-card"><p style="color:#2563eb; font-weight:600;">Checking this news article for your answer...</p></div>`;
+
+    if (typeof StocksGeminiAI !== "undefined" && currentNewsArticle) {
+      const result = await StocksGeminiAI.askGroundedContentQuestion(
+        question,
+        currentNewsArticle,
+        "news article"
+      );
+      if (result) {
+        ask360Input.value = "";
+        StocksGeminiAI.renderAiResponseCard(ask360Response, result, function (followUpQ) {
+          ask360Input.value = followUpQ;
+          handleNewsArticleAsk();
+        });
         return;
       }
+    }
+  }
 
-      ask360Response.innerHTML = `
-        <div class="ask360-ai-card">
-          <p><strong>Stocks 360 AI:</strong></p>
-          <p>Question: "${escapeHtml(question)}"</p>
-          <p style="margin-top:6px; color:#1e40af;">This news update covers recent market movements, sector performance, and macroeconomic factors shaping market activity.</p>
-        </div>
-      `;
-      ask360Input.value = "";
+  if (ask360Send) {
+    ask360Send.addEventListener("click", handleNewsArticleAsk);
+  }
+
+  if (ask360Input) {
+    ask360Input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleNewsArticleAsk();
+      }
     });
   }
 

@@ -73,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Stop speech helper
   window.stopSpeech = function () {
+    if (typeof StocksAudioEngine !== "undefined" && typeof StocksAudioEngine.pauseActivePlayer === "function") {
+      StocksAudioEngine.pauseActivePlayer();
+    }
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
