@@ -178,7 +178,12 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js?v=4"></script>
+  <script src="js/data-store.js?v=4"></script>
+  <script src="js/gemini-ai.js?v=2"></script>
+  <script src="js/main.js?v=6"></script>
   <script src="js/accessibility.js?v=3"></script>
   <script src="js/stock-search.js?v=3"></script>
   <script src="js/smart-assist.js?v=3"></script>
@@ -186,42 +191,33 @@
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.getElementById("ask-main-form");
       const questionInput = document.getElementById("ask-user-question");
-      const nameInput = document.getElementById("ask-user-name");
       const resBox = document.getElementById("ask-response-box");
-      const questionEcho = document.getElementById("ai-question-echo");
-      const answerBody = document.getElementById("ai-answer-body");
+
+      async function submitAskQuestion(qText) {
+        const q = (qText || questionInput.value || "").trim();
+        if (!q) return;
+
+        resBox.hidden = false;
+        resBox.innerHTML = `<p style="color:#2563eb; font-weight:500; margin:0;">Thinking...</p>`;
+
+        if (typeof StocksGeminiAI !== "undefined") {
+          const result = await StocksGeminiAI.askGeneralMarketTrends(q);
+          if (result) {
+            questionInput.value = "";
+            StocksGeminiAI.renderAiResponseCard(resBox, result, function (followUpQ) {
+              questionInput.value = followUpQ;
+              submitAskQuestion(followUpQ);
+            });
+            resBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            return;
+          }
+        }
+      }
 
       if (form) {
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          const q = questionInput.value.trim();
-          if (!q) return;
-
-          resBox.hidden = false;
-          questionEcho.textContent = `Q: "${q}"`;
-
-          // Generate educational explanation
-          let responseText = `Thank you for asking! In financial literacy, understanding concepts is the first step. `;
-          const lowerQ = q.toLowerCase();
-
-          if (lowerQ.includes("nifty") || lowerQ.includes("sensex") || lowerQ.includes("index")) {
-            responseText += `An index like Nifty 50 or Sensex represents a basket of prominent stocks, functioning like a thermometer for market health.`;
-          } else if (lowerQ.includes("sebi") || lowerQ.includes("regulat")) {
-            responseText += `SEBI ensures complete transparency and prevents fraud so retail investors can participate with confidence.`;
-          } else if (lowerQ.includes("dividend") || lowerQ.includes("profit")) {
-            responseText += `Dividends are portions of company profits distributed to shareholders as a reward for their ownership.`;
-          } else if (lowerQ.includes("risk") || lowerQ.includes("loss")) {
-            responseText += `All financial investments carry market risk. Diversification across multiple sectors helps balance risk and return.`;
-          } else {
-            responseText += `Stock markets function as a capital allocation exchange connecting growing companies with public investors. Continue exploring our Learn modules for in-depth coverage.`;
-          }
-
-          answerBody.innerHTML = `<p>${responseText}</p>`;
-          resBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-
-          if (typeof window.speakWithPitch === "function") {
-            window.speakWithPitch(responseText, true);
-          }
+          submitAskQuestion();
         });
       }
     });

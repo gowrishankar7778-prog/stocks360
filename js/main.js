@@ -74,21 +74,18 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderStarterPrompts() {
     if (!askResponse) return;
     const starters = [
-      "What are the current market trends this week?",
-      "How do global cues affect Indian stock markets?",
-      "Why are Banking and IT sectors important in Nifty 50?"
+      "How is the market moving this week?",
+      "How do global cues affect Indian markets?",
+      "Why do Banking and IT drive Nifty 50?"
     ];
     askResponse.innerHTML = `
-      <div class="ai-starter-chips" style="margin-top: 6px;">
-        <span style="display:block; font-size: 0.85rem; font-weight: 700; color: #475569; margin-bottom: 8px;">Interactive Market Trend Topics (Click to ask or type your own):</span>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          ${starters
-            .map(
-              (s) =>
-                `<button type="button" class="quick-ticker-pill home-ai-starter" data-prompt="${s}">${s}</button>`
-            )
-            .join("")}
-        </div>
+      <div class="ai-starter-chips" style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;">
+        ${starters
+          .map(
+            (s) =>
+              `<button type="button" class="quick-ticker-pill home-ai-starter" data-prompt="${s}" style="border-radius:999px; font-size:0.86rem; padding:6px 14px;">${s}</button>`
+          )
+          .join("")}
       </div>
     `;
     askResponse.querySelectorAll(".home-ai-starter").forEach(function (btn) {
@@ -108,16 +105,25 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!askInput || !askResponse) return;
     const q = askInput.value.trim();
     if (!q) {
-      askResponse.innerHTML = `<p class="ask360-error">Please enter a question for Stocks 360 AI.</p>`;
+      askResponse.innerHTML = `<p class="ask360-error">Type any question to start chatting with Stocks 360 AI.</p>`;
       return;
     }
 
-    askResponse.innerHTML = `<div class="ask360-ai-card"><p style="color:#2563eb; font-weight:600;">Stocks 360 AI is analyzing market trends...</p></div>`;
+    askInput.value = "";
+    const existingStream = askResponse.querySelector(".ai-chat-stream");
+    if (existingStream) {
+      const tempTurn = document.createElement("div");
+      tempTurn.style.marginBottom = "10px";
+      tempTurn.innerHTML = `<p style="color:#2563eb; font-size:0.9rem; font-weight:500; margin:6px 0;">Thinking...</p>`;
+      existingStream.appendChild(tempTurn);
+      existingStream.scrollTop = existingStream.scrollHeight;
+    } else {
+      askResponse.innerHTML = `<div class="ask360-ai-card" style="padding:12px 16px;"><p style="color:#2563eb; font-weight:500; margin:0;">Thinking...</p></div>`;
+    }
 
     if (typeof StocksGeminiAI !== "undefined") {
       const result = await StocksGeminiAI.askGeneralMarketTrends(q);
       if (result) {
-        askInput.value = "";
         StocksGeminiAI.renderAiResponseCard(askResponse, result, function (followUpQ) {
           askInput.value = followUpQ;
           handleTopAsk360();
@@ -128,13 +134,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const safeQ = q.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const fallbackAnswer =
-      "Stock market trends reflect corporate earnings, sectoral performance across Banking and IT, and macroeconomic cues. All explanations on Stocks 360 are for educational purposes only.";
+      "Right now, market movements are largely driven by corporate earnings, Banking and IT sector flows, and global interest rate cues.";
     askResponse.innerHTML = `
       <div class="ask360-ai-card" tabindex="-1">
-        <div class="ai-header">
-          <span class="ai-pill-badge">Stocks 360 AI Response</span>
-        </div>
-        <p class="ai-question-echo"><strong>Question:</strong> "${safeQ}"</p>
         <p class="ai-answer-text">${fallbackAnswer}</p>
       </div>
     `;

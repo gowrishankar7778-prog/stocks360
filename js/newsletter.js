@@ -178,7 +178,17 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    ask360Response.innerHTML = `<div class="ask360-ai-card"><p style="color:#2563eb; font-weight:600;">Checking this newsletter for your answer...</p></div>`;
+    ask360Input.value = "";
+    const existingStream = ask360Response.querySelector(".ai-chat-stream");
+    if (existingStream) {
+      const tempTurn = document.createElement("div");
+      tempTurn.style.marginBottom = "10px";
+      tempTurn.innerHTML = `<p style="color:#2563eb; font-size:0.9rem; font-weight:500; margin:6px 0;">Thinking...</p>`;
+      existingStream.appendChild(tempTurn);
+      existingStream.scrollTop = existingStream.scrollHeight;
+    } else {
+      ask360Response.innerHTML = `<div class="ask360-ai-card" style="padding:12px 16px;"><p style="color:#2563eb; font-weight:500; margin:0;">Thinking...</p></div>`;
+    }
 
     if (typeof StocksGeminiAI !== "undefined" && currentNewsletterItem) {
       const result = await StocksGeminiAI.askGroundedContentQuestion(
@@ -187,7 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "newsletter"
       );
       if (result) {
-        ask360Input.value = "";
         StocksGeminiAI.renderAiResponseCard(ask360Response, result, function (followUpQ) {
           ask360Input.value = followUpQ;
           handleNewsletterAsk();
