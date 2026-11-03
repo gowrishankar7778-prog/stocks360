@@ -23,9 +23,9 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Synchronize Live NSE Prices & Indicators
+      - name: Synchronize All Live NSE Prices & Indicators
         run: |
-          node scripts/update-nse-stocks.js
+          node scripts/update-nse-stocks.js --all
 
       - name: Commit & Push Updated Stock Data
         run: |
