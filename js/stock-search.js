@@ -688,7 +688,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <div>
               <div style="display:flex; align-items:center; gap:8px;">
                 <span class="badge badge-success" style="font-size:0.75rem;">NSE: ${escapeHtml(stock.symbol)}</span>
-                ${cachedProfile ? '<span class="badge badge-primary" style="font-size:0.75rem; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Gemini AI Verified</span>' : ''}
                 <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
               </div>
               <h2 id="company-view-title" style="margin-top:6px; font-size:1.65rem; color:#0f172a;">${escapeHtml(stock.name)}</h2>
@@ -715,31 +714,31 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>
 
-        <!-- SECTION 2: PERFORMANCE SEGMENT - PRICE & OHLC RANGE (EACH ITEM IN A SINGLE LINE) -->
+        <!-- SECTION 2: PERFORMANCE SEGMENT - PRICE & OHLC RANGE (EACH ITEM IN A DEDICATED SINGLE LINE) -->
         <section class="performance-ohlc-section" aria-labelledby="heading-performance-segment" style="margin-bottom:28px;">
           <h1 id="heading-performance-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Performance Segment: Price &amp; OHLC Range (Line by Line)
           </h1>
           <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
             <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Today's Open (Open Price)</span>
-              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${dayOpen.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+              <span style="color:#475569; font-weight:600;">Current Market Price (CMP)</span>
+              <span style="font-weight:700; color:#2563eb; font-size:1rem;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Today's High (Day High)</span>
-              <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${dayHigh.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+              <span style="color:#475569; font-weight:600;">Previous Close (Yesterday Close)</span>
+              <span style="font-weight:700; color:#475569; font-size:1rem;">₹ ${prevClose.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
               <span style="color:#475569; font-weight:600;">Today's Low (Day Low)</span>
               <span style="font-weight:700; color:#dc2626; font-size:1rem;">₹ ${dayLow.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Current Market Price (CMP)</span>
-              <span style="font-weight:700; color:#2563eb; font-size:1rem;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+              <span style="color:#475569; font-weight:600;">Today's High (Day High)</span>
+              <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${dayHigh.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Previous Close (Yesterday Close)</span>
-              <span style="font-weight:700; color:#475569; font-size:1rem;">₹ ${prevClose.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+              <span style="color:#475569; font-weight:600;">Today's Open (Open Price)</span>
+              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${dayOpen.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
               <span style="color:#475569; font-weight:600;">52-Week High</span>
@@ -756,7 +755,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 3: FUNDAMENTALS SEGMENT (EACH ITEM IN A SINGLE LINE) -->
+        <!-- SECTION 3: FUNDAMENTALS SEGMENT (EACH ITEM IN A DEDICATED SINGLE LINE) -->
         <section class="fundamentals-section" aria-labelledby="heading-fundamentals-segment" style="margin-bottom:28px;">
           <h1 id="heading-fundamentals-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Fundamentals Segment (Line by Line)
@@ -797,7 +796,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 4: TECHNICAL INDICATORS SEGMENT (EACH ITEM IN A SINGLE LINE) -->
+        <!-- SECTION 4: TECHNICAL INDICATORS SEGMENT (EACH ITEM IN A DEDICATED SINGLE LINE) -->
         <section class="indicators-section" aria-labelledby="heading-indicators-segment" style="margin-bottom:28px;">
           <h1 id="heading-indicators-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Technical &amp; Momentum Indicators (Line by Line)
@@ -828,44 +827,28 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 5: ABOUT THE COMPANY (HEADING LEVEL 1) -->
+        <!-- SECTION 5: ABOUT THE COMPANY (CLEAN INSTITUTIONAL HEADING) -->
         <section class="company-about-section" aria-labelledby="heading-about-company" style="margin-bottom:28px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
-            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-              <h1 id="heading-about-company" style="font-size:1.4rem; color:#0f172a; margin:0;">
-                About the Company
-              </h1>
-              <span id="gemini-badge-status" class="badge" style="background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; font-size:0.78rem; font-weight:700; padding:4px 8px; border-radius:6px; display:inline-flex; align-items:center; gap:5px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                Google Gemini AI Verified
-              </span>
-            </div>
-            <button type="button" id="btn-refresh-gemini" class="btn-secondary" style="font-size:0.82rem; font-weight:600; padding:6px 12px; border-radius:6px; cursor:pointer;" title="Re-query Google Gemini API for fresh company intelligence">
-              Fetch Live Gemini AI Insights
-            </button>
-          </div>
-
-          <div id="ai-fetching-notice" style="display:${cachedProfile ? "none" : "flex"}; align-items:center; gap:8px; padding:10px 14px; margin-bottom:14px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; color:#166534; font-size:0.88rem; font-weight:600;">
-            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#16a34a;"></span>
-            Connecting to Google Gemini API for ${escapeHtml(stock.symbol)} business model &amp; audited disclosures...
-          </div>
+          <h1 id="heading-about-company" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            About the Company
+          </h1>
 
           <div id="company-about-content" style="font-size:0.98rem; color:#334155; line-height:1.75; margin-bottom:12px;">
             ${aboutText}
           </div>
         </section>
 
-        <!-- SECTION 6: AI INVESTMENT THESIS (HEADING LEVEL 1) -->
+        <!-- SECTION 6: INVESTMENT THESIS (INSTITUTIONAL HEADING) -->
         <section class="company-thesis-section" aria-labelledby="heading-investment-thesis" style="margin-bottom:28px;">
           <h1 id="heading-investment-thesis" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
-            AI Investment Thesis: Key Strengths &amp; Critical Risks
+            Investment Thesis: Key Strengths &amp; Critical Risks
           </h1>
 
           <div class="pros-cons-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
             <!-- KEY STRENGTHS -->
             <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:16px;">
               <h3 style="font-size:1.05rem; color:#15803d; margin-bottom:10px; font-weight:700;">
-                Key Investment Strengths (Pros)
+                Key Investment Strengths
               </h3>
               <ul id="thesis-strengths-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#166534; line-height:1.65;">
                 ${thesisStrengths.map((p) => `<li style="margin-bottom:8px;">${escapeHtml(p)}</li>`).join("")}
@@ -875,9 +858,14 @@ document.addEventListener("DOMContentLoaded", function () {
             <!-- CRITICAL RISKS -->
             <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:16px;">
               <h3 style="font-size:1.05rem; color:#b45309; margin-bottom:10px; font-weight:700;">
-                Critical Risks &amp; Watchouts (Cons)
+                Critical Risks &amp; Watchouts
               </h3>
               <ul id="thesis-risks-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.65;">
+                ${thesisRisks.map((c) => `<li style="margin-bottom:8px;">${escapeHtml(c)}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </section>
                 ${thesisRisks.map((c) => `<li style="margin-bottom:8px;">${escapeHtml(c)}</li>`).join("")}
               </ul>
             </div>
@@ -1030,71 +1018,16 @@ document.addEventListener("DOMContentLoaded", function () {
           rskList.innerHTML = profile.investmentThesis.risks.map(r => '<li style="margin-bottom:8px;">' + escapeHtml(r) + '</li>').join("");
         }
       }
-
-      const noticeEl = document.getElementById("ai-fetching-notice");
-      if (noticeEl) {
-        noticeEl.style.display = "flex";
-        noticeEl.style.background = "#eff6ff";
-        noticeEl.style.borderColor = "#bfdbfe";
-        noticeEl.style.color = "#1d4ed8";
-        noticeEl.innerHTML = `<span>✨</span> Verified via Google Gemini AI (${isLive ? "Live API Query" : "Quarterly Filing Cache"}) · Stored locally for 45 days`;
-      }
-
-      const badgeEl = document.getElementById("gemini-badge-status");
-      if (badgeEl) {
-        badgeEl.textContent = "Google Gemini AI Verified";
-      }
     }
 
-    // Asynchronous Background Gemini AI Profile Enrichment (if not already cached)
+    // Seamless Asynchronous Background Enrichment (if not already cached)
     if (!cachedProfile && typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
       StocksGeminiAI.fetchCompanyAiProfile(stock).then((profile) => {
         if (profile) {
           applyGeminiProfileToView(profile, false);
-        } else {
-          const noticeEl = document.getElementById("ai-fetching-notice");
-          if (noticeEl) noticeEl.style.display = "none";
         }
       }).catch((err) => {
-        console.warn("Background AI profile error:", err.message);
-        const noticeEl = document.getElementById("ai-fetching-notice");
-        if (noticeEl) noticeEl.style.display = "none";
-      });
-    }
-
-    // Manual Re-query Button: "Fetch Live Gemini AI Insights"
-    const refreshGeminiBtn = document.getElementById("btn-refresh-gemini");
-    if (refreshGeminiBtn) {
-      refreshGeminiBtn.addEventListener("click", async () => {
-        refreshGeminiBtn.disabled = true;
-        refreshGeminiBtn.textContent = "Querying Gemini...";
-
-        const noticeEl = document.getElementById("ai-fetching-notice");
-        if (noticeEl) {
-          noticeEl.style.display = "flex";
-          noticeEl.style.background = "#f0fdf4";
-          noticeEl.style.borderColor = "#bbf7d0";
-          noticeEl.style.color = "#166534";
-          noticeEl.innerHTML = `<span>⏳</span> Generating real-time Gemini AI analysis for ${escapeHtml(stock.symbol)}...`;
-        }
-
-        try {
-          if (typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
-            const freshProfile = await StocksGeminiAI.fetchCompanyAiProfile(stock, true);
-            if (freshProfile) {
-              applyGeminiProfileToView(freshProfile, true);
-            } else {
-              if (noticeEl) {
-                noticeEl.textContent = "Could not fetch fresh profile. Showing default verified fundamentals.";
-              }
-            }
-          }
-        } catch (err) {
-          console.warn("Manual Gemini refresh error:", err);
-        } finally {
-          refreshGeminiBtn.disabled = false;
-          refreshGeminiBtn.textContent = "Fetch Live Gemini AI Insights";
-        }
+        console.warn("Background profile fetch note:", err.message);
       });
     }
 
