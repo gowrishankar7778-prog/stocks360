@@ -1067,6 +1067,83 @@ const StocksGeminiAI = (function () {
     }
   }
 
+  // ---------------- STRUCTURED COMPANY AI PROFILE & THESIS GENERATOR ----------------
+  async function fetchCompanyAiProfile(stock) {
+    if (!stock || !stock.symbol) return null;
+    const sym = String(stock.symbol).toUpperCase();
+    const cacheKey = "stocks360_gemini_profile_" + sym;
+
+    // 1. Check local persistent cache
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        // Valid for 45 days (quarterly cycle)
+        if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < 45 * 86400 * 1000)) {
+          return parsed;
+        }
+      }
+    } catch (_) {}
+
+    // 2. Structured System Instruction & Prompt
+    const systemInstruction = `You are a premier senior equity analyst covering Indian equities.
+When given an Indian company, return a strictly grounded, accurate financial and business profile as clean, parseable JSON with NO markdown formatting, NO backticks, and NO trailing text.
+
+Output JSON Format:
+{
+  "about": "2 comprehensive paragraphs describing the company's core operations, business verticals, flagship products/brands, corporate parentage/subsidiaries, and competitive moat in the Indian market.",
+  "marketCapCr": number (market cap in ₹ Crores, realistic/audited),
+  "pe": number (current P/E ratio),
+  "roePct": number (Return on Equity %),
+  "rocePct": number (Return on Capital Employed %),
+  "debtToEquity": number (Debt-to-Equity ratio),
+  "divYieldPct": number (Dividend Yield %),
+  "salesGrowth3Y": number (3-Year Sales CAGR %),
+  "profitGrowth3Y": number (3-Year Profit CAGR %),
+  "investmentThesis": {
+    "strengths": [
+      "Key investment strength 1 (e.g. market leadership, product demand)",
+      "Key investment strength 2 (e.g. healthy balance sheet leverage, free cash flows)",
+      "Key investment strength 3 (e.g. strategic expansion or technological moat)"
+    ],
+    "risks": [
+      "Critical risk 1 (e.g. raw material cost fluctuations, commodity exposure)",
+      "Critical risk 2 (e.g. competitive intensity, sector slowdown)",
+      "Critical risk 3 (e.g. valuation multiple or regulatory compliance)"
+    ]
+  },
+  "financials": [
+    { "year": "FY21", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
+    { "year": "FY22", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
+    { "year": "FY23", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
+    { "year": "FY24", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
+    { "year": "FY25", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." }
+  ]
+}`;
+
+    const prompt = `Analyze Indian company: "${stock.name}" (NSE Symbol: "${stock.symbol}", Sector: "${stock.sector || 'Indian Equity'}").
+Provide its authentic business overview, audited fundamentals, AI investment thesis (3 key strengths and 3 critical risks), and 5-year financials table. Output ONLY valid JSON.`;
+
+    try {
+      const rawText = await callGeminiModel(systemInstruction, prompt, false);
+      if (rawText) {
+        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const profile = JSON.parse(jsonMatch[0]);
+          profile.symbol = sym;
+          profile.timestamp = Date.now();
+          try {
+            localStorage.setItem(cacheKey, JSON.stringify(profile));
+          } catch (_) {}
+          return profile;
+        }
+      }
+    } catch (e) {
+      console.warn("Gemini profile fetch fallback for " + sym + ":", e.message);
+    }
+    return null;
+  }
+
   return {
     loadConfig: loadConfig,
     saveConfig: saveConfig,
@@ -1074,7 +1151,8 @@ const StocksGeminiAI = (function () {
     askGroundedContentQuestion: askGroundedContentQuestion,
     askGeneralMarketTrends: askGeneralMarketTrends,
     renderAiResponseCard: renderAiResponseCard,
-    parseScreenerQuery: parseScreenerQuery
+    parseScreenerQuery: parseScreenerQuery,
+    fetchCompanyAiProfile: fetchCompanyAiProfile
   };
 })();
 

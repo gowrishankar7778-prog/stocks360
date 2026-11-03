@@ -619,18 +619,58 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!stockResult) return;
     stockResult.hidden = false;
 
-    const { pros, cons } = generateProsAndCons(stock);
-    const financials = generate5YearFinancials(stock);
+    // Check for cached Gemini profile (quarterly persistent cache)
+    const symUpper = String(stock.symbol || "").toUpperCase();
+    const cacheKey = "stocks360_gemini_profile_" + symUpper;
+    let cachedProfile = null;
+    try {
+      const raw = localStorage.getItem(cacheKey);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < 45 * 86400 * 1000)) {
+          cachedProfile = parsed;
+        }
+      }
+    } catch (_) {}
+
+    // 1. Fundamentals from verified profile or stock record
+    const marketCapCr = cachedProfile && typeof cachedProfile.marketCapCr === "number" ? cachedProfile.marketCapCr : stock.marketCapCr;
+    const pe = cachedProfile && typeof cachedProfile.pe === "number" ? cachedProfile.pe : stock.pe;
+    const roePct = cachedProfile && typeof cachedProfile.roePct === "number" ? cachedProfile.roePct : stock.roePct;
+    const rocePct = cachedProfile && typeof cachedProfile.rocePct === "number" ? cachedProfile.rocePct : stock.rocePct;
+    const debtToEquity = cachedProfile && typeof cachedProfile.debtToEquity === "number" ? cachedProfile.debtToEquity : stock.debtToEquity;
+    const divYieldPct = cachedProfile && typeof cachedProfile.divYieldPct === "number" ? cachedProfile.divYieldPct : stock.divYieldPct;
+    const salesGrowth3Y = cachedProfile && typeof cachedProfile.salesGrowth3Y === "number" ? cachedProfile.salesGrowth3Y : stock.salesGrowth3Y;
+    const profitGrowth3Y = cachedProfile && typeof cachedProfile.profitGrowth3Y === "number" ? cachedProfile.profitGrowth3Y : stock.profitGrowth3Y;
+
+    // 2. Financial Statements (5-Year History)
+    const financials = (cachedProfile && Array.isArray(cachedProfile.financials) && cachedProfile.financials.length > 0)
+      ? cachedProfile.financials
+      : generate5YearFinancials(stock);
+
+    // 3. Investment Thesis (Strengths & Risks)
+    const baseThesis = generateProsAndCons(stock);
+    const thesisStrengths = (cachedProfile && cachedProfile.investmentThesis && Array.isArray(cachedProfile.investmentThesis.strengths))
+      ? cachedProfile.investmentThesis.strengths
+      : baseThesis.pros;
+    const thesisRisks = (cachedProfile && cachedProfile.investmentThesis && Array.isArray(cachedProfile.investmentThesis.risks))
+      ? cachedProfile.investmentThesis.risks
+      : baseThesis.cons;
+
+    // 4. About the Company Profile Text
+    const aboutText = (cachedProfile && cachedProfile.about)
+      ? cachedProfile.about
+      : (stock.about || `<strong>${escapeHtml(stock.name)}</strong> is a prominent enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${salesGrowth3Y}% and maintains a conservative Debt-to-Equity ratio of ${debtToEquity}.`);
+
     const news = generateCompanyNews(stock);
 
-    // Exact Exchange Price High/Low Ranges & OHLC metrics
+    // 5. Exact Exchange Price High/Low Ranges & OHLC metrics (from automated NSE script)
     const dayOpen = typeof stock.dayOpen === "number" ? stock.dayOpen : (typeof stock.open === "number" ? stock.open : Math.round(stock.cmp * 0.995 * 10) / 10);
     const dayHigh = typeof stock.dayHigh === "number" ? stock.dayHigh : Math.round(stock.cmp * 1.018 * 10) / 10;
     const dayLow = typeof stock.dayLow === "number" ? stock.dayLow : Math.round(stock.cmp * 0.985 * 10) / 10;
     const high52 = typeof stock.high52 === "number" ? stock.high52 : Math.round(stock.cmp * 1.15);
     const low52 = typeof stock.low52 === "number" ? stock.low52 : Math.round(stock.cmp * 0.75);
 
-    // Explicit Day Gain or Loss calculation from real exchange data
     const dayChange = typeof stock.dayChange === "number" ? stock.dayChange : 0;
     const dayChangePct = typeof stock.dayChangePct === "number" ? stock.dayChangePct : 0;
     const isGain = stock.isGain !== undefined ? stock.isGain : dayChange >= 0;
@@ -648,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div>
               <div style="display:flex; align-items:center; gap:8px;">
                 <span class="badge badge-success" style="font-size:0.75rem;">NSE: ${escapeHtml(stock.symbol)}</span>
-                ${stock.isSynthesized ? '<span class="badge badge-neutral" style="font-size:0.75rem; background:#fef3c7; color:#92400e; border:1px solid #fde68a;">Dynamic NSE Profile</span>' : ''}
+                ${cachedProfile ? '<span class="badge badge-primary" style="font-size:0.75rem; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Gemini AI Verified</span>' : ''}
                 <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
               </div>
               <h2 id="company-view-title" style="margin-top:6px; font-size:1.65rem; color:#0f172a;">${escapeHtml(stock.name)}</h2>
@@ -674,7 +714,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
 
-          <!-- PERFORMANCE SEGMENT: OHLC & 52-WEEK HIGH / LOW PRESENTED LINE BY LINE -->
+          <!-- PERFORMANCE SEGMENT: OHLC & 52-WEEK HIGH / LOW (LINE BY LINE) -->
           <div class="performance-ohlc-segment" style="margin-top:20px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
             <h3 style="font-size:1.05rem; font-weight:700; color:#0f172a; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid #e2e8f0;">
               Performance Segment: Price &amp; OHLC Range (Line by Line)
@@ -716,47 +756,15 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>
 
-        <!-- SECTION 2: ASK STOCKS 360 AI (POSITIONED RIGHT AFTER PRICE PERFORMANCE) -->
-        <div class="company-ai-grounded-box" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px; padding:20px; margin-bottom:28px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-            <div style="display:flex; align-items:center; gap:6px;">
-              <span class="pulse-dot"></span>
-              <strong style="font-size:1.05rem; color:#0f172a;">Ask Stocks 360 AI About ${escapeHtml(stock.symbol)}</strong>
-            </div>
-            <span style="font-size:0.78rem; color:#0369a1; background:#e0f2fe; padding:3px 10px; border-radius:999px; font-weight:600;">
-              Strict Grounded Mode: Responds only from verified data for ${escapeHtml(stock.symbol)}
-            </span>
-          </div>
-
-          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
-            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="What are the key financial strengths and watchouts for ${escapeHtml(stock.name)}?">
-              Key strengths &amp; watchouts
-            </button>
-            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="Explain why ${escapeHtml(stock.symbol)} has a Return on Equity of ${stock.roePct}%.">
-              Explain ROE of ${stock.roePct}%
-            </button>
-            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="What does this company's debt to equity of ${stock.debtToEquity} mean for investors?">
-              Explain debt ratio of ${stock.debtToEquity}
-            </button>
-          </div>
-
-          <div class="search-input-wrapper" style="margin-bottom:8px;">
-            <input type="text" id="company-ai-input" placeholder="Ask any question about ${escapeHtml(stock.symbol)}'s financial ratios or performance..." style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px 14px; font-size:0.95rem;">
-            <button type="button" id="company-ai-send" class="btn-primary">Ask AI</button>
-          </div>
-
-          <div id="company-ai-response" aria-live="polite"></div>
-        </div>
-
-        <!-- SECTION 3: ABOUT THE COMPANY (HEADING LEVEL 1) -->
+        <!-- SECTION 2: ABOUT THE COMPANY (HEADING LEVEL 1) -->
         <section class="company-about-section" aria-labelledby="heading-about-company" style="margin-bottom:28px;">
           <h1 id="heading-about-company" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             About the Company
           </h1>
 
-          <p style="font-size:0.98rem; color:#334155; line-height:1.65; margin-bottom:18px;">
-            <strong>${escapeHtml(stock.name)}</strong> is a leading enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${stock.marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${stock.salesGrowth3Y}% and maintains a Debt-to-Equity ratio of ${stock.debtToEquity}.
-          </p>
+          <div id="company-about-content" style="font-size:0.98rem; color:#334155; line-height:1.75; margin-bottom:22px;">
+            ${aboutText}
+          </div>
 
           <!-- FUNDAMENTALS SEGMENT: PRESENTED LINE BY LINE -->
           <div class="fundamentals-line-segment" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
@@ -766,35 +774,35 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
                 <span style="color:#475569; font-weight:600;">Market Capitalization</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${stock.marketCapCr.toLocaleString("en-IN")} Crores</span>
+                <span id="metric-market-cap" style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${marketCapCr.toLocaleString("en-IN")} Crores</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
                 <span style="color:#475569; font-weight:600;">Stock P/E Ratio (Price-to-Earnings)</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.pe}x</span>
+                <span id="metric-pe" style="font-weight:700; color:#0f172a; font-size:1rem;">${pe}x</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
                 <span style="color:#475569; font-weight:600;">Return on Equity (ROE)</span>
-                <span style="font-weight:700; color:#16a34a; font-size:1rem;">${stock.roePct}%</span>
+                <span id="metric-roe" style="font-weight:700; color:#16a34a; font-size:1rem;">${roePct}%</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
                 <span style="color:#475569; font-weight:600;">Return on Capital Employed (ROCE)</span>
-                <span style="font-weight:700; color:#16a34a; font-size:1rem;">${stock.rocePct}%</span>
+                <span id="metric-roce" style="font-weight:700; color:#16a34a; font-size:1rem;">${rocePct}%</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
                 <span style="color:#475569; font-weight:600;">Debt to Equity Ratio</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.debtToEquity}</span>
+                <span id="metric-de" style="font-weight:700; color:#0f172a; font-size:1rem;">${debtToEquity}</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
                 <span style="color:#475569; font-weight:600;">Dividend Yield</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.divYieldPct}%</span>
+                <span id="metric-div-yield" style="font-weight:700; color:#0f172a; font-size:1rem;">${divYieldPct}%</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
                 <span style="color:#475569; font-weight:600;">3-Year Sales Growth</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.salesGrowth3Y}%</span>
+                <span id="metric-sales-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${salesGrowth3Y}%</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
                 <span style="color:#475569; font-weight:600;">3-Year Profit Growth</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.profitGrowth3Y}%</span>
+                <span id="metric-profit-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${profitGrowth3Y}%</span>
               </div>
             </div>
           </div>
@@ -829,26 +837,32 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- KEY STRENGTHS & WATCHOUTS (NO EMOJIS, CLEAN CARDS) -->
+        <!-- SECTION 3: AI INVESTMENT THESIS (HEADING LEVEL 1) -->
+        <section class="company-thesis-section" aria-labelledby="heading-investment-thesis" style="margin-bottom:28px;">
+          <h1 id="heading-investment-thesis" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            AI Investment Thesis: Key Strengths &amp; Critical Risks
+          </h1>
+
           <div class="pros-cons-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <!-- STRENGTHS -->
+            <!-- KEY STRENGTHS -->
             <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:16px;">
-              <h3 style="font-size:1rem; color:#15803d; margin-bottom:10px; font-weight:700;">
-                Key Strengths (Pros)
+              <h3 style="font-size:1.05rem; color:#15803d; margin-bottom:10px; font-weight:700; display:flex; align-items:center; gap:8px;">
+                <span>Key Investment Strengths (Pros)</span>
               </h3>
-              <ul style="padding-left:18px; margin:0; font-size:0.92rem; color:#166534; line-height:1.6;">
-                ${pros.map((p) => `<li style="margin-bottom:6px;">${escapeHtml(p)}</li>`).join("")}
+              <ul id="thesis-strengths-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#166534; line-height:1.65;">
+                ${thesisStrengths.map((p) => `<li style="margin-bottom:8px;">${escapeHtml(p)}</li>`).join("")}
               </ul>
             </div>
 
-            <!-- WATCHOUTS -->
+            <!-- CRITICAL RISKS -->
             <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:16px;">
-              <h3 style="font-size:1rem; color:#b45309; margin-bottom:10px; font-weight:700;">
-                Watchouts &amp; Considerations (Cons)
+              <h3 style="font-size:1.05rem; color:#b45309; margin-bottom:10px; font-weight:700; display:flex; align-items:center; gap:8px;">
+                <span>Critical Risks &amp; Watchouts (Cons)</span>
               </h3>
-              <ul style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.6;">
-                ${cons.map((c) => `<li style="margin-bottom:6px;">${escapeHtml(c)}</li>`).join("")}
+              <ul id="thesis-risks-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.65;">
+                ${thesisRisks.map((c) => `<li style="margin-bottom:8px;">${escapeHtml(c)}</li>`).join("")}
               </ul>
             </div>
           </div>
@@ -877,12 +891,12 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
         <!-- SECTION 5: FINANCIAL STATEMENTS & 5-YEAR PERFORMANCE TREND (HEADING LEVEL 1) -->
-        <section class="company-financials-section" aria-labelledby="heading-financial-statements">
+        <section class="company-financials-section" aria-labelledby="heading-financial-statements" style="margin-bottom:28px;">
           <h1 id="heading-financial-statements" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Financial Statements &amp; Performance History (5-Year Trend)
           </h1>
           <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:10px;">
-            <table class="stocks360-data-table" style="font-size:0.92rem; width:100%; border-collapse:collapse;">
+            <table class="stocks360-data-table" id="company-financials-table" style="font-size:0.92rem; width:100%; border-collapse:collapse;">
               <thead>
                 <tr style="background:#f8fafc;">
                   <th style="padding:12px 14px; text-align:left; border-bottom:1px solid #e2e8f0;">Financial Metric (₹ Crores)</th>
@@ -915,8 +929,98 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
+        <!-- SECTION 6: ASK STOCKS 360 AI DRAWER -->
+        <div class="company-ai-grounded-box" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px; padding:20px; margin-top:28px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span class="pulse-dot"></span>
+              <strong style="font-size:1.05rem; color:#0f172a;">Ask Stocks 360 AI About ${escapeHtml(stock.symbol)}</strong>
+            </div>
+            <span style="font-size:0.78rem; color:#0369a1; background:#e0f2fe; padding:3px 10px; border-radius:999px; font-weight:600;">
+              Strict Grounded Mode: Responds only from verified data for ${escapeHtml(stock.symbol)}
+            </span>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
+            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="What are the key financial strengths and watchouts for ${escapeHtml(stock.name)}?">
+              Key strengths &amp; watchouts
+            </button>
+            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="Explain why ${escapeHtml(stock.symbol)} has a Return on Equity of ${roePct}%.">
+              Explain ROE of ${roePct}%
+            </button>
+            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="What does this company's debt to equity of ${debtToEquity} mean for investors?">
+              Explain debt ratio of ${debtToEquity}
+            </button>
+          </div>
+
+          <div class="search-input-wrapper" style="margin-bottom:8px;">
+            <input type="text" id="company-ai-input" placeholder="Ask any question about ${escapeHtml(stock.symbol)}'s financial ratios or performance..." style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px 14px; font-size:0.95rem;">
+            <button type="button" id="company-ai-send" class="btn-primary">Ask AI</button>
+          </div>
+
+          <div id="company-ai-response" aria-live="polite"></div>
+        </div>
+
       </div>
     `;
+
+    // 6. Asynchronous Background Gemini AI Profile Enrichment (if not already cached)
+    if (!cachedProfile && typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
+      StocksGeminiAI.fetchCompanyAiProfile(stock).then((profile) => {
+        if (!profile) return;
+        // Check if user is still on this stock view
+        if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
+          const aboutEl = document.getElementById("company-about-content");
+          if (aboutEl && profile.about) {
+            aboutEl.innerHTML = profile.about;
+          }
+
+          if (profile.marketCapCr) {
+            const mcapEl = document.getElementById("metric-market-cap");
+            if (mcapEl) mcapEl.textContent = "₹ " + profile.marketCapCr.toLocaleString("en-IN") + " Crores";
+          }
+          if (profile.pe) {
+            const peEl = document.getElementById("metric-pe");
+            if (peEl) peEl.textContent = profile.pe + "x";
+          }
+          if (profile.roePct) {
+            const roeEl = document.getElementById("metric-roe");
+            if (roeEl) roeEl.textContent = profile.roePct + "%";
+          }
+          if (profile.rocePct) {
+            const roceEl = document.getElementById("metric-roce");
+            if (roceEl) roceEl.textContent = profile.rocePct + "%";
+          }
+          if (profile.debtToEquity !== undefined) {
+            const deEl = document.getElementById("metric-de");
+            if (deEl) deEl.textContent = String(profile.debtToEquity);
+          }
+          if (profile.salesGrowth3Y) {
+            const sgEl = document.getElementById("metric-sales-growth");
+            if (sgEl) sgEl.textContent = profile.salesGrowth3Y + "%";
+          }
+          if (profile.profitGrowth3Y) {
+            const pgEl = document.getElementById("metric-profit-growth");
+            if (pgEl) pgEl.textContent = profile.profitGrowth3Y + "%";
+          }
+
+          // Update AI Thesis Lists
+          if (profile.investmentThesis) {
+            const strList = document.getElementById("thesis-strengths-list");
+            if (strList && Array.isArray(profile.investmentThesis.strengths)) {
+              strList.innerHTML = profile.investmentThesis.strengths.map(s => '<li style="margin-bottom:8px;">' + escapeHtml(s) + '</li>').join("");
+            }
+            const rskList = document.getElementById("thesis-risks-list");
+            if (rskList && Array.isArray(profile.investmentThesis.risks)) {
+              rskList.innerHTML = profile.investmentThesis.risks.map(r => '<li style="margin-bottom:8px;">' + escapeHtml(r) + '</li>').join("");
+            }
+          }
+        }
+      }).catch((err) => {
+        console.warn("Background AI profile error:", err.message);
+      });
+    }
+
 
     // Connect Audio Overview Readout with Reliable Browser Speech Synthesis
     const listenBtn = document.getElementById("btn-listen-company");

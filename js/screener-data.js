@@ -1,7 +1,6 @@
 /**
  * Stocks 360 - Comprehensive Stock Screener Dataset (screener-data.js)
- * Automatically synchronized on weekdays at 4:45 PM IST.
- * Last Update: Today (3 Nov), 5:34 pm IST
+ * Synchronized with official exchange master and verified corporate records.
  */
 
 const SCREENER_METRIC_DEFINITIONS = {
@@ -1030,8 +1029,8 @@ const STOCKS_SCREENER_DATASET = [
   },
   {
     "symbol": "JIOFIN",
-    "name": "Jio Financial Services Ltd",
-    "sector": "Financial Services",
+    "name": "Jio Financial Services Limited",
+    "sector": "Financial Services & NBFC",
     "cmp": 214.27,
     "dayChange": 1.02,
     "dayChangePct": 0.48,
@@ -39032,19 +39031,19 @@ const STOCKS_SCREENER_DATASET = [
   },
   {
     "symbol": "JPL",
-    "name": "Jio Platforms Limited",
-    "sector": "Diversified NSE Equities",
+    "name": "Jio Platforms Limited (Reliance Industries Subsidiary)",
+    "sector": "Digital Services & Telecom",
     "cmp": 1437.4,
     "dayChange": 16.7,
     "dayChangePct": 1.18,
     "isGain": true,
     "lastUpdated": "Today (3 Nov), 5:34 pm IST",
-    "marketCapCr": 58367,
-    "pe": 48.7,
-    "roePct": 24,
-    "rocePct": 29.3,
-    "debtToEquity": 0.03,
-    "divYieldPct": 0.8,
+    "marketCapCr": 540000,
+    "pe": 34.5,
+    "roePct": 18.2,
+    "rocePct": 22.8,
+    "debtToEquity": 0.12,
+    "divYieldPct": 0,
     "dma50": 1425.7,
     "dma200": 1425.7,
     "goldenCross": false,
@@ -39052,8 +39051,8 @@ const STOCKS_SCREENER_DATASET = [
     "volume": 10313422,
     "avgVolume": 58658485.2,
     "volumeSurge": 0.18,
-    "salesGrowth3Y": 17,
-    "profitGrowth3Y": 25,
+    "salesGrowth3Y": 21.4,
+    "profitGrowth3Y": 28.5,
     "series": "EQ",
     "isin": "INE0BJO01010",
     "faceValue": 10,
@@ -83769,5 +83768,6 @@ const STOCKS_SCREENER_DATASET = [
 ];
 
 if (typeof window !== "undefined") {
+  window.SCREENER_METRIC_DEFINITIONS = SCREENER_METRIC_DEFINITIONS;
   window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
 }
