@@ -830,9 +830,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <!-- SECTION 5: ABOUT THE COMPANY (HEADING LEVEL 1) -->
         <section class="company-about-section" aria-labelledby="heading-about-company" style="margin-bottom:28px;">
-          <h1 id="heading-about-company" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
-            About the Company
-          </h1>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <h1 id="heading-about-company" style="font-size:1.4rem; color:#0f172a; margin:0;">
+                About the Company
+              </h1>
+              <span id="gemini-badge-status" class="badge" style="background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; font-size:0.78rem; font-weight:700; padding:4px 8px; border-radius:6px; display:inline-flex; align-items:center; gap:5px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                Google Gemini AI Verified
+              </span>
+            </div>
+            <button type="button" id="btn-refresh-gemini" class="btn-secondary" style="font-size:0.82rem; font-weight:600; padding:6px 12px; border-radius:6px; cursor:pointer;" title="Re-query Google Gemini API for fresh company intelligence">
+              Fetch Live Gemini AI Insights
+            </button>
+          </div>
+
+          <div id="ai-fetching-notice" style="display:${cachedProfile ? "none" : "flex"}; align-items:center; gap:8px; padding:10px 14px; margin-bottom:14px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; color:#166534; font-size:0.88rem; font-weight:600;">
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#16a34a;"></span>
+            Connecting to Google Gemini API for ${escapeHtml(stock.symbol)} business model &amp; audited disclosures...
+          </div>
 
           <div id="company-about-content" style="font-size:0.98rem; color:#334155; line-height:1.75; margin-bottom:12px;">
             ${aboutText}
@@ -964,59 +980,121 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
+    // Helper to apply Gemini profile data to DOM elements
+    function applyGeminiProfileToView(profile, isLive) {
+      if (!profile) return;
+      if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
+
+      const aboutEl = document.getElementById("company-about-content");
+      if (aboutEl && profile.about) {
+        aboutEl.innerHTML = profile.about;
+      }
+
+      if (profile.marketCapCr) {
+        const mcapEl = document.getElementById("metric-market-cap");
+        if (mcapEl) mcapEl.textContent = "₹ " + profile.marketCapCr.toLocaleString("en-IN") + " Crores";
+      }
+      if (profile.pe) {
+        const peEl = document.getElementById("metric-pe");
+        if (peEl) peEl.textContent = profile.pe + "x";
+      }
+      if (profile.roePct) {
+        const roeEl = document.getElementById("metric-roe");
+        if (roeEl) roeEl.textContent = profile.roePct + "%";
+      }
+      if (profile.rocePct) {
+        const roceEl = document.getElementById("metric-roce");
+        if (roceEl) roceEl.textContent = profile.rocePct + "%";
+      }
+      if (profile.debtToEquity !== undefined) {
+        const deEl = document.getElementById("metric-de");
+        if (deEl) deEl.textContent = String(profile.debtToEquity);
+      }
+      if (profile.salesGrowth3Y) {
+        const sgEl = document.getElementById("metric-sales-growth");
+        if (sgEl) sgEl.textContent = profile.salesGrowth3Y + "%";
+      }
+      if (profile.profitGrowth3Y) {
+        const pgEl = document.getElementById("metric-profit-growth");
+        if (pgEl) pgEl.textContent = profile.profitGrowth3Y + "%";
+      }
+
+      // Update AI Thesis Lists
+      if (profile.investmentThesis) {
+        const strList = document.getElementById("thesis-strengths-list");
+        if (strList && Array.isArray(profile.investmentThesis.strengths)) {
+          strList.innerHTML = profile.investmentThesis.strengths.map(s => '<li style="margin-bottom:8px;">' + escapeHtml(s) + '</li>').join("");
+        }
+        const rskList = document.getElementById("thesis-risks-list");
+        if (rskList && Array.isArray(profile.investmentThesis.risks)) {
+          rskList.innerHTML = profile.investmentThesis.risks.map(r => '<li style="margin-bottom:8px;">' + escapeHtml(r) + '</li>').join("");
+        }
+      }
+
+      const noticeEl = document.getElementById("ai-fetching-notice");
+      if (noticeEl) {
+        noticeEl.style.display = "flex";
+        noticeEl.style.background = "#eff6ff";
+        noticeEl.style.borderColor = "#bfdbfe";
+        noticeEl.style.color = "#1d4ed8";
+        noticeEl.innerHTML = `<span>✨</span> Verified via Google Gemini AI (${isLive ? "Live API Query" : "Quarterly Filing Cache"}) · Stored locally for 45 days`;
+      }
+
+      const badgeEl = document.getElementById("gemini-badge-status");
+      if (badgeEl) {
+        badgeEl.textContent = "Google Gemini AI Verified";
+      }
+    }
+
     // Asynchronous Background Gemini AI Profile Enrichment (if not already cached)
     if (!cachedProfile && typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
       StocksGeminiAI.fetchCompanyAiProfile(stock).then((profile) => {
-        if (!profile) return;
-        if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
-          const aboutEl = document.getElementById("company-about-content");
-          if (aboutEl && profile.about) {
-            aboutEl.innerHTML = profile.about;
-          }
-
-          if (profile.marketCapCr) {
-            const mcapEl = document.getElementById("metric-market-cap");
-            if (mcapEl) mcapEl.textContent = "₹ " + profile.marketCapCr.toLocaleString("en-IN") + " Crores";
-          }
-          if (profile.pe) {
-            const peEl = document.getElementById("metric-pe");
-            if (peEl) peEl.textContent = profile.pe + "x";
-          }
-          if (profile.roePct) {
-            const roeEl = document.getElementById("metric-roe");
-            if (roeEl) roeEl.textContent = profile.roePct + "%";
-          }
-          if (profile.rocePct) {
-            const roceEl = document.getElementById("metric-roce");
-            if (roceEl) roceEl.textContent = profile.rocePct + "%";
-          }
-          if (profile.debtToEquity !== undefined) {
-            const deEl = document.getElementById("metric-de");
-            if (deEl) deEl.textContent = String(profile.debtToEquity);
-          }
-          if (profile.salesGrowth3Y) {
-            const sgEl = document.getElementById("metric-sales-growth");
-            if (sgEl) sgEl.textContent = profile.salesGrowth3Y + "%";
-          }
-          if (profile.profitGrowth3Y) {
-            const pgEl = document.getElementById("metric-profit-growth");
-            if (pgEl) pgEl.textContent = profile.profitGrowth3Y + "%";
-          }
-
-          // Update AI Thesis Lists
-          if (profile.investmentThesis) {
-            const strList = document.getElementById("thesis-strengths-list");
-            if (strList && Array.isArray(profile.investmentThesis.strengths)) {
-              strList.innerHTML = profile.investmentThesis.strengths.map(s => '<li style="margin-bottom:8px;">' + escapeHtml(s) + '</li>').join("");
-            }
-            const rskList = document.getElementById("thesis-risks-list");
-            if (rskList && Array.isArray(profile.investmentThesis.risks)) {
-              rskList.innerHTML = profile.investmentThesis.risks.map(r => '<li style="margin-bottom:8px;">' + escapeHtml(r) + '</li>').join("");
-            }
-          }
+        if (profile) {
+          applyGeminiProfileToView(profile, false);
+        } else {
+          const noticeEl = document.getElementById("ai-fetching-notice");
+          if (noticeEl) noticeEl.style.display = "none";
         }
       }).catch((err) => {
         console.warn("Background AI profile error:", err.message);
+        const noticeEl = document.getElementById("ai-fetching-notice");
+        if (noticeEl) noticeEl.style.display = "none";
+      });
+    }
+
+    // Manual Re-query Button: "Fetch Live Gemini AI Insights"
+    const refreshGeminiBtn = document.getElementById("btn-refresh-gemini");
+    if (refreshGeminiBtn) {
+      refreshGeminiBtn.addEventListener("click", async () => {
+        refreshGeminiBtn.disabled = true;
+        refreshGeminiBtn.textContent = "Querying Gemini...";
+
+        const noticeEl = document.getElementById("ai-fetching-notice");
+        if (noticeEl) {
+          noticeEl.style.display = "flex";
+          noticeEl.style.background = "#f0fdf4";
+          noticeEl.style.borderColor = "#bbf7d0";
+          noticeEl.style.color = "#166534";
+          noticeEl.innerHTML = `<span>⏳</span> Generating real-time Gemini AI analysis for ${escapeHtml(stock.symbol)}...`;
+        }
+
+        try {
+          if (typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
+            const freshProfile = await StocksGeminiAI.fetchCompanyAiProfile(stock, true);
+            if (freshProfile) {
+              applyGeminiProfileToView(freshProfile, true);
+            } else {
+              if (noticeEl) {
+                noticeEl.textContent = "Could not fetch fresh profile. Showing default verified fundamentals.";
+              }
+            }
+          }
+        } catch (err) {
+          console.warn("Manual Gemini refresh error:", err);
+        } finally {
+          refreshGeminiBtn.disabled = false;
+          refreshGeminiBtn.textContent = "Fetch Live Gemini AI Insights";
+        }
       });
     }
 

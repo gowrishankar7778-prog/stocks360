@@ -24,18 +24,18 @@ const StocksGeminiAI = (function () {
 
   const DEFAULT_CONFIG = {
     apiKey: "",
-    model: "gemini-3.8-flash",
+    model: "gemini-3.5-flash-lite",
     dailyLimit: 500,
-    maxOutputTokens: 280,
+    maxOutputTokens: 350,
     temperatureStrict: 0.2,
     temperatureInteractive: 0.55
   };
 
   const FALLBACK_MODELS = [
-    "gemini-3.8-flash",
     "gemini-3.5-flash-lite",
-    "gemini-2.5-flash-lite",
-    "gemini-2.5-flash"
+    "gemini-3.8-flash",
+    "gemini-3-flash-preview",
+    "gemini-flash-latest"
   ];
 
   let runtimeConfig = null;
@@ -225,7 +225,7 @@ const StocksGeminiAI = (function () {
   }
 
   // ---------------- GEMINI REST API CALL WITH MULTI-TURN MEMORY ----------------
-  async function callGeminiModel(systemInstruction, userPrompt, isStrictMode, priorTurns) {
+  async function callGeminiModel(systemInstruction, userPrompt, isStrictMode, priorTurns, customOpts) {
     const cfg = await loadConfig();
     if (!cfg.apiKey) return null;
 
@@ -235,14 +235,16 @@ const StocksGeminiAI = (function () {
       return null;
     }
 
-    const modelsToTry = [cfg.model || "gemini-3.8-flash"].concat(
-      FALLBACK_MODELS.filter((m) => m !== cfg.model)
+    const preferredModel = (customOpts && customOpts.forceModel) || cfg.model || "gemini-3.5-flash-lite";
+    const modelsToTry = [preferredModel].concat(
+      FALLBACK_MODELS.filter((m) => m !== preferredModel)
     );
 
     const temperature = isStrictMode
       ? cfg.temperatureStrict || 0.2
       : cfg.temperatureInteractive || 0.55;
-    const maxOutputTokens = parseInt(cfg.maxOutputTokens || "280", 10) || 280;
+    const maxOutputTokens = (customOpts && customOpts.maxOutputTokens) || parseInt(cfg.maxOutputTokens || "350", 10) || 350;
+    const timeoutMs = (customOpts && customOpts.timeoutMs) || 15000;
 
     const contents = [];
     if (Array.isArray(priorTurns) && priorTurns.length > 0) {
@@ -254,6 +256,14 @@ const StocksGeminiAI = (function () {
       });
     }
     contents.push({ role: "user", parts: [{ text: userPrompt }] });
+
+    const genConfig = {
+      temperature: temperature,
+      maxOutputTokens: maxOutputTokens
+    };
+    if (customOpts && customOpts.responseMimeType) {
+      genConfig.responseMimeType = customOpts.responseMimeType;
+    }
 
     for (let i = 0; i < modelsToTry.length; i++) {
       const modelName = modelsToTry[i];
@@ -273,13 +283,10 @@ const StocksGeminiAI = (function () {
                 parts: [{ text: systemInstruction }]
               },
               contents: contents,
-              generationConfig: {
-                temperature: temperature,
-                maxOutputTokens: maxOutputTokens
-              }
+              generationConfig: genConfig
             })
           }),
-          new Promise((resolve) => setTimeout(() => resolve(null), 6500))
+          new Promise((resolve) => setTimeout(() => resolve(null), timeoutMs))
         ]);
 
         if (res && res.ok) {
@@ -1068,22 +1075,24 @@ const StocksGeminiAI = (function () {
   }
 
   // ---------------- STRUCTURED COMPANY AI PROFILE & THESIS GENERATOR ----------------
-  async function fetchCompanyAiProfile(stock) {
+  async function fetchCompanyAiProfile(stock, forceRefresh) {
     if (!stock || !stock.symbol) return null;
     const sym = String(stock.symbol).toUpperCase();
     const cacheKey = "stocks360_gemini_profile_" + sym;
 
-    // 1. Check local persistent cache
-    try {
-      const cached = localStorage.getItem(cacheKey);
-      if (cached) {
-        const parsed = JSON.parse(cached);
-        // Valid for 45 days (quarterly cycle)
-        if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < 45 * 86400 * 1000)) {
-          return parsed;
+    // 1. Check local persistent cache (unless forceRefresh is requested)
+    if (!forceRefresh) {
+      try {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          // Valid for 45 days (quarterly cycle)
+          if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < 45 * 86400 * 1000)) {
+            return parsed;
+          }
         }
-      }
-    } catch (_) {}
+      } catch (_) {}
+    }
 
     // 2. Structured System Instruction & Prompt
     const systemInstruction = `You are a premier senior equity analyst covering Indian equities.
@@ -1111,27 +1120,32 @@ Output JSON Format:
       "Critical risk 2 (e.g. competitive intensity, sector slowdown)",
       "Critical risk 3 (e.g. valuation multiple or regulatory compliance)"
     ]
-  },
-  "financials": [
-    { "year": "FY21", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
-    { "year": "FY22", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
-    { "year": "FY23", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
-    { "year": "FY24", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." },
-    { "year": "FY25", "sales": "...", "netProfit": "...", "opm": "...", "roe": "...", "borrowings": "..." }
-  ]
+  }
 }`;
 
     const prompt = `Analyze Indian company: "${stock.name}" (NSE Symbol: "${stock.symbol}", Sector: "${stock.sector || 'Indian Equity'}").
-Provide its authentic business overview, audited fundamentals, AI investment thesis (3 key strengths and 3 critical risks), and 5-year financials table. Output ONLY valid JSON.`;
+Provide its authentic business overview, audited fundamentals, and AI investment thesis (3 key strengths and 3 critical risks). Output ONLY valid JSON.`;
 
     try {
-      const rawText = await callGeminiModel(systemInstruction, prompt, false);
+      const rawText = await callGeminiModel(systemInstruction, prompt, true, null, {
+        maxOutputTokens: 2048,
+        timeoutMs: 35000,
+        responseMimeType: "application/json",
+        forceModel: "gemini-3.5-flash-lite"
+      });
       if (rawText) {
-        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+        let clean = rawText.trim();
+        if (clean.startsWith("```json")) {
+          clean = clean.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
+        } else if (clean.startsWith("```")) {
+          clean = clean.replace(/^```\s*/i, "").replace(/```$/, "").trim();
+        }
+        const jsonMatch = clean.match(/\{[\s\S]*\}/);
         if (jsonMatch) {
           const profile = JSON.parse(jsonMatch[0]);
           profile.symbol = sym;
           profile.timestamp = Date.now();
+          profile.isAiGenerated = true;
           try {
             localStorage.setItem(cacheKey, JSON.stringify(profile));
           } catch (_) {}
