@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ---------------- SEARCH LOGIC & SUGGESTIONS ----------------
   function getStockDataset() {
+    if (typeof window !== "undefined" && Array.isArray(window.STOCKS_SCREENER_DATASET) && window.STOCKS_SCREENER_DATASET.length > 0) {
+      return window.STOCKS_SCREENER_DATASET;
+    }
     if (typeof STOCKS_SCREENER_DATASET !== "undefined" && Array.isArray(STOCKS_SCREENER_DATASET)) {
       return STOCKS_SCREENER_DATASET;
     }
@@ -65,6 +68,18 @@ document.addEventListener("DOMContentLoaded", function () {
     "COMPANY", "CO", "LTD", "LIMITED", "CORP", "CORPORATION", "INDIA",
     "THE", "AND", "&", "PVT", "INC", "HOLDINGS"
   ]);
+
+  // Common phonetic / alias substitutions for popular equities
+  const COMMON_ALIASES = {
+    "EGIS": "AEGIS",
+    "AEGISLOGISTICS": "AEGISLOG",
+    "INFOSIS": "INFY",
+    "RELINCE": "RELIANCE",
+    "HDFCBANK": "HDFCBANK",
+    "ICICIBANK": "ICICIBANK",
+    "TATAMOTORS": "TATAMOTORS",
+    "TATAPOWER": "TATAPOWER"
+  };
 
   function cleanAlphanumeric(str) {
     return String(str || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
@@ -78,53 +93,106 @@ document.addEventListener("DOMContentLoaded", function () {
       .filter((w) => w.length > 1 && !NOISE_WORDS.has(w));
   }
 
+  // Levenshtein distance for fuzzy matching
+  function levenshteinDistance(a, b) {
+    if (a === b) return 0;
+    if (!a.length) return b.length;
+    if (!b.length) return a.length;
+    const matrix = [];
+    for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        if (b.charAt(i - 1) === a.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1,
+            Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
+          );
+        }
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
   function scoreStock(s, rawQuery) {
-    const raw = String(rawQuery || "").trim().toUpperCase();
+    let raw = String(rawQuery || "").trim().toUpperCase();
     if (!raw) return 0;
+
+    // Apply alias substitutions
+    for (const [k, v] of Object.entries(COMMON_ALIASES)) {
+      if (raw.includes(k)) {
+        raw = raw.replace(new RegExp(k, "g"), v);
+      }
+    }
+
     const cleanQ = cleanAlphanumeric(raw);
     const symClean = cleanAlphanumeric(s.symbol);
     const nameUpper = String(s.name || "").toUpperCase();
+    const cleanName = cleanAlphanumeric(nameUpper);
     const sectorUpper = String(s.sector || "").toUpperCase();
 
     // 1. Exact Symbol match -> top priority
     if (symClean === cleanQ) return 1000;
 
-    // 2. Symbol starts with clean query (e.g. HS -> HSCL)
-    if (symClean.startsWith(cleanQ)) return 800;
+    // 2. Symbol starts with clean query (e.g. HS -> HSCL, AEGIS -> AEGISLOG)
+    if (symClean.startsWith(cleanQ)) return 850;
 
-    // 3. Symbol includes clean query
+    // 3. Exact clean Name match
+    if (cleanName === cleanQ) return 800;
+
+    // 4. Name starts with raw query
+    if (nameUpper.startsWith(raw)) return 700;
+
+    // 5. Symbol includes clean query (e.g. EGIS in AEGISLOG)
     if (symClean.includes(cleanQ)) return 600;
 
-    // 4. Exact cleaned name match
-    if (cleanAlphanumeric(nameUpper) === cleanQ) return 500;
-
-    // 5. Name starts with raw query
-    if (nameUpper.startsWith(raw)) return 400;
-
     // 6. Name contains raw query
-    if (nameUpper.includes(raw)) return 300;
+    if (nameUpper.includes(raw)) return 500;
 
-    // 7. Multi-token match (handles "himadri speciality chemicals company ltd")
+    // 7. Multi-token match
     const qTokens = getQueryTokens(raw);
     if (qTokens.length > 0) {
       let matchedCount = 0;
       const combinedTarget = (s.symbol + " " + nameUpper + " " + sectorUpper).toUpperCase();
+      const targetWords = combinedTarget.split(/\s+/);
+
       qTokens.forEach((tk) => {
         const stem = tk.length > 5 ? tk.slice(0, 5) : tk;
         if (combinedTarget.includes(tk) || combinedTarget.includes(stem)) {
           matchedCount++;
+          return;
+        }
+        // Fuzzy token match against target words
+        for (const tw of targetWords) {
+          if (tw.length >= 4 && tk.length >= 4) {
+            const dist = levenshteinDistance(tk, tw);
+            if (dist <= 1 || (dist <= 2 && tk.length >= 6)) {
+              matchedCount++;
+              return;
+            }
+          }
         }
       });
+
       const ratio = matchedCount / qTokens.length;
-      if (ratio >= 0.75) {
-        return 220 + Math.round(ratio * 80);
-      } else if (ratio >= 0.4) {
-        return 120 + Math.round(ratio * 50);
+      if (ratio === 1.0) return 450;
+      if (ratio >= 0.7) return 300;
+      if (ratio >= 0.4) return 150;
+    }
+
+    // 8. Fuzzy match for whole query against name words
+    if (raw.length >= 4) {
+      for (const w of nameUpper.split(/\s+/)) {
+        if (w.length >= 4 && levenshteinDistance(raw, w) <= 1) {
+          return 350;
+        }
       }
     }
 
-    // 8. Sector contains raw query
-    if (sectorUpper.includes(raw)) return 90;
+    // 9. Sector contains query
+    if (sectorUpper.includes(raw)) return 100;
 
     return 0;
   }
@@ -210,7 +278,6 @@ document.addEventListener("DOMContentLoaded", function () {
       isSynthesized: true
     };
 
-    // Cache into dataset so subsequent interactions find it immediately
     const dataset = getStockDataset();
     dataset.push(synth);
     return synth;
@@ -218,19 +285,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Interactive Live Suggestions Dropdown Setup
   let suggestionBox = document.getElementById("stock-search-suggestions");
-  if (!suggestionBox && searchInput && searchInput.parentElement) {
+  if (!suggestionBox && searchInput) {
     suggestionBox = document.createElement("div");
     suggestionBox.id = "stock-search-suggestions";
     suggestionBox.className = "stock-search-suggestions-container";
     suggestionBox.setAttribute("role", "listbox");
     suggestionBox.setAttribute("aria-label", "Stock Search Suggestions");
-    suggestionBox.style.cssText = "position:absolute; top:100%; left:0; right:0; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12); z-index:1000; max-height:280px; overflow-y:auto; margin-top:4px; display:none;";
-    searchInput.parentElement.style.position = "relative";
-    searchInput.parentElement.appendChild(suggestionBox);
+    suggestionBox.style.cssText = "position:absolute; top:100%; left:0; width:100%; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 12px 28px rgba(0,0,0,0.14); z-index:1000; max-height:300px; overflow-y:auto; margin-top:4px; display:none;";
+    
+    // Attach suggestion box directly below input element or input container
+    const parentContainer = searchInput.parentElement || document.body;
+    parentContainer.style.position = "relative";
+    parentContainer.appendChild(suggestionBox);
+  }
+
+  // Ensure native browser autocomplete does not steal arrow keys or obscure dropdown
+  if (searchInput) {
+    searchInput.setAttribute("autocomplete", "off");
+    searchInput.setAttribute("autocorrect", "off");
+    searchInput.setAttribute("autocapitalize", "off");
+    searchInput.setAttribute("spellcheck", "false");
+    searchInput.setAttribute("aria-autocomplete", "list");
+    searchInput.setAttribute("aria-controls", "stock-search-suggestions");
   }
 
   let currentSuggestions = [];
   let activeSuggestionIndex = -1;
+  let originalTypedQuery = "";
 
   function updateSuggestionHighlight() {
     if (!suggestionBox) return;
@@ -289,24 +370,36 @@ document.addEventListener("DOMContentLoaded", function () {
           updateSuggestionHighlight();
         }
       });
-      item.addEventListener("mouseleave", function () {
-        // preserve activeSuggestionIndex on mouse leave so keyboard can resume smoothly
-      });
       item.addEventListener("click", function () {
         const sym = this.getAttribute("data-symbol");
-        if (searchInput) searchInput.value = sym;
-        suggestionBox.style.display = "none";
-        performSearch(sym);
+        selectSuggestion(sym);
       });
     });
   }
 
+  function selectSuggestion(symbol) {
+    if (!symbol) return;
+    if (searchInput) searchInput.value = symbol;
+    if (suggestionBox) {
+      suggestionBox.style.display = "none";
+      activeSuggestionIndex = -1;
+    }
+    performSearch(symbol);
+  }
+
   if (searchInput) {
     searchInput.addEventListener("input", function () {
+      originalTypedQuery = this.value;
       renderSuggestions(this.value);
     });
 
-    // NSE-Style Keyboard Navigation: ArrowDown, ArrowUp, Enter, Escape
+    searchInput.addEventListener("focus", function () {
+      if (this.value && this.value.trim().length > 0) {
+        renderSuggestions(this.value);
+      }
+    });
+
+    // ArrowDown, ArrowUp, Enter, Escape Navigation with Live Listing Below
     searchInput.addEventListener("keydown", function (e) {
       const isDropdownOpen = suggestionBox && suggestionBox.style.display !== "none" && currentSuggestions.length > 0;
 
@@ -317,32 +410,42 @@ document.addEventListener("DOMContentLoaded", function () {
           if (currentSuggestions.length > 0) {
             activeSuggestionIndex = 0;
             updateSuggestionHighlight();
-            if (currentSuggestions[0]) {
-              this.value = currentSuggestions[0].symbol;
+            const activeStock = currentSuggestions[0];
+            if (activeStock) {
+              this.value = activeStock.symbol;
+              activeCompanyData = activeStock;
+              renderDetailedCompanyAnalysis(activeStock);
             }
           }
           return;
         }
+
         activeSuggestionIndex = (activeSuggestionIndex + 1) % currentSuggestions.length;
         updateSuggestionHighlight();
-        if (currentSuggestions[activeSuggestionIndex]) {
-          this.value = currentSuggestions[activeSuggestionIndex].symbol;
+        const activeStock = currentSuggestions[activeSuggestionIndex];
+        if (activeStock) {
+          this.value = activeStock.symbol;
+          // Live render the company analysis below as user navigates with arrow keys
+          activeCompanyData = activeStock;
+          renderDetailedCompanyAnalysis(activeStock);
         }
       } else if (e.key === "ArrowUp") {
         if (!isDropdownOpen) return;
         e.preventDefault();
         activeSuggestionIndex = (activeSuggestionIndex - 1 + currentSuggestions.length) % currentSuggestions.length;
         updateSuggestionHighlight();
-        if (currentSuggestions[activeSuggestionIndex]) {
-          this.value = currentSuggestions[activeSuggestionIndex].symbol;
+        const activeStock = currentSuggestions[activeSuggestionIndex];
+        if (activeStock) {
+          this.value = activeStock.symbol;
+          // Live render the company analysis below as user navigates with arrow keys
+          activeCompanyData = activeStock;
+          renderDetailedCompanyAnalysis(activeStock);
         }
       } else if (e.key === "Enter") {
         e.preventDefault();
         if (isDropdownOpen && activeSuggestionIndex >= 0 && activeSuggestionIndex < currentSuggestions.length) {
           const chosen = currentSuggestions[activeSuggestionIndex].symbol;
-          this.value = chosen;
-          suggestionBox.style.display = "none";
-          performSearch(chosen);
+          selectSuggestion(chosen);
         } else {
           if (suggestionBox) suggestionBox.style.display = "none";
           performSearch(this.value);
@@ -351,6 +454,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (suggestionBox) {
           suggestionBox.style.display = "none";
           activeSuggestionIndex = -1;
+        }
+        if (originalTypedQuery) {
+          this.value = originalTypedQuery;
         }
       }
     });
@@ -367,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (suggestionBox) suggestionBox.style.display = "none";
     const q = (forcedQuery || (searchInput ? searchInput.value : "")).trim();
     if (!q) {
-      alert("Please enter a stock name or symbol (e.g. HSCL, TCS, INFY, HDFC Bank, Reliance).");
+      alert("Please enter a stock name or symbol (e.g. HSCL, Aegis Logistics, TCS, INFY, HDFC Bank, Reliance).");
       if (searchInput) searchInput.focus();
       return;
     }

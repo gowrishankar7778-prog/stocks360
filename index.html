@@ -37,7 +37,9 @@
         </div>
 
         <div class="search-input-wrapper">
-          <input type="search" id="stock-search" placeholder="Type company name or symbol (e.g. HSCL, TCS, INFY, HDFC Bank, Reliance)..." aria-label="Search for stocks">
+          <div class="search-field-container" style="position:relative; flex:1;">
+            <input type="search" id="stock-search" placeholder="Type company name or symbol (e.g. HSCL, Aegis Logistics, TCS, INFY, HDFC Bank, Reliance)..." aria-label="Search for stocks" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-autocomplete="list" aria-controls="stock-search-suggestions">
+          </div>
           <button type="button" id="search-button" class="btn-primary">Search Company</button>
         </div>
 
@@ -103,8 +105,8 @@
   <script src="js/gemini-ai.js?v=10"></script>
   <script src="js/main.js?v=10"></script>
   <script src="js/accessibility.js?v=3"></script>
-  <script src="js/screener-data.js?v=2"></script>
-  <script src="js/stock-search.js?v=4"></script>
+  <script src="js/screener-data.js?v=11"></script>
+  <script src="js/stock-search.js?v=11"></script>
   <script src="js/smart-assist.js?v=3"></script>
 </body>
 </html>

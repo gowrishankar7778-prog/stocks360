@@ -83767,3 +83767,7 @@ const STOCKS_SCREENER_DATASET = [
     "low52": 367.55
   }
 ];
+
+if (typeof window !== "undefined") {
+  window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
+}
