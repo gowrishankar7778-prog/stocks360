@@ -2072,3 +2072,360 @@ body.high-contrast .stat-negative {
   }
 }
 
+/* ==========================================================================
+   STOCKS 360 - AI & MANUAL STOCK SCREENER & AUTHENTICATION STYLES
+   ========================================================================== */
+
+/* Screener Tabs Bar */
+.screener-tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--border-light);
+  padding-bottom: 8px;
+}
+
+.screener-nav-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  padding: 10px 20px;
+  font-size: 0.96rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.screener-nav-tab:hover {
+  background: #f1f5f9;
+  color: var(--text-primary);
+}
+
+.screener-nav-tab.active,
+.screener-nav-tab[aria-selected="true"] {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Screener Badges */
+.badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+.badge-success {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-neutral {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+/* Screener Data Table */
+.stocks360-data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stocks360-data-table th,
+.stocks360-data-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.stocks360-data-table th {
+  background-color: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.stocks360-data-table tr.even {
+  background-color: #ffffff;
+}
+
+.stocks360-data-table tr.odd {
+  background-color: #f8fafc;
+}
+
+.stocks360-data-table tr:hover {
+  background-color: #eff6ff;
+}
+
+/* User Account Top Bar & Dropdown */
+.top-auth-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.btn-signin-nav {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 7px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-signin-nav:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.user-profile-menu {
+  position: relative;
+}
+
+.user-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-full);
+  padding: 4px 12px 4px 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.user-pill-btn:hover {
+  background-color: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.user-avatar-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.user-dropdown-card {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 220px;
+  padding: 12px;
+  z-index: 10000;
+}
+
+.user-dropdown-info {
+  padding: 4px 6px;
+}
+
+.user-dropdown-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.user-dropdown-info small {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.dropdown-link,
+.dropdown-link-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.dropdown-link:hover,
+.dropdown-link-btn:hover {
+  background-color: #f1f5f9;
+}
+
+/* Authentication Modal Dialog */
+.stocks360-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 16px;
+  animation: fadeInModal 0.2s ease forwards;
+}
+
+.stocks360-modal-card {
+  background: #ffffff;
+  max-width: 440px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  position: relative;
+  box-shadow: 0 25px 30px -10px rgba(0, 0, 0, 0.25);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.modal-close-btn:hover {
+  color: #0f172a;
+}
+
+.btn-social {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-social.btn-google {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+}
+
+.btn-social.btn-google:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.btn-social.btn-apple {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.btn-social.btn-apple:hover {
+  background-color: #27272a;
+}
+
+.btn-social.btn-facebook {
+  background-color: #f0f6ff;
+  border: 1px solid #bfdbfe;
+  color: #1877f2;
+}
+
+.btn-social.btn-facebook:hover {
+  background-color: #dbeafe;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 14px 0;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.auth-divider span {
+  padding: 0 10px;
+}
+
+.auth-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  font-size: 0.88rem;
+  margin-top: 12px;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* High Contrast Mode for Screener */
+body.high-contrast .screener-nav-tab.active {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+body.high-contrast .stocks360-data-table th {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+body.high-contrast .stocks360-data-table td {
+  border: 1px solid #000000 !important;
+}
+
+

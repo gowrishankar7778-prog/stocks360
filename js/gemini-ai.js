@@ -750,6 +750,243 @@ const StocksGeminiAI = (function () {
     };
   }
 
+  // ---------------- NATURAL LANGUAGE AI STOCK SCREENER PARSER ----------------
+  function buildLocalScreenerFallback(promptText) {
+    const raw = String(promptText || "").toLowerCase();
+    const filters = [];
+    const requestedColumns = [];
+    const parts = [];
+
+    // ROE
+    const roeMatch = raw.match(/roe\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)/i);
+    if (roeMatch) {
+      const op = roeMatch[1] || ">";
+      const val = parseFloat(roeMatch[2]);
+      filters.push({ field: "roePct", operator: op, value: val, label: `ROE ${op} ${val}%` });
+      requestedColumns.push("roePct");
+      parts.push(`Return on Equity (ROE) ${op} ${val}%`);
+    }
+
+    // ROCE
+    const roceMatch = raw.match(/roce\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)/i);
+    if (roceMatch) {
+      const op = roceMatch[1] || ">";
+      const val = parseFloat(roceMatch[2]);
+      filters.push({ field: "rocePct", operator: op, value: val, label: `ROCE ${op} ${val}%` });
+      requestedColumns.push("rocePct");
+      parts.push(`ROCE ${op} ${val}%`);
+    }
+
+    // Market Capitalization
+    const mcapMatch = raw.match(/(?:market\s*cap(?:italization)?|cap)\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)\s*(?:cr|crore|crores)?/i);
+    if (mcapMatch) {
+      const op = mcapMatch[1] || ">";
+      const val = parseFloat(mcapMatch[2]);
+      filters.push({ field: "marketCapCr", operator: op, value: val, label: `Market Cap ${op} ₹${val} Cr` });
+      requestedColumns.push("marketCapCr");
+      parts.push(`Market Cap ${op} ₹${val} Cr`);
+    } else if (raw.includes("large cap") || raw.includes("largecap")) {
+      filters.push({ field: "marketCapCr", operator: ">=", value: 20000, label: "Large Cap (>= ₹20,000 Cr)" });
+      requestedColumns.push("marketCapCr");
+      parts.push("Market Cap >= ₹20,000 Cr (Large Cap)");
+    } else if (raw.includes("mid cap") || raw.includes("midcap")) {
+      filters.push({ field: "marketCapCr", operator: ">=", value: 5000, label: "Mid Cap (>= ₹5,000 Cr)" });
+      requestedColumns.push("marketCapCr");
+      parts.push("Market Cap >= ₹5,000 Cr (Mid Cap)");
+    }
+
+    // P/E Ratio
+    const peMatch = raw.match(/(?:p\/e|pe|valuation)\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)/i);
+    if (peMatch) {
+      const op = peMatch[1] || "<";
+      const val = parseFloat(peMatch[2]);
+      filters.push({ field: "pe", operator: op, value: val, label: `P/E ${op} ${val}` });
+      requestedColumns.push("pe");
+      parts.push(`P/E Ratio ${op} ${val}`);
+    } else if (raw.includes("low pe") || raw.includes("low p/e")) {
+      filters.push({ field: "pe", operator: "<=", value: 25, label: "Low P/E (<= 25)" });
+      requestedColumns.push("pe");
+      parts.push("P/E Ratio <= 25");
+    }
+
+    // Debt to Equity
+    const debtMatch = raw.match(/(?:debt(?:\s*to\s*equity)?|leverage)\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)/i);
+    if (debtMatch) {
+      const op = debtMatch[1] || "<=";
+      const val = parseFloat(debtMatch[2]);
+      filters.push({ field: "debtToEquity", operator: op, value: val, label: `Debt/Eq ${op} ${val}` });
+      requestedColumns.push("debtToEquity");
+      parts.push(`Debt-to-Equity ${op} ${val}`);
+    } else if (raw.includes("debt free") || raw.includes("zero debt") || raw.includes("low debt")) {
+      filters.push({ field: "debtToEquity", operator: "<=", value: 0.1, label: "Virtually Debt-Free (<= 0.1)" });
+      requestedColumns.push("debtToEquity");
+      parts.push("Debt-to-Equity <= 0.1 (Virtually Debt-Free)");
+    }
+
+    // Golden Crossover
+    if (raw.includes("golden cross") || raw.includes("golden crossover") || raw.includes("bullish cross")) {
+      filters.push({ field: "goldenCross", operator: "==", value: true, label: "Golden Crossover (50 DMA > 200 DMA)" });
+      requestedColumns.push("goldenCross", "dma50", "dma200");
+      parts.push("Golden Crossover Active (50 DMA > 200 DMA)");
+    }
+
+    // Moving Averages
+    if (raw.includes("above 200 dma") || raw.includes("above 200 day") || raw.includes("> 200 dma")) {
+      filters.push({ field: "cmp_vs_dma200", operator: ">", value: 0, label: "Price > 200 DMA" });
+      requestedColumns.push("dma200");
+      parts.push("Price above 200-Day Moving Average");
+    }
+    if (raw.includes("above 50 dma") || raw.includes("above 50 day") || raw.includes("> 50 dma")) {
+      filters.push({ field: "cmp_vs_dma50", operator: ">", value: 0, label: "Price > 50 DMA" });
+      requestedColumns.push("dma50");
+      parts.push("Price above 50-Day Moving Average");
+    }
+
+    // Volume & Volume Surge
+    const volMatch = raw.match(/volume\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)\s*(?:cr|lakh|lakhs|m|k)?/i);
+    if (volMatch) {
+      const op = volMatch[1] || ">=";
+      let val = parseFloat(volMatch[2]);
+      if (raw.includes("lakh")) val = val * 100000;
+      else if (raw.includes("cr")) val = val * 10000000;
+      filters.push({ field: "volume", operator: op, value: val, label: `Volume ${op} ${val}` });
+      requestedColumns.push("volume");
+      parts.push(`Trading Volume ${op} ${val}`);
+    } else if (raw.includes("high volume") || raw.includes("volume surge") || raw.includes("volume breakout")) {
+      filters.push({ field: "volumeSurge", operator: ">=", value: 1.2, label: "Volume Surge >= 1.2x" });
+      requestedColumns.push("volumeSurge", "volume");
+      parts.push("Volume Surge >= 1.2x vs 10D Average");
+    }
+
+    // RSI
+    const rsiMatch = raw.match(/rsi\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)/i);
+    if (rsiMatch) {
+      const op = rsiMatch[1] || ">";
+      const val = parseFloat(rsiMatch[2]);
+      filters.push({ field: "rsi14", operator: op, value: val, label: `RSI ${op} ${val}` });
+      requestedColumns.push("rsi14");
+      parts.push(`14-Day RSI ${op} ${val}`);
+    }
+
+    // Dividend Yield
+    const divMatch = raw.match(/dividend(?:\s*yield)?\s*(>|>=|<|<=|=)?\s*(\d+(?:\.\d+)?)/i);
+    if (divMatch) {
+      const op = divMatch[1] || ">=";
+      const val = parseFloat(divMatch[2]);
+      filters.push({ field: "divYieldPct", operator: op, value: val, label: `Dividend Yield ${op} ${val}%` });
+      requestedColumns.push("divYieldPct");
+      parts.push(`Dividend Yield ${op} ${val}%`);
+    }
+
+    // Sector Filter
+    const sectors = [
+      { key: "it", name: "Information Technology" },
+      { key: "tech", name: "Information Technology" },
+      { key: "banking", name: "Financial Services" },
+      { key: "bank", name: "Financial Services" },
+      { key: "finance", name: "Financial Services" },
+      { key: "pharma", name: "Healthcare & Pharma" },
+      { key: "healthcare", name: "Healthcare & Pharma" },
+      { key: "auto", name: "Automobile" },
+      { key: "fmcg", name: "Consumer Goods (FMCG)" },
+      { key: "metal", name: "Metals & Mining" },
+      { key: "power", name: "Power & Utilities" },
+      { key: "energy", name: "Energy & Conglomerate" },
+      { key: "defence", name: "Aerospace & Defence" }
+    ];
+
+    for (const s of sectors) {
+      if (raw.includes(s.key)) {
+        filters.push({ field: "sector", operator: "==", value: s.name, label: `Sector: ${s.name}` });
+        requestedColumns.push("sector");
+        parts.push(`Sector is ${s.name}`);
+        break;
+      }
+    }
+
+    // If nothing recognized, default to balanced fundamentals
+    if (filters.length === 0) {
+      filters.push({ field: "roePct", operator: ">=", value: 15, label: "ROE >= 15%" });
+      filters.push({ field: "rocePct", operator: ">=", value: 18, label: "ROCE >= 18%" });
+      filters.push({ field: "marketCapCr", operator: ">=", value: 500, label: "Market Cap >= ₹500 Cr" });
+      requestedColumns.push("marketCapCr", "roePct", "rocePct");
+      parts.push("Return on Equity (ROE) >= 15%", "ROCE >= 18%", "Market Capitalization >= ₹500 Cr");
+    }
+
+    const interpretationText = "I understood: " + parts.join(", ") + ".";
+    return {
+      rawPrompt: promptText,
+      interpretation: interpretationText,
+      suggestedName: (parts[0] || "Custom Stock") + " Strategy",
+      suggestedDescription: "Filtered by: " + parts.join("; "),
+      filters: filters,
+      requestedColumns: Array.from(new Set(requestedColumns))
+    };
+  }
+
+  async function parseScreenerQuery(userPrompt) {
+    const cleanPrompt = String(userPrompt || "").trim();
+    if (!cleanPrompt) return null;
+
+    const systemInstruction =
+      "You are Stocks 360 AI, an expert stock screener parser. " +
+      "The user will describe stock screening criteria in plain everyday words. " +
+      "Your task is to parse their criteria into structured JSON filter rules matching our database fields: " +
+      "Fields available: " +
+      "- 'cmp' (Current Market Price in INR) " +
+      "- 'marketCapCr' (Market Cap in INR Crores) " +
+      "- 'pe' (Price-to-Earnings Ratio) " +
+      "- 'roePct' (Return on Equity %) " +
+      "- 'rocePct' (Return on Capital Employed %) " +
+      "- 'debtToEquity' (Debt to Equity Ratio) " +
+      "- 'divYieldPct' (Dividend Yield %) " +
+      "- 'dma50' (50-Day Moving Average in INR) " +
+      "- 'dma200' (200-Day Moving Average in INR) " +
+      "- 'goldenCross' (Boolean: true if 50 DMA > 200 DMA) " +
+      "- 'rsi14' (14-day Relative Strength Index) " +
+      "- 'volume' (Day's Trading Volume) " +
+      "- 'volumeSurge' (Volume Surge Ratio vs 10D avg, e.g. 1.2) " +
+      "- 'sector' (Exact sector name e.g. 'Information Technology', 'Financial Services', 'Automobile', 'Healthcare & Pharma') " +
+      "CRITICAL OUTPUT FORMAT: Return ONLY valid JSON with keys: " +
+      "'interpretation' (A warm, friendly 1-sentence plain explanation of what was understood), " +
+      "'suggestedName' (A concise 3-4 word title for this screener), " +
+      "'suggestedDescription' (A brief educational description), " +
+      "'requestedColumns' (Array of field names the user specifically asked for, e.g. ['marketCapCr', 'roePct', 'rocePct']), " +
+      "'filters' (Array of objects: { field, operator, value, label }). " +
+      "Valid operators are '>', '>=', '<', '<=', '=='.";
+
+    const prompt = "USER SCREENER REQUEST: " + cleanPrompt;
+
+    let parsed = null;
+    try {
+      const rawText = await callGeminiModel(systemInstruction, prompt, false);
+      if (rawText) {
+        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const obj = JSON.parse(jsonMatch[0]);
+          if (obj && Array.isArray(obj.filters) && obj.filters.length > 0) {
+            parsed = {
+              rawPrompt: cleanPrompt,
+              interpretation: obj.interpretation || ("I understood: " + cleanPrompt),
+              suggestedName: obj.suggestedName || "Stocks 360 Custom Screen",
+              suggestedDescription: obj.suggestedDescription || "",
+              requestedColumns: Array.isArray(obj.requestedColumns) ? obj.requestedColumns : [],
+              filters: obj.filters
+            };
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("Gemini screener parse error, using local fallback:", e);
+    }
+
+    if (!parsed) {
+      parsed = buildLocalScreenerFallback(cleanPrompt);
+    }
+
+    return parsed;
+  }
+
   // ---------------- NATURAL CONVERSATIONAL CHAT UI RENDERER ----------------
   function renderAiResponseCard(containerEl, resultObj, onSelectFollowUp) {
     if (!containerEl || !resultObj) return;
@@ -836,7 +1073,8 @@ const StocksGeminiAI = (function () {
     getUsageStats: getUsageStats,
     askGroundedContentQuestion: askGroundedContentQuestion,
     askGeneralMarketTrends: askGeneralMarketTrends,
-    renderAiResponseCard: renderAiResponseCard
+    renderAiResponseCard: renderAiResponseCard,
+    parseScreenerQuery: parseScreenerQuery
   };
 })();
 
