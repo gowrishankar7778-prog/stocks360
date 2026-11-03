@@ -74,6 +74,7 @@ const StocksScreener = (function () {
     setupManualScreener();
     setupExploreSection();
     loadSavedScreeners();
+    syncFromFirestoreSingleDoc();
 
     // Check hash for direct tab navigation
     const hash = window.location.hash;
@@ -322,6 +323,26 @@ const StocksScreener = (function () {
           try {
             localStorage.setItem("stocks360_saved_screeners", JSON.stringify(list));
           } catch (_) {}
+        }
+      } catch (_) {}
+    }
+  }
+
+  async function syncFromFirestoreSingleDoc() {
+    if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+      try {
+        const doc = await Promise.race([
+          StocksFirebase.getDb().collection("site_settings").doc("stock_screener_data").get(),
+          new Promise((resolve) => setTimeout(() => resolve(null), 1800))
+        ]);
+        if (doc && doc.exists) {
+          const data = doc.data();
+          if (data && data.stocksJson) {
+            const parsed = JSON.parse(data.stocksJson);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              window.STOCKS_SCREENER_DATASET = parsed;
+            }
+          }
         }
       } catch (_) {}
     }

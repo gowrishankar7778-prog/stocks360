@@ -213,6 +213,42 @@ if (typeof window !== "undefined") {
 
   fs.writeFileSync(DATA_FILE_PATH, newFileContent, 'utf8');
   console.log(`\nSuccessfully updated ${updatedCount} stocks in js/screener-data.js with timestamp: "${lastUpdatedLabel}"!`);
+
+  // Sync to Firebase Firestore as a single document for real-time cloud access
+  try {
+    const secretPath = path.join(__dirname, '..', 'js', 'firebase-secret.json');
+    if (fs.existsSync(secretPath)) {
+      const secret = JSON.parse(fs.readFileSync(secretPath, 'utf8'));
+      const apiKey = secret.apiKey || secret.geminiApiKey;
+      const projectId = secret.projectId || 'project-b005dc8f-09b3-4af6-b2b';
+      if (apiKey) {
+        const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/site_settings/stock_screener_data?key=${apiKey}`;
+        const payload = JSON.stringify({
+          fields: {
+            stocksJson: { stringValue: JSON.stringify(stocks) },
+            count: { integerValue: String(stocks.length) },
+            lastUpdated: { stringValue: lastUpdatedLabel },
+            updatedAt: { integerValue: String(Date.now()) }
+          }
+        });
+
+        const req = https.request(firestoreUrl, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(payload)
+          }
+        }, (res) => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            console.log('✓ Successfully synced single stock data document to Firebase Firestore (site_settings/stock_screener_data)!');
+          }
+        });
+        req.on('error', () => {});
+        req.write(payload);
+        req.end();
+      }
+    }
+  } catch (_) {}
 }
 
 updateAllStocks();
