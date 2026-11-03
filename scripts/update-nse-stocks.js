@@ -98,12 +98,27 @@ async function fetchStockHistory(symbol) {
 
   if (closes.length === 0) return null;
 
-  const currentPrice = meta.regularMarketPrice || closes[closes.length - 1];
+  const currentPrice = meta.regularMarketPrice || meta.fulldayPrice || closes[closes.length - 1];
   const latestVolume = meta.regularMarketVolume || volumes[volumes.length - 1];
-  const prevClose = meta.previousClose || meta.chartPreviousClose || (closes.length > 1 ? closes[closes.length - 2] : currentPrice);
-  const dayChange = Number((currentPrice - prevClose).toFixed(2));
-  const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
+
+  // Exact day change & percentage directly from exchange meta if available, else from closes array
+  let dayChange = typeof meta.fulldayChange === 'number' ? meta.fulldayChange : (typeof meta.regularMarketChange === 'number' ? meta.regularMarketChange : null);
+  let dayChangePct = typeof meta.fulldayChangePercent === 'number' ? meta.fulldayChangePercent : (typeof meta.regularMarketChangePercent === 'number' ? meta.regularMarketChangePercent : null);
+
+  if (dayChange === null) {
+    const prevClose = (closes.length > 1) ? closes[closes.length - 2] : (meta.previousClose || currentPrice);
+    dayChange = Number((currentPrice - prevClose).toFixed(2));
+    dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
+  } else {
+    dayChange = Number(dayChange.toFixed(2));
+    dayChangePct = Number(dayChangePct.toFixed(2));
+  }
+
   const isGain = dayChange >= 0;
+  const dayHigh = meta.regularMarketDayHigh || (closes.length ? Math.max(...closes.slice(-1)) : currentPrice);
+  const dayLow = meta.regularMarketDayLow || (closes.length ? Math.min(...closes.slice(-1)) : currentPrice);
+  const high52 = meta.fiftyTwoWeekHigh || (closes.length ? Math.max(...closes) : currentPrice);
+  const low52 = meta.fiftyTwoWeekLow || (closes.length ? Math.min(...closes) : currentPrice);
 
   const dma50 = calculateSMA(closes, Math.min(50, closes.length));
   const dma200 = calculateSMA(closes, Math.min(200, closes.length)) || (dma50 ? Number((dma50 * 0.96).toFixed(2)) : null);
@@ -118,6 +133,10 @@ async function fetchStockHistory(symbol) {
     dayChange: dayChange,
     dayChangePct: dayChangePct,
     isGain: isGain,
+    dayHigh: dayHigh,
+    dayLow: dayLow,
+    high52: high52,
+    low52: low52,
     volume: latestVolume,
     avgVolume: avgVolume10,
     volumeSurge: volumeSurge,
@@ -180,6 +199,10 @@ async function updateAllStocks() {
           if (fresh.dayChange !== undefined) s.dayChange = fresh.dayChange;
           if (fresh.dayChangePct !== undefined) s.dayChangePct = fresh.dayChangePct;
           if (fresh.isGain !== undefined) s.isGain = fresh.isGain;
+          if (fresh.dayHigh !== undefined) s.dayHigh = fresh.dayHigh;
+          if (fresh.dayLow !== undefined) s.dayLow = fresh.dayLow;
+          if (fresh.high52 !== undefined) s.high52 = fresh.high52;
+          if (fresh.low52 !== undefined) s.low52 = fresh.low52;
           s.volume = fresh.volume;
           s.avgVolume = fresh.avgVolume;
           s.volumeSurge = fresh.volumeSurge;

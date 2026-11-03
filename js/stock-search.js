@@ -501,15 +501,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const financials = generate5YearFinancials(stock);
     const news = generateCompanyNews(stock);
 
-    const est52High = Math.round(stock.cmp * 1.14);
-    const est52Low = Math.round(stock.cmp * 0.78);
-    const estDayHigh = Math.round(stock.cmp * 1.018 * 10) / 10;
-    const estDayLow = Math.round(stock.cmp * 0.985 * 10) / 10;
+    // Exact Exchange Price High/Low Ranges (from live NSE data if available)
+    const dayHigh = typeof stock.dayHigh === "number" ? stock.dayHigh : Math.round(stock.cmp * 1.018 * 10) / 10;
+    const dayLow = typeof stock.dayLow === "number" ? stock.dayLow : Math.round(stock.cmp * 0.985 * 10) / 10;
+    const high52 = typeof stock.high52 === "number" ? stock.high52 : Math.round(stock.cmp * 1.15);
+    const low52 = typeof stock.low52 === "number" ? stock.low52 : Math.round(stock.cmp * 0.75);
 
-    // Explicit Day Gain or Loss calculation
-    const dayChange = typeof stock.dayChange === "number" ? stock.dayChange : Math.round((stock.cmp * ((stock.rsi14 >= 50 ? 1 : -1) * (0.35 + ((stock.cmp % 17) * 0.08)))) * 10) / 100;
-    const dayChangePct = typeof stock.dayChangePct === "number" ? stock.dayChangePct : Number(((dayChange / (stock.cmp - dayChange || 1)) * 100).toFixed(2));
-    const isGain = dayChange >= 0;
+    // Explicit Day Gain or Loss calculation from real exchange data
+    const dayChange = typeof stock.dayChange === "number" ? stock.dayChange : 0;
+    const dayChangePct = typeof stock.dayChangePct === "number" ? stock.dayChangePct : 0;
+    const isGain = stock.isGain !== undefined ? stock.isGain : dayChange >= 0;
     const dayPerformanceText = isGain 
       ? `+ ₹${Math.abs(dayChange).toFixed(2)} (+${Math.abs(dayChangePct)}%) Day Gain`
       : `- ₹${Math.abs(dayChange).toFixed(2)} (-${Math.abs(dayChangePct)}%) Day Loss`;
@@ -539,9 +540,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
               <!-- DAY & 52-WEEK RANGE METRICS -->
               <div style="display:flex; gap:16px; margin-top:10px; font-size:0.85rem; color:#475569; flex-wrap:wrap;">
-                <span><strong>Day Range:</strong> ₹ ${estDayLow.toLocaleString("en-IN")} - ₹ ${estDayHigh.toLocaleString("en-IN")}</span>
+                <span><strong>Day Range:</strong> ₹ ${dayLow.toLocaleString("en-IN")} - ₹ ${dayHigh.toLocaleString("en-IN")}</span>
                 <span>•</span>
-                <span><strong>52-Week Range:</strong> ₹ ${est52Low.toLocaleString("en-IN")} - ₹ ${est52High.toLocaleString("en-IN")}</span>
+                <span><strong>52-Week Range:</strong> ₹ ${low52.toLocaleString("en-IN")} - ₹ ${high52.toLocaleString("en-IN")}</span>
               </div>
             </div>
 
@@ -611,7 +612,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div class="metric-box">
               <span class="label">High / Low (52W)</span>
-              <span class="val">₹ ${est52High.toLocaleString("en-IN")} / ₹ ${est52Low.toLocaleString("en-IN")}</span>
+              <span class="val">₹ ${high52.toLocaleString("en-IN")} / ₹ ${low52.toLocaleString("en-IN")}</span>
             </div>
             <div class="metric-box">
               <span class="label">Stock P/E</span>
