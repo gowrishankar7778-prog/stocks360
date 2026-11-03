@@ -400,7 +400,9 @@ const StocksScreener = (function () {
     resultsContainer.hidden = false;
     resultsContainer.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    const dataset = (typeof STOCKS_SCREENER_DATASET !== "undefined") ? STOCKS_SCREENER_DATASET : [];
+    const dataset = (typeof window !== "undefined" && Array.isArray(window.STOCKS_SCREENER_DATASET) && window.STOCKS_SCREENER_DATASET.length > 0)
+      ? window.STOCKS_SCREENER_DATASET
+      : ((typeof STOCKS_SCREENER_DATASET !== "undefined") ? STOCKS_SCREENER_DATASET : []);
     const matchedStocks = executeFilters(dataset, screenObj.filters);
 
     // Dynamic Columns:
