@@ -1298,11 +1298,11 @@ const STOCKS_SCREENER_DATASET = [
     "dayChangePct": 1.62,
     "isGain": true,
     "lastUpdated": "Today (3 Nov), 5:34 pm IST",
-    "marketCapCr": 26185,
-    "pe": 30.7,
-    "roePct": 19.4,
-    "rocePct": 24.2,
-    "debtToEquity": 0.18,
+    "marketCapCr": 26692,
+    "pe": 31.2,
+    "roePct": 18.5,
+    "rocePct": 21.4,
+    "debtToEquity": 0.22,
     "divYieldPct": 0.15,
     "dma50": 636.11,
     "dma200": 593.87,
@@ -1316,7 +1316,69 @@ const STOCKS_SCREENER_DATASET = [
     "dayHigh": 536.05,
     "dayLow": 520.1,
     "high52": 819.5,
-    "low52": 418.5
+    "low52": 418.5,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "2,791",
+        "netProfit": "40",
+        "opm": "8.2%",
+        "roe": "2.3%",
+        "borrowings": "812"
+      },
+      {
+        "year": "FY23",
+        "sales": "4,172",
+        "netProfit": "216",
+        "opm": "12.1%",
+        "roe": "10.4%",
+        "borrowings": "720"
+      },
+      {
+        "year": "FY24",
+        "sales": "4,185",
+        "netProfit": "411",
+        "opm": "14.8%",
+        "roe": "16.5%",
+        "borrowings": "598"
+      },
+      {
+        "year": "FY25",
+        "sales": "4,613",
+        "netProfit": "556",
+        "opm": "16.2%",
+        "roe": "18.2%",
+        "borrowings": "540"
+      },
+      {
+        "year": "FY26",
+        "sales": "5,595",
+        "netProfit": "755",
+        "opm": "16.6%",
+        "roe": "18.5%",
+        "borrowings": "585"
+      }
+    ],
+    "news": [
+      {
+        "headline": "Himadri Specialty Chemical shares fall nearly 7% as margin pressures overshadow Q2 revenue, profit growth",
+        "source": "CNBC TV18",
+        "date": "19 Oct",
+        "category": "Quarterly Earnings"
+      },
+      {
+        "headline": "Himadri Speciality posts stronger September-quarter profit on broad-based revenue rise",
+        "source": "Indiatimes",
+        "date": "20 Oct",
+        "category": "Corporate News"
+      },
+      {
+        "headline": "Multibagger chemical stock Himadri Speciality up 40% in last 6 months - capacity expansion decoded",
+        "source": "Livemint",
+        "date": "14 Oct",
+        "category": "Capex & Growth"
+      }
+    ]
   },
   {
     "symbol": "DEEPAKNTR",
@@ -83705,8 +83767,3 @@ const STOCKS_SCREENER_DATASET = [
     "low52": 367.55
   }
 ];
-
-if (typeof window !== "undefined") {
-  window.SCREENER_METRIC_DEFINITIONS = SCREENER_METRIC_DEFINITIONS;
-  window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
-}
