@@ -619,7 +619,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!stockResult) return;
     stockResult.hidden = false;
 
-    // Check for cached Gemini profile (quarterly persistent cache)
+    // Check for cached Gemini profile (45-day persistent quarterly cache)
     const symUpper = String(stock.symbol || "").toUpperCase();
     const cacheKey = "stocks360_gemini_profile_" + symUpper;
     let cachedProfile = null;
@@ -660,7 +660,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 4. About the Company Profile Text
     const aboutText = (cachedProfile && cachedProfile.about)
       ? cachedProfile.about
-      : (stock.about || `<strong>${escapeHtml(stock.name)}</strong> is a prominent enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${salesGrowth3Y}% and maintains a conservative Debt-to-Equity ratio of ${debtToEquity}.`);
+      : (stock.about || `<strong>${escapeHtml(stock.name)}</strong> is a leading enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${salesGrowth3Y}% and maintains a conservative Debt-to-Equity ratio of ${debtToEquity}.`);
 
     const news = generateCompanyNews(stock);
 
@@ -683,7 +683,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="company-detail-card" style="background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         
         <!-- SECTION 1: COMPANY HEADER & CMP GAIN/LOSS -->
-        <div class="company-price-header" style="margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid #f1f5f9;">
+        <div class="company-price-header" style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid #f1f5f9;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
             <div>
               <div style="display:flex; align-items:center; gap:8px;">
@@ -713,143 +713,143 @@ document.addEventListener("DOMContentLoaded", function () {
               </a>
             </div>
           </div>
-
-          <!-- PERFORMANCE SEGMENT: OHLC & 52-WEEK HIGH / LOW (LINE BY LINE) -->
-          <div class="performance-ohlc-segment" style="margin-top:20px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
-            <h3 style="font-size:1.05rem; font-weight:700; color:#0f172a; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid #e2e8f0;">
-              Performance Segment: Price &amp; OHLC Range (Line by Line)
-            </h3>
-            <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">Open Price</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${dayOpen.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Day High (High)</span>
-                <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${dayHigh.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">Day Low (Low)</span>
-                <span style="font-weight:700; color:#dc2626; font-size:1rem;">₹ ${dayLow.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Current Close (CMP)</span>
-                <span style="font-weight:700; color:#2563eb; font-size:1rem;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">Previous Close</span>
-                <span style="font-weight:700; color:#475569; font-size:1rem;">₹ ${prevClose.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">52-Week High</span>
-                <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${high52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">52-Week Low</span>
-                <span style="font-weight:700; color:#dc2626; font-size:1rem;">₹ ${low52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Trading Volume</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.volume ? stock.volume.toLocaleString("en-IN") + " shares" : "--"}</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <!-- SECTION 2: ABOUT THE COMPANY (HEADING LEVEL 1) -->
-        <section class="company-about-section" aria-labelledby="heading-about-company" style="margin-bottom:28px;">
-          <h1 id="heading-about-company" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
-            About the Company
+        <!-- SECTION 2: PERFORMANCE SEGMENT - PRICE & OHLC RANGE (EACH ITEM IN A SINGLE LINE) -->
+        <section class="performance-ohlc-section" aria-labelledby="heading-performance-segment" style="margin-bottom:28px;">
+          <h1 id="heading-performance-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            Performance Segment: Price &amp; OHLC Range (Line by Line)
           </h1>
-
-          <div id="company-about-content" style="font-size:0.98rem; color:#334155; line-height:1.75; margin-bottom:22px;">
-            ${aboutText}
-          </div>
-
-          <!-- FUNDAMENTALS SEGMENT: PRESENTED LINE BY LINE -->
-          <div class="fundamentals-line-segment" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
-            <h3 style="font-size:1.05rem; font-weight:700; color:#0f172a; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid #e2e8f0;">
-              Fundamentals Segment (Line by Line)
-            </h3>
-            <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Market Capitalization</span>
-                <span id="metric-market-cap" style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${marketCapCr.toLocaleString("en-IN")} Crores</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">Stock P/E Ratio (Price-to-Earnings)</span>
-                <span id="metric-pe" style="font-weight:700; color:#0f172a; font-size:1rem;">${pe}x</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Return on Equity (ROE)</span>
-                <span id="metric-roe" style="font-weight:700; color:#16a34a; font-size:1rem;">${roePct}%</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">Return on Capital Employed (ROCE)</span>
-                <span id="metric-roce" style="font-weight:700; color:#16a34a; font-size:1rem;">${rocePct}%</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Debt to Equity Ratio</span>
-                <span id="metric-de" style="font-weight:700; color:#0f172a; font-size:1rem;">${debtToEquity}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">Dividend Yield</span>
-                <span id="metric-div-yield" style="font-weight:700; color:#0f172a; font-size:1rem;">${divYieldPct}%</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">3-Year Sales Growth</span>
-                <span id="metric-sales-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${salesGrowth3Y}%</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">3-Year Profit Growth</span>
-                <span id="metric-profit-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${profitGrowth3Y}%</span>
-              </div>
+          <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Today's Open (Open Price)</span>
+              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${dayOpen.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-          </div>
-
-          <!-- INDICATORS SEGMENT: PRESENTED LINE BY LINE -->
-          <div class="indicators-line-segment" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
-            <h3 style="font-size:1.05rem; font-weight:700; color:#0f172a; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid #e2e8f0;">
-              Indicators Segment: Technical &amp; Momentum (Line by Line)
-            </h3>
-            <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">50-Day Moving Average (50-DMA)</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${stock.dma50.toLocaleString("en-IN")}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">200-Day Moving Average (200-DMA)</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${stock.dma200.toLocaleString("en-IN")}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Golden Crossover Status (50-DMA vs 200-DMA)</span>
-                <span style="font-weight:700; color:${stock.goldenCross ? "#16a34a" : "#64748b"}; font-size:1rem;">
-                  ${stock.goldenCross ? "Active Bullish Crossover" : "Consolidating"}
-                </span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-                <span style="color:#475569; font-weight:600;">14-Day Relative Strength Index (RSI)</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.rsi14}</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-                <span style="color:#475569; font-weight:600;">Volume Surge Ratio (vs 10-Day Average)</span>
-                <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.volumeSurge}x</span>
-              </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">Today's High (Day High)</span>
+              <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${dayHigh.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Today's Low (Day Low)</span>
+              <span style="font-weight:700; color:#dc2626; font-size:1rem;">₹ ${dayLow.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">Current Market Price (CMP)</span>
+              <span style="font-weight:700; color:#2563eb; font-size:1rem;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Previous Close (Yesterday Close)</span>
+              <span style="font-weight:700; color:#475569; font-size:1rem;">₹ ${prevClose.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">52-Week High</span>
+              <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${high52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">52-Week Low</span>
+              <span style="font-weight:700; color:#dc2626; font-size:1rem;">₹ ${low52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">Trading Volume</span>
+              <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.volume ? stock.volume.toLocaleString("en-IN") + " shares" : "--"}</span>
             </div>
           </div>
         </section>
 
-        <!-- SECTION 3: AI INVESTMENT THESIS (HEADING LEVEL 1) -->
+        <!-- SECTION 3: FUNDAMENTALS SEGMENT (EACH ITEM IN A SINGLE LINE) -->
+        <section class="fundamentals-section" aria-labelledby="heading-fundamentals-segment" style="margin-bottom:28px;">
+          <h1 id="heading-fundamentals-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            Fundamentals Segment (Line by Line)
+          </h1>
+          <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Market Capitalization</span>
+              <span id="metric-market-cap" style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${marketCapCr.toLocaleString("en-IN")} Crores</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">Stock P/E Ratio (Price-to-Earnings)</span>
+              <span id="metric-pe" style="font-weight:700; color:#0f172a; font-size:1rem;">${pe}x</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Return on Equity (ROE)</span>
+              <span id="metric-roe" style="font-weight:700; color:#16a34a; font-size:1rem;">${roePct}%</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">Return on Capital Employed (ROCE)</span>
+              <span id="metric-roce" style="font-weight:700; color:#16a34a; font-size:1rem;">${rocePct}%</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Debt to Equity Ratio</span>
+              <span id="metric-de" style="font-weight:700; color:#0f172a; font-size:1rem;">${debtToEquity}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">Dividend Yield</span>
+              <span id="metric-div-yield" style="font-weight:700; color:#0f172a; font-size:1rem;">${divYieldPct}%</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">3-Year Sales Growth CAGR</span>
+              <span id="metric-sales-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${salesGrowth3Y}%</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">3-Year Profit Growth CAGR</span>
+              <span id="metric-profit-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${profitGrowth3Y}%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: TECHNICAL INDICATORS SEGMENT (EACH ITEM IN A SINGLE LINE) -->
+        <section class="indicators-section" aria-labelledby="heading-indicators-segment" style="margin-bottom:28px;">
+          <h1 id="heading-indicators-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            Technical &amp; Momentum Indicators (Line by Line)
+          </h1>
+          <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">50-Day Moving Average (50-DMA)</span>
+              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${stock.dma50.toLocaleString("en-IN")}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">200-Day Moving Average (200-DMA)</span>
+              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${stock.dma200.toLocaleString("en-IN")}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Golden Crossover Status (50-DMA vs 200-DMA)</span>
+              <span style="font-weight:700; color:${stock.goldenCross ? "#16a34a" : "#64748b"}; font-size:1rem;">
+                ${stock.goldenCross ? "Active Bullish Crossover" : "Consolidating"}
+              </span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
+              <span style="color:#475569; font-weight:600;">14-Day Relative Strength Index (RSI)</span>
+              <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.rsi14}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">Volume Surge Ratio (vs 10-Day Volume Average)</span>
+              <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.volumeSurge}x</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: ABOUT THE COMPANY (HEADING LEVEL 1) -->
+        <section class="company-about-section" aria-labelledby="heading-about-company" style="margin-bottom:28px;">
+          <h1 id="heading-about-company" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            About the Company
+          </h1>
+
+          <div id="company-about-content" style="font-size:0.98rem; color:#334155; line-height:1.75; margin-bottom:12px;">
+            ${aboutText}
+          </div>
+        </section>
+
+        <!-- SECTION 6: AI INVESTMENT THESIS (HEADING LEVEL 1) -->
         <section class="company-thesis-section" aria-labelledby="heading-investment-thesis" style="margin-bottom:28px;">
-          <h1 id="heading-investment-thesis" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+          <h1 id="heading-investment-thesis" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             AI Investment Thesis: Key Strengths &amp; Critical Risks
           </h1>
 
           <div class="pros-cons-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
             <!-- KEY STRENGTHS -->
             <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:16px;">
-              <h3 style="font-size:1.05rem; color:#15803d; margin-bottom:10px; font-weight:700; display:flex; align-items:center; gap:8px;">
-                <span>Key Investment Strengths (Pros)</span>
+              <h3 style="font-size:1.05rem; color:#15803d; margin-bottom:10px; font-weight:700;">
+                Key Investment Strengths (Pros)
               </h3>
               <ul id="thesis-strengths-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#166534; line-height:1.65;">
                 ${thesisStrengths.map((p) => `<li style="margin-bottom:8px;">${escapeHtml(p)}</li>`).join("")}
@@ -858,8 +858,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <!-- CRITICAL RISKS -->
             <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:16px;">
-              <h3 style="font-size:1.05rem; color:#b45309; margin-bottom:10px; font-weight:700; display:flex; align-items:center; gap:8px;">
-                <span>Critical Risks &amp; Watchouts (Cons)</span>
+              <h3 style="font-size:1.05rem; color:#b45309; margin-bottom:10px; font-weight:700;">
+                Critical Risks &amp; Watchouts (Cons)
               </h3>
               <ul id="thesis-risks-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.65;">
                 ${thesisRisks.map((c) => `<li style="margin-bottom:8px;">${escapeHtml(c)}</li>`).join("")}
@@ -868,9 +868,9 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 4: RECENT CORPORATE ANNOUNCEMENTS & NEWS (HEADING LEVEL 1) -->
+        <!-- SECTION 7: RECENT CORPORATE ANNOUNCEMENTS & NEWS (HEADING LEVEL 1) -->
         <section class="company-news-section" aria-labelledby="heading-company-news" style="margin-bottom:28px;">
-          <h1 id="heading-company-news" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+          <h1 id="heading-company-news" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Recent Corporate Announcements &amp; News
           </h1>
           <div style="display:flex; flex-direction:column; gap:10px;">
@@ -890,9 +890,9 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 5: FINANCIAL STATEMENTS & 5-YEAR PERFORMANCE TREND (HEADING LEVEL 1) -->
+        <!-- SECTION 8: FINANCIAL STATEMENTS & 5-YEAR PERFORMANCE TREND (HEADING LEVEL 1) -->
         <section class="company-financials-section" aria-labelledby="heading-financial-statements" style="margin-bottom:28px;">
-          <h1 id="heading-financial-statements" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+          <h1 id="heading-financial-statements" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Financial Statements &amp; Performance History (5-Year Trend)
           </h1>
           <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:10px;">
@@ -929,7 +929,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 6: ASK STOCKS 360 AI DRAWER -->
+        <!-- SECTION 9: ASK STOCKS 360 AI DRAWER -->
         <div class="company-ai-grounded-box" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px; padding:20px; margin-top:28px;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
             <div style="display:flex; align-items:center; gap:6px;">
@@ -964,11 +964,10 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
-    // 6. Asynchronous Background Gemini AI Profile Enrichment (if not already cached)
+    // Asynchronous Background Gemini AI Profile Enrichment (if not already cached)
     if (!cachedProfile && typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
       StocksGeminiAI.fetchCompanyAiProfile(stock).then((profile) => {
         if (!profile) return;
-        // Check if user is still on this stock view
         if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
           const aboutEl = document.getElementById("company-about-content");
           if (aboutEl && profile.about) {
