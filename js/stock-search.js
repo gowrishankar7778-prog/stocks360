@@ -719,38 +719,38 @@ document.addEventListener("DOMContentLoaded", function () {
           <h1 id="heading-performance-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Performance Segment: Price &amp; OHLC Range (Line by Line)
           </h1>
-          <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Current Market Price (CMP)</span>
-              <span style="font-weight:700; color:#2563eb; font-size:1rem;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+          <div class="line-by-line-table">
+            <div class="line-item-row">
+              <span class="line-item-label">Current Market Price (CMP)</span>
+              <span class="line-item-val" style="color:#2563eb;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Previous Close (Yesterday Close)</span>
-              <span style="font-weight:700; color:#475569; font-size:1rem;">₹ ${prevClose.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Previous Close (Yesterday Close)</span>
+              <span class="line-item-val" style="color:#475569;">₹ ${prevClose.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Today's Low (Day Low)</span>
-              <span style="font-weight:700; color:#dc2626; font-size:1rem;">₹ ${dayLow.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Today's Low (Day Low)</span>
+              <span class="line-item-val" style="color:#dc2626;">₹ ${dayLow.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Today's High (Day High)</span>
-              <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${dayHigh.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Today's High (Day High)</span>
+              <span class="line-item-val" style="color:#16a34a;">₹ ${dayHigh.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Today's Open (Open Price)</span>
-              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${dayOpen.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Today's Open (Open Price)</span>
+              <span class="line-item-val" style="color:#0f172a;">₹ ${dayOpen.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">52-Week High</span>
-              <span style="font-weight:700; color:#16a34a; font-size:1rem;">₹ ${high52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">52-Week High</span>
+              <span class="line-item-val" style="color:#16a34a;">₹ ${high52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">52-Week Low</span>
-              <span style="font-weight:700; color:#dc2626; font-size:1rem;">₹ ${low52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">52-Week Low</span>
+              <span class="line-item-val" style="color:#dc2626;">₹ ${low52.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Trading Volume</span>
-              <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.volume ? stock.volume.toLocaleString("en-IN") + " shares" : "--"}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Trading Volume</span>
+              <span class="line-item-val" style="color:#0f172a;">${stock.volume ? stock.volume.toLocaleString("en-IN") + " shares" : "--"}</span>
             </div>
           </div>
         </section>
@@ -760,38 +760,38 @@ document.addEventListener("DOMContentLoaded", function () {
           <h1 id="heading-fundamentals-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Fundamentals Segment (Line by Line)
           </h1>
-          <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Market Capitalization</span>
-              <span id="metric-market-cap" style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${marketCapCr.toLocaleString("en-IN")} Crores</span>
+          <div class="line-by-line-table">
+            <div class="line-item-row">
+              <span class="line-item-label">Market Capitalization</span>
+              <span id="metric-market-cap" class="line-item-val" style="color:#0f172a;">₹ ${marketCapCr.toLocaleString("en-IN")} Crores</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Stock P/E Ratio (Price-to-Earnings)</span>
-              <span id="metric-pe" style="font-weight:700; color:#0f172a; font-size:1rem;">${pe}x</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Stock P/E Ratio (Price-to-Earnings)</span>
+              <span id="metric-pe" class="line-item-val" style="color:#0f172a;">${pe}x</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Return on Equity (ROE)</span>
-              <span id="metric-roe" style="font-weight:700; color:#16a34a; font-size:1rem;">${roePct}%</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Return on Equity (ROE)</span>
+              <span id="metric-roe" class="line-item-val" style="color:#16a34a;">${roePct}%</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Return on Capital Employed (ROCE)</span>
-              <span id="metric-roce" style="font-weight:700; color:#16a34a; font-size:1rem;">${rocePct}%</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Return on Capital Employed (ROCE)</span>
+              <span id="metric-roce" class="line-item-val" style="color:#16a34a;">${rocePct}%</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Debt to Equity Ratio</span>
-              <span id="metric-de" style="font-weight:700; color:#0f172a; font-size:1rem;">${debtToEquity}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Debt to Equity Ratio</span>
+              <span id="metric-de" class="line-item-val" style="color:#0f172a;">${debtToEquity}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">Dividend Yield</span>
-              <span id="metric-div-yield" style="font-weight:700; color:#0f172a; font-size:1rem;">${divYieldPct}%</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Dividend Yield</span>
+              <span id="metric-div-yield" class="line-item-val" style="color:#0f172a;">${divYieldPct}%</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">3-Year Sales Growth CAGR</span>
-              <span id="metric-sales-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${salesGrowth3Y}%</span>
+            <div class="line-item-row">
+              <span class="line-item-label">3-Year Sales Growth CAGR</span>
+              <span id="metric-sales-growth" class="line-item-val" style="color:#0f172a;">${salesGrowth3Y}%</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">3-Year Profit Growth CAGR</span>
-              <span id="metric-profit-growth" style="font-weight:700; color:#0f172a; font-size:1rem;">${profitGrowth3Y}%</span>
+            <div class="line-item-row">
+              <span class="line-item-label">3-Year Profit Growth CAGR</span>
+              <span id="metric-profit-growth" class="line-item-val" style="color:#0f172a;">${profitGrowth3Y}%</span>
             </div>
           </div>
         </section>
@@ -801,28 +801,28 @@ document.addEventListener("DOMContentLoaded", function () {
           <h1 id="heading-indicators-segment" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Technical &amp; Momentum Indicators (Line by Line)
           </h1>
-          <div class="line-by-line-table" style="display:flex; flex-direction:column; gap:6px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">50-Day Moving Average (50-DMA)</span>
-              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${stock.dma50.toLocaleString("en-IN")}</span>
+          <div class="line-by-line-table">
+            <div class="line-item-row">
+              <span class="line-item-label">50-Day Moving Average (50-DMA)</span>
+              <span class="line-item-val" style="color:#0f172a;">₹ ${stock.dma50.toLocaleString("en-IN")}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">200-Day Moving Average (200-DMA)</span>
-              <span style="font-weight:700; color:#0f172a; font-size:1rem;">₹ ${stock.dma200.toLocaleString("en-IN")}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">200-Day Moving Average (200-DMA)</span>
+              <span class="line-item-val" style="color:#0f172a;">₹ ${stock.dma200.toLocaleString("en-IN")}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Golden Crossover Status (50-DMA vs 200-DMA)</span>
-              <span style="font-weight:700; color:${stock.goldenCross ? "#16a34a" : "#64748b"}; font-size:1rem;">
+            <div class="line-item-row">
+              <span class="line-item-label">Golden Crossover Status (50-DMA vs 200-DMA)</span>
+              <span class="line-item-val" style="color:${stock.goldenCross ? "#16a34a" : "#64748b"};">
                 ${stock.goldenCross ? "Active Bullish Crossover" : "Consolidating"}
               </span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#ffffff; border-radius:6px; border:1px solid #f1f5f9;">
-              <span style="color:#475569; font-weight:600;">14-Day Relative Strength Index (RSI)</span>
-              <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.rsi14}</span>
+            <div class="line-item-row">
+              <span class="line-item-label">14-Day Relative Strength Index (RSI)</span>
+              <span class="line-item-val" style="color:#0f172a;">${stock.rsi14}</span>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-              <span style="color:#475569; font-weight:600;">Volume Surge Ratio (vs 10-Day Volume Average)</span>
-              <span style="font-weight:700; color:#0f172a; font-size:1rem;">${stock.volumeSurge}x</span>
+            <div class="line-item-row">
+              <span class="line-item-label">Volume Surge Ratio (vs 10-Day Volume Average)</span>
+              <span class="line-item-val" style="color:#0f172a;">${stock.volumeSurge}x</span>
             </div>
           </div>
         </section>
@@ -861,11 +861,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 Critical Risks &amp; Watchouts
               </h3>
               <ul id="thesis-risks-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.65;">
-                ${thesisRisks.map((c) => `<li style="margin-bottom:8px;">${escapeHtml(c)}</li>`).join("")}
-              </ul>
-            </div>
-          </div>
-        </section>
                 ${thesisRisks.map((c) => `<li style="margin-bottom:8px;">${escapeHtml(c)}</li>`).join("")}
               </ul>
             </div>

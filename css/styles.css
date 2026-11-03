@@ -2428,4 +2428,42 @@ body.high-contrast .stocks360-data-table td {
   border: 1px solid #000000 !important;
 }
 
+/* Dedicated Line-by-Line Presentation for Company Analysis Segments */
+.line-by-line-table {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  gap: 6px !important;
+  margin-top: 10px !important;
+}
+
+.line-by-line-table .line-item-row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 12px 18px !important;
+  border-radius: 6px !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease;
+}
+
+.line-by-line-table .line-item-row:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.line-by-line-table .line-item-label {
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+}
+
+.line-by-line-table .line-item-val {
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  text-align: right !important;
+}
+
+
 
