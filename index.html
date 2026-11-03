@@ -25,65 +25,40 @@
     </div>
   </header>
 
-  <!-- 3. SEARCH FOR STOCKS SECTION (KEPT PRIVATE UNTIL LIVE STOCK API IS CONNECTED) -->
-  <section class="top-search-section" aria-label="Search for Stocks" hidden>
+  <!-- 3. SEARCH FOR STOCKS SECTION (GLOBAL COMPANY SEARCH & ANALYSIS) -->
+  <section class="top-search-section" aria-label="Search for Stocks">
     <div class="container">
       <div class="stock-search-card">
-        <label for="stock-search" class="search-label">Search for Stocks</label>
-        <div class="search-input-wrapper">
-          <input type="search" id="stock-search" placeholder="Enter stock name or symbol..." aria-label="Search for stocks">
-          <button type="button" id="search-button" class="btn-primary">Search for Stocks</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
+          <label for="stock-search" class="search-label" style="font-weight:700; color:#1e293b; margin:0;">
+            Search Companies for Detailed Analysis &amp; News
+          </label>
+          <span style="font-size:0.82rem; color:#64748b;">Includes Fundamentals, Moving Averages &amp; AI Pros/Cons</span>
         </div>
 
-        <!-- SEARCH RESULT CARD (AUDIO PITCH INTEGRATED) -->
-        <section id="stock-result" class="stock-result-card" aria-live="polite" hidden>
-          <div class="result-header">
-            <div>
-              <h2 id="stock-name">Stock Name</h2>
-              <span id="stock-exchange" class="exchange-badge">NSE</span>
-            </div>
-            <div class="live-price-box">
-              <span class="live-indicator"><span class="pulse-dot"></span> LIVE</span>
-              <div id="live-price" class="main-price">--</div>
-              <div id="price-change" class="price-change-pill">--</div>
-            </div>
-          </div>
+        <div class="search-input-wrapper">
+          <input type="search" id="stock-search" placeholder="Type company name or symbol (e.g. TCS, INFY, HDFC Bank, Reliance)..." aria-label="Search for stocks">
+          <button type="button" id="search-button" class="btn-primary">Search Company</button>
+        </div>
 
-          <div class="price-metrics-grid">
-            <div class="metric-box">
-              <span class="label">Previous Close</span>
-              <span id="previous-close" class="val">--</span>
-            </div>
-            <div class="metric-box">
-              <span class="label">Today's Open</span>
-              <span id="today-open" class="val">--</span>
-            </div>
-            <div class="metric-box">
-              <span class="label">Day's High</span>
-              <span id="today-high" class="val">--</span>
-            </div>
-            <div class="metric-box">
-              <span class="label">Day's Low</span>
-              <span id="today-low" class="val">--</span>
-            </div>
-          </div>
+        <!-- QUICK COMPANY STARTER PILLS -->
+        <div class="quick-stock-pills" style="margin-top:10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center;">
+          <span style="font-size:0.82rem; font-weight:600; color:#64748b; margin-right:4px;">Popular:</span>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="TCS">TCS</button>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="INFY">Infosys</button>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="HDFCBANK">HDFC Bank</button>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="RELIANCE">Reliance</button>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="ITC">ITC</button>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="TATAMOTORS">Tata Motors</button>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="SBIN">SBI</button>
+          <button type="button" class="quick-ticker-pill stock-quick-pick" data-symbol="SUNPHARMA">Sun Pharma</button>
+        </div>
 
-          <!-- HISTORICAL DATA SELECTOR -->
-          <div class="historical-control-box">
-            <label for="historical-period">View Historical Price Table:</label>
-            <select id="historical-period">
-              <option value="">-- Select History Range --</option>
-              <option value="5days">Last 5 Trading Days</option>
-              <option value="1month">Last 1 Month</option>
-              <option value="3months">Last 3 Months</option>
-              <option value="1year">Last 1 Year</option>
-            </select>
-          </div>
-
-          <div id="historical-data" aria-live="polite"></div>
-        </section>
+        <!-- SEARCH RESULT CARD (DETAILED SCREENER.IN-STYLE ANALYSIS & AI GROUNDED CHAT) -->
+        <section id="stock-result" class="stock-result-card" aria-live="polite" hidden></section>
       </div>
     </div>
+  </section>
   </section>
 
   <!-- 4. STOCKS 360 AI BUTTON (BEFORE MAIN LINKS) -->
@@ -142,7 +117,8 @@
   <script src="js/gemini-ai.js?v=10"></script>
   <script src="js/main.js?v=10"></script>
   <script src="js/accessibility.js?v=3"></script>
-  <script src="js/stock-search.js?v=3"></script>
+  <script src="js/screener-data.js?v=2"></script>
+  <script src="js/stock-search.js?v=4"></script>
   <script src="js/smart-assist.js?v=3"></script>
 </body>
 </html>
