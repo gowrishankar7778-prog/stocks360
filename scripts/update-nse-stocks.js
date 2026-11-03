@@ -158,12 +158,13 @@ async function updateAllStocks() {
     process.exit(1);
   }
 
-  console.log(`Synchronizing ${stocks.length} NSE stocks at 4:45 PM IST...`);
+  const updateLimit = process.argv.includes('--all') ? stocks.length : (process.env.UPDATE_LIMIT ? parseInt(process.env.UPDATE_LIMIT, 10) : Math.min(stocks.length, 250));
+  console.log(`Synchronizing ${updateLimit} active NSE stocks (out of ${stocks.length} total listed equities) at 4:45 PM IST...`);
 
   let updatedCount = 0;
   const CHUNK_SIZE = 8;
-  for (let i = 0; i < stocks.length; i += CHUNK_SIZE) {
-    const chunk = stocks.slice(i, i + CHUNK_SIZE);
+  for (let i = 0; i < updateLimit; i += CHUNK_SIZE) {
+    const chunk = stocks.slice(i, Math.min(i + CHUNK_SIZE, updateLimit));
     await Promise.all(chunk.map(async (s, cIdx) => {
       const idx = i + cIdx + 1;
       try {

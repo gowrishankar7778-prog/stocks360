@@ -589,11 +589,11 @@ document.addEventListener("DOMContentLoaded", function () {
           <div id="company-ai-response" aria-live="polite"></div>
         </div>
 
-        <!-- SECTION 3: ABOUT THE COMPANY -->
+        <!-- SECTION 3: ABOUT THE COMPANY (HEADING LEVEL 1) -->
         <section class="company-about-section" aria-labelledby="heading-about-company" style="margin-bottom:28px;">
-          <h2 id="heading-about-company" style="font-size:1.35rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+          <h1 id="heading-about-company" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             About the Company
-          </h2>
+          </h1>
 
           <p style="font-size:0.98rem; color:#334155; line-height:1.65; margin-bottom:18px;">
             <strong>${escapeHtml(stock.name)}</strong> is a leading enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${stock.marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${stock.salesGrowth3Y}% and maintains a Debt-to-Equity ratio of ${stock.debtToEquity}.
@@ -677,11 +677,11 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 4: RECENT CORPORATE ANNOUNCEMENTS & NEWS -->
+        <!-- SECTION 4: RECENT CORPORATE ANNOUNCEMENTS & NEWS (HEADING LEVEL 1) -->
         <section class="company-news-section" aria-labelledby="heading-company-news" style="margin-bottom:28px;">
-          <h2 id="heading-company-news" style="font-size:1.35rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+          <h1 id="heading-company-news" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Recent Corporate Announcements &amp; News
-          </h2>
+          </h1>
           <div style="display:flex; flex-direction:column; gap:10px;">
             ${news
               .map(
@@ -699,11 +699,11 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 5: FINANCIAL STATEMENTS & 5-YEAR PERFORMANCE TREND -->
+        <!-- SECTION 5: FINANCIAL STATEMENTS & 5-YEAR PERFORMANCE TREND (HEADING LEVEL 1) -->
         <section class="company-financials-section" aria-labelledby="heading-financial-statements">
-          <h2 id="heading-financial-statements" style="font-size:1.35rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+          <h1 id="heading-financial-statements" style="font-size:1.45rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Financial Statements &amp; Performance History (5-Year Trend)
-          </h2>
+          </h1>
           <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:10px;">
             <table class="stocks360-data-table" style="font-size:0.92rem; width:100%; border-collapse:collapse;">
               <thead>
@@ -794,17 +794,27 @@ document.addEventListener("DOMContentLoaded", function () {
         listenBtn.style.background = "";
         listenBtn.style.color = "";
       }
+      window._stocks360SpeechUtterance = null;
       return;
     }
 
+    // Cancel any previous queued utterance and resume audio channel if suspended
     window.speechSynthesis.cancel();
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+    }
 
-    const narration = `About ${stock.name}. Ticker symbol ${stock.symbol} listed on the National Stock Exchange in the ${stock.sector} sector. Current market price is ${stock.cmp} rupees, recording a ${isGain ? "day gain of " + Math.abs(stock.dayChange || 1) + " rupees" : "day loss of " + Math.abs(stock.dayChange || 1) + " rupees"} today. Key fundamental metrics: Return on Equity is ${stock.roePct} percent, Return on Capital Employed is ${stock.rocePct} percent, Debt to Equity ratio is ${stock.debtToEquity}, and price to earnings ratio is ${stock.pe}. ${pros && pros[0] ? "Primary company strength: " + pros[0] : ""}`;
+    const cleanDayChange = Math.abs(stock.dayChange || 1);
+    const narration = `About ${stock.name}. Ticker symbol ${stock.symbol} listed on the National Stock Exchange in the ${stock.sector} sector. Current market price is ${stock.cmp} rupees, recording a ${isGain ? "day gain of " + cleanDayChange + " rupees" : "day loss of " + cleanDayChange + " rupees"} today. Key fundamental metrics: Return on Equity is ${stock.roePct} percent, Return on Capital Employed is ${stock.rocePct} percent, Debt to Equity ratio is ${stock.debtToEquity}, and price to earnings ratio is ${stock.pe}. ${pros && pros[0] ? "Primary company strength: " + pros[0] : ""}`;
 
     const utterance = new SpeechSynthesisUtterance(narration);
+    utterance.lang = "en-IN";
     utterance.rate = 0.95;
     utterance.volume = 1.0;
     utterance.pitch = 1.0;
+
+    // Retain global reference so Chromium garbage collector does not silence utterance mid-speech
+    window._stocks360SpeechUtterance = utterance;
 
     const voices = window.speechSynthesis.getVoices();
     if (voices && voices.length > 0) {
@@ -824,6 +834,7 @@ document.addEventListener("DOMContentLoaded", function () {
         listenBtn.style.background = "";
         listenBtn.style.color = "";
       }
+      window._stocks360SpeechUtterance = null;
     };
 
     utterance.onerror = function (e) {
@@ -833,9 +844,20 @@ document.addEventListener("DOMContentLoaded", function () {
         listenBtn.style.background = "";
         listenBtn.style.color = "";
       }
+      window._stocks360SpeechUtterance = null;
     };
 
-    window.speechSynthesis.speak(utterance);
+    // Small delay ensures Chromium registers utterance cleanly after cancel()
+    setTimeout(() => {
+      try {
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.warn("Speech synthesis trigger warning:", err);
+      }
+    }, 60);
   }
 
   // ---------------- STRICT IN-CONTENT AI GROUNDING FOR COMPANY ----------------

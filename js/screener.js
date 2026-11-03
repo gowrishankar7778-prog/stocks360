@@ -445,6 +445,9 @@ const StocksScreener = (function () {
 
     // Build Accessible HTML Table
     let tableRows = "";
+    const displayLimit = 200;
+    const displayedStocks = matchedStocks.slice(0, displayLimit);
+
     if (matchedStocks.length === 0) {
       tableRows = `
         <tr>
@@ -455,7 +458,7 @@ const StocksScreener = (function () {
         </tr>
       `;
     } else {
-      tableRows = matchedStocks
+      tableRows = displayedStocks
         .map((st, idx) => {
           let cells = "";
           activeCols.forEach((col) => {
