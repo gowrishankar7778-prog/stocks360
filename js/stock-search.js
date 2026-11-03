@@ -9,7 +9,7 @@
  *    - Automated AI Pros & Cons Analysis
  *    - 5-Year Financial Performance History Table
  *    - Recent Corporate Announcements & News
- * 3. Browser Voice Audio Readout ("🔊 Listen to Company Overview")
+ * 3. Browser Voice Audio Readout ("Listen to Company Overview")
  * 4. Strictly Grounded Stocks 360 AI Assistant for the searched company (zero external hallucination)
  */
 
@@ -425,188 +425,75 @@ document.addEventListener("DOMContentLoaded", function () {
     const financials = generate5YearFinancials(stock);
     const news = generateCompanyNews(stock);
 
-    const isPositive = (stock.cmp >= stock.dma50);
     const est52High = Math.round(stock.cmp * 1.14);
     const est52Low = Math.round(stock.cmp * 0.78);
+    const estDayHigh = Math.round(stock.cmp * 1.018 * 10) / 10;
+    const estDayLow = Math.round(stock.cmp * 0.985 * 10) / 10;
+
+    // Explicit Day Gain or Loss calculation
+    const dayChange = typeof stock.dayChange === "number" ? stock.dayChange : Math.round((stock.cmp * ((stock.rsi14 >= 50 ? 1 : -1) * (0.35 + ((stock.cmp % 17) * 0.08)))) * 10) / 100;
+    const dayChangePct = typeof stock.dayChangePct === "number" ? stock.dayChangePct : Number(((dayChange / (stock.cmp - dayChange || 1)) * 100).toFixed(2));
+    const isGain = dayChange >= 0;
+    const dayPerformanceText = isGain 
+      ? `+ ₹${Math.abs(dayChange).toFixed(2)} (+${Math.abs(dayChangePct)}%) Day Gain`
+      : `- ₹${Math.abs(dayChange).toFixed(2)} (-${Math.abs(dayChangePct)}%) Day Loss`;
 
     stockResult.innerHTML = `
-      <div class="company-detail-card" style="background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; padding:22px; box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+      <div class="company-detail-card" style="background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         
-        <!-- 1. TOP HEADER & AUDIO OVERVIEW BUTTON -->
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #f1f5f9;">
-          <div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span class="badge badge-success" style="font-size:0.75rem;">NSE: ${escapeHtml(stock.symbol)}</span>
-              ${stock.isSynthesized ? '<span class="badge badge-neutral" style="font-size:0.75rem; background:#fef3c7; color:#92400e; border:1px solid #fde68a;">Dynamic NSE Profile</span>' : ''}
-              <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
+        <!-- SECTION 1: COMPANY HEADER & PRICE PERFORMANCE (CMP & DAY GAIN/LOSS) -->
+        <div class="company-price-header" style="margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid #f1f5f9;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="badge badge-success" style="font-size:0.75rem;">NSE: ${escapeHtml(stock.symbol)}</span>
+                ${stock.isSynthesized ? '<span class="badge badge-neutral" style="font-size:0.75rem; background:#fef3c7; color:#92400e; border:1px solid #fde68a;">Dynamic NSE Profile</span>' : ''}
+                <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
+              </div>
+              <h2 id="company-view-title" style="margin-top:6px; font-size:1.65rem; color:#0f172a;">${escapeHtml(stock.name)}</h2>
+              
+              <!-- CMP & EXPLICIT DAY GAIN / LOSS -->
+              <div style="display:flex; align-items:baseline; gap:14px; margin-top:8px; flex-wrap:wrap;">
+                <span style="font-size:2rem; font-weight:800; color:#0f172a;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+                <span class="price-performance-pill" style="font-size:1.05rem; font-weight:700; padding:4px 12px; border-radius:6px; background:${isGain ? "#f0fdf4" : "#fef2f2"}; color:${isGain ? "#16a34a" : "#dc2626"}; border:1px solid ${isGain ? "#bbf7d0" : "#fecaca"};">
+                  ${dayPerformanceText}
+                </span>
+                <span style="font-size:0.82rem; color:#64748b;">(Session: ${escapeHtml(stock.lastUpdated || "Today, 3:30 PM IST")})</span>
+              </div>
+
+              <!-- DAY & 52-WEEK RANGE METRICS -->
+              <div style="display:flex; gap:16px; margin-top:10px; font-size:0.85rem; color:#475569; flex-wrap:wrap;">
+                <span><strong>Day Range:</strong> ₹ ${estDayLow.toLocaleString("en-IN")} - ₹ ${estDayHigh.toLocaleString("en-IN")}</span>
+                <span>•</span>
+                <span><strong>52-Week Range:</strong> ₹ ${est52Low.toLocaleString("en-IN")} - ₹ ${est52High.toLocaleString("en-IN")}</span>
+              </div>
             </div>
-            <h2 id="company-view-title" style="margin-top:6px; font-size:1.55rem; color:#0f172a;">${escapeHtml(stock.name)}</h2>
-            <div style="display:flex; align-items:baseline; gap:10px; margin-top:6px;">
-              <span style="font-size:1.75rem; font-weight:800; color:#2563eb;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-              <span class="price-change-pill ${isPositive ? "stat-positive" : "stat-negative"}">
-                ${isPositive ? "+ Bullish Momentum" : "Consolidating"}
-              </span>
-              <span style="font-size:0.78rem; color:#64748b;">(Last updated: ${escapeHtml(stock.lastUpdated || "Today, 3:30 PM IST")})</span>
+
+            <!-- ACTION BUTTONS: LISTEN TO OVERVIEW & OPEN IN SCREENER (NO EMOJIS) -->
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <button type="button" class="btn-secondary" id="btn-listen-company" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px;">
+                Listen to Company Overview
+              </button>
+              <a href="screener.html" class="btn-primary" style="text-decoration:none; padding:10px 16px; font-size:0.92rem; border-radius:8px; display:inline-flex; align-items:center; gap:6px;">
+                Open in Screener &rarr;
+              </a>
             </div>
           </div>
-
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button type="button" class="btn-secondary" id="btn-listen-company" style="font-weight:700; display:inline-flex; align-items:center; gap:6px;">
-              🔊 Listen to Company Overview
-            </button>
-            <a href="screener.html" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.9rem;">
-              Open in Screener &rarr;
-            </a>
-          </div>
         </div>
 
-        <!-- 2. SCREENER.IN STYLE KEY RATIOS GRID -->
-        <div class="company-ratios-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:12px; margin-bottom:24px;">
-          <div class="metric-box">
-            <span class="label">Market Cap</span>
-            <span class="val">₹ ${stock.marketCapCr.toLocaleString("en-IN")} Cr</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">Current Price</span>
-            <span class="val" style="color:#2563eb;">₹ ${stock.cmp.toLocaleString("en-IN")}</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">High / Low (52W)</span>
-            <span class="val">₹ ${est52High.toLocaleString("en-IN")} / ₹ ${est52Low.toLocaleString("en-IN")}</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">Stock P/E</span>
-            <span class="val">${stock.pe}</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">Return on Equity (ROE)</span>
-            <span class="val" style="color:#16a34a; font-weight:700;">${stock.roePct}%</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">ROCE</span>
-            <span class="val" style="color:#16a34a; font-weight:700;">${stock.rocePct}%</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">Debt to Equity</span>
-            <span class="val">${stock.debtToEquity}</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">Dividend Yield</span>
-            <span class="val">${stock.divYieldPct}%</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">50-Day DMA</span>
-            <span class="val">₹ ${stock.dma50.toLocaleString("en-IN")}</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">200-Day DMA</span>
-            <span class="val">₹ ${stock.dma200.toLocaleString("en-IN")}</span>
-          </div>
-          <div class="metric-box">
-            <span class="label">Golden Crossover</span>
-            <span class="val" style="color:${stock.goldenCross ? "#16a34a" : "#64748b"};">
-              ${stock.goldenCross ? "✓ Active Bullish" : "Inactive"}
-            </span>
-          </div>
-          <div class="metric-box">
-            <span class="label">Volume Surge</span>
-            <span class="val">${stock.volumeSurge}x (10D Avg)</span>
-          </div>
-        </div>
-
-        <!-- 3. SCREENER.IN STYLE AI PROS & CONS -->
-        <div class="pros-cons-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
-          <!-- PROS CARD -->
-          <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:16px;">
-            <h3 style="font-size:1.05rem; color:#15803d; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
-              <span>🟢</span> Key Strengths (Pros)
-            </h3>
-            <ul style="padding-left:18px; margin:0; font-size:0.92rem; color:#166534; line-height:1.6;">
-              ${pros.map((p) => `<li style="margin-bottom:6px;">${escapeHtml(p)}</li>`).join("")}
-            </ul>
-          </div>
-
-          <!-- CONS CARD -->
-          <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:16px;">
-            <h3 style="font-size:1.05rem; color:#b45309; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
-              <span>⚠️</span> Watchouts &amp; Considerations (Cons)
-            </h3>
-            <ul style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.6;">
-              ${cons.map((c) => `<li style="margin-bottom:6px;">${escapeHtml(c)}</li>`).join("")}
-            </ul>
-          </div>
-        </div>
-
-        <!-- 4. 5-YEAR FINANCIAL PERFORMANCE TABLE -->
-        <div style="margin-bottom:24px;">
-          <h3 style="font-size:1.15rem; color:#0f172a; margin-bottom:8px;">5-Year Financial Trend (₹ in Crores)</h3>
-          <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:10px;">
-            <table class="stocks360-data-table" style="font-size:0.92rem; width:100%;">
-              <thead>
-                <tr>
-                  <th>Financial Metric</th>
-                  ${financials.map((f) => `<th>${f.year}</th>`).join("")}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Sales / Revenue</strong></td>
-                  ${financials.map((f) => `<td>₹ ${f.sales}</td>`).join("")}
-                </tr>
-                <tr>
-                  <td><strong>Net Profit</strong></td>
-                  ${financials.map((f) => `<td style="color:#16a34a; font-weight:600;">₹ ${f.netProfit}</td>`).join("")}
-                </tr>
-                <tr>
-                  <td><strong>Operating Margin (OPM)</strong></td>
-                  ${financials.map((f) => `<td>${f.opm}</td>`).join("")}
-                </tr>
-                <tr>
-                  <td><strong>Return on Equity (ROE)</strong></td>
-                  ${financials.map((f) => `<td style="font-weight:600;">${f.roe}</td>`).join("")}
-                </tr>
-                <tr>
-                  <td><strong>Borrowings (Debt)</strong></td>
-                  ${financials.map((f) => `<td>${f.borrowings}</td>`).join("")}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 5. RECENT CORPORATE ANNOUNCEMENTS & NEWS -->
-        <div style="margin-bottom:24px;">
-          <h3 style="font-size:1.15rem; color:#0f172a; margin-bottom:10px;">Recent Announcements &amp; News for ${escapeHtml(stock.symbol)}</h3>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            ${news
-              .map(
-                (n) => `
-                <div style="padding:10px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                  <div>
-                    <span class="badge badge-neutral" style="font-size:0.75rem; margin-right:6px;">${escapeHtml(n.category)}</span>
-                    <span style="font-size:0.92rem; color:#1e293b; font-weight:600;">${escapeHtml(n.headline)}</span>
-                  </div>
-                  <span style="font-size:0.8rem; color:#64748b;">${escapeHtml(n.source)} • ${escapeHtml(n.date)}</span>
-                </div>
-              `
-              )
-              .join("")}
-          </div>
-        </div>
-
-        <!-- 6. STRICTLY GROUNDED STOCKS 360 AI FOR THIS COMPANY -->
-        <div class="company-ai-grounded-box" style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:18px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+        <!-- SECTION 2: ASK STOCKS 360 AI (POSITIONED RIGHT AFTER PRICE PERFORMANCE) -->
+        <div class="company-ai-grounded-box" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px; padding:20px; margin-bottom:28px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
             <div style="display:flex; align-items:center; gap:6px;">
               <span class="pulse-dot"></span>
-              <strong style="font-size:1rem; color:#0369a1;">Ask Stocks 360 AI About ${escapeHtml(stock.symbol)}</strong>
+              <strong style="font-size:1.05rem; color:#0f172a;">Ask Stocks 360 AI About ${escapeHtml(stock.symbol)}</strong>
             </div>
-            <span style="font-size:0.78rem; color:#0284c7; background:#e0f2fe; padding:2px 8px; border-radius:999px;">
-              Strict Mode: Answers only from ${escapeHtml(stock.symbol)}'s verified financial data
+            <span style="font-size:0.78rem; color:#0369a1; background:#e0f2fe; padding:3px 10px; border-radius:999px; font-weight:600;">
+              Strict Grounded Mode: Responds only from verified data for ${escapeHtml(stock.symbol)}
             </span>
           </div>
 
-          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
             <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="What are the key financial strengths and watchouts for ${escapeHtml(stock.name)}?">
               Key strengths &amp; watchouts
             </button>
@@ -619,34 +506,176 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
 
           <div class="search-input-wrapper" style="margin-bottom:8px;">
-            <input type="text" id="company-ai-input" placeholder="Ask any question about ${escapeHtml(stock.symbol)}'s financial ratios or performance..." style="width:100%; border:1px solid #7dd3fc; border-radius:8px; padding:10px 14px; font-size:0.95rem;">
+            <input type="text" id="company-ai-input" placeholder="Ask any question about ${escapeHtml(stock.symbol)}'s financial ratios or performance..." style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px 14px; font-size:0.95rem;">
             <button type="button" id="company-ai-send" class="btn-primary">Ask AI</button>
           </div>
 
           <div id="company-ai-response" aria-live="polite"></div>
         </div>
 
+        <!-- SECTION 3: ABOUT THE COMPANY -->
+        <section class="company-about-section" aria-labelledby="heading-about-company" style="margin-bottom:28px;">
+          <h2 id="heading-about-company" style="font-size:1.35rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            About the Company
+          </h2>
+
+          <p style="font-size:0.98rem; color:#334155; line-height:1.65; margin-bottom:18px;">
+            <strong>${escapeHtml(stock.name)}</strong> is a leading enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${stock.marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${stock.salesGrowth3Y}% and maintains a Debt-to-Equity ratio of ${stock.debtToEquity}.
+          </p>
+
+          <!-- 12 KEY FUNDAMENTAL & TECHNICAL RATIOS GRID -->
+          <div class="company-ratios-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:12px; margin-bottom:20px;">
+            <div class="metric-box">
+              <span class="label">Market Cap</span>
+              <span class="val">₹ ${stock.marketCapCr.toLocaleString("en-IN")} Cr</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Current Price</span>
+              <span class="val" style="color:#2563eb;">₹ ${stock.cmp.toLocaleString("en-IN")}</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">High / Low (52W)</span>
+              <span class="val">₹ ${est52High.toLocaleString("en-IN")} / ₹ ${est52Low.toLocaleString("en-IN")}</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Stock P/E</span>
+              <span class="val">${stock.pe}</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Return on Equity (ROE)</span>
+              <span class="val" style="color:#16a34a; font-weight:700;">${stock.roePct}%</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">ROCE</span>
+              <span class="val" style="color:#16a34a; font-weight:700;">${stock.rocePct}%</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Debt to Equity</span>
+              <span class="val">${stock.debtToEquity}</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Dividend Yield</span>
+              <span class="val">${stock.divYieldPct}%</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">50-Day DMA</span>
+              <span class="val">₹ ${stock.dma50.toLocaleString("en-IN")}</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">200-Day DMA</span>
+              <span class="val">₹ ${stock.dma200.toLocaleString("en-IN")}</span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Golden Crossover</span>
+              <span class="val" style="color:${stock.goldenCross ? "#16a34a" : "#64748b"}; font-weight:600;">
+                ${stock.goldenCross ? "Active Bullish" : "Consolidating"}
+              </span>
+            </div>
+            <div class="metric-box">
+              <span class="label">Volume Surge</span>
+              <span class="val">${stock.volumeSurge}x (10D Avg)</span>
+            </div>
+          </div>
+
+          <!-- KEY STRENGTHS & WATCHOUTS (NO EMOJIS, CLEAN CARDS) -->
+          <div class="pros-cons-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <!-- STRENGTHS -->
+            <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:16px;">
+              <h3 style="font-size:1rem; color:#15803d; margin-bottom:10px; font-weight:700;">
+                Key Strengths (Pros)
+              </h3>
+              <ul style="padding-left:18px; margin:0; font-size:0.92rem; color:#166534; line-height:1.6;">
+                ${pros.map((p) => `<li style="margin-bottom:6px;">${escapeHtml(p)}</li>`).join("")}
+              </ul>
+            </div>
+
+            <!-- WATCHOUTS -->
+            <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:16px;">
+              <h3 style="font-size:1rem; color:#b45309; margin-bottom:10px; font-weight:700;">
+                Watchouts &amp; Considerations (Cons)
+              </h3>
+              <ul style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.6;">
+                ${cons.map((c) => `<li style="margin-bottom:6px;">${escapeHtml(c)}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: RECENT CORPORATE ANNOUNCEMENTS & NEWS -->
+        <section class="company-news-section" aria-labelledby="heading-company-news" style="margin-bottom:28px;">
+          <h2 id="heading-company-news" style="font-size:1.35rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            Recent Corporate Announcements &amp; News
+          </h2>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            ${news
+              .map(
+                (n) => `
+                <div style="padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                  <div>
+                    <span class="badge badge-neutral" style="font-size:0.75rem; margin-right:8px;">${escapeHtml(n.category)}</span>
+                    <span style="font-size:0.93rem; color:#1e293b; font-weight:600;">${escapeHtml(n.headline)}</span>
+                  </div>
+                  <span style="font-size:0.8rem; color:#64748b;">${escapeHtml(n.source)} • ${escapeHtml(n.date)}</span>
+                </div>
+              `
+              )
+              .join("")}
+          </div>
+        </section>
+
+        <!-- SECTION 5: FINANCIAL STATEMENTS & 5-YEAR PERFORMANCE TREND -->
+        <section class="company-financials-section" aria-labelledby="heading-financial-statements">
+          <h2 id="heading-financial-statements" style="font-size:1.35rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
+            Financial Statements &amp; Performance History (5-Year Trend)
+          </h2>
+          <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:10px;">
+            <table class="stocks360-data-table" style="font-size:0.92rem; width:100%; border-collapse:collapse;">
+              <thead>
+                <tr style="background:#f8fafc;">
+                  <th style="padding:12px 14px; text-align:left; border-bottom:1px solid #e2e8f0;">Financial Metric (₹ Crores)</th>
+                  ${financials.map((f) => `<th style="padding:12px 14px; text-align:right; border-bottom:1px solid #e2e8f0;">${f.year}</th>`).join("")}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Sales / Revenue</strong></td>
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${f.sales}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Net Profit</strong></td>
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#16a34a; font-weight:600;">₹ ${f.netProfit}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Operating Margin (OPM)</strong></td>
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${f.opm}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Return on Equity (ROE)</strong></td>
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600;">${f.roe}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td style="padding:12px 14px;"><strong>Borrowings (Debt)</strong></td>
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right;">${f.borrowings}</td>`).join("")}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
       </div>
     `;
 
-    // Audio Overview Readout
+    // Connect Audio Overview Readout with Reliable Browser Speech Synthesis
     const listenBtn = document.getElementById("btn-listen-company");
     if (listenBtn) {
       listenBtn.addEventListener("click", () => {
-        const text = `${stock.name}, trading under symbol ${stock.symbol} in the ${stock.sector} sector. Current market price is ${stock.cmp} rupees. Return on Equity is ${stock.roePct} percent, Return on Capital Employed is ${stock.rocePct} percent, and Debt to Equity ratio is ${stock.debtToEquity}. P E ratio is ${stock.pe}. Key strength: ${pros[0] || "Strong market position"}.`;
-        if (typeof window.speakWithPitch === "function") {
-          window.speakWithPitch(text, isPositive);
-        } else if ("speechSynthesis" in window) {
-          const u = new SpeechSynthesisUtterance(text);
-          window.speechSynthesis.speak(u);
-        }
+        toggleCompanyVoiceOverview(stock, isGain, dayPerformanceText, pros);
       });
     }
 
     // Company Grounded AI Chat Handler
     const aiInput = document.getElementById("company-ai-input");
     const aiSend = document.getElementById("company-ai-send");
-    const aiResponse = document.getElementById("company-ai-response");
     const promptPills = document.querySelectorAll(".company-ai-prompt-pill");
 
     promptPills.forEach((p) => {
@@ -671,6 +700,66 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     stockResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  // ---------------- DEDICATED RELIABLE SPEECH SYNTHESIS ENGINE ----------------
+  function toggleCompanyVoiceOverview(stock, isGain, dayPerformanceText, pros) {
+    if (!("speechSynthesis" in window)) {
+      alert("Browser speech synthesis is not supported on this device.");
+      return;
+    }
+
+    const listenBtn = document.getElementById("btn-listen-company");
+
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      if (listenBtn) {
+        listenBtn.textContent = "Listen to Company Overview";
+        listenBtn.style.background = "";
+        listenBtn.style.color = "";
+      }
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const narration = `About ${stock.name}. Ticker symbol ${stock.symbol} listed on the National Stock Exchange in the ${stock.sector} sector. Current market price is ${stock.cmp} rupees, recording a ${isGain ? "day gain of " + Math.abs(stock.dayChange || 1) + " rupees" : "day loss of " + Math.abs(stock.dayChange || 1) + " rupees"} today. Key fundamental metrics: Return on Equity is ${stock.roePct} percent, Return on Capital Employed is ${stock.rocePct} percent, Debt to Equity ratio is ${stock.debtToEquity}, and price to earnings ratio is ${stock.pe}. ${pros && pros[0] ? "Primary company strength: " + pros[0] : ""}`;
+
+    const utterance = new SpeechSynthesisUtterance(narration);
+    utterance.rate = 0.95;
+    utterance.volume = 1.0;
+    utterance.pitch = 1.0;
+
+    const voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length > 0) {
+      const preferred = voices.find((v) => v.lang === "en-IN" || v.lang === "en-GB" || v.lang === "en-US") || voices[0];
+      if (preferred) utterance.voice = preferred;
+    }
+
+    if (listenBtn) {
+      listenBtn.textContent = "Stop Voice Overview";
+      listenBtn.style.background = "#dc2626";
+      listenBtn.style.color = "#ffffff";
+    }
+
+    utterance.onend = function () {
+      if (listenBtn) {
+        listenBtn.textContent = "Listen to Company Overview";
+        listenBtn.style.background = "";
+        listenBtn.style.color = "";
+      }
+    };
+
+    utterance.onerror = function (e) {
+      console.warn("Speech synthesis notice:", e);
+      if (listenBtn) {
+        listenBtn.textContent = "Listen to Company Overview";
+        listenBtn.style.background = "";
+        listenBtn.style.color = "";
+      }
+    };
+
+    window.speechSynthesis.speak(utterance);
   }
 
   // ---------------- STRICT IN-CONTENT AI GROUNDING FOR COMPANY ----------------

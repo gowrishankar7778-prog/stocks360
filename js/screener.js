@@ -514,7 +514,7 @@ const StocksScreener = (function () {
           <div>
             <div style="display:flex; align-items:center; gap:8px;">
               <span class="badge ${screenObj.isPublic ? "badge-success" : "badge-neutral"}" style="font-size:0.75rem;">
-                ${screenObj.isPublic ? "🌐 Public Community Screen" : "🔒 Private Screen"}
+                ${screenObj.isPublic ? "Public Community Screen" : "Private Screen"}
               </span>
               <span style="font-size:0.82rem; color:#64748b;">Created by <strong>${escapeHtml(screenObj.author || "Learner")}</strong></span>
             </div>
@@ -524,10 +524,10 @@ const StocksScreener = (function () {
           
           <div style="display:flex; gap:8px;">
             <button type="button" class="btn-secondary" id="btn-audio-read-results" aria-label="Listen to screener results summary">
-              🔊 Read Results Aloud
+              Read Results Aloud
             </button>
             <button type="button" class="btn-primary" id="btn-save-as-mine">
-              &starf; Save to My Screens
+              Save to My Screens
             </button>
           </div>
         </div>
