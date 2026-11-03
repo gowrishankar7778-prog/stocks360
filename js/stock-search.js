@@ -43,14 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     searchButton.addEventListener("click", () => performSearch());
   }
 
-  if (searchInput) {
-    searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        performSearch();
-      }
-    });
-  }
+  // Keyboard navigation on search input is handled below in the suggestions controller
 
   // Look for URL query param (e.g. index.html?symbol=TCS)
   const urlParams = new URLSearchParams(window.location.search);
@@ -229,14 +222,39 @@ document.addEventListener("DOMContentLoaded", function () {
     suggestionBox = document.createElement("div");
     suggestionBox.id = "stock-search-suggestions";
     suggestionBox.className = "stock-search-suggestions-container";
+    suggestionBox.setAttribute("role", "listbox");
+    suggestionBox.setAttribute("aria-label", "Stock Search Suggestions");
     suggestionBox.style.cssText = "position:absolute; top:100%; left:0; right:0; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12); z-index:1000; max-height:280px; overflow-y:auto; margin-top:4px; display:none;";
     searchInput.parentElement.style.position = "relative";
     searchInput.parentElement.appendChild(suggestionBox);
   }
 
+  let currentSuggestions = [];
+  let activeSuggestionIndex = -1;
+
+  function updateSuggestionHighlight() {
+    if (!suggestionBox) return;
+    const items = suggestionBox.querySelectorAll(".stock-suggest-item");
+    items.forEach((el, idx) => {
+      if (idx === activeSuggestionIndex) {
+        el.style.background = "#eff6ff";
+        el.style.borderLeft = "4px solid #2563eb";
+        el.setAttribute("aria-selected", "true");
+        el.scrollIntoView({ block: "nearest" });
+      } else {
+        el.style.background = "#ffffff";
+        el.style.borderLeft = "4px solid transparent";
+        el.setAttribute("aria-selected", "false");
+      }
+    });
+  }
+
   function renderSuggestions(query) {
     if (!suggestionBox) return;
     const matches = getMatchingSuggestions(query, 6);
+    currentSuggestions = matches;
+    activeSuggestionIndex = -1;
+
     if (matches.length === 0) {
       suggestionBox.style.display = "none";
       suggestionBox.innerHTML = "";
@@ -245,8 +263,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     suggestionBox.innerHTML = matches
       .map(
-        (s) => `
-      <div class="stock-suggest-item" data-symbol="${escapeHtml(s.symbol)}" style="padding:10px 14px; border-bottom:1px solid #f1f5f9; cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:background 0.15s;">
+        (s, idx) => `
+      <div class="stock-suggest-item" data-index="${idx}" data-symbol="${escapeHtml(s.symbol)}" role="option" style="padding:10px 14px; border-bottom:1px solid #f1f5f9; border-left:4px solid transparent; cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:background 0.15s, border-left 0.15s;">
         <div>
           <span style="font-weight:700; color:#2563eb; font-size:0.95rem; margin-right:8px;">${escapeHtml(s.symbol)}</span>
           <span style="font-size:0.9rem; color:#1e293b;">${escapeHtml(s.name)}</span>
@@ -264,8 +282,16 @@ document.addEventListener("DOMContentLoaded", function () {
     suggestionBox.style.display = "block";
 
     suggestionBox.querySelectorAll(".stock-suggest-item").forEach((item) => {
-      item.addEventListener("mouseenter", () => (item.style.background = "#f8fafc"));
-      item.addEventListener("mouseleave", () => (item.style.background = "#ffffff"));
+      item.addEventListener("mouseenter", function () {
+        const idx = parseInt(this.getAttribute("data-index"), 10);
+        if (!isNaN(idx)) {
+          activeSuggestionIndex = idx;
+          updateSuggestionHighlight();
+        }
+      });
+      item.addEventListener("mouseleave", function () {
+        // preserve activeSuggestionIndex on mouse leave so keyboard can resume smoothly
+      });
       item.addEventListener("click", function () {
         const sym = this.getAttribute("data-symbol");
         if (searchInput) searchInput.value = sym;
@@ -280,9 +306,59 @@ document.addEventListener("DOMContentLoaded", function () {
       renderSuggestions(this.value);
     });
 
+    // NSE-Style Keyboard Navigation: ArrowDown, ArrowUp, Enter, Escape
+    searchInput.addEventListener("keydown", function (e) {
+      const isDropdownOpen = suggestionBox && suggestionBox.style.display !== "none" && currentSuggestions.length > 0;
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (!isDropdownOpen) {
+          renderSuggestions(this.value);
+          if (currentSuggestions.length > 0) {
+            activeSuggestionIndex = 0;
+            updateSuggestionHighlight();
+            if (currentSuggestions[0]) {
+              this.value = currentSuggestions[0].symbol;
+            }
+          }
+          return;
+        }
+        activeSuggestionIndex = (activeSuggestionIndex + 1) % currentSuggestions.length;
+        updateSuggestionHighlight();
+        if (currentSuggestions[activeSuggestionIndex]) {
+          this.value = currentSuggestions[activeSuggestionIndex].symbol;
+        }
+      } else if (e.key === "ArrowUp") {
+        if (!isDropdownOpen) return;
+        e.preventDefault();
+        activeSuggestionIndex = (activeSuggestionIndex - 1 + currentSuggestions.length) % currentSuggestions.length;
+        updateSuggestionHighlight();
+        if (currentSuggestions[activeSuggestionIndex]) {
+          this.value = currentSuggestions[activeSuggestionIndex].symbol;
+        }
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (isDropdownOpen && activeSuggestionIndex >= 0 && activeSuggestionIndex < currentSuggestions.length) {
+          const chosen = currentSuggestions[activeSuggestionIndex].symbol;
+          this.value = chosen;
+          suggestionBox.style.display = "none";
+          performSearch(chosen);
+        } else {
+          if (suggestionBox) suggestionBox.style.display = "none";
+          performSearch(this.value);
+        }
+      } else if (e.key === "Escape") {
+        if (suggestionBox) {
+          suggestionBox.style.display = "none";
+          activeSuggestionIndex = -1;
+        }
+      }
+    });
+
     document.addEventListener("click", function (e) {
       if (suggestionBox && !searchInput.contains(e.target) && !suggestionBox.contains(e.target)) {
         suggestionBox.style.display = "none";
+        activeSuggestionIndex = -1;
       }
     });
   }

@@ -100,6 +100,10 @@ async function fetchStockHistory(symbol) {
 
   const currentPrice = meta.regularMarketPrice || closes[closes.length - 1];
   const latestVolume = meta.regularMarketVolume || volumes[volumes.length - 1];
+  const prevClose = meta.previousClose || meta.chartPreviousClose || (closes.length > 1 ? closes[closes.length - 2] : currentPrice);
+  const dayChange = Number((currentPrice - prevClose).toFixed(2));
+  const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
+  const isGain = dayChange >= 0;
 
   const dma50 = calculateSMA(closes, Math.min(50, closes.length));
   const dma200 = calculateSMA(closes, Math.min(200, closes.length)) || (dma50 ? Number((dma50 * 0.96).toFixed(2)) : null);
@@ -111,6 +115,9 @@ async function fetchStockHistory(symbol) {
 
   return {
     cmp: currentPrice,
+    dayChange: dayChange,
+    dayChangePct: dayChangePct,
+    isGain: isGain,
     volume: latestVolume,
     avgVolume: avgVolume10,
     volumeSurge: volumeSurge,
@@ -154,41 +161,43 @@ async function updateAllStocks() {
   console.log(`Synchronizing ${stocks.length} NSE stocks at 4:45 PM IST...`);
 
   let updatedCount = 0;
-  for (let i = 0; i < stocks.length; i++) {
-    const s = stocks[i];
-    process.stdout.write(`Fetching ${s.symbol} (${i + 1}/${stocks.length})... `);
-    
-    try {
-      const fresh = await fetchStockHistory(s.symbol);
-      if (fresh && fresh.cmp) {
-        // Calculate old vs new price ratio to adjust market cap dynamically
-        const priceRatio = fresh.cmp / s.cmp;
-        if (priceRatio > 0.5 && priceRatio < 2.0) {
-          s.marketCapCr = Math.round(s.marketCapCr * priceRatio);
-          s.pe = Number((s.pe * priceRatio).toFixed(1));
+  const CHUNK_SIZE = 8;
+  for (let i = 0; i < stocks.length; i += CHUNK_SIZE) {
+    const chunk = stocks.slice(i, i + CHUNK_SIZE);
+    await Promise.all(chunk.map(async (s, cIdx) => {
+      const idx = i + cIdx + 1;
+      try {
+        const fresh = await fetchStockHistory(s.symbol);
+        if (fresh && fresh.cmp) {
+          const priceRatio = fresh.cmp / s.cmp;
+          if (priceRatio > 0.5 && priceRatio < 2.0) {
+            s.marketCapCr = Math.round(s.marketCapCr * priceRatio);
+            s.pe = Number((s.pe * priceRatio).toFixed(1));
+          }
+
+          s.cmp = fresh.cmp;
+          if (fresh.dayChange !== undefined) s.dayChange = fresh.dayChange;
+          if (fresh.dayChangePct !== undefined) s.dayChangePct = fresh.dayChangePct;
+          if (fresh.isGain !== undefined) s.isGain = fresh.isGain;
+          s.volume = fresh.volume;
+          s.avgVolume = fresh.avgVolume;
+          s.volumeSurge = fresh.volumeSurge;
+          s.dma50 = fresh.dma50 || s.dma50;
+          s.dma200 = fresh.dma200 || s.dma200;
+          s.goldenCross = fresh.goldenCross;
+          s.rsi14 = fresh.rsi14;
+          s.lastUpdated = lastUpdatedLabel;
+          updatedCount++;
+          console.log(`✓ [${idx}/${stocks.length}] ${s.symbol}: ₹${s.cmp} (${s.isGain ? '+' : ''}${s.dayChangePct}%) | 50 DMA: ₹${s.dma50} | Golden Cross: ${s.goldenCross}`);
+        } else {
+          s.lastUpdated = lastUpdatedLabel;
+          console.log(`- [${idx}/${stocks.length}] ${s.symbol}: Kept current (₹${s.cmp})`);
         }
-
-        s.cmp = fresh.cmp;
-        s.volume = fresh.volume;
-        s.avgVolume = fresh.avgVolume;
-        s.volumeSurge = fresh.volumeSurge;
-        s.dma50 = fresh.dma50 || s.dma50;
-        s.dma200 = fresh.dma200 || s.dma200;
-        s.goldenCross = fresh.goldenCross;
-        s.rsi14 = fresh.rsi14;
-        s.lastUpdated = lastUpdatedLabel;
-        updatedCount++;
-        console.log(`✓ CMP: ₹${s.cmp} | 50 DMA: ₹${s.dma50} | Golden Cross: ${s.goldenCross}`);
-      } else {
-        s.lastUpdated = lastUpdatedLabel;
-        console.log(`(Kept current: ₹${s.cmp})`);
+      } catch (err) {
+        console.log(`! [${idx}/${stocks.length}] ${s.symbol}: Error (${err.message})`);
       }
-    } catch (err) {
-      console.log(`(Error: ${err.message})`);
-    }
-
-    // Small courteous pause between queries
-    await new Promise((r) => setTimeout(r, 200));
+    }));
+    await new Promise((r) => setTimeout(r, 150));
   }
 
   // Re-serialize formatted file
