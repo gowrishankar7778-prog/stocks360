@@ -1120,11 +1120,18 @@ Output JSON Format:
       "Critical risk 2 (e.g. competitive intensity, sector slowdown)",
       "Critical risk 3 (e.g. valuation multiple or regulatory compliance)"
     ]
-  }
+  },
+  "financials": [
+    { "year": "FY21", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
+    { "year": "FY22", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
+    { "year": "FY23", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
+    { "year": "FY24", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
+    { "year": "FY25", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" }
+  ]
 }`;
 
     const prompt = `Analyze Indian company: "${stock.name}" (NSE Symbol: "${stock.symbol}", Sector: "${stock.sector || 'Indian Equity'}").
-Provide its authentic business overview, audited fundamentals, and AI investment thesis (3 key strengths and 3 critical risks). Output ONLY valid JSON.`;
+Provide its authentic business overview, audited fundamentals, AI investment thesis (3 key strengths and 3 critical risks), and 5-year financials table (FY21 to FY25). Output ONLY valid JSON.`;
 
     try {
       const rawText = await callGeminiModel(systemInstruction, prompt, true, null, {

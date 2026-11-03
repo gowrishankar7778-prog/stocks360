@@ -1018,6 +1018,44 @@ document.addEventListener("DOMContentLoaded", function () {
           rskList.innerHTML = profile.investmentThesis.risks.map(r => '<li style="margin-bottom:8px;">' + escapeHtml(r) + '</li>').join("");
         }
       }
+
+      // Update 5-Year Financial Statements Table if enriched
+      if (profile.financials && Array.isArray(profile.financials) && profile.financials.length > 0) {
+        const tableEl = document.getElementById("company-financials-table");
+        if (tableEl) {
+          const fins = profile.financials;
+          tableEl.innerHTML = `
+            <thead>
+              <tr style="background:#f8fafc;">
+                <th style="padding:12px 14px; text-align:left; border-bottom:1px solid #e2e8f0;">Financial Metric (₹ Crores)</th>
+                ${fins.map((f) => `<th style="padding:12px 14px; text-align:right; border-bottom:1px solid #e2e8f0;">${escapeHtml(String(f.year))}</th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Sales / Revenue</strong></td>
+                ${fins.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(f.sales))}</td>`).join("")}
+              </tr>
+              <tr>
+                <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Net Profit</strong></td>
+                ${fins.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#16a34a; font-weight:600;">₹ ${escapeHtml(String(f.netProfit))}</td>`).join("")}
+              </tr>
+              <tr>
+                <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Operating Margin (OPM)</strong></td>
+                ${fins.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(f.opm).includes('%') ? String(f.opm) : f.opm + '%')}</td>`).join("")}
+              </tr>
+              <tr>
+                <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Return on Equity (ROE)</strong></td>
+                ${fins.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600;">${escapeHtml(String(f.roe).includes('%') ? String(f.roe) : f.roe + '%')}</td>`).join("")}
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;"><strong>Borrowings (Debt)</strong></td>
+                ${fins.map((f) => `<td style="padding:12px 14px; text-align:right;">${escapeHtml(String(f.borrowings))}</td>`).join("")}
+              </tr>
+            </tbody>
+          `;
+        }
+      }
     }
 
     // Seamless Asynchronous Background Enrichment (if not already cached)
