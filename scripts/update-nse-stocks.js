@@ -85,14 +85,19 @@ async function fetchStockHistory(symbol) {
 
   const rawCloses = quote.close || [];
   const rawVolumes = quote.volume || [];
+  const rawOpens = quote.open || [];
 
   const closes = [];
   const volumes = [];
+  const opens = [];
 
   for (let i = 0; i < rawCloses.length; i++) {
     if (rawCloses[i] !== null && rawCloses[i] !== undefined) {
       closes.push(Number(rawCloses[i].toFixed(2)));
       volumes.push(rawVolumes[i] || 0);
+      if (rawOpens[i] !== null && rawOpens[i] !== undefined) {
+        opens.push(Number(rawOpens[i].toFixed(2)));
+      }
     }
   }
 
@@ -100,6 +105,8 @@ async function fetchStockHistory(symbol) {
 
   const currentPrice = meta.regularMarketPrice || meta.fulldayPrice || closes[closes.length - 1];
   const latestVolume = meta.regularMarketVolume || volumes[volumes.length - 1];
+  const dayOpen = meta.regularMarketOpen || (opens.length ? opens[opens.length - 1] : currentPrice);
+  const prevClose = meta.previousClose || (closes.length > 1 ? closes[closes.length - 2] : currentPrice);
 
   // Exact day change & percentage directly from exchange meta if available, else from closes array
   let dayChange = typeof meta.fulldayChange === 'number' ? meta.fulldayChange : (typeof meta.regularMarketChange === 'number' ? meta.regularMarketChange : null);
@@ -130,6 +137,8 @@ async function fetchStockHistory(symbol) {
 
   return {
     cmp: currentPrice,
+    dayOpen: dayOpen,
+    prevClose: prevClose,
     dayChange: dayChange,
     dayChangePct: dayChangePct,
     isGain: isGain,
@@ -196,6 +205,8 @@ async function updateAllStocks() {
           }
 
           s.cmp = fresh.cmp;
+          if (fresh.dayOpen !== undefined) s.dayOpen = fresh.dayOpen;
+          if (fresh.prevClose !== undefined) s.prevClose = fresh.prevClose;
           if (fresh.dayChange !== undefined) s.dayChange = fresh.dayChange;
           if (fresh.dayChangePct !== undefined) s.dayChangePct = fresh.dayChangePct;
           if (fresh.isGain !== undefined) s.isGain = fresh.isGain;
