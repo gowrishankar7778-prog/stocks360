@@ -257,52 +257,94 @@ const StocksGeminiAI = (function () {
     }
     contents.push({ role: "user", parts: [{ text: userPrompt }] });
 
-    const genConfig = {
-      temperature: temperature,
-      maxOutputTokens: maxOutputTokens
-    };
-    if (customOpts && customOpts.responseMimeType) {
-      genConfig.responseMimeType = customOpts.responseMimeType;
+    const useSearch = !!(customOpts && customOpts.useSearch);
+    // Grounded requests are only attempted on the preferred model (no fallback chain),
+    // so a failed grounded attempt never multiplies cost.
+    const modelChain = useSearch ? [preferredModel] : modelsToTry;
+    const fallbackTimeoutMs = (customOpts && customOpts.fallbackTimeoutMs) || 15000;
+    const overallDeadline = Date.now() + ((customOpts && customOpts.totalBudgetMs) || (timeoutMs + 20000));
+
+    function buildGenConfig(modelName, withThinkingCap) {
+      const gc = {
+        temperature: temperature,
+        maxOutputTokens: maxOutputTokens
+      };
+      // JSON mode is skipped for grounded calls; the JSON is extracted from text instead.
+      if (customOpts && customOpts.responseMimeType && !useSearch) {
+        gc.responseMimeType = customOpts.responseMimeType;
+      }
+      // Backup models think for a long time by default (40s+ timeouts observed).
+      // Cap their thinking so they answer within the fallback window.
+      if (withThinkingCap) {
+        gc.thinkingConfig = { thinkingLevel: "low" };
+      }
+      return gc;
     }
 
-    for (let i = 0; i < modelsToTry.length; i++) {
-      const modelName = modelsToTry[i];
+    async function attempt(modelName, perCallTimeout, withThinkingCap) {
       const endpoint =
         "https://generativelanguage.googleapis.com/v1beta/models/" +
         encodeURIComponent(modelName) +
         ":generateContent?key=" +
         encodeURIComponent(cfg.apiKey);
+      const payload = {
+        systemInstruction: { parts: [{ text: systemInstruction }] },
+        contents: contents,
+        generationConfig: buildGenConfig(modelName, withThinkingCap)
+      };
+      if (useSearch) {
+        payload.tools = [{ google_search: {} }];
+      }
 
+      const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+      const timer = setTimeout(() => { if (controller) controller.abort(); }, perCallTimeout);
       try {
-        const res = await Promise.race([
-          fetch(endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              systemInstruction: {
-                parts: [{ text: systemInstruction }]
-              },
-              contents: contents,
-              generationConfig: genConfig
-            })
-          }),
-          new Promise((resolve) => setTimeout(() => resolve(null), timeoutMs))
-        ]);
-
-        if (res && res.ok) {
-          const data = await res.json();
-          const candidate = data && data.candidates && data.candidates[0];
-          const partText =
-            candidate &&
-            candidate.content &&
-            candidate.content.parts &&
-            candidate.content.parts.map((p) => p.text || "").join(" ").trim();
-          if (partText) {
-            incrementUsage(false);
-            return partText;
-          }
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          signal: controller ? controller.signal : undefined
+        });
+        if (!res.ok) {
+          let msg = "";
+          try { msg = ((await res.json()).error || {}).message || ""; } catch (_) {}
+          return { ok: false, status: res.status, message: msg };
         }
-      } catch (_) {}
+        const data = await res.json();
+        const candidate = data && data.candidates && data.candidates[0];
+        const partText =
+          candidate &&
+          candidate.content &&
+          candidate.content.parts &&
+          candidate.content.parts.map((p) => p.text || "").join(" ").trim();
+        return partText ? { ok: true, text: partText } : { ok: false, status: 200, message: "empty" };
+      } catch (err) {
+        return { ok: false, status: 0, message: err && err.name === "AbortError" ? "timeout" : String(err) };
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    for (let i = 0; i < modelChain.length; i++) {
+      const modelName = modelChain[i];
+      const remaining = overallDeadline - Date.now();
+      if (remaining < 2000) break;
+      const isBackup = i > 0;
+      const perCall = Math.min(isBackup ? fallbackTimeoutMs : timeoutMs, remaining);
+      const capThinking = isBackup && !/flash-lite/i.test(modelName);
+
+      let result = await attempt(modelName, perCall, capThinking);
+      // Some models reject a thinking level; retry once without the cap.
+      if (!result.ok && result.status === 400 && /thinking/i.test(result.message || "") && capThinking) {
+        result = await attempt(modelName, Math.min(perCall, overallDeadline - Date.now()), false);
+      }
+      if (result.ok) {
+        incrementUsage(false);
+        return result.text;
+      }
+      if (customOpts && typeof customOpts.onError === "function") {
+        customOpts.onError(modelName, result);
+      }
     }
 
     return null;
@@ -1075,94 +1117,242 @@ const StocksGeminiAI = (function () {
   }
 
   // ---------------- STRUCTURED COMPANY AI PROFILE & THESIS GENERATOR ----------------
+  // ---------------- SHARED COMPANY PROFILE CACHE (FIRESTORE) ----------------
+  // One Gemini call per company per 45 days for ALL visitors, instead of one per visitor.
+  const PROFILE_TTL_MS = 45 * 86400 * 1000;
+  const PROFILE_COLLECTION = "company_profiles";
+  const GROUNDING_UNAVAILABLE_KEY = "stocks360_grounding_unavailable";
+  const PROFILE_FIELDS = [
+    "about", "marketCapCr", "pe", "roePct", "rocePct", "debtToEquity", "divYieldPct",
+    "salesGrowth3Y", "profitGrowth3Y", "investmentThesis", "financials"
+  ];
+
+  function getProfileDb() {
+    try {
+      if (typeof StocksFirebase !== "undefined" && StocksFirebase.isReady()) {
+        return StocksFirebase.getDb();
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function sanitizeProfile(raw, sym) {
+    if (!raw || typeof raw !== "object") return null;
+    const out = {};
+    PROFILE_FIELDS.forEach((k) => {
+      if (raw[k] !== undefined && raw[k] !== null) out[k] = raw[k];
+    });
+    if (typeof out.about !== "string" || !out.about.trim()) return null;
+    out.about = out.about.slice(0, 5500);
+    ["marketCapCr", "pe", "roePct", "rocePct", "debtToEquity", "divYieldPct", "salesGrowth3Y", "profitGrowth3Y"].forEach((k) => {
+      if (out[k] !== undefined) {
+        const n = Number(out[k]);
+        if (isFinite(n)) out[k] = n; else delete out[k];
+      }
+    });
+    if (out.investmentThesis) {
+      const t = out.investmentThesis;
+      out.investmentThesis = {
+        strengths: Array.isArray(t.strengths) ? t.strengths.slice(0, 5).map((s) => String(s).slice(0, 400)) : [],
+        risks: Array.isArray(t.risks) ? t.risks.slice(0, 5).map((s) => String(s).slice(0, 400)) : []
+      };
+    }
+    if (Array.isArray(out.financials)) {
+      out.financials = out.financials.slice(0, 6).map((f) => ({
+        year: String((f && f.year) || "").slice(0, 10),
+        sales: String((f && f.sales) || "").slice(0, 20),
+        netProfit: String((f && f.netProfit) || "").slice(0, 20),
+        opm: String((f && f.opm) || "").slice(0, 12),
+        roe: String((f && f.roe) || "").slice(0, 12),
+        borrowings: String((f && f.borrowings) || "").slice(0, 20)
+      }));
+    } else {
+      delete out.financials;
+    }
+    out.symbol = sym;
+    return out;
+  }
+
+  async function readSharedProfile(sym) {
+    const db = getProfileDb();
+    if (!db) return null;
+    try {
+      const doc = await Promise.race([
+        db.collection(PROFILE_COLLECTION).doc(sym).get(),
+        new Promise((resolve) => setTimeout(() => resolve(null), 3000))
+      ]);
+      if (doc && doc.exists) {
+        const data = doc.data() || {};
+        if (data.timestamp && Date.now() - data.timestamp < PROFILE_TTL_MS) {
+          const clean = sanitizeProfile(data, sym);
+          if (clean) {
+            clean.timestamp = data.timestamp;
+            clean.grounded = !!data.grounded;
+            return clean;
+          }
+        }
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function writeSharedProfile(sym, profile) {
+    const db = getProfileDb();
+    if (!db) return;
+    try {
+      const payload = Object.assign({}, profile, { symbol: sym, timestamp: Date.now(), grounded: !!profile.grounded });
+      delete payload.isAiGenerated;
+      db.collection(PROFILE_COLLECTION).doc(sym).set(payload).catch(() => {});
+    } catch (_) {}
+  }
+
+  function saveLocalProfile(cacheKey, profile) {
+    try {
+      localStorage.setItem(cacheKey, JSON.stringify(profile));
+    } catch (_) {}
+  }
+
+  function parseProfileJson(rawText) {
+    if (!rawText) return null;
+    let clean = rawText.trim();
+    if (clean.startsWith("```json")) {
+      clean = clean.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
+    } else if (clean.startsWith("```")) {
+      clean = clean.replace(/^```\s*/i, "").replace(/```$/, "").trim();
+    }
+    const jsonMatch = clean.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) return null;
+    try {
+      return JSON.parse(jsonMatch[0]);
+    } catch (_) {
+      return null;
+    }
+  }
+
   async function fetchCompanyAiProfile(stock, forceRefresh) {
     if (!stock || !stock.symbol) return null;
     const sym = String(stock.symbol).toUpperCase();
     const cacheKey = "stocks360_gemini_profile_" + sym;
 
-    // 1. Check local persistent cache (unless forceRefresh is requested)
+    // 1. Check this browser's cache (unless forceRefresh is requested)
     if (!forceRefresh) {
       try {
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
           const parsed = JSON.parse(cached);
           // Valid for 45 days (quarterly cycle)
-          if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < 45 * 86400 * 1000)) {
+          if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < PROFILE_TTL_MS)) {
             return parsed;
           }
         }
       } catch (_) {}
+
+      // 2. Check the shared Firestore cache (filled by the first visitor for this company)
+      const shared = await readSharedProfile(sym);
+      if (shared) {
+        saveLocalProfile(cacheKey, shared);
+        return shared;
+      }
     }
 
-    // 2. Structured System Instruction & Prompt
-    const systemInstruction = `You are a premier senior equity analyst covering Indian equities.
-When given an Indian company, return a strictly grounded, accurate financial and business profile as clean, parseable JSON with NO markdown formatting, NO backticks, and NO trailing text.
+    // 3. Work out the last 5 completed Indian fiscal years (FY ends 31 March)
+    const now = new Date();
+    const latestFyEnd = now.getMonth() >= 4 ? now.getFullYear() : now.getFullYear() - 1; // results out by May
+    const fyLabels = [];
+    for (let y = latestFyEnd - 4; y <= latestFyEnd; y++) fyLabels.push("FY" + String(y).slice(-2));
+    const fyRows = fyLabels
+      .map((fy) => `    { "year": "${fy}", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" }`)
+      .join(",\n");
+
+    const systemInstruction = `You are a senior equity analyst covering Indian listed companies.
+Return an accurate business and financial profile as clean, parseable JSON with NO markdown, NO backticks, and NO text outside the JSON.
+Use plain text only (no HTML tags). Separate the two "about" paragraphs with a blank line.
+Only report figures you are confident about. If a figure for a year is not reliably known, use "NA" instead of estimating.
 
 Output JSON Format:
 {
-  "about": "2 comprehensive paragraphs describing the company's core operations, business verticals, flagship products/brands, corporate parentage/subsidiaries, and competitive moat in the Indian market.",
-  "marketCapCr": number (market cap in ₹ Crores, realistic/audited),
+  "about": "2 paragraphs describing the company's core operations, business verticals, flagship products/brands, parent group/subsidiaries, and competitive position in India.",
+  "marketCapCr": number (market cap in Rs Crores),
   "pe": number (current P/E ratio),
   "roePct": number (Return on Equity %),
   "rocePct": number (Return on Capital Employed %),
-  "debtToEquity": number (Debt-to-Equity ratio),
+  "debtToEquity": number,
   "divYieldPct": number (Dividend Yield %),
   "salesGrowth3Y": number (3-Year Sales CAGR %),
   "profitGrowth3Y": number (3-Year Profit CAGR %),
   "investmentThesis": {
-    "strengths": [
-      "Key investment strength 1 (e.g. market leadership, product demand)",
-      "Key investment strength 2 (e.g. healthy balance sheet leverage, free cash flows)",
-      "Key investment strength 3 (e.g. strategic expansion or technological moat)"
-    ],
-    "risks": [
-      "Critical risk 1 (e.g. raw material cost fluctuations, commodity exposure)",
-      "Critical risk 2 (e.g. competitive intensity, sector slowdown)",
-      "Critical risk 3 (e.g. valuation multiple or regulatory compliance)"
-    ]
+    "strengths": ["strength 1", "strength 2", "strength 3"],
+    "risks": ["risk 1", "risk 2", "risk 3"]
   },
   "financials": [
-    { "year": "FY21", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
-    { "year": "FY22", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
-    { "year": "FY23", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
-    { "year": "FY24", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" },
-    { "year": "FY25", "sales": "Sales in Cr", "netProfit": "Profit in Cr", "opm": "OPM %", "roe": "ROE %", "borrowings": "Debt in Cr" }
+${fyRows}
   ]
 }`;
 
-    const prompt = `Analyze Indian company: "${stock.name}" (NSE Symbol: "${stock.symbol}", Sector: "${stock.sector || 'Indian Equity'}").
-Provide its authentic business overview, audited fundamentals, AI investment thesis (3 key strengths and 3 critical risks), and 5-year financials table (FY21 to FY25). Output ONLY valid JSON.`;
+    const prompt = `Analyze Indian company: "${stock.name}" (NSE Symbol: "${stock.symbol}", Sector: "${stock.sector || "Indian Equity"}").
+Provide its business overview, latest reported fundamentals, investment thesis (3 key strengths and 3 critical risks), and consolidated annual financials for ${fyLabels[0]} to ${fyLabels[fyLabels.length - 1]} as published in its annual reports / exchange filings. Output ONLY valid JSON.`;
 
+    const cfg = await loadConfig();
+    const groundingEnabled = cfg.groundCompanyProfiles !== false;
+    let groundingUnavailable = false;
     try {
+      groundingUnavailable = sessionStorage.getItem(GROUNDING_UNAVAILABLE_KEY) === "1";
+    } catch (_) {}
+
+    let parsed = null;
+    let grounded = false;
+
+    // 4a. Preferred: Gemini + Google Search grounding (live filings; requires a billing-enabled key)
+    if (groundingEnabled && !groundingUnavailable) {
+      let groundingRejected = false;
+      const groundedText = await callGeminiModel(systemInstruction, prompt, true, null, {
+        maxOutputTokens: 2048,
+        timeoutMs: 40000,
+        totalBudgetMs: 42000,
+        useSearch: true,
+        forceModel: "gemini-3.5-flash-lite",
+        onError: (model, result) => {
+          // 429 / 400 / 403 here means Search grounding is not available on this key (e.g. free tier)
+          if (result && (result.status === 429 || result.status === 400 || result.status === 403)) {
+            groundingRejected = true;
+          }
+        }
+      });
+      parsed = parseProfileJson(groundedText);
+      if (parsed) {
+        grounded = true;
+      } else if (groundingRejected) {
+        try {
+          sessionStorage.setItem(GROUNDING_UNAVAILABLE_KEY, "1");
+        } catch (_) {}
+      }
+    }
+
+    // 4b. Fallback: standard (non-grounded) generation with backup models
+    if (!parsed) {
       const rawText = await callGeminiModel(systemInstruction, prompt, true, null, {
         maxOutputTokens: 2048,
-        timeoutMs: 35000,
+        timeoutMs: 30000,
+        fallbackTimeoutMs: 15000,
+        totalBudgetMs: 50000,
         responseMimeType: "application/json",
         forceModel: "gemini-3.5-flash-lite"
       });
-      if (rawText) {
-        let clean = rawText.trim();
-        if (clean.startsWith("```json")) {
-          clean = clean.replace(/^```json\s*/i, "").replace(/```$/, "").trim();
-        } else if (clean.startsWith("```")) {
-          clean = clean.replace(/^```\s*/i, "").replace(/```$/, "").trim();
-        }
-        const jsonMatch = clean.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          const profile = JSON.parse(jsonMatch[0]);
-          profile.symbol = sym;
-          profile.timestamp = Date.now();
-          profile.isAiGenerated = true;
-          try {
-            localStorage.setItem(cacheKey, JSON.stringify(profile));
-          } catch (_) {}
-          return profile;
-        }
-      }
-    } catch (e) {
-      console.warn("Gemini profile fetch fallback for " + sym + ":", e.message);
+      parsed = parseProfileJson(rawText);
     }
-    return null;
+
+    const profile = sanitizeProfile(parsed, sym);
+    if (!profile) {
+      console.warn("Gemini profile unavailable for " + sym + "; showing exchange data only.");
+      return null;
+    }
+    profile.timestamp = Date.now();
+    profile.grounded = grounded;
+    profile.isAiGenerated = true;
+
+    saveLocalProfile(cacheKey, profile);
+    writeSharedProfile(sym, profile);
+    return profile;
   }
 
   return {

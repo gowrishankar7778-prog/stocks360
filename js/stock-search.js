@@ -586,32 +586,60 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ---------------- REAL CORPORATE NEWS & ANNOUNCEMENTS ----------------
-  function generateCompanyNews(stock) {
-    if (stock.news && Array.isArray(stock.news) && stock.news.length > 0) {
-      return stock.news;
-    }
+  // Announcements come from the official NSE feed, synced daily by
+  // scripts/update-nse-news.js into data/news/<first-letter>.json (no AI cost).
+  const newsShardCache = {};
 
-    const dateToday = new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
-    return [
-      {
-        date: dateToday,
-        headline: `${stock.name} files quarterly regulatory disclosure and compliance certificates with the exchange.`,
-        source: "NSE Disclosures",
-        category: "Corporate Filing"
-      },
-      {
-        date: "3 days ago",
-        headline: `${stock.symbol} records steady institutional volume with 50-DMA established at ₹${stock.dma50.toLocaleString("en-IN")}.`,
-        source: "Exchange Market Desk",
-        category: "Technical Flow"
-      },
-      {
-        date: "1 week ago",
-        headline: `Board of Directors of ${stock.name} schedules meeting for quarterly financial results review.`,
-        source: "Board Disclosure",
-        category: "Financials"
-      }
-    ];
+  function newsShardKey(symbol) {
+    const c = String(symbol || "").charAt(0).toUpperCase();
+    return /[A-Z]/.test(c) ? c : "0-9";
+  }
+
+  function loadCompanyNews(symbol) {
+    const key = newsShardKey(symbol);
+    if (!newsShardCache[key]) {
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json", { cache: "default" })
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({}));
+    }
+    return newsShardCache[key].then((shard) => (shard && shard[String(symbol).toUpperCase()]) || []);
+  }
+
+  function renderNewsItems(items, stock) {
+    if (!items || items.length === 0) {
+      const nseUrl = "https://www.nseindia.com/get-quotes/equity?symbol=" + encodeURIComponent(stock.symbol);
+      return `
+        <div style="padding:14px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-size:0.93rem; color:#475569;">
+          No exchange announcements filed by ${escapeHtml(stock.name)} in the last 90 days.
+          <a href="${nseUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb; font-weight:600;">View on NSE</a>
+        </div>`;
+    }
+    return items
+      .map((n) => {
+        const safeLink = n.link && /^https:\/\/(nsearchives\.nseindia\.com|www\.nseindia\.com)\//.test(n.link) ? n.link : "";
+        const headline = escapeHtml(n.headline);
+        return `
+        <div style="padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <div style="flex:1; min-width:240px;">
+            <span class="badge badge-neutral" style="font-size:0.75rem; margin-right:8px;">${escapeHtml(n.category || "Announcement")}</span>
+            ${safeLink
+              ? `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" style="font-size:0.93rem; color:#1e293b; font-weight:600; text-decoration:none;">${headline}</a>`
+              : `<span style="font-size:0.93rem; color:#1e293b; font-weight:600;">${headline}</span>`}
+          </div>
+          <span style="font-size:0.8rem; color:#64748b;">${escapeHtml(n.source || "NSE Filing")} &bull; ${escapeHtml(n.date || "")}</span>
+        </div>`;
+      })
+      .join("");
+  }
+
+  // Gemini / shared-cache text is untrusted: render as escaped paragraphs, never raw HTML.
+  function formatProfileAbout(text) {
+    return String(text || "")
+      .split(/\n\s*\n/)
+      .map((p) => p.trim())
+      .filter(Boolean)
+      .map((p) => `<p style="margin:0 0 12px 0;">${escapeHtml(p)}</p>`)
+      .join("");
   }
 
   // ---------------- RENDER COMPLETE DETAILED VIEW ----------------
@@ -659,10 +687,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 4. About the Company Profile Text
     const aboutText = (cachedProfile && cachedProfile.about)
-      ? cachedProfile.about
+      ? formatProfileAbout(cachedProfile.about)
       : (stock.about || `<strong>${escapeHtml(stock.name)}</strong> is a leading enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${salesGrowth3Y}% and maintains a conservative Debt-to-Equity ratio of ${debtToEquity}.`);
 
-    const news = generateCompanyNews(stock);
+    // Curated news in the dataset (if any) is shown until the NSE feed loads
+    const initialNews = (Array.isArray(stock.news) && stock.news.length > 0) ? stock.news : null;
 
     // 5. Exact Exchange Price High/Low Ranges & OHLC metrics (from automated NSE script)
     const dayOpen = typeof stock.dayOpen === "number" ? stock.dayOpen : (typeof stock.open === "number" ? stock.open : Math.round(stock.cmp * 0.995 * 10) / 10);
@@ -872,21 +901,12 @@ document.addEventListener("DOMContentLoaded", function () {
           <h1 id="heading-company-news" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Recent Corporate Announcements &amp; News
           </h1>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            ${news
-              .map(
-                (n) => `
-                <div style="padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                  <div>
-                    <span class="badge badge-neutral" style="font-size:0.75rem; margin-right:8px;">${escapeHtml(n.category)}</span>
-                    <span style="font-size:0.93rem; color:#1e293b; font-weight:600;">${escapeHtml(n.headline)}</span>
-                  </div>
-                  <span style="font-size:0.8rem; color:#64748b;">${escapeHtml(n.source)} • ${escapeHtml(n.date)}</span>
-                </div>
-              `
-              )
-              .join("")}
+          <div id="company-news-list" style="display:flex; flex-direction:column; gap:10px;">
+            ${initialNews
+              ? renderNewsItems(initialNews, stock)
+              : `<div style="padding:12px 16px; font-size:0.9rem; color:#64748b;">Loading latest NSE announcements...</div>`}
           </div>
+          <p style="margin:8px 0 0 0; font-size:0.78rem; color:#94a3b8;">Source: NSE corporate announcements, updated every trading day.</p>
         </section>
 
         <!-- SECTION 8: FINANCIAL STATEMENTS & 5-YEAR PERFORMANCE TREND (HEADING LEVEL 1) -->
@@ -899,29 +919,29 @@ document.addEventListener("DOMContentLoaded", function () {
               <thead>
                 <tr style="background:#f8fafc;">
                   <th style="padding:12px 14px; text-align:left; border-bottom:1px solid #e2e8f0;">Financial Metric (₹ Crores)</th>
-                  ${financials.map((f) => `<th style="padding:12px 14px; text-align:right; border-bottom:1px solid #e2e8f0;">${f.year}</th>`).join("")}
+                  ${financials.map((f) => `<th style="padding:12px 14px; text-align:right; border-bottom:1px solid #e2e8f0;">${escapeHtml(String(f.year))}</th>`).join("")}
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Sales / Revenue</strong></td>
-                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${f.sales}</td>`).join("")}
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(f.sales))}</td>`).join("")}
                 </tr>
                 <tr>
                   <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Net Profit</strong></td>
-                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#16a34a; font-weight:600;">₹ ${f.netProfit}</td>`).join("")}
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#16a34a; font-weight:600;">₹ ${escapeHtml(String(f.netProfit))}</td>`).join("")}
                 </tr>
                 <tr>
                   <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Operating Margin (OPM)</strong></td>
-                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${f.opm}</td>`).join("")}
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(f.opm))}</td>`).join("")}
                 </tr>
                 <tr>
                   <td style="padding:12px 14px; border-bottom:1px solid #f1f5f9;"><strong>Return on Equity (ROE)</strong></td>
-                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600;">${f.roe}</td>`).join("")}
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600;">${escapeHtml(String(f.roe))}</td>`).join("")}
                 </tr>
                 <tr>
                   <td style="padding:12px 14px;"><strong>Borrowings (Debt)</strong></td>
-                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right;">${f.borrowings}</td>`).join("")}
+                  ${financials.map((f) => `<td style="padding:12px 14px; text-align:right;">${escapeHtml(String(f.borrowings))}</td>`).join("")}
                 </tr>
               </tbody>
             </table>
@@ -970,7 +990,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const aboutEl = document.getElementById("company-about-content");
       if (aboutEl && profile.about) {
-        aboutEl.innerHTML = profile.about;
+        aboutEl.innerHTML = formatProfileAbout(profile.about);
       }
 
       if (profile.marketCapCr) {
@@ -1063,6 +1083,16 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("Background profile fetch note:", err.message);
       });
     }
+
+    // Load real NSE announcements for this company (free, refreshed daily by the sync script)
+    loadCompanyNews(stock.symbol).then((items) => {
+      if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
+      const listEl = document.getElementById("company-news-list");
+      if (!listEl) return;
+      if (items.length > 0 || !initialNews) {
+        listEl.innerHTML = renderNewsItems(items.map((n) => Object.assign({ source: "NSE Filing" }, n)), stock);
+      }
+    });
 
 
     // Connect Audio Overview Readout with Reliable Browser Speech Synthesis

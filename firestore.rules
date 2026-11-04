@@ -22,6 +22,9 @@ service cloud.firestore {
     match /screeners/{docId} {
       allow read, write: if true;
     }
+    match /company_profiles/{docId} {
+      allow read, write: if true;
+    }
     match /users/{docId} {
       allow read, write: if true;
     }

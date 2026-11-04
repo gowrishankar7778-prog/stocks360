@@ -27,14 +27,18 @@ jobs:
         run: |
           node scripts/update-nse-stocks.js --all
 
-      - name: Commit & Push Updated Stock Data
+      - name: Synchronize Official NSE Corporate Announcements & Filings
+        run: |
+          node scripts/update-nse-news.js
+
+      - name: Commit & Push Updated Stock Data & Filings
         run: |
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
-          git add js/screener-data.js
+          git add js/screener-data.js data/news/
           if git diff --staged --quiet; then
-            echo "No price or indicator changes detected today."
+            echo "No price, indicator, or corporate filing changes detected today."
           else
-            git commit -m "Auto-update NSE stock prices, moving averages, and volume indicators [4:45 PM IST]"
+            git commit -m "Auto-update NSE stock prices, moving averages, indicators, and corporate filings [4:45 PM IST]"
             git push origin main
           fi
