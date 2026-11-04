@@ -585,6 +585,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ---------------- VERIFIED REAL COMPANY PROFILES & STATEMENTS ----------------
+  // Official company descriptions, websites, and audited multi-year financials
+  // fetched from official exchange data feeds into data/profiles/<first-letter>.json (Rs 0 cost).
+  const profileShardCache = {};
+
+  function loadVerifiedProfile(symbol) {
+    const key = newsShardKey(symbol);
+    if (!profileShardCache[key]) {
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json", { cache: "default" })
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({}));
+    }
+    return profileShardCache[key].then((shard) => (shard && shard[String(symbol).toUpperCase()]) || null);
+  }
+
   // ---------------- REAL CORPORATE NEWS & ANNOUNCEMENTS ----------------
   // Announcements come from the official NSE feed, synced daily by
   // scripts/update-nse-news.js into data/news/<first-letter>.json (no AI cost).
@@ -715,9 +730,12 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="company-price-header" style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid #f1f5f9;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
             <div>
-              <div style="display:flex; align-items:center; gap:8px;">
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                 <span class="badge badge-success" style="font-size:0.75rem;">NSE: ${escapeHtml(stock.symbol)}</span>
                 <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
+                <a id="company-official-website-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none; font-size:0.8rem; color:#2563eb; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
+                  🌐 Official Website ↗
+                </a>
               </div>
               <h2 id="company-view-title" style="margin-top:6px; font-size:1.65rem; color:#0f172a;">${escapeHtml(stock.name)}</h2>
               
@@ -993,6 +1011,14 @@ document.addEventListener("DOMContentLoaded", function () {
         aboutEl.innerHTML = formatProfileAbout(profile.about);
       }
 
+      if (profile.website) {
+        const siteLinkEl = document.getElementById("company-official-website-link");
+        if (siteLinkEl) {
+          siteLinkEl.href = profile.website;
+          siteLinkEl.style.display = "inline-flex";
+        }
+      }
+
       if (profile.marketCapCr) {
         const mcapEl = document.getElementById("metric-market-cap");
         if (mcapEl) mcapEl.textContent = "₹ " + profile.marketCapCr.toLocaleString("en-IN") + " Crores";
@@ -1072,6 +1098,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
+
+    // Check official verified profile shard first (real audited about & financials)
+    loadVerifiedProfile(stock.symbol).then((verified) => {
+      if (verified && activeCompanyData && activeCompanyData.symbol === stock.symbol) {
+        applyGeminiProfileToView(verified, false);
+      }
+    });
 
     // Seamless Asynchronous Background Enrichment (if not already cached)
     if (!cachedProfile && typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
