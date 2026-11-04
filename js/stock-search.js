@@ -488,66 +488,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderDetailedCompanyAnalysis(stock);
   }
 
-  // ---------------- SCREENER.IN STYLE PROS & CONS ENGINE ----------------
-  function generateProsAndCons(stock) {
-    const pros = [];
-    const cons = [];
-
-    // Debt
-    if (stock.debtToEquity <= 0.08) {
-      pros.push(`Company is virtually debt-free with a Debt-to-Equity ratio of ${stock.debtToEquity}.`);
-    } else if (stock.debtToEquity <= 0.5) {
-      pros.push(`Company maintains safe, conservative leverage with Debt/Equity of ${stock.debtToEquity}.`);
-    } else if (stock.debtToEquity >= 1.1) {
-      cons.push(`Company has elevated debt levels with Debt-to-Equity ratio of ${stock.debtToEquity}.`);
-    }
-
-    // Capital Efficiency (ROE & ROCE)
-    if (stock.roePct >= 20) {
-      pros.push(`Outstanding track record of capital returns: 3-Year Return on Equity (ROE) is ${stock.roePct}%.`);
-    } else if (stock.roePct >= 15) {
-      pros.push(`Healthy capital efficiency with Return on Equity (ROE) of ${stock.roePct}%.`);
-    } else if (stock.roePct < 10) {
-      cons.push(`Return on Equity (ROE) is moderate at ${stock.roePct}%.`);
-    }
-
-    if (stock.rocePct >= 25) {
-      pros.push(`Exceptional operational efficiency: Return on Capital Employed (ROCE) is ${stock.rocePct}%.`);
-    } else if (stock.rocePct >= 18) {
-      pros.push(`Strong Return on Capital Employed (ROCE) of ${stock.rocePct}%.`);
-    }
-
-    // Dividends
-    if (stock.divYieldPct >= 1.5) {
-      pros.push(`Healthy dividend yield of ${stock.divYieldPct}%, offering consistent shareholder income.`);
-    } else if (stock.divYieldPct === 0) {
-      cons.push(`Company does not currently distribute a regular dividend (reinvesting earnings for growth).`);
-    }
-
-    // Technical Momentum & Moving Averages
-    if (stock.goldenCross) {
-      pros.push(`Bullish technical momentum: 50-Day Moving Average (₹${stock.dma50.toLocaleString("en-IN")}) is trading above the 200-Day Moving Average (₹${stock.dma200.toLocaleString("en-IN")}).`);
-    } else {
-      cons.push(`Stock is trading below long-term moving averages, reflecting price consolidation.`);
-    }
-
-    // Valuation P/E
-    if (stock.pe >= 50) {
-      cons.push(`Stock is trading at a premium valuation with a P/E multiple of ${stock.pe}x.`);
-    } else if (stock.pe <= 22 && stock.pe > 0) {
-      pros.push(`Attractive valuation: Trading at a modest P/E multiple of ${stock.pe}x.`);
-    }
-
-    // Growth
-    if (stock.salesGrowth3Y >= 15) {
-      pros.push(`Strong revenue growth: 3-Year Sales CAGR of ${stock.salesGrowth3Y}%.`);
-    } else if (stock.salesGrowth3Y < 8) {
-      cons.push(`Sales growth has moderated to a 3-Year CAGR of ${stock.salesGrowth3Y}%.`);
-    }
-
-    return { pros, cons };
-  }
-
   // ---------------- 5-YEAR FINANCIAL STATEMENTS ENGINE ----------------
   function generate5YearFinancials(stock) {
     if (stock.financials && Array.isArray(stock.financials) && stock.financials.length > 0) {
@@ -691,16 +631,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ? cachedProfile.financials
       : generate5YearFinancials(stock);
 
-    // 3. Investment Thesis (Strengths & Risks)
-    const baseThesis = generateProsAndCons(stock);
-    const thesisStrengths = (cachedProfile && cachedProfile.investmentThesis && Array.isArray(cachedProfile.investmentThesis.strengths))
-      ? cachedProfile.investmentThesis.strengths
-      : baseThesis.pros;
-    const thesisRisks = (cachedProfile && cachedProfile.investmentThesis && Array.isArray(cachedProfile.investmentThesis.risks))
-      ? cachedProfile.investmentThesis.risks
-      : baseThesis.cons;
-
-    // 4. About the Company Profile Text
+    // 3. About the Company Profile Text
     const aboutText = (cachedProfile && cachedProfile.about)
       ? formatProfileAbout(cachedProfile.about)
       : (stock.about || `<strong>${escapeHtml(stock.name)}</strong> is a leading enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE). It demonstrates a 3-Year Sales Growth rate of ${salesGrowth3Y}% and maintains a conservative Debt-to-Equity ratio of ${debtToEquity}.`);
@@ -885,36 +816,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 6: INVESTMENT THESIS (INSTITUTIONAL HEADING) -->
-        <section class="company-thesis-section" aria-labelledby="heading-investment-thesis" style="margin-bottom:28px;">
-          <h1 id="heading-investment-thesis" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
-            Investment Thesis: Key Strengths &amp; Critical Risks
-          </h1>
-
-          <div class="pros-cons-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <!-- KEY STRENGTHS -->
-            <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:16px;">
-              <h3 style="font-size:1.05rem; color:#15803d; margin-bottom:10px; font-weight:700;">
-                Key Investment Strengths
-              </h3>
-              <ul id="thesis-strengths-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#166534; line-height:1.65;">
-                ${thesisStrengths.map((p) => `<li style="margin-bottom:8px;">${escapeHtml(p)}</li>`).join("")}
-              </ul>
-            </div>
-
-            <!-- CRITICAL RISKS -->
-            <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:16px;">
-              <h3 style="font-size:1.05rem; color:#b45309; margin-bottom:10px; font-weight:700;">
-                Critical Risks &amp; Watchouts
-              </h3>
-              <ul id="thesis-risks-list" style="padding-left:18px; margin:0; font-size:0.92rem; color:#92400e; line-height:1.65;">
-                ${thesisRisks.map((c) => `<li style="margin-bottom:8px;">${escapeHtml(c)}</li>`).join("")}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 7: RECENT CORPORATE ANNOUNCEMENTS & NEWS (HEADING LEVEL 1) -->
+        <!-- SECTION 6: RECENT CORPORATE ANNOUNCEMENTS & NEWS (HEADING LEVEL 1) -->
         <section class="company-news-section" aria-labelledby="heading-company-news" style="margin-bottom:28px;">
           <h1 id="heading-company-news" style="font-size:1.4rem; color:#0f172a; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #e2e8f0;">
             Recent Corporate Announcements &amp; News
@@ -966,38 +868,6 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 9: ASK STOCKS 360 AI DRAWER -->
-        <div class="company-ai-grounded-box" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px; padding:20px; margin-top:28px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-            <div style="display:flex; align-items:center; gap:6px;">
-              <span class="pulse-dot"></span>
-              <strong style="font-size:1.05rem; color:#0f172a;">Ask Stocks 360 AI About ${escapeHtml(stock.symbol)}</strong>
-            </div>
-            <span style="font-size:0.78rem; color:#0369a1; background:#e0f2fe; padding:3px 10px; border-radius:999px; font-weight:600;">
-              Strict Grounded Mode: Responds only from verified data for ${escapeHtml(stock.symbol)}
-            </span>
-          </div>
-
-          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
-            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="What are the key financial strengths and watchouts for ${escapeHtml(stock.name)}?">
-              Key strengths &amp; watchouts
-            </button>
-            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="Explain why ${escapeHtml(stock.symbol)} has a Return on Equity of ${roePct}%.">
-              Explain ROE of ${roePct}%
-            </button>
-            <button type="button" class="quick-ticker-pill company-ai-prompt-pill" data-q="What does this company's debt to equity of ${debtToEquity} mean for investors?">
-              Explain debt ratio of ${debtToEquity}
-            </button>
-          </div>
-
-          <div class="search-input-wrapper" style="margin-bottom:8px;">
-            <input type="text" id="company-ai-input" placeholder="Ask any question about ${escapeHtml(stock.symbol)}'s financial ratios or performance..." style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px 14px; font-size:0.95rem;">
-            <button type="button" id="company-ai-send" class="btn-primary">Ask AI</button>
-          </div>
-
-          <div id="company-ai-response" aria-live="polite"></div>
-        </div>
-
       </div>
     `;
 
@@ -1046,18 +916,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (profile.profitGrowth3Y) {
         const pgEl = document.getElementById("metric-profit-growth");
         if (pgEl) pgEl.textContent = profile.profitGrowth3Y + "%";
-      }
-
-      // Update AI Thesis Lists
-      if (profile.investmentThesis) {
-        const strList = document.getElementById("thesis-strengths-list");
-        if (strList && Array.isArray(profile.investmentThesis.strengths)) {
-          strList.innerHTML = profile.investmentThesis.strengths.map(s => '<li style="margin-bottom:8px;">' + escapeHtml(s) + '</li>').join("");
-        }
-        const rskList = document.getElementById("thesis-risks-list");
-        if (rskList && Array.isArray(profile.investmentThesis.risks)) {
-          rskList.innerHTML = profile.investmentThesis.risks.map(r => '<li style="margin-bottom:8px;">' + escapeHtml(r) + '</li>').join("");
-        }
       }
 
       // Update 5-Year Financial Statements Table if enriched
@@ -1136,32 +994,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Company Grounded AI Chat Handler
-    const aiInput = document.getElementById("company-ai-input");
-    const aiSend = document.getElementById("company-ai-send");
-    const promptPills = document.querySelectorAll(".company-ai-prompt-pill");
-
-    promptPills.forEach((p) => {
-      p.addEventListener("click", function () {
-        if (aiInput) {
-          aiInput.value = this.getAttribute("data-q");
-          handleCompanyAiAsk(stock);
-        }
-      });
-    });
-
-    if (aiSend) {
-      aiSend.addEventListener("click", () => handleCompanyAiAsk(stock));
-    }
-    if (aiInput) {
-      aiInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          handleCompanyAiAsk(stock);
-        }
-      });
-    }
-
     stockResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
@@ -1192,7 +1024,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const cleanDayChange = Math.abs(stock.dayChange || 1);
-    const narration = `About ${stock.name}. Ticker symbol ${stock.symbol} listed on the National Stock Exchange in the ${stock.sector} sector. Current market price is ${stock.cmp} rupees, recording a ${isGain ? "day gain of " + cleanDayChange + " rupees" : "day loss of " + cleanDayChange + " rupees"} today. Key fundamental metrics: Return on Equity is ${stock.roePct} percent, Return on Capital Employed is ${stock.rocePct} percent, Debt to Equity ratio is ${stock.debtToEquity}, and price to earnings ratio is ${stock.pe}. ${pros && pros[0] ? "Primary company strength: " + pros[0] : ""}`;
+    const narration = `About ${stock.name}. Ticker symbol ${stock.symbol} listed on the National Stock Exchange in the ${stock.sector} sector. Current market price is ${stock.cmp} rupees, recording a ${isGain ? "day gain of " + cleanDayChange + " rupees" : "day loss of " + cleanDayChange + " rupees"} today. Key fundamental metrics: Return on Equity is ${stock.roePct} percent, Return on Capital Employed is ${stock.rocePct} percent, Debt to Equity ratio is ${stock.debtToEquity}, and price to earnings ratio is ${stock.pe}.`;
 
     const utterance = new SpeechSynthesisUtterance(narration);
     utterance.lang = "en-IN";
@@ -1245,54 +1077,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("Speech synthesis trigger warning:", err);
       }
     }, 60);
-  }
-
-  // ---------------- STRICT IN-CONTENT AI GROUNDING FOR COMPANY ----------------
-  async function handleCompanyAiAsk(stock) {
-    const aiInput = document.getElementById("company-ai-input");
-    const aiResponse = document.getElementById("company-ai-response");
-    if (!aiInput || !aiResponse || !stock) return;
-
-    const question = aiInput.value.trim();
-    if (!question) return;
-
-    aiResponse.innerHTML = `<p style="color:#0284c7; font-weight:600; margin-top:8px;">Analyzing ${escapeHtml(stock.symbol)}'s verified financial data...</p>`;
-
-    // Build strict context block containing ONLY this company's available metrics
-    const { pros, cons } = generateProsAndCons(stock);
-    const companyContext = {
-      id: "company_" + stock.symbol,
-      title: `${stock.name} (${stock.symbol})`,
-      content: `Company: ${stock.name} (${stock.symbol}). Sector: ${stock.sector}. Current Market Price: ₹${stock.cmp}. Market Capitalization: ₹${stock.marketCapCr} Crores. P/E Ratio: ${stock.pe}. Return on Equity (ROE): ${stock.roePct}%. Return on Capital Employed (ROCE): ${stock.rocePct}%. Debt to Equity Ratio: ${stock.debtToEquity}. Dividend Yield: ${stock.divYieldPct}%. 50-Day Moving Average: ₹${stock.dma50}. 200-Day Moving Average: ₹${stock.dma200}. Golden Crossover Active: ${stock.goldenCross}. 3-Year Sales Growth: ${stock.salesGrowth3Y}%. Key Pros: ${pros.join("; ")}. Key Watchouts/Cons: ${cons.join("; ")}.`,
-      takeaways: `Key Takeaways for ${stock.symbol}: ROE is ${stock.roePct}%, Debt to Equity is ${stock.debtToEquity}, P/E is ${stock.pe}, and CMP is ₹${stock.cmp}.`
-    };
-
-    if (typeof StocksGeminiAI !== "undefined") {
-      const result = await StocksGeminiAI.askGroundedContentQuestion(
-        question,
-        companyContext,
-        `company profile of ${stock.symbol}`
-      );
-      if (result) {
-        aiInput.value = "";
-        aiResponse.innerHTML = `
-          <div style="margin-top:12px; padding:14px; background:#ffffff; border-radius:8px; border:1px solid #bae6fd; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
-            <div style="font-size:0.85rem; font-weight:700; color:#0369a1; margin-bottom:4px;">
-              Q: "${escapeHtml(result.question)}"
-            </div>
-            <p style="margin:0; font-size:0.95rem; color:#1e293b; line-height:1.6;">
-              ${escapeHtml(result.answer)}
-            </p>
-          </div>
-        `;
-        if (typeof window.speakWithPitch === "function") {
-          window.speakWithPitch(result.answer, true);
-        }
-        return;
-      }
-    }
-
-    aiResponse.innerHTML = `<p style="color:#0f172a; margin-top:8px;">${escapeHtml(stock.name)} operates in the ${escapeHtml(stock.sector)} sector with ROE of ${stock.roePct}% and Debt/Equity of ${stock.debtToEquity}.</p>`;
   }
 
   function escapeHtml(str) {
