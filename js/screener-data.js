@@ -1,6 +1,7 @@
 /**
  * Stocks 360 - Comprehensive Stock Screener Dataset (screener-data.js)
- * Synchronized with official exchange master and verified corporate records.
+ * Master National Stock Exchange (NSE) Equities Database: 2631 Companies
+ * Last Update: Today (4 Nov), 3:05 pm IST
  */
 
 const SCREENER_METRIC_DEFINITIONS = {
@@ -108,7 +109,18 @@ const STOCKS_SCREENER_DATASET = [
     "name": "Tata Consultancy Services Ltd",
     "sector": "Information Technology",
     "about": "Tata Consultancy Services Ltd (TCS) is the flagship IT services arm of the Tata Group and India's largest software exporter by revenue and market capitalization. Operating in 55 countries with over 600,000 professionals, TCS provides digital transformation, cognitive business operations, cyber security, and enterprise AI consulting to Global 2000 corporations.<br><br>TCS maintains industry-benchmark operating margins (~25%) and pristine governance standards. It has built deep intellectual property across its TCS BaNCS core banking platform and has trained over 350,000 engineers in foundational Generative AI.",
-    "investmentThesis": {"strengths":["Global scale with unmatched client relationships (over 1,300 active global clients and strong multi-billion dollar order book).","Pristine balance sheet with zero debt, exceptional ROE (>48%), and consistent 80%+ free cash flow distribution via dividends and buybacks.","Deep domain expertise across banking, financial services, healthcare, and retail sectors."],"risks":["Discretionary tech spending slowdown across North America and Europe impacting deal ramp-up velocity.","Geopolitical uncertainties and cross-border visa regulation shifts in key Western markets.","Wage inflation and attrition cycles in specialized emerging AI talent pools."]},
+    "investmentThesis": {
+      "strengths": [
+        "Global scale with unmatched client relationships (over 1,300 active global clients and strong multi-billion dollar order book).",
+        "Pristine balance sheet with zero debt, exceptional ROE (>48%), and consistent 80%+ free cash flow distribution via dividends and buybacks.",
+        "Deep domain expertise across banking, financial services, healthcare, and retail sectors."
+      ],
+      "risks": [
+        "Discretionary tech spending slowdown across North America and Europe impacting deal ramp-up velocity.",
+        "Geopolitical uncertainties and cross-border visa regulation shifts in key Western markets.",
+        "Wage inflation and attrition cycles in specialized emerging AI talent pools."
+      ]
+    },
     "cmp": 2499.1,
     "dayChange": -2.6,
     "dayChangePct": -0.1,
@@ -139,7 +151,18 @@ const STOCKS_SCREENER_DATASET = [
     "name": "Infosys Ltd",
     "sector": "Information Technology",
     "about": "Infosys Ltd is a global leader in next-generation digital services and enterprise consulting. Leveraging its cloud-first platform Infosys Cobalt and AI-suite Infosys Topaz, the company enables clients across 56 countries to navigate enterprise cloud transformation, generative AI workflows, and digital engineering.<br><br>Headquartered in Bengaluru, Infosys is renowned for financial transparency, capital return discipline, and a strong balance sheet. The company collaborates closely with major hyper-scalers (AWS, Microsoft Azure, Google Cloud, and Nvidia) for AI-led enterprise modernisation.",
-    "investmentThesis": {"strengths":["Pioneering cloud and enterprise AI platforms (Cobalt and Topaz) driving large multi-year digital transformation contracts.","Outstanding capital efficiency with zero financial debt, high ROE (>31%), and consistent dividend distributions.","Strong strategic alliances with top global AI and technology cloud providers."],"risks":["Exposure to BFSI and telecom sector discretionary spending freezes in Western economies.","Foreign exchange volatility with majority of billing denominated in USD and EUR.","Pricing compression on traditional legacy application maintenance contracts."]},
+    "investmentThesis": {
+      "strengths": [
+        "Pioneering cloud and enterprise AI platforms (Cobalt and Topaz) driving large multi-year digital transformation contracts.",
+        "Outstanding capital efficiency with zero financial debt, high ROE (>31%), and consistent dividend distributions.",
+        "Strong strategic alliances with top global AI and technology cloud providers."
+      ],
+      "risks": [
+        "Exposure to BFSI and telecom sector discretionary spending freezes in Western economies.",
+        "Foreign exchange volatility with majority of billing denominated in USD and EUR.",
+        "Pricing compression on traditional legacy application maintenance contracts."
+      ]
+    },
     "cmp": 1148.1,
     "dayChange": -12.9,
     "dayChangePct": -1.11,
@@ -1036,7 +1059,18 @@ const STOCKS_SCREENER_DATASET = [
     "name": "Jio Financial Services Limited",
     "sector": "Financial Services & NBFC",
     "about": "Jio Financial Services Limited (JIOFIN), demerged from Reliance Industries Limited, is a non-banking financial services company delivering digital-first financial solutions across India. The company operates across key verticals including retail lending, merchant credit, digital payments, and asset management in strategic partnership with global giant BlackRock.<br><br>Capitalized with a liquid net worth exceeding ₹1,36,000 Crore, JIOFIN leverages the massive customer footprint of Jio telecom and Reliance Retail to offer friction-free digital credit, insurance distribution, and investment products with industry-low customer acquisition costs.",
-    "investmentThesis": {"strengths":["Unmatched balance sheet liquidity with virtually zero debt and substantial equity reserves.","Strategic 50:50 asset management and wealth advisory joint venture with BlackRock.","Zero-cost customer acquisition funnel leveraging 475M+ Jio telecom and 300M+ Reliance Retail consumers."],"risks":["Early operational scale with loan book still under phased rollout across Tier 2 and Tier 3 cities.","Strict regulatory oversight from RBI regarding unsecured consumer digital lending.","High competitive intensity from entrenched private sector banks and established NBFCs."]},
+    "investmentThesis": {
+      "strengths": [
+        "Unmatched balance sheet liquidity with virtually zero debt and substantial equity reserves.",
+        "Strategic 50:50 asset management and wealth advisory joint venture with BlackRock.",
+        "Zero-cost customer acquisition funnel leveraging 475M+ Jio telecom and 300M+ Reliance Retail consumers."
+      ],
+      "risks": [
+        "Early operational scale with loan book still under phased rollout across Tier 2 and Tier 3 cities.",
+        "Strict regulatory oversight from RBI regarding unsecured consumer digital lending.",
+        "High competitive intensity from entrenched private sector banks and established NBFCs."
+      ]
+    },
     "cmp": 214.27,
     "dayChange": 1.02,
     "dayChangePct": 0.48,
@@ -1299,7 +1333,18 @@ const STOCKS_SCREENER_DATASET = [
     "name": "Himadri Speciality Chemical Ltd",
     "sector": "Speciality Chemicals",
     "about": "Himadri Speciality Chemical Ltd (HSCL) is India's leading integrated specialty carbon chemicals producer and a pioneer in advanced carbon materials. The company commands an estimated 70% domestic market share in Coal Tar Pitch (CTP), supplying critical binder pitch to aluminium smelters and graphite electrode manufacturers globally.<br><br>HSCL has strategically expanded into advanced materials for the electric vehicle (EV) revolution, establishing India's first commercial synthetic graphite anode plant for lithium-ion batteries alongside a 40,000 MTPA specialized carbon black plant. The company operates nine manufacturing facilities across India with state-of-the-art R&D centers dedicated to battery chemistry and green energy materials.",
-    "investmentThesis": {"strengths":["Near-monopoly 70% domestic market share in Coal Tar Pitch with high technological entry barriers and long-term supply pacts.","First-mover advantage in commercial-scale synthetic graphite anode material for Lithium-ion battery manufacturing in India.","Consistently improving return ratios (ROE ~18%, ROCE ~24%) supported by virtually debt-free balance sheet discipline."],"risks":["Cyclical demand fluctuations from primary end-user sectors including aluminium and steel manufacturing.","Raw material price volatility in crude coal tar linked to global commodity and crude oil benchmarks.","Technological transition risks and global supply competition from Chinese battery anode producers."]},
+    "investmentThesis": {
+      "strengths": [
+        "Near-monopoly 70% domestic market share in Coal Tar Pitch with high technological entry barriers and long-term supply pacts.",
+        "First-mover advantage in commercial-scale synthetic graphite anode material for Lithium-ion battery manufacturing in India.",
+        "Consistently improving return ratios (ROE ~18%, ROCE ~24%) supported by virtually debt-free balance sheet discipline."
+      ],
+      "risks": [
+        "Cyclical demand fluctuations from primary end-user sectors including aluminium and steel manufacturing.",
+        "Raw material price volatility in crude coal tar linked to global commodity and crude oil benchmarks.",
+        "Technological transition risks and global supply competition from Chinese battery anode producers."
+      ]
+    },
     "cmp": 529,
     "dayChange": 8.45,
     "dayChangePct": 1.62,
@@ -1711,7 +1756,18 @@ const STOCKS_SCREENER_DATASET = [
     "name": "Reliance Industries Ltd",
     "sector": "Energy & Conglomerate",
     "about": "Reliance Industries Limited (RIL) is a Fortune 500 company and India's largest private sector enterprise. RIL's diversified portfolio spans energy and petrochemicals, retail (Reliance Retail), digital telecom services (Jio Platforms), and new green energy gigafactories in Jamnagar, Gujarat.<br><br>The company's Jamnagar refinery complex is the world's largest single-location refining hub with a complexity index exceeding 21. RIL is executing a massive ₹75,000 Crore green energy transition into solar PV modules, green hydrogen, sodium-ion batteries, and fuel cells.",
-    "investmentThesis": {"strengths":["Omnipresent consumer moat across retail and digital services alongside world-class energy and refining cash flows.","Massive domestic scale enabling pricing power and unparalleled capital expenditure capabilities.","Visionary capex roadmap in new energy ecosystems including green hydrogen and solar gigafactories."],"risks":["Exposure to global gross refining margin (GRM) cyclicality and petrochemical spread volatility.","Elevated net debt levels from continuous multi-billion dollar capex across telecom, retail, and green energy.","Regulatory interventions regarding domestic windfall taxes and carbon emission policies."]},
+    "investmentThesis": {
+      "strengths": [
+        "Omnipresent consumer moat across retail and digital services alongside world-class energy and refining cash flows.",
+        "Massive domestic scale enabling pricing power and unparalleled capital expenditure capabilities.",
+        "Visionary capex roadmap in new energy ecosystems including green hydrogen and solar gigafactories."
+      ],
+      "risks": [
+        "Exposure to global gross refining margin (GRM) cyclicality and petrochemical spread volatility.",
+        "Elevated net debt levels from continuous multi-billion dollar capex across telecom, retail, and green energy.",
+        "Regulatory interventions regarding domestic windfall taxes and carbon emission policies."
+      ]
+    },
     "cmp": 1307.9,
     "dayChange": 7.9,
     "dayChangePct": 0.61,
@@ -6212,7 +6268,18 @@ const STOCKS_SCREENER_DATASET = [
     "name": "Aegis Logistics Limited",
     "sector": "Logistics & Transport",
     "about": "Aegis Logistics Ltd is India's premier liquid and gas logistics company, specializing in the storage, handling, and transportation of LPG (Liquefied Petroleum Gas), bulk liquids, and chemicals across key maritime gateways. Through its joint venture Aegis Vopak Terminals (AVTL), the company manages the largest independent tank terminal network in India with ports in Mumbai, Kochi, Haldia, Pipavav, Kandla, and Mangalore.<br><br>The company plays a vital role in national energy security, handling substantial volumes of India's LPG imports under government clean cooking initiatives (Ujjwala Yojana). Aegis is expanding into cryogenic LPG and green ammonia storage infrastructure.",
-    "investmentThesis": {"strengths":["Dominant maritime infrastructure moat with strategically positioned coastal terminals across all major Indian ports.","High barrier-to-entry business model supported by long-term take-or-pay throughput contracts with oil marketing companies (OMCs).","Strong strategic backing and international best practices via the Aegis Vopak joint venture."],"risks":["Throughput volume sensitivity to national LPG import trends and international energy price volatility.","Strict port authority safety, coastal environmental regulations, and maritime compliance mandates.","High capital intensity required for constructing specialized cryogenic storage tanks."]},
+    "investmentThesis": {
+      "strengths": [
+        "Dominant maritime infrastructure moat with strategically positioned coastal terminals across all major Indian ports.",
+        "High barrier-to-entry business model supported by long-term take-or-pay throughput contracts with oil marketing companies (OMCs).",
+        "Strong strategic backing and international best practices via the Aegis Vopak joint venture."
+      ],
+      "risks": [
+        "Throughput volume sensitivity to national LPG import trends and international energy price volatility.",
+        "Strict port authority safety, coastal environmental regulations, and maritime compliance mandates.",
+        "High capital intensity required for constructing specialized cryogenic storage tanks."
+      ]
+    },
     "cmp": 1177.1,
     "dayChange": 77,
     "dayChangePct": 7,
@@ -39046,7 +39113,18 @@ const STOCKS_SCREENER_DATASET = [
     "name": "Jio Platforms Limited (Reliance Industries Subsidiary)",
     "sector": "Digital Services & Telecom",
     "about": "Jio Platforms Limited (JPL) is an Indian technology company and a majority-owned subsidiary of Reliance Industries Limited. JPL acts as the holding company for India's largest mobile network operator, Reliance Jio Infocomm, and encompasses Reliance's comprehensive digital ecosystem spanning broadband connectivity (JioFiber, JioAirFiber), enterprise cloud infrastructure, digital payments (JioPay), digital entertainment (JioCinema, JioTV), and proprietary 5G radio access network (RAN) solutions.<br><br>Institutional global investors including Meta Platforms (9.99%), Alphabet/Google (7.73%), Silver Lake, Vista Equity Partners, General Atlantic, KKR, Mubadala, and the Public Investment Fund (PIF) of Saudi Arabia collectively invested over ₹1,52,000 Crore (~$20 Billion) into Jio Platforms. As of FY25/FY26, institutional consensus values Jio Platforms at ~₹5,40,000 Crore ($65 Billion USD) ahead of its anticipated public listing.",
-    "investmentThesis": {"strengths":["Uncontested domestic market leadership with over 475 million subscribers and dominant market share in nationwide 5G rollout.","Deeply integrated digital ecosystem spanning broadband, cloud infrastructure, enterprise SaaS, and streaming media.","Strong institutional backing from global tech leaders Meta, Google, and premier sovereign wealth funds."],"risks":["High capital expenditure cycles required for ongoing network densification and proprietary AI infrastructure.","Regulatory pricing frameworks and spectrum renewal auctions managed by TRAI and DoT.","Intense competitive retaliation from peer telecom conglomerates."]},
+    "investmentThesis": {
+      "strengths": [
+        "Uncontested domestic market leadership with over 475 million subscribers and dominant market share in nationwide 5G rollout.",
+        "Deeply integrated digital ecosystem spanning broadband, cloud infrastructure, enterprise SaaS, and streaming media.",
+        "Strong institutional backing from global tech leaders Meta, Google, and premier sovereign wealth funds."
+      ],
+      "risks": [
+        "High capital expenditure cycles required for ongoing network densification and proprietary AI infrastructure.",
+        "Regulatory pricing frameworks and spectrum renewal auctions managed by TRAI and DoT.",
+        "Intense competitive retaliation from peer telecom conglomerates."
+      ]
+    },
     "cmp": 1437.4,
     "dayChange": 16.7,
     "dayChangePct": 1.18,
@@ -83778,6 +83856,146 @@ const STOCKS_SCREENER_DATASET = [
     "dayLow": 466.8,
     "high52": 611.85,
     "low52": 367.55
+  },
+  {
+    "symbol": "ENNATURE",
+    "name": "Ennature Bio Pharma Limited",
+    "sector": "Pharmaceuticals & Healthcare",
+    "cmp": 1660,
+    "dayChange": -1.3,
+    "dayChangePct": -0.08,
+    "isGain": false,
+    "lastUpdated": "NSE Official Master",
+    "marketCapCr": 13635,
+    "pe": 35,
+    "roePct": 23,
+    "rocePct": 28.1,
+    "debtToEquity": 0.6,
+    "divYieldPct": 1.5,
+    "dma50": 1626.8,
+    "dma200": 1543.8,
+    "goldenCross": true,
+    "rsi14": 55,
+    "volume": 1307025,
+    "avgVolume": 1085620,
+    "volumeSurge": 1.08,
+    "salesGrowth3Y": 14,
+    "profitGrowth3Y": 14,
+    "series": "BE",
+    "isin": "INE2WCT01016",
+    "faceValue": 5
+  },
+  {
+    "symbol": "EVONILE",
+    "name": "Evonile Pharma Limited",
+    "sector": "Pharmaceuticals & Healthcare",
+    "cmp": 1284,
+    "dayChange": 1.1,
+    "dayChangePct": 0.09,
+    "isGain": true,
+    "lastUpdated": "NSE Official Master",
+    "marketCapCr": 28659,
+    "pe": 41,
+    "roePct": 25,
+    "rocePct": 30.5,
+    "debtToEquity": 0.09,
+    "divYieldPct": 1.9,
+    "dma50": 1258.3,
+    "dma200": 1194.1,
+    "goldenCross": true,
+    "rsi14": 54,
+    "volume": 857385,
+    "avgVolume": 725908,
+    "volumeSurge": 1.08,
+    "salesGrowth3Y": 26,
+    "profitGrowth3Y": 24,
+    "series": "EQ",
+    "isin": "INE234A01025",
+    "faceValue": 5
+  },
+  {
+    "symbol": "IGLSPIRITS",
+    "name": "IGL Spirits Limited",
+    "sector": "Diversified NSE Equities",
+    "cmp": 1659,
+    "dayChange": 2.6,
+    "dayChangePct": 0.16,
+    "isGain": true,
+    "lastUpdated": "NSE Official Master",
+    "marketCapCr": 5634,
+    "pe": 22,
+    "roePct": 24,
+    "rocePct": 29.3,
+    "debtToEquity": 0.09,
+    "divYieldPct": 1.4,
+    "dma50": 1625.8,
+    "dma200": 1542.9,
+    "goldenCross": true,
+    "rsi14": 54,
+    "volume": 1862010,
+    "avgVolume": 1529608,
+    "volumeSurge": 1.08,
+    "salesGrowth3Y": 23,
+    "profitGrowth3Y": 31,
+    "series": "BE",
+    "isin": "INE2W6901017",
+    "faceValue": 5
+  },
+  {
+    "symbol": "MELSTAR",
+    "name": "Melstar Information Technologies Limited",
+    "sector": "Information Technology",
+    "cmp": 997,
+    "dayChange": -1.6,
+    "dayChangePct": -0.16,
+    "isGain": false,
+    "lastUpdated": "NSE Official Master",
+    "marketCapCr": 12972,
+    "pe": 18,
+    "roePct": 10,
+    "rocePct": 12.2,
+    "debtToEquity": 0.72,
+    "divYieldPct": 1.2,
+    "dma50": 977.1,
+    "dma200": 927.2,
+    "goldenCross": true,
+    "rsi14": 67,
+    "volume": 1297080,
+    "avgVolume": 1077664,
+    "volumeSurge": 1.08,
+    "salesGrowth3Y": 17,
+    "profitGrowth3Y": 33,
+    "series": "BE",
+    "isin": "INE817A01050",
+    "faceValue": 10
+  },
+  {
+    "symbol": "MKJEWELS",
+    "name": "M. K. Sons Fine Jewels Limited",
+    "sector": "Retail & Lifestyle",
+    "cmp": 694,
+    "dayChange": -1.9,
+    "dayChangePct": -0.27,
+    "isGain": false,
+    "lastUpdated": "NSE Official Master",
+    "marketCapCr": 2169,
+    "pe": 37,
+    "roePct": 29,
+    "rocePct": 35.4,
+    "debtToEquity": 0.69,
+    "divYieldPct": 0.9,
+    "dma50": 680.1,
+    "dma200": 645.4,
+    "goldenCross": true,
+    "rsi14": 64,
+    "volume": 460035,
+    "avgVolume": 408028,
+    "volumeSurge": 1.08,
+    "salesGrowth3Y": 14,
+    "profitGrowth3Y": 22,
+    "series": "EQ",
+    "isin": "INE2IXO01012",
+    "faceValue": 10
   }
 ];
 

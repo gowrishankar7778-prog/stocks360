@@ -23,6 +23,10 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Auto-Discover New NSE IPOs & Equity Listings
+        run: |
+          node scripts/import-all-nse-stocks.js
+
       - name: Synchronize All Live NSE Prices & Indicators
         run: |
           node scripts/update-nse-stocks.js --all
