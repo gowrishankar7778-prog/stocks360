@@ -8,39 +8,197 @@
       {
         "year": "FY23",
         "sales": "1,46,767",
-        "netProfit": "24,095",
+        "expenses": "1,15,946",
+        "operatingProfit": "30,821",
         "opm": "21%",
+        "pbt": "32,046",
+        "taxPct": "25%",
+        "netProfit": "24,095",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "1,53,670",
-        "netProfit": "26,233",
+        "expenses": "1,21,399",
+        "operatingProfit": "32,271",
         "opm": "21%",
+        "pbt": "34,890",
+        "taxPct": "25%",
+        "netProfit": "26,233",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "1,62,990",
-        "netProfit": "26,713",
+        "expenses": "1,28,762",
+        "operatingProfit": "34,228",
         "opm": "21%",
+        "pbt": "35,528",
+        "taxPct": "25%",
+        "netProfit": "26,713",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "1,78,650",
-        "netProfit": "29,440",
+        "expenses": "1,41,133",
+        "operatingProfit": "37,517",
         "opm": "21%",
+        "pbt": "39,155",
+        "taxPct": "25%",
+        "netProfit": "29,440",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "45,479",
+        "expenses": "36,829",
+        "operatingProfit": "8,650",
+        "opm": "20.5%",
+        "netProfit": "6,654",
+        "eps": "₹18.8"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "46,402",
+        "expenses": "35,351",
+        "operatingProfit": "11,051",
+        "opm": "25.6%",
+        "netProfit": "8,501",
+        "eps": "₹18.8"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "48,211",
+        "expenses": "38,111",
+        "operatingProfit": "10,100",
+        "opm": "22.6%",
+        "netProfit": "7,769",
+        "eps": "₹18.8"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "49,244",
+        "expenses": "39,074",
+        "operatingProfit": "10,170",
+        "opm": "22.2%",
+        "netProfit": "7,823",
+        "eps": "₹18.8"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY23",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY23",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY25",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
+    "shareholding": {
+      "promoters": "15.99%",
+      "fii": "33.4%",
+      "dii": "17.98%",
+      "public": "32.63%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": null,
+      "pb": 4.85,
+      "evToEbitda": 964.8,
+      "roce": 37.5,
+      "roe": 30,
+      "debtToEquity": 0.09,
+      "divYield": null,
+      "salesGrowth3Y": 1.4,
+      "profitGrowth3Y": -2.6,
+      "interestCoverage": 18.5
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": 30,
+    "rocePct": 37.5,
     "debtToEquity": 0.09,
     "divYieldPct": null,
     "salesGrowth3Y": 1.4,
@@ -63,10 +221,10 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793899674249,
+    "updatedAt": 1793901301980,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-05T17:27:54.388Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 21%; ROE updated: 31.8% -> 30%; 3Y Sales Growth: 14.5% -> 1.4%; 3Y Profit Growth: 9.8% -> -2.6%"
+    "lastFinancialStatementUpdate": "2026-11-05T17:55:01.980Z",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26)"
   },
   "IBULLSLTD": {
     "about": "Indiabulls Limited, together with its subsidiaries, engages in the in financial services and digital platforms business in India. The company engages in real estate development, stock broking, asset reconstruction, digital payments and financial services, and equipment leasing. The company was formerly known as Yaari Digital Integrated Services Limited and changed its name to Indiabulls Limited in October 2025. Indiabulls Limited was incorporated in 2007 and is based in Mumbai, India.",

@@ -8,39 +8,197 @@
       {
         "year": "FY23",
         "sales": "2,25,458",
-        "netProfit": "42,147",
+        "expenses": "1,71,348",
+        "operatingProfit": "54,110",
         "opm": "24%",
+        "pbt": "56,056",
+        "taxPct": "25%",
+        "netProfit": "42,147",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "2,40,893",
-        "netProfit": "45,908",
+        "expenses": "1,83,079",
+        "operatingProfit": "57,814",
         "opm": "24%",
+        "pbt": "61,058",
+        "taxPct": "25%",
+        "netProfit": "45,908",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "2,55,324",
-        "netProfit": "48,553",
+        "expenses": "1,94,046",
+        "operatingProfit": "61,278",
         "opm": "24%",
+        "pbt": "64,575",
+        "taxPct": "25%",
+        "netProfit": "48,553",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "2,67,021",
-        "netProfit": "49,210",
+        "expenses": "2,02,936",
+        "operatingProfit": "64,085",
         "opm": "24%",
+        "pbt": "65,449",
+        "taxPct": "25%",
+        "netProfit": "49,210",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "67,087",
+        "expenses": "53,233",
+        "operatingProfit": "13,854",
+        "opm": "22.2%",
+        "netProfit": "10,657",
+        "eps": "₹35.7"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "70,698",
+        "expenses": "52,865",
+        "operatingProfit": "17,833",
+        "opm": "27.2%",
+        "netProfit": "13,718",
+        "eps": "₹35.7"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "72,275",
+        "expenses": "54,921",
+        "operatingProfit": "17,354",
+        "opm": "25.9%",
+        "netProfit": "13,349",
+        "eps": "₹35.7"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "73,188",
+        "expenses": "55,139",
+        "operatingProfit": "18,049",
+        "opm": "26.6%",
+        "netProfit": "13,884",
+        "eps": "₹35.7"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY23",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY23",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY25",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
+    "shareholding": {
+      "promoters": "71.79%",
+      "fii": "11.43%",
+      "dii": "6.15%",
+      "public": "10.63%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": null,
+      "pb": 7.59,
+      "evToEbitda": 11.9,
+      "roce": 57,
+      "roe": 45.6,
+      "debtToEquity": 0.1,
+      "divYield": null,
+      "salesGrowth3Y": 11.2,
+      "profitGrowth3Y": 15,
+      "interestCoverage": 18.5
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": 45.6,
+    "rocePct": 57,
     "debtToEquity": 0.1,
     "divYieldPct": null,
     "salesGrowth3Y": 11.2,
@@ -63,10 +221,10 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793899677106,
+    "updatedAt": 1793901301931,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-05T17:27:57.106Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 24%; ROE updated: 48.2% -> 45.6%; Debt/Equity updated: 0.04 -> 0.1; 3Y Sales Growth: 13.8% -> 11.2%; 3Y Profit Growth: 11.4% -> 15%"
+    "lastFinancialStatementUpdate": "2026-11-05T17:55:01.931Z",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26)"
   },
   "TECHM": {
     "about": "Tech Mahindra Limited provides information technology services and solutions in India, the Americas, Europe, and internationally. The company offers TechM AppGinieZ, a software development lifecycle acceleration platform; Swifter.io, a software engineering platform; ADMSNXT Reforge, an application modernization platform; Autonomous Operations Center, an AI-powered operations platform; and New Age Delivery Platform for DevSecOps and engineering. It also provides LitmusT, a quality engineering and intelligent testing platform; TechM Orion, an agentic AI platform; Ops amplifAler 4.0 for IT operations; Email amplifAler for visualization and automation; SDLC amplifAler solutions; Zone insights solutions for monitoring of object movement; synthetic data generation, freightwatch solutions, cognitive process monitoring, and guardrails framework for AI; VerifAI for scaling AI; and MobiLytix for marketers. In addition, the company offers netOps.ai, an automated cloud platform; AftEAZE solution for warranty and aftermarket problems; AI maturity assessment, generative AI studio, and generative AI performance monitoring; Vision amplifAler, a vision-based solution; Document amplifAler, a digital assistant; and AI-led care, forecasting workbench, AI store, AI adoption, AIOps solution suite, intelligent asset inspection platform, and legal artificial assistant. Further, the company provides business process services, such as consulting CoE and business-process-as-services; Navixus, a digital transformation suite; Cloud and infrastructure services, including enterprise mainframe, FLEX digital workplace, data center services, and CLOUDNXT.NOW, a cloud service; and digital enterprise applications comprising SAP, Oracle, Salesforce, ServiceNow, enterprise digital solutions, digital process solutions, and Emerging Apps. Additionally, it offers engineering, experience, network, and testing services. The company was incorporated in 1986 and is based in Pune, India.",

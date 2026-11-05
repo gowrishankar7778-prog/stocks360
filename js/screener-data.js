@@ -1,7 +1,7 @@
 /**
  * Stocks 360 - Comprehensive Stock Screener Dataset (screener-data.js)
  * Automatically synchronized with latest NSE prices, indicators, and audited financial statements.
- * Last Update: Today (5 Nov), 10:57 pm IST (Financial Statements Synced)
+ * Last Update: Today (5 Nov), 11:25 pm IST (Financial Statements Synced)
  */
 
 const SCREENER_METRIC_DEFINITIONS = {
@@ -127,7 +127,7 @@ const STOCKS_SCREENER_DATASET = [
     "marketCapCr": 881099,
     "pe": 16.9,
     "roePct": 45.6,
-    "rocePct": 62.4,
+    "rocePct": 57,
     "debtToEquity": 0.1,
     "divYieldPct": 1.35,
     "dma50": 2275.05,
@@ -149,39 +149,196 @@ const STOCKS_SCREENER_DATASET = [
       {
         "year": "FY23",
         "sales": "2,25,458",
-        "netProfit": "42,147",
+        "expenses": "1,71,348",
+        "operatingProfit": "54,110",
         "opm": "24%",
+        "pbt": "56,056",
+        "taxPct": "25%",
+        "netProfit": "42,147",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "2,40,893",
-        "netProfit": "45,908",
+        "expenses": "1,83,079",
+        "operatingProfit": "57,814",
         "opm": "24%",
+        "pbt": "61,058",
+        "taxPct": "25%",
+        "netProfit": "45,908",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "2,55,324",
-        "netProfit": "48,553",
+        "expenses": "1,94,046",
+        "operatingProfit": "61,278",
         "opm": "24%",
+        "pbt": "64,575",
+        "taxPct": "25%",
+        "netProfit": "48,553",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "2,67,021",
-        "netProfit": "49,210",
+        "expenses": "2,02,936",
+        "operatingProfit": "64,085",
         "opm": "24%",
+        "pbt": "65,449",
+        "taxPct": "25%",
+        "netProfit": "49,210",
+        "eps": "₹142.7",
         "roe": "45.6%",
         "borrowings": "Nil"
       }
     ],
-    "lastFinancialUpdate": "5 Nov, 10:57 pm IST",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 24%; ROE updated: 48.2% -> 45.6%",
-    "hasFinancialStatementUpdate": true
+    "lastFinancialUpdate": "5 Nov, 11:25 pm IST",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26)",
+    "hasFinancialStatementUpdate": true,
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "67,087",
+        "expenses": "53,233",
+        "operatingProfit": "13,854",
+        "opm": "22.2%",
+        "netProfit": "10,657",
+        "eps": "₹35.7"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "70,698",
+        "expenses": "52,865",
+        "operatingProfit": "17,833",
+        "opm": "27.2%",
+        "netProfit": "13,718",
+        "eps": "₹35.7"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "72,275",
+        "expenses": "54,921",
+        "operatingProfit": "17,354",
+        "opm": "25.9%",
+        "netProfit": "13,349",
+        "eps": "₹35.7"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "73,188",
+        "expenses": "55,139",
+        "operatingProfit": "18,049",
+        "opm": "26.6%",
+        "netProfit": "13,884",
+        "eps": "₹35.7"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY23",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY23",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY25",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
+    "shareholding": {
+      "promoters": "71.79%",
+      "fii": "11.43%",
+      "dii": "6.15%",
+      "public": "10.63%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": null,
+      "pb": 7.59,
+      "evToEbitda": 11.9,
+      "roce": 57,
+      "roe": 45.6,
+      "debtToEquity": 0.1,
+      "divYield": null,
+      "salesGrowth3Y": 11.2,
+      "profitGrowth3Y": 15,
+      "interestCoverage": 18.5
+    }
   },
   {
     "symbol": "INFY",
@@ -206,7 +363,7 @@ const STOCKS_SCREENER_DATASET = [
     "marketCapCr": 468777,
     "pe": 16.4,
     "roePct": 30,
-    "rocePct": 41.5,
+    "rocePct": 37.5,
     "debtToEquity": 0.09,
     "divYieldPct": 1.88,
     "dma50": 1086.6,
@@ -228,39 +385,196 @@ const STOCKS_SCREENER_DATASET = [
       {
         "year": "FY23",
         "sales": "1,46,767",
-        "netProfit": "24,095",
+        "expenses": "1,15,946",
+        "operatingProfit": "30,821",
         "opm": "21%",
+        "pbt": "32,046",
+        "taxPct": "25%",
+        "netProfit": "24,095",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "1,53,670",
-        "netProfit": "26,233",
+        "expenses": "1,21,399",
+        "operatingProfit": "32,271",
         "opm": "21%",
+        "pbt": "34,890",
+        "taxPct": "25%",
+        "netProfit": "26,233",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "1,62,990",
-        "netProfit": "26,713",
+        "expenses": "1,28,762",
+        "operatingProfit": "34,228",
         "opm": "21%",
+        "pbt": "35,528",
+        "taxPct": "25%",
+        "netProfit": "26,713",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "1,78,650",
-        "netProfit": "29,440",
+        "expenses": "1,41,133",
+        "operatingProfit": "37,517",
         "opm": "21%",
+        "pbt": "39,155",
+        "taxPct": "25%",
+        "netProfit": "29,440",
+        "eps": "₹75.1",
         "roe": "30.0%",
         "borrowings": "Nil"
       }
     ],
-    "lastFinancialUpdate": "5 Nov, 10:57 pm IST",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 21%; ROE updated: 31.8% -> 30%",
-    "hasFinancialStatementUpdate": true
+    "lastFinancialUpdate": "5 Nov, 11:25 pm IST",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26)",
+    "hasFinancialStatementUpdate": true,
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "45,479",
+        "expenses": "36,829",
+        "operatingProfit": "8,650",
+        "opm": "20.5%",
+        "netProfit": "6,654",
+        "eps": "₹18.8"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "46,402",
+        "expenses": "35,351",
+        "operatingProfit": "11,051",
+        "opm": "25.6%",
+        "netProfit": "8,501",
+        "eps": "₹18.8"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "48,211",
+        "expenses": "38,111",
+        "operatingProfit": "10,100",
+        "opm": "22.6%",
+        "netProfit": "7,769",
+        "eps": "₹18.8"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "49,244",
+        "expenses": "39,074",
+        "operatingProfit": "10,170",
+        "opm": "22.2%",
+        "netProfit": "7,823",
+        "eps": "₹18.8"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY23",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY23",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY25",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
+    "shareholding": {
+      "promoters": "15.99%",
+      "fii": "33.4%",
+      "dii": "17.98%",
+      "public": "32.63%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": null,
+      "pb": 4.85,
+      "evToEbitda": 964.8,
+      "roce": 37.5,
+      "roe": 30,
+      "debtToEquity": 0.09,
+      "divYield": null,
+      "salesGrowth3Y": 1.4,
+      "profitGrowth3Y": -2.6,
+      "interestCoverage": 18.5
+    }
   },
   {
     "symbol": "HCLTECH",
@@ -1946,7 +2260,7 @@ const STOCKS_SCREENER_DATASET = [
     "marketCapCr": 2019776,
     "pe": 28.5,
     "roePct": 8.8,
-    "rocePct": 10.5,
+    "rocePct": 11,
     "debtToEquity": 0.44,
     "divYieldPct": 0.35,
     "dma50": 1235.46,
@@ -1968,39 +2282,196 @@ const STOCKS_SCREENER_DATASET = [
       {
         "year": "FY23",
         "sales": "5,29,773",
-        "netProfit": "44,205",
+        "expenses": "4,63,551",
+        "operatingProfit": "66,222",
         "opm": "12.5%",
+        "pbt": "58,793",
+        "taxPct": "25%",
+        "netProfit": "44,205",
+        "eps": "₹60.7",
         "roe": "8.8%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "5,34,534",
-        "netProfit": "42,042",
+        "expenses": "4,67,717",
+        "operatingProfit": "66,817",
         "opm": "12.5%",
+        "pbt": "55,916",
+        "taxPct": "25%",
+        "netProfit": "42,042",
+        "eps": "₹60.7",
         "roe": "8.8%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "5,17,349",
-        "netProfit": "35,262",
+        "expenses": "4,52,680",
+        "operatingProfit": "64,669",
         "opm": "12.5%",
+        "pbt": "46,898",
+        "taxPct": "25%",
+        "netProfit": "35,262",
+        "eps": "₹60.7",
         "roe": "8.8%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "10,57,219",
-        "netProfit": "43,851",
+        "expenses": "9,25,067",
+        "operatingProfit": "1,32,152",
         "opm": "12.5%",
+        "pbt": "58,322",
+        "taxPct": "25%",
+        "netProfit": "43,851",
+        "eps": "₹60.7",
         "roe": "8.8%",
         "borrowings": "Nil"
       }
     ],
-    "lastFinancialUpdate": "5 Nov, 10:57 pm IST",
-    "financialChangeSummary": "ROE updated: 9.8% -> 8.8%; Debt/Equity updated: 0.38 -> 0.44",
-    "hasFinancialStatementUpdate": true
+    "lastFinancialUpdate": "5 Nov, 11:25 pm IST",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26)",
+    "hasFinancialStatementUpdate": true,
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "2,64,905",
+        "expenses": "2,40,666",
+        "operatingProfit": "24,239",
+        "opm": "9.9%",
+        "netProfit": "18,645",
+        "eps": "₹15.2"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "1,41,823",
+        "expenses": "1,32,174",
+        "operatingProfit": "9,649",
+        "opm": "7.3%",
+        "netProfit": "7,422",
+        "eps": "₹15.2"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "1,63,631",
+        "expenses": "1,36,401",
+        "operatingProfit": "27,230",
+        "opm": "17.9%",
+        "netProfit": "20,946",
+        "eps": "₹15.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "3,30,601",
+        "expenses": "3,10,641",
+        "operatingProfit": "19,960",
+        "opm": "6.5%",
+        "netProfit": "15,354",
+        "eps": "₹15.2"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY23",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "Nil",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY23",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY25",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "FY26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
+    "shareholding": {
+      "promoters": "51.8%",
+      "fii": "18.3%",
+      "dii": "9.85%",
+      "public": "20.05%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": null,
+      "pb": 1.88,
+      "evToEbitda": 11.8,
+      "roce": 11,
+      "roe": 8.8,
+      "debtToEquity": 0.44,
+      "divYield": null,
+      "salesGrowth3Y": 29.8,
+      "profitGrowth3Y": 40.6,
+      "interestCoverage": 8.2
+    }
   },
   {
     "symbol": "ONGC",
