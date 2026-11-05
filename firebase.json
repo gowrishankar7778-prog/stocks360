@@ -9,7 +9,11 @@
       "firebase.json",
       "firestore.rules",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "scripts/**",
+      "**/*.log",
+      "test-*.js",
+      "package*.json"
     ],
     "headers": [
       {
