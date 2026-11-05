@@ -1,0 +1,24 @@
+{
+  "name": "stocks-360",
+  "version": "2.4.0",
+  "description": "Comprehensive Indian Stock Screener & Research Platform (NSE/BSE)",
+  "main": "index.html",
+  "scripts": {
+    "test": "node test-screener.js",
+    "sync:fundamentals": "node scripts/update-company-fundamentals.js --all",
+    "sync:stocks": "node scripts/update-nse-stocks.js --all",
+    "sync:news": "node scripts/update-nse-news.js",
+    "deploy": "firebase deploy",
+    "deploy:hosting": "firebase deploy --only hosting"
+  },
+  "keywords": [
+    "stocks",
+    "nse",
+    "bse",
+    "screener",
+    "fundamental-analysis",
+    "financial-statements"
+  ],
+  "author": "Stocks 360",
+  "license": "ISC"
+}

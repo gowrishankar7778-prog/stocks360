@@ -1322,7 +1322,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const listenBtn = document.getElementById("btn-listen-company");
     if (listenBtn) {
       listenBtn.addEventListener("click", () => {
-        toggleCompanyVoiceOverview(stock, isGain, dayPerformanceText, pros);
+        toggleCompanyVoiceOverview(stock, isGain, dayPerformanceText, (investmentThesis && investmentThesis.strengths) || []);
       });
     }
 
