@@ -3,8 +3,13 @@
  * Fetches verified company descriptions, official websites, and audited multi-year
  * financial statements (Sales, Net Profit, OPM %, Borrowings) from exchange data feeds.
  *
- * Shards output into: data/profiles/A.json, data/profiles/B.json, ... data/profiles/0-9.json
- * Cost: Rs 0 (zero paid APIs, no AI tokens consumed)
+ * Capabilities:
+ * - Draws multi-year audited financial statements for NSE-listed equities
+ * - Detects new financial periods, restatements, or revised numbers
+ * - Automatically updates the particular stock in js/screener-data.js when changes occur
+ * - Shards output into data/profiles/A.json ... 0-9.json for high-speed page loads
+ * - Syncs to Firebase Firestore if cloud credentials are present
+ * - Cost: Rs 0 (zero paid APIs, no AI tokens consumed)
  */
 
 const fs = require('fs');
@@ -80,7 +85,7 @@ function saveShard(key, data) {
 
 async function fetchCompanyFundamentals(symbol, auth) {
   const yahooSymbol = `${symbol}.NS`;
-  const modules = 'assetProfile,financialData,defaultKeyStatistics,incomeStatementHistory,balanceSheetHistory';
+  const modules = 'assetProfile,financialData,defaultKeyStatistics,incomeStatementHistory,balanceSheetHistory,incomeStatementHistoryQuarterly';
   const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${yahooSymbol}?modules=${modules}&crumb=${encodeURIComponent(auth.crumb)}`;
 
   const res = await httpGet(url, { 'Cookie': auth.cookie }, 15000);
@@ -101,12 +106,13 @@ async function fetchCompanyFundamentals(symbol, auth) {
 
     // Parse verified annual financials
     const financials = [];
-    // Yahoo returns newest first; let's format them
     const bsMap = {};
     bsHistory.forEach(bs => {
       const year = bs.endDate && bs.endDate.fmt ? bs.endDate.fmt.slice(0, 4) : '';
       if (year) {
-        const debt = bs.totalDebt && bs.totalDebt.raw ? (bs.totalDebt.raw / 10000000) : (bs.longTermDebt && bs.longTermDebt.raw ? (bs.longTermDebt.raw / 10000000) : 0);
+        const debt = bs.totalDebt && bs.totalDebt.raw
+          ? (bs.totalDebt.raw / 10000000)
+          : (bs.longTermDebt && bs.longTermDebt.raw ? (bs.longTermDebt.raw / 10000000) : 0);
         bsMap[year] = Math.round(debt);
       }
     });
@@ -123,7 +129,9 @@ async function fetchCompanyFundamentals(symbol, auth) {
 
       const salesCr = Math.round(revRaw / 10000000);
       const netProfitCr = Math.round(netIncRaw / 10000000);
-      const defaultOpm = financialData.operatingMargins && financialData.operatingMargins.raw ? Number((financialData.operatingMargins.raw * 100).toFixed(1)) : 22.0;
+      const defaultOpm = financialData.operatingMargins && financialData.operatingMargins.raw
+        ? Number((financialData.operatingMargins.raw * 100).toFixed(1))
+        : 22.0;
       const opm = opIncRaw > 0 && revRaw > 0 ? Number(((opIncRaw / revRaw) * 100).toFixed(1)) : defaultOpm;
       const borrowings = bsMap[yrNum] !== undefined ? bsMap[yrNum] : 0;
 
@@ -132,23 +140,35 @@ async function fetchCompanyFundamentals(symbol, auth) {
         sales: salesCr > 0 ? salesCr.toLocaleString('en-IN') : 'N/A',
         netProfit: netProfitCr.toLocaleString('en-IN'),
         opm: `${opm}%`,
-        roe: financialData.returnOnEquity && financialData.returnOnEquity.raw ? `${(financialData.returnOnEquity.raw * 100).toFixed(1)}%` : '15.0%',
+        roe: financialData.returnOnEquity && financialData.returnOnEquity.raw
+          ? `${(financialData.returnOnEquity.raw * 100).toFixed(1)}%`
+          : '15.0%',
         borrowings: borrowings > 0 ? borrowings.toLocaleString('en-IN') : 'Nil'
       });
     });
 
-    // Invert to chronological order (oldest to newest) if needed
+    // Invert to chronological order (oldest to newest)
     financials.reverse();
 
-    // Ratios
+    // Fundamental Ratios
     const pe = stats.trailingPE && stats.trailingPE.raw ? Number(stats.trailingPE.raw.toFixed(1)) : null;
-    const roePct = financialData.returnOnEquity && financialData.returnOnEquity.raw ? Number((financialData.returnOnEquity.raw * 100).toFixed(1)) : null;
-    const debtToEquity = financialData.debtToEquity && financialData.debtToEquity.raw ? Number((financialData.debtToEquity.raw / 100).toFixed(2)) : null;
-    const divYieldPct = stats.dividendYield && stats.dividendYield.raw ? Number((stats.dividendYield.raw * 100).toFixed(2)) : null;
-    const profitGrowth3Y = stats.earningsQuarterlyGrowth && stats.earningsQuarterlyGrowth.raw ? Number((stats.earningsQuarterlyGrowth.raw * 100).toFixed(1)) : null;
-    const salesGrowth3Y = financialData.revenueGrowth && financialData.revenueGrowth.raw ? Number((financialData.revenueGrowth.raw * 100).toFixed(1)) : null;
+    const roePct = financialData.returnOnEquity && financialData.returnOnEquity.raw
+      ? Number((financialData.returnOnEquity.raw * 100).toFixed(1))
+      : null;
+    const debtToEquity = financialData.debtToEquity && financialData.debtToEquity.raw
+      ? Number((financialData.debtToEquity.raw / 100).toFixed(2))
+      : null;
+    const divYieldPct = stats.dividendYield && stats.dividendYield.raw
+      ? Number((stats.dividendYield.raw * 100).toFixed(2))
+      : null;
+    const profitGrowth3Y = stats.earningsQuarterlyGrowth && stats.earningsQuarterlyGrowth.raw
+      ? Number((stats.earningsQuarterlyGrowth.raw * 100).toFixed(1))
+      : null;
+    const salesGrowth3Y = financialData.revenueGrowth && financialData.revenueGrowth.raw
+      ? Number((financialData.revenueGrowth.raw * 100).toFixed(1))
+      : null;
 
-    // Strengths & Risks based on official numbers
+    // Strengths & Risks based on official exchange numbers
     const strengths = [];
     const risks = [];
     if (debtToEquity !== null && debtToEquity <= 0.3) {
@@ -200,8 +220,132 @@ async function fetchCompanyFundamentals(symbol, auth) {
   }
 }
 
+/**
+ * Detects if newly fetched financial statements or ratios contain updates or revisions
+ * compared to previously cached data or the current stock dataset.
+ */
+function detectFinancialChanges(oldProfile, newProfile, stock) {
+  const changes = [];
+  const oldFins = (oldProfile && Array.isArray(oldProfile.financials)) ? oldProfile.financials : (stock.financials || []);
+  const newFins = (newProfile && Array.isArray(newProfile.financials)) ? newProfile.financials : [];
+
+  if (oldFins.length === 0 && newFins.length > 0) {
+    changes.push(`Audited financial statements incorporated (${newFins.length} periods: ${newFins.map(f => f.year).join(', ')})`);
+  } else if (newFins.length > 0) {
+    const oldYears = new Set(oldFins.map(f => f.year));
+    const newYears = new Set(newFins.map(f => f.year));
+    const addedYears = [...newYears].filter(y => !oldYears.has(y));
+    if (addedYears.length > 0) {
+      changes.push(`New financial period added: ${addedYears.join(', ')}`);
+    }
+
+    const latestOld = oldFins[oldFins.length - 1];
+    const latestNew = newFins[newFins.length - 1];
+    if (latestOld && latestNew) {
+      if (latestOld.year !== latestNew.year) {
+        changes.push(`Latest reporting period advanced to ${latestNew.year}`);
+      }
+      if (latestOld.sales !== latestNew.sales) {
+        changes.push(`Sales revised for ${latestNew.year}: ₹${latestOld.sales} -> ₹${latestNew.sales} Cr`);
+      }
+      if (latestOld.netProfit !== latestNew.netProfit) {
+        changes.push(`Net Profit revised for ${latestNew.year}: ₹${latestOld.netProfit} -> ₹${latestNew.netProfit} Cr`);
+      }
+      if (latestOld.borrowings !== latestNew.borrowings) {
+        changes.push(`Borrowings updated for ${latestNew.year}: ₹${latestOld.borrowings} -> ₹${latestNew.borrowings} Cr`);
+      }
+      if (latestOld.opm !== latestNew.opm) {
+        changes.push(`OPM % shifted for ${latestNew.year}: ${latestOld.opm} -> ${latestNew.opm}`);
+      }
+    }
+  }
+
+  // Check key valuation and fundamental ratios
+  if (newProfile.pe && stock.pe && Math.abs(newProfile.pe - stock.pe) >= 0.3) {
+    changes.push(`P/E ratio updated: ${stock.pe}x -> ${newProfile.pe}x`);
+  }
+  if (newProfile.roePct && stock.roePct && Math.abs(newProfile.roePct - stock.roePct) >= 0.5) {
+    changes.push(`ROE updated: ${stock.roePct}% -> ${newProfile.roePct}%`);
+  }
+  if (newProfile.debtToEquity !== null && stock.debtToEquity !== undefined && Math.abs(newProfile.debtToEquity - stock.debtToEquity) >= 0.05) {
+    changes.push(`Debt/Equity updated: ${stock.debtToEquity} -> ${newProfile.debtToEquity}`);
+  }
+  if (newProfile.salesGrowth3Y !== null && stock.salesGrowth3Y !== undefined && Math.abs(newProfile.salesGrowth3Y - stock.salesGrowth3Y) >= 0.5) {
+    changes.push(`3Y Sales Growth: ${stock.salesGrowth3Y}% -> ${newProfile.salesGrowth3Y}%`);
+  }
+  if (newProfile.profitGrowth3Y !== null && stock.profitGrowth3Y !== undefined && Math.abs(newProfile.profitGrowth3Y - stock.profitGrowth3Y) >= 0.5) {
+    changes.push(`3Y Profit Growth: ${stock.profitGrowth3Y}% -> ${newProfile.profitGrowth3Y}%`);
+  }
+
+  return {
+    hasChanged: changes.length > 0,
+    changes: changes
+  };
+}
+
+/**
+ * Updates the particular stock entry in the in-memory STOCKS_SCREENER_DATASET
+ * with the new verified financial statements and fundamentals.
+ */
+function updateStockWithFinancials(stock, newProfile, changeDetails) {
+  let updated = false;
+
+  if (newProfile.financials && newProfile.financials.length > 0) {
+    stock.financials = newProfile.financials;
+    updated = true;
+  }
+  if (newProfile.pe !== null && newProfile.pe !== undefined && newProfile.pe > 0) {
+    stock.pe = newProfile.pe;
+    updated = true;
+  }
+  if (newProfile.roePct !== null && newProfile.roePct !== undefined) {
+    stock.roePct = newProfile.roePct;
+    updated = true;
+  }
+  if (newProfile.debtToEquity !== null && newProfile.debtToEquity !== undefined) {
+    stock.debtToEquity = newProfile.debtToEquity;
+    updated = true;
+  }
+  if (newProfile.divYieldPct !== null && newProfile.divYieldPct !== undefined) {
+    stock.divYieldPct = newProfile.divYieldPct;
+    updated = true;
+  }
+  if (newProfile.salesGrowth3Y !== null && newProfile.salesGrowth3Y !== undefined) {
+    stock.salesGrowth3Y = newProfile.salesGrowth3Y;
+    updated = true;
+  }
+  if (newProfile.profitGrowth3Y !== null && newProfile.profitGrowth3Y !== undefined) {
+    stock.profitGrowth3Y = newProfile.profitGrowth3Y;
+    updated = true;
+  }
+  if (newProfile.marketCapCr && newProfile.marketCapCr > 0) {
+    stock.marketCapCr = newProfile.marketCapCr;
+    updated = true;
+  }
+  if (newProfile.about && (!stock.about || stock.about.length < 50)) {
+    stock.about = newProfile.about;
+    updated = true;
+  }
+  if (newProfile.investmentThesis) {
+    stock.investmentThesis = newProfile.investmentThesis;
+    updated = true;
+  }
+
+  const now = new Date();
+  const timeString = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true });
+  const dateString = now.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short' });
+  stock.lastFinancialUpdate = `${dateString}, ${timeString} IST`;
+
+  if (changeDetails && changeDetails.changes && changeDetails.changes.length > 0) {
+    stock.financialChangeSummary = changeDetails.changes.slice(0, 2).join('; ');
+    stock.hasFinancialStatementUpdate = true;
+  }
+
+  return updated;
+}
+
 async function run() {
-  console.log('Stocks 360: Initializing real fundamentals & annual statements fetcher...');
+  console.log('Stocks 360: Initializing real fundamentals & financial statements synchronizer...');
 
   const auth = await getYahooAuth();
   if (!auth) {
@@ -215,8 +359,8 @@ async function run() {
     process.exit(1);
   }
 
-  const content = fs.readFileSync(DATA_FILE_PATH, 'utf8');
-  const match = content.match(/const STOCKS_SCREENER_DATASET = (\[[\s\S]*?\]);/);
+  const fileContent = fs.readFileSync(DATA_FILE_PATH, 'utf8');
+  const match = fileContent.match(/const STOCKS_SCREENER_DATASET = (\[[\s\S]*?\]);/);
   if (!match) {
     console.error('Could not parse STOCKS_SCREENER_DATASET');
     process.exit(1);
@@ -230,13 +374,26 @@ async function run() {
     process.exit(1);
   }
 
-  // Parse limit if supplied via CLI, e.g. node scripts/update-company-fundamentals.js --all
+  // CLI Arguments parsing
   const isAll = process.argv.includes('--all') || process.env.ALL === 'true';
-  const argLimit = isAll ? stocks.length : parseInt(process.argv[2] || process.env.LIMIT || '200', 10);
-  const targetStocks = stocks.slice(0, Math.min(argLimit, stocks.length));
-  console.log(`Starting real fundamentals sync for ${targetStocks.length} listed equities (out of ${stocks.length} total)...`);
+  const symbolsArgIdx = process.argv.indexOf('--symbols');
+  let targetSymbols = null;
+  if (symbolsArgIdx !== -1 && process.argv[symbolsArgIdx + 1]) {
+    targetSymbols = new Set(process.argv[symbolsArgIdx + 1].toUpperCase().split(',').map(s => s.trim()));
+  }
 
-  // Group by shard
+  let targetStocks;
+  if (targetSymbols) {
+    targetStocks = stocks.filter(s => targetSymbols.has(s.symbol.toUpperCase()));
+  } else if (isAll) {
+    targetStocks = stocks;
+  } else {
+    const limit = parseInt(process.argv[2] || process.env.LIMIT || '100', 10);
+    targetStocks = stocks.slice(0, Math.min(limit, stocks.length));
+  }
+
+  console.log(`Starting financial statement check for ${targetStocks.length} listed equities (out of ${stocks.length} total)...`);
+
   const shardCache = {};
   const dirtyShards = new Set();
 
@@ -253,56 +410,163 @@ async function run() {
   }
 
   let successCount = 0;
-  let skippedCount = 0;
+  let updatedFinancialsCount = 0;
+  let unchangedCount = 0;
+  let datasetModified = false;
+  const changesLog = [];
+
   const CHUNK_SIZE = 5;
 
   for (let i = 0; i < targetStocks.length; i += CHUNK_SIZE) {
     const chunk = targetStocks.slice(i, i + CHUNK_SIZE);
+
     await Promise.all(chunk.map(async (stock) => {
       const sym = stock.symbol.toUpperCase();
       const k = shardKey(sym);
       const shard = getShard(k);
-
-      // Skip if already has verified about description
-      if (shard[sym] && shard[sym].about && shard[sym].financials) {
-        skippedCount++;
-        return;
-      }
+      const existingProfile = shard[sym] || null;
 
       try {
-        const prof = await fetchCompanyFundamentals(sym, auth);
-        if (prof && prof.about) {
-          shard[sym] = prof;
-          dirtyShards.add(k);
-          successCount++;
-          console.log(`  [${successCount + skippedCount}/${targetStocks.length}] ✓ ${sym} -> ${prof.industry || 'Listed Equity'}`);
+        const freshProfile = await fetchCompanyFundamentals(sym, auth);
+        if (!freshProfile) {
+          unchangedCount++;
+          return;
         }
-      } catch (e) {
+
+        // Detect if any changes were made in the financial statements or ratios
+        const changeCheck = detectFinancialChanges(existingProfile, freshProfile, stock);
+
+        if (changeCheck.hasChanged || !existingProfile) {
+          // Update the shard data
+          freshProfile.hasFinancialUpdate = true;
+          freshProfile.lastFinancialStatementUpdate = new Date().toISOString();
+          freshProfile.financialChangeSummary = changeCheck.changes.join('; ');
+
+          shard[sym] = freshProfile;
+          dirtyShards.add(k);
+
+          // Crucially: Update the changes in the particular stock in STOCKS_SCREENER_DATASET
+          const stockUpdated = updateStockWithFinancials(stock, freshProfile, changeCheck);
+          if (stockUpdated) {
+            datasetModified = true;
+          }
+
+          updatedFinancialsCount++;
+          changesLog.push({
+            symbol: sym,
+            changes: changeCheck.changes
+          });
+
+          console.log(`  ★ [UPDATED FINANCIALS] ${sym}: ${changeCheck.changes[0] || 'Statements updated'}`);
+        } else {
+          unchangedCount++;
+        }
+
+        successCount++;
+      } catch (err) {
         // Silently continue to next symbol
       }
     }));
 
-    // Periodically flush progress to disk every 10 chunks
+    // Periodically flush dirty shards to disk
     if (i % (CHUNK_SIZE * 10) === 0 && dirtyShards.size > 0) {
       flushDirtyShards();
     }
-    await new Promise(r => setTimeout(r, 450));
+
+    await new Promise(r => setTimeout(r, 400));
   }
 
-  // Final flush of all shards
+  // Final flush of shards
   flushDirtyShards();
+
+  // If any stock's financial statements or fundamentals changed, rewrite js/screener-data.js
+  if (datasetModified) {
+    console.log(`\nWriting updated stock fundamentals and financial statements back to js/screener-data.js...`);
+    const defsMatch = fileContent.match(/const SCREENER_METRIC_DEFINITIONS = (\{[\s\S]*?\});/);
+    const defsContent = defsMatch ? defsMatch[0] : '';
+
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true });
+    const dateString = now.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short' });
+    const lastUpdatedLabel = `Today (${dateString}), ${timeString} IST (Financial Statements Synced)`;
+
+    const newFileContent = `/**
+ * Stocks 360 - Comprehensive Stock Screener Dataset (screener-data.js)
+ * Automatically synchronized with latest NSE prices, indicators, and audited financial statements.
+ * Last Update: ${lastUpdatedLabel}
+ */
+
+${defsContent}
+
+const STOCKS_SCREENER_DATASET = ${JSON.stringify(stocks, null, 2)};
+
+if (typeof window !== "undefined") {
+  window.SCREENER_METRIC_DEFINITIONS = SCREENER_METRIC_DEFINITIONS;
+  window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
+}
+`;
+
+    fs.writeFileSync(DATA_FILE_PATH, newFileContent, 'utf8');
+    console.log(`✓ Successfully updated ${updatedFinancialsCount} stocks in js/screener-data.js!`);
+
+    // Sync to Firebase Firestore as single document for real-time cloud access
+    try {
+      const secretPath = path.join(__dirname, '..', 'js', 'firebase-secret.json');
+      if (fs.existsSync(secretPath)) {
+        const secret = JSON.parse(fs.readFileSync(secretPath, 'utf8'));
+        const apiKey = secret.apiKey || secret.geminiApiKey;
+        const projectId = secret.projectId || 'project-b005dc8f-09b3-4af6-b2b';
+        if (apiKey) {
+          const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/site_settings/stock_screener_data?key=${apiKey}`;
+          const payload = JSON.stringify({
+            fields: {
+              stocksJson: { stringValue: JSON.stringify(stocks) },
+              count: { integerValue: String(stocks.length) },
+              lastUpdated: { stringValue: lastUpdatedLabel },
+              updatedAt: { integerValue: String(Date.now()) }
+            }
+          });
+
+          const req = https.request(firestoreUrl, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'Content-Length': Buffer.byteLength(payload)
+            }
+          }, (res) => {
+            if (res.statusCode >= 200 && res.statusCode < 300) {
+              console.log('✓ Successfully synced updated financial statements to Firebase Firestore!');
+            }
+          });
+          req.on('error', () => {});
+          req.write(payload);
+          req.end();
+        }
+      }
+    } catch (_) {}
+  }
 
   let totalSaved = 0;
   for (const [k, data] of Object.entries(shardCache)) {
     totalSaved += Object.keys(data).length;
   }
 
-  console.log(`\n========================================`);
-  console.log(`✓ Real Fundamentals Sync Complete!`);
-  console.log(`✓ Newly fetched: ${successCount} | Previously cached: ${skippedCount}`);
-  console.log(`✓ Total companies with real audited overviews: ${totalSaved}`);
+  console.log(`\n======================================================`);
+  console.log(`✓ Financial Statements & Fundamentals Sync Complete!`);
+  console.log(`✓ Stocks Inspected: ${targetStocks.length}`);
+  console.log(`✓ Financial Changes Detected & Updated in Particular Stocks: ${updatedFinancialsCount}`);
+  console.log(`✓ Unchanged / Already Current: ${unchangedCount}`);
   console.log(`✓ Shards written to: data/profiles/*.json`);
-  console.log(`========================================`);
+  if (changesLog.length > 0) {
+    console.log(`\nSummary of Financial Updates:`);
+    changesLog.slice(0, 10).forEach(log => {
+      console.log(`  - ${log.symbol}: ${log.changes.join(' | ')}`);
+    });
+    if (changesLog.length > 10) {
+      console.log(`  ... and ${changesLog.length - 10} more equities.`);
+    }
+  }
+  console.log(`======================================================`);
 }
 
 run();

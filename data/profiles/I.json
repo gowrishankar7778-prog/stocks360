@@ -9,7 +9,7 @@
         "year": "FY23",
         "sales": "1,46,767",
         "netProfit": "24,095",
-        "opm": "0%",
+        "opm": "21%",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
@@ -17,7 +17,7 @@
         "year": "FY24",
         "sales": "1,53,670",
         "netProfit": "26,233",
-        "opm": "0%",
+        "opm": "21%",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
@@ -25,7 +25,7 @@
         "year": "FY25",
         "sales": "1,62,990",
         "netProfit": "26,713",
-        "opm": "0%",
+        "opm": "21%",
         "roe": "30.0%",
         "borrowings": "Nil"
       },
@@ -33,7 +33,7 @@
         "year": "FY26",
         "sales": "1,78,650",
         "netProfit": "29,440",
-        "opm": "0%",
+        "opm": "21%",
         "roe": "30.0%",
         "borrowings": "Nil"
       }
@@ -45,6 +45,16 @@
     "divYieldPct": null,
     "salesGrowth3Y": 1.4,
     "profitGrowth3Y": -2.6,
+    "investmentThesis": {
+      "strengths": [
+        "Virtually debt-free balance sheet with conservative capital structure.",
+        "Strong profitability track record with an attractive Return on Equity of 30%.",
+        "Healthy operating profit margins of 21.0%."
+      ],
+      "risks": [
+        "Subject to industry cyclicality and macroeconomic shifts."
+      ]
+    },
     "strengths": [
       "Virtually debt-free balance sheet with conservative capital structure.",
       "Strong profitability track record with an attractive Return on Equity of 30%.",
@@ -53,7 +63,10 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793788312570
+    "updatedAt": 1793899674249,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-05T17:27:54.388Z",
+    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 21%; ROE updated: 31.8% -> 30%; 3Y Sales Growth: 14.5% -> 1.4%; 3Y Profit Growth: 9.8% -> -2.6%"
   },
   "IBULLSLTD": {
     "about": "Indiabulls Limited, together with its subsidiaries, engages in the in financial services and digital platforms business in India. The company engages in real estate development, stock broking, asset reconstruction, digital payments and financial services, and equipment leasing. The company was formerly known as Yaari Digital Integrated Services Limited and changed its name to Indiabulls Limited in October 2025. Indiabulls Limited was incorporated in 2007 and is based in Mumbai, India.",

@@ -1,7 +1,7 @@
 /**
  * Stocks 360 - Comprehensive Stock Screener Dataset (screener-data.js)
- * Automatically synchronized on weekdays at 4:45 PM IST.
- * Last Update: Today (4 Nov), 5:30 pm IST
+ * Automatically synchronized with latest NSE prices, indicators, and audited financial statements.
+ * Last Update: Today (5 Nov), 10:57 pm IST (Financial Statements Synced)
  */
 
 const SCREENER_METRIC_DEFINITIONS = {
@@ -111,14 +111,12 @@ const STOCKS_SCREENER_DATASET = [
     "about": "Tata Consultancy Services Ltd (TCS) is the flagship IT services arm of the Tata Group and India's largest software exporter by revenue and market capitalization. Operating in 55 countries with over 600,000 professionals, TCS provides digital transformation, cognitive business operations, cyber security, and enterprise AI consulting to Global 2000 corporations.<br><br>TCS maintains industry-benchmark operating margins (~25%) and pristine governance standards. It has built deep intellectual property across its TCS BaNCS core banking platform and has trained over 350,000 engineers in foundational Generative AI.",
     "investmentThesis": {
       "strengths": [
-        "Global scale with unmatched client relationships (over 1,300 active global clients and strong multi-billion dollar order book).",
-        "Pristine balance sheet with zero debt, exceptional ROE (>48%), and consistent 80%+ free cash flow distribution via dividends and buybacks.",
-        "Deep domain expertise across banking, financial services, healthcare, and retail sectors."
+        "Virtually debt-free balance sheet with conservative capital structure.",
+        "Strong profitability track record with an attractive Return on Equity of 45.6%.",
+        "Healthy operating profit margins of 24.0%."
       ],
       "risks": [
-        "Discretionary tech spending slowdown across North America and Europe impacting deal ramp-up velocity.",
-        "Geopolitical uncertainties and cross-border visa regulation shifts in key Western markets.",
-        "Wage inflation and attrition cycles in specialized emerging AI talent pools."
+        "Subject to industry cyclicality and macroeconomic shifts."
       ]
     },
     "cmp": 2436,
@@ -128,9 +126,9 @@ const STOCKS_SCREENER_DATASET = [
     "lastUpdated": "Today (4 Nov), 5:30 pm IST",
     "marketCapCr": 881099,
     "pe": 16.9,
-    "roePct": 48.2,
+    "roePct": 45.6,
     "rocePct": 62.4,
-    "debtToEquity": 0.04,
+    "debtToEquity": 0.1,
     "divYieldPct": 1.35,
     "dma50": 2275.05,
     "dma200": 2420.71,
@@ -139,14 +137,51 @@ const STOCKS_SCREENER_DATASET = [
     "volume": 3140927,
     "avgVolume": 3812695.8,
     "volumeSurge": 0.82,
-    "salesGrowth3Y": 13.8,
-    "profitGrowth3Y": 11.4,
+    "salesGrowth3Y": 11.2,
+    "profitGrowth3Y": 15,
     "dayHigh": 2493.8,
     "dayLow": 2420,
     "high52": 3350,
     "low52": 1976.8,
     "dayOpen": 2481.4,
-    "prevClose": 2499.1
+    "prevClose": 2499.1,
+    "financials": [
+      {
+        "year": "FY23",
+        "sales": "2,25,458",
+        "netProfit": "42,147",
+        "opm": "24%",
+        "roe": "45.6%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY24",
+        "sales": "2,40,893",
+        "netProfit": "45,908",
+        "opm": "24%",
+        "roe": "45.6%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY25",
+        "sales": "2,55,324",
+        "netProfit": "48,553",
+        "opm": "24%",
+        "roe": "45.6%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY26",
+        "sales": "2,67,021",
+        "netProfit": "49,210",
+        "opm": "24%",
+        "roe": "45.6%",
+        "borrowings": "Nil"
+      }
+    ],
+    "lastFinancialUpdate": "5 Nov, 10:57 pm IST",
+    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 24%; ROE updated: 48.2% -> 45.6%",
+    "hasFinancialStatementUpdate": true
   },
   {
     "symbol": "INFY",
@@ -155,14 +190,12 @@ const STOCKS_SCREENER_DATASET = [
     "about": "Infosys Ltd is a global leader in next-generation digital services and enterprise consulting. Leveraging its cloud-first platform Infosys Cobalt and AI-suite Infosys Topaz, the company enables clients across 56 countries to navigate enterprise cloud transformation, generative AI workflows, and digital engineering.<br><br>Headquartered in Bengaluru, Infosys is renowned for financial transparency, capital return discipline, and a strong balance sheet. The company collaborates closely with major hyper-scalers (AWS, Microsoft Azure, Google Cloud, and Nvidia) for AI-led enterprise modernisation.",
     "investmentThesis": {
       "strengths": [
-        "Pioneering cloud and enterprise AI platforms (Cobalt and Topaz) driving large multi-year digital transformation contracts.",
-        "Outstanding capital efficiency with zero financial debt, high ROE (>31%), and consistent dividend distributions.",
-        "Strong strategic alliances with top global AI and technology cloud providers."
+        "Virtually debt-free balance sheet with conservative capital structure.",
+        "Strong profitability track record with an attractive Return on Equity of 30%.",
+        "Healthy operating profit margins of 21.0%."
       ],
       "risks": [
-        "Exposure to BFSI and telecom sector discretionary spending freezes in Western economies.",
-        "Foreign exchange volatility with majority of billing denominated in USD and EUR.",
-        "Pricing compression on traditional legacy application maintenance contracts."
+        "Subject to industry cyclicality and macroeconomic shifts."
       ]
     },
     "cmp": 1128.2,
@@ -172,9 +205,9 @@ const STOCKS_SCREENER_DATASET = [
     "lastUpdated": "Today (4 Nov), 5:30 pm IST",
     "marketCapCr": 468777,
     "pe": 16.4,
-    "roePct": 31.8,
+    "roePct": 30,
     "rocePct": 41.5,
-    "debtToEquity": 0.08,
+    "debtToEquity": 0.09,
     "divYieldPct": 1.88,
     "dma50": 1086.6,
     "dma200": 1208.12,
@@ -183,14 +216,51 @@ const STOCKS_SCREENER_DATASET = [
     "volume": 9324799,
     "avgVolume": 17158803.6,
     "volumeSurge": 0.54,
-    "salesGrowth3Y": 14.5,
-    "profitGrowth3Y": 9.8,
+    "salesGrowth3Y": 1.4,
+    "profitGrowth3Y": -2.6,
     "dayHigh": 1145.9,
     "dayLow": 1113.1,
     "high52": 1728,
     "low52": 980.4,
     "dayOpen": 1140.1,
-    "prevClose": 1148.1
+    "prevClose": 1148.1,
+    "financials": [
+      {
+        "year": "FY23",
+        "sales": "1,46,767",
+        "netProfit": "24,095",
+        "opm": "21%",
+        "roe": "30.0%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY24",
+        "sales": "1,53,670",
+        "netProfit": "26,233",
+        "opm": "21%",
+        "roe": "30.0%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY25",
+        "sales": "1,62,990",
+        "netProfit": "26,713",
+        "opm": "21%",
+        "roe": "30.0%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY26",
+        "sales": "1,78,650",
+        "netProfit": "29,440",
+        "opm": "21%",
+        "roe": "30.0%",
+        "borrowings": "Nil"
+      }
+    ],
+    "lastFinancialUpdate": "5 Nov, 10:57 pm IST",
+    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 21%; ROE updated: 31.8% -> 30%",
+    "hasFinancialStatementUpdate": true
   },
   {
     "symbol": "HCLTECH",
@@ -1862,14 +1932,10 @@ const STOCKS_SCREENER_DATASET = [
     "about": "Reliance Industries Limited (RIL) is a Fortune 500 company and India's largest private sector enterprise. RIL's diversified portfolio spans energy and petrochemicals, retail (Reliance Retail), digital telecom services (Jio Platforms), and new green energy gigafactories in Jamnagar, Gujarat.<br><br>The company's Jamnagar refinery complex is the world's largest single-location refining hub with a complexity index exceeding 21. RIL is executing a massive ₹75,000 Crore green energy transition into solar PV modules, green hydrogen, sodium-ion batteries, and fuel cells.",
     "investmentThesis": {
       "strengths": [
-        "Omnipresent consumer moat across retail and digital services alongside world-class energy and refining cash flows.",
-        "Massive domestic scale enabling pricing power and unparalleled capital expenditure capabilities.",
-        "Visionary capex roadmap in new energy ecosystems including green hydrogen and solar gigafactories."
+        "Established operating presence in its respective sector in India."
       ],
       "risks": [
-        "Exposure to global gross refining margin (GRM) cyclicality and petrochemical spread volatility.",
-        "Elevated net debt levels from continuous multi-billion dollar capex across telecom, retail, and green energy.",
-        "Regulatory interventions regarding domestic windfall taxes and carbon emission policies."
+        "Return on Equity is currently subdued at 8.8%."
       ]
     },
     "cmp": 1311,
@@ -1879,9 +1945,9 @@ const STOCKS_SCREENER_DATASET = [
     "lastUpdated": "Today (4 Nov), 5:30 pm IST",
     "marketCapCr": 2019776,
     "pe": 28.5,
-    "roePct": 9.8,
+    "roePct": 8.8,
     "rocePct": 10.5,
-    "debtToEquity": 0.38,
+    "debtToEquity": 0.44,
     "divYieldPct": 0.35,
     "dma50": 1235.46,
     "dma200": 1326.77,
@@ -1890,14 +1956,51 @@ const STOCKS_SCREENER_DATASET = [
     "volume": 19444018,
     "avgVolume": 25786590.8,
     "volumeSurge": 0.75,
-    "salesGrowth3Y": 18.5,
-    "profitGrowth3Y": 12.2,
+    "salesGrowth3Y": 29.8,
+    "profitGrowth3Y": 40.6,
     "dayHigh": 1318.9,
     "dayLow": 1296,
     "high52": 1611.8,
     "low52": 1152.2,
     "dayOpen": 1301.9,
-    "prevClose": 1307.9
+    "prevClose": 1307.9,
+    "financials": [
+      {
+        "year": "FY23",
+        "sales": "5,29,773",
+        "netProfit": "44,205",
+        "opm": "12.5%",
+        "roe": "8.8%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY24",
+        "sales": "5,34,534",
+        "netProfit": "42,042",
+        "opm": "12.5%",
+        "roe": "8.8%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY25",
+        "sales": "5,17,349",
+        "netProfit": "35,262",
+        "opm": "12.5%",
+        "roe": "8.8%",
+        "borrowings": "Nil"
+      },
+      {
+        "year": "FY26",
+        "sales": "10,57,219",
+        "netProfit": "43,851",
+        "opm": "12.5%",
+        "roe": "8.8%",
+        "borrowings": "Nil"
+      }
+    ],
+    "lastFinancialUpdate": "5 Nov, 10:57 pm IST",
+    "financialChangeSummary": "ROE updated: 9.8% -> 8.8%; Debt/Equity updated: 0.38 -> 0.44",
+    "hasFinancialStatementUpdate": true
   },
   {
     "symbol": "ONGC",
