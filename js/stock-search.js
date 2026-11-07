@@ -1710,7 +1710,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (cachedMutualFundsList) {
       return Promise.resolve(cachedMutualFundsList);
     }
-    return fetch("data/mutual-funds/top-mutual-funds.json?v=55")
+    return fetch("data/mutual-funds/top-mutual-funds.json?v=56")
       .then((res) => (res.ok ? res.json() : { funds: [] }))
       .then((data) => {
         cachedMutualFundsList = Array.isArray(data.funds) ? data.funds : [];

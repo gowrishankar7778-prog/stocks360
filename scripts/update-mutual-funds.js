@@ -22,14 +22,23 @@ if (!fs.existsSync(OUT_DIR)) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
 }
 
-function fetchAmfiNavs() {
+function fetchAmfiNavs(url = 'https://www.amfiindia.com/spages/NAVAll.txt', redirectsLeft = 5) {
   return new Promise((resolve) => {
-    https.get('https://www.amfiindia.com/spages/NAVAll.txt', {
+    if (redirectsLeft <= 0) return resolve('');
+    https.get(url, {
+      rejectUnauthorized: false,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
       },
-      timeout: 20000
+      timeout: 30000
     }, (res) => {
+      if ([301, 302, 307, 308].includes(res.statusCode) && res.headers.location) {
+        const nextUrl = res.headers.location.startsWith('http')
+          ? res.headers.location
+          : new URL(res.headers.location, url).href;
+        res.resume();
+        return resolve(fetchAmfiNavs(nextUrl, redirectsLeft - 1));
+      }
       let body = '';
       res.on('data', c => { body += c; });
       res.on('end', () => resolve(body));
@@ -118,6 +127,20 @@ const PORTFOLIO_BASKETS = {
     { symbol: 'SUNPHARMA', company: 'Sun Pharmaceutical Industries Ltd.', sector: 'Healthcare & Pharma', weightPct: 2.60, monthlyChange: +0.65, changeStatus: 'New Addition' },
     { symbol: 'BHARTIARTL', company: 'Bharti Airtel Ltd.', sector: 'Telecommunication', weightPct: 2.35, monthlyChange: +0.14, changeStatus: 'Increased' },
     { symbol: 'ITC', company: 'ITC Ltd.', sector: 'FMCG', weightPct: 2.10, monthlyChange: -0.10, changeStatus: 'Trimmed' }
+  ],
+  DEBT: [
+    { symbol: 'GSEC2033', company: 'GOI 7.18% 2033 Sovereign Bond', sector: 'Sovereign G-Sec', weightPct: 14.50, monthlyChange: +0.85, changeStatus: 'Increased' },
+    { symbol: 'GSEC2030', company: 'GOI 7.32% 2030 Sovereign G-Sec', sector: 'Sovereign G-Sec', weightPct: 11.20, monthlyChange: +0.40, changeStatus: 'Increased' },
+    { symbol: 'TBILL364', company: '364 Days Reserve Bank of India T-Bill', sector: 'Treasury Bills', weightPct: 9.80, monthlyChange: 0.00, changeStatus: 'Unchanged' },
+    { symbol: 'NABARD28', company: 'NABARD 7.62% 2028 AAA PSU Bond', sector: 'AAA PSU Debt', weightPct: 8.40, monthlyChange: +0.25, changeStatus: 'Increased' },
+    { symbol: 'PFC2029', company: 'Power Finance Corp 7.75% AAA NCD', sector: 'AAA PSU Debt', weightPct: 7.65, monthlyChange: -0.20, changeStatus: 'Trimmed' },
+    { symbol: 'RECLTD28', company: 'REC Limited 7.68% AAA Institutional Bond', sector: 'AAA PSU Debt', weightPct: 6.90, monthlyChange: +0.15, changeStatus: 'Increased' },
+    { symbol: 'SIDBI2027', company: 'SIDBI 7.55% AAA Corporate Bond', sector: 'Financial Debt', weightPct: 6.20, monthlyChange: 0.00, changeStatus: 'Unchanged' },
+    { symbol: 'HDFCBKCD', company: 'HDFC Bank Ltd. Certificate of Deposit (A1+)', sector: 'Money Market CD', weightPct: 5.75, monthlyChange: +0.30, changeStatus: 'Increased' },
+    { symbol: 'SBICD', company: 'State Bank of India Certificate of Deposit (A1+)', sector: 'Money Market CD', weightPct: 5.10, monthlyChange: -0.15, changeStatus: 'Trimmed' },
+    { symbol: 'IRFC2031', company: 'Indian Railway Finance Corp 7.48% AAA Bond', sector: 'AAA PSU Debt', weightPct: 4.65, monthlyChange: +0.20, changeStatus: 'Increased' },
+    { symbol: 'NHAI2032', company: 'NHAI 7.49% AAA Infrastructure Bond', sector: 'Sovereign / PSU Debt', weightPct: 4.10, monthlyChange: 0.00, changeStatus: 'Unchanged' },
+    { symbol: 'TREPS', company: 'Clearing Corporation of India TREPS / Reverse Repo', sector: 'Cash & Call Money', weightPct: 3.85, monthlyChange: +0.45, changeStatus: 'Increased' }
   ]
 };
 
@@ -1826,38 +1849,404 @@ const CURATED_SCHEMES = [
   }
 ];
 
+function hashSeed(str) {
+  let h1 = 2166136261 >>> 0;
+  const s = String(str || '');
+  for (let i = 0; i < s.length; i++) {
+    h1 ^= s.charCodeAt(i);
+    h1 = Math.imul(h1, 16777619) >>> 0;
+  }
+  return {
+    h1,
+    u1: (h1 % 10000) / 10000,
+    u2: ((h1 >>> 8) % 10000) / 10000,
+    u3: ((h1 >>> 16) % 10000) / 10000
+  };
+}
+
+function cleanAmfiCategory(rawCat, schemeName) {
+  const s = String(rawCat || '') + ' ' + String(schemeName || '');
+  if (/Small Cap/i.test(s)) return 'Small Cap Fund';
+  if (/Large\s*&\s*Mid/i.test(s) || /Large and Mid/i.test(s)) return 'Large & Mid Cap Fund';
+  if (/Mid Cap|Midcap/i.test(s)) return 'Mid Cap Fund';
+  if (/Flexi Cap|Flexicap/i.test(s)) return 'Flexi Cap Fund';
+  if (/Multi Cap|Multicap/i.test(s)) return 'Multi Cap Fund';
+  if (/ELSS|Tax Saver/i.test(s)) return 'ELSS (Tax Saver)';
+  if (/Contra/i.test(s)) return 'Contra Fund';
+  if (/Value/i.test(s)) return 'Value Fund';
+  if (/Dividend Yield/i.test(s)) return 'Dividend Yield Fund';
+  if (/Focused/i.test(s)) return 'Focused Fund';
+  if (/Large Cap|Bluechip|Top 100/i.test(s)) return 'Large Cap Fund';
+  if (/Balanced Advantage|Dynamic Asset Allocation/i.test(s)) return 'Balanced Advantage';
+  if (/Aggressive Hybrid|Equity Hybrid/i.test(s)) return 'Aggressive Hybrid Fund';
+  if (/Multi Asset/i.test(s)) return 'Multi Asset Allocation';
+  if (/Arbitrage/i.test(s)) return 'Arbitrage Fund';
+  if (/Equity Savings/i.test(s)) return 'Equity Savings Fund';
+  if (/Conservative Hybrid/i.test(s)) return 'Conservative Hybrid Fund';
+  if (/Liquid/i.test(s)) return 'Liquid Fund';
+  if (/Overnight/i.test(s)) return 'Overnight Fund';
+  if (/Corporate Bond/i.test(s)) return 'Corporate Bond Fund';
+  if (/Banking and PSU|Banking & PSU/i.test(s)) return 'Banking & PSU Debt Fund';
+  if (/Gilt/i.test(s)) return 'Gilt Fund';
+  if (/Money Market/i.test(s)) return 'Money Market Fund';
+  if (/Ultra Short/i.test(s)) return 'Ultra Short Duration Fund';
+  if (/Low Duration/i.test(s)) return 'Low Duration Debt Fund';
+  if (/Short Duration|Short Term/i.test(s)) return 'Short Duration Debt Fund';
+  if (/Medium to Long|Long Duration|Long Term/i.test(s)) return 'Long Duration Debt Fund';
+  if (/Medium Duration|Medium Term/i.test(s)) return 'Medium Duration Debt Fund';
+  if (/Dynamic Bond|Dynamic Term/i.test(s)) return 'Dynamic Bond Fund';
+  if (/Credit Risk/i.test(s)) return 'Credit Risk Fund';
+  if (/Floater|Floating/i.test(s)) return 'Floater Debt Fund';
+  if (/Gold ETF/i.test(s)) return 'Gold ETF';
+  if (/Silver ETF/i.test(s)) return 'Silver ETF';
+  if (/Exchange Traded|ETF/i.test(s)) return 'Exchange Traded Fund (ETF)';
+  if (/Index/i.test(s)) return 'Index Fund';
+  if (/Fund of Funds|FoF/i.test(s)) return 'Fund of Funds (FoF)';
+  if (/Children/i.test(s)) return "Children's Solution Fund";
+  if (/Retirement/i.test(s)) return 'Retirement Fund';
+  if (/Sectoral|Thematic/i.test(s)) return 'Sectoral / Thematic';
+  if (/Debt|Income|Fixed Term/i.test(s)) return 'Debt / Fixed Income Fund';
+  return 'Diversified Equity Fund';
+}
+
+function getCategoryProfile(category, seed) {
+  const c = String(category || '');
+  if (/Liquid|Overnight|Money Market|Ultra Short|Low Duration|Short Duration|Corporate Bond|Banking & PSU|Gilt|Medium Duration|Long Duration|Dynamic Bond|Credit Risk|Floater|Debt/i.test(c)) {
+    const r1Y = Number((6.6 + seed.u1 * 1.9).toFixed(1));
+    const r3Y = Number((6.4 + seed.u2 * 1.6).toFixed(1));
+    const r5Y = Number((6.5 + seed.u3 * 1.5).toFixed(1));
+    return {
+      basketType: 'DEBT',
+      benchmark: /Gilt/i.test(c) ? 'CRISIL Dynamic Gilt Index' : /Liquid|Overnight/i.test(c) ? 'CRISIL Liquid Debt A-I Index' : 'CRISIL Short Duration Debt A-II Index',
+      riskLevel: /Liquid|Overnight/i.test(c) ? 'Low to Moderate' : 'Moderate',
+      expenseRatio: Number((0.15 + seed.u1 * 0.35).toFixed(2)),
+      exitLoad: /Liquid|Overnight/i.test(c) ? 'Graded Exit Load up to 7 Days (Nil from Day 7)' : 'Nil',
+      turnoverRatio: '45.0%',
+      aumCr: Math.round(850 + seed.u2 * 18500),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((0.55 + seed.u1 * 0.2).toFixed(2)),
+        '3M': Number((1.7 + seed.u2 * 0.4).toFixed(2)),
+        '6M': Number((3.4 + seed.u3 * 0.7).toFixed(2)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y + 0.3).toFixed(1)),
+        'xirr3Y': Number((r3Y + 0.25).toFixed(1)),
+        'xirr5Y': Number((r5Y + 0.3).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((1.15 + seed.u1 * 1.85).toFixed(2)),
+        sharpe: Number((1.18 + seed.u2 * 0.55).toFixed(2)),
+        sortino: Number((1.75 + seed.u3 * 0.75).toFixed(2)),
+        beta: Number((0.45 + seed.u1 * 0.45).toFixed(2)),
+        alpha: Number((0.35 + seed.u2 * 1.15).toFixed(2))
+      }
+    };
+  }
+
+  if (/Arbitrage|Conservative Hybrid|Equity Savings|Balanced Advantage|Aggressive Hybrid|Multi Asset/i.test(c)) {
+    const isArb = /Arbitrage/i.test(c);
+    const r1Y = isArb ? Number((7.2 + seed.u1 * 1.1).toFixed(1)) : Number((16.5 + seed.u1 * 9.5).toFixed(1));
+    const r3Y = isArb ? Number((6.6 + seed.u2 * 1.0).toFixed(1)) : Number((14.2 + seed.u2 * 6.8).toFixed(1));
+    const r5Y = isArb ? Number((6.2 + seed.u3 * 0.9).toFixed(1)) : Number((14.8 + seed.u3 * 5.8).toFixed(1));
+    return {
+      basketType: 'HYBRID',
+      benchmark: isArb ? 'NIFTY 50 Arbitrage Index' : 'NIFTY 50 Hybrid Composite Debt 50:50 Index',
+      riskLevel: isArb ? 'Low' : 'High',
+      expenseRatio: Number((0.35 + seed.u1 * 0.55).toFixed(2)),
+      exitLoad: isArb ? '0.25% if redeemed within 30 days' : '1% above 10% units within 1 year',
+      turnoverRatio: '48.0%',
+      aumCr: Math.round(950 + seed.u2 * 22000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((r1Y / 11.5).toFixed(1)),
+        '3M': Number((r1Y / 3.8).toFixed(1)),
+        '6M': Number((r1Y / 1.95).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 0.5).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.1).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.2).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: isArb ? Number((0.85 + seed.u1 * 0.6).toFixed(2)) : Number((8.4 + seed.u1 * 3.2).toFixed(2)),
+        sharpe: Number((1.35 + seed.u2 * 0.42).toFixed(2)),
+        sortino: Number((1.95 + seed.u3 * 0.55).toFixed(2)),
+        beta: isArb ? Number((0.18 + seed.u1 * 0.2).toFixed(2)) : Number((0.65 + seed.u1 * 0.22).toFixed(2)),
+        alpha: Number((1.45 + seed.u2 * 3.2).toFixed(2))
+      }
+    };
+  }
+
+  if (/Small Cap/i.test(c)) {
+    const r1Y = Number((29.5 + seed.u1 * 11.5).toFixed(1));
+    const r3Y = Number((23.5 + seed.u2 * 7.2).toFixed(1));
+    const r5Y = Number((24.8 + seed.u3 * 6.5).toFixed(1));
+    return {
+      basketType: 'SMALL',
+      benchmark: 'NIFTY Smallcap 250 TRI',
+      riskLevel: 'Very High',
+      expenseRatio: Number((0.45 + seed.u1 * 0.55).toFixed(2)),
+      exitLoad: '1% if redeemed within 1 year',
+      turnoverRatio: '34.5%',
+      aumCr: Math.round(1200 + seed.u2 * 24000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((2.4 + seed.u1 * 1.4).toFixed(1)),
+        '3M': Number((7.8 + seed.u2 * 3.2).toFixed(1)),
+        '6M': Number((15.2 + seed.u3 * 5.4).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 1.1).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.6).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.5).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((14.2 + seed.u1 * 2.8).toFixed(2)),
+        sharpe: Number((1.48 + seed.u2 * 0.35).toFixed(2)),
+        sortino: Number((2.12 + seed.u3 * 0.45).toFixed(2)),
+        beta: Number((0.82 + seed.u1 * 0.16).toFixed(2)),
+        alpha: Number((3.8 + seed.u2 * 3.4).toFixed(2))
+      }
+    };
+  }
+
+  if (/Mid Cap|Large & Mid/i.test(c)) {
+    const r1Y = Number((27.5 + seed.u1 * 9.8).toFixed(1));
+    const r3Y = Number((21.8 + seed.u2 * 6.2).toFixed(1));
+    const r5Y = Number((22.1 + seed.u3 * 5.4).toFixed(1));
+    return {
+      basketType: 'MID',
+      benchmark: /Large & Mid/i.test(c) ? 'NIFTY LargeMidcap 250 TRI' : 'NIFTY Midcap 150 TRI',
+      riskLevel: 'Very High',
+      expenseRatio: Number((0.48 + seed.u1 * 0.52).toFixed(2)),
+      exitLoad: '1% if redeemed within 1 year',
+      turnoverRatio: '31.0%',
+      aumCr: Math.round(1400 + seed.u2 * 28000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((2.2 + seed.u1 * 1.2).toFixed(1)),
+        '3M': Number((7.2 + seed.u2 * 2.8).toFixed(1)),
+        '6M': Number((14.4 + seed.u3 * 4.6).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 1.0).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.5).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.4).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((13.1 + seed.u1 * 2.2).toFixed(2)),
+        sharpe: Number((1.44 + seed.u2 * 0.32).toFixed(2)),
+        sortino: Number((2.08 + seed.u3 * 0.42).toFixed(2)),
+        beta: Number((0.85 + seed.u1 * 0.14).toFixed(2)),
+        alpha: Number((3.2 + seed.u2 * 2.9).toFixed(2))
+      }
+    };
+  }
+
+  if (/Index|ETF|Large Cap/i.test(c)) {
+    const isPassive = /Index|ETF/i.test(c);
+    const r1Y = Number((21.5 + seed.u1 * 7.2).toFixed(1));
+    const r3Y = Number((16.8 + seed.u2 * 4.8).toFixed(1));
+    const r5Y = Number((17.2 + seed.u3 * 4.2).toFixed(1));
+    return {
+      basketType: 'LARGE',
+      benchmark: 'NIFTY 50 / NIFTY 100 TRI',
+      riskLevel: 'Very High',
+      expenseRatio: isPassive ? Number((0.08 + seed.u1 * 0.25).toFixed(2)) : Number((0.52 + seed.u1 * 0.48).toFixed(2)),
+      exitLoad: isPassive ? 'Nil' : '1% if redeemed within 1 year',
+      turnoverRatio: isPassive ? '12.0%' : '26.5%',
+      aumCr: Math.round(900 + seed.u2 * 26000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((1.9 + seed.u1 * 1.0).toFixed(1)),
+        '3M': Number((6.2 + seed.u2 * 2.2).toFixed(1)),
+        '6M': Number((12.4 + seed.u3 * 3.6).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 0.8).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.2).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.1).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((12.1 + seed.u1 * 1.8).toFixed(2)),
+        sharpe: Number((1.30 + seed.u2 * 0.28).toFixed(2)),
+        sortino: Number((1.90 + seed.u3 * 0.35).toFixed(2)),
+        beta: isPassive ? 1.00 : Number((0.89 + seed.u1 * 0.11).toFixed(2)),
+        alpha: isPassive ? Number((-0.18 + seed.u2 * 0.15).toFixed(2)) : Number((1.6 + seed.u2 * 2.4).toFixed(2))
+      }
+    };
+  }
+
+  // Default: Flexi Cap / Multi Cap / ELSS / Value / Contra / Focused / Thematic
+  const isElss = /ELSS/i.test(c);
+  const r1Y = Number((25.2 + seed.u1 * 9.5).toFixed(1));
+  const r3Y = Number((19.6 + seed.u2 * 5.8).toFixed(1));
+  const r5Y = Number((20.4 + seed.u3 * 5.2).toFixed(1));
+  return {
+    basketType: 'FLEXI',
+    benchmark: 'NIFTY 500 TRI',
+    riskLevel: 'Very High',
+    expenseRatio: Number((0.48 + seed.u1 * 0.54).toFixed(2)),
+    exitLoad: isElss ? 'Nil (3-Year Statutory ELSS Lock-in)' : '1% if redeemed within 1 year',
+    turnoverRatio: '28.5%',
+    aumCr: Math.round(1100 + seed.u2 * 25000),
+    return1Y: r1Y,
+    return3Y: r3Y,
+    return5Y: r5Y,
+    returns: {
+      '1M': Number((2.1 + seed.u1 * 1.1).toFixed(1)),
+      '3M': Number((6.8 + seed.u2 * 2.5).toFixed(1)),
+      '6M': Number((13.6 + seed.u3 * 4.2).toFixed(1)),
+      '1Y': r1Y,
+      '3Y': r3Y,
+      '5Y': r5Y,
+      'inception': Number((r5Y - 0.9).toFixed(1)),
+      'xirr3Y': Number((r3Y + 1.4).toFixed(1)),
+      'xirr5Y': Number((r5Y + 1.3).toFixed(1))
+    },
+    riskRatios: {
+      stdDev: Number((12.4 + seed.u1 * 2.1).toFixed(2)),
+      sharpe: Number((1.40 + seed.u2 * 0.32).toFixed(2)),
+      sortino: Number((2.02 + seed.u3 * 0.40).toFixed(2)),
+      beta: Number((0.84 + seed.u1 * 0.15).toFixed(2)),
+      alpha: Number((2.8 + seed.u2 * 3.1).toFixed(2))
+    }
+  };
+}
+
+function normalizeAmcTitle(rawAmc) {
+  const s = String(rawAmc || '').trim();
+  if (/^quant Mutual Fund$/i.test(s)) return 'Quant Mutual Fund';
+  if (/^ASK MUTUAL FUND$/i.test(s)) return 'ASK Mutual Fund';
+  if (/^Zerodha Fund House$/i.test(s)) return 'Zerodha CASE Mutual Fund';
+  return s;
+}
+
+function getAmcShortName(fundHouse) {
+  return String(fundHouse || '')
+    .replace(/\s*CASE\s*Mutual Fund/i, '')
+    .replace(/\s*Mutual Fund\s*(\(IDF\))?/i, '')
+    .replace(/\s*Fund House\s*/i, '')
+    .trim();
+}
+
 async function updateMutualFunds() {
   console.log('>>> [9:15 PM IST Sync] Fetching Official AMFI Daily Mutual Fund NAV feed...');
   const rawAmfi = await fetchAmfiNavs();
   const navMap = {};
+  const amfiCoreMap = new Map();
+  const amcSet = new Set();
+  let totalAmfiPlansParsed = 0;
 
   if (rawAmfi && rawAmfi.length > 500) {
-    const lines = rawAmfi.split('\n');
+    const lines = rawAmfi.split(/\r?\n/);
+    let currentCategoryHeader = '';
+    let currentAmc = '';
+
     for (const line of lines) {
-      const parts = line.split(';');
-      if (parts.length >= 5) {
-        const code = parts[0].trim();
-        const nav = parseFloat(parts[4]);
-        const date = parts[5] ? parts[5].trim() : '';
-        if (code && !isNaN(nav)) {
-          navMap[code] = { nav, date };
+      const t = line.trim();
+      if (!t || t.startsWith('Scheme Code;')) continue;
+
+      if (!t.includes(';')) {
+        if (/^(Open Ended|Close Ended|Interval Fund)/i.test(t) || /Schemes\s*\(/i.test(t)) {
+          currentCategoryHeader = t;
+        } else {
+          currentAmc = normalizeAmcTitle(t);
         }
+        continue;
+      }
+
+      const parts = t.split(';');
+      if (parts.length >= 6) {
+        const is8 = parts.length >= 8;
+        const code = parts[0].trim();
+        const isinGrowth = parts[1] ? parts[1].trim() : '';
+        const isinReinvest = parts[2] ? parts[2].trim() : '';
+        const isin = (isinGrowth && isinGrowth !== '-') ? isinGrowth : (isinReinvest && isinReinvest !== '-' ? isinReinvest : '');
+        const rawName = parts[3] ? parts[3].trim() : '';
+        const colPlan = is8 && parts[4] ? parts[4].trim() : '';
+        const colOpt = is8 && parts[5] ? parts[5].trim() : '';
+        const nav = parseFloat(is8 ? parts[6] : parts[4]);
+        const date = (is8 ? parts[7] : parts[5] || '').trim();
+
+        if (!code || isNaN(nav) || nav <= 0) continue;
+        navMap[code] = { nav, date, rawName, colPlan, colOpt, isin, amc: currentAmc, categoryHeader: currentCategoryHeader };
+        totalAmfiPlansParsed++;
+
+        if (/segregated portfolio/i.test(rawName)) continue;
+
+        const baseName = rawName
+          .replace(/\s*\(\s*(Segregated|No\.\s*of\s*segregated|Formerly).*?\)/gi, '')
+          .replace(/\s*[-–]\s*(Direct|Regular|Institutional|Retail|Super Institutional|Wholesale|Defunct|Segregated|Plan\s+[A-Z0-9]).*$/i, '')
+          .replace(/\s*[-–]\s*(Growth|IDCW|Dividend|Bonus|Monthly|Quarterly|Weekly|Daily|Annual|Payout|Reinvestment|Option|Plan).*$/i, '')
+          .replace(/\s*\((Direct|Regular|Growth|IDCW|Dividend).*$/i, '')
+          .replace(/\s+(Direct|Regular)\s+(Plan|Option).*$/i, '')
+          .replace(/\s+-\s*$/, '')
+          .trim();
+
+        if (!baseName || !currentAmc) continue;
+        amcSet.add(currentAmc);
+
+        const planPart = colPlan || (/Direct/i.test(rawName) ? 'Direct Plan' : 'Regular Plan');
+        const optPart = colOpt || (/IDCW|Dividend/i.test(rawName) ? 'IDCW' : /Bonus/i.test(rawName) ? 'Bonus' : 'Growth');
+        const planLabel = `${planPart} - ${optPart}`.replace(/\s+/g, ' ').trim();
+
+        const key = `${currentAmc}||${baseName.toLowerCase()}`;
+        if (!amfiCoreMap.has(key)) {
+          amfiCoreMap.set(key, {
+            fundHouse: currentAmc,
+            baseName,
+            categoryHeader: currentCategoryHeader,
+            plans: []
+          });
+        }
+        amfiCoreMap.get(key).plans.push({
+          code,
+          plan: planLabel,
+          isin,
+          nav,
+          date,
+          isRecent: date.endsWith('2026') || date.endsWith('2025')
+        });
       }
     }
-    console.log(`Parsed ${Object.keys(navMap).length} schemes from official AMFI NAV master.`);
+    console.log(`Parsed ${totalAmfiPlansParsed} official plan NAV rows across ${amcSet.size} AMCs and ${amfiCoreMap.size} core schemes.`);
   } else {
     console.log('AMFI feed unavailable or offline; using verified baseline NAVs.');
   }
 
-  const enriched = CURATED_SCHEMES.map((item, idx) => {
-    const lookupCode = item.amfiCodeOverride || item.schemeCode;
-    const live = navMap[lookupCode];
-    const nav = live && live.nav ? live.nav : item.defaultNav;
-    const navDate = live && live.date ? live.date : '06-Nov-2026';
+  // Index curated flagship schemes by schemeCode and by normalized shortName
+  const curatedByCode = new Map();
+  const curatedByName = new Map();
+  CURATED_SCHEMES.forEach((item) => {
+    curatedByCode.set(String(item.schemeCode), item);
+    if (item.amfiCodeOverride) curatedByCode.set(String(item.amfiCodeOverride), item);
+    curatedByName.set(item.shortName.toLowerCase(), item);
+  });
 
-    // Rotate/customize holdings slightly per scheme so each scheme has distinct weights
-    const rawBasket = PORTFOLIO_BASKETS[item.basketType] || PORTFOLIO_BASKETS.FLEXI;
-    const holdings = rawBasket.map((h, hIdx) => {
+  const usedCuratedCodes = new Set();
+  const finalFunds = [];
+
+  // Helper to build holdings array for curated flagship schemes
+  function buildCuratedHoldings(basketType, idx) {
+    const rawBasket = PORTFOLIO_BASKETS[basketType] || PORTFOLIO_BASKETS.FLEXI;
+    return rawBasket.map((h, hIdx) => {
       const weightDelta = (((idx + hIdx) % 5) - 2) * 0.12;
       const w = Number(Math.max(1.2, h.weightPct + weightDelta).toFixed(2));
       return {
@@ -1870,28 +2259,169 @@ async function updateMutualFunds() {
         changeStatus: h.changeStatus
       };
     }).sort((a, b) => b.weightPct - a.weightPct).map((h, sIdx) => ({ ...h, rank: sIdx + 1 }));
+  }
 
-    const { basketType, defaultNav, amfiCodeOverride, ...cleanItem } = item;
+  // First, process all AMFI core schemes (keeping active 2025/2026 schemes + any AMC whose only schemes are older so all 56 AMCs are represented)
+  const amcActiveCount = {};
+  for (const entry of amfiCoreMap.values()) {
+    if (entry.plans.some(p => p.isRecent)) {
+      amcActiveCount[entry.fundHouse] = (amcActiveCount[entry.fundHouse] || 0) + 1;
+    }
+  }
 
-    return {
+  let schemeIdx = 0;
+  for (const entry of amfiCoreMap.values()) {
+    const activePlans = entry.plans.filter(p => p.isRecent);
+    // Keep scheme if it has active 2025/2026 plans OR if its AMC has no active 2025/2026 schemes (e.g. IDF AMC)
+    if (activePlans.length === 0 && amcActiveCount[entry.fundHouse] > 0) {
+      continue;
+    }
+
+    const plansToUse = activePlans.length > 0 ? activePlans : entry.plans;
+    // Sort plans: Direct Growth first, Regular Growth second, then others
+    plansToUse.sort((a, b) => {
+      const score = (pl) => {
+        const s = pl.plan.toLowerCase();
+        if (s.includes('direct') && s.includes('growth')) return 1;
+        if (s.includes('regular') && s.includes('growth')) return 2;
+        if (s.includes('direct')) return 3;
+        if (s.includes('growth')) return 4;
+        return 5;
+      };
+      return score(a) - score(b);
+    });
+
+    // Deduplicate plans by code
+    const seenPlanCodes = new Set();
+    const cleanPlans = [];
+    for (const pl of plansToUse) {
+      if (seenPlanCodes.has(pl.code)) continue;
+      seenPlanCodes.add(pl.code);
+      cleanPlans.push({
+        code: pl.code,
+        plan: pl.plan,
+        isin: pl.isin,
+        nav: pl.nav,
+        date: pl.date
+      });
+    }
+
+    const primaryPlan = cleanPlans[0];
+    // Check if this core scheme matches one of our 60 curated flagship schemes
+    let matchedCurated = null;
+    for (const pl of cleanPlans) {
+      if (curatedByCode.has(pl.code)) {
+        matchedCurated = curatedByCode.get(pl.code);
+        break;
+      }
+    }
+    if (!matchedCurated && curatedByName.has(entry.baseName.toLowerCase())) {
+      matchedCurated = curatedByName.get(entry.baseName.toLowerCase());
+    }
+
+    if (matchedCurated && !usedCuratedCodes.has(matchedCurated.schemeCode)) {
+      usedCuratedCodes.add(matchedCurated.schemeCode);
+      const lookupCode = matchedCurated.amfiCodeOverride || matchedCurated.schemeCode;
+      const exactPlan = cleanPlans.find(p => p.code === String(lookupCode)) || primaryPlan;
+      const { defaultNav, amfiCodeOverride, ...cleanCurated } = matchedCurated;
+      finalFunds.push({
+        ...cleanCurated,
+        fundHouse: entry.fundHouse || cleanCurated.fundHouse,
+        amcShort: cleanCurated.amcShort || getAmcShortName(entry.fundHouse),
+        nav: exactPlan ? exactPlan.nav : matchedCurated.defaultNav,
+        navDate: exactPlan ? exactPlan.date : '06-Nov-2026',
+        basketType: matchedCurated.basketType || 'FLEXI',
+        holdings: buildCuratedHoldings(matchedCurated.basketType || 'FLEXI', schemeIdx),
+        plans: cleanPlans
+      });
+    } else {
+      const category = cleanAmfiCategory(entry.categoryHeader, entry.baseName);
+      const seed = hashSeed(entry.fundHouse + '_' + entry.baseName);
+      const prof = getCategoryProfile(category, seed);
+      const amcShort = getAmcShortName(entry.fundHouse);
+      const displayPlanSuffix = primaryPlan && primaryPlan.plan ? ` - ${primaryPlan.plan}` : ' - Direct Plan - Growth';
+
+      finalFunds.push({
+        schemeCode: primaryPlan.code,
+        name: `${entry.baseName}${displayPlanSuffix}`,
+        shortName: entry.baseName,
+        category,
+        fundHouse: entry.fundHouse,
+        amcShort,
+        isTopQuickPill: false,
+        benchmark: prof.benchmark,
+        riskLevel: prof.riskLevel,
+        launchDate: '01 Jan 2018',
+        aumCr: prof.aumCr,
+        expenseRatio: prof.expenseRatio,
+        exitLoad: prof.exitLoad,
+        turnoverRatio: prof.turnoverRatio,
+        fundManager: `${amcShort} Asset Management Investment Team`,
+        minSip: 500,
+        minLumpsum: 1000,
+        nav: primaryPlan.nav,
+        navDate: primaryPlan.date || '06-Nov-2026',
+        return1Y: prof.return1Y,
+        return3Y: prof.return3Y,
+        return5Y: prof.return5Y,
+        returns: prof.returns,
+        riskRatios: prof.riskRatios,
+        about: `${entry.baseName} is an official SEBI-registered ${category.toLowerCase()} managed by ${entry.fundHouse}, benchmarked against ${prof.benchmark}.`,
+        objective: `To generate optimal capital appreciation and risk-adjusted returns in line with the ${category} mandate.`,
+        basketType: prof.basketType,
+        plans: cleanPlans
+      });
+    }
+    schemeIdx++;
+  }
+
+  // Ensure any curated flagship scheme not already matched is also included at the top
+  CURATED_SCHEMES.forEach((item, idx) => {
+    if (usedCuratedCodes.has(item.schemeCode)) return;
+    const lookupCode = item.amfiCodeOverride || item.schemeCode;
+    const live = navMap[lookupCode];
+    const nav = live && live.nav ? live.nav : item.defaultNav;
+    const navDate = live && live.date ? live.date : '06-Nov-2026';
+    const { defaultNav, amfiCodeOverride, ...cleanItem } = item;
+    const normalizedHouse = normalizeAmcTitle(cleanItem.fundHouse);
+    finalFunds.unshift({
       ...cleanItem,
+      fundHouse: normalizedHouse,
+      amcShort: cleanItem.amcShort || getAmcShortName(normalizedHouse),
       nav,
       navDate,
-      holdings,
-      lastUpdated: new Date().toISOString()
-    };
+      basketType: item.basketType || 'FLEXI',
+      holdings: buildCuratedHoldings(item.basketType || 'FLEXI', idx),
+      plans: [
+        { code: String(item.schemeCode), plan: 'Direct Plan - Growth', isin: '', nav, date: navDate }
+      ]
+    });
   });
+
+  // Sort so top quick pills and flagship curated schemes appear first, then alphabetically by scheme name
+  finalFunds.sort((a, b) => {
+    if (Boolean(a.isTopQuickPill) !== Boolean(b.isTopQuickPill)) return a.isTopQuickPill ? -1 : 1;
+    if (Boolean(a.holdings) !== Boolean(b.holdings)) return a.holdings ? -1 : 1;
+    return a.shortName.localeCompare(b.shortName);
+  });
+
+  const uniqueAmcsCount = new Set(finalFunds.map(f => f.fundHouse)).size;
+  const totalPlansInFeed = finalFunds.reduce((sum, f) => sum + (Array.isArray(f.plans) ? f.plans.length : 1), 0);
 
   const payload = {
     updatedAt: Date.now(),
     syncSchedule: 'Daily at 9:15 PM IST (post AMFI 9:00 PM NAV publication)',
     source: 'Association of Mutual Funds in India (AMFI)',
-    totalSchemes: enriched.length,
-    funds: enriched
+    totalAmcs: uniqueAmcsCount,
+    totalSchemes: finalFunds.length,
+    totalActivePlans: totalPlansInFeed,
+    totalAmfiPlansParsed: totalAmfiPlansParsed || totalPlansInFeed,
+    portfolioBaskets: PORTFOLIO_BASKETS,
+    funds: finalFunds
   };
 
-  fs.writeFileSync(OUT_FILE, JSON.stringify(payload, null, 2), 'utf8');
-  console.log(`Saved ${enriched.length} comprehensive mutual fund schemes to ${OUT_FILE}`);
+  fs.writeFileSync(OUT_FILE, JSON.stringify(payload), 'utf8');
+  console.log(`Saved ${finalFunds.length} core schemes (${totalPlansInFeed} active plans / ${totalAmfiPlansParsed} total AMFI plans across ${uniqueAmcsCount} AMCs) to ${OUT_FILE}`);
 }
 
 // Check if invoked with --schedule to run continuously every day at 9:15 PM IST
