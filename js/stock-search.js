@@ -1439,8 +1439,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 </button>
               </div>
               <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                <a href="https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:5px 12px; border-radius:6px; text-decoration:none;">
-                  View Official Annual Report &amp; NSE Filings ↗
+                <a id="btn-annual-report-header" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:5px 12px; border-radius:6px; text-decoration:none;">
+                  ${stock.latestAnnualReportUrl ? 'View Latest Annual Report PDF ↗' : 'View Official Annual Report &amp; NSE Filings ↗'}
                 </a>
                 <a href="https://www.nseindia.com/companies-listing/corporate-filings-annual-reports" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:5px 12px; border-radius:6px; text-decoration:none;">
                   NSE Annual Reports Archive ↗
@@ -1614,8 +1614,8 @@ document.addEventListener("DOMContentLoaded", function () {
             ${aboutText}
           </div>
           <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-            <a href="https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">
-              Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗
+            <a id="btn-annual-report-about" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">
+              ${stock.latestAnnualReportUrl ? `Official Latest Annual Report PDF (${escapeHtml(stock.symbol)}) ↗` : `Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗`}
             </a>
             <a id="about-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.84rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
               Official Company Website ↗
@@ -1819,9 +1819,28 @@ document.addEventListener("DOMContentLoaded", function () {
     loadCompanyNews(stock.symbol).then((items) => {
       if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
       const listEl = document.getElementById("company-news-list");
-      if (!listEl) return;
-      if (items.length > 0 || !initialNews) {
+      if (listEl && (items.length > 0 || !initialNews)) {
         listEl.innerHTML = renderNewsItems(items.map((n) => Object.assign({ source: "NSE Filing" }, n)), stock);
+      }
+
+      // Automatically detect if the company has published an official Annual Report PDF in NSE filings
+      const arItem = (items || []).find((it) => {
+        if (!it || !it.link || !/^https:\/\//i.test(it.link)) return false;
+        const combined = `${it.category || ""} ${it.headline || ""}`;
+        return /annual\s*report|integrated\s*report|business\s*responsibility.*sustainability\s*report/i.test(combined);
+      });
+      if (arItem && arItem.link) {
+        stock.latestAnnualReportUrl = arItem.link;
+        const headerArBtn = document.getElementById("btn-annual-report-header");
+        if (headerArBtn) {
+          headerArBtn.href = arItem.link;
+          headerArBtn.textContent = `View Latest Annual Report PDF (${arItem.date || "Official"}) ↗`;
+        }
+        const aboutArBtn = document.getElementById("btn-annual-report-about");
+        if (aboutArBtn) {
+          aboutArBtn.href = arItem.link;
+          aboutArBtn.textContent = `Official Latest Annual Report PDF (${stock.symbol} - ${arItem.date || "NSE"}) ↗`;
+        }
       }
     });
 

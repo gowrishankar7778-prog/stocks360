@@ -66,16 +66,25 @@ function cleanText(t) {
     .trim();
 }
 
+function isAnnualReportFiling(category, headline) {
+  const combined = `${category || ''} ${headline || ''}`;
+  return /annual\s*report|integrated\s*report|business\s*responsibility.*sustainability\s*report/i.test(combined);
+}
+
 function toItem(a) {
   const sortDate = a.sort_date || '';
   const ts = Date.parse(sortDate.replace(' ', 'T') + '+05:30') || Date.now();
   let headline = cleanText(a.attchmntText) || cleanText(a.desc);
   if (headline.length > 260) headline = headline.slice(0, 257).trim() + '...';
+  let category = cleanText(a.desc) || 'Corporate Announcement';
+  if (isAnnualReportFiling(category, headline)) {
+    category = 'Annual Report';
+  }
   return {
     ts,
     date: new Date(ts).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', year: 'numeric' }),
     headline,
-    category: cleanText(a.desc) || 'Corporate Announcement',
+    category,
     link: a.attchmntFile && /^https:\/\//.test(a.attchmntFile) ? a.attchmntFile : '',
     id: String(a.seq_id || `${a.symbol}-${sortDate}`)
   };
@@ -146,6 +155,7 @@ async function main() {
 
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
   const cutoff = Date.now() - MAX_AGE_DAYS * 86400000;
+  const annualReportCutoff = Date.now() - 365 * 86400000;
   let symbolsTouched = 0;
 
   for (const key of Object.keys(incoming)) {
@@ -153,16 +163,27 @@ async function main() {
     for (const sym of Object.keys(incoming[key])) {
       const merged = new Map();
       (shard[sym] || []).concat(incoming[key][sym]).forEach((it) => {
-        if (it && it.ts >= cutoff && it.headline) merged.set(it.id, it);
+        if (!it || !it.headline) return;
+        const isAR = isAnnualReportFiling(it.category, it.headline);
+        if (it.ts >= cutoff || (isAR && it.ts >= annualReportCutoff)) {
+          merged.set(it.id, it);
+        }
       });
-      shard[sym] = Array.from(merged.values())
-        .sort((x, y) => y.ts - x.ts)
-        .slice(0, MAX_PER_SYMBOL);
+      const sorted = Array.from(merged.values()).sort((x, y) => y.ts - x.ts);
+      const topSlice = sorted.slice(0, MAX_PER_SYMBOL);
+      const latestAR = sorted.find((it) => isAnnualReportFiling(it.category, it.headline) && it.link);
+      if (latestAR && !topSlice.some((it) => it.id === latestAR.id)) {
+        topSlice[topSlice.length - 1] = latestAR;
+      }
+      shard[sym] = topSlice;
       symbolsTouched++;
     }
-    // Drop expired entries across the whole shard
+    // Drop expired entries across the whole shard (keep Annual Reports up to 365 days)
     for (const sym of Object.keys(shard)) {
-      shard[sym] = (shard[sym] || []).filter((it) => it.ts >= cutoff);
+      shard[sym] = (shard[sym] || []).filter((it) => {
+        const isAR = isAnnualReportFiling(it.category, it.headline);
+        return it.ts >= cutoff || (isAR && it.ts >= annualReportCutoff);
+      });
       if (shard[sym].length === 0) delete shard[sym];
     }
     const ordered = {};

@@ -24,17 +24,17 @@ const StocksGeminiAI = (function () {
 
   const DEFAULT_CONFIG = {
     apiKey: "",
-    model: "gemini-3.5-flash-lite",
+    model: "gemini-2.5-flash",
     dailyLimit: 500,
-    maxOutputTokens: 350,
+    maxOutputTokens: 850,
     temperatureStrict: 0.2,
     temperatureInteractive: 0.55
   };
 
   const FALLBACK_MODELS = [
-    "gemini-3.5-flash-lite",
-    "gemini-3.8-flash",
-    "gemini-3-flash-preview",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.0-flash",
     "gemini-flash-latest"
   ];
 
@@ -116,6 +116,13 @@ const StocksGeminiAI = (function () {
     runtimeConfig = Object.assign({}, DEFAULT_CONFIG, localCfg, {
       apiKey: fallbackKey
     });
+    // Upgrade legacy 3.x model strings to gemini-2.5-flash so the 2.5 rollout applies everywhere
+    if (!runtimeConfig.model || /^gemini-3/i.test(runtimeConfig.model)) {
+      runtimeConfig.model = "gemini-2.5-flash";
+    }
+    if (!runtimeConfig.maxOutputTokens || Number(runtimeConfig.maxOutputTokens) < 850) {
+      runtimeConfig.maxOutputTokens = 850;
+    }
     return runtimeConfig;
   }
 
@@ -235,7 +242,7 @@ const StocksGeminiAI = (function () {
       return null;
     }
 
-    const preferredModel = (customOpts && customOpts.forceModel) || cfg.model || "gemini-3.5-flash-lite";
+    const preferredModel = (customOpts && customOpts.forceModel) || cfg.model || "gemini-2.5-flash";
     const modelsToTry = [preferredModel].concat(
       FALLBACK_MODELS.filter((m) => m !== preferredModel)
     );
@@ -243,7 +250,7 @@ const StocksGeminiAI = (function () {
     const temperature = isStrictMode
       ? cfg.temperatureStrict || 0.2
       : cfg.temperatureInteractive || 0.55;
-    const maxOutputTokens = (customOpts && customOpts.maxOutputTokens) || parseInt(cfg.maxOutputTokens || "350", 10) || 350;
+    const maxOutputTokens = (customOpts && customOpts.maxOutputTokens) || parseInt(cfg.maxOutputTokens || "850", 10) || 850;
     const timeoutMs = (customOpts && customOpts.timeoutMs) || 15000;
 
     const contents = [];
@@ -258,9 +265,9 @@ const StocksGeminiAI = (function () {
     contents.push({ role: "user", parts: [{ text: userPrompt }] });
 
     const useSearch = !!(customOpts && customOpts.useSearch);
-    // Grounded requests are only attempted on the preferred model (no fallback chain),
-    // so a failed grounded attempt never multiplies cost.
-    const modelChain = useSearch ? [preferredModel] : modelsToTry;
+    // Allow full model fallback cascade so if the primary model is busy (429/503/timeout),
+    // it automatically moves forward to the next model in the cascade.
+    const modelChain = modelsToTry;
     const fallbackTimeoutMs = (customOpts && customOpts.fallbackTimeoutMs) || 15000;
     const overallDeadline = Date.now() + ((customOpts && customOpts.totalBudgetMs) || (timeoutMs + 20000));
 
@@ -1324,7 +1331,7 @@ Provide its business overview, latest reported fundamentals, investment thesis (
         timeoutMs: 40000,
         totalBudgetMs: 42000,
         useSearch: true,
-        forceModel: "gemini-3.5-flash-lite",
+        forceModel: "gemini-2.5-flash",
         onError: (model, result) => {
           // 429 / 400 / 403 here means Search grounding is not available on this key (e.g. free tier)
           if (result && (result.status === 429 || result.status === 400 || result.status === 403)) {
@@ -1350,7 +1357,7 @@ Provide its business overview, latest reported fundamentals, investment thesis (
         fallbackTimeoutMs: 15000,
         totalBudgetMs: 50000,
         responseMimeType: "application/json",
-        forceModel: "gemini-3.5-flash-lite"
+        forceModel: "gemini-2.5-flash"
       });
       parsed = parseProfileJson(rawText);
     }
