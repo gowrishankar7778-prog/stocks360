@@ -34,6 +34,14 @@ for (const file of tempScripts) {
   }
 }
 
+// Step 0: Run update-mutual-funds.js so data/mutual-funds/top-mutual-funds.json has all same-category peers
+try {
+  console.log('>>> Step 0: Generating updated Mutual Funds dataset with full category peer sets...');
+  execSync('node scripts/update-mutual-funds.js', { cwd, stdio: 'inherit' });
+} catch (mfErr) {
+  console.warn('>>> Mutual funds sync warning:', mfErr.message);
+}
+
 // Step 1: Commit and Push to GitHub (origin/main) so GitHub Pages & Actions are 100% in sync
 try {
   console.log('>>> Step 1: Syncing latest files to GitHub (origin/main)...');
@@ -43,7 +51,7 @@ try {
   execSync('git add -A .gitignore index.html news.html learn.html screener.html mutual-funds.html about.html contact.html firebase.json js/stock-search.js js/screener-index.js js/mutual-funds.js js/screener.js js/gemini-ai.js scripts/ data/mutual-funds/ data/profiles/ .github/workflows/', { cwd, stdio: 'inherit' });
   const status = execSync('git status --porcelain', { cwd }).toString().trim();
   if (status) {
-    execSync('git commit -m "Deploy v52: Remove clutter across pages & fix comprehensive company statements override"', { cwd, stdio: 'inherit' });
+    execSync('git commit -m "Deploy v53: Professional Value Research / Groww style Mutual Funds & strict category Peer Comparison"', { cwd, stdio: 'inherit' });
   }
   execSync('git push --force origin main', { cwd, stdio: 'inherit' });
   console.log('>>> Successfully pushed to GitHub origin/main!');

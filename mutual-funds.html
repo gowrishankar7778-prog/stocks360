@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Mutual Funds Research &amp; AMC Scheme Analytics - Stocks 360</title>
-  <meta name="description" content="Search any Asset Management Company (AMC) or Mutual Fund Scheme to analyze NAV CAGR/XIRR returns, Risk Ratios, All Stock Holdings with Monthly Changes, Top 10 Holdings, and Peer Comparison.">
+  <title>Mutual Funds - Stocks 360</title>
+  <meta name="description" content="Search any AMC or Mutual Fund Scheme to analyze NAV CAGR and XIRR returns, Risk Ratios, All Stock Holdings, Top 10 Holdings, and Peer Comparison.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css?v=52">
+  <link rel="stylesheet" href="css/styles.css?v=53">
 </head>
 <body>
 
@@ -24,13 +24,11 @@
           Turn On Special Accessibility
         </button>
       </div>
-
-      <!-- User Account Sign-In / Profile Container -->
       <div id="nav-auth-container" class="top-auth-box"></div>
     </div>
   </header>
 
-  <!-- 3. MAIN NAVIGATION LINKS (Newsletter replaced by Mutual Funds; Newsletter kept private) -->
+  <!-- 3. MAIN NAVIGATION LINKS -->
   <nav id="main-navigation" aria-label="Main navigation">
     <div class="container">
       <ul>
@@ -50,21 +48,15 @@
     <div class="container">
       <div class="detail-container">
 
-        <!-- HEADER TITLE -->
-        <header class="screener-header-intro" style="margin-bottom: 20px;">
-          <h1 id="page-heading" tabindex="-1" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: #0f172a; margin-bottom: 6px;">
+        <header style="margin-bottom: 20px;">
+          <h1 id="page-heading" tabindex="-1" style="font-size: clamp(1.6rem, 2.5vw, 2.1rem); color: #0f172a; margin: 0;">
             Mutual Funds
           </h1>
-          <p class="subtitle" style="color: #475569; font-size: 1.02rem; max-width: 880px; line-height: 1.6;">
-            Search any Asset Management Company (AMC) to inspect all mutual funds maintained by that fund house, or search any Mutual Fund Scheme to view its Core Scheme returns, Risk Ratios, All Stock Holdings, Top 10 Holdings, and Peer Comparison.
-          </p>
         </header>
 
-        <!-- ======================================================================= -->
-        <!-- SEARCH AMC OR MUTUAL FUND BOX + AUTOCOMPLETE + TOP QUICK PILLS          -->
-        <!-- ======================================================================= -->
-        <section aria-label="Search AMC or Mutual Fund" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:14px; padding:22px; margin-bottom:26px; box-shadow:0 2px 8px rgba(15,23,42,0.05);">
-          <label for="mf-search" style="display:block; font-size:1.05rem; font-weight:800; color:#0f172a; margin-bottom:10px;">
+        <!-- SEARCH AMC OR MUTUAL FUND BOX + TOP MUTUAL FUNDS QUICK PILLS -->
+        <section aria-label="Search AMC or Mutual Fund" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px; margin-bottom:24px; box-shadow:0 1px 4px rgba(15,23,42,0.04);">
+          <label for="mf-search" style="display:block; font-size:0.98rem; font-weight:700; color:#0f172a; margin-bottom:10px;">
             Search AMC or Mutual Fund
           </label>
 
@@ -73,71 +65,51 @@
               <input
                 type="search"
                 id="mf-search"
-                placeholder="Search AMC or mutual fund (e.g. HDFC, SBI, PPFAS, Parag Parikh Flexi Cap, Nippon Small Cap)..."
+                placeholder="Search AMC (e.g. HDFC, SBI, PPFAS, ICICI, Nippon, Kotak) or Mutual Fund..."
                 aria-label="Search AMC or Mutual Fund"
                 aria-autocomplete="list"
                 aria-controls="mf-search-suggestions"
                 aria-expanded="false"
                 autocomplete="off"
-                style="width:100%; padding:13px 16px; font-size:1rem; border:1px solid #cbd5e1; border-radius:10px; color:#0f172a; background:#f8fafc; font-weight:600;"
+                style="width:100%; padding:12px 14px; font-size:0.96rem; border:1px solid #cbd5e1; border-radius:8px; color:#0f172a; background:#ffffff;"
               >
-              <!-- Keyboard-Navigable Autocomplete Suggestions List -->
               <ul
                 id="mf-search-suggestions"
                 role="listbox"
                 aria-label="AMC and Mutual Fund Suggestions"
                 hidden
-                style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:100; background:#ffffff; border:1px solid #cbd5e1; border-radius:10px; box-shadow:0 12px 28px rgba(15,23,42,0.16); max-height:360px; overflow-y:auto; list-style:none; margin:0; padding:0;"
+                style="position:absolute; top:calc(100% + 4px); left:0; right:0; z-index:100; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 24px rgba(15,23,42,0.12); max-height:340px; overflow-y:auto; list-style:none; margin:0; padding:0;"
               ></ul>
             </div>
 
-            <button type="button" id="mf-search-btn" class="btn-primary" style="padding:12px 22px; font-size:0.98rem; font-weight:700; border-radius:10px; cursor:pointer;">
+            <button type="button" id="mf-search-btn" class="btn-primary" style="padding:12px 20px; font-size:0.95rem; font-weight:600; border-radius:8px; cursor:pointer;">
               Search
             </button>
           </div>
 
-          <!-- QUICK PILLS: TOP MUTUAL FUNDS -->
-          <div style="margin-top:18px; padding-top:14px; border-top:1px solid #e2e8f0;">
-            <span style="display:block; font-size:0.78rem; font-weight:700; color:#475569; text-transform:uppercase; margin-bottom:8px;">
-              Top Mutual Funds:
+          <!-- TOP MUTUAL FUNDS QUICK PILLS -->
+          <div style="margin-top:14px; padding-top:12px; border-top:1px solid #f1f5f9;">
+            <span style="display:block; font-size:0.76rem; font-weight:600; color:#64748b; margin-bottom:8px;">
+              Top Mutual Funds
             </span>
-            <div id="mf-top-quick-pills" style="display:flex; flex-wrap:wrap; gap:8px;">
-              <!-- Populated by js/mutual-funds.js -->
-            </div>
-          </div>
-
-          <!-- QUICK PILLS: BROWSE BY AMC (ASSET MANAGEMENT COMPANY) -->
-          <div style="margin-top:14px; padding-top:12px; border-top:1px dashed #e2e8f0;">
-            <span style="display:block; font-size:0.78rem; font-weight:700; color:#475569; text-transform:uppercase; margin-bottom:8px;">
-              Browse by AMC:
-            </span>
-            <div id="mf-amc-quick-pills" style="display:flex; flex-wrap:wrap; gap:8px;">
-              <!-- Populated by js/mutual-funds.js -->
-            </div>
+            <div id="mf-top-quick-pills" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
           </div>
         </section>
 
-        <!-- ======================================================================= -->
-        <!-- AMC SCHEMES LIST CONTAINER (Shown when user searches/clicks an AMC)     -->
-        <!-- ======================================================================= -->
+        <!-- AMC SCHEMES LIST CONTAINER (Shown when user searches an AMC) -->
         <section id="mf-amc-results-section" aria-live="polite" hidden></section>
 
-        <!-- ======================================================================= -->
-        <!-- FULL 5-HEADING MUTUAL FUND SCHEME OVERVIEW                              -->
-        <!-- 1. Mutual Fund Core Scheme | 2. Risk Ratios | 3. All Stock Holdings     -->
-        <!-- 4. Top 10 Holdings | 5. Peer Comparison                                 -->
-        <!-- ======================================================================= -->
+        <!-- 5-HEADING MUTUAL FUND SCHEME OVERVIEW -->
         <section id="mf-scheme-overview-section" aria-live="polite" hidden></section>
 
       </div>
     </div>
   </main>
 
-  <!-- 5. REGULATORY DISCLAIMER & FOOTER -->
   <footer>
     <div class="container">
       <p class="footer-disclaimer" role="note">
-        <strong>Disclaimer:</strong> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Historical NAV returns (CAGR / XIRR) and portfolio holdings are provided for educational and research purposes only and do not guarantee future performance.
+        <strong>Disclaimer:</strong> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.
       </p>
     </div>
   </footer>
@@ -146,10 +118,10 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=52"></script>
-  <script src="js/auth.js?v=52"></script>
-  <script src="js/accessibility.js?v=52"></script>
-  <script src="js/mutual-funds.js?v=52"></script>
-  <script src="js/smart-assist.js?v=52"></script>
+  <script src="js/firebase-config.js?v=53"></script>
+  <script src="js/auth.js?v=53"></script>
+  <script src="js/accessibility.js?v=53"></script>
+  <script src="js/mutual-funds.js?v=53"></script>
+  <script src="js/smart-assist.js?v=53"></script>
 </body>
 </html>
