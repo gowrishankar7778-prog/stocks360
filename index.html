@@ -10,26 +10,23 @@
   <meta http-equiv="Expires" content="0">
   <script>
     (function () {
-      var BUILD_VERSION = "20261107_v50";
+      var BUILD_VERSION = "20261107_v52";
       try {
         var last = localStorage.getItem("stocks360_active_build");
         if (last !== BUILD_VERSION) {
           localStorage.setItem("stocks360_active_build", BUILD_VERSION);
           for (var i = localStorage.length - 1; i >= 0; i--) {
             var k = localStorage.key(i);
-            if (k && k.indexOf("stocks360_gemini_profile_") === 0 && k.indexOf("stocks360_gemini_profile_v4_") === -1) {
+            if (k && k.indexOf("stocks360_gemini_profile_") === 0) {
               localStorage.removeItem(k);
             }
-          }
-          if (last) {
-            window.location.reload(true);
           }
         }
       } catch (_) {}
     })();
   </script>
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css?v=35">
+  <link rel="stylesheet" href="css/styles.css?v=52">
 </head>
 <body>
 
@@ -52,22 +49,9 @@
   <section class="top-search-section" aria-label="Search for Stocks">
     <div class="container">
       <div class="stock-search-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
-          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-            <label for="stock-search" class="search-label" style="font-weight:700; color:#1e293b; margin:0;">
-              Search Companies for Detailed Analysis &amp; News
-            </label>
-            <span style="display:inline-flex; align-items:center; gap:5px; background:#dcfce7; color:#166534; padding:2px 8px; border-radius:12px; font-size:0.75rem; font-weight:700; border:1px solid #bbf7d0;">
-              ✓ Full Statements Suite Active
-            </span>
-          </div>
-          <div style="display:flex; align-items:center; gap:10px;">
-            <button type="button" id="btn-force-refresh" onclick="window.location.href=window.location.pathname+'?fresh='+Date.now();" style="cursor:pointer; background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:3px 10px; font-size:0.78rem; font-weight:600; color:#475569;" title="Click to bypass browser cache and force-reload latest statements">
-              🔄 Force Refresh
-            </button>
-            <span style="font-size:0.82rem; color:#64748b;">Includes Balance Sheet, Cash Flows &amp; Ratios</span>
-          </div>
-        </div>
+        <label for="stock-search" class="search-label" style="font-weight:700; color:#1e293b; display:block; margin-bottom:8px;">
+          Search Companies for Detailed Analysis &amp; News
+        </label>
 
         <div class="search-input-wrapper">
           <div class="search-field-container" style="position:relative; flex:1;">
@@ -76,8 +60,8 @@
           <button type="button" id="search-button" class="btn-primary">Search Company</button>
         </div>
 
-        <!-- SEARCH RESULT CARD (DETAILED SCREENER.IN-STYLE ANALYSIS & AI GROUNDED CHAT) -->
-        <section id="stock-result" class="stock-result-card" aria-live="polite" style="display:block;"></section>
+        <!-- COMPANY ANALYSIS RESULT CARD (HIDDEN UNTIL USER SEARCHES OR SELECTS A COMPANY) -->
+        <section id="stock-result" class="stock-result-card" aria-live="polite" hidden></section>
       </div>
     </div>
   </section>
@@ -132,14 +116,14 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=50"></script>
-  <script src="js/auth.js?v=50"></script>
-  <script src="js/data-store.js?v=50"></script>
-  <script src="js/gemini-ai.js?v=50"></script>
-  <script src="js/main.js?v=50"></script>
-  <script src="js/accessibility.js?v=50"></script>
-  <script src="js/screener-index.js?v=50"></script>
-  <script src="js/stock-search.js?v=50"></script>
-  <script src="js/smart-assist.js?v=50"></script>
+  <script src="js/firebase-config.js?v=52"></script>
+  <script src="js/auth.js?v=52"></script>
+  <script src="js/data-store.js?v=52"></script>
+  <script src="js/gemini-ai.js?v=52"></script>
+  <script src="js/main.js?v=52"></script>
+  <script src="js/accessibility.js?v=52"></script>
+  <script src="js/screener-index.js?v=52"></script>
+  <script src="js/stock-search.js?v=52"></script>
+  <script src="js/smart-assist.js?v=52"></script>
 </body>
 </html>

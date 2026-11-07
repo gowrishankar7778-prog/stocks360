@@ -9,7 +9,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css?v=50">
+  <link rel="stylesheet" href="css/styles.css?v=52">
 </head>
 <body>
 
@@ -52,29 +52,21 @@
 
         <!-- HEADER TITLE -->
         <header class="screener-header-intro" style="margin-bottom: 20px;">
-          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
-            <span class="brand-badge-small" style="display:inline-flex; align-items:center; gap:6px;">
-              <span class="pulse-dot"></span> Official AMFI Daily NAV Sync (Automated Every Day at 9:15 PM IST)
-            </span>
-          </div>
           <h1 id="page-heading" tabindex="-1" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: #0f172a; margin-bottom: 6px;">
-            Mutual Funds &amp; AMC Portfolio Research
+            Mutual Funds
           </h1>
           <p class="subtitle" style="color: #475569; font-size: 1.02rem; max-width: 880px; line-height: 1.6;">
-            Search any <strong>Asset Management Company (AMC)</strong> to inspect all mutual funds maintained by that fund house, or search any <strong>Mutual Fund Scheme</strong> to view its Core Scheme NAV returns (CAGR &amp; XIRR), Risk Ratios, All Stock Holdings with Monthly Changes, Top 10 Holdings, and Peer Comparison.
+            Search any Asset Management Company (AMC) to inspect all mutual funds maintained by that fund house, or search any Mutual Fund Scheme to view its Core Scheme returns, Risk Ratios, All Stock Holdings, Top 10 Holdings, and Peer Comparison.
           </p>
         </header>
 
         <!-- ======================================================================= -->
         <!-- SEARCH AMC OR MUTUAL FUND BOX + AUTOCOMPLETE + TOP QUICK PILLS          -->
         <!-- ======================================================================= -->
-        <section aria-label="Search AMC or Mutual Fund" style="background:#ffffff; border:2px solid #cbd5e1; border-radius:14px; padding:22px; margin-bottom:26px; box-shadow:0 2px 8px rgba(15,23,42,0.05);">
-          <label for="mf-search" style="display:block; font-size:1.05rem; font-weight:800; color:#0f172a; margin-bottom:8px;">
+        <section aria-label="Search AMC or Mutual Fund" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:14px; padding:22px; margin-bottom:26px; box-shadow:0 2px 8px rgba(15,23,42,0.05);">
+          <label for="mf-search" style="display:block; font-size:1.05rem; font-weight:800; color:#0f172a; margin-bottom:10px;">
             Search AMC or Mutual Fund
           </label>
-          <p style="font-size:0.84rem; color:#64748b; margin:0 0 12px 0;">
-            Type an AMC name (e.g., <strong>HDFC</strong>, <strong>SBI</strong>, <strong>Nippon India</strong>, <strong>PPFAS</strong>, <strong>ICICI Prudential</strong>, <strong>Quant</strong>) or a Mutual Fund name. Use <strong>Arrow Up (&uarr;)</strong> and <strong>Arrow Down (&darr;)</strong> keys to navigate suggestions and press <strong>Enter</strong>.
-          </p>
 
           <div style="display:flex; gap:10px; flex-wrap:wrap; position:relative;">
             <div style="flex:1; min-width:260px; position:relative;">
@@ -87,7 +79,7 @@
                 aria-controls="mf-search-suggestions"
                 aria-expanded="false"
                 autocomplete="off"
-                style="width:100%; padding:13px 16px; font-size:1rem; border:2px solid #2563eb; border-radius:10px; color:#0f172a; background:#f8fafc; font-weight:600;"
+                style="width:100%; padding:13px 16px; font-size:1rem; border:1px solid #cbd5e1; border-radius:10px; color:#0f172a; background:#f8fafc; font-weight:600;"
               >
               <!-- Keyboard-Navigable Autocomplete Suggestions List -->
               <ul
@@ -95,19 +87,19 @@
                 role="listbox"
                 aria-label="AMC and Mutual Fund Suggestions"
                 hidden
-                style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:100; background:#ffffff; border:2px solid #2563eb; border-radius:10px; box-shadow:0 12px 28px rgba(15,23,42,0.16); max-height:360px; overflow-y:auto; list-style:none; margin:0; padding:0;"
+                style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:100; background:#ffffff; border:1px solid #cbd5e1; border-radius:10px; box-shadow:0 12px 28px rgba(15,23,42,0.16); max-height:360px; overflow-y:auto; list-style:none; margin:0; padding:0;"
               ></ul>
             </div>
 
             <button type="button" id="mf-search-btn" class="btn-primary" style="padding:12px 22px; font-size:0.98rem; font-weight:700; border-radius:10px; cursor:pointer;">
-              Search Fund / AMC
+              Search
             </button>
           </div>
 
           <!-- QUICK PILLS: TOP MUTUAL FUNDS -->
           <div style="margin-top:18px; padding-top:14px; border-top:1px solid #e2e8f0;">
             <span style="display:block; font-size:0.78rem; font-weight:700; color:#475569; text-transform:uppercase; margin-bottom:8px;">
-              Top Mutual Funds (Quick Select):
+              Top Mutual Funds:
             </span>
             <div id="mf-top-quick-pills" style="display:flex; flex-wrap:wrap; gap:8px;">
               <!-- Populated by js/mutual-funds.js -->
@@ -117,7 +109,7 @@
           <!-- QUICK PILLS: BROWSE BY AMC (ASSET MANAGEMENT COMPANY) -->
           <div style="margin-top:14px; padding-top:12px; border-top:1px dashed #e2e8f0;">
             <span style="display:block; font-size:0.78rem; font-weight:700; color:#475569; text-transform:uppercase; margin-bottom:8px;">
-              Browse All Schemes by AMC (Fund House):
+              Browse by AMC:
             </span>
             <div id="mf-amc-quick-pills" style="display:flex; flex-wrap:wrap; gap:8px;">
               <!-- Populated by js/mutual-funds.js -->
@@ -135,7 +127,7 @@
         <!-- 1. Mutual Fund Core Scheme | 2. Risk Ratios | 3. All Stock Holdings     -->
         <!-- 4. Top 10 Holdings | 5. Peer Comparison                                 -->
         <!-- ======================================================================= -->
-        <section id="mf-scheme-overview-section" aria-live="polite"></section>
+        <section id="mf-scheme-overview-section" aria-live="polite" hidden></section>
 
       </div>
     </div>
@@ -145,7 +137,7 @@
   <footer>
     <div class="container">
       <p class="footer-disclaimer" role="note">
-        <strong>Disclaimer:</strong> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Historical NAV returns (CAGR / XIRR) and portfolio holdings are provided for educational and research purposes only and do not guarantee future performance. Stocks 360 is an educational analytics portal and is not a SEBI registered investment adviser.
+        <strong>Disclaimer:</strong> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Historical NAV returns (CAGR / XIRR) and portfolio holdings are provided for educational and research purposes only and do not guarantee future performance.
       </p>
     </div>
   </footer>
@@ -154,10 +146,10 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=50"></script>
-  <script src="js/auth.js?v=50"></script>
-  <script src="js/accessibility.js?v=50"></script>
-  <script src="js/mutual-funds.js?v=50"></script>
-  <script src="js/smart-assist.js?v=50"></script>
+  <script src="js/firebase-config.js?v=52"></script>
+  <script src="js/auth.js?v=52"></script>
+  <script src="js/accessibility.js?v=52"></script>
+  <script src="js/mutual-funds.js?v=52"></script>
+  <script src="js/smart-assist.js?v=52"></script>
 </body>
 </html>

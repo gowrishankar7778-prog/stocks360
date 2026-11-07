@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
     searchSection.hidden = !ENABLE_PUBLIC_STOCK_SEARCH;
   }
 
-  // Purge legacy profile caches that lacked the full balance sheet and cash flow suites
+  // Purge all legacy AI profile caches so verified comprehensive statements always render cleanly
   try {
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const k = localStorage.key(i);
-      if (k && k.startsWith("stocks360_gemini_profile_") && !k.startsWith("stocks360_gemini_profile_v4_")) {
+      if (k && k.startsWith("stocks360_gemini_profile_")) {
         localStorage.removeItem(k);
       }
     }
@@ -65,22 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (paramSymbol) {
     if (searchInput) searchInput.value = paramSymbol;
     setTimeout(() => performSearch(paramSymbol, true), 150);
-  } else {
-    // Automatically render Reliance or TCS as featured analysis on first homepage load
-    setTimeout(() => {
-      const dataset = getStockDataset();
-      const defaultStock = findStock("RELIANCE") || findStock("TCS") || (dataset.length > 0 ? dataset[0] : null);
-      if (defaultStock) {
-        activeCompanyData = defaultStock;
-        renderDetailedCompanyAnalysis(defaultStock, false);
-        loadVerifiedProfile(defaultStock.symbol).then((verified) => {
-          if (verified && activeCompanyData && activeCompanyData.symbol === defaultStock.symbol) {
-            Object.assign(defaultStock, verified);
-            renderDetailedCompanyAnalysis(defaultStock, false);
-          }
-        });
-      }
-    }, 100);
   }
 
   // ---------------- SEARCH LOGIC & SUGGESTIONS ----------------
@@ -516,14 +500,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     activeCompanyData = stock;
     renderDetailedCompanyAnalysis(stock, shouldScroll);
-
-    // On-Demand Screener.in Architecture: Fetch audited statements shard for this stock
-    loadVerifiedProfile(stock.symbol).then((verified) => {
-      if (verified && activeCompanyData && activeCompanyData.symbol === stock.symbol) {
-        Object.assign(stock, verified);
-        renderDetailedCompanyAnalysis(stock, false);
-      }
-    });
   }
 
   // ---------------- COMPREHENSIVE FINANCIAL STATEMENTS & RATIOS SUITE ----------------
@@ -1054,7 +1030,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json", { cache: "default" })
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=52")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1074,7 +1050,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json", { cache: "default" })
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=52")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1205,7 +1181,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                 <span class="badge badge-success" style="font-size:0.75rem; background:#10b981; color:#ffffff; padding:3px 8px; border-radius:4px; font-weight:700;">NSE: ${escapeHtml(stock.symbol)}</span>
                 <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
-                <a id="company-official-website-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none; font-size:0.8rem; color:#2563eb; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
+                <a id="company-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.8rem; color:#2563eb; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
                   Official Website ↗
                 </a>
               </div>
@@ -1224,25 +1200,12 @@ document.addEventListener("DOMContentLoaded", function () {
               <button type="button" class="btn-secondary" id="btn-listen-company" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer;">
                 Listen to Company Overview
               </button>
-              <a href="screener.html" class="btn-primary" style="text-decoration:none; padding:10px 16px; font-size:0.92rem; border-radius:8px; display:inline-flex; align-items:center; gap:6px; font-weight:700;">
-                Open in Screener &rarr;
-              </a>
             </div>
           </div>
         </div>
 
-        <!-- STICKY SUB-NAVIGATION TABS BAR -->
-        <nav id="company-analysis-nav" aria-label="Company Analysis Navigation" style="position:sticky; top:0; z-index:50; background:#ffffff; border-bottom:1px solid #e2e8f0; margin-bottom:28px; padding:10px 0; overflow-x:auto; display:flex; gap:8px; white-space:nowrap; -webkit-overflow-scrolling:touch;">
-          <button type="button" class="analysis-nav-tab active-tab" data-target="sec-price" style="cursor:pointer; text-decoration:none; padding:8px 16px; font-size:0.85rem; font-weight:700; border-radius:20px; background:#2563eb; color:#ffffff; border:1px solid #2563eb; transition:all 0.15s ease;">Price Performance</button>
-          <button type="button" class="analysis-nav-tab" data-target="sec-fundamentals" style="cursor:pointer; text-decoration:none; padding:8px 16px; font-size:0.85rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#475569; border:1px solid #e2e8f0; transition:all 0.15s ease;">Fundamentals</button>
-          <button type="button" class="analysis-nav-tab" data-target="sec-technicals" style="cursor:pointer; text-decoration:none; padding:8px 16px; font-size:0.85rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#475569; border:1px solid #e2e8f0; transition:all 0.15s ease;">Technicals</button>
-          <button type="button" class="analysis-nav-tab" data-target="sec-about" style="cursor:pointer; text-decoration:none; padding:8px 16px; font-size:0.85rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#475569; border:1px solid #e2e8f0; transition:all 0.15s ease;">About the Company</button>
-          <button type="button" class="analysis-nav-tab" data-target="sec-filings" style="cursor:pointer; text-decoration:none; padding:8px 16px; font-size:0.85rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#475569; border:1px solid #e2e8f0; transition:all 0.15s ease;">News and Corporate Filings</button>
-          <button type="button" class="analysis-nav-tab" data-target="sec-financials" style="cursor:pointer; text-decoration:none; padding:8px 16px; font-size:0.85rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#475569; border:1px solid #e2e8f0; transition:all 0.15s ease;">Financials</button>
-        </nav>
-
         <!-- SECTION 1: PRICE PERFORMANCE -->
-        <section id="sec-price" style="margin-bottom:28px; scroll-margin-top:75px;">
+        <section id="sec-price" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Price Performance</h3>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
@@ -1273,7 +1236,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
         <!-- SECTION 2: FUNDAMENTALS -->
-        <section id="sec-fundamentals" style="margin-bottom:28px; scroll-margin-top:75px;">
+        <section id="sec-fundamentals" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Fundamentals</h3>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
@@ -1344,7 +1307,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
         <!-- SECTION 3: TECHNICALS -->
-        <section id="sec-technicals" style="margin-bottom:28px; scroll-margin-top:75px;">
+        <section id="sec-technicals" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Technicals</h3>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
@@ -1375,34 +1338,15 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
         <!-- SECTION 4: ABOUT THE COMPANY -->
-        <section id="sec-about" style="margin-bottom:28px; scroll-margin-top:75px;">
+        <section id="sec-about" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">About the Company</h3>
-          <div id="company-about-content" style="font-size:0.95rem; color:#334155; line-height:1.7; margin-bottom:16px;">
+          <div id="company-about-content" style="font-size:0.95rem; color:#334155; line-height:1.7;">
             ${aboutText}
-          </div>
-
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
-            <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:16px;">
-              <h4 style="margin:0 0 8px 0; font-size:0.95rem; color:#166534; font-weight:700;">
-                Key Strengths
-              </h4>
-              <ul id="company-strengths-list" style="margin:0; padding-left:18px; font-size:0.88rem; color:#14532d; line-height:1.6;">
-                ${(investmentThesis.strengths || []).map(s => `<li style="margin-bottom:4px;">${escapeHtml(s)}</li>`).join('')}
-              </ul>
-            </div>
-            <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:16px;">
-              <h4 style="margin:0 0 8px 0; font-size:0.95rem; color:#991b1b; font-weight:700;">
-                Watchpoints &amp; Risks
-              </h4>
-              <ul id="company-risks-list" style="margin:0; padding-left:18px; font-size:0.88rem; color:#7f1d1d; line-height:1.6;">
-                ${(investmentThesis.risks || []).map(r => `<li style="margin-bottom:4px;">${escapeHtml(r)}</li>`).join('')}
-              </ul>
-            </div>
           </div>
         </section>
 
         <!-- SECTION 5: NEWS AND CORPORATE FILINGS -->
-        <section id="sec-filings" style="margin-bottom:28px; scroll-margin-top:75px;">
+        <section id="sec-filings" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">News and Corporate Filings</h3>
           <div id="company-news-list" style="display:flex; flex-direction:column; gap:10px;">
             ${initialNews
@@ -1412,91 +1356,52 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
         <!-- SECTION 6: FINANCIALS -->
-        <section id="sec-financials" style="margin-bottom:32px; scroll-margin-top:75px;">
+        <section id="sec-financials" style="margin-bottom:12px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:16px; font-weight:700; border-bottom:2px solid #e2e8f0; padding-bottom:8px;">Financials</h3>
-          
-          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;">
-            <button type="button" class="analysis-nav-tab" data-target="sec-quarterly" style="cursor:pointer; padding:6px 14px; font-size:0.82rem; font-weight:600; border-radius:16px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Quarterly Results</button>
-            <button type="button" class="analysis-nav-tab" data-target="sec-pnl" style="cursor:pointer; padding:6px 14px; font-size:0.82rem; font-weight:600; border-radius:16px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Profit &amp; Loss</button>
-            <button type="button" class="analysis-nav-tab" data-target="sec-balancesheet" style="cursor:pointer; padding:6px 14px; font-size:0.82rem; font-weight:600; border-radius:16px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Balance Sheet</button>
-            <button type="button" class="analysis-nav-tab" data-target="sec-cashflow" style="cursor:pointer; padding:6px 14px; font-size:0.82rem; font-weight:600; border-radius:16px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Cash Flows</button>
-            <button type="button" class="analysis-nav-tab" data-target="sec-ratios" style="cursor:pointer; padding:6px 14px; font-size:0.82rem; font-weight:600; border-radius:16px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Financial Ratios</button>
-            <button type="button" class="analysis-nav-tab" data-target="sec-shareholding" style="cursor:pointer; padding:6px 14px; font-size:0.82rem; font-weight:600; border-radius:16px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Shareholding Pattern</button>
-          </div>
 
           <!-- 6.1: QUARTERLY RESULTS -->
-          <div id="sec-quarterly" style="margin-bottom:24px; scroll-margin-top:75px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <h4 style="font-size:1.15rem; color:#0f172a; margin:0; font-weight:700;">Quarterly Results (₹ Crores)</h4>
-              <span style="font-size:0.78rem; font-weight:600; padding:4px 12px; background:#eff6ff; color:#1d4ed8; border-radius:12px; border:1px solid #bfdbfe;">
-                Exchange Quarterly Results
-              </span>
-            </div>
+          <div id="sec-quarterly" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Quarterly Results (₹ Crores)</h4>
             <div id="company-quarterly-container">
               ${buildQuarterlyTableHtml(quarterlyResults)}
             </div>
           </div>
 
           <!-- 6.2: PROFIT & LOSS (ANNUAL) -->
-          <div id="sec-pnl" style="margin-bottom:24px; scroll-margin-top:75px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <h4 style="font-size:1.15rem; color:#0f172a; margin:0; font-weight:700;">Profit &amp; Loss (Annual Performance)</h4>
-              <span style="font-size:0.78rem; font-weight:600; padding:4px 12px; background:#eff6ff; color:#1d4ed8; border-radius:12px; border:1px solid #bfdbfe;">
-                Audited Annual Statements (₹ Cr)
-              </span>
-            </div>
+          <div id="sec-pnl" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Profit &amp; Loss (Annual Performance)</h4>
             <div id="company-financials-container">
               ${buildFinancialsTableHtml(financials)}
             </div>
           </div>
 
           <!-- 6.3: BALANCE SHEET -->
-          <div id="sec-balancesheet" style="margin-bottom:24px; scroll-margin-top:75px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <h4 style="font-size:1.15rem; color:#0f172a; margin:0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
-              <span style="font-size:0.78rem; font-weight:600; padding:4px 12px; background:#eff6ff; color:#1d4ed8; border-radius:12px; border:1px solid #bfdbfe;">
-                Capital, Reserves &amp; Debt Breakdown
-              </span>
-            </div>
+          <div id="sec-balancesheet" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
             <div id="company-balancesheet-container">
               ${buildBalanceSheetTableHtml(balanceSheet)}
             </div>
           </div>
 
           <!-- 6.4: CASH FLOWS -->
-          <div id="sec-cashflow" style="margin-bottom:24px; scroll-margin-top:75px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <h4 style="font-size:1.15rem; color:#0f172a; margin:0; font-weight:700;">Cash Flows (₹ Crores)</h4>
-              <span style="font-size:0.78rem; font-weight:600; padding:4px 12px; background:#eff6ff; color:#1d4ed8; border-radius:12px; border:1px solid #bfdbfe;">
-                Operating, Investing &amp; Financing Activities
-              </span>
-            </div>
+          <div id="sec-cashflow" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Cash Flows (₹ Crores)</h4>
             <div id="company-cashflow-container">
               ${buildCashFlowTableHtml(cashFlows)}
             </div>
           </div>
 
           <!-- 6.5: RATIOS MATRIX -->
-          <div id="sec-ratios" style="margin-bottom:24px; scroll-margin-top:75px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <h4 style="font-size:1.15rem; color:#0f172a; margin:0; font-weight:700;">Key Financial &amp; Valuation Ratios</h4>
-              <span style="font-size:0.78rem; font-weight:600; padding:4px 12px; background:#eff6ff; color:#1d4ed8; border-radius:12px; border:1px solid #bfdbfe;">
-                ROCE, ROE, D/E &amp; Growth Matrix
-              </span>
-            </div>
+          <div id="sec-ratios" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Key Financial &amp; Valuation Ratios</h4>
             <div id="company-ratios-container">
               ${buildRatiosMatrixHtml(ratios, salesGrowth3Y, profitGrowth3Y)}
             </div>
           </div>
 
           <!-- 6.6: SHAREHOLDING PATTERN -->
-          <div id="sec-shareholding" style="margin-bottom:12px; scroll-margin-top:75px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <h4 style="font-size:1.15rem; color:#0f172a; margin:0; font-weight:700;">Institutional Shareholding Pattern</h4>
-              <span style="font-size:0.78rem; font-weight:600; padding:4px 12px; background:#eff6ff; color:#1d4ed8; border-radius:12px; border:1px solid #bfdbfe;">
-                Promoters, FIIs, DIIs &amp; Public
-              </span>
-            </div>
+          <div id="sec-shareholding" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h4>
             <div id="company-shareholding-container">
               ${buildShareholdingHtml(shareholding)}
             </div>
@@ -1529,36 +1434,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Interactive Sticky Sub-Navigation Tabs Controller
-    const navTabs = stockResult.querySelectorAll(".analysis-nav-tab");
-    navTabs.forEach((tab) => {
-      tab.addEventListener("click", function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute("data-target");
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          navTabs.forEach((t) => {
-            t.style.background = "#f8fafc";
-            t.style.color = "#475569";
-            t.style.borderColor = "#e2e8f0";
-            t.style.fontWeight = "600";
-            t.classList.remove("active-tab");
-          });
-          this.style.background = "#2563eb";
-          this.style.color = "#ffffff";
-          this.style.borderColor = "#2563eb";
-          this.style.fontWeight = "700";
-          this.classList.add("active-tab");
-
-          const yOffset = -75;
-          const y = targetEl.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
-      });
-    });
-
-    // Helper to apply Gemini & Verified profile data to DOM elements live
-    function applyGeminiProfileToView(profile, isLive) {
+    // Helper to apply Verified profile data to DOM elements live
+    function applyVerifiedProfileToView(profile) {
       if (!profile) return;
       if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
 
@@ -1596,7 +1473,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (divEl) divEl.textContent = profile.divYieldPct + "%";
       }
 
-      // Re-render Financial Statement Tables Live If Provided
       if (Array.isArray(profile.quarterlyResults) && profile.quarterlyResults.length > 0) {
         const qContainer = document.getElementById("company-quarterly-container");
         if (qContainer) qContainer.innerHTML = buildQuarterlyTableHtml(profile.quarterlyResults);
@@ -1621,35 +1497,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const shContainer = document.getElementById("company-shareholding-container");
         if (shContainer) shContainer.innerHTML = buildShareholdingHtml(profile.shareholding);
       }
-
-      // Update investment thesis strengths & risks
-      if (profile.investmentThesis && profile.investmentThesis.strengths) {
-        const sEl = document.getElementById("company-strengths-list");
-        if (sEl) sEl.innerHTML = profile.investmentThesis.strengths.map(s => `<li style="margin-bottom:4px;">${escapeHtml(s)}</li>`).join("");
-      }
-      if (profile.investmentThesis && profile.investmentThesis.risks) {
-        const rEl = document.getElementById("company-risks-list");
-        if (rEl) rEl.innerHTML = profile.investmentThesis.risks.map(r => `<li style="margin-bottom:4px;">${escapeHtml(r)}</li>`).join("");
-      }
     }
 
-    // Check official verified profile shard first (real audited about & financials)
+    // Load official verified profile shard (audited statements, balance sheet, cash flows, ratios, shareholding)
     loadVerifiedProfile(stock.symbol).then((verified) => {
-      if (verified && activeCompanyData && activeCompanyData.symbol === stock.symbol) {
-        applyGeminiProfileToView(verified, false);
+      if (verified) {
+        Object.assign(stock, verified);
+        if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
+          applyVerifiedProfileToView(verified);
+        }
       }
     });
-
-    // Seamless Asynchronous Background Enrichment if needed
-    if (!stock.financials && typeof StocksGeminiAI !== "undefined" && typeof StocksGeminiAI.fetchCompanyAiProfile === "function") {
-      StocksGeminiAI.fetchCompanyAiProfile(stock).then((profile) => {
-        if (profile) {
-          applyGeminiProfileToView(profile, false);
-        }
-      }).catch((err) => {
-        console.warn("Background profile fetch note:", err.message);
-      });
-    }
 
     // Load real NSE announcements for this company (free, refreshed daily by the sync script)
     loadCompanyNews(stock.symbol).then((items) => {

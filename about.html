@@ -6,7 +6,7 @@
   <title>About Us - Stocks 360</title>
   <meta name="description" content="About Stocks 360 - An educational website about the stock market with enhanced accessibility features.">
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=52">
 </head>
 <body>
 
@@ -25,66 +25,7 @@
     </div>
   </header>
 
-  <!-- 3. SEARCH FOR STOCKS SECTION (KEPT PRIVATE UNTIL LIVE STOCK API IS CONNECTED) -->
-  <section class="top-search-section" aria-label="Search for Stocks" hidden>
-    <div class="container">
-      <div class="stock-search-card">
-        <label for="stock-search" class="search-label">Search for Stocks</label>
-        <div class="search-input-wrapper">
-          <input type="search" id="stock-search" placeholder="Enter stock name or symbol..." aria-label="Search for stocks">
-          <button type="button" id="search-button" class="btn-primary">Search for Stocks</button>
-        </div>
-
-        <section id="stock-result" class="stock-result-card" aria-live="polite" hidden>
-          <div class="result-header">
-            <div>
-              <h2 id="stock-name">Stock Name</h2>
-              <span id="stock-exchange" class="exchange-badge">NSE</span>
-            </div>
-            <div class="live-price-box">
-              <span class="live-indicator"><span class="pulse-dot"></span> LIVE</span>
-              <div id="live-price" class="main-price">--</div>
-              <div id="price-change" class="price-change-pill">--</div>
-            </div>
-          </div>
-
-          <div class="price-metrics-grid">
-            <div class="metric-box">
-              <span class="label">Previous Close</span>
-              <span id="previous-close" class="val">--</span>
-            </div>
-            <div class="metric-box">
-              <span class="label">Today's Open</span>
-              <span id="today-open" class="val">--</span>
-            </div>
-            <div class="metric-box">
-              <span class="label">Day's High</span>
-              <span id="today-high" class="val">--</span>
-            </div>
-            <div class="metric-box">
-              <span class="label">Day's Low</span>
-              <span id="today-low" class="val">--</span>
-            </div>
-          </div>
-
-          <div class="historical-control-box">
-            <label for="historical-period">View Historical Price Table:</label>
-            <select id="historical-period">
-              <option value="">-- Select History Range --</option>
-              <option value="5days">Last 5 Trading Days</option>
-              <option value="1month">Last 1 Month</option>
-              <option value="3months">Last 3 Months</option>
-              <option value="1year">Last 1 Year</option>
-            </select>
-          </div>
-
-          <div id="historical-data" aria-live="polite"></div>
-        </section>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. STOCKS 360 AI BUTTON (BEFORE MAIN LINKS) -->
+  <!-- 3. STOCKS 360 AI BUTTON (BEFORE MAIN LINKS) -->
   <div class="stock360-ai-section">
     <div class="container">
       <div class="stock360-ai-banner">
@@ -106,7 +47,7 @@
     </div>
   </div>
 
-  <!-- 5. MAIN NAVIGATION LINKS -->
+  <!-- 4. MAIN NAVIGATION LINKS -->
   <nav id="main-navigation" aria-label="Main navigation">
     <div class="container">
       <ul>
@@ -141,8 +82,8 @@
           <h2>What We Offer</h2>
           <ul class="styled-bullet-list">
             <li>Structured stock market curriculum with lesson takeaways and discussion forums.</li>
-            <li>Educational market news and weekly newsletter digests.</li>
-            <li>Interactive stock search with day's metrics and historical price tables.</li>
+            <li>Educational market news and mutual fund portfolio analytics.</li>
+            <li>Interactive company analysis with financial statements, ratios, and shareholding patterns.</li>
             <li>Stocks 360 AI for financial questions.</li>
           </ul>
         </div>
@@ -160,15 +101,13 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=10"></script>
-  <script src="js/auth.js?v=1"></script>
-  <script src="js/data-store.js?v=10"></script>
-  <script src="js/gemini-ai.js?v=35"></script>
-  <script src="js/main.js?v=10"></script>
-  <script src="js/accessibility.js?v=3"></script>
-  <script src="js/screener-index.js?v=42"></script>
-  <script src="js/stock-search.js?v=42"></script>
-  <script src="js/smart-assist.js?v=3"></script>
+  <script src="js/firebase-config.js?v=52"></script>
+  <script src="js/auth.js?v=52"></script>
+  <script src="js/data-store.js?v=52"></script>
+  <script src="js/gemini-ai.js?v=52"></script>
+  <script src="js/main.js?v=52"></script>
+  <script src="js/accessibility.js?v=52"></script>
+  <script src="js/smart-assist.js?v=52"></script>
   <script>
     function renderAboutContent() {
       const savedAbout = localStorage.getItem("stocks360_about_content");

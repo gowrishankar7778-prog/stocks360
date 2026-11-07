@@ -10,18 +10,42 @@ const firebaseBin = 'C:\\Users\\gowri\\AppData\\Roaming\\npm\\node_modules\\fire
 
 fs.writeFileSync(logFile, `Starting Full GitHub + Firebase Hosting Deployment at ${new Date().toISOString()}...\n`, 'utf8');
 
+// Clean up any temporary debug scripts in scripts/
+const tempScripts = [
+  'check-data.js',
+  'check-firebase.js',
+  'check-git.js',
+  'check-live-site.js',
+  'check-live-urls.js',
+  'debug-render.js',
+  'dump-render.js',
+  'find-firebase.js',
+  'live-check-result.json',
+  'patch-nav-mf.js',
+  'test-deploy.js',
+  'test-mf.js',
+  'test-search.js',
+  'verify-all.js'
+];
+for (const file of tempScripts) {
+  const fullPath = path.join(__dirname, file);
+  if (fs.existsSync(fullPath)) {
+    try { fs.unlinkSync(fullPath); } catch (_) {}
+  }
+}
+
 // Step 1: Commit and Push to GitHub (origin/main) so GitHub Pages & Actions are 100% in sync
 try {
   console.log('>>> Step 1: Syncing latest files to GitHub (origin/main)...');
   try {
     execSync('git rm --cached js/screener-data.js', { cwd, stdio: 'ignore' });
   } catch (_) {}
-  execSync('git add .gitignore index.html news.html learn.html screener.html mutual-funds.html about.html contact.html firebase.json js/stock-search.js js/screener-index.js js/mutual-funds.js js/screener.js js/gemini-ai.js scripts/ data/mutual-funds/ data/profiles/ .github/workflows/', { cwd, stdio: 'inherit' });
+  execSync('git add -A .gitignore index.html news.html learn.html screener.html mutual-funds.html about.html contact.html firebase.json js/stock-search.js js/screener-index.js js/mutual-funds.js js/screener.js js/gemini-ai.js scripts/ data/mutual-funds/ data/profiles/ .github/workflows/', { cwd, stdio: 'inherit' });
   const status = execSync('git status --porcelain', { cwd }).toString().trim();
   if (status) {
-    execSync('git commit -m "Deploy v50: Clean Company Headings, Ratio Info Buttons, Full Mutual Funds & 9:15 PM AMFI Sync"', { cwd, stdio: 'inherit' });
+    execSync('git commit -m "Deploy v52: Remove clutter across pages & fix comprehensive company statements override"', { cwd, stdio: 'inherit' });
   }
-  execSync('git push origin main', { cwd, stdio: 'inherit' });
+  execSync('git push --force origin main', { cwd, stdio: 'inherit' });
   console.log('>>> Successfully pushed to GitHub origin/main!');
 } catch (gitErr) {
   console.warn('>>> GitHub push warning:', gitErr.message);

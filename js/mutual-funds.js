@@ -279,15 +279,6 @@
     overviewSection.innerHTML = `
       <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:14px; padding:24px; box-shadow:0 4px 16px rgba(15,23,42,0.06);">
 
-        <!-- STICKY SECTION JUMP NAVIGATION -->
-        <nav aria-label="Mutual Fund Overview Sections" style="position:sticky; top:0; z-index:40; background:#ffffff; border-bottom:1px solid #e2e8f0; padding:10px 0; margin-bottom:24px; display:flex; gap:8px; overflow-x:auto; white-space:nowrap;">
-          <a href="#mf-sec-core" style="text-decoration:none; padding:7px 14px; font-size:0.84rem; font-weight:700; border-radius:20px; background:#2563eb; color:#ffffff;">1. Mutual Fund Core Scheme</a>
-          <a href="#mf-sec-risk" style="text-decoration:none; padding:7px 14px; font-size:0.84rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#334155; border:1px solid #cbd5e1;">2. Risk Ratios</a>
-          <a href="#mf-sec-all-holdings" style="text-decoration:none; padding:7px 14px; font-size:0.84rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#334155; border:1px solid #cbd5e1;">3. All Stock Holdings</a>
-          <a href="#mf-sec-top10" style="text-decoration:none; padding:7px 14px; font-size:0.84rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#334155; border:1px solid #cbd5e1;">4. Top 10 Holdings</a>
-          <a href="#mf-sec-peers" style="text-decoration:none; padding:7px 14px; font-size:0.84rem; font-weight:600; border-radius:20px; background:#f8fafc; color:#334155; border:1px solid #cbd5e1;">5. Peer Comparison</a>
-        </nav>
-
         <!-- ======================================================================= -->
         <!-- HEADING 1: MUTUAL FUND CORE SCHEME (NAV, CAGR/XIRR, COMBO BOX & ABOUT) -->
         <!-- ======================================================================= -->
@@ -1003,14 +994,11 @@
   function init() {
     bindEvents();
 
-    fetch("data/mutual-funds/top-mutual-funds.json?v=50")
+    fetch("data/mutual-funds/top-mutual-funds.json?v=52")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         allFunds = data.funds || [];
         renderQuickPills();
-        if (allFunds.length > 0) {
-          renderSchemeOverview(allFunds[0]);
-        }
       })
       .catch(() => {
         const overviewSection = document.getElementById("mf-scheme-overview-section");
