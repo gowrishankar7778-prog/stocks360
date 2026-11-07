@@ -499,7 +499,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     activeCompanyData = stock;
+    try {
+      history.pushState({ symbol: stock.symbol }, "", `index.html?symbol=${encodeURIComponent(stock.symbol)}`);
+    } catch (_) {}
     renderDetailedCompanyAnalysis(stock, shouldScroll);
+  }
+
+  function closeCompanyAnalysis() {
+    if (window._stocks360IsSpeakingCompany) {
+      if ("speechSynthesis" in window) {
+        try { window.speechSynthesis.cancel(); } catch (_) {}
+      }
+      resetListenButtonUI();
+    }
+    if (stockResult) {
+      stockResult.hidden = true;
+      stockResult.style.display = "none";
+      stockResult.innerHTML = "";
+    }
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.focus();
+    }
+    try {
+      history.pushState({}, "", "index.html");
+    } catch (_) {}
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   // ---------------- COMPREHENSIVE FINANCIAL STATEMENTS & RATIOS SUITE ----------------
@@ -1263,7 +1288,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=54")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=62")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1283,7 +1308,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=54")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=62")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1407,6 +1432,19 @@ document.addEventListener("DOMContentLoaded", function () {
     stockResult.innerHTML = `
       <div class="company-detail-card" style="background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); font-family:inherit;">
         
+        <!-- FOCUSED BACK NAVIGATION BAR (v62) -->
+        <div class="focused-nav-bar" role="navigation" aria-label="Company analysis navigation">
+          <div class="focused-nav-group">
+            <button type="button" id="btn-back-to-home-search" class="nav-back-btn primary-back" aria-label="Go back to Home and stock search">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home &amp; Stock Search
+            </button>
+            <a href="mutual-funds.html?stock=${encodeURIComponent(stock.symbol)}&name=${encodeURIComponent(stock.name)}" class="nav-back-btn" aria-label="See this stock in Mutual Funds">
+              See This Stock in Mutual Funds &rarr;
+            </a>
+          </div>
+          <span class="focused-nav-hint">Press Esc or click back to return</span>
+        </div>
+
         <!-- HEADER & LIVE QUOTE BAR -->
         <div class="company-price-header" style="margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid #e2e8f0;">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
@@ -1733,6 +1771,8 @@ document.addEventListener("DOMContentLoaded", function () {
               return;
             }
           }
+          e.preventDefault();
+          closeCompanyAnalysis();
         }
       });
     }
@@ -1851,6 +1891,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    // Connect Dedicated "Go Back to Home & Stock Search" Button
+    const backHomeBtn = document.getElementById("btn-back-to-home-search");
+    if (backHomeBtn) {
+      backHomeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        closeCompanyAnalysis();
+      });
+    }
+
     // Connect Audio Readout for About the Company
     const listenBtn = document.getElementById("btn-listen-company");
     if (listenBtn) {
@@ -1873,7 +1922,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (cachedMutualFundsList) {
       return Promise.resolve(cachedMutualFundsList);
     }
-    return fetch("data/mutual-funds/top-mutual-funds.json?v=56")
+    return fetch("data/mutual-funds/top-mutual-funds.json?v=62")
       .then((res) => (res.ok ? res.json() : { funds: [] }))
       .then((data) => {
         cachedMutualFundsList = Array.isArray(data.funds) ? data.funds : [];
@@ -2163,4 +2212,41 @@ document.addEventListener("DOMContentLoaded", function () {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   }
+
+  // Keyboard shortcut: Escape key closes stock analysis view and restores focus to search
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "Escape" || e.key === "Esc") && stockResult && !stockResult.hidden && stockResult.style.display !== "none") {
+      const openBox = stockResult.querySelector(".ratio-info-box:not([hidden])");
+      if (openBox) {
+        openBox.setAttribute("hidden", "");
+        const toggleBtn = openBox.previousElementSibling;
+        if (toggleBtn && toggleBtn.classList.contains("ratio-info-toggle-btn")) {
+          toggleBtn.setAttribute("aria-expanded", "false");
+          toggleBtn.focus();
+        }
+        return;
+      }
+      closeCompanyAnalysis();
+    }
+  });
+
+  // Browser navigation history: popstate syncs stock search view
+  window.addEventListener("popstate", function (e) {
+    const p = new URLSearchParams(window.location.search);
+    const sym = p.get("symbol") || p.get("stock");
+    if (sym) {
+      performSearch(sym, false);
+    } else if (stockResult && !stockResult.hidden) {
+      if (window._stocks360IsSpeakingCompany) {
+        if ("speechSynthesis" in window) {
+          try { window.speechSynthesis.cancel(); } catch (_) {}
+        }
+        resetListenButtonUI();
+      }
+      stockResult.hidden = true;
+      stockResult.style.display = "none";
+      stockResult.innerHTML = "";
+      if (searchInput) searchInput.value = "";
+    }
+  });
 });

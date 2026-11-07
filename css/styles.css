@@ -2465,5 +2465,99 @@ body.high-contrast .stocks360-data-table td {
   text-align: right !important;
 }
 
+/* ==========================================================================
+   FOCUSED CONTEXT NAVIGATION & ACCESSIBLE BACK BUTTONS (v62)
+   ========================================================================== */
+.focused-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.focused-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #1e293b;
+  min-height: 42px;
+  box-sizing: border-box;
+}
+
+.nav-back-btn:hover, .nav-back-btn:focus-visible {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.nav-back-btn.primary-back {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+.nav-back-btn.primary-back:hover, .nav-back-btn.primary-back:focus-visible {
+  background: #1d4ed8;
+  color: #ffffff;
+  border-color: #1e40af;
+}
+
+.focused-nav-hint {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+body.high-contrast .focused-nav-bar {
+  background: #000000 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+body.high-contrast .nav-back-btn {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+body.high-contrast .nav-back-btn:hover, body.high-contrast .nav-back-btn:focus-visible {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+body.high-contrast .nav-back-btn.primary-back {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+body.high-contrast .focused-nav-hint {
+  color: #ffffff !important;
+}
+
+
 
 

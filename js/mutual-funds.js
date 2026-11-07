@@ -275,7 +275,23 @@
     stockSection.hidden = false;
     stockSection.innerHTML = `
       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:22px; margin-bottom:24px; box-shadow:0 1px 4px rgba(15,23,42,0.04);">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
+        <!-- FOCUSED BACK NAVIGATION BAR (v62) -->
+        <div class="focused-nav-bar" role="navigation" aria-label="Stock cross-research navigation">
+          <div class="focused-nav-group">
+            <a href="index.html?symbol=${encodeURIComponent(symUpper)}" class="nav-back-btn primary-back" aria-label="Go back to ${escapeHtml(symUpper)} stock analysis">
+              <span aria-hidden="true">&#8592;</span> Go Back to ${escapeHtml(symUpper)} Stock Overview ↗
+            </a>
+            <button type="button" id="mf-stock-back-search-btn" class="nav-back-btn" aria-label="Go to Mutual Funds Search">
+              <span aria-hidden="true">&#8592;</span> Go to Mutual Funds Search &amp; AMCs
+            </button>
+            <a href="index.html" class="nav-back-btn" aria-label="Go back to Stocks 360 homepage">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home
+            </a>
+          </div>
+          <span class="focused-nav-hint">Press Esc to return</span>
+        </div>
+
+        <div style="margin-bottom:16px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
           <div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
               <span class="badge badge-primary" style="font-size:0.75rem; background:#2563eb; color:#ffffff; padding:2px 8px; border-radius:4px; font-weight:700;">NSE: ${escapeHtml(symUpper)}</span>
@@ -287,11 +303,6 @@
             <p style="margin:4px 0 0 0; font-size:0.85rem; color:#64748b;">
               Showing ${matched.length} schemes with institutional allocation and portfolio concentration against each scheme's AUM.
             </p>
-          </div>
-          <div style="display:flex; gap:10px; align-items:center;">
-            <a href="index.html?symbol=${encodeURIComponent(symUpper)}" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:8px 14px; border-radius:6px; text-decoration:none;">
-              &larr; Back to ${escapeHtml(symUpper)} Stock Analysis
-            </a>
           </div>
         </div>
 
@@ -345,6 +356,21 @@
     `;
 
     announceA11y(`Showing ${matched.length} mutual fund schemes holding ${displayName}.`);
+
+    const stockBackSearchBtn = document.getElementById("mf-stock-back-search-btn");
+    if (stockBackSearchBtn) {
+      stockBackSearchBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        stockSection.hidden = true;
+        stockSection.innerHTML = "";
+        const searchInput = document.getElementById("mf-search");
+        if (searchInput) searchInput.focus();
+        try {
+          history.pushState({}, "", "mutual-funds.html");
+        } catch (_) {}
+      });
+    }
+
     stockSection.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -373,8 +399,25 @@
     amcSection.hidden = false;
     if (overviewSection) overviewSection.hidden = true;
 
+    try {
+      history.pushState({ amc: fundHouseName }, "", `mutual-funds.html?amc=${encodeURIComponent(fundHouseName)}`);
+    } catch (_) {}
+
     amcSection.innerHTML = `
       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:22px; margin-bottom:24px; box-shadow:0 1px 4px rgba(15,23,42,0.04);">
+        <!-- FOCUSED BACK NAVIGATION BAR (v62) -->
+        <div class="focused-nav-bar" role="navigation" aria-label="AMC navigation">
+          <div class="focused-nav-group">
+            <button type="button" id="mf-amc-back-btn" class="nav-back-btn primary-back" aria-label="Go back to mutual fund search">
+              <span aria-hidden="true">&#8592;</span> Go Back to Mutual Funds Search &amp; All AMCs
+            </button>
+            <a href="index.html" class="nav-back-btn" aria-label="Go back to Stocks 360 homepage">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home
+            </a>
+          </div>
+          <span class="focused-nav-hint">Press Esc to clear</span>
+        </div>
+
         <div style="margin-bottom:16px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
           <h2 style="font-size:1.3rem; color:#0f172a; margin:0; font-weight:700;">
             ${escapeHtml(displayAmcTitle)} (${matchingSchemes.length} Schemes)
@@ -419,6 +462,14 @@
     `;
 
     announceA11y(`Showing ${matchingSchemes.length} schemes maintained by ${displayAmcTitle}.`);
+
+    const amcBackBtn = document.getElementById("mf-amc-back-btn");
+    if (amcBackBtn) {
+      amcBackBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        closeAmcView();
+      });
+    }
   }
 
   function formatMonthlyChangeHtml(h) {
@@ -440,6 +491,10 @@
     if (!scheme) return;
     activeScheme = scheme;
     renderQuickPills();
+
+    try {
+      history.pushState({ scheme: scheme.schemeCode }, "", `mutual-funds.html?scheme=${encodeURIComponent(scheme.schemeCode)}`);
+    } catch (_) {}
 
     const overviewSection = document.getElementById("mf-scheme-overview-section");
     if (!overviewSection) return;
@@ -539,9 +594,28 @@
       : escapeHtml(scheme.exitLoad || "1% within 1 year");
 
     const officialLinks = getAmcOfficialLinks(scheme.fundHouse);
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromStock = urlParams.get("stock");
 
     overviewSection.innerHTML = `
       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:24px; box-shadow:0 1px 6px rgba(15,23,42,0.04);">
+
+        <!-- FOCUSED BACK NAVIGATION BAR (v62) -->
+        <div class="focused-nav-bar" role="navigation" aria-label="Mutual Fund Overview navigation">
+          <div class="focused-nav-group">
+            <button type="button" id="mf-back-to-search-btn" class="nav-back-btn primary-back" aria-label="Go back to mutual fund search and AMCs">
+              <span aria-hidden="true">&#8592;</span> Go Back to Mutual Funds Search &amp; AMCs
+            </button>
+            ${fromStock ? `
+            <a href="index.html?symbol=${encodeURIComponent(fromStock)}" class="nav-back-btn" aria-label="Go back to stock analysis">
+              <span aria-hidden="true">&#8592;</span> Go Back to Stock Overview (${escapeHtml(fromStock)}) ↗
+            </a>` : ''}
+            <a href="index.html" class="nav-back-btn" aria-label="Go back to Stocks 360 homepage">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home
+            </a>
+          </div>
+          <span class="focused-nav-hint">Press Esc to return</span>
+        </div>
 
         <!-- HEADING 1: MUTUAL FUND CORE SCHEME -->
         <section id="mf-sec-core" style="margin-bottom:32px;">
@@ -857,6 +931,57 @@
         announceA11y(isExpanded ? "Showing top 10 holdings only." : `Showing all ${holdings.length} holdings.`);
       });
     }
+
+    const backSearchBtn = document.getElementById("mf-back-to-search-btn");
+    if (backSearchBtn) {
+      backSearchBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        closeSchemeOverview();
+      });
+    }
+  }
+
+  function closeSchemeOverview() {
+    const overviewSection = document.getElementById("mf-scheme-overview-section");
+    const amcSection = document.getElementById("mf-amc-results-section");
+    const stockSection = document.getElementById("mf-stock-holdings-section");
+    const searchInput = document.getElementById("mf-search");
+    if (overviewSection) {
+      overviewSection.hidden = true;
+      overviewSection.innerHTML = "";
+    }
+    activeScheme = null;
+    if (amcSection && amcSection.innerHTML.trim() !== "" && !amcSection.hidden) {
+      amcSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (stockSection && stockSection.innerHTML.trim() !== "" && !stockSection.hidden) {
+      stockSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      if (searchInput) {
+        searchInput.focus();
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    try {
+      history.pushState({}, "", "mutual-funds.html");
+    } catch (_) {}
+  }
+
+  function closeAmcView() {
+    const amcSection = document.getElementById("mf-amc-results-section");
+    const searchInput = document.getElementById("mf-search");
+    if (amcSection) {
+      amcSection.hidden = true;
+      amcSection.innerHTML = "";
+    }
+    activeAmc = null;
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.focus();
+    }
+    try {
+      history.pushState({}, "", "mutual-funds.html");
+    } catch (_) {}
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function buildSuggestions(query) {
@@ -1140,12 +1265,100 @@
     });
 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" || e.key === "Esc") {
+        // 1. Ratio definition box collapse
+        const openBox = document.querySelector(".ratio-info-box:not([hidden])");
+        if (openBox) {
+          openBox.setAttribute("hidden", "");
+          const toggleBtn = openBox.previousElementSibling;
+          if (toggleBtn && toggleBtn.classList.contains("ratio-info-toggle-btn")) {
+            toggleBtn.setAttribute("aria-expanded", "false");
+            toggleBtn.focus();
+          }
+          return;
+        }
+
+        // 2. Holdings toggle collapse
         const toggleBtn = document.getElementById("mf-toggle-holdings-btn");
         if (toggleBtn && toggleBtn.getAttribute("aria-expanded") === "true") {
           toggleBtn.click();
           toggleBtn.focus();
+          return;
         }
+
+        // 3. Search suggestions
+        if (suggestionsEl && !suggestionsEl.hidden) {
+          suggestionsEl.hidden = true;
+          if (input) input.setAttribute("aria-expanded", "false");
+          return;
+        }
+
+        // 4. Scheme overview
+        const overviewEl = document.getElementById("mf-scheme-overview-section");
+        if (overviewEl && !overviewEl.hidden && overviewEl.innerHTML.trim() !== "") {
+          closeSchemeOverview();
+          return;
+        }
+
+        // 5. AMC section
+        const amcEl = document.getElementById("mf-amc-results-section");
+        if (amcEl && !amcEl.hidden && amcEl.innerHTML.trim() !== "") {
+          closeAmcView();
+          return;
+        }
+
+        // 6. Stock holdings cross-research section
+        const stockSec = document.getElementById("mf-stock-holdings-section");
+        if (stockSec && !stockSec.hidden && stockSec.innerHTML.trim() !== "") {
+          const urlParams = new URLSearchParams(window.location.search);
+          const st = urlParams.get("stock");
+          if (st) {
+            window.location.href = `index.html?symbol=${encodeURIComponent(st)}`;
+          } else {
+            stockSec.hidden = true;
+            stockSec.innerHTML = "";
+            if (input) input.focus();
+          }
+          return;
+        }
+      }
+    });
+
+    window.addEventListener("popstate", function (e) {
+      const p = new URLSearchParams(window.location.search);
+      const schemeParam = p.get("scheme");
+      const amcParam = p.get("amc");
+      const stockParam = p.get("stock");
+      const nameParam = p.get("name");
+
+      if (schemeParam) {
+        const found = allFunds.find(
+          (f) => String(f.schemeCode) === String(schemeParam) ||
+                 f.name.toLowerCase() === schemeParam.toLowerCase() ||
+                 f.shortName.toLowerCase() === schemeParam.toLowerCase()
+        );
+        if (found) renderSchemeOverview(found);
+      } else if (amcParam) {
+        renderAmcSchemesView(amcParam);
+      } else if (stockParam) {
+        renderStockHoldingSchemesView(stockParam, nameParam);
+      } else {
+        const overviewSection = document.getElementById("mf-scheme-overview-section");
+        if (overviewSection) {
+          overviewSection.hidden = true;
+          overviewSection.innerHTML = "";
+        }
+        const amcSection = document.getElementById("mf-amc-results-section");
+        if (amcSection) {
+          amcSection.hidden = true;
+          amcSection.innerHTML = "";
+        }
+        const stockSection = document.getElementById("mf-stock-holdings-section");
+        if (stockSection) {
+          stockSection.hidden = true;
+          stockSection.innerHTML = "";
+        }
+        if (input) input.value = "";
       }
     });
   }
@@ -1153,7 +1366,7 @@
   function init() {
     bindEvents();
 
-    fetch("data/mutual-funds/top-mutual-funds.json?v=61")
+    fetch("data/mutual-funds/top-mutual-funds.json?v=62")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         allFunds = data.funds || [];
@@ -1164,13 +1377,17 @@
         // Support deep-linking:
         // 1. Cross-research from stock: ?stock=<SYMBOL>&name=<NAME>
         // 2. Direct scheme link: ?scheme=<CODE or NAME>
+        // 3. AMC scheme list: ?amc=<AMC NAME>
         const params = new URLSearchParams(window.location.search);
         const stockParam = params.get("stock");
         const nameParam = params.get("name");
+        const amcParam = params.get("amc");
         if (stockParam) {
           const input = document.getElementById("mf-search");
           if (input) input.value = stockParam;
           renderStockHoldingSchemesView(stockParam, nameParam);
+        } else if (amcParam) {
+          renderAmcSchemesView(amcParam);
         } else {
           const schemeParam = params.get("scheme");
           if (schemeParam) {

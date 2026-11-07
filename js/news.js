@@ -81,11 +81,13 @@ document.addEventListener("DOMContentLoaded", function () {
       link.addEventListener("click", function (e) {
         e.preventDefault();
         const newsId = this.getAttribute("data-news-id");
-        history.pushState({ view: "detail", id: newsId }, "", "#news-" + newsId);
-        showDetail(newsId);
+        history.pushState({ view: "detail", id: newsId }, "", "?id=" + encodeURIComponent(newsId));
+        showDetail(newsId, this);
       });
     });
   }
+
+  let lastActiveNewsTrigger = null;
 
   function showList() {
     if (typeof StocksAudioEngine !== "undefined") {
@@ -94,11 +96,20 @@ document.addEventListener("DOMContentLoaded", function () {
     newsDetail.hidden = true;
     newsList.hidden = false;
     window.scrollTo({ top: 0, behavior: "smooth" });
+    if (lastActiveNewsTrigger && typeof lastActiveNewsTrigger.focus === "function") {
+      lastActiveNewsTrigger.focus();
+    } else {
+      const pageHeading = document.getElementById("page-heading");
+      if (pageHeading) pageHeading.focus();
+    }
   }
 
   let currentNewsArticle = null;
 
-  function showDetail(newsId) {
+  function showDetail(newsId, triggerEl = null) {
+    if (triggerEl) {
+      lastActiveNewsTrigger = triggerEl;
+    }
     const news = typeof StocksDataStore !== "undefined" ? StocksDataStore.getNewsById(newsId) : null;
     if (!news) return;
     currentNewsArticle = news;
@@ -170,9 +181,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Keyboard accessibility: Escape key returns to news list
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "Escape" || e.key === "Esc") && !newsDetail.hidden) {
+      if (ask360Box && !ask360Box.hidden) {
+        ask360Box.hidden = true;
+        if (ask360Btn) ask360Btn.setAttribute("aria-expanded", "false");
+        if (ask360Btn) ask360Btn.focus();
+        return;
+      }
+      history.pushState({ view: "list" }, "", "news.html");
+      showList();
+    }
+  });
+
   window.addEventListener("popstate", function (e) {
-    if (e.state && e.state.view === "detail") {
-      showDetail(e.state.id);
+    const p = new URLSearchParams(window.location.search);
+    const id = (e.state && e.state.id) || p.get("id");
+    if (id) {
+      showDetail(id);
     } else {
       showList();
     }
@@ -247,10 +274,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const queryId = searchParams.get("id");
   const hash = window.location.hash;
   renderPublicNewsList();
 
-  if (hash && hash.startsWith("#news-")) {
+  if (queryId) {
+    showDetail(queryId);
+  } else if (hash && hash.startsWith("#news-")) {
     const id = hash.replace("#news-", "");
     showDetail(id);
   }

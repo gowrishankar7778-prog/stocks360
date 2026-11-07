@@ -6,7 +6,7 @@
   <meta name="referrer" content="no-referrer">
   <title>Market News &amp; Updates - Stocks 360</title>
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css?v=52">
+  <link rel="stylesheet" href="css/styles.css?v=62">
 </head>
 <body>
 
@@ -67,6 +67,15 @@
 
       <!-- LIST VIEW -->
       <section id="news-list" aria-labelledby="page-heading">
+        <div class="focused-nav-bar" role="navigation" aria-label="News page navigation">
+          <div class="focused-nav-group">
+            <a href="index.html" class="nav-back-btn" id="news-list-back-home" aria-label="Go back to Stocks 360 homepage">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home
+            </a>
+          </div>
+          <span class="focused-nav-hint">Select any news story below to read</span>
+        </div>
+
         <div class="page-title-banner">
           <h1 id="page-heading" tabindex="-1">Market News &amp; Updates</h1>
           <p class="subtitle">Latest stock market headlines, sector developments, and daily market updates.</p>
@@ -80,7 +89,17 @@
       <!-- DETAIL VIEW -->
       <section id="news-detail" hidden aria-labelledby="detail-title">
         <div class="detail-container">
-          <a href="#" id="back-to-list" class="back-link">&larr; Back to News List</a>
+          <div class="focused-nav-bar" role="navigation" aria-label="Article navigation">
+            <div class="focused-nav-group">
+              <button type="button" id="back-to-list" class="nav-back-btn primary-back" aria-label="Go back to all news articles">
+                <span aria-hidden="true">&#8592;</span> Go Back to All News Articles
+              </button>
+              <a href="index.html" class="nav-back-btn" id="news-detail-back-home" aria-label="Go back to Stocks 360 homepage">
+                <span aria-hidden="true">&#8592;</span> Go Back to Home
+              </a>
+            </div>
+            <span class="focused-nav-hint">Press Esc to go back</span>
+          </div>
 
           <article class="news-article-view">
             <h1 id="detail-title" tabindex="-1">Title</h1>
@@ -169,14 +188,14 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=61"></script>
-  <script src="js/auth.js?v=61"></script>
-  <script src="js/data-store.js?v=61"></script>
-  <script src="js/gemini-ai.js?v=61"></script>
-  <script src="js/main.js?v=61"></script>
-  <script src="js/accessibility.js?v=61"></script>
-  <script src="js/audio-engine.js?v=61"></script>
-  <script src="js/news.js?v=61"></script>
-  <script src="js/smart-assist.js?v=61"></script>
+  <script src="js/firebase-config.js?v=62"></script>
+  <script src="js/auth.js?v=62"></script>
+  <script src="js/data-store.js?v=62"></script>
+  <script src="js/gemini-ai.js?v=62"></script>
+  <script src="js/main.js?v=62"></script>
+  <script src="js/accessibility.js?v=62"></script>
+  <script src="js/audio-engine.js?v=62"></script>
+  <script src="js/news.js?v=62"></script>
+  <script src="js/smart-assist.js?v=62"></script>
 </body>
 </html>

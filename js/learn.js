@@ -271,6 +271,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const lessonBackToModules = document.getElementById("lesson-back-to-modules");
+  if (lessonBackToModules) {
+    lessonBackToModules.addEventListener("click", function (e) {
+      e.preventDefault();
+      history.pushState({ view: "units" }, "", "learn.html");
+      showUnits();
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" || e.key === "Esc") {
+      if (ask360Box && !ask360Box.hidden) {
+        ask360Box.hidden = true;
+        if (ask360Btn) ask360Btn.setAttribute("aria-expanded", "false");
+        if (ask360Btn) ask360Btn.focus();
+        return;
+      }
+      if (subunitDetail && !subunitDetail.hidden) {
+        history.pushState({ view: "subunits", unitId: currentUnitId }, "", "#unit-" + currentUnitId);
+        showSubunits(currentUnitId);
+        return;
+      }
+      if (subunitsList && !subunitsList.hidden) {
+        history.pushState({ view: "units" }, "", "learn.html");
+        showUnits();
+        return;
+      }
+    }
+  });
+
   if (prevBtn) {
     prevBtn.addEventListener("click", function () {
       if (currentSubIndex > 0) {

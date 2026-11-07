@@ -6,7 +6,7 @@
   <title>About Us - Stocks 360</title>
   <meta name="description" content="About Stocks 360 - An educational website about the stock market with enhanced accessibility features.">
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css?v=52">
+  <link rel="stylesheet" href="css/styles.css?v=62">
 </head>
 <body>
 
@@ -65,6 +65,15 @@
   <main id="main-content">
     <div class="container">
       <div class="detail-container">
+        <div class="focused-nav-bar" role="navigation" aria-label="About page navigation">
+          <div class="focused-nav-group">
+            <a href="index.html" class="nav-back-btn" id="about-back-home" aria-label="Go back to Stocks 360 homepage">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home
+            </a>
+          </div>
+          <span class="focused-nav-hint">Stocks 360 platform &amp; accessibility mission</span>
+        </div>
+
         <h1 id="page-heading" tabindex="-1">About Stocks 360</h1>
         
         <div id="dynamic-about-container" class="article-main-body">
@@ -101,13 +110,13 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=52"></script>
-  <script src="js/auth.js?v=52"></script>
-  <script src="js/data-store.js?v=52"></script>
-  <script src="js/gemini-ai.js?v=52"></script>
-  <script src="js/main.js?v=52"></script>
-  <script src="js/accessibility.js?v=52"></script>
-  <script src="js/smart-assist.js?v=52"></script>
+  <script src="js/firebase-config.js?v=62"></script>
+  <script src="js/auth.js?v=62"></script>
+  <script src="js/data-store.js?v=62"></script>
+  <script src="js/gemini-ai.js?v=62"></script>
+  <script src="js/main.js?v=62"></script>
+  <script src="js/accessibility.js?v=62"></script>
+  <script src="js/smart-assist.js?v=62"></script>
   <script>
     function renderAboutContent() {
       const savedAbout = localStorage.getItem("stocks360_about_content");
