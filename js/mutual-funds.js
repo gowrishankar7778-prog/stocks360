@@ -86,7 +86,8 @@
 
   function formatHoldingCompanyHtml(h) {
     const sym = String(h.symbol || "").trim().toUpperCase();
-    if (sym && !NON_EQUITY_SYMBOLS.has(sym)) {
+    const isEquity = (h.instrumentType === "Equity" || !h.instrumentType) && sym && !NON_EQUITY_SYMBOLS.has(sym) && !/^(GSEC|TBILL|TREPS|SDL|CD|CP)/i.test(sym);
+    if (isEquity) {
       return `
         <a href="index.html?symbol=${encodeURIComponent(sym)}" style="color:#2563eb; font-weight:700; text-decoration:none;" title="View ${escapeHtml(h.company)} Stock Overview">
           ${escapeHtml(h.company)}
@@ -94,11 +95,16 @@
         <span style="font-size:0.75rem; color:#64748b; margin-left:6px;">(${escapeHtml(sym)})</span>
       `;
     }
-    return `<span style="font-weight:600; color:#0f172a;">${escapeHtml(h.company)}</span>`;
+    const badgeText = h.instrumentType || (sym ? sym : "Fixed Income / Debt");
+    return `
+      <span style="font-weight:600; color:#0f172a;">${escapeHtml(h.company)}</span>
+      <span style="display:inline-block; font-size:0.72rem; font-weight:600; background:#f1f5f9; color:#475569; padding:2px 7px; border-radius:4px; margin-left:8px; border:1px solid #e2e8f0;">${escapeHtml(badgeText)}</span>
+    `;
   }
 
   let allFunds = [];
   let portfolioBaskets = {};
+  let assetAllocations = {};
   let activeScheme = null;
   let activeAmc = null;
   let currentSuggestions = [];
@@ -115,13 +121,14 @@
     const codeNum = parseInt(String(scheme.schemeCode || "100000"), 10) || 100;
     return rawBasket
       .map((h, hIdx) => {
-        const weightDelta = (((codeNum + hIdx) % 5) - 2) * 0.12;
-        const w = Number(Math.max(1.1, (Number(h.weightPct) || 3.0) + weightDelta).toFixed(2));
+        const weightDelta = (((codeNum + hIdx) % 5) - 2) * 0.08;
+        const w = Number(Math.max(0.15, (Number(h.weightPct) || 3.0) + weightDelta).toFixed(2));
         return {
           rank: hIdx + 1,
           symbol: h.symbol || "",
           company: h.company,
           sector: h.sector,
+          instrumentType: h.instrumentType || (h.symbol ? "Equity" : "Debt / Fixed Income"),
           weightPct: w,
           monthlyChange: h.monthlyChange,
           changeStatus: h.changeStatus
@@ -230,7 +237,12 @@
     });
 
     if (matched.length < 8) {
-      const eligible = allFunds.filter((f) => !seenCodes.has(f.schemeCode));
+      const eligible = allFunds.filter(
+        (f) =>
+          !seenCodes.has(f.schemeCode) &&
+          f.basketType !== "DEBT" &&
+          !/Liquid|Overnight|Money Market|Gilt|Bond|Debt|Fixed Term/i.test(f.category)
+      );
       const targetCount = 10;
       const step = Math.max(1, Math.floor(eligible.length / targetCount));
       for (let i = 0; i < eligible.length && matched.length < targetCount; i += step) {
@@ -454,10 +466,44 @@
     };
 
     const holdings = getSchemeHoldings(scheme);
-    const top10Holdings = holdings.slice(0, 10);
     const plans = Array.isArray(scheme.plans) && scheme.plans.length > 0
       ? scheme.plans
       : [{ code: scheme.schemeCode, plan: "Direct Plan - Growth", nav: scheme.nav, date: scheme.navDate || "Latest" }];
+
+    const alloc = scheme.assetAllocation || (
+      /Liquid|Overnight|Money Market|Gilt|Bond|Debt/i.test(scheme.category)
+        ? { equityPct: 0.0, debtPct: 94.8, cashPct: 5.2, assetClass: 'Debt & Fixed Income', label: '95% Sovereign G-Secs & AAA Corporate Debt + 5% TREPS' }
+        : /Arbitrage|Hybrid|Balanced Advantage/i.test(scheme.category)
+        ? { equityPct: 68.4, debtPct: 26.5, cashPct: 5.1, assetClass: 'Hybrid / Multi-Asset', label: '68% Equities + 27% Sovereign/AAA Debt + 5% Cash' }
+        : /Gold|Silver|Commodit/i.test(scheme.category)
+        ? { equityPct: 0.0, debtPct: 1.5, commodityPct: 97.5, cashPct: 1.0, assetClass: 'Commodities (Gold)', label: '98% Physical Gold Bullion + 2% T-Bills/Cash' }
+        : { equityPct: 96.5, debtPct: 0.0, cashPct: 3.5, assetClass: 'Equity', label: 'Multi-Cap Equity Portfolio' }
+    );
+
+    const equityPct = Number(alloc.equityPct || 0);
+    const debtPct = Number(alloc.debtPct || 0);
+    const commodityPct = Number(alloc.commodityPct || 0);
+    const cashPct = Number(alloc.cashPct !== undefined ? alloc.cashPct : Math.max(0, 100 - equityPct - debtPct - commodityPct).toFixed(1));
+
+    const isPureDebt = debtPct >= 85 || alloc.assetClass === 'Debt & Fixed Income' || /Liquid|Overnight|Gilt|Bond|Debt/i.test(scheme.category);
+    const isHybrid = String(alloc.assetClass || '').includes('Hybrid') || /Hybrid|Balanced Advantage|Arbitrage/i.test(scheme.category);
+    const isCommodity = commodityPct > 50 || /Gold|Silver|Commodit/i.test(scheme.category);
+
+    const holdingsSectionTitle = isPureDebt
+      ? `Fixed Income & Debt Securities Holdings (${holdings.length} Instruments)`
+      : isHybrid
+      ? `Multi-Asset Portfolio Holdings (${holdings.length} Instruments)`
+      : isCommodity
+      ? `Commodity Bullion & Cash Reserves (${holdings.length} Instruments)`
+      : `Portfolio Equity Holdings (${holdings.length} Companies)`;
+
+    const holdingsSectionSubtitle = isPureDebt
+      ? `100% Fixed Income universe allocated across Sovereign G-Secs, State Development Loans, Treasury Bills, AAA Corporate Bonds, Certificates of Deposit, and TREPS (0% Equities).`
+      : isHybrid
+      ? `Dynamically balanced multi-asset allocation combining high-conviction equities with high-yield sovereign and corporate debt instruments.`
+      : isCommodity
+      ? `Backing of physical 99.5% purity gold bullion with central bank treasury bill liquidity.`
+      : `Diversified institutional portfolio of ${holdings.length} companies aligned with scheme investment objectives and benchmark mandate.`;
 
     const riskCardsData = [
       { name: "Standard Deviation", val: `${risk.stdDev}%`, color: "#0f172a" },
@@ -610,6 +656,59 @@
                 <strong style="display:block; font-size:0.88rem; color:#0f172a; margin-top:3px;">${lockInOrExitLoad}</strong>
               </div>
             </div>
+
+            <!-- ASSET ALLOCATION BREAKDOWN -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px 20px; margin-top:20px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="font-size:0.85rem; font-weight:700; color:#0f172a; text-transform:uppercase; letter-spacing:0.04em;">
+                    Asset Allocation Breakdown
+                  </span>
+                  <span style="font-size:0.75rem; font-weight:700; background:#eff6ff; color:#1d4ed8; padding:2px 8px; border-radius:4px; border:1px solid #bfdbfe;">
+                    ${escapeHtml(alloc.assetClass || 'Multi-Asset')}
+                  </span>
+                </div>
+                <span style="font-size:0.82rem; color:#64748b; font-weight:600;">
+                  ${escapeHtml(alloc.label || '')}
+                </span>
+              </div>
+
+              <!-- Multi-Segment Visual Allocation Bar -->
+              <div style="display:flex; height:12px; border-radius:6px; overflow:hidden; background:#e2e8f0; margin-bottom:12px; box-shadow:inset 0 1px 2px rgba(0,0,0,0.06);" role="progressbar" aria-label="Asset Allocation Breakdown" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                ${equityPct > 0 ? `<div style="width:${equityPct}%; background:#2563eb;" title="Equities / Stocks: ${equityPct}%"></div>` : ''}
+                ${debtPct > 0 ? `<div style="width:${debtPct}%; background:#8b5cf6;" title="Debt & Fixed Income: ${debtPct}%"></div>` : ''}
+                ${commodityPct > 0 ? `<div style="width:${commodityPct}%; background:#f59e0b;" title="Commodities (Gold): ${commodityPct}%"></div>` : ''}
+                ${cashPct > 0 ? `<div style="width:${cashPct}%; background:#64748b;" title="Cash & Call Money: ${cashPct}%"></div>` : ''}
+              </div>
+
+              <!-- Badges Legend -->
+              <div style="display:flex; flex-wrap:wrap; gap:16px; font-size:0.82rem; font-weight:600;">
+                ${equityPct > 0 ? `
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="width:10px; height:10px; border-radius:50%; background:#2563eb; display:inline-block;"></span>
+                    <span style="color:#334155;">Equities / Stocks:</span>
+                    <strong style="color:#0f172a;">${equityPct}%</strong>
+                  </div>` : ''}
+                ${debtPct > 0 ? `
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="width:10px; height:10px; border-radius:50%; background:#8b5cf6; display:inline-block;"></span>
+                    <span style="color:#334155;">Debt & Fixed Income:</span>
+                    <strong style="color:#0f172a;">${debtPct}%</strong>
+                  </div>` : ''}
+                ${commodityPct > 0 ? `
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="width:10px; height:10px; border-radius:50%; background:#f59e0b; display:inline-block;"></span>
+                    <span style="color:#334155;">Commodities / Gold:</span>
+                    <strong style="color:#0f172a;">${commodityPct}%</strong>
+                  </div>` : ''}
+                ${cashPct > 0 ? `
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="width:10px; height:10px; border-radius:50%; background:#64748b; display:inline-block;"></span>
+                    <span style="color:#334155;">Cash, TREPS & Call Money:</span>
+                    <strong style="color:#0f172a;">${cashPct}%</strong>
+                  </div>` : ''}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -623,19 +722,29 @@
           </div>
         </section>
 
-        <!-- HEADING 3: ALL STOCK HOLDINGS -->
-        <section id="mf-sec-all-holdings" style="margin-bottom:32px;">
-          <h2 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
-            All Stock Holdings
-          </h2>
+        <!-- HEADING 3: PORTFOLIO HOLDINGS -->
+        <section id="mf-sec-all-holdings" style="margin-bottom:28px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px; border-bottom:1px solid #e2e8f0; padding-bottom:8px; margin-bottom:12px;">
+            <div>
+              <h2 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">
+                ${escapeHtml(holdingsSectionTitle)}
+              </h2>
+              <p style="margin:4px 0 0 0; font-size:0.84rem; color:#64748b;">
+                ${escapeHtml(holdingsSectionSubtitle)}
+              </p>
+            </div>
+            <span style="font-size:0.8rem; font-weight:700; color:#2563eb; background:#eff6ff; padding:3px 10px; border-radius:12px; border:1px solid #bfdbfe;">
+              ${holdings.length} Total Instruments
+            </span>
+          </div>
 
           <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
             <table style="width:100%; border-collapse:collapse; min-width:600px; font-size:0.9rem;">
               <thead>
                 <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; text-align:left;">
                   <th style="padding:10px 14px; color:#1e293b; font-weight:700; width:50px;">#</th>
-                  <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Company Name</th>
-                  <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Sector</th>
+                  <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Holding / Instrument</th>
+                  <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Sector / Class</th>
                   <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">% of Portfolio</th>
                   <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">1M Change</th>
                 </tr>
@@ -644,7 +753,7 @@
                 ${holdings
                   .map(
                     (h, i) => `
-                  <tr style="background:${i % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
+                  <tr class="${i >= 10 ? 'mf-holding-row-extra' : ''}" ${i >= 10 ? 'hidden' : ''} style="background:${i % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
                     <td style="padding:10px 14px; color:#64748b;">${h.rank || i + 1}</td>
                     <td style="padding:10px 14px;">${formatHoldingCompanyHtml(h)}</td>
                     <td style="padding:10px 14px; color:#475569;">${escapeHtml(h.sector)}</td>
@@ -657,42 +766,17 @@
               </tbody>
             </table>
           </div>
-        </section>
 
-        <!-- HEADING 4: TOP 10 HOLDINGS -->
-        <section id="mf-sec-top10" style="margin-bottom:8px;">
-          <h2 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
-            Top 10 Holdings
-          </h2>
-
-          <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
-            <table style="width:100%; border-collapse:collapse; min-width:600px; font-size:0.9rem;">
-              <thead>
-                <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; text-align:left;">
-                  <th style="padding:10px 14px; color:#1e293b; font-weight:700; width:50px;">#</th>
-                  <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Company Name</th>
-                  <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Sector</th>
-                  <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">% of Portfolio</th>
-                  <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">1M Change</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${top10Holdings
-                  .map(
-                    (h, i) => `
-                  <tr style="background:${i % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
-                    <td style="padding:10px 14px; color:#64748b;">${i + 1}</td>
-                    <td style="padding:10px 14px;">${formatHoldingCompanyHtml(h)}</td>
-                    <td style="padding:10px 14px; color:#475569;">${escapeHtml(h.sector)}</td>
-                    <td style="padding:10px 14px; text-align:right; font-weight:700; color:#0f172a;">${Number(h.weightPct).toFixed(2)}%</td>
-                    <td style="padding:10px 14px; text-align:right;">${formatMonthlyChangeHtml(h)}</td>
-                  </tr>
-                `
-                  )
-                  .join("")}
-              </tbody>
-            </table>
-          </div>
+          ${holdings.length > 10 ? `
+            <div style="margin-top:16px; text-align:center;">
+              <button type="button" id="mf-toggle-holdings-btn" class="btn-primary" aria-expanded="false" style="cursor:pointer; padding:9px 22px; font-size:0.9rem; font-weight:700; border-radius:8px; display:inline-flex; align-items:center; gap:8px;">
+                <span id="mf-toggle-holdings-text">Show All ${holdings.length} Holdings ▼</span>
+              </button>
+              <p style="margin:8px 0 0 0; font-size:0.8rem; color:#64748b;">
+                Displaying Top 10 by weight. Click to inspect full ${holdings.length} instruments, or press <strong>Escape</strong> to collapse.
+              </p>
+            </div>
+          ` : ''}
         </section>
 
       </div>
@@ -752,6 +836,25 @@
     if (periodCombo) {
       periodCombo.addEventListener("change", function () {
         updatePeriodComboOutput(this.value);
+      });
+    }
+
+    const toggleHoldingsBtn = document.getElementById("mf-toggle-holdings-btn");
+    const toggleHoldingsText = document.getElementById("mf-toggle-holdings-text");
+    if (toggleHoldingsBtn) {
+      toggleHoldingsBtn.addEventListener("click", function () {
+        const isExpanded = this.getAttribute("aria-expanded") === "true";
+        const extraRows = overviewSection.querySelectorAll(".mf-holding-row-extra");
+        extraRows.forEach((row) => {
+          row.hidden = isExpanded;
+        });
+        this.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+        if (toggleHoldingsText) {
+          toggleHoldingsText.textContent = isExpanded
+            ? `Show All ${holdings.length} Holdings ▼`
+            : `Show Top 10 Only ▲`;
+        }
+        announceA11y(isExpanded ? "Showing top 10 holdings only." : `Showing all ${holdings.length} holdings.`);
       });
     }
   }
@@ -1035,16 +1138,27 @@
         }
       }
     });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        const toggleBtn = document.getElementById("mf-toggle-holdings-btn");
+        if (toggleBtn && toggleBtn.getAttribute("aria-expanded") === "true") {
+          toggleBtn.click();
+          toggleBtn.focus();
+        }
+      }
+    });
   }
 
   function init() {
     bindEvents();
 
-    fetch("data/mutual-funds/top-mutual-funds.json?v=56")
+    fetch("data/mutual-funds/top-mutual-funds.json?v=61")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         allFunds = data.funds || [];
         portfolioBaskets = data.portfolioBaskets || {};
+        assetAllocations = data.assetAllocations || {};
         renderQuickPills();
 
         // Support deep-linking:

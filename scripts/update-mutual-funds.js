@@ -46,103 +46,8 @@ function fetchAmfiNavs(url = 'https://www.amfiindia.com/spages/NAVAll.txt', redi
   });
 }
 
-// Stock basket templates by style/category so every fund has realistic 14-stock holdings with monthly changes
-const PORTFOLIO_BASKETS = {
-  FLEXI: [
-    { symbol: 'HDFCBANK', company: 'HDFC Bank Ltd.', sector: 'Financial Services', weightPct: 8.12, monthlyChange: +0.35, changeStatus: 'Increased' },
-    { symbol: 'BAJAJHLDNG', company: 'Bajaj Holdings & Investment Ltd.', sector: 'Financial Services', weightPct: 6.85, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'COALINDIA', company: 'Coal India Ltd.', sector: 'Energy & Mining', weightPct: 5.94, monthlyChange: +0.48, changeStatus: 'Increased' },
-    { symbol: 'POWERGRID', company: 'Power Grid Corporation of India Ltd.', sector: 'Utilities', weightPct: 5.62, monthlyChange: -0.15, changeStatus: 'Trimmed' },
-    { symbol: 'ITC', company: 'ITC Ltd.', sector: 'FMCG', weightPct: 5.18, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'ICICIBANK', company: 'ICICI Bank Ltd.', sector: 'Financial Services', weightPct: 4.92, monthlyChange: +0.28, changeStatus: 'Increased' },
-    { symbol: 'MARUTI', company: 'Maruti Suzuki India Ltd.', sector: 'Automobile', weightPct: 4.45, monthlyChange: +0.62, changeStatus: 'Increased' },
-    { symbol: 'HCLTECH', company: 'HCL Technologies Ltd.', sector: 'Information Technology', weightPct: 4.10, monthlyChange: -0.22, changeStatus: 'Trimmed' },
-    { symbol: 'KOTAKBANK', company: 'Kotak Mahindra Bank Ltd.', sector: 'Financial Services', weightPct: 3.75, monthlyChange: +0.19, changeStatus: 'Increased' },
-    { symbol: 'AXISBANK', company: 'Axis Bank Ltd.', sector: 'Financial Services', weightPct: 3.48, monthlyChange: -0.10, changeStatus: 'Trimmed' },
-    { symbol: 'INFY', company: 'Infosys Ltd.', sector: 'Information Technology', weightPct: 3.12, monthlyChange: +0.14, changeStatus: 'Increased' },
-    { symbol: 'CIPLA', company: 'Cipla Ltd.', sector: 'Healthcare & Pharma', weightPct: 2.84, monthlyChange: +0.85, changeStatus: 'New Addition' },
-    { symbol: 'DRREDDY', company: 'Dr. Reddys Laboratories Ltd.', sector: 'Healthcare & Pharma', weightPct: 2.55, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'BALKRISIND', company: 'Balkrishna Industries Ltd.', sector: 'Auto Components', weightPct: 2.18, monthlyChange: -0.30, changeStatus: 'Trimmed' }
-  ],
-  LARGE: [
-    { symbol: 'HDFCBANK', company: 'HDFC Bank Ltd.', sector: 'Financial Services', weightPct: 9.45, monthlyChange: +0.42, changeStatus: 'Increased' },
-    { symbol: 'ICICIBANK', company: 'ICICI Bank Ltd.', sector: 'Financial Services', weightPct: 8.30, monthlyChange: +0.25, changeStatus: 'Increased' },
-    { symbol: 'RELIANCE', company: 'Reliance Industries Ltd.', sector: 'Oil, Gas & Telecom', weightPct: 7.85, monthlyChange: -0.18, changeStatus: 'Trimmed' },
-    { symbol: 'INFY', company: 'Infosys Ltd.', sector: 'Information Technology', weightPct: 6.40, monthlyChange: +0.31, changeStatus: 'Increased' },
-    { symbol: 'LT', company: 'Larsen & Toubro Ltd.', sector: 'Capital Goods & Infra', weightPct: 5.75, monthlyChange: +0.15, changeStatus: 'Increased' },
-    { symbol: 'TCS', company: 'Tata Consultancy Services Ltd.', sector: 'Information Technology', weightPct: 5.10, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'SBIN', company: 'State Bank of India', sector: 'Financial Services', weightPct: 4.65, monthlyChange: +0.52, changeStatus: 'Increased' },
-    { symbol: 'BHARTIARTL', company: 'Bharti Airtel Ltd.', sector: 'Telecommunication', weightPct: 4.30, monthlyChange: +0.20, changeStatus: 'Increased' },
-    { symbol: 'ITC', company: 'ITC Ltd.', sector: 'FMCG', weightPct: 3.95, monthlyChange: -0.12, changeStatus: 'Trimmed' },
-    { symbol: 'M&M', company: 'Mahindra & Mahindra Ltd.', sector: 'Automobile', weightPct: 3.60, monthlyChange: +0.38, changeStatus: 'Increased' },
-    { symbol: 'SUNPHARMA', company: 'Sun Pharmaceutical Industries Ltd.', sector: 'Healthcare & Pharma', weightPct: 3.15, monthlyChange: +0.90, changeStatus: 'New Addition' },
-    { symbol: 'NTPC', company: 'NTPC Ltd.', sector: 'Power & Utilities', weightPct: 2.85, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'ULTRACEMCO', company: 'UltraTech Cement Ltd.', sector: 'Cement & Materials', weightPct: 2.40, monthlyChange: -0.24, changeStatus: 'Trimmed' },
-    { symbol: 'TATAMOTORS', company: 'Tata Motors Ltd.', sector: 'Automobile', weightPct: 2.15, monthlyChange: -0.15, changeStatus: 'Trimmed' }
-  ],
-  MID: [
-    { symbol: 'INDHOTEL', company: 'Indian Hotels Company Ltd.', sector: 'Hospitality & Leisure', weightPct: 4.85, monthlyChange: +0.34, changeStatus: 'Increased' },
-    { symbol: 'MFSL', company: 'Max Financial Services Ltd.', sector: 'Financial Services', weightPct: 4.52, monthlyChange: +0.45, changeStatus: 'Increased' },
-    { symbol: 'PERSISTENT', company: 'Persistent Systems Ltd.', sector: 'Information Technology', weightPct: 4.28, monthlyChange: +0.22, changeStatus: 'Increased' },
-    { symbol: 'COFORGE', company: 'Coforge Ltd.', sector: 'Information Technology', weightPct: 3.96, monthlyChange: -0.18, changeStatus: 'Trimmed' },
-    { symbol: 'FEDERALBNK', company: 'Federal Bank Ltd.', sector: 'Financial Services', weightPct: 3.80, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'CUMMINSIND', company: 'Cummins India Ltd.', sector: 'Capital Goods', weightPct: 3.64, monthlyChange: +0.29, changeStatus: 'Increased' },
-    { symbol: 'SUPREMEIND', company: 'Supreme Industries Ltd.', sector: 'Industrial Products', weightPct: 3.45, monthlyChange: -0.14, changeStatus: 'Trimmed' },
-    { symbol: 'SOLARINDS', company: 'Solar Industries India Ltd.', sector: 'Chemicals & Defence', weightPct: 3.22, monthlyChange: +0.55, changeStatus: 'Increased' },
-    { symbol: 'TIINDIA', company: 'Tube Investments of India Ltd.', sector: 'Auto Components', weightPct: 3.05, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'DIXON', company: 'Dixon Technologies (India) Ltd.', sector: 'Consumer Electronics', weightPct: 2.90, monthlyChange: +0.68, changeStatus: 'Increased' },
-    { symbol: 'VOLTAS', company: 'Voltas Ltd.', sector: 'Consumer Durables', weightPct: 2.74, monthlyChange: +1.10, changeStatus: 'New Addition' },
-    { symbol: 'APOLLOTYRE', company: 'Apollo Tyres Ltd.', sector: 'Auto Components', weightPct: 2.48, monthlyChange: -0.25, changeStatus: 'Trimmed' },
-    { symbol: 'FORTIS', company: 'Fortis Healthcare Ltd.', sector: 'Healthcare', weightPct: 2.30, monthlyChange: +0.18, changeStatus: 'Increased' },
-    { symbol: 'PIIND', company: 'PI Industries Ltd.', sector: 'Agro Chemicals', weightPct: 2.12, monthlyChange: 0.00, changeStatus: 'Unchanged' }
-  ],
-  SMALL: [
-    { symbol: 'APARINDS', company: 'Apar Industries Ltd.', sector: 'Capital Goods', weightPct: 3.65, monthlyChange: +0.48, changeStatus: 'Increased' },
-    { symbol: 'MCX', company: 'MCX (Multi Commodity Exchange)', sector: 'Financial Services', weightPct: 3.42, monthlyChange: +0.62, changeStatus: 'Increased' },
-    { symbol: 'KARURVYSYA', company: 'Karur Vysya Bank Ltd.', sector: 'Financial Services', weightPct: 3.18, monthlyChange: +0.15, changeStatus: 'Increased' },
-    { symbol: 'BLUESTARCO', company: 'Blue Star Ltd.', sector: 'Consumer Durables', weightPct: 2.95, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'JBCHEPHARM', company: 'JB Chemicals & Pharmaceuticals Ltd.', sector: 'Healthcare & Pharma', weightPct: 2.82, monthlyChange: +0.30, changeStatus: 'Increased' },
-    { symbol: 'TEJASNET', company: 'Tejas Networks Ltd.', sector: 'Telecom Equipment', weightPct: 2.68, monthlyChange: -0.22, changeStatus: 'Trimmed' },
-    { symbol: 'KPITTECH', company: 'KPIT Technologies Ltd.', sector: 'Information Technology', weightPct: 2.54, monthlyChange: -0.18, changeStatus: 'Trimmed' },
-    { symbol: 'KAYNES', company: 'Kaynes Technology India Ltd.', sector: 'Electronics Manufacturing', weightPct: 2.40, monthlyChange: +0.95, changeStatus: 'New Addition' },
-    { symbol: 'CYIENT', company: 'Cyient Ltd.', sector: 'Information Technology', weightPct: 2.28, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'RADICO', company: 'Radico Khaitan Ltd.', sector: 'Beverages & FMCG', weightPct: 2.15, monthlyChange: +0.26, changeStatus: 'Increased' },
-    { symbol: 'BRIGADE', company: 'Brigade Enterprises Ltd.', sector: 'Real Estate', weightPct: 2.04, monthlyChange: +0.34, changeStatus: 'Increased' },
-    { symbol: 'SONATSOFTW', company: 'Sonata Software Ltd.', sector: 'Information Technology', weightPct: 1.92, monthlyChange: -0.28, changeStatus: 'Trimmed' },
-    { symbol: 'CDSL', company: 'CDSL (Central Depository Services)', sector: 'Capital Markets', weightPct: 1.85, monthlyChange: +0.40, changeStatus: 'Increased' },
-    { symbol: 'PNCINFRA', company: 'PNC Infratech Ltd.', sector: 'Infrastructure', weightPct: 1.70, monthlyChange: 0.00, changeStatus: 'Unchanged' }
-  ],
-  HYBRID: [
-    { symbol: 'HDFCBANK', company: 'HDFC Bank Ltd.', sector: 'Financial Services', weightPct: 7.40, monthlyChange: +0.25, changeStatus: 'Increased' },
-    { symbol: 'ICICIBANK', company: 'ICICI Bank Ltd.', sector: 'Financial Services', weightPct: 6.80, monthlyChange: +0.18, changeStatus: 'Increased' },
-    { symbol: 'GSEC2033', company: 'GOI 7.18% 2033 Sovereign Bond', sector: 'Sovereign Debt', weightPct: 6.25, monthlyChange: +0.50, changeStatus: 'Increased' },
-    { symbol: 'INFY', company: 'Infosys Ltd.', sector: 'Information Technology', weightPct: 5.15, monthlyChange: -0.15, changeStatus: 'Trimmed' },
-    { symbol: 'NTPC', company: 'NTPC Ltd.', sector: 'Power & Utilities', weightPct: 4.80, monthlyChange: +0.32, changeStatus: 'Increased' },
-    { symbol: 'RELIANCE', company: 'Reliance Industries Ltd.', sector: 'Oil, Gas & Telecom', weightPct: 4.55, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'GSEC2032', company: 'GOI 7.26% 2032 G-Sec', sector: 'Sovereign Debt', weightPct: 4.20, monthlyChange: +0.40, changeStatus: 'Increased' },
-    { symbol: 'AXISBANK', company: 'Axis Bank Ltd.', sector: 'Financial Services', weightPct: 3.65, monthlyChange: -0.20, changeStatus: 'Trimmed' },
-    { symbol: 'LT', company: 'Larsen & Toubro Ltd.', sector: 'Capital Goods', weightPct: 3.40, monthlyChange: +0.12, changeStatus: 'Increased' },
-    { symbol: 'MARUTI', company: 'Maruti Suzuki India Ltd.', sector: 'Automobile', weightPct: 3.10, monthlyChange: +0.28, changeStatus: 'Increased' },
-    { symbol: 'SBIN', company: 'State Bank of India', sector: 'Financial Services', weightPct: 2.95, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'SUNPHARMA', company: 'Sun Pharmaceutical Industries Ltd.', sector: 'Healthcare & Pharma', weightPct: 2.60, monthlyChange: +0.65, changeStatus: 'New Addition' },
-    { symbol: 'BHARTIARTL', company: 'Bharti Airtel Ltd.', sector: 'Telecommunication', weightPct: 2.35, monthlyChange: +0.14, changeStatus: 'Increased' },
-    { symbol: 'ITC', company: 'ITC Ltd.', sector: 'FMCG', weightPct: 2.10, monthlyChange: -0.10, changeStatus: 'Trimmed' }
-  ],
-  DEBT: [
-    { symbol: 'GSEC2033', company: 'GOI 7.18% 2033 Sovereign Bond', sector: 'Sovereign G-Sec', weightPct: 14.50, monthlyChange: +0.85, changeStatus: 'Increased' },
-    { symbol: 'GSEC2030', company: 'GOI 7.32% 2030 Sovereign G-Sec', sector: 'Sovereign G-Sec', weightPct: 11.20, monthlyChange: +0.40, changeStatus: 'Increased' },
-    { symbol: 'TBILL364', company: '364 Days Reserve Bank of India T-Bill', sector: 'Treasury Bills', weightPct: 9.80, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'NABARD28', company: 'NABARD 7.62% 2028 AAA PSU Bond', sector: 'AAA PSU Debt', weightPct: 8.40, monthlyChange: +0.25, changeStatus: 'Increased' },
-    { symbol: 'PFC2029', company: 'Power Finance Corp 7.75% AAA NCD', sector: 'AAA PSU Debt', weightPct: 7.65, monthlyChange: -0.20, changeStatus: 'Trimmed' },
-    { symbol: 'RECLTD28', company: 'REC Limited 7.68% AAA Institutional Bond', sector: 'AAA PSU Debt', weightPct: 6.90, monthlyChange: +0.15, changeStatus: 'Increased' },
-    { symbol: 'SIDBI2027', company: 'SIDBI 7.55% AAA Corporate Bond', sector: 'Financial Debt', weightPct: 6.20, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'HDFCBKCD', company: 'HDFC Bank Ltd. Certificate of Deposit (A1+)', sector: 'Money Market CD', weightPct: 5.75, monthlyChange: +0.30, changeStatus: 'Increased' },
-    { symbol: 'SBICD', company: 'State Bank of India Certificate of Deposit (A1+)', sector: 'Money Market CD', weightPct: 5.10, monthlyChange: -0.15, changeStatus: 'Trimmed' },
-    { symbol: 'IRFC2031', company: 'Indian Railway Finance Corp 7.48% AAA Bond', sector: 'AAA PSU Debt', weightPct: 4.65, monthlyChange: +0.20, changeStatus: 'Increased' },
-    { symbol: 'NHAI2032', company: 'NHAI 7.49% AAA Infrastructure Bond', sector: 'Sovereign / PSU Debt', weightPct: 4.10, monthlyChange: 0.00, changeStatus: 'Unchanged' },
-    { symbol: 'TREPS', company: 'Clearing Corporation of India TREPS / Reverse Repo', sector: 'Cash & Call Money', weightPct: 3.85, monthlyChange: +0.45, changeStatus: 'Increased' }
-  ]
-};
+// Import full objective-aware instrument baskets and SEBI asset allocations (40 to 75+ realistic instruments)
+const { PORTFOLIO_BASKETS, ASSET_ALLOCATIONS, getAssetAllocationForBasket } = require('./mutual-fund-baskets.js');
 
 const CURATED_SCHEMES = [
   // 1. PPFAS Mutual Fund
@@ -835,7 +740,7 @@ const CURATED_SCHEMES = [
     riskRatios: { stdDev: 12.05, sharpe: 1.28, sortino: 1.88, beta: 1.00, alpha: -0.18 },
     about: 'UTI Nifty 50 Index Fund passively tracks the NIFTY 50 Index with low tracking error and a 0.18% direct plan expense ratio.',
     objective: 'To invest in stocks of companies comprising the Nifty 50 Index and endeavor to achieve return equivalent to the Nifty 50 Index by passive investment.',
-    basketType: 'LARGE'
+    basketType: 'INDEX_NIFTY50'
   },
   {
     schemeCode: '119065',
@@ -863,7 +768,7 @@ const CURATED_SCHEMES = [
     riskRatios: { stdDev: 12.06, sharpe: 1.27, sortino: 1.87, beta: 1.00, alpha: -0.20 },
     about: 'HDFC Index Fund - NIFTY 50 Plan replicates the NIFTY 50 index portfolio in the exact same weightage as the benchmark.',
     objective: 'To generate returns that are commensurate with the performance of the NIFTY 50 Index, subject to tracking error.',
-    basketType: 'LARGE'
+    basketType: 'INDEX_NIFTY50'
   },
   {
     schemeCode: '120620',
@@ -891,7 +796,7 @@ const CURATED_SCHEMES = [
     riskRatios: { stdDev: 12.04, sharpe: 1.28, sortino: 1.88, beta: 1.00, alpha: -0.17 },
     about: 'ICICI Prudential Nifty 50 Index Fund tracks India\'s 50 largest blue-chip companies with minimal expense ratio.',
     objective: 'To invest in companies whose securities are included in Nifty 50 Index and endeavor to achieve the returns of the index as closely as possible.',
-    basketType: 'LARGE'
+    basketType: 'INDEX_NIFTY50'
   },
   {
     schemeCode: '119827',
@@ -919,7 +824,7 @@ const CURATED_SCHEMES = [
     riskRatios: { stdDev: 12.07, sharpe: 1.27, sortino: 1.86, beta: 1.00, alpha: -0.21 },
     about: 'SBI Nifty Index Fund is a passive index scheme investing in all 50 constituents of the NIFTY 50 Index.',
     objective: 'To invest in stocks comprising the Nifty 50 index in the same proportion as their weightage in the index.',
-    basketType: 'LARGE'
+    basketType: 'INDEX_NIFTY50'
   },
   {
     schemeCode: '130503',
@@ -1846,6 +1751,176 @@ const CURATED_SCHEMES = [
     about: 'Helios Flexi Cap Fund applies an elimination-based investment process to avoid governance, valuation, and disruption risks first before selecting high-conviction compounders.',
     objective: 'To generate long-term capital appreciation by investing predominantly in equity and equity-related instruments across market capitalizations.',
     basketType: 'FLEXI'
+  },
+
+  // 11. Flagship Debt, Fixed Income, Gold & Sectoral Categories
+  {
+    schemeCode: '119062',
+    name: 'HDFC Corporate Bond Fund - Direct Plan - Growth',
+    shortName: 'HDFC Corporate Bond Fund',
+    category: 'Corporate Bond Fund',
+    fundHouse: 'HDFC Mutual Fund',
+    amcShort: 'HDFC',
+    isTopQuickPill: false,
+    benchmark: 'CRISIL Corporate Bond Composite Index',
+    riskLevel: 'Moderate',
+    launchDate: '01 Jan 2013',
+    aumCr: 29400,
+    expenseRatio: 0.32,
+    exitLoad: 'Nil',
+    turnoverRatio: '42.0%',
+    fundManager: 'Anupam Joshi, Swapnil Jangam',
+    minSip: 500,
+    minLumpsum: 100,
+    defaultNav: 31.42,
+    return1Y: 7.8,
+    return3Y: 6.9,
+    return5Y: 7.2,
+    returns: { '1M': 0.65, '3M': 1.95, '6M': 3.90, '1Y': 7.8, '3Y': 6.9, '5Y': 7.2, 'inception': 7.6, 'xirr3Y': 7.2, 'xirr5Y': 7.4 },
+    riskRatios: { stdDev: 1.45, sharpe: 1.35, sortino: 1.95, beta: 0.42, alpha: 0.65 },
+    about: 'HDFC Corporate Bond Fund maintains a 100% fixed-income portfolio invested in highest-rated AAA PSU debentures, sovereign G-Secs, and Tier-1 banking debt securities.',
+    objective: 'To generate optimal returns over medium to long term by investing predominantly in AAA and equivalent rated corporate bonds and sovereign securities.',
+    basketType: 'DEBT'
+  },
+  {
+    schemeCode: '119561',
+    name: 'SBI Liquid Fund - Direct Plan - Growth',
+    shortName: 'SBI Liquid Fund',
+    category: 'Liquid Fund',
+    fundHouse: 'SBI Mutual Fund',
+    amcShort: 'SBI',
+    isTopQuickPill: false,
+    benchmark: 'CRISIL Liquid Debt A-I Index',
+    riskLevel: 'Low to Moderate',
+    launchDate: '01 Jan 2013',
+    aumCr: 68500,
+    expenseRatio: 0.20,
+    exitLoad: 'Graded Exit Load up to 7 Days (Nil from Day 7)',
+    turnoverRatio: '95.0%',
+    fundManager: 'R. Arun, Ardhendu Bhattacharya',
+    minSip: 500,
+    minLumpsum: 500,
+    defaultNav: 3912.45,
+    return1Y: 7.2,
+    return3Y: 6.5,
+    return5Y: 5.9,
+    returns: { '1M': 0.58, '3M': 1.78, '6M': 3.55, '1Y': 7.2, '3Y': 6.5, '5Y': 5.9, 'inception': 7.1, 'xirr3Y': 6.7, 'xirr5Y': 6.1 },
+    riskRatios: { stdDev: 0.35, sharpe: 1.48, sortino: 2.10, beta: 0.12, alpha: 0.45 },
+    about: 'SBI Liquid Fund provides superior liquidity and capital preservation by investing exclusively in short-term money market instruments with maturity up to 91 days.',
+    objective: 'To provide reasonable returns commensurate with low risk and high level of liquidity through an active portfolio of money market and debt securities.',
+    basketType: 'DEBT'
+  },
+  {
+    schemeCode: '119842',
+    name: 'Nippon India Gold Savings Fund - Direct Plan - Growth',
+    shortName: 'Nippon India Gold Savings Fund',
+    category: 'Gold ETF',
+    fundHouse: 'Nippon India Mutual Fund',
+    amcShort: 'Nippon India',
+    isTopQuickPill: false,
+    benchmark: 'Domestic Price of Physical Gold (99.5% Purity)',
+    riskLevel: 'High',
+    launchDate: '01 Jan 2013',
+    aumCr: 12400,
+    expenseRatio: 0.18,
+    exitLoad: 'Nil',
+    turnoverRatio: '12.0%',
+    fundManager: 'Vikram Dhawan',
+    minSip: 100,
+    minLumpsum: 100,
+    defaultNav: 29.85,
+    return1Y: 26.4,
+    return3Y: 18.2,
+    return5Y: 16.5,
+    returns: { '1M': 1.8, '3M': 6.2, '6M': 13.5, '1Y': 26.4, '3Y': 18.2, '5Y': 16.5, 'inception': 12.8, 'xirr3Y': 18.9, 'xirr5Y': 17.2 },
+    riskRatios: { stdDev: 11.20, sharpe: 1.25, sortino: 1.78, beta: 0.15, alpha: 0.65 },
+    about: 'Nippon India Gold Savings Fund tracks the domestic physical spot price of gold, allowing systematic gold accumulation without holding physical bullion.',
+    objective: 'To seek to provide returns that closely correspond to the total returns of the underlying units of Nippon India ETF Gold BeES.',
+    basketType: 'COMMODITY_GOLD'
+  },
+  {
+    schemeCode: '135780',
+    name: 'Tata Digital India Fund - Direct Plan - Growth',
+    shortName: 'Tata Digital India Fund',
+    category: 'Sectoral / Thematic',
+    fundHouse: 'Tata Mutual Fund',
+    amcShort: 'Tata',
+    isTopQuickPill: false,
+    benchmark: 'BSE Teck TRI',
+    riskLevel: 'Very High',
+    launchDate: '28 Dec 2015',
+    aumCr: 10800,
+    expenseRatio: 0.42,
+    exitLoad: '0.25% if redeemed within 30 days',
+    turnoverRatio: '38.0%',
+    fundManager: 'Meeta Shetty',
+    minSip: 500,
+    minLumpsum: 5000,
+    defaultNav: 52.40,
+    return1Y: 28.5,
+    return3Y: 17.8,
+    return5Y: 23.4,
+    returns: { '1M': 2.4, '3M': 7.6, '6M': 15.4, '1Y': 28.5, '3Y': 17.8, '5Y': 23.4, 'inception': 20.8, 'xirr3Y': 18.6, 'xirr5Y': 24.2 },
+    riskRatios: { stdDev: 15.20, sharpe: 1.34, sortino: 1.94, beta: 0.94, alpha: 3.10 },
+    about: 'Tata Digital India Fund is a technology-focused thematic scheme investing in Indian information technology software, cloud solutions, and digital platform leaders.',
+    objective: 'To generate long term capital appreciation by investing at least 80% of its net assets in equity/equity-related instruments of companies in the information technology sector in India.',
+    basketType: 'SECTORAL_TECH'
+  },
+  {
+    schemeCode: '120668',
+    name: 'ICICI Prudential Banking and Financial Services Fund - Direct Plan - Growth',
+    shortName: 'ICICI Pru Banking & Financial Services Fund',
+    category: 'Sectoral / Thematic',
+    fundHouse: 'ICICI Prudential Mutual Fund',
+    amcShort: 'ICICI Prudential',
+    isTopQuickPill: false,
+    benchmark: 'NIFTY Financial Services TRI',
+    riskLevel: 'Very High',
+    launchDate: '01 Jan 2013',
+    aumCr: 8400,
+    expenseRatio: 0.72,
+    exitLoad: '1% if redeemed within 1 year',
+    turnoverRatio: '28.0%',
+    fundManager: 'Roshan Chutkey',
+    minSip: 500,
+    minLumpsum: 100,
+    defaultNav: 138.90,
+    return1Y: 24.6,
+    return3Y: 16.9,
+    return5Y: 17.5,
+    returns: { '1M': 2.0, '3M': 6.8, '6M': 13.2, '1Y': 24.6, '3Y': 16.9, '5Y': 17.5, 'inception': 17.2, 'xirr3Y': 17.6, 'xirr5Y': 18.2 },
+    riskRatios: { stdDev: 14.10, sharpe: 1.30, sortino: 1.88, beta: 0.96, alpha: 2.40 },
+    about: 'ICICI Prudential Banking and Financial Services Fund invests in market-leading public & private banks, NBFCs, asset managers, and insurance providers.',
+    objective: 'To generate long term capital appreciation through investments in equity and equity related securities of companies engaged in banking and financial services.',
+    basketType: 'SECTORAL_BANK'
+  },
+  {
+    schemeCode: '120505',
+    name: 'Nippon India Pharma Fund - Direct Plan - Growth',
+    shortName: 'Nippon India Pharma Fund',
+    category: 'Sectoral / Thematic',
+    fundHouse: 'Nippon India Mutual Fund',
+    amcShort: 'Nippon India',
+    isTopQuickPill: false,
+    benchmark: 'BSE Healthcare TRI',
+    riskLevel: 'Very High',
+    launchDate: '01 Jan 2013',
+    aumCr: 7900,
+    expenseRatio: 0.88,
+    exitLoad: '1% if redeemed within 1 month',
+    turnoverRatio: '24.0%',
+    fundManager: 'Sailesh Raj Bhan, Kinjal Desai',
+    minSip: 500,
+    minLumpsum: 100,
+    defaultNav: 532.10,
+    return1Y: 34.8,
+    return3Y: 22.4,
+    return5Y: 21.6,
+    returns: { '1M': 2.8, '3M': 8.6, '6M': 17.2, '1Y': 34.8, '3Y': 22.4, '5Y': 21.6, 'inception': 19.5, 'xirr3Y': 23.6, 'xirr5Y': 22.8 },
+    riskRatios: { stdDev: 13.50, sharpe: 1.52, sortino: 2.18, beta: 0.81, alpha: 4.20 },
+    about: 'Nippon India Pharma Fund is India\'s oldest and largest healthcare sectoral scheme investing across domestic formulation leaders, API exporters, and hospital chains.',
+    objective: 'To generate consistent returns by investing primarily in equity and equity related securities of Pharma and other healthcare companies in India.',
+    basketType: 'SECTORAL_PHARMA'
   }
 ];
 
@@ -1911,7 +1986,157 @@ function cleanAmfiCategory(rawCat, schemeName) {
 
 function getCategoryProfile(category, seed) {
   const c = String(category || '');
-  if (/Liquid|Overnight|Money Market|Ultra Short|Low Duration|Short Duration|Corporate Bond|Banking & PSU|Gilt|Medium Duration|Long Duration|Dynamic Bond|Credit Risk|Floater|Debt/i.test(c)) {
+
+  // 1. Gold / Silver / Commodities
+  if (/Gold|Silver|Commodit/i.test(c)) {
+    const r1Y = Number((22.5 + seed.u1 * 5.4).toFixed(1));
+    const r3Y = Number((18.2 + seed.u2 * 3.8).toFixed(1));
+    const r5Y = Number((16.4 + seed.u3 * 3.2).toFixed(1));
+    return {
+      basketType: 'COMMODITY_GOLD',
+      benchmark: 'Domestic Price of Physical Gold (99.5% Purity)',
+      riskLevel: 'High',
+      expenseRatio: Number((0.25 + seed.u1 * 0.25).toFixed(2)),
+      exitLoad: 'Nil',
+      turnoverRatio: '14.0%',
+      aumCr: Math.round(900 + seed.u2 * 12000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((1.5 + seed.u1 * 0.8).toFixed(1)),
+        '3M': Number((5.2 + seed.u2 * 1.8).toFixed(1)),
+        '6M': Number((11.4 + seed.u3 * 2.6).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 0.5).toFixed(1)),
+        'xirr3Y': Number((r3Y + 0.8).toFixed(1)),
+        'xirr5Y': Number((r5Y + 0.9).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((10.5 + seed.u1 * 1.5).toFixed(2)),
+        sharpe: Number((1.15 + seed.u2 * 0.25).toFixed(2)),
+        sortino: Number((1.65 + seed.u3 * 0.35).toFixed(2)),
+        beta: 0.15,
+        alpha: Number((0.8 + seed.u2 * 1.2).toFixed(2))
+      }
+    };
+  }
+
+  // 2. Sectoral: Technology / IT / Digital
+  if (/Tech|IT|Digital|Software/i.test(c)) {
+    const r1Y = Number((26.8 + seed.u1 * 8.4).toFixed(1));
+    const r3Y = Number((18.4 + seed.u2 * 6.2).toFixed(1));
+    const r5Y = Number((22.6 + seed.u3 * 5.8).toFixed(1));
+    return {
+      basketType: 'SECTORAL_TECH',
+      benchmark: 'BSE Teck TRI / Nifty IT TRI',
+      riskLevel: 'Very High',
+      expenseRatio: Number((0.55 + seed.u1 * 0.45).toFixed(2)),
+      exitLoad: '1% if redeemed within 1 year',
+      turnoverRatio: '32.0%',
+      aumCr: Math.round(1100 + seed.u2 * 16000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((2.2 + seed.u1 * 1.2).toFixed(1)),
+        '3M': Number((7.4 + seed.u2 * 2.8).toFixed(1)),
+        '6M': Number((14.8 + seed.u3 * 4.1).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 0.8).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.4).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.2).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((14.8 + seed.u1 * 2.6).toFixed(2)),
+        sharpe: Number((1.38 + seed.u2 * 0.32).toFixed(2)),
+        sortino: Number((1.98 + seed.u3 * 0.42).toFixed(2)),
+        beta: Number((0.92 + seed.u1 * 0.14).toFixed(2)),
+        alpha: Number((2.6 + seed.u2 * 2.8).toFixed(2))
+      }
+    };
+  }
+
+  // 3. Sectoral: Banking & Financial Services
+  if (/Bank|Financial Services|BFSI/i.test(c)) {
+    const r1Y = Number((24.2 + seed.u1 * 7.8).toFixed(1));
+    const r3Y = Number((17.6 + seed.u2 * 5.4).toFixed(1));
+    const r5Y = Number((18.8 + seed.u3 * 4.9).toFixed(1));
+    return {
+      basketType: 'SECTORAL_BANK',
+      benchmark: 'NIFTY Financial Services TRI',
+      riskLevel: 'Very High',
+      expenseRatio: Number((0.52 + seed.u1 * 0.48).toFixed(2)),
+      exitLoad: '1% if redeemed within 1 year',
+      turnoverRatio: '29.0%',
+      aumCr: Math.round(1200 + seed.u2 * 19000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((2.0 + seed.u1 * 1.1).toFixed(1)),
+        '3M': Number((6.8 + seed.u2 * 2.4).toFixed(1)),
+        '6M': Number((13.4 + seed.u3 * 3.8).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 0.9).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.3).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.2).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((13.9 + seed.u1 * 2.4).toFixed(2)),
+        sharpe: Number((1.32 + seed.u2 * 0.30).toFixed(2)),
+        sortino: Number((1.92 + seed.u3 * 0.40).toFixed(2)),
+        beta: Number((0.95 + seed.u1 * 0.12).toFixed(2)),
+        alpha: Number((2.4 + seed.u2 * 2.5).toFixed(2))
+      }
+    };
+  }
+
+  // 4. Sectoral: Healthcare & Pharma
+  if (/Pharma|Health|Medical/i.test(c)) {
+    const r1Y = Number((32.4 + seed.u1 * 8.6).toFixed(1));
+    const r3Y = Number((21.2 + seed.u2 * 5.9).toFixed(1));
+    const r5Y = Number((20.6 + seed.u3 * 5.1).toFixed(1));
+    return {
+      basketType: 'SECTORAL_PHARMA',
+      benchmark: 'NIFTY Healthcare TRI / BSE Healthcare TRI',
+      riskLevel: 'Very High',
+      expenseRatio: Number((0.54 + seed.u1 * 0.46).toFixed(2)),
+      exitLoad: '1% if redeemed within 1 year',
+      turnoverRatio: '27.0%',
+      aumCr: Math.round(1000 + seed.u2 * 15000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((2.5 + seed.u1 * 1.2).toFixed(1)),
+        '3M': Number((8.1 + seed.u2 * 2.9).toFixed(1)),
+        '6M': Number((16.2 + seed.u3 * 4.3).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 0.7).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.5).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.3).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((13.2 + seed.u1 * 2.2).toFixed(2)),
+        sharpe: Number((1.46 + seed.u2 * 0.34).toFixed(2)),
+        sortino: Number((2.06 + seed.u3 * 0.44).toFixed(2)),
+        beta: Number((0.82 + seed.u1 * 0.14).toFixed(2)),
+        alpha: Number((3.6 + seed.u2 * 2.8).toFixed(2))
+      }
+    };
+  }
+
+  // 5. Debt & Fixed Income (Pure Debt: 0% Equity, Sovereign G-Secs, T-Bills, Corporate Bonds, CDs, TREPS)
+  if (/Liquid|Overnight|Money Market|Ultra Short|Low Duration|Short Duration|Corporate Bond|Banking & PSU|Gilt|Medium Duration|Long Duration|Dynamic Bond|Credit Risk|Floater|Debt|Income|Fixed Term/i.test(c)) {
     const r1Y = Number((6.6 + seed.u1 * 1.9).toFixed(1));
     const r3Y = Number((6.4 + seed.u2 * 1.6).toFixed(1));
     const r5Y = Number((6.5 + seed.u3 * 1.5).toFixed(1));
@@ -2056,7 +2281,43 @@ function getCategoryProfile(category, seed) {
     };
   }
 
-  if (/Index|ETF|Large Cap/i.test(c)) {
+  if (/Index/i.test(c)) {
+    const r1Y = Number((21.2 + seed.u1 * 5.4).toFixed(1));
+    const r3Y = Number((16.4 + seed.u2 * 3.8).toFixed(1));
+    const r5Y = Number((16.8 + seed.u3 * 3.4).toFixed(1));
+    return {
+      basketType: 'INDEX_NIFTY50',
+      benchmark: 'NIFTY 50 TRI / BSE SENSEX TRI',
+      riskLevel: 'Very High',
+      expenseRatio: Number((0.08 + seed.u1 * 0.22).toFixed(2)),
+      exitLoad: 'Nil',
+      turnoverRatio: '9.5%',
+      aumCr: Math.round(1100 + seed.u2 * 32000),
+      return1Y: r1Y,
+      return3Y: r3Y,
+      return5Y: r5Y,
+      returns: {
+        '1M': Number((1.8 + seed.u1 * 0.9).toFixed(1)),
+        '3M': Number((5.9 + seed.u2 * 1.9).toFixed(1)),
+        '6M': Number((11.8 + seed.u3 * 3.2).toFixed(1)),
+        '1Y': r1Y,
+        '3Y': r3Y,
+        '5Y': r5Y,
+        'inception': Number((r5Y - 0.6).toFixed(1)),
+        'xirr3Y': Number((r3Y + 1.1).toFixed(1)),
+        'xirr5Y': Number((r5Y + 1.0).toFixed(1))
+      },
+      riskRatios: {
+        stdDev: Number((11.8 + seed.u1 * 1.6).toFixed(2)),
+        sharpe: Number((1.28 + seed.u2 * 0.26).toFixed(2)),
+        sortino: Number((1.88 + seed.u3 * 0.32).toFixed(2)),
+        beta: 1.00,
+        alpha: Number((-0.15 + seed.u2 * 0.12).toFixed(2))
+      }
+    };
+  }
+
+  if (/ETF|Large Cap/i.test(c)) {
     const isPassive = /Index|ETF/i.test(c);
     const r1Y = Number((21.5 + seed.u1 * 7.2).toFixed(1));
     const r3Y = Number((16.8 + seed.u2 * 4.8).toFixed(1));
@@ -2243,17 +2504,18 @@ async function updateMutualFunds() {
   const usedCuratedCodes = new Set();
   const finalFunds = [];
 
-  // Helper to build holdings array for curated flagship schemes
+  // Helper to build holdings array for curated flagship schemes and AMFI schemes
   function buildCuratedHoldings(basketType, idx) {
     const rawBasket = PORTFOLIO_BASKETS[basketType] || PORTFOLIO_BASKETS.FLEXI;
     return rawBasket.map((h, hIdx) => {
-      const weightDelta = (((idx + hIdx) % 5) - 2) * 0.12;
-      const w = Number(Math.max(1.2, h.weightPct + weightDelta).toFixed(2));
+      const weightDelta = (((idx + hIdx) % 5) - 2) * 0.08;
+      const w = Number(Math.max(0.15, h.weightPct + weightDelta).toFixed(2));
       return {
         rank: hIdx + 1,
         symbol: h.symbol || '',
         company: h.company,
         sector: h.sector,
+        instrumentType: h.instrumentType || (h.symbol ? 'Equity' : 'Debt/Fixed Income'),
         weightPct: w,
         monthlyChange: h.monthlyChange,
         changeStatus: h.changeStatus
@@ -2331,6 +2593,7 @@ async function updateMutualFunds() {
         nav: exactPlan ? exactPlan.nav : matchedCurated.defaultNav,
         navDate: exactPlan ? exactPlan.date : '06-Nov-2026',
         basketType: matchedCurated.basketType || 'FLEXI',
+        assetAllocation: getAssetAllocationForBasket(matchedCurated.basketType || 'FLEXI'),
         holdings: buildCuratedHoldings(matchedCurated.basketType || 'FLEXI', schemeIdx),
         plans: cleanPlans
       });
@@ -2369,6 +2632,8 @@ async function updateMutualFunds() {
         about: `${entry.baseName} is an official SEBI-registered ${category.toLowerCase()} managed by ${entry.fundHouse}, benchmarked against ${prof.benchmark}.`,
         objective: `To generate optimal capital appreciation and risk-adjusted returns in line with the ${category} mandate.`,
         basketType: prof.basketType,
+        assetAllocation: getAssetAllocationForBasket(prof.basketType),
+        holdings: buildCuratedHoldings(prof.basketType, schemeIdx),
         plans: cleanPlans
       });
     }
@@ -2391,6 +2656,7 @@ async function updateMutualFunds() {
       nav,
       navDate,
       basketType: item.basketType || 'FLEXI',
+      assetAllocation: getAssetAllocationForBasket(item.basketType || 'FLEXI'),
       holdings: buildCuratedHoldings(item.basketType || 'FLEXI', idx),
       plans: [
         { code: String(item.schemeCode), plan: 'Direct Plan - Growth', isin: '', nav, date: navDate }
@@ -2417,6 +2683,7 @@ async function updateMutualFunds() {
     totalActivePlans: totalPlansInFeed,
     totalAmfiPlansParsed: totalAmfiPlansParsed || totalPlansInFeed,
     portfolioBaskets: PORTFOLIO_BASKETS,
+    assetAllocations: ASSET_ALLOCATIONS,
     funds: finalFunds
   };
 
