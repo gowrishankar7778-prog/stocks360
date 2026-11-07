@@ -87,24 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
-        // 2. If focus is inside or on the Mutual Fund Cross-Research panel
-        const currentMfPanel = activeEl.closest("#company-mf-cross-research-panel");
-        const mfCrossBtn = document.getElementById("btn-see-stock-in-mf");
-        if (currentMfPanel || activeEl === mfCrossBtn) {
-          const panel = document.getElementById("company-mf-cross-research-panel");
-          if (panel && !panel.hasAttribute("hidden")) {
-            panel.setAttribute("hidden", "");
-            if (mfCrossBtn) {
-              mfCrossBtn.setAttribute("aria-expanded", "false");
-              mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
-              mfCrossBtn.focus();
-            }
-            e.preventDefault();
-            return;
-          }
-        }
-
-        // 3. If focus is inside or on an Audio Player card
+        // 2. If focus is inside or on an Audio Player card
         const currentAudioCard = activeEl.closest("#news-audio-player-card, #learn-audio-player-card, .news-audio-player-card");
         if (currentAudioCard && !currentAudioCard.hasAttribute("hidden") && !currentAudioCard.hidden) {
           currentAudioCard.setAttribute("hidden", "");
@@ -119,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // 4. Collapse all open Ratio Information boxes across the page
+      // 3. Collapse all open Ratio Information boxes across the page
       const openRatioBoxes = document.querySelectorAll(".ratio-info-box:not([hidden])");
       if (openRatioBoxes.length > 0) {
         openRatioBoxes.forEach((box) => {
@@ -132,19 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         collapsedSomething = true;
       }
 
-      // 5. Collapse Mutual Fund Cross-Research panel if open
-      const mfCrossPanel = document.getElementById("company-mf-cross-research-panel");
-      const mfCrossBtn = document.getElementById("btn-see-stock-in-mf");
-      if (mfCrossPanel && !mfCrossPanel.hasAttribute("hidden")) {
-        mfCrossPanel.setAttribute("hidden", "");
-        if (mfCrossBtn) {
-          mfCrossBtn.setAttribute("aria-expanded", "false");
-          mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
-        }
-        collapsedSomething = true;
-      }
-
-      // 6. Collapse any open Ask 360 AI boxes / drawers across the site
+      // 4. Collapse any open Ask 360 AI boxes / drawers across the site
       const openAiBoxes = document.querySelectorAll(
         "#home-ask360-drawer:not([hidden]), #detail-ask360-box:not([hidden]), #nl-ask360-box:not([hidden]), #learn-ask360-box:not([hidden]), .ask360-box:not([hidden])"
       );

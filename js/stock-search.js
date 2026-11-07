@@ -1431,11 +1431,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
               <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                <button type="button" class="btn-primary" id="btn-see-stock-in-mf" aria-expanded="false" aria-controls="company-mf-cross-research-panel" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer; background:#2563eb; color:#ffffff; border:1px solid #1d4ed8;">
-                  See This Stock in the Mutual Fund Portfolio
-                </button>
+                <a href="mutual-funds.html?stock=${encodeURIComponent(stock.symbol)}&name=${encodeURIComponent(stock.name)}" class="btn-primary" id="btn-see-stock-in-mf" style="text-decoration:none; display:inline-flex; align-items:center; font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer; background:#2563eb; color:#ffffff; border:1px solid #1d4ed8;">
+                  See This Stock in Mutual Funds ↗
+                </a>
                 <button type="button" class="btn-secondary" id="btn-listen-company" aria-pressed="false" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer;">
-                  Listen to Company Overview
+                  Listen to About the Company
                 </button>
               </div>
               <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
@@ -1446,30 +1446,6 @@ document.addEventListener("DOMContentLoaded", function () {
                   NSE Annual Reports Archive ↗
                 </a>
               </div>
-            </div>
-          </div>
-
-          <!-- VOICE OVERVIEW STATUS & LIVE REGION -->
-          <div id="company-voice-status-banner" hidden style="margin-top:12px; padding:10px 14px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; font-size:0.88rem; color:#1e3a8a; font-weight:600;"></div>
-          <div id="company-voice-live-region" class="sr-only" aria-live="assertive" aria-atomic="true" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);"></div>
-
-          <!-- MUTUAL FUND CROSS-RESEARCH PANEL (EXPANDS ON CLICK) -->
-          <div id="company-mf-cross-research-panel" hidden style="margin-top:16px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px; padding:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
-              <div>
-                <h3 style="margin:0; font-size:1.15rem; color:#0f172a; font-weight:800;">
-                  Mutual Fund Portfolios Holding ${escapeHtml(stock.name)} (${escapeHtml(stock.symbol)})
-                </h3>
-                <p style="margin:4px 0 0 0; font-size:0.84rem; color:#475569;">
-                  Institutional cross-research showing mutual fund schemes holding this stock and its concentration against each scheme's AUM.
-                </p>
-              </div>
-              <a href="mutual-funds.html" style="font-size:0.84rem; font-weight:700; color:#2563eb; text-decoration:none; padding:6px 12px; background:#ffffff; border:1px solid #bfdbfe; border-radius:6px;">
-                Open Mutual Funds Research ↗
-              </a>
-            </div>
-            <div id="company-mf-cross-research-table-container">
-              <div style="padding:14px; color:#64748b; font-size:0.9rem;">Loading mutual fund portfolio holdings...</div>
             </div>
           </div>
         </div>
@@ -1875,53 +1851,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // Connect Cross-Research: "See This Stock in the Mutual Fund Portfolio"
-    const mfCrossBtn = document.getElementById("btn-see-stock-in-mf");
-    const mfCrossPanel = document.getElementById("company-mf-cross-research-panel");
-    if (mfCrossBtn && mfCrossPanel) {
-      mfCrossBtn.addEventListener("click", () => {
-        const isHidden = mfCrossPanel.hasAttribute("hidden");
-        if (isHidden) {
-          mfCrossPanel.removeAttribute("hidden");
-          mfCrossBtn.setAttribute("aria-expanded", "true");
-          mfCrossBtn.textContent = "Hide Mutual Fund Portfolio Holdings";
-          renderStockInMutualFundsTable(stock);
-          mfCrossPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        } else {
-          mfCrossPanel.setAttribute("hidden", "");
-          mfCrossBtn.setAttribute("aria-expanded", "false");
-          mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
-        }
-      });
-
-      // Pressing Escape collapses the cross-research panel and restores focus to the button
-      mfCrossPanel.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" || e.key === "Esc") {
-          e.preventDefault();
-          mfCrossPanel.setAttribute("hidden", "");
-          mfCrossBtn.setAttribute("aria-expanded", "false");
-          mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
-          mfCrossBtn.focus();
-        }
-      });
-
-      mfCrossBtn.addEventListener("keydown", (e) => {
-        if ((e.key === "Escape" || e.key === "Esc") && !mfCrossPanel.hasAttribute("hidden")) {
-          e.preventDefault();
-          mfCrossPanel.setAttribute("hidden", "");
-          mfCrossBtn.setAttribute("aria-expanded", "false");
-          mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
-        }
-      });
-    }
-
-    // Connect Audio Overview Readout with Reliable Browser Speech Synthesis
+    // Connect Audio Readout for About the Company
     const listenBtn = document.getElementById("btn-listen-company");
     if (listenBtn) {
       listenBtn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        toggleCompanyVoiceOverview(stock, isGain, dayPerformanceText, (investmentThesis && investmentThesis.strengths) || []);
+        toggleCompanyVoiceOverview(stock);
       });
     }
 
@@ -2110,24 +2046,36 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---------------- DEDICATED RELIABLE SPEECH SYNTHESIS ENGINE ----------------
   function resetListenButtonUI() {
     const listenBtn = document.getElementById("btn-listen-company");
-    const statusBanner = document.getElementById("company-voice-status-banner");
     if (listenBtn) {
-      listenBtn.textContent = "Listen to Company Overview";
+      listenBtn.textContent = "Listen to About the Company";
       listenBtn.setAttribute("aria-pressed", "false");
       listenBtn.style.background = "";
       listenBtn.style.color = "";
-    }
-    if (statusBanner) {
-      statusBanner.hidden = true;
     }
     window._stocks360IsSpeakingCompany = false;
     window._stocks360SpeechUtterance = null;
   }
 
-  function toggleCompanyVoiceOverview(stock, isGain, dayPerformanceText, pros) {
+  function getAboutCompanyNarration(stock) {
+    const aboutEl = document.getElementById("company-about-content");
+    let text = "";
+    if (aboutEl) {
+      text = (aboutEl.innerText || aboutEl.textContent || "").trim();
+    }
+    if (!text && stock.about) {
+      text = String(stock.about)
+        .replace(/<[^>]*>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+    if (!text) {
+      text = `${stock.name} is a leading enterprise in the ${stock.sector || "Indian Equity"} sector in India, listed on the National Stock Exchange under symbol ${stock.symbol}.`;
+    }
+    return text;
+  }
+
+  function toggleCompanyVoiceOverview(stock) {
     const listenBtn = document.getElementById("btn-listen-company");
-    const statusBanner = document.getElementById("company-voice-status-banner");
-    const liveRegion = document.getElementById("company-voice-live-region");
 
     // If currently speaking our company overview, stop it
     if (window._stocks360IsSpeakingCompany) {
@@ -2138,32 +2086,17 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const cleanDayChange = Math.abs(stock.dayChange || 0).toFixed(2);
-    const mcapText = stock.marketCapCr ? `${stock.marketCapCr.toLocaleString("en-IN")} crore rupees` : "available on exchange";
-    const narration = `Company Overview for ${stock.name}, NSE symbol ${stock.symbol}, operating in the ${stock.sector} sector. Current market price is ${stock.cmp} rupees, with a ${isGain ? "day gain of " + cleanDayChange + " rupees" : "day loss of " + cleanDayChange + " rupees"}. Market capitalization is ${mcapText}. Key fundamentals: Stock P E is ${stock.pe}, Return on Equity is ${stock.roePct} percent, Return on Capital Employed is ${stock.rocePct} percent, and Debt to Equity is ${stock.debtToEquity}.`;
+    const narration = getAboutCompanyNarration(stock);
 
     // Record start timestamp so smart-assist.js does not cancel speech on reflexive Ctrl press
     window._stocks360SpeechStartedAt = Date.now();
     window._stocks360IsSpeakingCompany = true;
 
     if (listenBtn) {
-      listenBtn.textContent = "Stop Voice Overview";
+      listenBtn.textContent = "Stop Listening";
       listenBtn.setAttribute("aria-pressed", "true");
       listenBtn.style.background = "#dc2626";
       listenBtn.style.color = "#ffffff";
-    }
-
-    if (statusBanner) {
-      statusBanner.hidden = false;
-      statusBanner.textContent = "Playing Audio Overview: " + narration;
-    }
-
-    // Also populate ARIA live region so screen readers (NVDA/JAWS/VoiceOver) can read it aloud
-    if (liveRegion) {
-      liveRegion.textContent = "";
-      setTimeout(() => {
-        liveRegion.textContent = narration;
-      }, 30);
     }
 
     if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
@@ -2177,7 +2110,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const utterance = new SpeechSynthesisUtterance(narration);
-      utterance.rate = 0.96;
+      utterance.rate = 0.95;
       utterance.volume = 1.0;
       utterance.pitch = 1.0;
 
@@ -2204,23 +2137,10 @@ document.addEventListener("DOMContentLoaded", function () {
       utterance.onerror = function (err) {
         // Ignore 'interrupted' or 'canceled' events triggered by cancel()
         if (err && (err.error === "interrupted" || err.error === "canceled")) return;
-        // Fallback retry with bare default system voice
-        if (!utterance._retriedDefault && window._stocks360IsSpeakingCompany) {
-          utterance._retriedDefault = true;
-          try {
-            const fallbackUtterance = new SpeechSynthesisUtterance(narration);
-            fallbackUtterance.rate = 0.96;
-            fallbackUtterance.onend = resetListenButtonUI;
-            fallbackUtterance.onerror = resetListenButtonUI;
-            window._stocks360SpeechUtterance = fallbackUtterance;
-            window.speechSynthesis.speak(fallbackUtterance);
-            return;
-          } catch (_) {}
-        }
         resetListenButtonUI();
       };
 
-      // Speak synchronously inside the user click gesture!
+      // Speak synchronously inside the user gesture using the web default browser speech engine!
       window.speechSynthesis.speak(utterance);
 
       // Watchdog: if Chromium paused the queue, resume it after 150ms
@@ -2231,6 +2151,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 150);
     } catch (e) {
       console.warn("Speech synthesis error:", e);
+      resetListenButtonUI();
     }
   }
 
