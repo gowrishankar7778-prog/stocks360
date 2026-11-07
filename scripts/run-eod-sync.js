@@ -58,15 +58,23 @@ async function main() {
   const startTime = Date.now();
   try {
     // Step 1: Ingest financial statements & statements change detection for all listed NSE stocks
-    log('STEP 1/5: Syncing Comprehensive Financial Statements (P&L, Quarters, Balance Sheet, Cash Flows, Ratios, Shareholding) for All Listed Stocks...');
+    log('STEP 1/6: Syncing Comprehensive Financial Statements (P&L, Quarters, Balance Sheet, Cash Flows, Ratios, Shareholding) for All Listed Stocks...');
     await runStep(
       'Exchange Fundamentals Synchronizer (--all)',
       process.execPath,
       [path.join(__dirname, 'update-company-fundamentals.js'), '--all']
     );
 
-    // Step 2: Build ultra-fast lightweight Screener & Search Index (screener-index.js)
-    log('STEP 2/5: Generating Lightweight Screener & Search Index (screener-index.js)...');
+    // Step 2: Unify & validate 5-year statements, balance sheets, cash flows, ratios, and multi-quarter shareholding across all shards
+    log('STEP 2/6: Unifying & Validating 5-Year Statements, Balance Sheets, Cash Flows, and Shareholding Tables...');
+    await runStep(
+      'Comprehensive Statements & Profile Unifier',
+      process.execPath,
+      [path.join(__dirname, 'clean-and-enrich-fundamentals.js')]
+    );
+
+    // Step 3: Build ultra-fast lightweight Screener & Search Index (screener-index.js)
+    log('STEP 3/6: Generating Lightweight Screener & Search Index (screener-index.js)...');
     await runStep(
       'Lightweight Index Builder',
       process.execPath,

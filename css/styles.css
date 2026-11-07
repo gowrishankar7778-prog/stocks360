@@ -568,12 +568,12 @@ button, a, input, select, textarea {
 
 /* ---------- STOCK RESULT CARD ---------- */
 .stock-result-card {
-  background: var(--bg-surface);
-  border: 2px solid var(--primary);
-  border-radius: var(--radius-lg);
-  padding: 30px;
-  box-shadow: var(--shadow-md);
-  margin-top: 25px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  margin-top: 20px;
 }
 
 .result-header {

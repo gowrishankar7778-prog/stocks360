@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "node test-screener.js",
+    "sync:eod": "node scripts/run-eod-sync.js",
     "sync:fundamentals": "node scripts/update-company-fundamentals.js --all",
     "sync:stocks": "node scripts/update-nse-stocks.js --all",
     "sync:news": "node scripts/update-nse-news.js",

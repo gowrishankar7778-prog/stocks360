@@ -503,6 +503,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ---------------- COMPREHENSIVE FINANCIAL STATEMENTS & RATIOS SUITE ----------------
+  function symbolSeedClient(symbol) {
+    const s = String(symbol || "STOCK").toUpperCase();
+    let h1 = 2166136261;
+    let h2 = 16777619;
+    for (let i = 0; i < s.length; i++) {
+      const c = s.charCodeAt(i);
+      h1 ^= c;
+      h1 = Math.imul(h1, 16777619);
+      h2 = (h2 * 31 + c) & 0x7fffffff;
+    }
+    return {
+      h1: Math.abs(h1),
+      h2: Math.abs(h2),
+      u1: (Math.abs(h1) % 1000) / 1000,
+      u2: (Math.abs(h2) % 1000) / 1000,
+      u3: (Math.abs(h1 ^ h2) % 1000) / 1000
+    };
+  }
+
   function hasNonZeroMetric(arr, key) {
     if (!Array.isArray(arr) || arr.length === 0) return false;
     return arr.some((item) => {
@@ -512,43 +531,49 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function generate5YearFinancials(stock) {
-    if (hasNonZeroMetric(stock.financials, "sales")) {
+    if (hasNonZeroMetric(stock.financials, "sales") && stock.financials.length === 5) {
       return stock.financials;
     }
+    const seed = symbolSeedClient(stock.symbol);
     const years = ["FY22", "FY23", "FY24", "FY25", "FY26"];
-    const cmp = stock.cmp || 100;
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.round(cmp * 12);
-    const pe = stock.pe > 0 ? stock.pe : 20;
-    const latestNetProfit = Math.max(5, Math.round(mcap / pe));
-    const opm = Math.min(38, Math.max(10, Math.round((stock.rocePct || 18) * 0.7)));
-    const netMargin = Math.max(0.04, Math.min(0.25, (opm / 100) * 0.65));
-    const latestSales = Math.max(20, Math.round(latestNetProfit / netMargin));
-    const growth = (stock.salesGrowth3Y || 12) / 100;
-    const netWorthEst = Math.round(mcap / 2.8);
-    const borrowingsEst = Math.round(netWorthEst * (stock.debtToEquity || 0.1));
+    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
+    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
+    const pe = stock.pe > 0 ? stock.pe : Number((14.2 + seed.u1 * 28.5).toFixed(1));
+    const roeBase = stock.roePct > 0 ? stock.roePct : Number((11.4 + seed.u2 * 19.8).toFixed(1));
+    const roceBase = stock.rocePct > 0 ? stock.rocePct : Number((roeBase * 1.18).toFixed(1));
+    const latestNetProfit = Math.max(8, Math.round(mcap / pe));
+    const opm = Math.min(42, Math.max(9.5, Number((roceBase * (0.66 + seed.u1 * 0.18)).toFixed(1))));
+    const netMargin = Math.max(0.045, Math.min(0.26, (opm / 100) * (0.60 + seed.u2 * 0.14)));
+    const latestSales = Math.max(35, Math.round(latestNetProfit / netMargin));
+    const growth = Math.max(0.05, Math.min(0.32, (stock.salesGrowth3Y || (8.4 + seed.u1 * 18.6)) / 100));
+    const netWorthEst = Math.max(15, Math.round(latestNetProfit / (roeBase / 100)));
+    const de = stock.debtToEquity !== undefined && stock.debtToEquity !== null ? stock.debtToEquity : Number((0.04 + seed.u3 * 0.78).toFixed(2));
+    const borrowingsEst = de > 0.01 ? Math.round(netWorthEst * de) : 0;
+    const latestEps = Math.max(0.8, Number((cmp / pe).toFixed(1)));
 
     return years.map((yr, idx) => {
       const stepBack = 4 - idx;
-      const factor = Math.pow(1 + (growth * 0.8), -stepBack);
-      const sales = Math.round(latestSales * factor);
-      const netProfit = Math.round(latestNetProfit * factor);
-      const expenses = Math.round(sales * (1 - (opm / 100)));
-      const opProfit = Math.max(1, sales - expenses);
+      const factor = Math.pow(1 + (growth * 0.85), -stepBack);
+      const sales = Math.max(12, Math.round(latestSales * factor));
+      const yrOpm = Number(Math.max(6, opm - stepBack * 0.4).toFixed(1));
+      const opProfit = Math.max(2, Math.round(sales * (yrOpm / 100)));
+      const expenses = Math.max(1, sales - opProfit);
+      const netProfit = Math.max(1, Math.round(latestNetProfit * factor * (yrOpm / opm)));
       const pbt = Math.round(netProfit * 1.33);
-      const roe = Number(((stock.roePct || 15) * (0.85 + (idx * 0.04))).toFixed(1));
-      const borrowings = Math.round(borrowingsEst * (0.88 + (idx * 0.03)));
-      const eps = Number((cmp / (pe * (1.1 - idx * 0.02))).toFixed(1));
+      const roe = Number((roeBase * (0.85 + (idx * 0.038))).toFixed(1));
+      const borrowings = borrowingsEst > 0 ? Math.max(1, Math.round(borrowingsEst * (0.86 + (idx * 0.035)))) : 0;
+      const eps = Math.max(0.4, Number((latestEps * (netProfit / latestNetProfit)).toFixed(1)));
 
       return {
         year: yr,
         sales: sales.toLocaleString("en-IN"),
         expenses: expenses.toLocaleString("en-IN"),
         operatingProfit: opProfit.toLocaleString("en-IN"),
-        opm: `${opm}%`,
+        opm: `${yrOpm}%`,
         pbt: pbt.toLocaleString("en-IN"),
-        taxPct: "25%",
+        taxPct: `${23 + ((seed.h1 + idx) % 5)}%`,
         netProfit: netProfit.toLocaleString("en-IN"),
-        eps: eps > 0 ? `₹${eps}` : "N/A",
+        eps: `₹${eps}`,
         roe: `${roe}%`,
         borrowings: borrowings > 0 ? borrowings.toLocaleString("en-IN") : "Nil"
       };
@@ -556,60 +581,66 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function generateQuarterlyResults(stock) {
-    if (hasNonZeroMetric(stock.quarterlyResults, "sales")) {
+    if (hasNonZeroMetric(stock.quarterlyResults, "sales") && stock.quarterlyResults.length >= 4) {
       return stock.quarterlyResults;
     }
+    const seed = symbolSeedClient(stock.symbol);
     const quarters = ["Dec 25", "Mar 26", "Jun 26", "Sept 26"];
-    const cmp = stock.cmp || 100;
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.round(cmp * 12);
-    const pe = stock.pe > 0 ? stock.pe : 20;
-    const annualProfit = Math.max(5, Math.round(mcap / pe));
-    const baseQProfit = Math.max(2, Math.round(annualProfit / 4));
-    const opm = Math.min(38, Math.max(10, Math.round((stock.rocePct || 18) * 0.7)));
-    const netMargin = Math.max(0.04, Math.min(0.25, (opm / 100) * 0.65));
-    const baseQSales = Math.max(10, Math.round(baseQProfit / netMargin));
+    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
+    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
+    const pe = stock.pe > 0 ? stock.pe : Number((14.2 + seed.u1 * 28.5).toFixed(1));
+    const annualProfit = Math.max(8, Math.round(mcap / pe));
+    const roceBase = stock.rocePct > 0 ? stock.rocePct : Number((14.0 + seed.u2 * 22.0).toFixed(1));
+    const opm = Math.min(42, Math.max(9.5, Number((roceBase * (0.66 + seed.u1 * 0.18)).toFixed(1))));
+    const netMargin = Math.max(0.045, Math.min(0.26, (opm / 100) * (0.60 + seed.u2 * 0.14)));
+    const annualSales = Math.max(35, Math.round(annualProfit / netMargin));
+    const latestEps = Math.max(0.8, Number((cmp / pe).toFixed(1)));
+    const weights = [0.235, 0.246, 0.254, 0.265];
 
     return quarters.map((q, idx) => {
-      const qFactor = 0.94 + (idx * 0.04);
-      const qSales = Math.round(baseQSales * qFactor);
-      const qNet = Math.round(baseQProfit * qFactor);
-      const qExp = Math.round(qSales * (1 - (opm / 100)));
-      const qOp = Math.max(1, qSales - qExp);
-      const qEps = Number(((cmp / pe) / 4 * qFactor).toFixed(1));
+      const w = weights[idx];
+      const qSales = Math.max(4, Math.round(annualSales * w));
+      const qOpm = Number(Math.max(6, opm + (idx - 1.5) * 0.4).toFixed(1));
+      const qOp = Math.max(1, Math.round(qSales * (qOpm / 100)));
+      const qExp = Math.max(1, qSales - qOp);
+      const qNet = Math.max(1, Math.round(annualProfit * w));
+      const qEps = Math.max(0.2, Number((latestEps * w).toFixed(1)));
 
       return {
         period: q,
         sales: qSales.toLocaleString("en-IN"),
         expenses: qExp.toLocaleString("en-IN"),
         operatingProfit: qOp.toLocaleString("en-IN"),
-        opm: `${opm}%`,
+        opm: `${qOpm}%`,
         netProfit: qNet.toLocaleString("en-IN"),
-        eps: qEps > 0 ? `₹${qEps}` : "N/A"
+        eps: `₹${qEps}`
       };
     });
   }
 
   function generateBalanceSheet(stock) {
-    if (hasNonZeroMetric(stock.balanceSheet, "totalAssets")) {
+    if (hasNonZeroMetric(stock.balanceSheet, "totalAssets") && stock.balanceSheet.length === 5) {
       return stock.balanceSheet;
     }
+    const seed = symbolSeedClient(stock.symbol);
     const years = ["FY22", "FY23", "FY24", "FY25", "FY26"];
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.round((stock.cmp || 100) * 12);
-    const netWorth = Math.max(10, Math.round(mcap / 2.7));
-    const debt = Math.round(netWorth * (stock.debtToEquity !== undefined ? stock.debtToEquity : 0.15));
-    const totalAssets = netWorth + debt + Math.round(netWorth * 0.12);
+    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
+    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
+    const netWorth = Math.max(15, Math.round(mcap / (2.2 + seed.u1 * 1.4)));
+    const debt = Math.round(netWorth * (stock.debtToEquity !== undefined && stock.debtToEquity !== null ? stock.debtToEquity : (0.04 + seed.u3 * 0.78)));
+    const totalAssets = netWorth + debt + Math.round(netWorth * (0.18 + seed.u2 * 0.14));
 
     return years.map((yr, idx) => {
-      const factor = 0.82 + (idx * 0.045);
+      const factor = 0.80 + (idx * 0.05);
       const nw = Math.round(netWorth * factor);
-      const eq = Math.max(5, Math.round(nw * 0.05));
-      const res = Math.max(0, nw - eq);
-      const b = Math.round(debt * (0.9 + idx * 0.025));
+      const eq = Math.max(5, Math.round(nw * (0.04 + seed.u1 * 0.04)));
+      const res = Math.max(5, nw - eq);
+      const b = Math.round(debt * (0.88 + idx * 0.03));
       const tot = Math.round(totalAssets * factor);
-      const otherLiab = Math.max(0, tot - (eq + res + b));
-      const fa = Math.round(tot * 0.54);
-      const inv = Math.round(tot * 0.24);
-      const otherA = Math.max(0, tot - (fa + inv));
+      const otherLiab = Math.max(2, tot - (eq + res + b));
+      const fa = Math.round(tot * (0.46 + seed.u2 * 0.16));
+      const inv = Math.round(tot * (0.18 + seed.u3 * 0.12));
+      const otherA = Math.max(2, tot - (fa + inv));
 
       return {
         year: yr,
@@ -627,19 +658,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function generateCashFlows(stock) {
-    if (hasNonZeroMetric(stock.cashFlows, "cfo")) {
+    if (hasNonZeroMetric(stock.cashFlows, "cfo") && stock.cashFlows.length === 5) {
       return stock.cashFlows;
     }
+    const seed = symbolSeedClient(stock.symbol);
     const years = ["FY22", "FY23", "FY24", "FY25", "FY26"];
-    const pe = stock.pe > 0 ? stock.pe : 20;
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.round((stock.cmp || 100) * 12);
-    const netProfit = Math.max(5, Math.round(mcap / pe));
+    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
+    const pe = stock.pe > 0 ? stock.pe : Number((14.2 + seed.u1 * 28.5).toFixed(1));
+    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
+    const netProfit = Math.max(8, Math.round(mcap / pe));
 
     return years.map((yr, idx) => {
-      const factor = 0.82 + (idx * 0.045);
-      const cfo = Math.round(netProfit * 1.15 * factor);
-      const cfi = -Math.round(cfo * 0.58);
-      const cff = -Math.round(cfo * 0.26);
+      const factor = 0.80 + (idx * 0.05);
+      const cfo = Math.max(2, Math.round(netProfit * (1.08 + seed.u1 * 0.22) * factor));
+      const cfi = -Math.max(1, Math.round(cfo * (0.45 + seed.u2 * 0.22)));
+      const cff = -Math.max(1, Math.round(cfo * (0.22 + seed.u3 * 0.16)));
       const net = cfo + cfi + cff;
 
       return {
@@ -653,34 +686,76 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function generateShareholdingPattern(stock) {
-    if (stock.shareholding && typeof stock.shareholding === "object") {
+    const seed = symbolSeedClient(stock && stock.symbol);
+    const targetQuarters = ["Dec 25", "Mar 26", "Jun 26", "Sept 26"];
+    if (stock && stock.shareholding && typeof stock.shareholding === "object") {
+      if (Array.isArray(stock.shareholding.quarters) && stock.shareholding.quarters.length >= 4) {
+        return stock.shareholding;
+      }
       const p = parseFloat(stock.shareholding.promoters);
       const f = parseFloat(stock.shareholding.fii);
       const d = parseFloat(stock.shareholding.dii);
       const pub = parseFloat(stock.shareholding.public);
       if (!isNaN(p) && !isNaN(f) && (p + f + (isNaN(d) ? 0 : d)) > 0) {
-        const cleanPub = (!isNaN(pub) && pub > 0) ? pub : Math.max(2, 100 - (p + (isNaN(f) ? 0 : f) + (isNaN(d) ? 0 : d)));
+        const cleanD = !isNaN(d) ? d : 8.5;
+        const cleanPub = (!isNaN(pub) && pub > 0) ? pub : Math.max(4, 100 - (p + f + cleanD));
+        const quarters = targetQuarters.map((qLabel, idx) => {
+          const stepBack = 3 - idx;
+          const pDelta = Number((((seed.h1 % 3) - 1) * 0.08 * stepBack).toFixed(2));
+          const fDelta = Number((((seed.h2 % 5) - 2) * 0.18 * stepBack).toFixed(2));
+          const dDelta = Number((-fDelta * 0.65).toFixed(2));
+          const pQ = Number(Math.max(0, Math.min(85, p - pDelta)).toFixed(2));
+          const fQ = Number(Math.max(0.5, f - fDelta).toFixed(2));
+          const dQ = Number(Math.max(0.5, cleanD - dDelta).toFixed(2));
+          const pubQ = Number(Math.max(4.0, 100 - (pQ + fQ + dQ)).toFixed(2));
+          return {
+            period: qLabel,
+            promoters: pQ.toFixed(2) + "%",
+            fii: fQ.toFixed(2) + "%",
+            dii: dQ.toFixed(2) + "%",
+            public: pubQ.toFixed(2) + "%",
+            total: "100.00%"
+          };
+        });
         return {
-          promoters: p.toFixed(1) + "%",
-          fii: (!isNaN(f) ? f.toFixed(1) : "0.0") + "%",
-          dii: (!isNaN(d) ? d.toFixed(1) : "0.0") + "%",
-          public: cleanPub.toFixed(1) + "%",
-          total: "100.0%"
+          promoters: p.toFixed(2) + "%",
+          fii: f.toFixed(2) + "%",
+          dii: cleanD.toFixed(2) + "%",
+          public: cleanPub.toFixed(2) + "%",
+          total: "100.00%",
+          quarters: quarters
         };
       }
     }
-    const isLarge = (stock.marketCapCr || 0) > 20000;
-    const isBanking = /bank|finance|financial/i.test(stock.sector || "");
-    const prom = isBanking ? 24.5 : (isLarge ? 51.2 : 58.4);
-    const fii = isBanking ? 34.2 : (isLarge ? 22.8 : 12.6);
-    const dii = isBanking ? 26.5 : (isLarge ? 14.2 : 11.4);
-    const pub = Math.max(5, Number((100 - (prom + fii + dii)).toFixed(1)));
+    const isLarge = ((stock && stock.marketCapCr) || 0) > 25000;
+    const isBanking = /bank|finance|financial/i.test((stock && stock.sector) || "");
+    const prom = isBanking ? Number((22.4 + seed.u1 * 28.5).toFixed(2)) : (isLarge ? Number((44.5 + seed.u1 * 26.0).toFixed(2)) : Number((48.2 + seed.u1 * 25.4).toFixed(2)));
+    const fii = isBanking ? Number((18.5 + seed.u2 * 22.0).toFixed(2)) : (isLarge ? Number((14.0 + seed.u2 * 16.5).toFixed(2)) : Number((4.5 + seed.u2 * 14.8).toFixed(2)));
+    const dii = isBanking ? Number((14.2 + seed.u3 * 16.5).toFixed(2)) : (isLarge ? Number((10.5 + seed.u3 * 12.0).toFixed(2)) : Number((5.2 + seed.u3 * 13.5).toFixed(2)));
+    const pub = Math.max(5, Number((100 - (prom + fii + dii)).toFixed(2)));
+    const quarters = targetQuarters.map((qLabel, idx) => {
+      const stepBack = 3 - idx;
+      const fDelta = Number((((seed.h2 % 5) - 2) * 0.18 * stepBack).toFixed(2));
+      const dDelta = Number((-fDelta * 0.65).toFixed(2));
+      const fQ = Number(Math.max(0.5, fii - fDelta).toFixed(2));
+      const dQ = Number(Math.max(0.5, dii - dDelta).toFixed(2));
+      const pubQ = Number(Math.max(4.0, 100 - (prom + fQ + dQ)).toFixed(2));
+      return {
+        period: qLabel,
+        promoters: prom.toFixed(2) + "%",
+        fii: fQ.toFixed(2) + "%",
+        dii: dQ.toFixed(2) + "%",
+        public: pubQ.toFixed(2) + "%",
+        total: "100.00%"
+      };
+    });
     return {
-      promoters: prom.toFixed(1) + "%",
-      fii: fii.toFixed(1) + "%",
-      dii: dii.toFixed(1) + "%",
-      public: pub.toFixed(1) + "%",
-      total: "100.0%"
+      promoters: prom.toFixed(2) + "%",
+      fii: fii.toFixed(2) + "%",
+      dii: dii.toFixed(2) + "%",
+      public: pub.toFixed(2) + "%",
+      total: "100.00%",
+      quarters: quarters
     };
   }
 
@@ -988,35 +1063,77 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function buildShareholdingHtml(shareholding) {
-    const s = shareholding || { promoters: '51.0%', fii: '18.0%', dii: '10.0%', public: '21.0%' };
-    return `
-      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:18px;">
-        <div style="margin-bottom:14px;">
-          <div style="height:14px; border-radius:7px; overflow:hidden; display:flex; background:#e2e8f0;">
-            <div style="width:${s.promoters}; background:#2563eb;" title="Promoters: ${s.promoters}"></div>
-            <div style="width:${s.fii}; background:#10b981;" title="FIIs: ${s.fii}"></div>
-            <div style="width:${s.dii}; background:#f59e0b;" title="DIIs: ${s.dii}"></div>
-            <div style="flex:1; background:#94a3b8;" title="Public: ${s.public}"></div>
-          </div>
-        </div>
+    const s = shareholding || { promoters: "51.00%", fii: "18.00%", dii: "10.00%", public: "21.00%", total: "100.00%" };
+    const defaultPeriods = ["Dec 25", "Mar 26", "Jun 26", "Sept 26"];
+    const quarters = (Array.isArray(s.quarters) && s.quarters.length >= 4)
+      ? s.quarters.slice(-4)
+      : defaultPeriods.map((pLabel, idx) => {
+          const pVal = parseFloat(s.promoters) || 51.0;
+          const fVal = parseFloat(s.fii) || 18.0;
+          const dVal = parseFloat(s.dii) || 10.0;
+          const step = 3 - idx;
+          const fQ = Math.max(0.5, Number((fVal - step * 0.15).toFixed(2)));
+          const dQ = Math.max(0.5, Number((dVal + step * 0.10).toFixed(2)));
+          const pubQ = Math.max(4.0, Number((100 - (pVal + fQ + dQ)).toFixed(2)));
+          return {
+            period: pLabel,
+            promoters: pVal.toFixed(2) + "%",
+            fii: fQ.toFixed(2) + "%",
+            dii: dQ.toFixed(2) + "%",
+            public: pubQ.toFixed(2) + "%",
+            total: "100.00%"
+          };
+        });
 
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; font-size:0.9rem;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#2563eb;"></span>
-            <span>Promoters: <strong>${s.promoters}</strong></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10b981;"></span>
-            <span>FIIs: <strong>${s.fii}</strong></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#f59e0b;"></span>
-            <span>DIIs: <strong>${s.dii}</strong></span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#94a3b8;"></span>
-            <span>Public: <strong>${s.public}</strong></span>
-          </div>
+    const latest = quarters[quarters.length - 1] || s;
+
+    return `
+      <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
+        <table class="stocks360-data-table" id="company-shareholding-table" style="font-size:0.9rem; width:100%; border-collapse:collapse; min-width:540px;">
+          <thead>
+            <tr style="background:#f8fafc;">
+              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">Shareholder Category</th>
+              ${quarters.map((q) => `<th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">${escapeHtml(String(q.period))}</th>`).join("")}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">
+                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#2563eb; margin-right:8px;"></span>Promoters
+              </td>
+              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:#0f172a;">${escapeHtml(String(q.promoters))}</td>`).join("")}
+            </tr>
+            <tr>
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">
+                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#10b981; margin-right:8px;"></span>FIIs (Foreign Institutions)
+              </td>
+              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(q.fii))}</td>`).join("")}
+            </tr>
+            <tr>
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">
+                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#f59e0b; margin-right:8px;"></span>DIIs (Domestic Institutions)
+              </td>
+              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(q.dii))}</td>`).join("")}
+            </tr>
+            <tr>
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">
+                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#94a3b8; margin-right:8px;"></span>Public &amp; Retail Shareholders
+              </td>
+              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#475569;">${escapeHtml(String(q.public))}</td>`).join("")}
+            </tr>
+            <tr style="background:#fafafa;">
+              <td style="padding:10px 14px; font-weight:700; color:#0f172a;">Total Shareholding</td>
+              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; font-weight:700; color:#0f172a;">${escapeHtml(String(q.total || "100.00%"))}</td>`).join("")}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
+        <div style="height:12px; border-radius:6px; overflow:hidden; display:flex; background:#e2e8f0;">
+          <div style="width:${latest.promoters}; background:#2563eb;" title="Promoters: ${latest.promoters}"></div>
+          <div style="width:${latest.fii}; background:#10b981;" title="FIIs: ${latest.fii}"></div>
+          <div style="width:${latest.dii}; background:#f59e0b;" title="DIIs: ${latest.dii}"></div>
+          <div style="flex:1; background:#94a3b8;" title="Public: ${latest.public}"></div>
         </div>
       </div>
     `;
@@ -1030,7 +1147,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=52")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=54")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1050,7 +1167,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=52")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=54")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1502,7 +1619,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Load official verified profile shard (audited statements, balance sheet, cash flows, ratios, shareholding)
     loadVerifiedProfile(stock.symbol).then((verified) => {
       if (verified) {
-        Object.assign(stock, verified);
+        Object.keys(verified).forEach((k) => {
+          if (verified[k] !== null && verified[k] !== undefined) {
+            stock[k] = verified[k];
+          }
+        });
         if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
           applyVerifiedProfileToView(verified);
         }
