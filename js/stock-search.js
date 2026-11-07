@@ -1721,12 +1721,42 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isHidden) {
           box.removeAttribute("hidden");
           btn.setAttribute("aria-expanded", "true");
+          box.setAttribute("tabindex", "-1");
           if (typeof window.speakText === "function" && localStorage.getItem("stocks360_special_a11y") === "true") {
             window.speakText(box.textContent, true);
           }
         } else {
           box.setAttribute("hidden", "");
           btn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Keyboard handler: collapse ratio information box when Escape is pressed
+      stockResult.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" || e.key === "Esc") {
+          const activeEl = document.activeElement;
+          if (activeEl) {
+            const openBox = activeEl.closest(".ratio-info-box");
+            if (openBox && !openBox.hasAttribute("hidden")) {
+              e.preventDefault();
+              openBox.setAttribute("hidden", "");
+              const toggleBtn = openBox.previousElementSibling;
+              if (toggleBtn && toggleBtn.classList.contains("ratio-info-toggle-btn")) {
+                toggleBtn.setAttribute("aria-expanded", "false");
+                toggleBtn.focus();
+              }
+              return;
+            }
+            if (activeEl.classList && activeEl.classList.contains("ratio-info-toggle-btn") && activeEl.getAttribute("aria-expanded") === "true") {
+              e.preventDefault();
+              activeEl.setAttribute("aria-expanded", "false");
+              const nextBox = activeEl.nextElementSibling;
+              if (nextBox && nextBox.classList.contains("ratio-info-box")) {
+                nextBox.setAttribute("hidden", "");
+              }
+              return;
+            }
+          }
         }
       });
     }
@@ -1858,6 +1888,26 @@ document.addEventListener("DOMContentLoaded", function () {
           renderStockInMutualFundsTable(stock);
           mfCrossPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
         } else {
+          mfCrossPanel.setAttribute("hidden", "");
+          mfCrossBtn.setAttribute("aria-expanded", "false");
+          mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
+        }
+      });
+
+      // Pressing Escape collapses the cross-research panel and restores focus to the button
+      mfCrossPanel.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" || e.key === "Esc") {
+          e.preventDefault();
+          mfCrossPanel.setAttribute("hidden", "");
+          mfCrossBtn.setAttribute("aria-expanded", "false");
+          mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
+          mfCrossBtn.focus();
+        }
+      });
+
+      mfCrossBtn.addEventListener("keydown", (e) => {
+        if ((e.key === "Escape" || e.key === "Esc") && !mfCrossPanel.hasAttribute("hidden")) {
+          e.preventDefault();
           mfCrossPanel.setAttribute("hidden", "");
           mfCrossBtn.setAttribute("aria-expanded", "false");
           mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";

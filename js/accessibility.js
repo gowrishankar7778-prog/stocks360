@@ -54,6 +54,156 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.altKey && (e.key === "a" || e.key === "A")) {
       e.preventDefault();
       toggleAccessibility();
+      return;
+    }
+
+    // Global Keyboard Shortcut: Escape key collapses any open/expanded collapsible sections across the entire website
+    if (e.key === "Escape" || e.key === "Esc") {
+      let collapsedSomething = false;
+      const activeEl = document.activeElement;
+
+      // 1. If focus is currently inside or on a Ratio Info toggle button/box
+      if (activeEl) {
+        const currentRatioBox = activeEl.closest(".ratio-info-box");
+        if (currentRatioBox && !currentRatioBox.hasAttribute("hidden")) {
+          currentRatioBox.setAttribute("hidden", "");
+          const prevBtn = currentRatioBox.previousElementSibling;
+          if (prevBtn && prevBtn.classList && prevBtn.classList.contains("ratio-info-toggle-btn")) {
+            prevBtn.setAttribute("aria-expanded", "false");
+            prevBtn.focus();
+          }
+          e.preventDefault();
+          return;
+        }
+
+        const currentRatioBtn = activeEl.closest(".ratio-info-toggle-btn");
+        if (currentRatioBtn && currentRatioBtn.getAttribute("aria-expanded") === "true") {
+          currentRatioBtn.setAttribute("aria-expanded", "false");
+          const nextBox = currentRatioBtn.nextElementSibling;
+          if (nextBox && nextBox.classList && nextBox.classList.contains("ratio-info-box")) {
+            nextBox.setAttribute("hidden", "");
+          }
+          e.preventDefault();
+          return;
+        }
+
+        // 2. If focus is inside or on the Mutual Fund Cross-Research panel
+        const currentMfPanel = activeEl.closest("#company-mf-cross-research-panel");
+        const mfCrossBtn = document.getElementById("btn-see-stock-in-mf");
+        if (currentMfPanel || activeEl === mfCrossBtn) {
+          const panel = document.getElementById("company-mf-cross-research-panel");
+          if (panel && !panel.hasAttribute("hidden")) {
+            panel.setAttribute("hidden", "");
+            if (mfCrossBtn) {
+              mfCrossBtn.setAttribute("aria-expanded", "false");
+              mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
+              mfCrossBtn.focus();
+            }
+            e.preventDefault();
+            return;
+          }
+        }
+
+        // 3. If focus is inside or on an Audio Player card
+        const currentAudioCard = activeEl.closest("#news-audio-player-card, #learn-audio-player-card, .news-audio-player-card");
+        if (currentAudioCard && !currentAudioCard.hasAttribute("hidden") && !currentAudioCard.hidden) {
+          currentAudioCard.setAttribute("hidden", "");
+          currentAudioCard.hidden = true;
+          const trigger = document.querySelector(`[aria-controls="${currentAudioCard.id}"]`) || document.getElementById("listen-article-btn") || document.getElementById("learn-listen-article-btn");
+          if (trigger) {
+            trigger.setAttribute("aria-expanded", "false");
+            trigger.focus();
+          }
+          e.preventDefault();
+          return;
+        }
+      }
+
+      // 4. Collapse all open Ratio Information boxes across the page
+      const openRatioBoxes = document.querySelectorAll(".ratio-info-box:not([hidden])");
+      if (openRatioBoxes.length > 0) {
+        openRatioBoxes.forEach((box) => {
+          box.setAttribute("hidden", "");
+          const prevBtn = box.previousElementSibling;
+          if (prevBtn && prevBtn.classList && prevBtn.classList.contains("ratio-info-toggle-btn")) {
+            prevBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+        collapsedSomething = true;
+      }
+
+      // 5. Collapse Mutual Fund Cross-Research panel if open
+      const mfCrossPanel = document.getElementById("company-mf-cross-research-panel");
+      const mfCrossBtn = document.getElementById("btn-see-stock-in-mf");
+      if (mfCrossPanel && !mfCrossPanel.hasAttribute("hidden")) {
+        mfCrossPanel.setAttribute("hidden", "");
+        if (mfCrossBtn) {
+          mfCrossBtn.setAttribute("aria-expanded", "false");
+          mfCrossBtn.textContent = "See This Stock in the Mutual Fund Portfolio";
+        }
+        collapsedSomething = true;
+      }
+
+      // 6. Collapse any open Ask 360 AI boxes / drawers across the site
+      const openAiBoxes = document.querySelectorAll(
+        "#home-ask360-drawer:not([hidden]), #detail-ask360-box:not([hidden]), #nl-ask360-box:not([hidden]), #learn-ask360-box:not([hidden]), .ask360-box:not([hidden])"
+      );
+      if (openAiBoxes.length > 0) {
+        openAiBoxes.forEach((box) => {
+          box.hidden = true;
+          box.setAttribute("hidden", "");
+          const trigger = document.querySelector(`[aria-controls="${box.id}"]`) || box.previousElementSibling;
+          if (trigger && trigger.setAttribute) {
+            trigger.setAttribute("aria-expanded", "false");
+          }
+        });
+        collapsedSomething = true;
+      }
+
+      // 7. Collapse any open audio player cards
+      const openAudioCards = document.querySelectorAll(
+        "#news-audio-player-card:not([hidden]), #learn-audio-player-card:not([hidden])"
+      );
+      if (openAudioCards.length > 0) {
+        openAudioCards.forEach((card) => {
+          card.hidden = true;
+          card.setAttribute("hidden", "");
+          const trigger = document.querySelector(`[aria-controls="${card.id}"]`) || document.getElementById("listen-article-btn") || document.getElementById("learn-listen-article-btn");
+          if (trigger && trigger.setAttribute) {
+            trigger.setAttribute("aria-expanded", "false");
+          }
+        });
+        collapsedSomething = true;
+      }
+
+      // 8. Universal fallback: Collapse any remaining element with aria-expanded="true"
+      const expandedButtons = document.querySelectorAll('button[aria-expanded="true"]');
+      if (expandedButtons.length > 0) {
+        expandedButtons.forEach((btn) => {
+          btn.setAttribute("aria-expanded", "false");
+          const targetId = btn.getAttribute("aria-controls");
+          let targetEl = targetId ? document.getElementById(targetId) : null;
+          if (!targetEl && btn.nextElementSibling) {
+            targetEl = btn.nextElementSibling;
+          }
+          if (targetEl) {
+            targetEl.hidden = true;
+            targetEl.setAttribute("hidden", "");
+          }
+        });
+        collapsedSomething = true;
+      }
+
+      // 9. Close synonym popup if open
+      const synBox = document.getElementById("synonym-box");
+      if (synBox && synBox.style.display !== "none") {
+        synBox.style.display = "none";
+        collapsedSomething = true;
+      }
+
+      if (collapsedSomething) {
+        e.preventDefault();
+      }
     }
   });
 
