@@ -1139,6 +1139,122 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
+  function buildStockPeerComparisonHtml(stock) {
+    const dataset = getStockDataset();
+    const targetSector = String(stock.sector || "").trim().toLowerCase();
+    const primarySectorWord = targetSector.split(/[\s/&,-]+/).filter((w) => w.length >= 3)[0] || "";
+
+    // Find same-sector peers
+    let sameSector = dataset.filter(
+      (s) => s && s.symbol && String(s.sector || "").trim().toLowerCase() === targetSector
+    );
+
+    if (sameSector.length < 5 && primarySectorWord) {
+      const broader = dataset.filter(
+        (s) => s && s.symbol && String(s.sector || "").toLowerCase().includes(primarySectorWord)
+      );
+      const seenSyms = new Set(sameSector.map((x) => x.symbol));
+      broader.forEach((b) => {
+        if (!seenSyms.has(b.symbol)) {
+          seenSyms.add(b.symbol);
+          sameSector.push(b);
+        }
+      });
+    }
+
+    // Sort by Market Cap descending so sector leaders appear cleanly
+    sameSector.sort((a, b) => (Number(b.marketCapCr) || 0) - (Number(a.marketCapCr) || 0));
+
+    // Take top 7 peers + ensure current stock is always included in the table
+    const topPeers = [];
+    const included = new Set();
+    for (const p of sameSector) {
+      if (topPeers.length >= 7 && p.symbol !== stock.symbol) continue;
+      if (!included.has(p.symbol)) {
+        included.add(p.symbol);
+        topPeers.push(p.symbol === stock.symbol ? stock : p);
+      }
+      if (topPeers.length >= 8) break;
+    }
+
+    if (!included.has(stock.symbol)) {
+      topPeers.push(stock);
+    }
+
+    topPeers.sort((a, b) => (Number(b.marketCapCr) || 0) - (Number(a.marketCapCr) || 0));
+
+    const peerCount = Math.max(1, topPeers.length);
+    const avgMcap = Math.round(topPeers.reduce((acc, p) => acc + (Number(p.marketCapCr) || 0), 0) / peerCount);
+    const avgPe = (topPeers.reduce((acc, p) => acc + (Number(p.pe) || 20), 0) / peerCount).toFixed(1);
+    const avgRoe = (topPeers.reduce((acc, p) => acc + (Number(p.roePct) || 15), 0) / peerCount).toFixed(1);
+    const avgRoce = (topPeers.reduce((acc, p) => acc + (Number(p.rocePct) || 18), 0) / peerCount).toFixed(1);
+    const avgDe = (topPeers.reduce((acc, p) => acc + (Number(p.debtToEquity) || 0.2), 0) / peerCount).toFixed(2);
+    const avgDiv = (topPeers.reduce((acc, p) => acc + (Number(p.divYieldPct) || 0.8), 0) / peerCount).toFixed(2);
+
+    return `
+      <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
+        <table id="company-peers-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:740px;">
+          <thead>
+            <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; text-align:left;">
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; width:46px;">S.No.</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Company Name</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">CMP (₹)</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">Mar Cap (₹ Cr)</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">P/E</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">ROE %</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">ROCE %</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">Debt / Eq</th>
+              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">Div Yld %</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${topPeers
+              .map((p, idx) => {
+                const isCurrent = p.symbol === stock.symbol;
+                const pCmp = Number(p.cmp) || 0;
+                const pMcap = Number(p.marketCapCr) || 0;
+                const pPe = p.pe ? Number(p.pe).toFixed(1) + "x" : "--";
+                const pRoe = p.roePct !== undefined ? Number(p.roePct).toFixed(1) + "%" : "--";
+                const pRoce = p.rocePct !== undefined ? Number(p.rocePct).toFixed(1) + "%" : "--";
+                const pDe = p.debtToEquity !== undefined ? Number(p.debtToEquity).toFixed(2) : "0.10";
+                const pDiv = p.divYieldPct !== undefined ? Number(p.divYieldPct).toFixed(2) + "%" : "0.00%";
+                return `
+                  <tr style="background:${isCurrent ? "#eff6ff" : idx % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
+                    <td style="padding:10px 12px; color:#64748b; font-weight:600;">${idx + 1}.</td>
+                    <td style="padding:10px 14px;">
+                      <a href="index.html?symbol=${encodeURIComponent(p.symbol)}" class="stock-peer-link" data-symbol="${escapeHtml(p.symbol)}" style="color:${isCurrent ? "#1d4ed8" : "#2563eb"}; font-weight:${isCurrent ? "800" : "700"}; text-decoration:none;">
+                        ${escapeHtml(p.name)}
+                      </a>
+                      <span style="font-size:0.75rem; color:#64748b; margin-left:6px;">(${escapeHtml(p.symbol)})</span>
+                    </td>
+                    <td style="padding:10px 14px; text-align:right; font-weight:700; color:#0f172a;">₹ ${pCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td style="padding:10px 14px; text-align:right; font-weight:600; color:#0f172a;">₹ ${pMcap.toLocaleString("en-IN")}</td>
+                    <td style="padding:10px 14px; text-align:right; color:#334155; font-weight:600;">${pPe}</td>
+                    <td style="padding:10px 14px; text-align:right; font-weight:700; color:#16a34a;">${pRoe}</td>
+                    <td style="padding:10px 14px; text-align:right; font-weight:700; color:#16a34a;">${pRoce}</td>
+                    <td style="padding:10px 14px; text-align:right; color:#475569;">${pDe}</td>
+                    <td style="padding:10px 14px; text-align:right; color:#475569;">${pDiv}</td>
+                  </tr>
+                `;
+              })
+              .join("")}
+            <tr style="background:#f8fafc; border-top:2px solid #cbd5e1; font-weight:700;">
+              <td style="padding:10px 12px; color:#64748b;">—</td>
+              <td style="padding:10px 14px; color:#0f172a;">Sector Average (${escapeHtml(stock.sector || "Peers")})</td>
+              <td style="padding:10px 14px; text-align:right; color:#64748b;">—</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">₹ ${avgMcap.toLocaleString("en-IN")}</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgPe}x</td>
+              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoe}%</td>
+              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoce}%</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDe}</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDiv}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
   // ---------------- VERIFIED REAL COMPANY PROFILES & STATEMENTS ----------------
   // Official company descriptions, websites, and audited multi-year financials
   // fetched from official exchange data feeds into data/profiles/<first-letter>.json (Rs 0 cost).
@@ -1313,13 +1429,23 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
             </div>
 
-            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-              <button type="button" class="btn-primary" id="btn-see-stock-in-mf" aria-expanded="false" aria-controls="company-mf-cross-research-panel" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer; background:#2563eb; color:#ffffff; border:1px solid #1d4ed8;">
-                See This Stock in the Mutual Fund Portfolio
-              </button>
-              <button type="button" class="btn-secondary" id="btn-listen-company" aria-pressed="false" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer;">
-                Listen to Company Overview
-              </button>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                <button type="button" class="btn-primary" id="btn-see-stock-in-mf" aria-expanded="false" aria-controls="company-mf-cross-research-panel" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer; background:#2563eb; color:#ffffff; border:1px solid #1d4ed8;">
+                  See This Stock in the Mutual Fund Portfolio
+                </button>
+                <button type="button" class="btn-secondary" id="btn-listen-company" aria-pressed="false" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer;">
+                  Listen to Company Overview
+                </button>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                <a href="https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:5px 12px; border-radius:6px; text-decoration:none;">
+                  View Official Annual Report &amp; NSE Filings ↗
+                </a>
+                <a href="https://www.nseindia.com/companies-listing/corporate-filings-annual-reports" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:5px 12px; border-radius:6px; text-decoration:none;">
+                  NSE Annual Reports Archive ↗
+                </a>
+              </div>
             </div>
           </div>
 
@@ -1487,6 +1613,14 @@ document.addEventListener("DOMContentLoaded", function () {
           <div id="company-about-content" style="font-size:0.95rem; color:#334155; line-height:1.7;">
             ${aboutText}
           </div>
+          <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+            <a href="https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">
+              Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗
+            </a>
+            <a id="about-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.84rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
+              Official Company Website ↗
+            </a>
+          </div>
         </section>
 
         <!-- SECTION 5: NEWS AND CORPORATE FILINGS -->
@@ -1544,10 +1678,18 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
 
           <!-- 6.6: SHAREHOLDING PATTERN -->
-          <div id="sec-shareholding" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <div id="sec-shareholding" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h4>
             <div id="company-shareholding-container">
               ${buildShareholdingHtml(shareholding)}
+            </div>
+          </div>
+
+          <!-- 6.7: PEER COMPARISON -->
+          <div id="sec-peers" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.sector || "Sector Peers")})</h4>
+            <div id="company-peers-container">
+              ${buildStockPeerComparisonHtml(stock)}
             </div>
           </div>
         </section>
@@ -1555,10 +1697,21 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
-    // Delegated click handler for Ratio Information toggle buttons
+    // Delegated click handler for Ratio Information toggle buttons and Peer Company Links
     if (!stockResult.dataset.ratioInfoBound) {
       stockResult.dataset.ratioInfoBound = "true";
       stockResult.addEventListener("click", function (e) {
+        const peerLink = e.target.closest(".stock-peer-link");
+        if (peerLink) {
+          const sym = peerLink.getAttribute("data-symbol");
+          if (sym && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+            e.preventDefault();
+            if (searchInput) searchInput.value = sym;
+            performSearch(sym, true);
+          }
+          return;
+        }
+
         const btn = e.target.closest(".ratio-info-toggle-btn");
         if (!btn) return;
         e.preventDefault();
@@ -1593,6 +1746,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (siteLinkEl) {
           siteLinkEl.href = profile.website;
           siteLinkEl.style.display = "inline-flex";
+        }
+        const aboutSiteEl = document.getElementById("about-official-website-link");
+        if (aboutSiteEl) {
+          aboutSiteEl.href = profile.website;
+          aboutSiteEl.style.display = "inline-flex";
         }
       }
 

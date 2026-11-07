@@ -467,8 +467,7 @@ const StocksScreener = (function () {
             if (col.key === "symbol") {
               cells += `
                 <td style="font-weight:700; color:#1e293b;">
-                  <div><a href="index.html?symbol=${encodeURIComponent(st.symbol)}" style="color:#2563eb; text-decoration:none; font-weight:700;" title="View detailed analysis for ${escapeHtml(st.name)}">${escapeHtml(st.symbol)} &rarr;</a></div>
-                  <div style="font-size:0.8rem; font-weight:400; color:#64748b;">${escapeHtml(st.name)}</div>
+                  <div><a href="index.html?symbol=${encodeURIComponent(st.symbol)}" style="color:#2563eb; text-decoration:none; font-weight:700;" title="View detailed analysis for ${escapeHtml(st.name)}">${escapeHtml(st.name)} (${escapeHtml(st.symbol)}) &rarr;</a></div>
                 </td>
               `;
             } else if (col.key === "cmp") {
