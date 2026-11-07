@@ -757,11 +757,29 @@
   function init() {
     bindEvents();
 
-    fetch("data/mutual-funds/top-mutual-funds.json?v=53")
+    fetch("data/mutual-funds/top-mutual-funds.json?v=55")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         allFunds = data.funds || [];
         renderQuickPills();
+
+        // Support deep-linking from Company Cross-Research table (?scheme=<code or name>)
+        const params = new URLSearchParams(window.location.search);
+        const schemeParam = params.get("scheme");
+        if (schemeParam) {
+          const found = allFunds.find(
+            (f) => String(f.schemeCode) === String(schemeParam) ||
+                   f.name.toLowerCase() === schemeParam.toLowerCase() ||
+                   f.shortName.toLowerCase() === schemeParam.toLowerCase()
+          );
+          if (found) {
+            const input = document.getElementById("mf-search");
+            if (input) input.value = found.shortName || found.name;
+            renderSchemeOverview(found);
+            const overviewEl = document.getElementById("mf-scheme-overview-section");
+            if (overviewEl) overviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
       })
       .catch(() => {
         const overviewSection = document.getElementById("mf-scheme-overview-section");

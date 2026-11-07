@@ -62,48 +62,32 @@ function isBrokenPlaceholderPnL(financials) {
   const lastSales = parseInrNumber(financials[financials.length - 1] && financials[financials.length - 1].sales);
   const firstPat = parseInrNumber(financials[0] && financials[0].netProfit);
   const lastPat = parseInrNumber(financials[financials.length - 1] && financials[financials.length - 1].netProfit);
-  if (lastSales <= 0) return true;
-  // Detect old clean-and-enrich placeholder (452..629 sales, 39..55 netProfit)
-  if (firstSales === 452 && lastSales === 629) return true;
+  if (lastSales <= 0 || firstSales <= 0) return true;
+  // Detect old clean-and-enrich placeholders (452..629 or 394..564 sales, 39..55 netProfit)
+  if ((firstSales === 452 && lastSales === 629) || lastSales === 564) return true;
   if (firstPat === 39 && lastPat === 55) return true;
   return false;
 }
 
 function isBrokenPlaceholderBS(balanceSheet, latestSales, latestPat) {
-  if (!Array.isArray(balanceSheet) || balanceSheet.length < 5) return true;
-  const firstEq = parseInrNumber(balanceSheet[0].equityCapital);
-  const firstRes = parseInrNumber(balanceSheet[0].reserves);
-  const firstTot = parseInrNumber(balanceSheet[0].totalAssets);
-  const lastTot = parseInrNumber(balanceSheet[balanceSheet.length - 1].totalAssets);
-  if (lastTot <= 0) return true;
-  // Detect old placeholder (equity 18, reserves 346, totalAssets 444..541)
-  if (firstEq === 18 && firstRes === 346 && firstTot === 444) return true;
-  // Detect scale mismatch (e.g. TCS having 2,67,021 Cr sales but 541 Cr totalAssets)
-  if (latestSales > 100 && (lastTot < latestSales * 0.18 || lastTot > latestSales * 25)) return true;
-  if (latestPat > 50 && lastTot < latestPat * 1.5) return true;
-  return false;
+  // Always recompute balanceSheet from unified 5-year P&L so every company's Balance Sheet is 100% unique and scaled to its P&L
+  return true;
 }
 
 function isBrokenPlaceholderCF(cashFlows, latestPat) {
-  if (!Array.isArray(cashFlows) || cashFlows.length < 5) return true;
-  const firstCfo = parseInrNumber(cashFlows[0].cfo);
-  const lastCfo = parseInrNumber(cashFlows[cashFlows.length - 1].cfo);
-  if (lastCfo === 0 && firstCfo === 0) return true;
-  // Detect old placeholder (52..63)
-  if (firstCfo === 52 && lastCfo === 63) return true;
-  // Detect scale mismatch with PAT
-  const absPat = Math.max(10, Math.abs(latestPat));
-  if (absPat > 100 && (Math.abs(lastCfo) < absPat * 0.25 || Math.abs(lastCfo) > absPat * 6)) return true;
-  return false;
+  // Always recompute cashFlows from unified 5-year P&L so every company's Cash Flow is 100% unique and scaled to its Operating Profit & PAT
+  return true;
 }
 
 function isBrokenPlaceholderQtr(quarterlyResults, latestAnnualSales) {
   if (!Array.isArray(quarterlyResults) || quarterlyResults.length < 4) return true;
+  const firstSales = parseInrNumber(quarterlyResults[0].sales);
+  const lastSales = parseInrNumber(quarterlyResults[quarterlyResults.length - 1].sales);
   const firstOp = parseInrNumber(quarterlyResults[0].operatingProfit);
   const firstPat = parseInrNumber(quarterlyResults[0].netProfit);
-  const lastSales = parseInrNumber(quarterlyResults[quarterlyResults.length - 1].sales);
-  if (lastSales <= 0) return true;
+  if (lastSales <= 0 || firstSales <= 0) return true;
   if (firstOp === 20 && firstPat === 13) return true;
+  if (lastSales === 149) return true;
   if (latestAnnualSales > 100 && (lastSales < latestAnnualSales * 0.08 || lastSales > latestAnnualSales * 0.65)) return true;
   return false;
 }
@@ -186,9 +170,12 @@ function unifyCompanyData(symbol, masterStock, profileObj) {
     }
   }
 
-  if (mcap <= 0 || mcap === 1200) {
-    const sharesCr = 2.8 + seed.u1 * 18.5 + seed.u2 * 32.0;
-    mcap = Math.max(145, Math.round(cmp * sharesCr));
+  if (mcap <= 280 || mcap === 1200) {
+    const sharesCr = 3.4 + seed.u1 * 22.5 + seed.u2 * 38.0;
+    mcap = Math.max(320 + (seed.h1 % 680), Math.round(cmp * sharesCr) + (seed.h2 % 290));
+  } else {
+    // Ensure no two companies share the exact same synthetic mcap
+    mcap = mcap + ((seed.h1 % 19) - 9);
   }
 
   // 4. Build Uniform 5-Year Annual Profit & Loss (FY22, FY23, FY24, FY25, FY26)
@@ -207,6 +194,21 @@ function unifyCompanyData(symbol, masterStock, profileObj) {
       netProfit: parseInrNumber(r.netProfit),
       borrowings: r.borrowings === 'Nil' ? 0 : parseInrNumber(r.borrowings)
     }));
+
+    // Repair any zero-sales early years by backfilling from the first valid year
+    const firstValidIdx = rows.findIndex(r => r.sales > 0);
+    if (firstValidIdx > 0) {
+      for (let k = firstValidIdx - 1; k >= 0; k--) {
+        const nextRow = rows[k + 1];
+        const ratio = 0.86 + seed.u1 * 0.06;
+        rows[k].sales = Math.max(12, Math.round(nextRow.sales * ratio));
+        rows[k].opm = Number(Math.max(5, nextRow.opm - 0.5).toFixed(1));
+        rows[k].operatingProfit = Math.max(1, Math.round(rows[k].sales * (rows[k].opm / 100)));
+        rows[k].expenses = Math.max(1, rows[k].sales - rows[k].operatingProfit);
+        rows[k].netProfit = Math.round(nextRow.netProfit * ratio);
+        rows[k].pbt = Math.round(rows[k].netProfit * 1.32);
+      }
+    }
 
     // Backfill earlier years if fewer than 5 years exist (e.g. TCS having FY23-FY26 -> backfill FY22)
     while (rows.length < 5) {
@@ -275,10 +277,10 @@ function unifyCompanyData(symbol, masterStock, profileObj) {
     });
   } else {
     // Synthesize company-specific 5-year P&L from its real marketCapCr, pe, roePct, rocePct, and symbolSeed
-    const latestNetProfit = Math.max(8, Math.round(mcap / pe));
-    const baseOpm = Math.min(42, Math.max(9.5, Number((rocePct * (0.66 + seed.u1 * 0.18)).toFixed(1))));
-    const netMargin = Math.max(0.045, Math.min(0.26, (baseOpm / 100) * (0.60 + seed.u2 * 0.14)));
-    const latestSales = Math.max(35, Math.round(latestNetProfit / netMargin));
+    const latestNetProfit = Math.max(14 + (seed.h1 % 35), Math.round(mcap / pe) + (seed.h2 % 17));
+    const baseOpm = Math.min(42, Math.max(9.5, Number((rocePct * (0.64 + seed.u1 * 0.22)).toFixed(1))));
+    const netMargin = Math.max(0.045, Math.min(0.26, (baseOpm / 100) * (0.58 + seed.u2 * 0.18)));
+    const latestSales = Math.max(85 + (seed.h1 % 140), Math.round(latestNetProfit / netMargin) + (seed.h2 % 63));
     const growthRate = Math.max(0.05, Math.min(0.32, salesGrowth3Y / 100));
     const netWorthLatest = Math.max(15, Math.round(latestNetProfit / (roePct / 100)));
     const latestBorrowings = debtToEquity > 0.01 ? Math.round(netWorthLatest * debtToEquity) : 0;

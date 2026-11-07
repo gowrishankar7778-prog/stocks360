@@ -171,15 +171,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Keyboard shortcuts
   document.addEventListener("keydown", function (e) {
-    // Ctrl = Stop speech
-    if (e.ctrlKey && !e.altKey && !e.shiftKey && e.key === "Control") {
+    // Ctrl = Stop speech (ignore if user just clicked Listen to Company Overview within 800ms)
+    if (e.key === "Control") {
+      if (window._stocks360SpeechStartedAt && (Date.now() - window._stocks360SpeechStartedAt < 800)) {
+        return;
+      }
       stopSpeech();
       return;
-    }
-
-    // Also stop on Ctrl alone release or common stop
-    if (e.key === "Control") {
-      stopSpeech();
     }
 
     // Alt + 3 → Synonyms (word under cursor)

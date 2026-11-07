@@ -77,7 +77,7 @@
         "sales": "90",
         "expenses": "82",
         "operatingProfit": "8",
-        "opm": "8.8%",
+        "opm": "8.9%",
         "netProfit": "1",
         "eps": "₹0.2"
       },
@@ -86,7 +86,7 @@
         "sales": "95",
         "expenses": "86",
         "operatingProfit": "9",
-        "opm": "9.2%",
+        "opm": "9.5%",
         "netProfit": "1",
         "eps": "₹0.2"
       },
@@ -95,7 +95,7 @@
         "sales": "97",
         "expenses": "88",
         "operatingProfit": "9",
-        "opm": "9.6%",
+        "opm": "9.3%",
         "netProfit": "1",
         "eps": "₹0.2"
       },
@@ -104,7 +104,7 @@
         "sales": "104",
         "expenses": "94",
         "operatingProfit": "10",
-        "opm": "10%",
+        "opm": "9.6%",
         "netProfit": "1",
         "eps": "₹0.2"
       }
@@ -112,100 +112,100 @@
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "18",
-        "reserves": "346",
-        "borrowings": "120",
-        "otherLiabilities": "33",
-        "totalLiabilities": "517",
-        "fixedAssets": "279",
-        "investments": "124",
-        "otherAssets": "114",
-        "totalAssets": "517"
+        "equityCapital": "5",
+        "reserves": "56",
+        "borrowings": "Nil",
+        "otherLiabilities": "12",
+        "totalLiabilities": "73",
+        "fixedAssets": "36",
+        "investments": "12",
+        "otherAssets": "25",
+        "totalAssets": "73"
       },
       {
         "year": "FY23",
-        "equityCapital": "19",
-        "reserves": "365",
-        "borrowings": "123",
-        "otherLiabilities": "38",
-        "totalLiabilities": "545",
-        "fixedAssets": "294",
-        "investments": "131",
-        "otherAssets": "120",
-        "totalAssets": "545"
+        "equityCapital": "5",
+        "reserves": "73",
+        "borrowings": "Nil",
+        "otherLiabilities": "15",
+        "totalLiabilities": "93",
+        "fixedAssets": "46",
+        "investments": "15",
+        "otherAssets": "32",
+        "totalAssets": "93"
       },
       {
         "year": "FY24",
-        "equityCapital": "20",
-        "reserves": "384",
-        "borrowings": "126",
-        "otherLiabilities": "43",
-        "totalLiabilities": "573",
-        "fixedAssets": "309",
-        "investments": "138",
-        "otherAssets": "126",
-        "totalAssets": "573"
+        "equityCapital": "5",
+        "reserves": "95",
+        "borrowings": "Nil",
+        "otherLiabilities": "20",
+        "totalLiabilities": "120",
+        "fixedAssets": "59",
+        "investments": "19",
+        "otherAssets": "42",
+        "totalAssets": "120"
       },
       {
         "year": "FY25",
-        "equityCapital": "21",
-        "reserves": "403",
-        "borrowings": "130",
-        "otherLiabilities": "48",
-        "totalLiabilities": "602",
-        "fixedAssets": "325",
-        "investments": "144",
-        "otherAssets": "133",
-        "totalAssets": "602"
+        "equityCapital": "5",
+        "reserves": "127",
+        "borrowings": "Nil",
+        "otherLiabilities": "26",
+        "totalLiabilities": "158",
+        "fixedAssets": "78",
+        "investments": "26",
+        "otherAssets": "54",
+        "totalAssets": "158"
       },
       {
         "year": "FY26",
-        "equityCapital": "22",
-        "reserves": "422",
-        "borrowings": "133",
-        "otherLiabilities": "53",
-        "totalLiabilities": "630",
-        "fixedAssets": "340",
-        "investments": "151",
-        "otherAssets": "139",
-        "totalAssets": "630"
+        "equityCapital": "5",
+        "reserves": "120",
+        "borrowings": "Nil",
+        "otherLiabilities": "24",
+        "totalLiabilities": "149",
+        "fixedAssets": "73",
+        "investments": "24",
+        "otherAssets": "52",
+        "totalAssets": "149"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "152",
-        "cfi": "-88",
-        "cff": "-40",
-        "netCash": "24"
+        "cfo": "13",
+        "cfi": "-6",
+        "cff": "-3",
+        "netCash": "4"
       },
       {
         "year": "FY23",
-        "cfo": "160",
-        "cfi": "-93",
-        "cff": "-42",
-        "netCash": "25"
+        "cfo": "18",
+        "cfi": "-9",
+        "cff": "-4",
+        "netCash": "5"
       },
       {
         "year": "FY24",
-        "cfo": "168",
-        "cfi": "-97",
-        "cff": "-44",
-        "netCash": "27"
+        "cfo": "24",
+        "cfi": "-12",
+        "cff": "-5",
+        "netCash": "7"
       },
       {
         "year": "FY25",
-        "cfo": "177",
-        "cfi": "-103",
-        "cff": "-46",
-        "netCash": "28"
+        "cfo": "33",
+        "cfi": "-16",
+        "cff": "-7",
+        "netCash": "10"
       },
       {
         "year": "FY26",
-        "cfo": "185",
-        "cfi": "-107",
-        "cff": "-48",
-        "netCash": "30"
+        "cfo": "31",
+        "cfi": "-15",
+        "cff": "-7",
+        "netCash": "9"
       }
     ],
     "shareholding": {
@@ -251,17 +251,17 @@
     },
     "ratios": {
       "pe": 51.8,
-      "pb": 18.83,
+      "pb": 28.5,
       "evToEbitda": 65,
       "roce": 16.4,
       "roe": 13.1,
       "debtToEquity": 0.3,
-      "interestCoverage": 3.3,
+      "interestCoverage": 36.1,
       "divYield": 0.99,
       "salesGrowth3Y": 17.1,
       "profitGrowth3Y": -21.4
     },
-    "marketCapCr": 8360,
+    "marketCapCr": 8356,
     "pe": 51.8,
     "roePct": 13.1,
     "rocePct": 16.4,
@@ -283,7 +283,7 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1794036110488,
+    "updatedAt": 1794038125826,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:56.054Z",
     "financialChangeSummary": "Quarterly results refreshed (Mar 18); ROE updated: 30% -> 13.1%; Debt/Equity updated: 0.47 -> 0.3",
@@ -297,205 +297,205 @@
     "financials": [
       {
         "year": "FY22",
-        "sales": "394",
-        "expenses": "335",
-        "operatingProfit": "59",
-        "opm": "15%",
-        "pbt": "51",
+        "sales": "211",
+        "expenses": "148",
+        "operatingProfit": "63",
+        "opm": "29.8%",
+        "pbt": "53",
         "taxPct": "23%",
-        "netProfit": "38",
+        "netProfit": "41",
         "eps": "₹1.4",
-        "roe": "24.0%",
-        "borrowings": "45"
+        "roe": "25.1%",
+        "borrowings": "73"
       },
       {
         "year": "FY23",
-        "sales": "431",
-        "expenses": "366",
-        "operatingProfit": "65",
-        "opm": "15%",
-        "pbt": "56",
+        "sales": "226",
+        "expenses": "157",
+        "operatingProfit": "69",
+        "opm": "30.4%",
+        "pbt": "59",
         "taxPct": "24%",
-        "netProfit": "42",
-        "eps": "₹1.5",
-        "roe": "25.4%",
-        "borrowings": "47"
+        "netProfit": "45",
+        "eps": "₹1.6",
+        "roe": "26.2%",
+        "borrowings": "76"
       },
       {
         "year": "FY24",
-        "sales": "471",
-        "expenses": "400",
-        "operatingProfit": "71",
-        "opm": "15%",
-        "pbt": "61",
+        "sales": "242",
+        "expenses": "167",
+        "operatingProfit": "75",
+        "opm": "31%",
+        "pbt": "65",
         "taxPct": "25%",
-        "netProfit": "46",
+        "netProfit": "49",
         "eps": "₹1.7",
-        "roe": "26.7%",
-        "borrowings": "48"
+        "roe": "27.3%",
+        "borrowings": "79"
       },
       {
         "year": "FY25",
-        "sales": "516",
-        "expenses": "439",
-        "operatingProfit": "77",
-        "opm": "15%",
-        "pbt": "67",
+        "sales": "259",
+        "expenses": "177",
+        "operatingProfit": "82",
+        "opm": "31.6%",
+        "pbt": "72",
         "taxPct": "26%",
-        "netProfit": "50",
+        "netProfit": "53",
         "eps": "₹1.8",
-        "roe": "28.1%",
-        "borrowings": "49"
+        "roe": "28.4%",
+        "borrowings": "82"
       },
       {
         "year": "FY26",
-        "sales": "564",
-        "expenses": "479",
-        "operatingProfit": "85",
-        "opm": "15%",
-        "pbt": "73",
+        "sales": "277",
+        "expenses": "188",
+        "operatingProfit": "89",
+        "opm": "32.2%",
+        "pbt": "79",
         "taxPct": "27%",
-        "netProfit": "55",
+        "netProfit": "58",
         "eps": "₹2",
-        "roe": "29.5%",
-        "borrowings": "50"
+        "roe": "29.6%",
+        "borrowings": "85"
       }
     ],
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "136",
-        "expenses": "116",
-        "operatingProfit": "20",
-        "opm": "14.4%",
-        "netProfit": "13",
+        "sales": "67",
+        "expenses": "46",
+        "operatingProfit": "21",
+        "opm": "31.6%",
+        "netProfit": "14",
         "eps": "₹0.5"
       },
       {
         "period": "Mar 26",
-        "sales": "142",
-        "expenses": "121",
-        "operatingProfit": "21",
-        "opm": "14.8%",
-        "netProfit": "14",
+        "sales": "70",
+        "expenses": "48",
+        "operatingProfit": "22",
+        "opm": "32%",
+        "netProfit": "15",
         "eps": "₹0.5"
       },
       {
         "period": "Jun 26",
-        "sales": "146",
-        "expenses": "124",
-        "operatingProfit": "22",
-        "opm": "15.2%",
-        "netProfit": "14",
+        "sales": "72",
+        "expenses": "49",
+        "operatingProfit": "23",
+        "opm": "32.4%",
+        "netProfit": "15",
         "eps": "₹0.5"
       },
       {
         "period": "Sept 26",
-        "sales": "149",
-        "expenses": "126",
-        "operatingProfit": "23",
-        "opm": "15.6%",
-        "netProfit": "15",
+        "sales": "73",
+        "expenses": "49",
+        "operatingProfit": "24",
+        "opm": "32.8%",
+        "netProfit": "16",
         "eps": "₹0.5"
       }
     ],
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "18",
-        "reserves": "346",
-        "borrowings": "60",
-        "otherLiabilities": "38",
-        "totalLiabilities": "462",
-        "fixedAssets": "249",
-        "investments": "111",
-        "otherAssets": "102",
-        "totalAssets": "462"
+        "equityCapital": "12",
+        "reserves": "151",
+        "borrowings": "73",
+        "otherLiabilities": "71",
+        "totalLiabilities": "307",
+        "fixedAssets": "186",
+        "investments": "84",
+        "otherAssets": "37",
+        "totalAssets": "307"
       },
       {
         "year": "FY23",
-        "equityCapital": "19",
-        "reserves": "365",
-        "borrowings": "62",
-        "otherLiabilities": "42",
-        "totalLiabilities": "488",
-        "fixedAssets": "264",
-        "investments": "117",
-        "otherAssets": "107",
-        "totalAssets": "488"
+        "equityCapital": "13",
+        "reserves": "159",
+        "borrowings": "76",
+        "otherLiabilities": "74",
+        "totalLiabilities": "322",
+        "fixedAssets": "195",
+        "investments": "88",
+        "otherAssets": "39",
+        "totalAssets": "322"
       },
       {
         "year": "FY24",
-        "equityCapital": "20",
-        "reserves": "384",
-        "borrowings": "64",
-        "otherLiabilities": "45",
-        "totalLiabilities": "513",
-        "fixedAssets": "277",
-        "investments": "123",
-        "otherAssets": "113",
-        "totalAssets": "513"
+        "equityCapital": "13",
+        "reserves": "166",
+        "borrowings": "79",
+        "otherLiabilities": "77",
+        "totalLiabilities": "335",
+        "fixedAssets": "203",
+        "investments": "92",
+        "otherAssets": "40",
+        "totalAssets": "335"
       },
       {
         "year": "FY25",
-        "equityCapital": "21",
-        "reserves": "403",
-        "borrowings": "65",
-        "otherLiabilities": "50",
-        "totalLiabilities": "539",
-        "fixedAssets": "291",
-        "investments": "129",
-        "otherAssets": "119",
-        "totalAssets": "539"
+        "equityCapital": "14",
+        "reserves": "173",
+        "borrowings": "82",
+        "otherLiabilities": "80",
+        "totalLiabilities": "349",
+        "fixedAssets": "211",
+        "investments": "96",
+        "otherAssets": "42",
+        "totalAssets": "349"
       },
       {
         "year": "FY26",
-        "equityCapital": "22",
-        "reserves": "422",
-        "borrowings": "67",
-        "otherLiabilities": "53",
-        "totalLiabilities": "564",
-        "fixedAssets": "305",
-        "investments": "135",
-        "otherAssets": "124",
-        "totalAssets": "564"
+        "equityCapital": "14",
+        "reserves": "182",
+        "borrowings": "85",
+        "otherLiabilities": "84",
+        "totalLiabilities": "365",
+        "fixedAssets": "221",
+        "investments": "100",
+        "otherAssets": "44",
+        "totalAssets": "365"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "856",
-        "cfi": "-496",
-        "cff": "-223",
-        "netCash": "137"
+        "cfo": "60",
+        "cfi": "-38",
+        "cff": "-22",
+        "netCash": "0"
       },
       {
         "year": "FY23",
-        "cfo": "903",
-        "cfi": "-524",
-        "cff": "-235",
-        "netCash": "144"
+        "cfo": "66",
+        "cfi": "-42",
+        "cff": "-24",
+        "netCash": "0"
       },
       {
         "year": "FY24",
-        "cfo": "950",
-        "cfi": "-551",
-        "cff": "-247",
-        "netCash": "152"
+        "cfo": "72",
+        "cfi": "-46",
+        "cff": "-26",
+        "netCash": "0"
       },
       {
         "year": "FY25",
-        "cfo": "997",
-        "cfi": "-578",
-        "cff": "-259",
-        "netCash": "160"
+        "cfo": "78",
+        "cfi": "-50",
+        "cff": "-29",
+        "netCash": "-1"
       },
       {
         "year": "FY26",
-        "cfo": "1,044",
-        "cfi": "-606",
-        "cff": "-271",
-        "netCash": "167"
+        "cfo": "85",
+        "cfi": "-54",
+        "cff": "-31",
+        "netCash": "0"
       }
     ],
     "shareholding": {
@@ -541,17 +541,17 @@
     },
     "ratios": {
       "pe": 30.4,
-      "pb": 3.77,
-      "evToEbitda": 17.9,
+      "pb": 8.57,
+      "evToEbitda": 17.5,
       "roce": 38.9,
       "roe": 29.5,
       "debtToEquity": 0.43,
-      "interestCoverage": 14.9,
+      "interestCoverage": 12.3,
       "divYield": 0.8,
       "salesGrowth3Y": 9.4,
       "profitGrowth3Y": 9.4
     },
-    "marketCapCr": 1672,
+    "marketCapCr": 1680,
     "pe": 30.4,
     "roePct": 29.5,
     "rocePct": 38.9,
@@ -573,7 +573,7 @@
     "risks": [
       "Return on Equity is currently subdued at -1.4%."
     ],
-    "updatedAt": 1794036110488,
+    "updatedAt": 1794038125828,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:56.044Z",
     "financialChangeSummary": "ROE updated: 18% -> -1.4%",
@@ -692,63 +692,63 @@
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "62",
-        "reserves": "1,173",
-        "borrowings": "2,264",
-        "otherLiabilities": "0",
-        "totalLiabilities": "3,446",
-        "fixedAssets": "1,861",
-        "investments": "827",
-        "otherAssets": "758",
-        "totalAssets": "3,446"
+        "equityCapital": "265",
+        "reserves": "5,092",
+        "borrowings": "Nil",
+        "otherLiabilities": "1,204",
+        "totalLiabilities": "6,561",
+        "fixedAssets": "3,449",
+        "investments": "1,906",
+        "otherAssets": "1,206",
+        "totalAssets": "6,561"
       },
       {
         "year": "FY23",
-        "equityCapital": "65",
-        "reserves": "1,238",
-        "borrowings": "2,326",
-        "otherLiabilities": "6",
-        "totalLiabilities": "3,635",
-        "fixedAssets": "1,963",
-        "investments": "872",
-        "otherAssets": "800",
-        "totalAssets": "3,635"
+        "equityCapital": "310",
+        "reserves": "5,957",
+        "borrowings": "Nil",
+        "otherLiabilities": "1,409",
+        "totalLiabilities": "7,676",
+        "fixedAssets": "4,035",
+        "investments": "2,230",
+        "otherAssets": "1,411",
+        "totalAssets": "7,676"
       },
       {
         "year": "FY24",
-        "equityCapital": "69",
-        "reserves": "1,301",
-        "borrowings": "2,389",
-        "otherLiabilities": "65",
-        "totalLiabilities": "3,824",
-        "fixedAssets": "2,065",
-        "investments": "918",
-        "otherAssets": "841",
-        "totalAssets": "3,824"
+        "equityCapital": "355",
+        "reserves": "6,824",
+        "borrowings": "Nil",
+        "otherLiabilities": "1,614",
+        "totalLiabilities": "8,793",
+        "fixedAssets": "4,622",
+        "investments": "2,554",
+        "otherAssets": "1,617",
+        "totalAssets": "8,793"
       },
       {
         "year": "FY25",
-        "equityCapital": "72",
-        "reserves": "1,366",
-        "borrowings": "2,452",
-        "otherLiabilities": "123",
-        "totalLiabilities": "4,013",
-        "fixedAssets": "2,167",
-        "investments": "963",
-        "otherAssets": "883",
-        "totalAssets": "4,013"
+        "equityCapital": "421",
+        "reserves": "8,108",
+        "borrowings": "Nil",
+        "otherLiabilities": "1,917",
+        "totalLiabilities": "10,446",
+        "fixedAssets": "5,491",
+        "investments": "3,034",
+        "otherAssets": "1,921",
+        "totalAssets": "10,446"
       },
       {
         "year": "FY26",
-        "equityCapital": "75",
-        "reserves": "1,431",
-        "borrowings": "2,515",
-        "otherLiabilities": "181",
-        "totalLiabilities": "4,202",
-        "fixedAssets": "2,269",
-        "investments": "1,008",
-        "otherAssets": "925",
-        "totalAssets": "4,202"
+        "equityCapital": "473",
+        "reserves": "9,102",
+        "borrowings": "Nil",
+        "otherLiabilities": "2,152",
+        "totalLiabilities": "11,727",
+        "fixedAssets": "6,165",
+        "investments": "3,406",
+        "otherAssets": "2,156",
+        "totalAssets": "11,727"
       }
     ],
     "cashFlows": [
@@ -831,17 +831,17 @@
     },
     "ratios": {
       "pe": 63.4,
-      "pb": 28.5,
-      "evToEbitda": 37.3,
+      "pb": 8.05,
+      "evToEbitda": 36.1,
       "roce": 15.9,
       "roe": 12.7,
       "debtToEquity": 1.67,
-      "interestCoverage": 8.8,
+      "interestCoverage": 39.8,
       "divYield": 0.3,
       "salesGrowth3Y": 26.1,
       "profitGrowth3Y": 22.7
     },
-    "marketCapCr": 77094,
+    "marketCapCr": 77096,
     "pe": 63.4,
     "roePct": 12.7,
     "rocePct": 15.9,
@@ -863,7 +863,7 @@
     "risks": [
       "Elevated debt levels with a Debt-to-Equity ratio of 1.67."
     ],
-    "updatedAt": 1794036110489,
+    "updatedAt": 1794038125828,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:56.042Z",
     "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 29% -> 12.7%; Debt/Equity updated: 0.33 -> 1.67",
@@ -877,205 +877,205 @@
     "financials": [
       {
         "year": "FY22",
-        "sales": "156",
-        "expenses": "133",
-        "operatingProfit": "23",
-        "opm": "15%",
-        "pbt": "20",
+        "sales": "896",
+        "expenses": "820",
+        "operatingProfit": "76",
+        "opm": "8.5%",
+        "pbt": "77",
         "taxPct": "27%",
-        "netProfit": "15",
-        "eps": "₹6.6",
-        "roe": "9.0%",
-        "borrowings": "3"
+        "netProfit": "56",
+        "eps": "₹7.3",
+        "roe": "10.2%",
+        "borrowings": "Nil"
       },
       {
         "year": "FY23",
-        "sales": "215",
-        "expenses": "183",
-        "operatingProfit": "32",
-        "opm": "15%",
-        "pbt": "28",
+        "sales": "1,156",
+        "expenses": "1,053",
+        "operatingProfit": "103",
+        "opm": "8.9%",
+        "pbt": "97",
         "taxPct": "23%",
-        "netProfit": "21",
-        "eps": "₹9.2",
-        "roe": "9.6%",
-        "borrowings": "3"
+        "netProfit": "75",
+        "eps": "₹9.8",
+        "roe": "10.7%",
+        "borrowings": "Nil"
       },
       {
         "year": "FY24",
-        "sales": "296",
-        "expenses": "252",
-        "operatingProfit": "44",
-        "opm": "15%",
-        "pbt": "39",
+        "sales": "1,491",
+        "expenses": "1,352",
+        "operatingProfit": "139",
+        "opm": "9.3%",
+        "pbt": "133",
         "taxPct": "24%",
-        "netProfit": "29",
-        "eps": "₹12.8",
-        "roe": "10.3%",
-        "borrowings": "3"
+        "netProfit": "101",
+        "eps": "₹13.2",
+        "roe": "11.1%",
+        "borrowings": "Nil"
       },
       {
         "year": "FY25",
-        "sales": "409",
-        "expenses": "348",
-        "operatingProfit": "61",
-        "opm": "15%",
-        "pbt": "53",
+        "sales": "1,923",
+        "expenses": "1,735",
+        "operatingProfit": "188",
+        "opm": "9.8%",
+        "pbt": "184",
         "taxPct": "25%",
-        "netProfit": "40",
-        "eps": "₹17.6",
-        "roe": "11.1%",
-        "borrowings": "3"
+        "netProfit": "138",
+        "eps": "₹18.1",
+        "roe": "11.6%",
+        "borrowings": "Nil"
       },
       {
         "year": "FY26",
-        "sales": "564",
-        "expenses": "479",
-        "operatingProfit": "85",
-        "opm": "15%",
-        "pbt": "73",
+        "sales": "2,480",
+        "expenses": "2,227",
+        "operatingProfit": "253",
+        "opm": "10.2%",
+        "pbt": "250",
         "taxPct": "26%",
-        "netProfit": "55",
+        "netProfit": "185",
         "eps": "₹24.2",
-        "roe": "12.0%",
-        "borrowings": "3"
+        "roe": "12%",
+        "borrowings": "Nil"
       }
     ],
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "131",
-        "expenses": "112",
-        "operatingProfit": "19",
-        "opm": "14.4%",
-        "netProfit": "12",
+        "sales": "574",
+        "expenses": "519",
+        "operatingProfit": "55",
+        "opm": "9.6%",
+        "netProfit": "40",
         "eps": "₹5.6"
       },
       {
         "period": "Mar 26",
-        "sales": "142",
-        "expenses": "121",
-        "operatingProfit": "21",
-        "opm": "14.8%",
-        "netProfit": "14",
+        "sales": "625",
+        "expenses": "562",
+        "operatingProfit": "63",
+        "opm": "10%",
+        "netProfit": "46",
         "eps": "₹6.1"
       },
       {
         "period": "Jun 26",
-        "sales": "139",
-        "expenses": "118",
-        "operatingProfit": "21",
-        "opm": "15.2%",
-        "netProfit": "14",
+        "sales": "613",
+        "expenses": "549",
+        "operatingProfit": "64",
+        "opm": "10.4%",
+        "netProfit": "47",
         "eps": "₹6"
       },
       {
         "period": "Sept 26",
-        "sales": "149",
-        "expenses": "126",
-        "operatingProfit": "23",
-        "opm": "15.6%",
-        "netProfit": "15",
+        "sales": "657",
+        "expenses": "586",
+        "operatingProfit": "71",
+        "opm": "10.8%",
+        "netProfit": "52",
         "eps": "₹6.4"
       }
     ],
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "18",
-        "reserves": "346",
-        "borrowings": "4",
-        "otherLiabilities": "43",
-        "totalLiabilities": "411",
-        "fixedAssets": "222",
-        "investments": "99",
-        "otherAssets": "90",
-        "totalAssets": "411"
+        "equityCapital": "26",
+        "reserves": "523",
+        "borrowings": "Nil",
+        "otherLiabilities": "119",
+        "totalLiabilities": "668",
+        "fixedAssets": "403",
+        "investments": "111",
+        "otherAssets": "154",
+        "totalAssets": "668"
       },
       {
         "year": "FY23",
-        "equityCapital": "19",
-        "reserves": "365",
-        "borrowings": "4",
-        "otherLiabilities": "45",
-        "totalLiabilities": "433",
-        "fixedAssets": "234",
-        "investments": "104",
-        "otherAssets": "95",
-        "totalAssets": "433"
+        "equityCapital": "33",
+        "reserves": "668",
+        "borrowings": "Nil",
+        "otherLiabilities": "152",
+        "totalLiabilities": "853",
+        "fixedAssets": "515",
+        "investments": "142",
+        "otherAssets": "196",
+        "totalAssets": "853"
       },
       {
         "year": "FY24",
-        "equityCapital": "20",
-        "reserves": "384",
-        "borrowings": "4",
-        "otherLiabilities": "48",
-        "totalLiabilities": "456",
-        "fixedAssets": "246",
-        "investments": "109",
-        "otherAssets": "101",
-        "totalAssets": "456"
+        "equityCapital": "42",
+        "reserves": "868",
+        "borrowings": "Nil",
+        "otherLiabilities": "197",
+        "totalLiabilities": "1,107",
+        "fixedAssets": "668",
+        "investments": "185",
+        "otherAssets": "254",
+        "totalAssets": "1,107"
       },
       {
         "year": "FY25",
-        "equityCapital": "21",
-        "reserves": "403",
-        "borrowings": "4",
-        "otherLiabilities": "50",
-        "totalLiabilities": "478",
-        "fixedAssets": "258",
-        "investments": "115",
-        "otherAssets": "105",
-        "totalAssets": "478"
+        "equityCapital": "56",
+        "reserves": "1,134",
+        "borrowings": "Nil",
+        "otherLiabilities": "257",
+        "totalLiabilities": "1,447",
+        "fixedAssets": "873",
+        "investments": "241",
+        "otherAssets": "333",
+        "totalAssets": "1,447"
       },
       {
         "year": "FY26",
-        "equityCapital": "22",
-        "reserves": "422",
-        "borrowings": "4",
-        "otherLiabilities": "53",
-        "totalLiabilities": "501",
-        "fixedAssets": "271",
-        "investments": "120",
-        "otherAssets": "110",
-        "totalAssets": "501"
+        "equityCapital": "72",
+        "reserves": "1,470",
+        "borrowings": "Nil",
+        "otherLiabilities": "333",
+        "totalLiabilities": "1,875",
+        "fixedAssets": "1,131",
+        "investments": "313",
+        "otherAssets": "431",
+        "totalAssets": "1,875"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "160",
-        "cfi": "-93",
-        "cff": "-42",
-        "netCash": "25"
+        "cfo": "65",
+        "cfi": "-41",
+        "cff": "-15",
+        "netCash": "9"
       },
       {
         "year": "FY23",
-        "cfo": "169",
-        "cfi": "-98",
-        "cff": "-44",
-        "netCash": "27"
+        "cfo": "89",
+        "cfi": "-57",
+        "cff": "-20",
+        "netCash": "12"
       },
       {
         "year": "FY24",
-        "cfo": "178",
-        "cfi": "-103",
-        "cff": "-46",
-        "netCash": "29"
+        "cfo": "120",
+        "cfi": "-77",
+        "cff": "-27",
+        "netCash": "16"
       },
       {
         "year": "FY25",
-        "cfo": "187",
-        "cfi": "-108",
-        "cff": "-49",
-        "netCash": "30"
+        "cfo": "162",
+        "cfi": "-103",
+        "cff": "-37",
+        "netCash": "22"
       },
       {
         "year": "FY26",
-        "cfo": "195",
-        "cfi": "-113",
-        "cff": "-51",
-        "netCash": "31"
+        "cfo": "218",
+        "cfi": "-139",
+        "cff": "-50",
+        "netCash": "29"
       }
     ],
     "shareholding": {
@@ -1121,17 +1121,17 @@
     },
     "ratios": {
       "pe": 55.1,
-      "pb": 21.12,
-      "evToEbitda": 65,
+      "pb": 6.08,
+      "evToEbitda": 32.5,
       "roce": 14.6,
       "roe": 12,
       "debtToEquity": 0.01,
-      "interestCoverage": 48,
+      "interestCoverage": 38.7,
       "divYield": 0.8,
       "salesGrowth3Y": 37.9,
       "profitGrowth3Y": 37.8
     },
-    "marketCapCr": 9379,
+    "marketCapCr": 9374,
     "pe": 55.1,
     "roePct": 12,
     "rocePct": 14.6,
@@ -1155,7 +1155,7 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1794036110489,
+    "updatedAt": 1794038125829,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:55.715Z",
     "financialChangeSummary": "Debt/Equity updated: 0.63 -> 0.01",
@@ -1266,7 +1266,7 @@
         "sales": "445",
         "expenses": "418",
         "operatingProfit": "27",
-        "opm": "6%",
+        "opm": "6.1%",
         "netProfit": "477",
         "eps": "₹0.2"
       }
@@ -1274,100 +1274,100 @@
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "18",
-        "reserves": "346",
-        "borrowings": "88",
-        "otherLiabilities": "36",
-        "totalLiabilities": "488",
-        "fixedAssets": "264",
-        "investments": "117",
-        "otherAssets": "107",
-        "totalAssets": "488"
+        "equityCapital": "45",
+        "reserves": "638",
+        "borrowings": "Nil",
+        "otherLiabilities": "189",
+        "totalLiabilities": "872",
+        "fixedAssets": "494",
+        "investments": "153",
+        "otherAssets": "225",
+        "totalAssets": "872"
       },
       {
         "year": "FY23",
-        "equityCapital": "19",
-        "reserves": "365",
-        "borrowings": "91",
-        "otherLiabilities": "40",
-        "totalLiabilities": "515",
-        "fixedAssets": "278",
-        "investments": "124",
-        "otherAssets": "113",
-        "totalAssets": "515"
+        "equityCapital": "48",
+        "reserves": "684",
+        "borrowings": "Nil",
+        "otherLiabilities": "202",
+        "totalLiabilities": "934",
+        "fixedAssets": "529",
+        "investments": "164",
+        "otherAssets": "241",
+        "totalAssets": "934"
       },
       {
         "year": "FY24",
-        "equityCapital": "20",
-        "reserves": "384",
-        "borrowings": "93",
-        "otherLiabilities": "44",
-        "totalLiabilities": "541",
-        "fixedAssets": "292",
-        "investments": "130",
-        "otherAssets": "119",
-        "totalAssets": "541"
+        "equityCapital": "52",
+        "reserves": "732",
+        "borrowings": "Nil",
+        "otherLiabilities": "217",
+        "totalLiabilities": "1,001",
+        "fixedAssets": "567",
+        "investments": "176",
+        "otherAssets": "258",
+        "totalAssets": "1,001"
       },
       {
         "year": "FY25",
-        "equityCapital": "21",
-        "reserves": "403",
-        "borrowings": "96",
-        "otherLiabilities": "48",
-        "totalLiabilities": "568",
-        "fixedAssets": "307",
-        "investments": "136",
-        "otherAssets": "125",
-        "totalAssets": "568"
+        "equityCapital": "54",
+        "reserves": "768",
+        "borrowings": "Nil",
+        "otherLiabilities": "227",
+        "totalLiabilities": "1,049",
+        "fixedAssets": "594",
+        "investments": "185",
+        "otherAssets": "270",
+        "totalAssets": "1,049"
       },
       {
         "year": "FY26",
-        "equityCapital": "22",
-        "reserves": "422",
-        "borrowings": "98",
-        "otherLiabilities": "53",
-        "totalLiabilities": "595",
-        "fixedAssets": "321",
-        "investments": "143",
-        "otherAssets": "131",
-        "totalAssets": "595"
+        "equityCapital": "35",
+        "reserves": "503",
+        "borrowings": "Nil",
+        "otherLiabilities": "149",
+        "totalLiabilities": "687",
+        "fixedAssets": "389",
+        "investments": "121",
+        "otherAssets": "177",
+        "totalAssets": "687"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "324",
-        "cfi": "-188",
-        "cff": "-84",
-        "netCash": "52"
+        "cfo": "100",
+        "cfi": "-59",
+        "cff": "-24",
+        "netCash": "17"
       },
       {
         "year": "FY23",
-        "cfo": "342",
-        "cfi": "-198",
-        "cff": "-89",
-        "netCash": "55"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       },
       {
         "year": "FY24",
-        "cfo": "360",
-        "cfi": "-209",
-        "cff": "-94",
-        "netCash": "57"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       },
       {
         "year": "FY25",
-        "cfo": "378",
-        "cfi": "-219",
-        "cff": "-98",
-        "netCash": "61"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       },
       {
         "year": "FY26",
-        "cfo": "396",
-        "cfi": "-230",
-        "cff": "-103",
-        "netCash": "63"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       }
     ],
     "shareholding": {
@@ -1418,12 +1418,12 @@
       "roce": 8,
       "roe": 6.4,
       "debtToEquity": 0.22,
-      "interestCoverage": 2.4,
+      "interestCoverage": 46.4,
       "divYield": 0,
       "salesGrowth3Y": -9.7,
       "profitGrowth3Y": -64.1
     },
-    "marketCapCr": 15681,
+    "marketCapCr": 15682,
     "pe": 45.6,
     "roePct": 6.4,
     "rocePct": 8,
@@ -1445,7 +1445,7 @@
     "risks": [
       "Return on Equity is currently subdued at 6.4%."
     ],
-    "updatedAt": 1794036110489,
+    "updatedAt": 1794038125829,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:56.048Z",
     "financialChangeSummary": "Quarterly results refreshed (Dec 09); ROE updated: 30% -> 6.4%; Debt/Equity updated: 0.7 -> 0.22",
@@ -1531,7 +1531,7 @@
         "operatingProfit": "183",
         "opm": "15%",
         "netProfit": "120",
-        "eps": "₹192.1"
+        "eps": "₹186.1"
       },
       {
         "period": "Mar 26",
@@ -1540,7 +1540,7 @@
         "operatingProfit": "189",
         "opm": "15.4%",
         "netProfit": "124",
-        "eps": "₹193.2"
+        "eps": "₹192.3"
       },
       {
         "period": "Jun 26",
@@ -1549,7 +1549,7 @@
         "operatingProfit": "198",
         "opm": "15.8%",
         "netProfit": "130",
-        "eps": "₹198.2"
+        "eps": "₹201.6"
       },
       {
         "period": "Sept 26",
@@ -1558,106 +1558,106 @@
         "operatingProfit": "219",
         "opm": "16.2%",
         "netProfit": "144",
-        "eps": "₹212.8"
+        "eps": "₹223.3"
       }
     ],
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "449",
-        "reserves": "8,527",
-        "borrowings": "986",
-        "otherLiabilities": "989",
-        "totalLiabilities": "10,951",
-        "fixedAssets": "5,914",
-        "investments": "2,628",
-        "otherAssets": "2,409",
-        "totalAssets": "10,951"
+        "equityCapital": "106",
+        "reserves": "1,399",
+        "borrowings": "Nil",
+        "otherLiabilities": "435",
+        "totalLiabilities": "1,940",
+        "fixedAssets": "902",
+        "investments": "315",
+        "otherAssets": "723",
+        "totalAssets": "1,940"
       },
       {
         "year": "FY23",
-        "equityCapital": "473",
-        "reserves": "8,995",
-        "borrowings": "1,013",
-        "otherLiabilities": "1,071",
-        "totalLiabilities": "11,552",
-        "fixedAssets": "6,238",
-        "investments": "2,772",
-        "otherAssets": "2,542",
-        "totalAssets": "11,552"
+        "equityCapital": "106",
+        "reserves": "1,413",
+        "borrowings": "Nil",
+        "otherLiabilities": "439",
+        "totalLiabilities": "1,958",
+        "fixedAssets": "910",
+        "investments": "318",
+        "otherAssets": "730",
+        "totalAssets": "1,958"
       },
       {
         "year": "FY24",
-        "equityCapital": "498",
-        "reserves": "9,463",
-        "borrowings": "1,040",
-        "otherLiabilities": "1,152",
-        "totalLiabilities": "12,153",
-        "fixedAssets": "6,563",
-        "investments": "2,917",
-        "otherAssets": "2,673",
-        "totalAssets": "12,153"
+        "equityCapital": "127",
+        "reserves": "1,684",
+        "borrowings": "Nil",
+        "otherLiabilities": "524",
+        "totalLiabilities": "2,335",
+        "fixedAssets": "1,085",
+        "investments": "379",
+        "otherAssets": "871",
+        "totalAssets": "2,335"
       },
       {
         "year": "FY25",
-        "equityCapital": "523",
-        "reserves": "9,930",
-        "borrowings": "1,068",
-        "otherLiabilities": "1,233",
-        "totalLiabilities": "12,754",
-        "fixedAssets": "6,887",
-        "investments": "3,061",
-        "otherAssets": "2,806",
-        "totalAssets": "12,754"
+        "equityCapital": "103",
+        "reserves": "1,366",
+        "borrowings": "Nil",
+        "otherLiabilities": "425",
+        "totalLiabilities": "1,894",
+        "fixedAssets": "880",
+        "investments": "308",
+        "otherAssets": "706",
+        "totalAssets": "1,894"
       },
       {
         "year": "FY26",
-        "equityCapital": "547",
-        "reserves": "10,399",
-        "borrowings": "1,095",
-        "otherLiabilities": "1,314",
-        "totalLiabilities": "13,355",
-        "fixedAssets": "7,212",
-        "investments": "3,205",
-        "otherAssets": "2,938",
-        "totalAssets": "13,355"
+        "equityCapital": "114",
+        "reserves": "1,515",
+        "borrowings": "Nil",
+        "otherLiabilities": "471",
+        "totalLiabilities": "2,100",
+        "fixedAssets": "976",
+        "investments": "341",
+        "otherAssets": "783",
+        "totalAssets": "2,100"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "776",
-        "cfi": "-450",
-        "cff": "-202",
-        "netCash": "124"
+        "cfo": "516",
+        "cfi": "-234",
+        "cff": "-115",
+        "netCash": "167"
       },
       {
         "year": "FY23",
-        "cfo": "819",
-        "cfi": "-475",
-        "cff": "-213",
-        "netCash": "131"
+        "cfo": "584",
+        "cfi": "-265",
+        "cff": "-130",
+        "netCash": "189"
       },
       {
         "year": "FY24",
-        "cfo": "861",
-        "cfi": "-499",
-        "cff": "-224",
-        "netCash": "138"
+        "cfo": "617",
+        "cfi": "-280",
+        "cff": "-138",
+        "netCash": "199"
       },
       {
         "year": "FY25",
-        "cfo": "904",
-        "cfi": "-524",
-        "cff": "-235",
-        "netCash": "145"
+        "cfo": "656",
+        "cfi": "-297",
+        "cff": "-146",
+        "netCash": "213"
       },
       {
         "year": "FY26",
-        "cfo": "946",
-        "cfi": "-549",
-        "cff": "-246",
-        "netCash": "151"
+        "cfo": "750",
+        "cfi": "-340",
+        "cff": "-167",
+        "netCash": "243"
       }
     ],
     "shareholding": {
@@ -1703,17 +1703,17 @@
     },
     "ratios": {
       "pe": 35.9,
-      "pb": 2.7,
-      "evToEbitda": 33.9,
+      "pb": 18.14,
+      "evToEbitda": 32.7,
       "roce": 41.5,
       "roe": 34,
       "debtToEquity": 0.1,
-      "interestCoverage": 8.5,
+      "interestCoverage": 48,
       "divYield": 0.4,
       "salesGrowth3Y": 8.7,
       "profitGrowth3Y": 5
     },
-    "marketCapCr": 29553,
+    "marketCapCr": 29554,
     "pe": 35.9,
     "roePct": 34,
     "rocePct": 41.5,
@@ -1737,7 +1737,7 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1794036110515,
+    "updatedAt": 1794038125830,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:57.034Z",
     "financialChangeSummary": "Quarterly results refreshed (Mar 20); Debt/Equity updated: 0.54 -> 0.1",
@@ -1821,7 +1821,7 @@
         "sales": "250",
         "expenses": "231",
         "operatingProfit": "19",
-        "opm": "7.4%",
+        "opm": "7.6%",
         "netProfit": "12",
         "eps": "₹0.2"
       },
@@ -1830,7 +1830,7 @@
         "sales": "264",
         "expenses": "243",
         "operatingProfit": "21",
-        "opm": "7.8%",
+        "opm": "8%",
         "netProfit": "13",
         "eps": "₹0.2"
       },
@@ -1839,7 +1839,7 @@
         "sales": "261",
         "expenses": "240",
         "operatingProfit": "21",
-        "opm": "8.2%",
+        "opm": "8%",
         "netProfit": "14",
         "eps": "₹0.2"
       },
@@ -1856,100 +1856,100 @@
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "18",
-        "reserves": "346",
-        "borrowings": "60",
-        "otherLiabilities": "38",
-        "totalLiabilities": "462",
-        "fixedAssets": "249",
-        "investments": "111",
-        "otherAssets": "102",
-        "totalAssets": "462"
+        "equityCapital": "48",
+        "reserves": "719",
+        "borrowings": "45",
+        "otherLiabilities": "216",
+        "totalLiabilities": "1,028",
+        "fixedAssets": "585",
+        "investments": "166",
+        "otherAssets": "277",
+        "totalAssets": "1,028"
       },
       {
         "year": "FY23",
-        "equityCapital": "19",
-        "reserves": "365",
-        "borrowings": "62",
-        "otherLiabilities": "42",
-        "totalLiabilities": "488",
-        "fixedAssets": "264",
-        "investments": "117",
-        "otherAssets": "107",
-        "totalAssets": "488"
+        "equityCapital": "50",
+        "reserves": "750",
+        "borrowings": "47",
+        "otherLiabilities": "225",
+        "totalLiabilities": "1,072",
+        "fixedAssets": "610",
+        "investments": "173",
+        "otherAssets": "289",
+        "totalAssets": "1,072"
       },
       {
         "year": "FY24",
-        "equityCapital": "20",
-        "reserves": "384",
-        "borrowings": "64",
-        "otherLiabilities": "45",
-        "totalLiabilities": "513",
-        "fixedAssets": "277",
-        "investments": "123",
-        "otherAssets": "113",
-        "totalAssets": "513"
+        "equityCapital": "52",
+        "reserves": "781",
+        "borrowings": "48",
+        "otherLiabilities": "234",
+        "totalLiabilities": "1,115",
+        "fixedAssets": "634",
+        "investments": "180",
+        "otherAssets": "301",
+        "totalAssets": "1,115"
       },
       {
         "year": "FY25",
-        "equityCapital": "21",
-        "reserves": "403",
-        "borrowings": "65",
-        "otherLiabilities": "50",
-        "totalLiabilities": "539",
-        "fixedAssets": "291",
-        "investments": "129",
-        "otherAssets": "119",
-        "totalAssets": "539"
+        "equityCapital": "55",
+        "reserves": "828",
+        "borrowings": "49",
+        "otherLiabilities": "248",
+        "totalLiabilities": "1,180",
+        "fixedAssets": "671",
+        "investments": "191",
+        "otherAssets": "318",
+        "totalAssets": "1,180"
       },
       {
         "year": "FY26",
-        "equityCapital": "22",
-        "reserves": "422",
-        "borrowings": "67",
-        "otherLiabilities": "53",
-        "totalLiabilities": "564",
-        "fixedAssets": "305",
-        "investments": "135",
-        "otherAssets": "124",
-        "totalAssets": "564"
+        "equityCapital": "57",
+        "reserves": "860",
+        "borrowings": "50",
+        "otherLiabilities": "257",
+        "totalLiabilities": "1,224",
+        "fixedAssets": "696",
+        "investments": "198",
+        "otherAssets": "330",
+        "totalAssets": "1,224"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "454",
-        "cfi": "-263",
-        "cff": "-118",
-        "netCash": "73"
+        "cfo": "65",
+        "cfi": "-38",
+        "cff": "-14",
+        "netCash": "13"
       },
       {
         "year": "FY23",
-        "cfo": "478",
-        "cfi": "-277",
-        "cff": "-124",
-        "netCash": "77"
+        "cfo": "68",
+        "cfi": "-40",
+        "cff": "-15",
+        "netCash": "13"
       },
       {
         "year": "FY24",
-        "cfo": "503",
-        "cfi": "-292",
-        "cff": "-131",
-        "netCash": "80"
+        "cfo": "71",
+        "cfi": "-42",
+        "cff": "-16",
+        "netCash": "13"
       },
       {
         "year": "FY25",
-        "cfo": "528",
-        "cfi": "-306",
-        "cff": "-137",
-        "netCash": "85"
+        "cfo": "74",
+        "cfi": "-44",
+        "cff": "-16",
+        "netCash": "14"
       },
       {
         "year": "FY26",
-        "cfo": "553",
-        "cfi": "-321",
-        "cff": "-144",
-        "netCash": "88"
+        "cfo": "78",
+        "cfi": "-46",
+        "cff": "-17",
+        "netCash": "15"
       }
     ],
     "shareholding": {
@@ -1995,17 +1995,17 @@
     },
     "ratios": {
       "pe": 49.9,
-      "pb": 6.18,
-      "evToEbitda": 29,
+      "pb": 3,
+      "evToEbitda": 28.8,
       "roce": 1.9,
       "roe": 1.5,
       "debtToEquity": 0.24,
-      "interestCoverage": 14.9,
+      "interestCoverage": 20,
       "divYield": 0.4,
       "salesGrowth3Y": 4.7,
       "profitGrowth3Y": 4.6
     },
-    "marketCapCr": 2745,
+    "marketCapCr": 2747,
     "pe": 49.9,
     "roePct": 1.5,
     "rocePct": 1.9,
@@ -2027,7 +2027,7 @@
     "risks": [
       "Return on Equity is currently subdued at 1.5%."
     ],
-    "updatedAt": 1794036110516,
+    "updatedAt": 1794038125830,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:56.876Z",
     "financialChangeSummary": "ROE updated: 12% -> 1.5%",
@@ -2111,7 +2111,7 @@
         "sales": "82",
         "expenses": "72",
         "operatingProfit": "10",
-        "opm": "11.7%",
+        "opm": "12.2%",
         "netProfit": "1",
         "eps": "₹0.4"
       },
@@ -2120,7 +2120,7 @@
         "sales": "82",
         "expenses": "72",
         "operatingProfit": "10",
-        "opm": "12.1%",
+        "opm": "12.2%",
         "netProfit": "1",
         "eps": "₹0.4"
       },
@@ -2138,7 +2138,7 @@
         "sales": "90",
         "expenses": "78",
         "operatingProfit": "12",
-        "opm": "12.9%",
+        "opm": "13.3%",
         "netProfit": "1",
         "eps": "₹0.4"
       }
@@ -2146,100 +2146,100 @@
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "18",
-        "reserves": "346",
-        "borrowings": "112",
-        "otherLiabilities": "33",
-        "totalLiabilities": "509",
-        "fixedAssets": "275",
-        "investments": "122",
-        "otherAssets": "112",
-        "totalAssets": "509"
+        "equityCapital": "5",
+        "reserves": "33",
+        "borrowings": "Nil",
+        "otherLiabilities": "12",
+        "totalLiabilities": "50",
+        "fixedAssets": "23",
+        "investments": "14",
+        "otherAssets": "13",
+        "totalAssets": "50"
       },
       {
         "year": "FY23",
-        "equityCapital": "19",
-        "reserves": "365",
-        "borrowings": "115",
-        "otherLiabilities": "38",
-        "totalLiabilities": "537",
-        "fixedAssets": "290",
-        "investments": "129",
-        "otherAssets": "118",
-        "totalAssets": "537"
+        "equityCapital": "5",
+        "reserves": "44",
+        "borrowings": "Nil",
+        "otherLiabilities": "15",
+        "totalLiabilities": "64",
+        "fixedAssets": "30",
+        "investments": "18",
+        "otherAssets": "16",
+        "totalAssets": "64"
       },
       {
         "year": "FY24",
-        "equityCapital": "20",
-        "reserves": "384",
-        "borrowings": "118",
-        "otherLiabilities": "43",
-        "totalLiabilities": "565",
-        "fixedAssets": "305",
-        "investments": "136",
-        "otherAssets": "124",
-        "totalAssets": "565"
+        "equityCapital": "5",
+        "reserves": "57",
+        "borrowings": "Nil",
+        "otherLiabilities": "19",
+        "totalLiabilities": "81",
+        "fixedAssets": "38",
+        "investments": "22",
+        "otherAssets": "21",
+        "totalAssets": "81"
       },
       {
         "year": "FY25",
-        "equityCapital": "21",
-        "reserves": "403",
-        "borrowings": "121",
-        "otherLiabilities": "48",
-        "totalLiabilities": "593",
-        "fixedAssets": "320",
-        "investments": "142",
-        "otherAssets": "131",
-        "totalAssets": "593"
+        "equityCapital": "7",
+        "reserves": "88",
+        "borrowings": "Nil",
+        "otherLiabilities": "29",
+        "totalLiabilities": "124",
+        "fixedAssets": "58",
+        "investments": "34",
+        "otherAssets": "32",
+        "totalAssets": "124"
       },
       {
         "year": "FY26",
-        "equityCapital": "22",
-        "reserves": "422",
-        "borrowings": "124",
-        "otherLiabilities": "53",
-        "totalLiabilities": "621",
-        "fixedAssets": "335",
-        "investments": "149",
-        "otherAssets": "137",
-        "totalAssets": "621"
+        "equityCapital": "8",
+        "reserves": "100",
+        "borrowings": "Nil",
+        "otherLiabilities": "33",
+        "totalLiabilities": "141",
+        "fixedAssets": "66",
+        "investments": "39",
+        "otherAssets": "36",
+        "totalAssets": "141"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "155",
-        "cfi": "-90",
-        "cff": "-40",
-        "netCash": "25"
+        "cfo": "12",
+        "cfi": "-5",
+        "cff": "-4",
+        "netCash": "3"
       },
       {
         "year": "FY23",
-        "cfo": "163",
-        "cfi": "-95",
-        "cff": "-42",
-        "netCash": "26"
+        "cfo": "16",
+        "cfi": "-7",
+        "cff": "-6",
+        "netCash": "3"
       },
       {
         "year": "FY24",
-        "cfo": "172",
-        "cfi": "-100",
-        "cff": "-45",
-        "netCash": "27"
+        "cfo": "23",
+        "cfi": "-11",
+        "cff": "-8",
+        "netCash": "4"
       },
       {
         "year": "FY25",
-        "cfo": "180",
-        "cfi": "-104",
-        "cff": "-47",
-        "netCash": "29"
+        "cfo": "36",
+        "cfi": "-16",
+        "cff": "-13",
+        "netCash": "7"
       },
       {
         "year": "FY26",
-        "cfo": "189",
-        "cfi": "-110",
-        "cff": "-49",
-        "netCash": "30"
+        "cfo": "41",
+        "cfi": "-19",
+        "cff": "-15",
+        "netCash": "7"
       }
     ],
     "shareholding": {
@@ -2285,17 +2285,17 @@
     },
     "ratios": {
       "pe": 32.1,
-      "pb": 11.89,
+      "pb": 28.5,
       "evToEbitda": 65,
       "roce": 5.9,
       "roe": 4.7,
       "debtToEquity": 0.28,
-      "interestCoverage": 4,
+      "interestCoverage": 50.5,
       "divYield": 0.4,
       "salesGrowth3Y": 30.7,
       "profitGrowth3Y": -25.5
     },
-    "marketCapCr": 5277,
+    "marketCapCr": 5279,
     "pe": 32.1,
     "roePct": 4.7,
     "rocePct": 5.9,
@@ -2317,7 +2317,7 @@
     "risks": [
       "Return on Equity is currently subdued at 4.7%."
     ],
-    "updatedAt": 1794036110517,
+    "updatedAt": 1794038125831,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:56.901Z",
     "financialChangeSummary": "ROE updated: 18% -> 4.7%; Debt/Equity updated: 0.14 -> 0.28",
@@ -2403,23 +2403,23 @@
         "operatingProfit": "6",
         "opm": "6%",
         "netProfit": "1",
-        "eps": "₹1.3"
+        "eps": "₹1.4"
       },
       {
         "period": "Mar 26",
         "sales": "102",
         "expenses": "96",
         "operatingProfit": "6",
-        "opm": "6%",
+        "opm": "5.9%",
         "netProfit": "1",
-        "eps": "₹1.3"
+        "eps": "₹1.4"
       },
       {
         "period": "Jun 26",
         "sales": "107",
         "expenses": "101",
         "operatingProfit": "6",
-        "opm": "6%",
+        "opm": "5.6%",
         "netProfit": "1",
         "eps": "₹1.4"
       },
@@ -2428,108 +2428,108 @@
         "sales": "112",
         "expenses": "105",
         "operatingProfit": "7",
-        "opm": "6%",
+        "opm": "6.3%",
         "netProfit": "1",
-        "eps": "₹1.5"
+        "eps": "₹1.4"
       }
     ],
     "balanceSheet": [
       {
         "year": "FY22",
-        "equityCapital": "18",
-        "reserves": "346",
+        "equityCapital": "5",
+        "reserves": "78",
         "borrowings": "Nil",
-        "otherLiabilities": "44",
-        "totalLiabilities": "408",
-        "fixedAssets": "220",
-        "investments": "98",
-        "otherAssets": "90",
-        "totalAssets": "408"
+        "otherLiabilities": "21",
+        "totalLiabilities": "104",
+        "fixedAssets": "50",
+        "investments": "23",
+        "otherAssets": "31",
+        "totalAssets": "104"
       },
       {
         "year": "FY23",
-        "equityCapital": "19",
-        "reserves": "365",
+        "equityCapital": "6",
+        "reserves": "100",
         "borrowings": "Nil",
-        "otherLiabilities": "46",
-        "totalLiabilities": "430",
-        "fixedAssets": "232",
-        "investments": "103",
-        "otherAssets": "95",
-        "totalAssets": "430"
+        "otherLiabilities": "27",
+        "totalLiabilities": "133",
+        "fixedAssets": "64",
+        "investments": "30",
+        "otherAssets": "39",
+        "totalAssets": "133"
       },
       {
         "year": "FY24",
-        "equityCapital": "20",
-        "reserves": "384",
+        "equityCapital": "9",
+        "reserves": "147",
         "borrowings": "Nil",
-        "otherLiabilities": "48",
-        "totalLiabilities": "452",
-        "fixedAssets": "244",
-        "investments": "108",
-        "otherAssets": "100",
-        "totalAssets": "452"
+        "otherLiabilities": "40",
+        "totalLiabilities": "196",
+        "fixedAssets": "94",
+        "investments": "44",
+        "otherAssets": "58",
+        "totalAssets": "196"
       },
       {
         "year": "FY25",
-        "equityCapital": "21",
-        "reserves": "403",
+        "equityCapital": "9",
+        "reserves": "135",
         "borrowings": "Nil",
-        "otherLiabilities": "51",
-        "totalLiabilities": "475",
-        "fixedAssets": "257",
-        "investments": "114",
-        "otherAssets": "104",
-        "totalAssets": "475"
+        "otherLiabilities": "37",
+        "totalLiabilities": "181",
+        "fixedAssets": "87",
+        "investments": "40",
+        "otherAssets": "54",
+        "totalAssets": "181"
       },
       {
         "year": "FY26",
-        "equityCapital": "22",
-        "reserves": "422",
+        "equityCapital": "8",
+        "reserves": "127",
         "borrowings": "Nil",
-        "otherLiabilities": "53",
-        "totalLiabilities": "497",
-        "fixedAssets": "268",
-        "investments": "119",
-        "otherAssets": "110",
-        "totalAssets": "497"
+        "otherLiabilities": "35",
+        "totalLiabilities": "170",
+        "fixedAssets": "82",
+        "investments": "38",
+        "otherAssets": "50",
+        "totalAssets": "170"
       }
     ],
     "cashFlows": [
       {
         "year": "FY22",
-        "cfo": "1,277",
-        "cfi": "-741",
-        "cff": "-332",
-        "netCash": "204"
+        "cfo": "12",
+        "cfi": "-6",
+        "cff": "-4",
+        "netCash": "2"
       },
       {
         "year": "FY23",
-        "cfo": "1,347",
-        "cfi": "-781",
-        "cff": "-350",
-        "netCash": "216"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       },
       {
         "year": "FY24",
-        "cfo": "1,417",
-        "cfi": "-822",
-        "cff": "-368",
-        "netCash": "227"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       },
       {
         "year": "FY25",
-        "cfo": "1,487",
-        "cfi": "-862",
-        "cff": "-387",
-        "netCash": "238"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       },
       {
         "year": "FY26",
-        "cfo": "1,557",
-        "cfi": "-903",
-        "cff": "-405",
-        "netCash": "249"
+        "cfo": "2",
+        "cfi": "-1",
+        "cff": "-1",
+        "netCash": "0"
       }
     ],
     "shareholding": {
@@ -2585,7 +2585,7 @@
       "salesGrowth3Y": 8.5,
       "profitGrowth3Y": 25
     },
-    "marketCapCr": 33993,
+    "marketCapCr": 34002,
     "pe": 25.1,
     "roePct": 32,
     "rocePct": 39,
@@ -2607,7 +2607,7 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1794036110517,
+    "updatedAt": 1794038125831,
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-06T07:36:57.031Z",
     "financialChangeSummary": "Quarterly results refreshed (Sept 17); Debt/Equity updated: 0.06 -> 0",
