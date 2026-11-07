@@ -1123,8 +1123,9 @@ const StocksGeminiAI = (function () {
   const PROFILE_COLLECTION = "company_profiles";
   const GROUNDING_UNAVAILABLE_KEY = "stocks360_grounding_unavailable";
   const PROFILE_FIELDS = [
-    "about", "marketCapCr", "pe", "roePct", "rocePct", "debtToEquity", "divYieldPct",
-    "salesGrowth3Y", "profitGrowth3Y", "investmentThesis", "financials"
+    "about", "website", "marketCapCr", "pe", "roePct", "rocePct", "debtToEquity", "divYieldPct",
+    "salesGrowth3Y", "profitGrowth3Y", "investmentThesis", "financials",
+    "quarterlyResults", "balanceSheet", "cashFlows", "ratios", "shareholding"
   ];
 
   function getProfileDb() {
@@ -1161,13 +1162,26 @@ const StocksGeminiAI = (function () {
       out.financials = out.financials.slice(0, 6).map((f) => ({
         year: String((f && f.year) || "").slice(0, 10),
         sales: String((f && f.sales) || "").slice(0, 20),
+        expenses: String((f && f.expenses) || "").slice(0, 20),
+        operatingProfit: String((f && f.operatingProfit) || "").slice(0, 20),
+        pbt: String((f && f.pbt) || "").slice(0, 20),
         netProfit: String((f && f.netProfit) || "").slice(0, 20),
         opm: String((f && f.opm) || "").slice(0, 12),
+        eps: String((f && f.eps) || "").slice(0, 15),
         roe: String((f && f.roe) || "").slice(0, 12),
         borrowings: String((f && f.borrowings) || "").slice(0, 20)
       }));
     } else {
       delete out.financials;
+    }
+    if (Array.isArray(out.quarterlyResults)) {
+      out.quarterlyResults = out.quarterlyResults.slice(0, 8);
+    }
+    if (Array.isArray(out.balanceSheet)) {
+      out.balanceSheet = out.balanceSheet.slice(0, 6);
+    }
+    if (Array.isArray(out.cashFlows)) {
+      out.cashFlows = out.cashFlows.slice(0, 6);
     }
     out.symbol = sym;
     return out;
@@ -1232,7 +1246,7 @@ const StocksGeminiAI = (function () {
   async function fetchCompanyAiProfile(stock, forceRefresh) {
     if (!stock || !stock.symbol) return null;
     const sym = String(stock.symbol).toUpperCase();
-    const cacheKey = "stocks360_gemini_profile_" + sym;
+    const cacheKey = "stocks360_gemini_profile_v4_" + sym;
 
     // 1. Check this browser's cache (unless forceRefresh is requested)
     if (!forceRefresh) {

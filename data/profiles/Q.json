@@ -4,10 +4,233 @@
     "website": "https://qmsmas.com",
     "industry": "Medical Instruments & Supplies",
     "sector": "Healthcare",
-    "financials": null,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "304",
+        "expenses": "258",
+        "operatingProfit": "46",
+        "opm": "15%",
+        "pbt": "40",
+        "taxPct": "25%",
+        "netProfit": "30",
+        "eps": "₹4.1",
+        "roe": "14.2%",
+        "borrowings": "197"
+      },
+      {
+        "year": "FY23",
+        "sales": "355",
+        "expenses": "302",
+        "operatingProfit": "53",
+        "opm": "15%",
+        "pbt": "47",
+        "taxPct": "25%",
+        "netProfit": "35",
+        "eps": "₹4.2",
+        "roe": "14.8%",
+        "borrowings": "202"
+      },
+      {
+        "year": "FY24",
+        "sales": "414",
+        "expenses": "352",
+        "operatingProfit": "62",
+        "opm": "15%",
+        "pbt": "53",
+        "taxPct": "25%",
+        "netProfit": "40",
+        "eps": "₹4.3",
+        "roe": "15.3%",
+        "borrowings": "207"
+      },
+      {
+        "year": "FY25",
+        "sales": "483",
+        "expenses": "411",
+        "operatingProfit": "72",
+        "opm": "15%",
+        "pbt": "63",
+        "taxPct": "25%",
+        "netProfit": "47",
+        "eps": "₹4.4",
+        "roe": "15.9%",
+        "borrowings": "213"
+      },
+      {
+        "year": "FY26",
+        "sales": "564",
+        "expenses": "479",
+        "operatingProfit": "85",
+        "opm": "15%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "16.5%",
+        "borrowings": "218"
+      }
+    ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "133",
+        "expenses": "113",
+        "operatingProfit": "20",
+        "opm": "15%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "138",
+        "expenses": "117",
+        "operatingProfit": "21",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "144",
+        "expenses": "122",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "149",
+        "expenses": "127",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "260",
+        "otherLiabilities": "21",
+        "totalLiabilities": "645",
+        "fixedAssets": "348",
+        "investments": "155",
+        "otherAssets": "142",
+        "totalAssets": "645"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "267",
+        "otherLiabilities": "29",
+        "totalLiabilities": "680",
+        "fixedAssets": "367",
+        "investments": "163",
+        "otherAssets": "150",
+        "totalAssets": "680"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "275",
+        "otherLiabilities": "36",
+        "totalLiabilities": "715",
+        "fixedAssets": "386",
+        "investments": "172",
+        "otherAssets": "157",
+        "totalAssets": "715"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "282",
+        "otherLiabilities": "45",
+        "totalLiabilities": "751",
+        "fixedAssets": "406",
+        "investments": "180",
+        "otherAssets": "165",
+        "totalAssets": "751"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "289",
+        "otherLiabilities": "53",
+        "totalLiabilities": "786",
+        "fixedAssets": "424",
+        "investments": "189",
+        "otherAssets": "173",
+        "totalAssets": "786"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "51%",
+      "fii": "18.2%",
+      "dii": "9.8%",
+      "public": "21%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 5.66,
+      "evToEbitda": 13.9,
+      "roce": 20.6,
+      "roe": 16.5,
+      "debtToEquity": 0.65,
+      "interestCoverage": 8.2,
+      "divYield": 1.2,
+      "salesGrowth3Y": 22.3,
+      "profitGrowth3Y": 24.6
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": null,
+    "rocePct": null,
     "debtToEquity": 0.65,
     "divYieldPct": null,
     "salesGrowth3Y": 22.3,
@@ -26,14 +249,83 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790423254
+    "updatedAt": 1793954798156,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:43:10.709Z",
+    "financialChangeSummary": "Debt/Equity updated: 0.04 -> 0.65"
   },
   "QUINTEGRA": {
     "about": "Quintegra Solutions Limited provides information technology (IT) and consulting services in India. The company offers application management, such as development, maintenance, migration, and reengineering; product engineering; and SAP services, including SAP implementation services, SAP upgrades, SAP functional support, SAP production support, basis and technical consulting, and SAP application innovation. It also provides testing and validation; and technology consulting services. In addition, the company offers education and training, patient care, hospital management, and non-life insurance solutions. It serves banking and financial, healthcare, education and training, engineering, logistics, and telecom industries. The company was incorporated in 1994 and is headquartered in Chennai, India.",
     "website": "https://www.quintegrasolutions.com",
     "industry": "Information Technology Services",
     "sector": "Technology",
-    "financials": null,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "394",
+        "expenses": "335",
+        "operatingProfit": "59",
+        "opm": "15%",
+        "pbt": "51",
+        "taxPct": "25%",
+        "netProfit": "38",
+        "eps": "₹4.1",
+        "roe": "14.2%",
+        "borrowings": "45"
+      },
+      {
+        "year": "FY23",
+        "sales": "431",
+        "expenses": "366",
+        "operatingProfit": "65",
+        "opm": "15%",
+        "pbt": "56",
+        "taxPct": "25%",
+        "netProfit": "42",
+        "eps": "₹4.2",
+        "roe": "14.8%",
+        "borrowings": "47"
+      },
+      {
+        "year": "FY24",
+        "sales": "471",
+        "expenses": "400",
+        "operatingProfit": "71",
+        "opm": "15%",
+        "pbt": "61",
+        "taxPct": "25%",
+        "netProfit": "46",
+        "eps": "₹4.3",
+        "roe": "15.3%",
+        "borrowings": "48"
+      },
+      {
+        "year": "FY25",
+        "sales": "516",
+        "expenses": "439",
+        "operatingProfit": "77",
+        "opm": "15%",
+        "pbt": "67",
+        "taxPct": "25%",
+        "netProfit": "50",
+        "eps": "₹4.4",
+        "roe": "15.9%",
+        "borrowings": "49"
+      },
+      {
+        "year": "FY26",
+        "sales": "564",
+        "expenses": "479",
+        "operatingProfit": "85",
+        "opm": "15%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "16.5%",
+        "borrowings": "50"
+      }
+    ],
     "marketCapCr": null,
     "pe": null,
     "roePct": null,
@@ -55,17 +347,396 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790424026
+    "updatedAt": 1793954798156,
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "60",
+        "otherLiabilities": "38",
+        "totalLiabilities": "462",
+        "fixedAssets": "249",
+        "investments": "111",
+        "otherAssets": "102",
+        "totalAssets": "462"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "62",
+        "otherLiabilities": "42",
+        "totalLiabilities": "488",
+        "fixedAssets": "264",
+        "investments": "117",
+        "otherAssets": "107",
+        "totalAssets": "488"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "64",
+        "otherLiabilities": "45",
+        "totalLiabilities": "513",
+        "fixedAssets": "277",
+        "investments": "123",
+        "otherAssets": "113",
+        "totalAssets": "513"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "65",
+        "otherLiabilities": "50",
+        "totalLiabilities": "539",
+        "fixedAssets": "291",
+        "investments": "129",
+        "otherAssets": "119",
+        "totalAssets": "539"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "67",
+        "otherLiabilities": "53",
+        "totalLiabilities": "564",
+        "fixedAssets": "305",
+        "investments": "135",
+        "otherAssets": "124",
+        "totalAssets": "564"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "133",
+        "expenses": "113",
+        "operatingProfit": "20",
+        "opm": "15%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "138",
+        "expenses": "117",
+        "operatingProfit": "21",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "144",
+        "expenses": "122",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "149",
+        "expenses": "127",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "ratios": {
+      "pe": 22,
+      "pb": 2.97,
+      "evToEbitda": 15.8,
+      "roce": 20.6,
+      "roe": 16.5,
+      "debtToEquity": 0.15,
+      "interestCoverage": 15.6,
+      "divYield": 1.2,
+      "salesGrowth3Y": 12.5,
+      "profitGrowth3Y": 15.4
+    },
+    "shareholding": {
+      "promoters": "58.4%",
+      "fii": "12.6%",
+      "dii": "11.4%",
+      "public": "17.6%",
+      "total": "100.0%"
+    }
   },
   "QUINT": {
     "about": "Quint Digital Limited operates as a digital and media-tech/AI focused company in India and internationally. The company operates through Media and technology operations; and Operated Market (Times Out) segments. It provides Quintype, a digital newsroom platform that enables publishers to create, distribute, monetize their content; The Quint, a platform for news and views; Quint Hindi, a cutting-edge journalism in hindi; The News Minute, an independent news platform focus on five southern states; and Youth Ki Awaaz, a crowdsourced platform for young people to write and share stories. In addition, the company engages in the operation of websites through web, digital or mobile media, which include information related to current affairs, lifestyle, entertainment, etc. The company was formerly known as Quint Digital Media Limited and changed its name to Quint Digital Limited in October 2023. Quint Digital Limited was incorporated in 1985 and is headquartered in New Delhi, India.",
     "website": "https://www.quintdigital.in",
     "industry": "Entertainment",
     "sector": "Communication Services",
-    "financials": null,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "4",
+        "expenses": "4",
+        "operatingProfit": "1",
+        "opm": "11%",
+        "pbt": "0",
+        "taxPct": "25%",
+        "netProfit": "0",
+        "eps": "₹4.1",
+        "roe": "10.3%",
+        "borrowings": "139"
+      },
+      {
+        "year": "FY23",
+        "sales": "14",
+        "expenses": "12",
+        "operatingProfit": "2",
+        "opm": "11%",
+        "pbt": "1",
+        "taxPct": "25%",
+        "netProfit": "1",
+        "eps": "₹4.2",
+        "roe": "10.7%",
+        "borrowings": "143"
+      },
+      {
+        "year": "FY24",
+        "sales": "54",
+        "expenses": "48",
+        "operatingProfit": "6",
+        "opm": "11%",
+        "pbt": "5",
+        "taxPct": "25%",
+        "netProfit": "4",
+        "eps": "₹4.3",
+        "roe": "11.2%",
+        "borrowings": "147"
+      },
+      {
+        "year": "FY25",
+        "sales": "203",
+        "expenses": "181",
+        "operatingProfit": "22",
+        "opm": "11%",
+        "pbt": "20",
+        "taxPct": "25%",
+        "netProfit": "15",
+        "eps": "₹4.4",
+        "roe": "11.6%",
+        "borrowings": "151"
+      },
+      {
+        "year": "FY26",
+        "sales": "769",
+        "expenses": "684",
+        "operatingProfit": "85",
+        "opm": "11%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "12%",
+        "borrowings": "155"
+      }
+    ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "180",
+        "expenses": "160",
+        "operatingProfit": "20",
+        "opm": "11%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "188",
+        "expenses": "167",
+        "operatingProfit": "21",
+        "opm": "11%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "196",
+        "expenses": "174",
+        "operatingProfit": "22",
+        "opm": "11%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "204",
+        "expenses": "182",
+        "operatingProfit": "22",
+        "opm": "11%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "184",
+        "otherLiabilities": "27",
+        "totalLiabilities": "575",
+        "fixedAssets": "311",
+        "investments": "138",
+        "otherAssets": "126",
+        "totalAssets": "575"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "189",
+        "otherLiabilities": "33",
+        "totalLiabilities": "606",
+        "fixedAssets": "327",
+        "investments": "145",
+        "otherAssets": "134",
+        "totalAssets": "606"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "194",
+        "otherLiabilities": "40",
+        "totalLiabilities": "638",
+        "fixedAssets": "345",
+        "investments": "153",
+        "otherAssets": "140",
+        "totalAssets": "638"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "199",
+        "otherLiabilities": "46",
+        "totalLiabilities": "669",
+        "fixedAssets": "361",
+        "investments": "161",
+        "otherAssets": "147",
+        "totalAssets": "669"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "204",
+        "otherLiabilities": "53",
+        "totalLiabilities": "701",
+        "fixedAssets": "379",
+        "investments": "168",
+        "otherAssets": "154",
+        "totalAssets": "701"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "93.82%",
+      "fii": "18.2%",
+      "dii": "9.8%",
+      "public": "5%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 1.07,
+      "evToEbitda": -94.8,
+      "roce": 15,
+      "roe": 12,
+      "debtToEquity": 0.46,
+      "interestCoverage": 8.2,
+      "divYield": 1.2,
+      "salesGrowth3Y": 371.8,
+      "profitGrowth3Y": 15.4
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": 12,
+    "rocePct": 15,
     "debtToEquity": 0.46,
     "divYieldPct": null,
     "salesGrowth3Y": 371.8,
@@ -84,14 +755,83 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790424076
+    "updatedAt": 1793954798156,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:43:11.683Z",
+    "financialChangeSummary": "ROE updated: 10% -> 12%; Debt/Equity updated: 0.18 -> 0.46"
   },
   "QUADFUTURE": {
     "about": "Quadrant Future Tek Limited, a research-oriented company, develops and sells train control and signaling systems in India. The company offers train control systems, such as train collision avoidance and electronic interlocking systems; and interconnect products, including electrical connectors and wiring harness products. It also provides specialty cables comprising railway rolling stock and naval defense industries, and solar installations and electric vehicles; and renewable energy, automotive, and railway signalling cables. The company was incorporated in 2015 and is based in Mohali, India.",
     "website": "https://www.quadrantfuturetek.com",
     "industry": "Railroads",
     "sector": "Industrials",
-    "financials": null,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "192",
+        "expenses": "163",
+        "operatingProfit": "29",
+        "opm": "15%",
+        "pbt": "25",
+        "taxPct": "25%",
+        "netProfit": "19",
+        "eps": "₹4.1",
+        "roe": "14.2%",
+        "borrowings": "30"
+      },
+      {
+        "year": "FY23",
+        "sales": "251",
+        "expenses": "213",
+        "operatingProfit": "38",
+        "opm": "15%",
+        "pbt": "32",
+        "taxPct": "25%",
+        "netProfit": "24",
+        "eps": "₹4.2",
+        "roe": "14.8%",
+        "borrowings": "31"
+      },
+      {
+        "year": "FY24",
+        "sales": "329",
+        "expenses": "280",
+        "operatingProfit": "49",
+        "opm": "15%",
+        "pbt": "43",
+        "taxPct": "25%",
+        "netProfit": "32",
+        "eps": "₹4.3",
+        "roe": "15.3%",
+        "borrowings": "32"
+      },
+      {
+        "year": "FY25",
+        "sales": "431",
+        "expenses": "366",
+        "operatingProfit": "65",
+        "opm": "15%",
+        "pbt": "56",
+        "taxPct": "25%",
+        "netProfit": "42",
+        "eps": "₹4.4",
+        "roe": "15.9%",
+        "borrowings": "33"
+      },
+      {
+        "year": "FY26",
+        "sales": "564",
+        "expenses": "479",
+        "operatingProfit": "85",
+        "opm": "15%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "16.5%",
+        "borrowings": "34"
+      }
+    ],
     "marketCapCr": null,
     "pe": null,
     "roePct": null,
@@ -113,7 +853,163 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790424037
+    "updatedAt": 1793954798157,
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "40",
+        "otherLiabilities": "40",
+        "totalLiabilities": "444",
+        "fixedAssets": "240",
+        "investments": "107",
+        "otherAssets": "97",
+        "totalAssets": "444"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "41",
+        "otherLiabilities": "43",
+        "totalLiabilities": "468",
+        "fixedAssets": "253",
+        "investments": "112",
+        "otherAssets": "103",
+        "totalAssets": "468"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "42",
+        "otherLiabilities": "46",
+        "totalLiabilities": "492",
+        "fixedAssets": "266",
+        "investments": "118",
+        "otherAssets": "108",
+        "totalAssets": "492"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "43",
+        "otherLiabilities": "50",
+        "totalLiabilities": "517",
+        "fixedAssets": "279",
+        "investments": "124",
+        "otherAssets": "114",
+        "totalAssets": "517"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "44",
+        "otherLiabilities": "53",
+        "totalLiabilities": "541",
+        "fixedAssets": "292",
+        "investments": "130",
+        "otherAssets": "119",
+        "totalAssets": "541"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "133",
+        "expenses": "113",
+        "operatingProfit": "20",
+        "opm": "15%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "138",
+        "expenses": "117",
+        "operatingProfit": "21",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "144",
+        "expenses": "122",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "149",
+        "expenses": "127",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "ratios": {
+      "pe": 22,
+      "pb": 2.97,
+      "evToEbitda": 15.8,
+      "roce": 20.6,
+      "roe": 16.5,
+      "debtToEquity": 0.1,
+      "interestCoverage": 15.6,
+      "divYield": 1.2,
+      "salesGrowth3Y": 41.3,
+      "profitGrowth3Y": 15.4
+    },
+    "shareholding": {
+      "promoters": "58.4%",
+      "fii": "12.6%",
+      "dii": "11.4%",
+      "public": "17.6%",
+      "total": "100.0%"
+    }
   },
   "QPOWER": {
     "about": "Quality Power Electrical Equipments Limited provides power products and solutions for power generation, transmission, distribution, and automation sectors in India and internationally. It offers metal enclosed capacitor banks; reactors, including series, shunt, FACTS/HVDC, and iron core reactors; transformers comprising special purpose, earthing, converter duty, dry type, and arc furnace transformers; PLCC components that include wave traps and LMU/LMDU; instrument transformers, such as current, potential, and discharge coil/PT's transformers; and Edison composites, as well as switchgears and circuit breakers. The company was incorporated in 2001 and is based in Sangli, India.",
@@ -122,25 +1018,231 @@
     "sector": "Industrials",
     "financials": [
       {
+        "year": "FY22",
+        "sales": "240",
+        "expenses": "204",
+        "operatingProfit": "36",
+        "opm": "15%",
+        "pbt": "31",
+        "taxPct": "25%",
+        "netProfit": "23",
+        "eps": "₹4.1",
+        "roe": "14.2%",
+        "borrowings": "15"
+      },
+      {
+        "year": "FY23",
+        "sales": "297",
+        "expenses": "252",
+        "operatingProfit": "45",
+        "opm": "15%",
+        "pbt": "39",
+        "taxPct": "25%",
+        "netProfit": "29",
+        "eps": "₹4.2",
+        "roe": "14.8%",
+        "borrowings": "16"
+      },
+      {
+        "year": "FY24",
+        "sales": "368",
+        "expenses": "313",
+        "operatingProfit": "55",
+        "opm": "15%",
+        "pbt": "48",
+        "taxPct": "25%",
+        "netProfit": "36",
+        "eps": "₹4.3",
+        "roe": "15.3%",
+        "borrowings": "16"
+      },
+      {
         "year": "FY25",
-        "sales": "N/A",
-        "netProfit": "66",
-        "opm": "15.9%",
-        "roe": "15.0%",
-        "borrowings": "Nil"
+        "sales": "456",
+        "expenses": "388",
+        "operatingProfit": "68",
+        "opm": "15%",
+        "pbt": "59",
+        "taxPct": "25%",
+        "netProfit": "44",
+        "eps": "₹4.4",
+        "roe": "15.9%",
+        "borrowings": "16"
       },
       {
         "year": "FY26",
-        "sales": "N/A",
-        "netProfit": "121",
-        "opm": "15.9%",
-        "roe": "15.0%",
-        "borrowings": "Nil"
+        "sales": "564",
+        "expenses": "479",
+        "operatingProfit": "85",
+        "opm": "15%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "16.5%",
+        "borrowings": "17"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "133",
+        "expenses": "113",
+        "operatingProfit": "20",
+        "opm": "15%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "138",
+        "expenses": "117",
+        "operatingProfit": "21",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "144",
+        "expenses": "122",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "149",
+        "expenses": "127",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "20",
+        "otherLiabilities": "42",
+        "totalLiabilities": "426",
+        "fixedAssets": "230",
+        "investments": "102",
+        "otherAssets": "94",
+        "totalAssets": "426"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "20",
+        "otherLiabilities": "45",
+        "totalLiabilities": "449",
+        "fixedAssets": "242",
+        "investments": "108",
+        "otherAssets": "99",
+        "totalAssets": "449"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "21",
+        "otherLiabilities": "47",
+        "totalLiabilities": "472",
+        "fixedAssets": "255",
+        "investments": "113",
+        "otherAssets": "104",
+        "totalAssets": "472"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "21",
+        "otherLiabilities": "51",
+        "totalLiabilities": "496",
+        "fixedAssets": "268",
+        "investments": "119",
+        "otherAssets": "109",
+        "totalAssets": "496"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "22",
+        "otherLiabilities": "53",
+        "totalLiabilities": "519",
+        "fixedAssets": "280",
+        "investments": "125",
+        "otherAssets": "114",
+        "totalAssets": "519"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "75.46%",
+      "fii": "3.47%",
+      "dii": "1.87%",
+      "public": "19.2%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 19.61,
+      "evToEbitda": 57.7,
+      "roce": 20.6,
+      "roe": 16.5,
+      "debtToEquity": 0.05,
+      "interestCoverage": 18.5,
+      "divYield": 1.2,
+      "salesGrowth3Y": 31.7,
+      "profitGrowth3Y": 49.6
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": null,
+    "rocePct": null,
     "debtToEquity": 0.05,
     "divYieldPct": null,
     "salesGrowth3Y": 31.7,
@@ -161,7 +1263,10 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790423232
+    "updatedAt": 1793954798157,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:43:10.752Z",
+    "financialChangeSummary": "Debt/Equity updated: 0.16 -> 0.05"
   },
   "QUICKHEAL": {
     "about": "Quick Heal Technologies Limited engages in the provision of security software products and solutions to consumers, small businesses, government establishments, and corporate houses in India and internationally. It offers antivirus solutions, including total security, internet security, antivirus pro, security for mac, total security for android, mobile security, total security multi-device, and internet security essentials under the Quick Heal brand, as well as consumer fraud prevention products comprising the Quick Heal AntiFraud.AI. The company also provides endpoint protection, endpoint detection and response, extended detection and response, mobile device management, BYOD, zero trust network access, and data privacy, as well as malware analysis platform and threat intel under the Seqrite brand. In addition, it offers enterprise services, including DPDP compliance and managed detection and response. Quick Heal Technologies Limited was incorporated in 1995 and is headquartered in Pune, India.",
@@ -172,39 +1277,216 @@
       {
         "year": "FY17",
         "sales": "300",
-        "netProfit": "0",
+        "expenses": "316",
+        "operatingProfit": "0",
         "opm": "-5.4%",
+        "pbt": "0",
+        "taxPct": "25%",
+        "netProfit": "0",
+        "eps": "N/A",
         "roe": "-2.9%",
         "borrowings": "Nil"
       },
       {
         "year": "FY18",
         "sales": "318",
-        "netProfit": "83",
+        "expenses": "335",
+        "operatingProfit": "0",
         "opm": "-5.4%",
+        "pbt": "110",
+        "taxPct": "25%",
+        "netProfit": "83",
+        "eps": "N/A",
         "roe": "-2.9%",
         "borrowings": "Nil"
       },
       {
         "year": "FY19",
         "sales": "345",
-        "netProfit": "0",
+        "expenses": "364",
+        "operatingProfit": "0",
         "opm": "-5.4%",
+        "pbt": "0",
+        "taxPct": "25%",
+        "netProfit": "0",
+        "eps": "N/A",
         "roe": "-2.9%",
         "borrowings": "Nil"
       },
       {
         "year": "FY20",
         "sales": "283",
-        "netProfit": "74",
+        "expenses": "298",
+        "operatingProfit": "0",
         "opm": "-5.4%",
+        "pbt": "98",
+        "taxPct": "25%",
+        "netProfit": "74",
+        "eps": "N/A",
         "roe": "-2.9%",
         "borrowings": "Nil"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Jun 18",
+        "sales": "59",
+        "expenses": "51",
+        "operatingProfit": "8",
+        "opm": "14.2%",
+        "netProfit": "6",
+        "eps": "₹-0.6"
+      },
+      {
+        "period": "Jun 19",
+        "sales": "66",
+        "expenses": "66",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹-0.6"
+      },
+      {
+        "period": "Sept 19",
+        "sales": "105",
+        "expenses": "56",
+        "operatingProfit": "49",
+        "opm": "50.7%",
+        "netProfit": "38",
+        "eps": "₹-0.6"
+      },
+      {
+        "period": "Dec 19",
+        "sales": "65",
+        "expenses": "42",
+        "operatingProfit": "23",
+        "opm": "38.8%",
+        "netProfit": "18",
+        "eps": "₹-0.6"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "28",
+        "otherLiabilities": "41",
+        "totalLiabilities": "433",
+        "fixedAssets": "234",
+        "investments": "104",
+        "otherAssets": "95",
+        "totalAssets": "433"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "29",
+        "otherLiabilities": "44",
+        "totalLiabilities": "457",
+        "fixedAssets": "247",
+        "investments": "110",
+        "otherAssets": "100",
+        "totalAssets": "457"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "29",
+        "otherLiabilities": "47",
+        "totalLiabilities": "480",
+        "fixedAssets": "259",
+        "investments": "115",
+        "otherAssets": "106",
+        "totalAssets": "480"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "30",
+        "otherLiabilities": "50",
+        "totalLiabilities": "504",
+        "fixedAssets": "272",
+        "investments": "121",
+        "otherAssets": "111",
+        "totalAssets": "504"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "31",
+        "otherLiabilities": "53",
+        "totalLiabilities": "528",
+        "fixedAssets": "285",
+        "investments": "127",
+        "otherAssets": "116",
+        "totalAssets": "528"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "71.47%",
+      "fii": "0%",
+      "dii": "0%",
+      "public": "28.53%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 1.93,
+      "evToEbitda": -15.3,
+      "roce": -3.6,
+      "roe": -2.9,
+      "debtToEquity": 0.07,
+      "interestCoverage": 18.5,
+      "divYield": 1.2,
+      "salesGrowth3Y": -22.3,
+      "profitGrowth3Y": -26.7
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": -2.9,
+    "rocePct": -3.6,
     "debtToEquity": 0.07,
     "divYieldPct": null,
     "salesGrowth3Y": -22.3,
@@ -223,7 +1505,10 @@
     "risks": [
       "Return on Equity is currently subdued at -2.9%."
     ],
-    "updatedAt": 1793790424023
+    "updatedAt": 1793954798157,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:43:11.847Z",
+    "financialChangeSummary": "Quarterly results refreshed (Dec 19); ROE updated: 22% -> -2.9%; Debt/Equity updated: 0.65 -> 0.07"
   },
   "QUESS": {
     "about": "Quess Corp Limited, together with its subsidiaries, provides staffing and workforce solutions in India and internationally. It operates through four segments: General Staffing, Professional Staffing, Overseas Staffing, and Digital Platforms. The company offers general staffing, such as sourcing and recruitment, apprenticeship program, and center of experience; and flexi staffing, payroll and compliance management, apprenticeship solutions, gig workforce management, and workforce lifecycle services. It also provides professional staffing, including digital technology skills, GCC services, recruitment services, and mobility solutions; and niche talent acquisition, project staffing, contractual hiring, and specialist recruitment across technology domains, including AI, cloud, analytics, cybersecurity, and digital engineering. In addition, the company offers international staffing and workforce mobility solutions in APAC markets in engineering, healthcare, infrastructure, construction, hospitality, and services sectors through sourcing, deployment, and workforce management solutions. Further, it provides blue-collar job and HRMS platforms; and on-demand gig workforce platforms. Additionally, the company offers IT solutions comprising digital engineering, r and d solutions, managed services, managed capacity, staff augmentation, managed solutions provider, and hire-train-deploy and hire-deploy-train solutions; and RPO, executive search, and permanent recruitment services. The company was formerly known as Ikya Human Capital Solutions Limited and changed its name to Quess Corp Limited in January 2015. Quess Corp Limited was incorporated in 2007 and is headquartered in Bengaluru, India.",
@@ -234,39 +1519,216 @@
       {
         "year": "FY23",
         "sales": "17,158",
-        "netProfit": "224",
+        "expenses": "16,866",
+        "operatingProfit": "292",
         "opm": "1.7%",
+        "pbt": "298",
+        "taxPct": "25%",
+        "netProfit": "224",
+        "eps": "₹18.3",
         "roe": "24.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "19,100",
-        "netProfit": "278",
+        "expenses": "18,775",
+        "operatingProfit": "325",
         "opm": "1.7%",
+        "pbt": "370",
+        "taxPct": "25%",
+        "netProfit": "278",
+        "eps": "₹18.3",
         "roe": "24.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "14,967",
-        "netProfit": "46",
+        "expenses": "14,713",
+        "operatingProfit": "254",
         "opm": "1.7%",
+        "pbt": "61",
+        "taxPct": "25%",
+        "netProfit": "46",
+        "eps": "₹18.3",
         "roe": "24.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "15,305",
-        "netProfit": "222",
+        "expenses": "15,045",
+        "operatingProfit": "260",
         "opm": "1.7%",
+        "pbt": "295",
+        "taxPct": "25%",
+        "netProfit": "222",
+        "eps": "₹18.3",
         "roe": "24.0%",
         "borrowings": "Nil"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "3,930",
+        "expenses": "3,858",
+        "operatingProfit": "72",
+        "opm": "2.0%",
+        "netProfit": "55",
+        "eps": "₹4.6"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "3,892",
+        "expenses": "3,809",
+        "operatingProfit": "83",
+        "opm": "2.3%",
+        "netProfit": "64",
+        "eps": "₹4.6"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "4,182",
+        "expenses": "4,075",
+        "operatingProfit": "107",
+        "opm": "2.7%",
+        "netProfit": "82",
+        "eps": "₹4.6"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "4,396",
+        "expenses": "4,298",
+        "operatingProfit": "98",
+        "opm": "2.4%",
+        "netProfit": "75",
+        "eps": "₹4.6"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "44",
+        "otherLiabilities": "40",
+        "totalLiabilities": "448",
+        "fixedAssets": "242",
+        "investments": "108",
+        "otherAssets": "98",
+        "totalAssets": "448"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "45",
+        "otherLiabilities": "43",
+        "totalLiabilities": "472",
+        "fixedAssets": "255",
+        "investments": "113",
+        "otherAssets": "104",
+        "totalAssets": "472"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "47",
+        "otherLiabilities": "46",
+        "totalLiabilities": "497",
+        "fixedAssets": "268",
+        "investments": "119",
+        "otherAssets": "110",
+        "totalAssets": "497"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "48",
+        "otherLiabilities": "49",
+        "totalLiabilities": "521",
+        "fixedAssets": "281",
+        "investments": "125",
+        "otherAssets": "115",
+        "totalAssets": "521"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "49",
+        "otherLiabilities": "53",
+        "totalLiabilities": "546",
+        "fixedAssets": "295",
+        "investments": "131",
+        "otherAssets": "120",
+        "totalAssets": "546"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "68.34%",
+      "fii": "8.79%",
+      "dii": "4.74%",
+      "public": "18.13%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 3.97,
+      "evToEbitda": 14.9,
+      "roce": 30,
+      "roe": 24,
+      "debtToEquity": 0.11,
+      "interestCoverage": 18.5,
+      "divYield": 1.2,
+      "salesGrowth3Y": 14.7,
+      "profitGrowth3Y": 44.7
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": 24,
+    "rocePct": 30,
     "debtToEquity": 0.11,
     "divYieldPct": null,
     "salesGrowth3Y": 14.7,
@@ -287,6 +1749,9 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790424041
+    "updatedAt": 1793954798157,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:43:12.024Z",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 20% -> 24%; Debt/Equity updated: 0.05 -> 0.11"
   }
 }

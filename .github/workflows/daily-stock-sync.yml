@@ -43,7 +43,7 @@ jobs:
         run: |
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
-          git add js/screener-data.js data/news/ data/profiles/
+          git add js/screener-index.js data/news/ data/profiles/ data/mutual-funds/
           if git diff --staged --quiet; then
             echo "No price, indicator, or corporate filing changes detected today."
           else

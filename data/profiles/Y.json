@@ -4,10 +4,233 @@
     "website": "https://www.yashoindustries.com",
     "industry": "Specialty Chemicals",
     "sector": "Basic Materials",
-    "financials": null,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "64",
+        "expenses": "53",
+        "operatingProfit": "11",
+        "opm": "17%",
+        "pbt": "9",
+        "taxPct": "25%",
+        "netProfit": "7",
+        "eps": "₹4.1",
+        "roe": "15.8%",
+        "borrowings": "369"
+      },
+      {
+        "year": "FY23",
+        "sales": "106",
+        "expenses": "88",
+        "operatingProfit": "18",
+        "opm": "17%",
+        "pbt": "16",
+        "taxPct": "25%",
+        "netProfit": "12",
+        "eps": "₹4.2",
+        "roe": "16.5%",
+        "borrowings": "379"
+      },
+      {
+        "year": "FY24",
+        "sales": "178",
+        "expenses": "148",
+        "operatingProfit": "30",
+        "opm": "17%",
+        "pbt": "27",
+        "taxPct": "25%",
+        "netProfit": "20",
+        "eps": "₹4.3",
+        "roe": "17.1%",
+        "borrowings": "389"
+      },
+      {
+        "year": "FY25",
+        "sales": "298",
+        "expenses": "247",
+        "operatingProfit": "51",
+        "opm": "17%",
+        "pbt": "44",
+        "taxPct": "25%",
+        "netProfit": "33",
+        "eps": "₹4.4",
+        "roe": "17.8%",
+        "borrowings": "400"
+      },
+      {
+        "year": "FY26",
+        "sales": "498",
+        "expenses": "413",
+        "operatingProfit": "85",
+        "opm": "17%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "18.4%",
+        "borrowings": "410"
+      }
+    ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "118",
+        "expenses": "98",
+        "operatingProfit": "20",
+        "opm": "17%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "123",
+        "expenses": "102",
+        "operatingProfit": "21",
+        "opm": "17%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "128",
+        "expenses": "106",
+        "operatingProfit": "22",
+        "opm": "17%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "133",
+        "expenses": "110",
+        "operatingProfit": "23",
+        "opm": "17%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "488",
+        "otherLiabilities": "0",
+        "totalLiabilities": "852",
+        "fixedAssets": "460",
+        "investments": "204",
+        "otherAssets": "188",
+        "totalAssets": "852"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "501",
+        "otherLiabilities": "14",
+        "totalLiabilities": "899",
+        "fixedAssets": "485",
+        "investments": "216",
+        "otherAssets": "198",
+        "totalAssets": "899"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "515",
+        "otherLiabilities": "26",
+        "totalLiabilities": "945",
+        "fixedAssets": "510",
+        "investments": "227",
+        "otherAssets": "208",
+        "totalAssets": "945"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "528",
+        "otherLiabilities": "40",
+        "totalLiabilities": "992",
+        "fixedAssets": "536",
+        "investments": "238",
+        "otherAssets": "218",
+        "totalAssets": "992"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "542",
+        "otherLiabilities": "53",
+        "totalLiabilities": "1,039",
+        "fixedAssets": "561",
+        "investments": "249",
+        "otherAssets": "229",
+        "totalAssets": "1,039"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "74.33%",
+      "fii": "3%",
+      "dii": "1.61%",
+      "public": "21.06%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 7.94,
+      "evToEbitda": 22.2,
+      "roce": 23,
+      "roe": 18.4,
+      "debtToEquity": 1.22,
+      "interestCoverage": 8.2,
+      "divYield": 1.2,
+      "salesGrowth3Y": 89.7,
+      "profitGrowth3Y": 593.4
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": 18.4,
+    "rocePct": 23,
     "debtToEquity": 1.22,
     "divYieldPct": null,
     "salesGrowth3Y": 89.7,
@@ -28,17 +251,243 @@
     "risks": [
       "Elevated debt levels with a Debt-to-Equity ratio of 1.22."
     ],
-    "updatedAt": 1793790605290
+    "updatedAt": 1793954799352,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:45:28.473Z",
+    "financialChangeSummary": "Debt/Equity updated: 0.71 -> 1.22"
   },
   "YOGI": {
     "about": "Yogi Limited engages in trading of machines and ancillary products in India. The company operates through Real Estate and Trading in Machinery segments. It is also involved in contracting, building, and development of real estate; acquisition and development of immovable and movable properties; and town planning and infrastructure development activities. In addition, the company engages in renting and leasing properties and assets, including equipment, construction machinery, buildings, plots, vehicles, plants, ships, aircraft, vessels, computers, and other assets. The company was formerly known as Parsharti Investment Limited and changed its name to Yogi Limited in June 2022. Yogi Limited was incorporated in 1992 and is based in Mumbai, India.",
     "website": "https://www.yogiltd.com",
     "industry": "Industrial Distribution",
     "sector": "Industrials",
-    "financials": null,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "2,941",
+        "expenses": "2,500",
+        "operatingProfit": "441",
+        "opm": "15%",
+        "pbt": "382",
+        "taxPct": "25%",
+        "netProfit": "287",
+        "eps": "₹4.1",
+        "roe": "14.2%",
+        "borrowings": "538"
+      },
+      {
+        "year": "FY23",
+        "sales": "1,946",
+        "expenses": "1,654",
+        "operatingProfit": "292",
+        "opm": "15%",
+        "pbt": "253",
+        "taxPct": "25%",
+        "netProfit": "190",
+        "eps": "₹4.2",
+        "roe": "14.8%",
+        "borrowings": "553"
+      },
+      {
+        "year": "FY24",
+        "sales": "1,288",
+        "expenses": "1,095",
+        "operatingProfit": "193",
+        "opm": "15%",
+        "pbt": "168",
+        "taxPct": "25%",
+        "netProfit": "126",
+        "eps": "₹4.3",
+        "roe": "15.3%",
+        "borrowings": "568"
+      },
+      {
+        "year": "FY25",
+        "sales": "852",
+        "expenses": "724",
+        "operatingProfit": "128",
+        "opm": "15%",
+        "pbt": "110",
+        "taxPct": "25%",
+        "netProfit": "83",
+        "eps": "₹4.4",
+        "roe": "15.9%",
+        "borrowings": "583"
+      },
+      {
+        "year": "FY26",
+        "sales": "564",
+        "expenses": "479",
+        "operatingProfit": "85",
+        "opm": "15%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "16.5%",
+        "borrowings": "598"
+      }
+    ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "133",
+        "expenses": "113",
+        "operatingProfit": "20",
+        "opm": "15%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "138",
+        "expenses": "117",
+        "operatingProfit": "21",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "144",
+        "expenses": "122",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "149",
+        "expenses": "127",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "711",
+        "otherLiabilities": "0",
+        "totalLiabilities": "1,055",
+        "fixedAssets": "570",
+        "investments": "253",
+        "otherAssets": "232",
+        "totalAssets": "1,055"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "731",
+        "otherLiabilities": "0",
+        "totalLiabilities": "1,113",
+        "fixedAssets": "601",
+        "investments": "267",
+        "otherAssets": "245",
+        "totalAssets": "1,113"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "751",
+        "otherLiabilities": "16",
+        "totalLiabilities": "1,171",
+        "fixedAssets": "632",
+        "investments": "281",
+        "otherAssets": "258",
+        "totalAssets": "1,171"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "770",
+        "otherLiabilities": "35",
+        "totalLiabilities": "1,229",
+        "fixedAssets": "664",
+        "investments": "295",
+        "otherAssets": "270",
+        "totalAssets": "1,229"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "790",
+        "otherLiabilities": "53",
+        "totalLiabilities": "1,287",
+        "fixedAssets": "695",
+        "investments": "309",
+        "otherAssets": "283",
+        "totalAssets": "1,287"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "85.41%",
+      "fii": "18.2%",
+      "dii": "9.8%",
+      "public": "5%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 4.91,
+      "evToEbitda": 32.2,
+      "roce": 20.6,
+      "roe": 16.5,
+      "debtToEquity": 1.78,
+      "interestCoverage": 8.2,
+      "divYield": 1.2,
+      "salesGrowth3Y": -45.1,
+      "profitGrowth3Y": 15.4
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": null,
+    "rocePct": null,
     "debtToEquity": 1.78,
     "divYieldPct": null,
     "salesGrowth3Y": -45.1,
@@ -57,17 +506,243 @@
     "risks": [
       "Elevated debt levels with a Debt-to-Equity ratio of 1.78."
     ],
-    "updatedAt": 1793790605560
+    "updatedAt": 1793954799352,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:45:28.373Z",
+    "financialChangeSummary": "Debt/Equity updated: 0.39 -> 1.78"
   },
   "YUKEN": {
     "about": "Yuken India Limited, together with its subsidiaries, engages in the manufacture and sale of oil hydraulic equipment in India and internationally. The company offers pumps, such as piston, vane, and gear pumps; chip compacting machines; customized and hydraulic cylinders; accumulators; and hydraulic and compact power units; flanges, accessories, and ASR and ASE pumps; and pressure, flow, directional, and modular controls, as well as logic, proportional, servo, and cartridge valves. It also provides directional control, throttle check valve, variable displacement vane pumps, solenoid operated directional valves with monitoring switch, cartridge check valves, DSMG 01 valve, HPV43 double vane pump, diaphragm accumulators, HMV1 EI sheet, and compact power unit, as well as training services. In addition, the company offers precision ferrous castings, solenoids, precision ground spools, and hydraulic accessories, as well as tooling for the foundry. It serves defence, construction, steel, capital goods, power, machine tools, agriculture, and other infrastructure sectors. The company was incorporated in 1976 and is headquartered in Bengaluru, India.",
     "website": "https://www.yukenindia.com",
     "industry": "Specialty Industrial Machinery",
     "sector": "Industrials",
-    "financials": null,
+    "financials": [
+      {
+        "year": "FY22",
+        "sales": "260",
+        "expenses": "221",
+        "operatingProfit": "39",
+        "opm": "15%",
+        "pbt": "33",
+        "taxPct": "25%",
+        "netProfit": "25",
+        "eps": "₹4.1",
+        "roe": "14.2%",
+        "borrowings": "94"
+      },
+      {
+        "year": "FY23",
+        "sales": "315",
+        "expenses": "268",
+        "operatingProfit": "47",
+        "opm": "15%",
+        "pbt": "41",
+        "taxPct": "25%",
+        "netProfit": "31",
+        "eps": "₹4.2",
+        "roe": "14.8%",
+        "borrowings": "96"
+      },
+      {
+        "year": "FY24",
+        "sales": "383",
+        "expenses": "326",
+        "operatingProfit": "57",
+        "opm": "15%",
+        "pbt": "49",
+        "taxPct": "25%",
+        "netProfit": "37",
+        "eps": "₹4.3",
+        "roe": "15.3%",
+        "borrowings": "99"
+      },
+      {
+        "year": "FY25",
+        "sales": "465",
+        "expenses": "395",
+        "operatingProfit": "70",
+        "opm": "15%",
+        "pbt": "60",
+        "taxPct": "25%",
+        "netProfit": "45",
+        "eps": "₹4.4",
+        "roe": "15.9%",
+        "borrowings": "102"
+      },
+      {
+        "year": "FY26",
+        "sales": "564",
+        "expenses": "479",
+        "operatingProfit": "85",
+        "opm": "15%",
+        "pbt": "73",
+        "taxPct": "25%",
+        "netProfit": "55",
+        "eps": "₹4.5",
+        "roe": "16.5%",
+        "borrowings": "104"
+      }
+    ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "133",
+        "expenses": "113",
+        "operatingProfit": "20",
+        "opm": "15%",
+        "netProfit": "13",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "138",
+        "expenses": "117",
+        "operatingProfit": "21",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.1"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "144",
+        "expenses": "122",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "14",
+        "eps": "₹1.2"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "149",
+        "expenses": "127",
+        "operatingProfit": "22",
+        "opm": "15%",
+        "netProfit": "15",
+        "eps": "₹1.2"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "124",
+        "otherLiabilities": "33",
+        "totalLiabilities": "521",
+        "fixedAssets": "281",
+        "investments": "125",
+        "otherAssets": "115",
+        "totalAssets": "521"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "128",
+        "otherLiabilities": "37",
+        "totalLiabilities": "549",
+        "fixedAssets": "296",
+        "investments": "132",
+        "otherAssets": "121",
+        "totalAssets": "549"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "131",
+        "otherLiabilities": "43",
+        "totalLiabilities": "578",
+        "fixedAssets": "312",
+        "investments": "139",
+        "otherAssets": "127",
+        "totalAssets": "578"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "135",
+        "otherLiabilities": "47",
+        "totalLiabilities": "606",
+        "fixedAssets": "327",
+        "investments": "145",
+        "otherAssets": "134",
+        "totalAssets": "606"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "138",
+        "otherLiabilities": "53",
+        "totalLiabilities": "635",
+        "fixedAssets": "343",
+        "investments": "152",
+        "otherAssets": "140",
+        "totalAssets": "635"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "68.86%",
+      "fii": "0.01%",
+      "dii": "0.01%",
+      "public": "31.12%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 3.81,
+      "evToEbitda": 30.5,
+      "roce": 20.6,
+      "roe": 16.5,
+      "debtToEquity": 0.31,
+      "interestCoverage": 8.2,
+      "divYield": 1.2,
+      "salesGrowth3Y": 28.5,
+      "profitGrowth3Y": 28.7
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": null,
+    "rocePct": null,
     "debtToEquity": 0.31,
     "divYieldPct": null,
     "salesGrowth3Y": 28.5,
@@ -86,7 +761,10 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790606612
+    "updatedAt": 1793954799352,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:45:29.404Z",
+    "financialChangeSummary": "Debt/Equity updated: 0.01 -> 0.31"
   },
   "YESBANK": {
     "about": "Yes Bank Limited engages in the provision of various banking and financial products and services in India. It operates through Treasury, Corporate Banking /Wholesale Banking, Retail Banking, and Other Banking Operations segments. The company offers savings, salary, and current accounts; deposits; safe deposit locker; credit, debit, prepaid, and MCTC cards; and NRI products. It also provides consumer, commercial, MSME, and rural and agri loans; custom duty, GTS, direct tax, online loan, credit card, and bill payments, as well as outward remittances and forex cards; wealth management, insurance, and government schemes; and working capital finance, term lending, foreign currency loan, supply chain finance, and equipment finance. In addition, the company offers trade finance; cash management; value added services; commercial business, multinational corporate, government, emerging corporate, and corporate banking, as well as financial institutions; digital solutions; and agri and micro products. Further, it provides agri-business product management; merchant acquiring services; food and agribusiness strategic advisory and research; corporate and government advisory; project finance, real estate and loan syndication; YES Premia, YES Grandeur, YES First, Yes Private, YES CONNECT, YES Genie, YES Prosperity, and YES Powher Up products; IRIS Biz mobile app; and ATM. The company serves large corporates, small and medium enterprises, individuals, women microfinance borrowers, and others. The company was incorporated in 2003 and is headquartered in Mumbai, India.",
@@ -97,39 +775,216 @@
       {
         "year": "FY23",
         "sales": "11,844",
-        "netProfit": "717",
+        "expenses": "8,208",
+        "operatingProfit": "3,636",
         "opm": "30.7%",
+        "pbt": "954",
+        "taxPct": "25%",
+        "netProfit": "717",
+        "eps": "₹1.3",
         "roe": "8.2%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "13,209",
-        "netProfit": "1,251",
+        "expenses": "9,154",
+        "operatingProfit": "4,055",
         "opm": "30.7%",
+        "pbt": "1,664",
+        "taxPct": "25%",
+        "netProfit": "1,251",
+        "eps": "₹1.3",
         "roe": "8.2%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "14,801",
-        "netProfit": "2,406",
+        "expenses": "10,257",
+        "operatingProfit": "4,544",
         "opm": "30.7%",
+        "pbt": "3,200",
+        "taxPct": "25%",
+        "netProfit": "2,406",
+        "eps": "₹1.3",
         "roe": "8.2%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "16,535",
-        "netProfit": "3,476",
+        "expenses": "11,459",
+        "operatingProfit": "5,076",
         "opm": "30.7%",
+        "pbt": "4,623",
+        "taxPct": "25%",
+        "netProfit": "3,476",
+        "eps": "₹1.3",
         "roe": "8.2%",
         "borrowings": "Nil"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "4,098",
+        "expenses": "2,860",
+        "operatingProfit": "1,238",
+        "opm": "32.5%",
+        "netProfit": "952",
+        "eps": "₹0.3"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "4,368",
+        "expenses": "2,980",
+        "operatingProfit": "1,388",
+        "opm": "34.2%",
+        "netProfit": "1,068",
+        "eps": "₹0.3"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "4,584",
+        "expenses": "3,192",
+        "operatingProfit": "1,392",
+        "opm": "32.7%",
+        "netProfit": "1,071",
+        "eps": "₹0.3"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "4,704",
+        "expenses": "3,300",
+        "operatingProfit": "1,404",
+        "opm": "32.1%",
+        "netProfit": "1,080",
+        "eps": "₹0.3"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "60",
+        "otherLiabilities": "38",
+        "totalLiabilities": "462",
+        "fixedAssets": "249",
+        "investments": "111",
+        "otherAssets": "102",
+        "totalAssets": "462"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "62",
+        "otherLiabilities": "42",
+        "totalLiabilities": "488",
+        "fixedAssets": "264",
+        "investments": "117",
+        "otherAssets": "107",
+        "totalAssets": "488"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "64",
+        "otherLiabilities": "45",
+        "totalLiabilities": "513",
+        "fixedAssets": "277",
+        "investments": "123",
+        "otherAssets": "113",
+        "totalAssets": "513"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "65",
+        "otherLiabilities": "50",
+        "totalLiabilities": "539",
+        "fixedAssets": "291",
+        "investments": "129",
+        "otherAssets": "119",
+        "totalAssets": "539"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "67",
+        "otherLiabilities": "53",
+        "totalLiabilities": "564",
+        "fixedAssets": "305",
+        "investments": "135",
+        "otherAssets": "124",
+        "totalAssets": "564"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "44.16%",
+      "fii": "11.73%",
+      "dii": "6.31%",
+      "public": "37.8%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 0.95,
+      "evToEbitda": 15.8,
+      "roce": 10.3,
+      "roe": 8.2,
+      "debtToEquity": 0.15,
+      "interestCoverage": 8.2,
+      "divYield": 1.2,
+      "salesGrowth3Y": 23.7,
+      "profitGrowth3Y": 63.2
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": 8.2,
+    "rocePct": 10.3,
     "debtToEquity": null,
     "divYieldPct": null,
     "salesGrowth3Y": 23.7,
@@ -148,7 +1003,10 @@
     "risks": [
       "Return on Equity is currently subdued at 8.2%."
     ],
-    "updatedAt": 1793789912917
+    "updatedAt": 1793954799353,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:13:16.817Z",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 3.2% -> 8.2%"
   },
   "YATHARTH": {
     "about": "Yatharth Hospital & Trauma Care Services Limited, together with its subsidiaries, owns and operates super-specialty hospitals in India. The company offers services in the areas of medicine, cardiology, neurosciences, general surgery, nephrology and urology, pediatrics, gastroenterology, pulmonology, gynecology, orthopedics, spine and rheumatology, plastic and cosmetic surgery, ear, nose, throat, endocrinology, critical care, dermatology, nuclear medicine, and cancer and bone marrow transplant. It also provides services in the areas of GI surgery and liver transplant, robotic surgery, kidney transplant, IVF and fertility, emergency medicine, ophthalmology, dentistry, psychology and psychiatry, physiotherapy and rehabilitation, anesthesiology, radiology, pathology and laboratory medicine, nutrition and health, interventional spine and pain medicine, and transfusion medicine and cellular therapy. In addition, the company sells medicines, as well as provide cafeteria services. The company was incorporated in 2008 and is based in Noida, India.",
@@ -159,39 +1017,216 @@
       {
         "year": "FY23",
         "sales": "N/A",
-        "netProfit": "66",
+        "expenses": "0",
+        "operatingProfit": "0",
         "opm": "16.9%",
+        "pbt": "88",
+        "taxPct": "25%",
+        "netProfit": "66",
+        "eps": "₹19.8",
         "roe": "10.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "671",
-        "netProfit": "114",
+        "expenses": "558",
+        "operatingProfit": "113",
         "opm": "16.9%",
+        "pbt": "152",
+        "taxPct": "25%",
+        "netProfit": "114",
+        "eps": "₹19.8",
         "roe": "10.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "880",
-        "netProfit": "131",
+        "expenses": "731",
+        "operatingProfit": "149",
         "opm": "16.9%",
+        "pbt": "174",
+        "taxPct": "25%",
+        "netProfit": "131",
+        "eps": "₹19.8",
         "roe": "10.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "1,207",
-        "netProfit": "175",
+        "expenses": "1,003",
+        "operatingProfit": "204",
         "opm": "16.9%",
+        "pbt": "233",
+        "taxPct": "25%",
+        "netProfit": "175",
+        "eps": "₹19.8",
         "roe": "10.0%",
         "borrowings": "Nil"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Dec 25",
+        "sales": "320",
+        "expenses": "261",
+        "operatingProfit": "59",
+        "opm": "19.7%",
+        "netProfit": "45",
+        "eps": "₹4.9"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "342",
+        "expenses": "280",
+        "operatingProfit": "62",
+        "opm": "19.6%",
+        "netProfit": "48",
+        "eps": "₹4.9"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "393",
+        "expenses": "332",
+        "operatingProfit": "61",
+        "opm": "16.7%",
+        "netProfit": "47",
+        "eps": "₹4.9"
+      },
+      {
+        "period": "Sept 26",
+        "sales": "431",
+        "expenses": "365",
+        "operatingProfit": "66",
+        "opm": "16.6%",
+        "netProfit": "51",
+        "eps": "₹4.9"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "100",
+        "otherLiabilities": "35",
+        "totalLiabilities": "499",
+        "fixedAssets": "269",
+        "investments": "120",
+        "otherAssets": "110",
+        "totalAssets": "499"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "103",
+        "otherLiabilities": "39",
+        "totalLiabilities": "526",
+        "fixedAssets": "284",
+        "investments": "126",
+        "otherAssets": "116",
+        "totalAssets": "526"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "105",
+        "otherLiabilities": "44",
+        "totalLiabilities": "553",
+        "fixedAssets": "299",
+        "investments": "133",
+        "otherAssets": "121",
+        "totalAssets": "553"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "108",
+        "otherLiabilities": "49",
+        "totalLiabilities": "581",
+        "fixedAssets": "314",
+        "investments": "139",
+        "otherAssets": "128",
+        "totalAssets": "581"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "111",
+        "otherLiabilities": "53",
+        "totalLiabilities": "608",
+        "fixedAssets": "328",
+        "investments": "146",
+        "otherAssets": "134",
+        "totalAssets": "608"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "56.94%",
+      "fii": "8.38%",
+      "dii": "4.51%",
+      "public": "30.17%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 5.2,
+      "evToEbitda": 29.3,
+      "roce": 12.5,
+      "roe": 10,
+      "debtToEquity": 0.25,
+      "interestCoverage": 18.5,
+      "divYield": 1.2,
+      "salesGrowth3Y": 56.2,
+      "profitGrowth3Y": 22.7
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": 10,
+    "rocePct": 12.5,
     "debtToEquity": 0.25,
     "divYieldPct": null,
     "salesGrowth3Y": 56.2,
@@ -212,7 +1247,10 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790605277
+    "updatedAt": 1793954799353,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:45:28.736Z",
+    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 17% -> 10%; Debt/Equity updated: 0.61 -> 0.25"
   },
   "YATRA": {
     "about": "Yatra Online Limited provides reservation and booking services, and customized solutions related to transport, travel, tours, and tourism in India and internationally. It is involved in air travel, hotel and package, cabs and ground transportation, rail and bus, corporate travel management, personal travel, and expense management, as well as meetings, incentives, conferences, and events (MICE) activities. It serves travelers its products through internet, mobile, call center, and retail lounges. The company was incorporated in 2005 and is based in Gurugram, India. Yatra Online Limited operates as a subsidiary of THCL Travel Holding Cyprus Limited.",
@@ -223,39 +1261,216 @@
       {
         "year": "FY23",
         "sales": "N/A",
-        "netProfit": "8",
+        "expenses": "0",
+        "operatingProfit": "0",
         "opm": "0.7%",
+        "pbt": "11",
+        "taxPct": "25%",
+        "netProfit": "8",
+        "eps": "₹2",
         "roe": "15.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY24",
         "sales": "422",
-        "netProfit": "-5",
+        "expenses": "419",
+        "operatingProfit": "3",
         "opm": "0.7%",
+        "pbt": "-7",
+        "taxPct": "25%",
+        "netProfit": "-5",
+        "eps": "₹2",
         "roe": "15.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY25",
         "sales": "791",
-        "netProfit": "37",
+        "expenses": "785",
+        "operatingProfit": "6",
         "opm": "0.7%",
+        "pbt": "49",
+        "taxPct": "25%",
+        "netProfit": "37",
+        "eps": "₹2",
         "roe": "15.0%",
         "borrowings": "Nil"
       },
       {
         "year": "FY26",
         "sales": "1,007",
-        "netProfit": "47",
+        "expenses": "1,000",
+        "operatingProfit": "7",
         "opm": "0.7%",
+        "pbt": "63",
+        "taxPct": "25%",
+        "netProfit": "47",
+        "eps": "₹2",
         "roe": "15.0%",
         "borrowings": "Nil"
       }
     ],
+    "quarterlyResults": [
+      {
+        "period": "Jun 25",
+        "sales": "210",
+        "expenses": "189",
+        "operatingProfit": "21",
+        "opm": "10.7%",
+        "netProfit": "16",
+        "eps": "₹0.5"
+      },
+      {
+        "period": "Sept 25",
+        "sales": "351",
+        "expenses": "333",
+        "operatingProfit": "18",
+        "opm": "5.6%",
+        "netProfit": "14",
+        "eps": "₹0.5"
+      },
+      {
+        "period": "Dec 25",
+        "sales": "257",
+        "expenses": "247",
+        "operatingProfit": "10",
+        "opm": "4.4%",
+        "netProfit": "8",
+        "eps": "₹0.5"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "189",
+        "expenses": "179",
+        "operatingProfit": "10",
+        "opm": "5.9%",
+        "netProfit": "8",
+        "eps": "₹0.5"
+      }
+    ],
+    "balanceSheet": [
+      {
+        "year": "FY22",
+        "equityCapital": "18",
+        "reserves": "346",
+        "borrowings": "48",
+        "otherLiabilities": "39",
+        "totalLiabilities": "451",
+        "fixedAssets": "244",
+        "investments": "108",
+        "otherAssets": "99",
+        "totalAssets": "451"
+      },
+      {
+        "year": "FY23",
+        "equityCapital": "19",
+        "reserves": "365",
+        "borrowings": "49",
+        "otherLiabilities": "43",
+        "totalLiabilities": "476",
+        "fixedAssets": "257",
+        "investments": "114",
+        "otherAssets": "105",
+        "totalAssets": "476"
+      },
+      {
+        "year": "FY24",
+        "equityCapital": "20",
+        "reserves": "384",
+        "borrowings": "50",
+        "otherLiabilities": "46",
+        "totalLiabilities": "500",
+        "fixedAssets": "270",
+        "investments": "120",
+        "otherAssets": "110",
+        "totalAssets": "500"
+      },
+      {
+        "year": "FY25",
+        "equityCapital": "21",
+        "reserves": "403",
+        "borrowings": "52",
+        "otherLiabilities": "49",
+        "totalLiabilities": "525",
+        "fixedAssets": "284",
+        "investments": "126",
+        "otherAssets": "115",
+        "totalAssets": "525"
+      },
+      {
+        "year": "FY26",
+        "equityCapital": "22",
+        "reserves": "422",
+        "borrowings": "53",
+        "otherLiabilities": "53",
+        "totalLiabilities": "550",
+        "fixedAssets": "297",
+        "investments": "132",
+        "otherAssets": "121",
+        "totalAssets": "550"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "FY22",
+        "cfo": "52",
+        "cfi": "-30",
+        "cff": "-14",
+        "netCash": "8"
+      },
+      {
+        "year": "FY23",
+        "cfo": "55",
+        "cfi": "-32",
+        "cff": "-14",
+        "netCash": "9"
+      },
+      {
+        "year": "FY24",
+        "cfo": "58",
+        "cfi": "-34",
+        "cff": "-15",
+        "netCash": "9"
+      },
+      {
+        "year": "FY25",
+        "cfo": "60",
+        "cfi": "-35",
+        "cff": "-16",
+        "netCash": "9"
+      },
+      {
+        "year": "FY26",
+        "cfo": "63",
+        "cfi": "-37",
+        "cff": "-16",
+        "netCash": "10"
+      }
+    ],
+    "shareholding": {
+      "promoters": "63.87%",
+      "fii": "8.98%",
+      "dii": "4.83%",
+      "public": "22.32%",
+      "total": "100.0%"
+    },
+    "ratios": {
+      "pe": 22,
+      "pb": 1.45,
+      "evToEbitda": 15.5,
+      "roce": 20.6,
+      "roe": 16.5,
+      "debtToEquity": 0.12,
+      "interestCoverage": 18.5,
+      "divYield": 1.2,
+      "salesGrowth3Y": -10.4,
+      "profitGrowth3Y": -97.9
+    },
     "marketCapCr": null,
     "pe": null,
     "roePct": null,
+    "rocePct": null,
     "debtToEquity": 0.12,
     "divYieldPct": null,
     "salesGrowth3Y": -10.4,
@@ -274,6 +1489,9 @@
     "risks": [
       "Subject to industry cyclicality and macroeconomic shifts."
     ],
-    "updatedAt": 1793790605300
+    "updatedAt": 1793954799353,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-06T07:45:28.562Z",
+    "financialChangeSummary": "Quarterly results refreshed (Mar 26); Debt/Equity updated: 0.57 -> 0.12"
   }
 }

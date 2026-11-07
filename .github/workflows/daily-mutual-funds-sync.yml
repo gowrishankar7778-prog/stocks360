@@ -1,0 +1,40 @@
+name: Daily Mutual Funds AMFI NAV Sync (9:15 PM IST)
+
+# Runs automatically at 9:15 PM IST every day (right after AMFI publishes daily NAVs at 9:00 PM IST)
+# 9:15 PM IST = 15:45 UTC (15:45 + 5:30 = 21:15 IST)
+on:
+  schedule:
+    - cron: '45 15 * * *'
+  workflow_dispatch: # Allows manual 1-click trigger anytime from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync-mutual-funds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch AMFI 9:00 PM Daily NAVs & Update Mutual Fund Schemes
+        run: |
+          node scripts/update-mutual-funds.js
+
+      - name: Commit & Push Updated Mutual Funds NAV Dataset
+        run: |
+          git config user.name "Stocks 360 AMFI NAV Bot"
+          git config user.email "bot@stocks360.local"
+          git add data/mutual-funds/top-mutual-funds.json
+          if git diff --staged --quiet; then
+            echo "No AMFI NAV changes detected today."
+          else
+            git commit -m "Auto-update daily AMFI Mutual Fund NAVs & holdings [9:15 PM IST]"
+            git push origin main
+          fi
