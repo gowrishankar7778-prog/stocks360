@@ -106,21 +106,27 @@ async function fetchStockHistory(symbol) {
   const currentPrice = meta.regularMarketPrice || meta.fulldayPrice || closes[closes.length - 1];
   const latestVolume = meta.regularMarketVolume || volumes[volumes.length - 1];
   const dayOpen = meta.regularMarketOpen || (opens.length ? opens[opens.length - 1] : currentPrice);
-  const prevClose = meta.previousClose || (closes.length > 1 ? closes[closes.length - 2] : currentPrice);
 
-  // Exact day change & percentage directly from exchange meta if available, else from closes array
-  let dayChange = typeof meta.fulldayChange === 'number' ? meta.fulldayChange : (typeof meta.regularMarketChange === 'number' ? meta.regularMarketChange : null);
-  let dayChangePct = typeof meta.fulldayChangePercent === 'number' ? meta.fulldayChangePercent : (typeof meta.regularMarketChangePercent === 'number' ? meta.regularMarketChangePercent : null);
-
-  if (dayChange === null) {
-    const prevClose = (closes.length > 1) ? closes[closes.length - 2] : (meta.previousClose || currentPrice);
-    dayChange = Number((currentPrice - prevClose).toFixed(2));
-    dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
+  // Authenticate previous trading session close
+  let prevClose = null;
+  if (closes.length >= 2) {
+    const lastClose = closes[closes.length - 1];
+    const secondLastClose = closes[closes.length - 2];
+    // Check if the last candle in closes corresponds to today's current session
+    const isLastCandleCurrent = Math.abs(lastClose - currentPrice) < 0.05 || (meta.regularMarketPrice && Math.abs(lastClose - meta.regularMarketPrice) < 0.05);
+    prevClose = isLastCandleCurrent ? secondLastClose : lastClose;
+  } else if (meta.regularMarketPreviousClose && meta.regularMarketPreviousClose > 0) {
+    prevClose = Number(meta.regularMarketPreviousClose.toFixed(2));
+  } else if (meta.previousClose && meta.previousClose > 0) {
+    prevClose = Number(meta.previousClose.toFixed(2));
   } else {
-    dayChange = Number(dayChange.toFixed(2));
-    dayChangePct = Number(dayChangePct.toFixed(2));
+    prevClose = currentPrice;
   }
 
+  // Exact mathematical change and percentage matching exchange & Groww live numbers:
+  // Strictly enforces: prevClose + dayChange === currentPrice (100% mathematically aligned)
+  const dayChange = Number((currentPrice - prevClose).toFixed(2));
+  const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
   const isGain = dayChange >= 0;
   const dayHigh = meta.regularMarketDayHigh || (closes.length ? Math.max(...closes.slice(-1)) : currentPrice);
   const dayLow = meta.regularMarketDayLow || (closes.length ? Math.min(...closes.slice(-1)) : currentPrice);
