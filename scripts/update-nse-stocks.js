@@ -82,14 +82,19 @@ async function fetchStockHistory(symbol) {
   const result = data.chart.result[0];
   const meta = result.meta || {};
   const quote = (result.indicators && result.indicators.quote && result.indicators.quote[0]) || {};
+  const timestamps = result.timestamp || [];
 
   const rawCloses = quote.close || [];
   const rawVolumes = quote.volume || [];
   const rawOpens = quote.open || [];
+  const rawHighs = quote.high || [];
+  const rawLows = quote.low || [];
 
   const closes = [];
   const volumes = [];
   const opens = [];
+  const highs = [];
+  const lows = [];
 
   for (let i = 0; i < rawCloses.length; i++) {
     if (rawCloses[i] !== null && rawCloses[i] !== undefined) {
@@ -97,6 +102,12 @@ async function fetchStockHistory(symbol) {
       volumes.push(rawVolumes[i] || 0);
       if (rawOpens[i] !== null && rawOpens[i] !== undefined) {
         opens.push(Number(rawOpens[i].toFixed(2)));
+      }
+      if (rawHighs[i] !== null && rawHighs[i] !== undefined) {
+        highs.push(Number(rawHighs[i].toFixed(2)));
+      }
+      if (rawLows[i] !== null && rawLows[i] !== undefined) {
+        lows.push(Number(rawLows[i].toFixed(2)));
       }
     }
   }
@@ -107,13 +118,22 @@ async function fetchStockHistory(symbol) {
   const latestVolume = meta.regularMarketVolume || volumes[volumes.length - 1];
   const dayOpen = meta.regularMarketOpen || (opens.length ? opens[opens.length - 1] : currentPrice);
 
+  // Authenticate whether the latest candle represents today's trading session via IST date comparison
+  let isLastCandleCurrent = false;
+  if (timestamps.length > 0) {
+    const lastCandleDate = new Date(timestamps[timestamps.length - 1] * 1000).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata' });
+    const marketTime = meta.regularMarketTime ? meta.regularMarketTime * 1000 : Date.now();
+    const marketDate = new Date(marketTime).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata' });
+    isLastCandleCurrent = (lastCandleDate === marketDate);
+  } else {
+    isLastCandleCurrent = closes.length >= 2 && Math.abs(closes[closes.length - 1] - currentPrice) < 0.05;
+  }
+
   // Authenticate previous trading session close
   let prevClose = null;
   if (closes.length >= 2) {
     const lastClose = closes[closes.length - 1];
     const secondLastClose = closes[closes.length - 2];
-    // Check if the last candle in closes corresponds to today's current session
-    const isLastCandleCurrent = Math.abs(lastClose - currentPrice) < 0.05 || (meta.regularMarketPrice && Math.abs(lastClose - meta.regularMarketPrice) < 0.05);
     prevClose = isLastCandleCurrent ? secondLastClose : lastClose;
   } else if (meta.regularMarketPreviousClose && meta.regularMarketPreviousClose > 0) {
     prevClose = Number(meta.regularMarketPreviousClose.toFixed(2));
@@ -128,8 +148,11 @@ async function fetchStockHistory(symbol) {
   const dayChange = Number((currentPrice - prevClose).toFixed(2));
   const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
   const isGain = dayChange >= 0;
-  const dayHigh = meta.regularMarketDayHigh || (closes.length ? Math.max(...closes.slice(-1)) : currentPrice);
-  const dayLow = meta.regularMarketDayLow || (closes.length ? Math.min(...closes.slice(-1)) : currentPrice);
+
+  const latestHigh = (highs.length && highs[highs.length - 1]) || currentPrice;
+  const latestLow = (lows.length && lows[lows.length - 1]) || currentPrice;
+  const dayHigh = meta.regularMarketDayHigh || latestHigh;
+  const dayLow = meta.regularMarketDayLow || latestLow;
   const high52 = meta.fiftyTwoWeekHigh || (closes.length ? Math.max(...closes) : currentPrice);
   const low52 = meta.fiftyTwoWeekLow || (closes.length ? Math.min(...closes) : currentPrice);
 
@@ -264,7 +287,63 @@ if (typeof window !== "undefined") {
   fs.writeFileSync(DATA_FILE_PATH, newFileContent, 'utf8');
   console.log(`\nSuccessfully updated ${updatedCount} stocks in js/screener-data.js with timestamp: "${lastUpdatedLabel}"!`);
 
-  // Sync to Firebase Firestore as a single document for real-time cloud access
+  // Automatically compile and write production lightweight index (screener-index.js)
+  try {
+    const INDEX_FILE_PATH = path.join(__dirname, '..', 'js', 'screener-index.js');
+    const compactIndex = stocks.map(s => ({
+      symbol: s.symbol,
+      name: s.name,
+      sector: s.sector || 'Equities',
+      cmp: s.cmp || 0,
+      dayChange: s.dayChange || 0,
+      dayChangePct: s.dayChangePct || 0,
+      isGain: s.isGain !== undefined ? s.isGain : (s.dayChange >= 0),
+      prevClose: s.prevClose || 0,
+      marketCapCr: s.marketCapCr || 0,
+      pe: s.pe || 0,
+      roePct: s.roePct || 0,
+      rocePct: s.rocePct || 0,
+      debtToEquity: s.debtToEquity !== undefined ? s.debtToEquity : 0,
+      divYieldPct: s.divYieldPct || 0,
+      dma50: s.dma50 || 0,
+      dma200: s.dma200 || 0,
+      goldenCross: !!s.goldenCross,
+      rsi14: s.rsi14 || 50,
+      volume: s.volume || 0,
+      avgVolume: s.avgVolume || 0,
+      volumeSurge: s.volumeSurge || 1.0,
+      salesGrowth3Y: s.salesGrowth3Y || 0,
+      profitGrowth3Y: s.profitGrowth3Y || 0,
+      dayOpen: s.dayOpen || 0,
+      dayHigh: s.dayHigh || 0,
+      dayLow: s.dayLow || 0,
+      high52: s.high52 || 0,
+      low52: s.low52 || 0,
+      lastUpdated: s.lastUpdated || lastUpdatedLabel
+    }));
+
+    const indexFileContent = `/**
+ * Stocks 360 - Ultra-Fast Lightweight Screener & Search Index (screener-index.js)
+ * Automatically synchronized on weekdays at 4:45 PM IST.
+ * Last Update: ${lastUpdatedLabel}
+ */
+
+${defsContent}
+
+const STOCKS_SCREENER_DATASET = ${JSON.stringify(compactIndex)};
+
+if (typeof window !== "undefined") {
+  window.SCREENER_METRIC_DEFINITIONS = SCREENER_METRIC_DEFINITIONS;
+  window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
+}
+`;
+    fs.writeFileSync(INDEX_FILE_PATH, indexFileContent, 'utf8');
+    console.log(`✓ Automatically rebuilt js/screener-index.js (${(Buffer.byteLength(indexFileContent) / 1024).toFixed(1)} KB) - production search index in sync!`);
+  } catch (idxErr) {
+    console.error('Error rebuilding lightweight index:', idxErr);
+  }
+
+  // Sync compact market summary to Firebase Firestore for real-time cloud access (< 1MB)
   try {
     const secretPath = path.join(__dirname, '..', 'js', 'firebase-secret.json');
     if (fs.existsSync(secretPath)) {
@@ -272,10 +351,16 @@ if (typeof window !== "undefined") {
       const apiKey = secret.apiKey || secret.geminiApiKey;
       const projectId = secret.projectId || 'project-b005dc8f-09b3-4af6-b2b';
       if (apiKey) {
+        const topStocks = stocks.slice(0, 50).map(s => ({
+          symbol: s.symbol,
+          cmp: s.cmp,
+          dayChangePct: s.dayChangePct,
+          isGain: s.isGain
+        }));
         const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/site_settings/stock_screener_data?key=${apiKey}`;
         const payload = JSON.stringify({
           fields: {
-            stocksJson: { stringValue: JSON.stringify(stocks) },
+            topStocksJson: { stringValue: JSON.stringify(topStocks) },
             count: { integerValue: String(stocks.length) },
             lastUpdated: { stringValue: lastUpdatedLabel },
             updatedAt: { integerValue: String(Date.now()) }
@@ -290,7 +375,7 @@ if (typeof window !== "undefined") {
           }
         }, (res) => {
           if (res.statusCode >= 200 && res.statusCode < 300) {
-            console.log('✓ Successfully synced single stock data document to Firebase Firestore (site_settings/stock_screener_data)!');
+            console.log('✓ Successfully synced market summary to Firebase Firestore!');
           }
         });
         req.on('error', () => {});

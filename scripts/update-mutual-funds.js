@@ -2504,12 +2504,24 @@ async function updateMutualFunds() {
   const usedCuratedCodes = new Set();
   const finalFunds = [];
 
-  // Helper to build holdings array for curated flagship schemes and AMFI schemes
+  // Dynamic current date in IST for fallback
+  const nowUtc = new Date();
+  const istDateObj = new Date(nowUtc.getTime() + (nowUtc.getTimezoneOffset() * 60000) + (5.5 * 3600000));
+  const dayStr = String(istDateObj.getDate()).padStart(2, '0');
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const todayNavDateFallback = `${dayStr}-${monthNames[istDateObj.getMonth()]}-${istDateObj.getFullYear()}`;
+
+  // Helper to build holdings array with strict normalization to target asset allocation
   function buildCuratedHoldings(basketType, idx) {
     const rawBasket = PORTFOLIO_BASKETS[basketType] || PORTFOLIO_BASKETS.FLEXI;
-    return rawBasket.map((h, hIdx) => {
+    const alloc = getAssetAllocationForBasket(basketType);
+    const targetWeight = (alloc && alloc.assetClass && alloc.assetClass.includes('Debt'))
+      ? (alloc.debtPct || 100)
+      : (alloc && alloc.equityPct ? alloc.equityPct : 96.5);
+
+    const adjusted = rawBasket.map((h, hIdx) => {
       const weightDelta = (((idx + hIdx) % 5) - 2) * 0.08;
-      const w = Number(Math.max(0.15, h.weightPct + weightDelta).toFixed(2));
+      const w = Math.max(0.15, h.weightPct + weightDelta);
       return {
         rank: hIdx + 1,
         symbol: h.symbol || '',
@@ -2520,7 +2532,16 @@ async function updateMutualFunds() {
         monthlyChange: h.monthlyChange,
         changeStatus: h.changeStatus
       };
-    }).sort((a, b) => b.weightPct - a.weightPct).map((h, sIdx) => ({ ...h, rank: sIdx + 1 }));
+    });
+
+    const sumW = adjusted.reduce((acc, h) => acc + h.weightPct, 0);
+    if (sumW > 0) {
+      adjusted.forEach(h => {
+        h.weightPct = Number(((h.weightPct / sumW) * targetWeight).toFixed(2));
+      });
+    }
+
+    return adjusted.sort((a, b) => b.weightPct - a.weightPct).map((h, sIdx) => ({ ...h, rank: sIdx + 1 }));
   }
 
   // First, process all AMFI core schemes (keeping active 2025/2026 schemes + any AMC whose only schemes are older so all 56 AMCs are represented)
@@ -2591,7 +2612,7 @@ async function updateMutualFunds() {
         fundHouse: entry.fundHouse || cleanCurated.fundHouse,
         amcShort: cleanCurated.amcShort || getAmcShortName(entry.fundHouse),
         nav: exactPlan ? exactPlan.nav : matchedCurated.defaultNav,
-        navDate: exactPlan ? exactPlan.date : '06-Nov-2026',
+        navDate: exactPlan ? exactPlan.date : todayNavDateFallback,
         basketType: matchedCurated.basketType || 'FLEXI',
         assetAllocation: getAssetAllocationForBasket(matchedCurated.basketType || 'FLEXI'),
         holdings: buildCuratedHoldings(matchedCurated.basketType || 'FLEXI', schemeIdx),
@@ -2604,6 +2625,7 @@ async function updateMutualFunds() {
       const amcShort = getAmcShortName(entry.fundHouse);
       const displayPlanSuffix = primaryPlan && primaryPlan.plan ? ` - ${primaryPlan.plan}` : ' - Direct Plan - Growth';
 
+      // Non-curated schemes reference prof.basketType and assetAllocation directly without embedding 50 duplicate holding objects
       finalFunds.push({
         schemeCode: primaryPlan.code,
         name: `${entry.baseName}${displayPlanSuffix}`,
@@ -2623,7 +2645,7 @@ async function updateMutualFunds() {
         minSip: 500,
         minLumpsum: 1000,
         nav: primaryPlan.nav,
-        navDate: primaryPlan.date || '06-Nov-2026',
+        navDate: primaryPlan.date || todayNavDateFallback,
         return1Y: prof.return1Y,
         return3Y: prof.return3Y,
         return5Y: prof.return5Y,
@@ -2633,7 +2655,6 @@ async function updateMutualFunds() {
         objective: `To generate optimal capital appreciation and risk-adjusted returns in line with the ${category} mandate.`,
         basketType: prof.basketType,
         assetAllocation: getAssetAllocationForBasket(prof.basketType),
-        holdings: buildCuratedHoldings(prof.basketType, schemeIdx),
         plans: cleanPlans
       });
     }
@@ -2646,7 +2667,7 @@ async function updateMutualFunds() {
     const lookupCode = item.amfiCodeOverride || item.schemeCode;
     const live = navMap[lookupCode];
     const nav = live && live.nav ? live.nav : item.defaultNav;
-    const navDate = live && live.date ? live.date : '06-Nov-2026';
+    const navDate = live && live.date ? live.date : todayNavDateFallback;
     const { defaultNav, amfiCodeOverride, ...cleanItem } = item;
     const normalizedHouse = normalizeAmcTitle(cleanItem.fundHouse);
     finalFunds.unshift({
@@ -2695,15 +2716,19 @@ async function updateMutualFunds() {
 if (process.argv.includes('--schedule')) {
   console.log('>>> Starting Stocks 360 Daily 9:15 PM IST AMFI Mutual Fund Scheduler...');
   updateMutualFunds();
+  let lastRunDateStr = '';
   setInterval(() => {
     // Convert current time to IST (UTC + 5:30)
     const now = new Date();
     const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
     const istDate = new Date(utcMs + (5.5 * 3600000));
-    if (istDate.getHours() === 21 && istDate.getMinutes() === 15) {
+    const todayStr = istDate.toISOString().slice(0, 10);
+    if (istDate.getHours() >= 21 && istDate.getMinutes() >= 15 && lastRunDateStr !== todayStr) {
+      lastRunDateStr = todayStr;
+      console.log(`>>> [Scheduler Trigger] Running 9:15 PM IST Daily AMFI Sync for ${todayStr}...`);
       updateMutualFunds().catch(err => console.error('Scheduled AMFI sync error:', err));
     }
-  }, 60 * 1000);
+  }, 30 * 1000);
 } else {
   updateMutualFunds().then(() => {
     console.log('Mutual Funds Synchronizer Complete!');
