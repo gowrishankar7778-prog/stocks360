@@ -1546,20 +1546,15 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- LIVE INTRADAY CHART (TRADINGVIEW) -->
-        <section id="sec-live-chart" style="margin-bottom:28px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+        <!-- TRADINGVIEW CHART LINKS -->
+        <section id="sec-live-chart" style="margin-bottom:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px;">
+            <h3 style="font-size:1.2rem; color:#0f172a; margin:0; font-weight:700;">TradingView Chart</h3>
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-              <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">TradingView Chart</h3>
-              <span id="tv-chart-symbol-label" style="font-size:0.8rem; font-weight:600; color:#2563eb; background:#eff6ff; border:1px solid #bfdbfe; padding:3px 10px; border-radius:999px;">
-                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`}
-              </span>
+              ${stock.exchanges !== 'BSE' ? `<a id="tv-btn-open-nse" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent('NSE:' + stock.symbol)}" target="_blank" rel="noopener noreferrer" style="padding:8px 14px; font-size:0.85rem; font-weight:700; color:#ffffff; background:#2563eb; border:1px solid #2563eb; border-radius:7px; text-decoration:none;">See TradingView Chart in NSE</a>` : ''}
+              <a id="tv-btn-open-bse" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent('BSE:' + (stock.bseCode || stock.symbol))}" target="_blank" rel="noopener noreferrer" style="padding:8px 14px; font-size:0.85rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:7px; text-decoration:none;${stock.exchanges === 'BSE' || stock.bseCode ? '' : ' display:none;'}">See TradingView Chart in BSE</a>
             </div>
-            <a id="tv-open-external-link" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent(stock.exchanges === 'BSE' ? `BSE:${stock.bseCode || stock.symbol}` : `NSE:${stock.symbol}`)}" target="_blank" rel="noopener noreferrer" style="padding:6px 12px; font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; text-decoration:none;">
-              Open in TradingView
-            </a>
           </div>
-          <div id="tv-live-chart-container" style="height:460px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
         </section>
 
         <!-- SECTION 2: FUNDAMENTALS -->
@@ -1977,54 +1972,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnBse.style.color = active ? "#ffffff" : "#334155";
         btnBse.style.borderColor = active ? "#2563eb" : "#cbd5e1";
       }
-      renderTradingViewChart(exch);
     }
-
-    function renderTradingViewChart(exch) {
-      const container = document.getElementById("tv-live-chart-container");
-      const labelEl = document.getElementById("tv-chart-symbol-label");
-      const extLinkEl = document.getElementById("tv-open-external-link");
-      if (!container) return;
-      const bseSym = (bseQuoteSnapshot && bseQuoteSnapshot.bseSymbol) || stock.bseCode || stock.symbol;
-      const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
-      if (labelEl) {
-        labelEl.textContent = tvSymbol;
-      }
-      if (extLinkEl) {
-        extLinkEl.setAttribute("href", `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(tvSymbol)}`);
-      }
-      container.innerHTML = "";
-      const widgetWrap = document.createElement("div");
-      widgetWrap.className = "tradingview-widget-container";
-      widgetWrap.style.height = "100%";
-      widgetWrap.style.width = "100%";
-      const widgetDiv = document.createElement("div");
-      widgetDiv.className = "tradingview-widget-container__widget";
-      widgetDiv.style.height = "100%";
-      widgetDiv.style.width = "100%";
-      widgetWrap.appendChild(widgetDiv);
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-      script.async = true;
-      script.textContent = JSON.stringify({
-        autosize: true,
-        symbol: tvSymbol,
-        interval: "D",
-        timezone: "Asia/Kolkata",
-        theme: "light",
-        style: "1",
-        locale: "en",
-        allow_symbol_change: false,
-        calendar: false,
-        studies: ["MASimple@tv-basicstudies", "RSI@tv-basicstudies"],
-        support_host: "https://www.tradingview.com"
-      });
-      widgetWrap.appendChild(script);
-      container.appendChild(widgetWrap);
-    }
-
-    renderTradingViewChart(stock.exchanges === "BSE" ? "BSE" : "NSE");
 
     const btnNseInit = document.getElementById("btn-exchange-nse");
     const btnBseInit = document.getElementById("btn-exchange-bse");
@@ -2055,6 +2003,12 @@ document.addEventListener("DOMContentLoaded", function () {
           btnBse.style.opacity = "1";
           btnBse.textContent = `BSE (${bse.bseCode})`;
         }
+        const tvBseBtn = document.getElementById("tv-btn-open-bse");
+        if (tvBseBtn) {
+          const bseSym = bse.bseSymbol || bse.bseCode || stock.bseCode || stock.symbol;
+          tvBseBtn.setAttribute("href", `https://www.tradingview.com/chart/?symbol=${encodeURIComponent("BSE:" + bseSym)}`);
+          tvBseBtn.style.display = "inline-block";
+        }
         if (stock.exchanges === "BSE") {
           applyExchangeQuote("BSE");
         }
@@ -2064,6 +2018,8 @@ document.addEventListener("DOMContentLoaded", function () {
         btnBse.style.cursor = "not-allowed";
         btnBse.style.opacity = "0.5";
         btnBse.textContent = "BSE (N/A)";
+        const tvBseBtn = document.getElementById("tv-btn-open-bse");
+        if (tvBseBtn) tvBseBtn.style.display = "none";
       }
     });
 
