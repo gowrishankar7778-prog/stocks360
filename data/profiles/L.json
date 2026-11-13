@@ -343,39 +343,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "7,168",
-        "expenses": "5,639",
-        "operatingProfit": "1,529",
-        "opm": "21.3%",
-        "netProfit": "1,176",
-        "eps": "₹12.3"
+        "sales": "4,601",
+        "expenses": "3,733",
+        "operatingProfit": "868",
+        "opm": "18.9%",
+        "netProfit": "717",
+        "eps": "₹15.71"
       },
       {
         "period": "Mar 26",
-        "sales": "7,475",
-        "expenses": "5,577",
-        "operatingProfit": "1,898",
-        "opm": "25.4%",
-        "netProfit": "1,460",
-        "eps": "₹15.3"
+        "sales": "5,323",
+        "expenses": "2,721",
+        "operatingProfit": "2,602",
+        "opm": "48.9%",
+        "netProfit": "2,164",
+        "eps": "₹47.35"
       },
       {
         "period": "Jun 26",
-        "sales": "8,277",
-        "expenses": "6,437",
-        "operatingProfit": "1,840",
-        "opm": "22.2%",
-        "netProfit": "1,415",
-        "eps": "₹14.8"
+        "sales": "7,274",
+        "expenses": "3,664",
+        "operatingProfit": "3,610",
+        "opm": "49.6%",
+        "netProfit": "2,715",
+        "eps": "₹59.37"
       },
       {
-        "period": "Sept 26",
-        "sales": "7,827",
-        "expenses": "6,325",
-        "operatingProfit": "1,502",
-        "opm": "19.2%",
-        "netProfit": "1,155",
-        "eps": "₹12.1"
+        "period": "Sep 26",
+        "sales": "3,663",
+        "expenses": "3,659",
+        "operatingProfit": "4",
+        "opm": "0.1%",
+        "netProfit": "-6",
+        "eps": "₹-0.13"
       }
     ],
     "balanceSheet": [
@@ -438,6 +438,18 @@
         "investments": "7,688",
         "otherAssets": "6,078",
         "totalAssets": "27,808"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "91",
+        "reserves": "32,027",
+        "borrowings": "466",
+        "otherLiabilities": "5,629",
+        "totalLiabilities": "38,213",
+        "fixedAssets": "3,683",
+        "investments": "14,971",
+        "otherAssets": "19,559",
+        "totalAssets": "38,213"
       }
     ],
     "cashFlows": [
@@ -475,10 +487,17 @@
         "cfi": "-2,423",
         "cff": "-1,769",
         "netCash": "591"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,617",
+        "cfi": "-1,513",
+        "cff": "-1,050",
+        "netCashFlow": "54"
       }
     ],
     "shareholding": {
-      "promoters": "47.02%",
+      "promoters": "46.84%",
       "fii": "22.97%",
       "dii": "12.37%",
       "public": "17.64%",
@@ -524,7 +543,7 @@
       "evToEbitda": 15,
       "roce": 29.9,
       "roe": 23.9,
-      "debtToEquity": 0.26,
+      "debtToEquity": 0.01,
       "interestCoverage": 42.5,
       "divYield": 0.4,
       "salesGrowth3Y": 18.9,
@@ -534,7 +553,7 @@
     "pe": 36.9,
     "roePct": 23.9,
     "rocePct": 29.9,
-    "debtToEquity": 0.26,
+    "debtToEquity": 0.01,
     "divYieldPct": 0.4,
     "salesGrowth3Y": 18.9,
     "profitGrowth3Y": 131.5,
@@ -558,9 +577,10 @@
     ],
     "updatedAt": 1794038125805,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:43.450Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 25.4% -> 19.1%; Quarterly results refreshed (Sept 26); ROE updated: 14.5% -> 23.9%",
-    "cmp": 2008.6
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:07.511Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2008.6,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752379_04112026013259_WEB.xml"
   },
   "LT": {
     "about": "Larsen & Toubro Limited engages in engineering, procurement, and construction projects (EPC) in India and internationally. The company operates through four segments: Infrastructure Projects, Energy Projects, Hi-Tech Manufacturing, and Others. The Infrastructure Projects segment is involved in the engineering and construction of building and factories, transportation infrastructure, heavy civil infrastructure, power transmission & distribution, renewables, water and effluent treatment, and minerals and metals. The Energy Projects segment provides EPC solutions in clean energy space, oil & gas, refineries, petrochemicals & offshore wind energy sectors, from front-end design through detailed engineering, modular fabrication, procurement, project management, construction, installation and commissioning; CarbonLite solutions for power generation plants including power generation equipment with associated systems; and carbon capture utilization and utility packages. The Hi-Tech Manufacturing segment designs, manufactures/constructs, supplies, and revamps/retrofits custom designed engineered critical equipment and systems for the process plants, nuclear energy, and green hydrogen sectors; marine and land platforms, related equipment and systems, and aerospace products and systems; precision and electronics products and systems; and electrolysers. The other segment engages in realty; smart infrastructure and communication projects; construction equipment; and industrial product design development, including marketing and servicing of construction equipment, mining machinery and parts thereof, manufacture and sale of rubber processing machinery, and ecommerce/digital platforms and data centers. It has a strategic partnership with General Atomics Aeronautical Systems, Inc. to manufacture Medium Altitude Long Endurance (MALE) Remotely Piloted Aircraft Systems (RPAS) in India, for the Indian armed forces. The company was founded in 1938 and is headquartered in Mumbai, India.",

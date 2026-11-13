@@ -388,39 +388,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "29,300",
-        "expenses": "14,587",
-        "operatingProfit": "14,713",
-        "opm": "50.2%",
+        "sales": "49,334",
+        "expenses": "34,534",
+        "operatingProfit": "14,800",
+        "opm": "30.0%",
         "netProfit": "11,318",
-        "eps": "₹14.7"
+        "eps": "₹15.84"
       },
       {
         "period": "Mar 26",
-        "sales": "30,288",
-        "expenses": "12,475",
-        "operatingProfit": "17,813",
-        "opm": "58.8%",
+        "sales": "50,584",
+        "expenses": "32,481",
+        "operatingProfit": "18,103",
+        "opm": "35.8%",
         "netProfit": "13,702",
-        "eps": "₹17.8"
+        "eps": "₹19.15"
       },
       {
         "period": "Jun 26",
-        "sales": "32,960",
-        "expenses": "13,713",
-        "operatingProfit": "19,247",
-        "opm": "58.4%",
+        "sales": "54,247",
+        "expenses": "35,121",
+        "operatingProfit": "19,126",
+        "opm": "35.3%",
         "netProfit": "14,805",
-        "eps": "₹19.3"
+        "eps": "₹20.65"
       },
       {
-        "period": "Sept 26",
-        "sales": "33,386",
-        "expenses": "14,090",
-        "operatingProfit": "19,296",
-        "opm": "57.8%",
+        "period": "Sep 26",
+        "sales": "57,157",
+        "expenses": "37,432",
+        "operatingProfit": "19,725",
+        "opm": "34.5%",
         "netProfit": "14,843",
-        "eps": "₹19.3"
+        "eps": "₹20.68"
       }
     ],
     "balanceSheet": [
@@ -483,6 +483,18 @@
         "investments": "1,07,593",
         "otherAssets": "79,849",
         "totalAssets": "3,67,562"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "27,25,287",
+        "totalLiabilities": "27,25,287",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "27,25,287",
+        "totalAssets": "27,25,287"
       }
     ],
     "cashFlows": [
@@ -520,10 +532,17 @@
         "cfi": "-18,514",
         "cff": "-14,859",
         "netCash": "4,665"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-2,408",
+        "cfi": "-55,125",
+        "cff": "71,473",
+        "netCashFlow": "13,940"
       }
     ],
     "shareholding": {
-      "promoters": "3.55%",
+      "promoters": "0%",
       "fii": "38.37%",
       "dii": "20.66%",
       "public": "37.42%",
@@ -599,9 +618,10 @@
     ],
     "updatedAt": 1794038125775,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:14.851Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 18.5% -> 16.5%",
-    "cmp": 1424.1
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:50.622Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1424.1,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740886_17102026052751_WEB.xml"
   },
   "IDBI": {
     "about": "IDBI Bank Limited provides banking and financial solutions to retail and corporate customers in India. It operates through four segments: Corporate/Wholesale Banking, Retail Banking, Treasury Operations, and Other banking operations. The company offers savings, current, and salary accounts, as well as fixed deposits; home, auto, education, mortgage, and personal loans, as well as loans against properties and securities; debit, credit, and prepaid cards; mobile and internet banking; and investment advisory and capital market services. It also provides fund and non-fund-based assistance; packing credit to exporters; receivable buyout with recourse; channel financing for dealers of corporates; scheme for financing automated teller machines/cash dispense vendors; technology upgrading fund scheme for textile and jute industries; and lending to non-banking finance companies/housing finance companies and commercial real estate sector. In addition, the company offers bank guarantees, letters of credit, documentary collection, and bill discounting services; cash management, trade finance, and remittance services; and tax payment, debt syndication and advisory services. Further, it provides finance to micro, small, and medium enterprises; agriculture finance; products and services for non-resident Indians; treasury services, such as call money/ notice money / term money, commercial papers, certificate of deposit, government securities, treasury bills, corporate bonds, and equities; and foreign currency services comprising remittances, currency forward contracts, LTFX, FX-retail, currency options, swaps, FRA, currency exchange, and exchange traded derivative contracts. The company was formerly known as IDBI Ltd. and changed its name to IDBI Bank Limited in May 2008. IDBI Bank Limited was founded in 1964 and is headquartered in Mumbai, India.",
@@ -678,39 +698,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,803",
-        "expenses": "1,863",
-        "operatingProfit": "1,940",
-        "opm": "51%",
-        "netProfit": "867",
-        "eps": "₹1.3"
+        "sales": "8,282",
+        "expenses": "5,823",
+        "operatingProfit": "2,459",
+        "opm": "29.7%",
+        "netProfit": "1,935",
+        "eps": "₹1.8"
       },
       {
         "period": "Mar 26",
-        "sales": "3,861",
-        "expenses": "1,876",
-        "operatingProfit": "1,985",
-        "opm": "51.4%",
-        "netProfit": "887",
-        "eps": "₹1.3"
+        "sales": "9,409",
+        "expenses": "6,651",
+        "operatingProfit": "2,758",
+        "opm": "29.3%",
+        "netProfit": "1,943",
+        "eps": "₹1.81"
       },
       {
         "period": "Jun 26",
-        "sales": "4,083",
-        "expenses": "1,968",
-        "operatingProfit": "2,115",
-        "opm": "51.8%",
-        "netProfit": "945",
-        "eps": "₹1.4"
+        "sales": "8,573",
+        "expenses": "5,768",
+        "operatingProfit": "2,805",
+        "opm": "32.7%",
+        "netProfit": "2,115",
+        "eps": "₹1.97"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,188",
-        "expenses": "2,002",
-        "operatingProfit": "2,186",
-        "opm": "52.2%",
-        "netProfit": "977",
-        "eps": "₹1.4"
+        "period": "Sep 26",
+        "sales": "9,865",
+        "expenses": "6,981",
+        "operatingProfit": "2,884",
+        "opm": "29.2%",
+        "netProfit": "2,205",
+        "eps": "₹2.05"
       }
     ],
     "balanceSheet": [
@@ -773,6 +793,18 @@
         "investments": "10,899",
         "otherAssets": "8,815",
         "totalAssets": "40,234"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "4,81,957",
+        "totalLiabilities": "4,81,957",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "4,81,957",
+        "totalAssets": "4,81,957"
       }
     ],
     "cashFlows": [
@@ -810,10 +842,17 @@
         "cfi": "-4,019",
         "cff": "-2,838",
         "netCash": "971"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "5,031",
+        "cfi": "-175",
+        "cff": "-42",
+        "netCashFlow": "4,814"
       }
     ],
     "shareholding": {
-      "promoters": "42.10%",
+      "promoters": "94.71%",
       "fii": "29.84%",
       "dii": "16.06%",
       "public": "12.00%",
@@ -889,9 +928,10 @@
     ],
     "updatedAt": 1794038125779,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:15.930Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 21); ROE updated: 13.5% -> 11.8%",
-    "cmp": 79.29
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.790Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 79.29,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740932_17102026060327_WEB.xml"
   },
   "IDFCFIRSTB": {
     "about": "IDFC First Bank Limited provides various banking and financial services in India. It operates through the Treasury, Corporate and Wholesale Banking, Retail Banking, and Other Banking Business segments. The company offers treasury and forex solutions, including correspondent banking, FX, cross-border swift, government bonds and strips, liberalized remittance scheme, and external commercial borrowing solutions, as well as treasury solutions comprising forwards, options, and swaps. It also provides retail lending solutions, such as home loans, vehicle loans, consumer loans, education loans, personal loans, used car loans, gold loans, rural finance, and tractor finance; SME lending solutions that consist of loan against property, business banking, working capital loans, commercial vehicle loans, micro enterprise loans, trade advance, and startup banking; CASA and fixed deposits, which include current accounts, savings accounts, fixed deposits, nostro/vostro accounts, overdrafts, corporate salary accounts, accounts for ONDC, and escrow account; and NRI Banking that comprises NRE accounts, NRO accounts, seafarer accounts, FCNR deposits, and NRE/NRO deposits. In addition, the company offers wealth management and distribution solutions, including distribution of life insurance, general insurance, credit shield, health insurance, mutual funds, and AIFs; credit cards; and FASTag, such as tag issuer, toll acquirer, toll, parking, and fuel solutions. Further, it provides trade finance solutions that consist of letters of credit and discounting, bank guarantee, buyer's credit/SBLC, parking credit in foreign currency and INR, remittances, and pre and post shipment finance; supply chain financing; and transaction banking and CMS solutions. The company was formerly known as IDFC Bank Limited and changed its name to IDFC First Bank Limited in January 2019. IDFC First Bank Limited was founded in 1997 and is based in Mumbai, India.",
@@ -968,39 +1008,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "7,617",
-        "expenses": "6,963",
-        "operatingProfit": "654",
-        "opm": "8.6%",
+        "sales": "12,542",
+        "expenses": "11,907",
+        "operatingProfit": "635",
+        "opm": "5.1%",
         "netProfit": "503",
-        "eps": "₹0.7"
+        "eps": "₹0.57"
       },
       {
         "period": "Mar 26",
-        "sales": "7,581",
-        "expenses": "7,166",
-        "operatingProfit": "415",
-        "opm": "5.5%",
+        "sales": "12,183",
+        "expenses": "11,994",
+        "operatingProfit": "189",
+        "opm": "1.6%",
         "netProfit": "319",
-        "eps": "₹0.4"
+        "eps": "₹0.37"
       },
       {
         "period": "Jun 26",
-        "sales": "8,282",
-        "expenses": "6,884",
-        "operatingProfit": "1,398",
-        "opm": "16.9%",
+        "sales": "13,361",
+        "expenses": "11,952",
+        "operatingProfit": "1,409",
+        "opm": "10.5%",
         "netProfit": "1,075",
-        "eps": "₹1.5"
+        "eps": "₹1.25"
       },
       {
-        "period": "Sept 26",
-        "sales": "8,480",
-        "expenses": "7,121",
-        "operatingProfit": "1,359",
-        "opm": "16%",
+        "period": "Sep 26",
+        "sales": "14,218",
+        "expenses": "12,816",
+        "operatingProfit": "1,402",
+        "opm": "9.9%",
         "netProfit": "1,045",
-        "eps": "₹1.4"
+        "eps": "₹1.21"
       }
     ],
     "balanceSheet": [
@@ -1063,6 +1103,18 @@
         "investments": "6,080",
         "otherAssets": "7,938",
         "totalAssets": "33,082"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "4,70,548",
+        "totalLiabilities": "4,70,548",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "4,70,548",
+        "totalAssets": "4,70,548"
       }
     ],
     "cashFlows": [
@@ -1100,10 +1152,17 @@
         "cfi": "-3,146",
         "cff": "-1,310",
         "netCash": "772"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-5,358",
+        "cfi": "-9,552",
+        "cff": "17,193",
+        "netCashFlow": "2,283"
       }
     ],
     "shareholding": {
-      "promoters": "12.86%",
+      "promoters": "0%",
       "fii": "29.61%",
       "dii": "15.94%",
       "public": "41.59%",
@@ -1179,9 +1238,10 @@
     ],
     "updatedAt": 1794038125779,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:15.970Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 10.2% -> 6.3%",
-    "cmp": 74.73
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.823Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 74.73,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1745436_24102026063930_WEB.xml"
   },
   "INDUSINDBK": {
     "about": "IndusInd Bank Limited provides various banking products and financial services to individuals, corporations, government entities, and public sector undertakings in India. It operates in four segments: Treasury, Corporate/Wholesale Banking, Retail Banking, and Other Banking Operations. The company offers savings, salary, current, and uniformed personnel accounts; fixed, recurring, auto sweep, senior citizen fixed, and term deposits; vehicle, used and new car, two wheeler, home, gold, agri, personal, medical equipment, term, business, and MSME loans; loans against property and securities; loans on credit card; and working capital, supply chain, and trade finance. It also provides debit, credit, prepaid, forex, duo, corporate, and business cards; life, health, and general insurance; foreign exchange services, including inward and outward remittances, and online forex portals; digital and WhatsApp banking; and national pension system, sovereign gold bonds, and government securities. In addition, the company offers mutual funds; bill payment; money transfer; NRI services; merchant solutions comprising POS terminal, payment gateway, digital rupee, and soundbox; transaction banking services, including trade finance, cash management, and tax payment; supply chain finance solutions, including supplier/vendor finance, channel finance, and receivable finance/factoring solutions; investment banking services consisting of debt syndication, debt and private equity fund-raising advisory, and M&A advisory; and inclusive banking. IndusInd Bank Limited was incorporated in 1994 and is headquartered in Mumbai, India.",
@@ -1258,39 +1318,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "6,268",
-        "expenses": "6,102",
-        "operatingProfit": "166",
-        "opm": "2.6%",
-        "netProfit": "128",
-        "eps": "₹5.1"
+        "sales": "13,079",
+        "expenses": "12,861",
+        "operatingProfit": "218",
+        "opm": "1.7%",
+        "netProfit": "161",
+        "eps": "₹2.07"
       },
       {
         "period": "Mar 26",
-        "sales": "6,078",
-        "expenses": "5,385",
-        "operatingProfit": "693",
-        "opm": "11.4%",
+        "sales": "12,712",
+        "expenses": "11,981",
+        "operatingProfit": "731",
+        "opm": "5.8%",
         "netProfit": "533",
-        "eps": "₹21.1"
+        "eps": "₹6.84"
       },
       {
         "period": "Jun 26",
-        "sales": "6,471",
-        "expenses": "5,167",
-        "operatingProfit": "1,304",
-        "opm": "20.2%",
+        "sales": "13,095",
+        "expenses": "11,752",
+        "operatingProfit": "1,343",
+        "opm": "10.3%",
         "netProfit": "1,003",
-        "eps": "₹39.7"
+        "eps": "₹12.87"
       },
       {
-        "period": "Sept 26",
-        "sales": "6,817",
-        "expenses": "5,288",
-        "operatingProfit": "1,529",
-        "opm": "22.4%",
+        "period": "Sep 26",
+        "sales": "14,043",
+        "expenses": "12,481",
+        "operatingProfit": "1,562",
+        "opm": "11.1%",
         "netProfit": "1,176",
-        "eps": "₹46.5"
+        "eps": "₹15.1"
       }
     ],
     "balanceSheet": [
@@ -1353,6 +1413,18 @@
         "investments": "4,489",
         "otherAssets": "3,252",
         "totalAssets": "18,986"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "5,79,942",
+        "totalLiabilities": "5,79,942",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "5,79,942",
+        "totalAssets": "5,79,942"
       }
     ],
     "cashFlows": [
@@ -1390,10 +1462,17 @@
         "cfi": "-4,336",
         "cff": "-2,215",
         "netCash": "409"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "3,362",
+        "cfi": "-264",
+        "cff": "10,877",
+        "netCashFlow": "13,975"
       }
     ],
     "shareholding": {
-      "promoters": "16.34%",
+      "promoters": "15.82%",
       "fii": "35.65%",
       "dii": "19.19%",
       "public": "28.82%",
@@ -1469,9 +1548,10 @@
     ],
     "updatedAt": 1794038125782,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:16.801Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14.8% -> 4.5%",
-    "cmp": 865.15
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.769Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 865.15,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1744879_23102026062344_WEB.xml"
   },
   "IRFC": {
     "about": "Indian Railway Finance Corporation Limited engages in leasing of rolling stock and railway infrastructure assets in India. The company also engages in lending business to other entities under the Ministry of Railways; and borrowing funds from commercial markets, financial markets to finance the acquisition/creation of assets that are leased out to the Indian Railways. Indian Railway Finance Corporation Limited was incorporated in 1986 and is based in New Delhi, India.",
@@ -1548,39 +1628,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,761",
-        "expenses": "55",
-        "operatingProfit": "1,706",
-        "opm": "96.9%",
-        "netProfit": "1,673",
-        "eps": "₹0.6"
+        "sales": "6,719",
+        "expenses": "4,917",
+        "operatingProfit": "1,802",
+        "opm": "26.8%",
+        "netProfit": "1,802",
+        "eps": "₹1.38"
       },
       {
         "period": "Mar 26",
-        "sales": "1,855",
-        "expenses": "50",
-        "operatingProfit": "1,805",
-        "opm": "97.3%",
-        "netProfit": "1,769",
-        "eps": "₹0.6"
+        "sales": "7,329",
+        "expenses": "5,645",
+        "operatingProfit": "1,684",
+        "opm": "23.0%",
+        "netProfit": "1,684",
+        "eps": "₹1.29"
       },
       {
         "period": "Jun 26",
-        "sales": "1,901",
-        "expenses": "44",
-        "operatingProfit": "1,857",
-        "opm": "97.7%",
-        "netProfit": "1,821",
-        "eps": "₹0.6"
+        "sales": "8,391",
+        "expenses": "6,464",
+        "operatingProfit": "1,927",
+        "opm": "23.0%",
+        "netProfit": "1,927",
+        "eps": "₹1.47"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,943",
-        "expenses": "37",
-        "operatingProfit": "1,906",
-        "opm": "98.1%",
-        "netProfit": "1,869",
-        "eps": "₹0.6"
+        "period": "Sep 26",
+        "sales": "7,924",
+        "expenses": "5,966",
+        "operatingProfit": "1,958",
+        "opm": "24.7%",
+        "netProfit": "1,958",
+        "eps": "₹1.5"
       }
     ],
     "balanceSheet": [
@@ -1643,6 +1723,18 @@
         "investments": "20,170",
         "otherAssets": "7,781",
         "totalAssets": "72,221"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "13,069",
+        "reserves": "47,505",
+        "borrowings": "0",
+        "otherLiabilities": "4,67,403",
+        "totalLiabilities": "5,27,977",
+        "fixedAssets": "17",
+        "investments": "0",
+        "otherAssets": "5,27,960",
+        "totalAssets": "5,27,977"
       }
     ],
     "cashFlows": [
@@ -1680,10 +1772,17 @@
         "cfi": "-4,444",
         "cff": "-2,550",
         "netCash": "-164"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "37,212",
+        "cfi": "-1",
+        "cff": "-7,477",
+        "netCashFlow": "29,734"
       }
     ],
     "shareholding": {
-      "promoters": "82.90%",
+      "promoters": "82.9%",
       "fii": "3.17%",
       "dii": "1.70%",
       "public": "12.23%",
@@ -1729,7 +1828,7 @@
       "evToEbitda": 25.7,
       "roce": 15.8,
       "roe": 12.6,
-      "debtToEquity": 7.15,
+      "debtToEquity": 0,
       "interestCoverage": 49.2,
       "divYield": 0.96,
       "salesGrowth3Y": 10.1,
@@ -1739,7 +1838,7 @@
     "pe": 32,
     "roePct": 12.6,
     "rocePct": 15.8,
-    "debtToEquity": 7.15,
+    "debtToEquity": 0,
     "divYieldPct": 0.96,
     "salesGrowth3Y": 10.1,
     "profitGrowth3Y": 10.2,
@@ -1759,9 +1858,10 @@
     ],
     "updatedAt": 1794038125783,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.108Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 23); ROE updated: 14.6% -> 12.6%; Debt/Equity updated: 8.5 -> 7.15",
-    "cmp": 77.84
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.074Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 77.84,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739103_15102026052734_WEB.xml"
   },
   "IREDA": {
     "about": "Indian Renewable Energy Development Agency Limited, a non-banking financial company, provides financial products and services in the renewable energy and energy efficiency sectors in India. The company promotes, develops, and extends financial assistance for setting up projects relating to new and renewable sources of energy and energy efficiency/conservation; and environmental technologies for sustainable development. It also generates solar, wind, hydro, biomass, biofuels, and waste to energy power. The company was incorporated in 1987 and is based in New Delhi, India.",
@@ -1838,39 +1938,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "801",
-        "expenses": "77",
-        "operatingProfit": "724",
-        "opm": "90.4%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "sales": "2,140",
+        "expenses": "1,423",
+        "operatingProfit": "717",
+        "opm": "33.5%",
+        "netProfit": "585",
+        "eps": "₹2.09"
       },
       {
         "period": "Mar 26",
-        "sales": "854",
-        "expenses": "79",
-        "operatingProfit": "775",
-        "opm": "90.7%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "sales": "2,181",
+        "expenses": "1,562",
+        "operatingProfit": "619",
+        "opm": "28.4%",
+        "netProfit": "493",
+        "eps": "₹1.76"
       },
       {
         "period": "Jun 26",
-        "sales": "855",
-        "expenses": "75",
-        "operatingProfit": "780",
-        "opm": "91.2%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "sales": "2,250",
+        "expenses": "1,837",
+        "operatingProfit": "413",
+        "opm": "18.4%",
+        "netProfit": "338",
+        "eps": "₹1.2"
       },
       {
-        "period": "Sept 26",
-        "sales": "910",
-        "expenses": "76",
-        "operatingProfit": "834",
-        "opm": "91.6%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "2,345",
+        "expenses": "1,638",
+        "operatingProfit": "707",
+        "opm": "30.1%",
+        "netProfit": "554",
+        "eps": "₹1.97"
       }
     ],
     "balanceSheet": [
@@ -1933,6 +2033,18 @@
         "investments": "249",
         "otherAssets": "343",
         "totalAssets": "1,357"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "2,809",
+        "reserves": "11,528",
+        "borrowings": "0",
+        "otherLiabilities": "83,649",
+        "totalLiabilities": "97,986",
+        "fixedAssets": "302",
+        "investments": "0",
+        "otherAssets": "97,684",
+        "totalAssets": "97,986"
       }
     ],
     "cashFlows": [
@@ -1970,6 +2082,13 @@
         "cfi": "-1,612",
         "cff": "-690",
         "netCash": "456"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-2,732",
+        "cfi": "-78",
+        "cff": "2,916",
+        "netCashFlow": "106"
       }
     ],
     "shareholding": {
@@ -2019,7 +2138,7 @@
       "evToEbitda": 17.1,
       "roce": 18,
       "roe": 14.4,
-      "debtToEquity": 5.65,
+      "debtToEquity": 0,
       "interestCoverage": 41,
       "divYield": 0,
       "salesGrowth3Y": -1.4,
@@ -2029,7 +2148,7 @@
     "pe": 44,
     "roePct": 14.4,
     "rocePct": 18,
-    "debtToEquity": 5.65,
+    "debtToEquity": 0,
     "divYieldPct": 0,
     "salesGrowth3Y": -1.4,
     "profitGrowth3Y": 0.5,
@@ -2049,9 +2168,10 @@
     ],
     "updatedAt": 1794038125784,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.113Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 17.8% -> 14.4%; Debt/Equity updated: 6.8 -> 5.65",
-    "cmp": 106
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:52.995Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 106,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1741990_19102026072927_WEB.xml"
   },
   "IOC": {
     "about": "Indian Oil Corporation Limited, together with its subsidiaries, engages in the oil, gas, petrochemicals, and alternative energy source businesses in India and internationally. It operates through Sale of Petroleum Products; Sale of Petrochemicals; Sale of Gas; and Other segments. The company is involved in the refining, pipeline transportation and marketing, exploration and production of crude oil and gas, petrochemicals, gas marketing, alternative energy sources; operates crude oil, petroleum product, and natural gas pipelines; research and development, marketing, and petrochemical businesses; wind mill and solar power generation and downstream operations. It also engages in provision of natural gas; city gas distribution; invests in e and p; bulk explosives and blast-based services for coal, iron ore, and copper mining industries; and design and production of vacuum insulated cryogenic storage and transport vessels, such as aluminum cyrocans, small sized industrial use cryogenic vessels, small and large sized cryogenic vessels, and large and heavy pressure vessels, lube, and aviation equipment. In addition, the company offers XP95, XtraGreen, compressed natural gas, petrol gasoline, high speed diesel, XP100, SERVO lubes and greases, autogas, and XTRAPOWER-fleet card; PNG domestic, indane cooking gas, kerosene, non-fuel product, and LPG services; and indoor solar cooking system, indane LPG, bulk industrial fuels, Fuel@Call, aviation fuel, AVGAS 100 LL, marine oils, bitumen, fuel mgmt consumer pumps, non fuel alliances, natural gas, petrochemicals, special products, non PDS superior kerosene oil, consultancy, and technologies for licensing for motorist, households, businesses, society, suppliers, business partner, investor, overseas, and sports. The company was formerly known as Indian Oil Company Limited and changed its name to Indian Oil Corporation Limited in September 1964. Indian Oil Corporation Limited was incorporated in 1959 and is based in New Delhi, India.",
@@ -2128,39 +2248,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,04,424",
-        "expenses": "1,87,515",
-        "operatingProfit": "16,909",
-        "opm": "8.3%",
-        "netProfit": "13,007",
-        "eps": "₹7.6"
+        "sales": "2,32,991",
+        "expenses": "2,16,999",
+        "operatingProfit": "15,992",
+        "opm": "6.9%",
+        "netProfit": "12,126",
+        "eps": "₹8.81"
       },
       {
         "period": "Mar 26",
-        "sales": "2,07,883",
-        "expenses": "1,93,092",
-        "operatingProfit": "14,791",
-        "opm": "7.1%",
+        "sales": "2,34,485",
+        "expenses": "2,19,163",
+        "operatingProfit": "15,322",
+        "opm": "6.5%",
         "netProfit": "11,378",
-        "eps": "₹6.6"
+        "eps": "₹8.26"
       },
       {
         "period": "Jun 26",
-        "sales": "2,66,407",
-        "expenses": "2,35,504",
-        "operatingProfit": "30,903",
-        "opm": "11.6%",
-        "netProfit": "-1,631",
-        "eps": "₹0.2"
+        "sales": "2,76,357",
+        "expenses": "2,79,631",
+        "operatingProfit": "-3,274",
+        "opm": "-1.2%",
+        "netProfit": "-2,661",
+        "eps": "₹-1.93"
       },
       {
-        "period": "Sept 26",
-        "sales": "2,50,361",
-        "expenses": "2,22,531",
-        "operatingProfit": "27,830",
-        "opm": "11.1%",
-        "netProfit": "21,408",
-        "eps": "₹12.5"
+        "period": "Sep 26",
+        "sales": "2,65,636",
+        "expenses": "2,39,019",
+        "operatingProfit": "26,617",
+        "opm": "10.0%",
+        "netProfit": "21,630",
+        "eps": "₹15.71"
       }
     ],
     "balanceSheet": [
@@ -2223,6 +2343,18 @@
         "investments": "56,584",
         "otherAssets": "68,409",
         "totalAssets": "3,23,114"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "13,772",
+        "reserves": "2,03,609",
+        "borrowings": "1,28,683",
+        "otherLiabilities": "1,90,373",
+        "totalLiabilities": "5,36,437",
+        "fixedAssets": "1,91,254",
+        "investments": "59,527",
+        "otherAssets": "2,85,656",
+        "totalAssets": "5,36,437"
       }
     ],
     "cashFlows": [
@@ -2260,10 +2392,17 @@
         "cfi": "-55,823",
         "cff": "-20,536",
         "netCash": "9,406"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "9,873",
+        "cfi": "-8,494",
+        "cff": "-1,569",
+        "netCashFlow": "-190"
       }
     ],
     "shareholding": {
-      "promoters": "73.39%",
+      "promoters": "51.5%",
       "fii": "9.28%",
       "dii": "5.00%",
       "public": "12.33%",
@@ -2309,7 +2448,7 @@
       "evToEbitda": 4.2,
       "roce": 28.3,
       "roe": 22.6,
-      "debtToEquity": 0.58,
+      "debtToEquity": 0.59,
       "interestCoverage": 47.8,
       "divYield": 5.8,
       "salesGrowth3Y": -2.3,
@@ -2319,7 +2458,7 @@
     "pe": 5.5,
     "roePct": 22.6,
     "rocePct": 28.3,
-    "debtToEquity": 0.58,
+    "debtToEquity": 0.59,
     "divYieldPct": 5.8,
     "salesGrowth3Y": -2.3,
     "profitGrowth3Y": 55.5,
@@ -2339,9 +2478,10 @@
     ],
     "updatedAt": 1794038125797,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.945Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 28% -> 22.6%; Debt/Equity updated: 0.85 -> 0.58",
-    "cmp": 142.03
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:00.450Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 142.03,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750292_30102026064915_WEB.xml"
   },
   "ITC": {
     "about": "ITC Limited engages in the fast-moving consumer goods, paperboards, paper and packaging, and agri businesses in India and internationally. The company offers cigarettes and cigars; foods, including staples, spices, biscuits, confectionery and gums, snacks, noodles and pasta, beverages, dairy products, ready-to-eat meals, chocolates, coffee, and frozen foods; personal care products; education and stationery, such as balls, gels and roller pens, mechanical pencils, geometry boxes, erasers, sharpeners and rulers, wax crayons, plastic crayons, and sketch pens and oil pastels; safety matches; and agarbattis and dhoops under various brands, as well as operates a hotel under the ITC Grand Central name in Mumbai. It also provides virgin, recycled, coated barrier, cupstock base, liner, liquid packaging, antifungal, solid, and graphic boards, as well as specialty papers; surfacing, print base, barrier, overlay, and liner papers; plastic substitution products; and packaging products, including cartons, flexible, tobacco, and green packaging products. In addition, the company exports feed ingredients, food grains, marine products, processed fruits, coffee products, leaf tobacco products, and spices; and offers information technology services for the banking and financial services, healthcare, manufacturing, consumer goods, travel, and hospitality industries, as well as produces and commercializes seed potato technology products. Further, it provides property infrastructure maintenance; engineering, procurement and construction management and project management consultancy services; business consulting; and agro-forestry and other related services, as well as engages in the fabrication and assembly of machinery for tube filling, cartoning, wrapping, and conveyor solutions and engineering activities. ITC Limited was incorporated in 1910 and is headquartered in Kolkata, India.",
@@ -2418,39 +2558,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "18,017",
-        "expenses": "11,401",
-        "operatingProfit": "6,616",
-        "opm": "36.7%",
+        "sales": "20,431",
+        "expenses": "13,746",
+        "operatingProfit": "6,685",
+        "opm": "32.7%",
         "netProfit": "5,089",
-        "eps": "₹4.5"
+        "eps": "₹4.06"
       },
       {
         "period": "Mar 26",
-        "sales": "17,825",
-        "expenses": "10,821",
-        "operatingProfit": "7,004",
-        "opm": "39.3%",
-        "netProfit": "5,388",
-        "eps": "₹4.8"
+        "sales": "22,347",
+        "expenses": "15,653",
+        "operatingProfit": "6,694",
+        "opm": "30.0%",
+        "netProfit": "5,113",
+        "eps": "₹4.08"
       },
       {
         "period": "Jun 26",
-        "sales": "19,114",
-        "expenses": "13,402",
-        "operatingProfit": "5,712",
-        "opm": "29.9%",
-        "netProfit": "4,394",
-        "eps": "₹3.9"
+        "sales": "27,589",
+        "expenses": "22,830",
+        "operatingProfit": "4,759",
+        "opm": "17.2%",
+        "netProfit": "3,579",
+        "eps": "₹2.86"
       },
       {
-        "period": "Sept 26",
-        "sales": "18,401",
-        "expenses": "12,983",
-        "operatingProfit": "5,418",
-        "opm": "29.4%",
-        "netProfit": "4,168",
-        "eps": "₹3.7"
+        "period": "Sep 26",
+        "sales": "29,125",
+        "expenses": "23,643",
+        "operatingProfit": "5,482",
+        "opm": "18.8%",
+        "netProfit": "4,137",
+        "eps": "₹3.3"
       }
     ],
     "balanceSheet": [
@@ -2513,6 +2653,18 @@
         "investments": "20,316",
         "otherAssets": "29,984",
         "totalAssets": "93,331"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "1,253",
+        "reserves": "66,755",
+        "borrowings": "0",
+        "otherLiabilities": "22,094",
+        "totalLiabilities": "90,102",
+        "fixedAssets": "18,997",
+        "investments": "15,399",
+        "otherAssets": "55,706",
+        "totalAssets": "90,102"
       }
     ],
     "cashFlows": [
@@ -2550,10 +2702,17 @@
         "cfi": "-6,989",
         "cff": "-4,588",
         "netCash": "4,021"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "7,766",
+        "cfi": "4,489",
+        "cff": "-12,040",
+        "netCashFlow": "215"
       }
     ],
     "shareholding": {
-      "promoters": "26.97%",
+      "promoters": "0%",
       "fii": "34.55%",
       "dii": "18.60%",
       "public": "19.88%",
@@ -2599,7 +2758,7 @@
       "evToEbitda": 16.7,
       "roce": 33.5,
       "roe": 26.8,
-      "debtToEquity": 0.01,
+      "debtToEquity": 0,
       "interestCoverage": 37.7,
       "divYield": 2.75,
       "salesGrowth3Y": -2,
@@ -2609,7 +2768,7 @@
     "pe": 16.6,
     "roePct": 26.8,
     "rocePct": 33.5,
-    "debtToEquity": 0.01,
+    "debtToEquity": 0,
     "divYieldPct": 2.75,
     "salesGrowth3Y": -2,
     "profitGrowth3Y": 2.5,
@@ -2633,9 +2792,10 @@
     ],
     "updatedAt": 1794038125808,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.010Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 29.4% -> 26.8%",
-    "cmp": 280
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:09.993Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 280,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751354_02112026065539_WEB.xml"
   },
   "IDEA": {
     "about": "Vodafone Idea Limited, together with its subsidiaries, provides telecommunication services to individuals, communities, and businesses in India. The company offers voice services, such as 4G VoLTE and Voice over WIFI calling; broadband data services on 4G and/or 5G technology; and content and digital products and services, including subscription, digital advertising, gaming, digital marketplace, and utility bill payment app, as well as other value-added services (VAS), caller tunes, missed call alert, and voice and short messaging services; and long distance and internet service provider services. It also engages in renting of passive infrastructure to telecommunication service providers; business of prepaid payment instruments (PPI) and business correspondence; outsourcing backend IT support, data centre operations, and hosting; and provision of high-speed broadband internet access through cable network and high bandwidth internet broadband, and manpower services. In addition, the company trades in mobile handsets, data cards, telecommunication hardware, and related accessories and services; provision of outsourcing services for finance and accounts, human resources, supply chain management, credit and collection support, and customer support; and caters to the information technology (IT) needs for data consolidation. Further, it offers technology, software, hardware, value added services (VAS), application software, and contents and related products and services, which facilitate and develop access to IT enabled VAS products and services on single or multiple platforms or operating systems; mobile wallet and money transfer services; and data centre related services and IT solutions, including E-SIMs activation, as well as prepaid and postpaid plans. The company was formerly known as Idea Cellular Limited and changed its name to Vodafone Idea Limited in August 2018. Vodafone Idea Limited was incorporated in 1995 and is based in Mumbai, India.",

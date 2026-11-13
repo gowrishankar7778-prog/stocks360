@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "32,066",
-        "expenses": "30,142",
-        "operatingProfit": "1,924",
-        "opm": "6%",
-        "netProfit": "20,740",
-        "eps": "₹9.4"
+        "sales": "34,640",
+        "expenses": "24,038",
+        "operatingProfit": "10,602",
+        "opm": "30.6%",
+        "netProfit": "8,372",
+        "eps": "₹6.65"
       },
       {
         "period": "Mar 26",
-        "sales": "33,380",
-        "expenses": "31,377",
-        "operatingProfit": "2,003",
-        "opm": "6%",
-        "netProfit": "21,590",
-        "eps": "₹9.8"
+        "sales": "38,556",
+        "expenses": "30,032",
+        "operatingProfit": "8,524",
+        "opm": "22.1%",
+        "netProfit": "6,650",
+        "eps": "₹5.29"
       },
       {
         "period": "Jun 26",
-        "sales": "33,562",
-        "expenses": "31,548",
-        "operatingProfit": "2,014",
-        "opm": "6%",
-        "netProfit": "21,707",
-        "eps": "₹9.8"
+        "sales": "48,322",
+        "expenses": "25,474",
+        "operatingProfit": "22,848",
+        "opm": "47.3%",
+        "netProfit": "17,034",
+        "eps": "₹13.54"
       },
       {
-        "period": "Sept 26",
-        "sales": "35,115",
-        "expenses": "33,008",
-        "operatingProfit": "2,107",
-        "opm": "6%",
-        "netProfit": "22,712",
-        "eps": "₹10.3"
+        "period": "Sep 26",
+        "sales": "48,341",
+        "expenses": "28,569",
+        "operatingProfit": "19,772",
+        "opm": "40.9%",
+        "netProfit": "15,489",
+        "eps": "₹12.31"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "85,668",
         "otherAssets": "67,451",
         "totalAssets": "3,83,679"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "6,290",
+        "reserves": "3,57,369",
+        "borrowings": "5,370",
+        "otherLiabilities": "1,19,789",
+        "totalLiabilities": "4,88,818",
+        "fixedAssets": "1,81,660",
+        "investments": "1,14,620",
+        "otherAssets": "1,92,538",
+        "totalAssets": "4,88,818"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-2,376",
         "cff": "-1,129",
         "netCash": "240"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "52,438",
+        "cfi": "-42,712",
+        "cff": "-9,766",
+        "netCashFlow": "-40"
       }
     ],
     "shareholding": {
-      "promoters": "69.21%",
+      "promoters": "58.89%",
       "fii": "14.55%",
       "dii": "7.84%",
       "public": "8.40%",
@@ -255,7 +274,7 @@
       "evToEbitda": 65,
       "roce": 16.8,
       "roe": 14.2,
-      "debtToEquity": 0.43,
+      "debtToEquity": 0.01,
       "interestCoverage": 51.4,
       "divYield": 4.25,
       "salesGrowth3Y": -5.2,
@@ -265,7 +284,7 @@
     "pe": 6,
     "roePct": 14.2,
     "rocePct": 16.8,
-    "debtToEquity": 0.43,
+    "debtToEquity": 0.01,
     "divYieldPct": 4.25,
     "salesGrowth3Y": -5.2,
     "profitGrowth3Y": 2.2,
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125794,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:38.096Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26)",
-    "cmp": 235
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:56.548Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 235,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753920_05112026063545_WEB.xml"
   },
   "OBEROIRLTY": {
     "about": "Oberoi Realty Limited, together with its subsidiaries, engages in real estate development business in India. The company operates through the Real Estate and the Hospitality segment. It develops and sells residential, commercial, retail, hospitality, and social infrastructure projects. The company also leases commercial properties; and owns and operates a hotel. In addition, it engages in the sale of rooms, food and beverages, and allied services related to hotel operations, as well as in the provision of property management services. Oberoi Realty Limited was incorporated in 1998 and is headquartered in Mumbai, India.",

@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "63,549",
-        "expenses": "36,213",
-        "operatingProfit": "27,336",
-        "opm": "43%",
+        "sales": "1,40,915",
+        "expenses": "1,12,560",
+        "operatingProfit": "28,355",
+        "opm": "20.1%",
         "netProfit": "21,028",
-        "eps": "₹19.4"
+        "eps": "₹22.78"
       },
       {
         "period": "Mar 26",
-        "sales": "61,694",
-        "expenses": "36,105",
-        "operatingProfit": "25,589",
-        "opm": "41.5%",
+        "sales": "1,40,412",
+        "expenses": "1,15,580",
+        "operatingProfit": "24,832",
+        "opm": "17.7%",
         "netProfit": "19,684",
-        "eps": "₹18.2"
+        "eps": "₹21.32"
       },
       {
         "period": "Jun 26",
-        "sales": "62,915",
-        "expenses": "35,458",
-        "operatingProfit": "27,457",
-        "opm": "43.6%",
+        "sales": "1,43,819",
+        "expenses": "1,15,337",
+        "operatingProfit": "28,482",
+        "opm": "19.8%",
         "netProfit": "21,121",
-        "eps": "₹19.5"
+        "eps": "₹22.88"
       },
       {
-        "period": "Sept 26",
-        "sales": "60,920",
-        "expenses": "30,971",
-        "operatingProfit": "29,949",
-        "opm": "49.2%",
+        "period": "Sep 26",
+        "sales": "1,43,796",
+        "expenses": "1,13,787",
+        "operatingProfit": "30,009",
+        "opm": "20.9%",
         "netProfit": "23,038",
-        "eps": "₹21.3"
+        "eps": "₹24.96"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "1,50,066",
         "otherAssets": "1,60,862",
         "totalAssets": "6,87,619"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "78,87,793",
+        "totalLiabilities": "78,87,793",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "78,87,793",
+        "totalAssets": "78,87,793"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-31,727",
         "cff": "-16,595",
         "netCash": "7,956"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-37,386",
+        "cfi": "4,296",
+        "cff": "-18,431",
+        "netCashFlow": "-51,521"
       }
     ],
     "shareholding": {
-      "promoters": "57.29%",
+      "promoters": "55.45%",
       "fii": "18.63%",
       "dii": "10.03%",
       "public": "14.05%",
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125776,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:14.855Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 35.7% -> 27.1%; Quarterly results refreshed (Sept 26); ROE updated: 17.2% -> 14.7%",
-    "cmp": 979
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:47.456Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 979,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1751753_03112026032158_WEB.xml"
   },
   "SHRIRAMFIN": {
     "about": "Shriram Finance Limited, a non-banking finance company, provides financing services in India. It offers fixed and recurring deposits; commercial vehicle loans for commercial goods vehicles, passenger commercial vehicles, tractors and farm equipment, and construction equipment; two-wheeler, gold, used car loan, and personal loans; and green finance services. The company also provides business loans, such as MSME loans; working capital loans, including tyre, tax, fuel, toll financing, repair/top-up loans, fuel finance, challan discounting and vehicle insurance premium loans; motor insurance, including four-wheeler, two-wheeler, passenger and goods carrying vehicle insurance products; non motor insurance products, such as personal accident, shri criti care, and home insurance; and life insurance products comprising savings, retirement, child, protection plans, as well as recharges, including mobile recharge, mobile postpaid, landline postpaid, DTH, and FASTag recharge services. In addition, it offers utilities and bills services, such as electricity, LPG gas, gas bill payment, broadband postpaid, water, and cable tv; financial services and taxes comprising credit card, loan repayment, insurance, municipal services, and recurring deposit; and other services, such as housing society, clubs and associations, and education fees. It serves first time buyers, small road transport operators, commercial vehicles operators, micro, small, and medium enterprises (MSMEs), and individuals. The company was formerly known as Shriram Transport Finance Company Limited and changed its name to Shriram Finance Limited in November 2022. Shriram Finance Limited was incorporated in 1979 and is based in Mumbai, India.",
@@ -364,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "6,932",
-        "expenses": "3,653",
-        "operatingProfit": "3,279",
-        "opm": "47.3%",
+        "sales": "12,192",
+        "expenses": "8,832",
+        "operatingProfit": "3,360",
+        "opm": "27.6%",
         "netProfit": "2,522",
-        "eps": "₹11.5"
+        "eps": "₹13.4"
       },
       {
         "period": "Mar 26",
-        "sales": "7,192",
-        "expenses": "3,274",
-        "operatingProfit": "3,918",
-        "opm": "54.5%",
+        "sales": "12,528",
+        "expenses": "8,613",
+        "operatingProfit": "3,915",
+        "opm": "31.3%",
         "netProfit": "3,014",
-        "eps": "₹13.7"
+        "eps": "₹16.02"
       },
       {
         "period": "Jun 26",
-        "sales": "8,208",
-        "expenses": "3,729",
-        "operatingProfit": "4,479",
-        "opm": "54.6%",
+        "sales": "13,412",
+        "expenses": "8,790",
+        "operatingProfit": "4,622",
+        "opm": "34.5%",
         "netProfit": "3,445",
-        "eps": "₹15.6"
+        "eps": "₹14.83"
       },
       {
-        "period": "Sept 26",
-        "sales": "8,834",
-        "expenses": "4,054",
-        "operatingProfit": "4,780",
-        "opm": "54.1%",
+        "period": "Sep 26",
+        "sales": "13,799",
+        "expenses": "8,867",
+        "operatingProfit": "4,932",
+        "opm": "35.7%",
         "netProfit": "3,677",
-        "eps": "₹16.7"
+        "eps": "₹15.63"
       }
     ],
     "balanceSheet": [
@@ -459,6 +479,18 @@
         "investments": "14,221",
         "otherAssets": "21,784",
         "totalAssets": "81,078"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "471",
+        "reserves": "1,10,735",
+        "borrowings": "0",
+        "otherLiabilities": "2,43,326",
+        "totalLiabilities": "3,54,532",
+        "fixedAssets": "1,189",
+        "investments": "0",
+        "otherAssets": "3,53,343",
+        "totalAssets": "3,54,532"
       }
     ],
     "cashFlows": [
@@ -496,10 +528,17 @@
         "cfi": "-9,361",
         "cff": "-3,907",
         "netCash": "3,025"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-23,029",
+        "cfi": "-102",
+        "cff": "22,433",
+        "netCashFlow": "-698"
       }
     ],
     "shareholding": {
-      "promoters": "22.17%",
+      "promoters": "20.3%",
       "fii": "38.50%",
       "dii": "20.73%",
       "public": "18.60%",
@@ -545,7 +584,7 @@
       "evToEbitda": 5.7,
       "roce": 18.5,
       "roe": 14.8,
-      "debtToEquity": 1.46,
+      "debtToEquity": 0,
       "interestCoverage": 36.2,
       "divYield": 1.35,
       "salesGrowth3Y": 15.6,
@@ -555,7 +594,7 @@
     "pe": 15.8,
     "roePct": 14.8,
     "rocePct": 18.5,
-    "debtToEquity": 1.46,
+    "debtToEquity": 0,
     "divYieldPct": 1.35,
     "salesGrowth3Y": 15.6,
     "profitGrowth3Y": 18.5,
@@ -575,9 +614,10 @@
     ],
     "updatedAt": 1794038125786,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.925Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 17.5% -> 14.8%; Debt/Equity updated: 4.8 -> 1.46",
-    "cmp": 908.75
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.380Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 908.75,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1744698_23102026044339_WEB.xml"
   },
   "SRF": {
     "about": "SRF Limited manufactures, purchases, and sells technical textiles, chemicals, packaging films, and other polymers. It operates through Technical Textiles Business, Chemicals Business, Performance Films and Foil Business, and Others segments. The company offers polyester and nylon tyre cord, belting, coated, and laminated fabrics; and polyester industrial yarns. It also provides fluorochemicals, such as refrigerant gases, industrial and specialty chemicals, fluorochemicals, and allied products, as well as research and development services. In addition, the company offers polyester films and polypropylene films; organic and inorganic intermediates for use in material sciences, surface chemistry, and agrochemical and pharmaceutical; and fluoropolymers. Further, it engages in the acquisition and renting of real estate; manufacture, distribution, and trade of performance films; and manufacture of aluminum foil. The company operates in India, Germany, the United States, South Africa, the United Kingdom, Italy, Indonesia, the United Arab Emirates, South Korea, Thailand, Hungary, Switzerland, Belgium, and internationally. The company was formerly known as Shri Ram Fibres and changed its name to SRF Limited in 1990. SRF Limited was incorporated in 1970 and is headquartered in Gurugram, India. SRF Limited operates as a subsidiary of KAMA Holdings Limited.",
@@ -654,39 +694,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,713",
-        "expenses": "3,150",
-        "operatingProfit": "563",
-        "opm": "15.2%",
-        "netProfit": "433",
-        "eps": "₹9.6"
+        "sales": "2,985",
+        "expenses": "2,505",
+        "operatingProfit": "480",
+        "opm": "16.1%",
+        "netProfit": "458",
+        "eps": "₹15.45"
       },
       {
         "period": "Mar 26",
-        "sales": "4,615",
-        "expenses": "3,858",
-        "operatingProfit": "757",
-        "opm": "16.4%",
-        "netProfit": "582",
-        "eps": "₹12.8"
+        "sales": "3,606",
+        "expenses": "2,928",
+        "operatingProfit": "678",
+        "opm": "18.8%",
+        "netProfit": "507",
+        "eps": "₹17.11"
       },
       {
         "period": "Jun 26",
-        "sales": "5,033",
-        "expenses": "4,046",
-        "operatingProfit": "987",
-        "opm": "19.6%",
-        "netProfit": "759",
-        "eps": "₹16.8"
+        "sales": "3,841",
+        "expenses": "3,081",
+        "operatingProfit": "760",
+        "opm": "19.8%",
+        "netProfit": "566",
+        "eps": "₹19.1"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,904",
-        "expenses": "4,242",
-        "operatingProfit": "662",
-        "opm": "13.5%",
-        "netProfit": "509",
-        "eps": "₹11.2"
+        "period": "Sep 26",
+        "sales": "3,836",
+        "expenses": "3,248",
+        "operatingProfit": "588",
+        "opm": "15.3%",
+        "netProfit": "438",
+        "eps": "₹14.79"
       }
     ],
     "balanceSheet": [
@@ -749,6 +789,18 @@
         "investments": "4,084",
         "otherAssets": "1,953",
         "totalAssets": "13,729"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "297",
+        "reserves": "13,362",
+        "borrowings": "3,570",
+        "otherLiabilities": "3,932",
+        "totalLiabilities": "21,161",
+        "fixedAssets": "11,182",
+        "investments": "787",
+        "otherAssets": "9,192",
+        "totalAssets": "21,161"
       }
     ],
     "cashFlows": [
@@ -786,10 +838,17 @@
         "cfi": "-1,223",
         "cff": "-836",
         "netCash": "48"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "402",
+        "cfi": "-653",
+        "cff": "-56",
+        "netCashFlow": "-307"
       }
     ],
     "shareholding": {
-      "promoters": "52.54%",
+      "promoters": "50.26%",
       "fii": "19.20%",
       "dii": "10.34%",
       "public": "17.92%",
@@ -835,7 +894,7 @@
       "evToEbitda": 25.5,
       "roce": 20,
       "roe": 16,
-      "debtToEquity": 0.35,
+      "debtToEquity": 0.26,
       "interestCoverage": 36.2,
       "divYield": 0.32,
       "salesGrowth3Y": 2,
@@ -845,7 +904,7 @@
     "pe": 48.8,
     "roePct": 16,
     "rocePct": 20,
-    "debtToEquity": 0.35,
+    "debtToEquity": 0.26,
     "divYieldPct": 0.32,
     "salesGrowth3Y": 2,
     "profitGrowth3Y": -5.3,
@@ -865,9 +924,10 @@
     ],
     "updatedAt": 1794038125789,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:19.824Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 13.8% -> 16%; Debt/Equity updated: 0.45 -> 0.35",
-    "cmp": 2458.7
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.761Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2458.7,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1743526_21102026080452_WEB.xml"
   },
   "SUZLON": {
     "about": "Suzlon Energy Limited, together with its subsidiaries, manufactures and sells wind turbine generators and related components in India and internationally. The company operates through the WTG, Foundry & Forging, O&M services, and Others segments. It offers onshore wind turbine generators with capacities ranging from 2 MW to 6 MW, and classic fleet turbines; and services including project development through its RE DevCo business, energy storage solutions, and renewable energy asset management. The company also provides operation and maintenance services for wind turbine generators, as well as project execution, procurement, and marketing services. In addition, it is involved in the sale/sub-lease of land; manufacture and sale of forging rings and casting articles, as well as power generation and evacuation infrastructure facilities. The company was incorporated in 1995 and is headquartered in Pune, India.",
@@ -944,39 +1004,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,236",
-        "expenses": "3,657",
-        "operatingProfit": "579",
-        "opm": "13.7%",
-        "netProfit": "445",
-        "eps": "₹0.2"
+        "sales": "3,825",
+        "expenses": "3,423",
+        "operatingProfit": "402",
+        "opm": "10.5%",
+        "netProfit": "282",
+        "eps": "₹0.21"
       },
       {
         "period": "Mar 26",
-        "sales": "5,493",
-        "expenses": "4,045",
-        "operatingProfit": "1,448",
-        "opm": "26.4%",
-        "netProfit": "1,114",
-        "eps": "₹0.4"
+        "sales": "5,035",
+        "expenses": "2,941",
+        "operatingProfit": "2,094",
+        "opm": "41.6%",
+        "netProfit": "2,195",
+        "eps": "₹1.6"
       },
       {
         "period": "Jun 26",
-        "sales": "3,829",
-        "expenses": "3,432",
-        "operatingProfit": "397",
-        "opm": "10.4%",
-        "netProfit": "305",
-        "eps": "₹0.2"
+        "sales": "3,341",
+        "expenses": "2,958",
+        "operatingProfit": "383",
+        "opm": "11.5%",
+        "netProfit": "306",
+        "eps": "₹0.22"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,876",
-        "expenses": "4,364",
-        "operatingProfit": "512",
-        "opm": "10.5%",
-        "netProfit": "394",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "4,257",
+        "expenses": "3,783",
+        "operatingProfit": "474",
+        "opm": "11.1%",
+        "netProfit": "370",
+        "eps": "₹0.27"
       }
     ],
     "balanceSheet": [
@@ -1039,6 +1099,18 @@
         "investments": "4,429",
         "otherAssets": "4,098",
         "totalAssets": "16,217"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "2,751",
+        "reserves": "7,869",
+        "borrowings": "0",
+        "otherLiabilities": "8,238",
+        "totalLiabilities": "18,858",
+        "fixedAssets": "1,168",
+        "investments": "2,087",
+        "otherAssets": "15,603",
+        "totalAssets": "18,858"
       }
     ],
     "cashFlows": [
@@ -1076,10 +1148,17 @@
         "cfi": "-920",
         "cff": "-722",
         "netCash": "335"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-182",
+        "cfi": "9",
+        "cff": "-32",
+        "netCashFlow": "-205"
       }
     ],
     "shareholding": {
-      "promoters": "17.64%",
+      "promoters": "11.7%",
       "fii": "15.31%",
       "dii": "8.25%",
       "public": "58.80%",
@@ -1125,7 +1204,7 @@
       "evToEbitda": 21.1,
       "roce": 31.1,
       "roe": 24.9,
-      "debtToEquity": 0.07,
+      "debtToEquity": 0,
       "interestCoverage": 46.4,
       "divYield": 0,
       "salesGrowth3Y": 26,
@@ -1135,7 +1214,7 @@
     "pe": 42.2,
     "roePct": 24.9,
     "rocePct": 31.1,
-    "debtToEquity": 0.07,
+    "debtToEquity": 0,
     "divYieldPct": 0,
     "salesGrowth3Y": 26,
     "profitGrowth3Y": 3.5,
@@ -1157,9 +1236,10 @@
     ],
     "updatedAt": 1794038125795,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.045Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 26.5% -> 24.9%; Debt/Equity updated: 0.02 -> 0.07",
-    "cmp": 37.45
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:56.317Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 37.45,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748965_29102026051002_WEB.xml"
   },
   "SJVN": {
     "about": "SJVN Limited, together with its subsidiaries, engages in the generation and sale of electricity in India and internationally. The company is also involved in thermal power, hydro power, wind power, solar power, and power trading and transmission businesses. The company operates the Nathpa Jhakri Hydro Power Station (NJHPS) with a capacity of 1500 MW located in Shimla District; the Arun-3 Hydro Electric Projec with a capacity of 900 MW, located on River Arun in District Sankhuwasabha of Eastern Nepal; the Rampur Hydro Power Station with an installed capacity of 412 MW in Shimla and Kullu District in Himachal Pradesh; and the Naitwar Mori Hydro Power Station with a capacity of 60 MW located in Uttarkashi district in Uttarakhand state. It also operates the Khirvire Wind Power Project with a capacity of 47.6 MW in Ahmednagar, Maharashtra; and the Sadla Wind Power Project with an installed capacity of 50 MW in Surendranagar District in Gujarat, as well as Buxar Thermal Power Project with a capacity of 1320 MW located in Village Chausa, Distt Buxar, Bihar. In addition, the company operates the Charanka Solar Power Station with a capacity of 5.6 MW in Patan district in Gujarat; 1 MW solar power plant at Wadhal and 310 KW solar power plant at Surge Shaft of NJHPS; Parasan Solar Power Station with a capacity of 75 MW in Jalaun District; Gurhah Solar Power Station with a capacity of 75 MW; Gujrai Solar Power Station with a capacity of 50 MW; Raghanesda Solar Power Station with a capacity of 100 MW; and 90 MW Floating Solar Project located in Omkareshwar, Madhya Pradesh. Further, it provides consultancy services, as well as undertakes contracts, project management services, and power trading. The company was formerly known as Satluj Jal Vidyut Nigam Limited and changed its name to SJVN Limited in September 2009. SJVN Limited was incorporated in 1988 and is based in Shimla, India.",
@@ -1236,39 +1316,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,082",
-        "expenses": "791",
-        "operatingProfit": "291",
-        "opm": "26.9%",
-        "netProfit": "224",
-        "eps": "₹2.5"
+        "sales": "882",
+        "expenses": "424",
+        "operatingProfit": "458",
+        "opm": "51.9%",
+        "netProfit": "252",
+        "eps": "₹0.64"
       },
       {
         "period": "Mar 26",
-        "sales": "1,496",
-        "expenses": "615",
-        "operatingProfit": "881",
-        "opm": "58.9%",
-        "netProfit": "-118",
-        "eps": "₹0.2"
+        "sales": "1,048",
+        "expenses": "803",
+        "operatingProfit": "245",
+        "opm": "23.4%",
+        "netProfit": "125",
+        "eps": "₹0.32"
       },
       {
         "period": "Jun 26",
-        "sales": "1,394",
-        "expenses": "573",
-        "operatingProfit": "821",
-        "opm": "58.9%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "795",
+        "expenses": "419",
+        "operatingProfit": "376",
+        "opm": "47.3%",
+        "netProfit": "247",
+        "eps": "₹0.63"
       },
       {
-        "period": "Sept 26",
-        "sales": "2,244",
-        "expenses": "922",
-        "operatingProfit": "1,322",
-        "opm": "58.9%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "1,527",
+        "expenses": "554",
+        "operatingProfit": "973",
+        "opm": "63.7%",
+        "netProfit": "737",
+        "eps": "₹1.87"
       }
     ],
     "balanceSheet": [
@@ -1331,6 +1411,18 @@
         "investments": "3,030",
         "otherAssets": "2,082",
         "totalAssets": "11,731"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "3,930",
+        "reserves": "11,624",
+        "borrowings": "10,466",
+        "otherLiabilities": "2,548",
+        "totalLiabilities": "28,568",
+        "fixedAssets": "7,629",
+        "investments": "9,166",
+        "otherAssets": "11,773",
+        "totalAssets": "28,568"
       }
     ],
     "cashFlows": [
@@ -1368,6 +1460,13 @@
         "cfi": "-1,360",
         "cff": "-804",
         "netCash": "158"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "1,607",
+        "cfi": "-981",
+        "cff": "-612",
+        "netCashFlow": "14"
       }
     ],
     "shareholding": {
@@ -1417,7 +1516,7 @@
       "evToEbitda": 15.3,
       "roce": 8.4,
       "roe": 6.7,
-      "debtToEquity": 2.25,
+      "debtToEquity": 0.67,
       "interestCoverage": 39.7,
       "divYield": 1.85,
       "salesGrowth3Y": 15.5,
@@ -1427,7 +1526,7 @@
     "pe": 48.2,
     "roePct": 6.7,
     "rocePct": 8.4,
-    "debtToEquity": 2.25,
+    "debtToEquity": 0.67,
     "divYieldPct": 1.85,
     "salesGrowth3Y": 15.5,
     "profitGrowth3Y": -22.1,
@@ -1449,9 +1548,10 @@
     ],
     "updatedAt": 1794038125798,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:40.715Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 7.8% -> 6.7%; Debt/Equity updated: 1.15 -> 2.25",
-    "cmp": 56.05
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:59.809Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 56.05,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749824_30102026033800_WEB.xml"
   },
   "SUNPHARMA": {
     "about": "Sun Pharmaceutical Industries Limited, a generic pharmaceutical company, develops, manufactures, and markets branded and generic formulations, and active pharmaceutical ingredients (APIs) in India, the United States, and internationally. The company offers formulations in various therapeutic areas, including neuropsychiatry, cardiology, diabetes, gastroenterology, pain/analgesics, gynecology, ophthalmology, urology, dermatology, respiratory, anti-infectives, oncology, psychiatry, neurology, orthopaedic, nephrology, dental, and nutritionals. It also provides generic medications, such as tablets, capsules, injectables, inhalers, ointments, creams, and liquids; specialty medications; antiretrovirals medications; and over-the-counter products, such as vitamins, analgesics, digestives, and lifestyle. In addition, the company offers generics and APIs for anti-cancers, peptides, steroids, sex hormones, immunosuppressant drugs, and controlled substances. Sun Pharmaceutical Industries Limited was founded in 1983 and is headquartered in Mumbai, India.",
@@ -1528,39 +1628,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "15,521",
-        "expenses": "11,141",
-        "operatingProfit": "4,380",
-        "opm": "28.2%",
-        "netProfit": "3,369",
-        "eps": "₹14.8"
+        "sales": "5,868",
+        "expenses": "4,771",
+        "operatingProfit": "1,097",
+        "opm": "18.7%",
+        "netProfit": "705",
+        "eps": "₹2.9"
       },
       {
         "period": "Mar 26",
-        "sales": "14,612",
-        "expenses": "11,084",
-        "operatingProfit": "3,528",
-        "opm": "24.1%",
-        "netProfit": "2,714",
-        "eps": "₹11.9"
+        "sales": "4,987",
+        "expenses": "4,138",
+        "operatingProfit": "849",
+        "opm": "17.0%",
+        "netProfit": "609",
+        "eps": "₹2.5"
       },
       {
         "period": "Jun 26",
-        "sales": "15,300",
-        "expenses": "11,536",
-        "operatingProfit": "3,764",
-        "opm": "24.6%",
-        "netProfit": "2,895",
-        "eps": "₹12.7"
+        "sales": "5,881",
+        "expenses": "4,395",
+        "operatingProfit": "1,486",
+        "opm": "25.3%",
+        "netProfit": "1,115",
+        "eps": "₹4.6"
       },
       {
-        "period": "Sept 26",
-        "sales": "16,199",
-        "expenses": "13,613",
-        "operatingProfit": "2,586",
-        "opm": "16%",
-        "netProfit": "1,989",
-        "eps": "₹8.7"
+        "period": "Sep 26",
+        "sales": "6,223",
+        "expenses": "5,020",
+        "operatingProfit": "1,203",
+        "opm": "19.3%",
+        "netProfit": "871",
+        "eps": "₹3.6"
       }
     ],
     "balanceSheet": [
@@ -1623,6 +1723,18 @@
         "investments": "19,442",
         "otherAssets": "27,397",
         "totalAssets": "1,14,881"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "240",
+        "reserves": "23,125",
+        "borrowings": "15,146",
+        "otherLiabilities": "7,510",
+        "totalLiabilities": "46,021",
+        "fixedAssets": "5,104",
+        "investments": "13,197",
+        "otherAssets": "27,720",
+        "totalAssets": "46,021"
       }
     ],
     "cashFlows": [
@@ -1660,10 +1772,17 @@
         "cfi": "-8,513",
         "cff": "-3,168",
         "netCash": "1,982"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "509",
+        "cfi": "-959",
+        "cff": "418",
+        "netCashFlow": "-32"
       }
     ],
     "shareholding": {
-      "promoters": "55.61%",
+      "promoters": "52.68%",
       "fii": "19.24%",
       "dii": "10.36%",
       "public": "14.79%",
@@ -1709,7 +1828,7 @@
       "evToEbitda": 26.5,
       "roce": 16.4,
       "roe": 13.1,
-      "debtToEquity": 0.04,
+      "debtToEquity": 0.65,
       "interestCoverage": 50.8,
       "divYield": 0.72,
       "salesGrowth3Y": 10,
@@ -1719,7 +1838,7 @@
     "pe": 36.9,
     "roePct": 13.1,
     "rocePct": 16.4,
-    "debtToEquity": 0.04,
+    "debtToEquity": 0.65,
     "divYieldPct": 0.72,
     "salesGrowth3Y": 10,
     "profitGrowth3Y": 10.6,
@@ -1741,9 +1860,10 @@
     ],
     "updatedAt": 1794038125804,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:43.455Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 16.5% -> 13.1%",
-    "cmp": 1773.4
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:07.410Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1773.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750389_30102026073348_WEB.xml"
   },
   "SAIL": {
     "about": "Steel Authority of India Limited, a steel-making company, manufactures and sells iron and steel products in India and internationally. The company offers a range of railway products, which include rail, high YS/UTS rail, corrosion-resistant micro-alloyed rail, vanadium alloyed rail, end forged thick web asymmetric rail, conductivity rail, crane rails, and crossing sleeper bars. It also provides pig iron, cold rolled products, pipes, semis, structurals, sail tmt bars, galvanized products, wirerods, pm plates, railway products, wheels and axles, hot rolled products, stainless steel products, electrical steels, and sail SeQR TMT bars. It serves government organizations, PSUS, private companies, distributors, and resellers. Steel Authority of India Limited was founded in 1954 and is based in New Delhi, India.",

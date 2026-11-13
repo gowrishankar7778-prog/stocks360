@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "842",
-        "expenses": "432",
-        "operatingProfit": "410",
-        "opm": "48.7%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "sales": "159",
+        "expenses": "47",
+        "operatingProfit": "112",
+        "opm": "70.4%",
+        "netProfit": "73",
+        "eps": "₹0.12"
       },
       {
         "period": "Mar 26",
-        "sales": "894",
-        "expenses": "455",
-        "operatingProfit": "439",
-        "opm": "49.1%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "sales": "135",
+        "expenses": "44",
+        "operatingProfit": "91",
+        "opm": "67.4%",
+        "netProfit": "80",
+        "eps": "₹0.13"
       },
       {
         "period": "Jun 26",
-        "sales": "918",
-        "expenses": "464",
-        "operatingProfit": "454",
-        "opm": "49.5%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "sales": "219",
+        "expenses": "75",
+        "operatingProfit": "144",
+        "opm": "65.8%",
+        "netProfit": "105",
+        "eps": "₹0.16"
       },
       {
-        "period": "Sept 26",
-        "sales": "939",
-        "expenses": "470",
-        "operatingProfit": "469",
-        "opm": "49.9%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "678",
+        "expenses": "63",
+        "operatingProfit": "615",
+        "opm": "90.7%",
+        "netProfit": "575",
+        "eps": "₹0.87"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "401",
         "otherAssets": "168",
         "totalAssets": "1,446"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "6,603",
+        "reserves": "28,918",
+        "borrowings": "0",
+        "otherLiabilities": "136",
+        "totalLiabilities": "35,657",
+        "fixedAssets": "10",
+        "investments": "0",
+        "otherAssets": "35,647",
+        "totalAssets": "35,657"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-1,042",
         "cff": "-602",
         "netCash": "-21"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-1,410",
+        "cfi": "-4,133",
+        "cff": "5,538",
+        "netCashFlow": "-5"
       }
     ],
     "shareholding": {
-      "promoters": "48.36%",
+      "promoters": "50.98%",
       "fii": "12.22%",
       "dii": "6.58%",
       "public": "32.84%",
@@ -255,7 +274,7 @@
       "evToEbitda": 65,
       "roce": 1.6,
       "roe": 1.3,
-      "debtToEquity": 0.32,
+      "debtToEquity": 0,
       "interestCoverage": 46.3,
       "divYield": 0,
       "salesGrowth3Y": 41,
@@ -265,7 +284,7 @@
     "pe": 88.1,
     "roePct": 1.3,
     "rocePct": 1.6,
-    "debtToEquity": 0.32,
+    "debtToEquity": 0,
     "divYieldPct": 0,
     "salesGrowth3Y": 41,
     "profitGrowth3Y": -51,
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125784,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.111Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); Debt/Equity updated: 0 -> 0.32",
-    "cmp": 222.27
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.446Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 222.27,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739418_15102026084754_WEB.xml"
   },
   "JSWSTEEL": {
     "about": "JSW Steel Limited manufactures and sells iron and steel products in India and internationally. The company offers hot and cold rolled steel products, colour coated sheets, galvanized and galvalume steel, electrical steel, steel doors, zinc-magnesium-aluminium products, aluminium-zinc roofing products, tin plate, TMT bars, wire rods, special alloy steel, grinding media, prepainted colour coated steel, low-carbon steel, hot-rolled sheets, structural steel, and low relaxation pre-stressed concrete steel strands under the JSW Neosteel, JSW Neostrands, JSW Neosteel Fastbuild, JSW Trusteel, JSW Colouron+, JSW Everglow, JSW Vishwas, JSW Platina, JSW Magsure, JSW Galveco, JSW Silveron+, JSW Pragati+, JSW Vishwas+, JSW Galvos, JSW Avante, JSW ColourFrame, JSW Endura+, JSW Radiance brands. It also engages in acquisition and investment in steel related and allied businesses, and trading in steel products; real estate; production and distribution of special long steel products; management of logistic infrastructure of Piombino's port area; produces forged steel balls; manufactures plates, pipes and double jointing, slabs, and hot rolled coils; produces gaseous and liquid form of oxygen, nitrogen, argon, and other products recoverable from separation of air; mining; and construction and development of residential township. In addition, the company trades in iron ore, steel, and allied activities; and provides steel plant, coke oven and pellet plant, power plant, and scrap shredding facilities. Its products are used in automotive, general engineering, machinery, and infrastructure and construction sectors. The company was formerly known as Jindal Vijayanagar Steel Limited and changed its name to JSW Steel Limited in June 2005. JSW Steel Limited was founded in 1982 and is based in Mumbai, India.",

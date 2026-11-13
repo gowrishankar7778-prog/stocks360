@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "34,186",
-        "expenses": "28,855",
-        "operatingProfit": "5,331",
-        "opm": "15.6%",
-        "netProfit": "4,101",
-        "eps": "₹14.5"
+        "sales": "15,530",
+        "expenses": "11,490",
+        "operatingProfit": "4,040",
+        "opm": "26.0%",
+        "netProfit": "2,982",
+        "eps": "₹11.02"
       },
       {
         "period": "Mar 26",
-        "sales": "33,981",
-        "expenses": "28,147",
-        "operatingProfit": "5,834",
-        "opm": "17.2%",
-        "netProfit": "4,488",
-        "eps": "₹15.8"
+        "sales": "14,135",
+        "expenses": "15,943",
+        "operatingProfit": "-1,808",
+        "opm": "-12.8%",
+        "netProfit": "-900",
+        "eps": "₹-3.33"
       },
       {
         "period": "Jun 26",
-        "sales": "34,579",
-        "expenses": "28,568",
-        "operatingProfit": "6,011",
-        "opm": "17.4%",
-        "netProfit": "4,624",
-        "eps": "₹16.3"
+        "sales": "18,738",
+        "expenses": "10,753",
+        "operatingProfit": "7,985",
+        "opm": "42.6%",
+        "netProfit": "7,025",
+        "eps": "₹25.96"
       },
       {
-        "period": "Sept 26",
-        "sales": "35,620",
-        "expenses": "28,948",
-        "operatingProfit": "6,672",
-        "opm": "18.7%",
-        "netProfit": "5,132",
-        "eps": "₹18.1"
+        "period": "Sep 26",
+        "sales": "16,098",
+        "expenses": "11,033",
+        "operatingProfit": "5,065",
+        "opm": "31.5%",
+        "netProfit": "4,302",
+        "eps": "₹15.89"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "20,016",
         "otherAssets": "22,464",
         "totalAssets": "80,736"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "543",
+        "reserves": "27,616",
+        "borrowings": "906",
+        "otherLiabilities": "16,937",
+        "totalLiabilities": "46,002",
+        "fixedAssets": "3,014",
+        "investments": "6,626",
+        "otherAssets": "36,362",
+        "totalAssets": "46,002"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-9,203",
         "cff": "-6,590",
         "netCash": "3,993"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "3,327",
+        "cfi": "5,542",
+        "cff": "-9,028",
+        "netCashFlow": "-159"
       }
     ],
     "shareholding": {
-      "promoters": "62.76%",
+      "promoters": "60.88%",
       "fii": "18.39%",
       "dii": "9.90%",
       "public": "8.95%",
@@ -255,7 +274,7 @@
       "evToEbitda": 14.1,
       "roce": 30.8,
       "roe": 24.6,
-      "debtToEquity": 0.08,
+      "debtToEquity": 0.03,
       "interestCoverage": 35.7,
       "divYield": 2.82,
       "salesGrowth3Y": 8.7,
@@ -265,7 +284,7 @@
     "pe": 21.7,
     "roePct": 24.6,
     "rocePct": 30.8,
-    "debtToEquity": 0.08,
+    "debtToEquity": 0.03,
     "divYieldPct": 2.82,
     "salesGrowth3Y": 8.7,
     "profitGrowth3Y": 3.9,
@@ -289,9 +308,10 @@
     ],
     "updatedAt": 1794038125768,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:07.243Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 18.2%; Quarterly results refreshed (Sept 26); ROE updated: 25.4% -> 24.6%",
-    "cmp": 1405
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:45.470Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1405,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1736455_12102026074754_WEB.xml"
   },
   "HAPPSTMNDS": {
     "about": "Happiest Minds Technologies Limited, together with its subsidiaries, provides information technology (IT) solutions and services in India, the Americas, Australia, Europe, Asia, the Middle East, and Africa. It operates in three segments: Infrastructure Management and Security Services (IMSS); Product and Digital Engineering Services (PDES); and Generative AI Business Services (GBS). The IMSS segment provides end-to-end infrastructure and security solutions comprising advisory, transformation, managed and hosted services, and secure intelligence solutions with specialization in cloud, virtualization and mobility across a multitude of industry verticals and geographies. Its PDES segment provides platform development, device engineering, quality assurance, experience engineering, and technology acceleration for enterprises and digital natives. The GBS Services segment offers process automation services, workflow optimization services, and predictive analysis services to integrate Generative AI into business processes. Happiest Minds Technologies Limited was incorporated in 2011 and is headquartered in Bengaluru, India.",
@@ -368,39 +388,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "588",
-        "expenses": "536",
-        "operatingProfit": "52",
-        "opm": "8.8%",
-        "netProfit": "40",
-        "eps": "₹1.1"
+        "sales": "448",
+        "expenses": "428",
+        "operatingProfit": "20",
+        "opm": "4.5%",
+        "netProfit": "14",
+        "eps": "₹0.93"
       },
       {
         "period": "Mar 26",
-        "sales": "604",
-        "expenses": "525",
-        "operatingProfit": "79",
-        "opm": "13.1%",
-        "netProfit": "61",
-        "eps": "₹1.7"
+        "sales": "549",
+        "expenses": "423",
+        "operatingProfit": "126",
+        "opm": "23.0%",
+        "netProfit": "113",
+        "eps": "₹7.53"
       },
       {
         "period": "Jun 26",
-        "sales": "629",
-        "expenses": "541",
-        "operatingProfit": "88",
-        "opm": "14%",
-        "netProfit": "68",
-        "eps": "₹1.9"
+        "sales": "584",
+        "expenses": "508",
+        "operatingProfit": "76",
+        "opm": "13.0%",
+        "netProfit": "57",
+        "eps": "₹3.78"
       },
       {
-        "period": "Sept 26",
-        "sales": "645",
-        "expenses": "564",
-        "operatingProfit": "81",
-        "opm": "12.6%",
-        "netProfit": "62",
-        "eps": "₹1.7"
+        "period": "Sep 26",
+        "sales": "610",
+        "expenses": "532",
+        "operatingProfit": "78",
+        "opm": "12.8%",
+        "netProfit": "58",
+        "eps": "₹3.82"
       }
     ],
     "balanceSheet": [
@@ -463,6 +483,18 @@
         "investments": "371",
         "otherAssets": "662",
         "totalAssets": "2,036"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "30",
+        "reserves": "1,676",
+        "borrowings": "1,409",
+        "otherLiabilities": "538",
+        "totalLiabilities": "3,653",
+        "fixedAssets": "136",
+        "investments": "87",
+        "otherAssets": "3,430",
+        "totalAssets": "3,653"
       }
     ],
     "cashFlows": [
@@ -500,10 +532,17 @@
         "cfi": "-158",
         "cff": "-80",
         "netCash": "85"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "75",
+        "cfi": "7",
+        "cff": "-66",
+        "netCashFlow": "16"
       }
     ],
     "shareholding": {
-      "promoters": "45.99%",
+      "promoters": "44.21%",
       "fii": "5.48%",
       "dii": "2.95%",
       "public": "45.58%",
@@ -549,7 +588,7 @@
       "evToEbitda": 29.7,
       "roce": 16.6,
       "roe": 13.3,
-      "debtToEquity": 0.99,
+      "debtToEquity": 0.83,
       "interestCoverage": 45.7,
       "divYield": 0.42,
       "salesGrowth3Y": 17.4,
@@ -559,7 +598,7 @@
     "pe": 48.1,
     "roePct": 13.3,
     "rocePct": 16.6,
-    "debtToEquity": 0.99,
+    "debtToEquity": 0.83,
     "divYieldPct": 0.42,
     "salesGrowth3Y": 17.4,
     "profitGrowth3Y": -2.7,
@@ -579,9 +618,10 @@
     ],
     "updatedAt": 1794038125774,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:12.165Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 15.1%; Quarterly results refreshed (Sept 26); ROE updated: 16.5% -> 13.3%; Debt/Equity updated: 0.38 -> 0.99",
-    "cmp": 312.1
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:47.311Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 312.1,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751572_02112026111809_WEB.xml"
   },
   "HDFCBANK": {
     "about": "HDFC Bank Limited provides banking and financial products and services to individuals and businesses in India, Bahrain, Hong Kong, Singapore, and Dubai. The company operates through Treasury, Retail Banking, Wholesale Banking, Other Banking Business, Insurance Business, and Other segments. It offers savings, salary, current, rural, public provident fund, pension, and demat accounts; fixed and recurring deposits; and safe deposit lockers, as well as offshore accounts and deposits, and overdrafts against fixed deposits. The company also provides personal, home, car and pre owned car, marriage, two-wheeler, business, doctor, educational, gold, consumer, and rural loans; loans against properties, securities, mutual funds, and car; loans for professionals; government sponsored programs; and loans on credit card, as well as working capital, term loans, supply chain management, project finance, export finance, commercial vehicle / equipment finance, tractor finance, infrastructure, and agriculture finance. In addition, it offers credit, debit, prepaid, forex, and kisan gold cards; payment and collection, export, import, remittance, bank guarantee, letter of credit, trade, hedging, and merchant and cash management services; and insurance and investment products. Further, the company provides short term finance, bill discounting, structured finance, export credit, loan repayment, custodial, and documents collection services; online, mobile, and phone banking services; unified payment interface, immediate payment, national electronic funds transfer, and real time gross settlement services; channel financing, vendor financing, money market, derivatives, employee trusts, cash surplus corporates, tax payment, and bankers to rights/public issue services; and financial solutions for supply chain partners and agricultural customers. It operates branches and automated teller machines in various cities/towns. The company was incorporated in 1994 and is headquartered in Mumbai, India.",
@@ -658,39 +698,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "45,869",
-        "expenses": "21,619",
-        "operatingProfit": "24,250",
-        "opm": "52.9%",
+        "sales": "90,005",
+        "expenses": "65,745",
+        "operatingProfit": "24,260",
+        "opm": "27.0%",
         "netProfit": "18,654",
-        "eps": "₹9.6"
+        "eps": "₹12.13"
       },
       {
         "period": "Mar 26",
-        "sales": "46,280",
-        "expenses": "21,293",
-        "operatingProfit": "24,987",
-        "opm": "54%",
+        "sales": "89,809",
+        "expenses": "64,616",
+        "operatingProfit": "25,193",
+        "opm": "28.1%",
         "netProfit": "19,221",
-        "eps": "₹9.9"
+        "eps": "₹12.49"
       },
       {
         "period": "Jun 26",
-        "sales": "46,356",
-        "expenses": "21,578",
-        "operatingProfit": "24,778",
-        "opm": "53.5%",
+        "sales": "92,184",
+        "expenses": "67,076",
+        "operatingProfit": "25,108",
+        "opm": "27.2%",
         "netProfit": "19,060",
-        "eps": "₹9.8"
+        "eps": "₹12.38"
       },
       {
-        "period": "Sept 26",
-        "sales": "48,450",
-        "expenses": "23,087",
-        "operatingProfit": "25,363",
-        "opm": "52.3%",
+        "period": "Sep 26",
+        "sales": "97,258",
+        "expenses": "71,348",
+        "operatingProfit": "25,910",
+        "opm": "26.6%",
         "netProfit": "19,510",
-        "eps": "₹10.1"
+        "eps": "₹12.66"
       }
     ],
     "balanceSheet": [
@@ -753,6 +793,18 @@
         "investments": "2,68,812",
         "otherAssets": "74,899",
         "totalAssets": "9,01,087"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "45,77,760",
+        "totalLiabilities": "45,77,760",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "45,77,760",
+        "totalAssets": "45,77,760"
       }
     ],
     "cashFlows": [
@@ -790,10 +842,17 @@
         "cfi": "-46,579",
         "cff": "-28,159",
         "netCash": "-3,958"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-28,967",
+        "cfi": "-134",
+        "cff": "-19,115",
+        "netCashFlow": "-48,216"
       }
     ],
     "shareholding": {
-      "promoters": "0.28%",
+      "promoters": "0%",
       "fii": "39.68%",
       "dii": "21.37%",
       "public": "38.67%",
@@ -869,9 +928,10 @@
     ],
     "updatedAt": 1794038125775,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:12.070Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 38.5%; Quarterly results refreshed (Sept 26); ROE updated: 16.8% -> 11%",
-    "cmp": 736.7
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:48.108Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 736.7,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740912_17102026054806_WEB.xml"
   },
   "HSCL": {
     "about": "Himadri Speciality Chemical Limited manufactures and sells carbon materials and chemicals in India and internationally. The company operates through Carbon Materials and Chemicals and Power segments. It offers anode materials, LFP cathodes, and recycling materials. The company also provides SDS, TDS, ASTM, lithium mining and refining, and carbon black; tyre, MRG, plastics, ink, and coatings; refined naphthalene, coal tar pitch, specialty oils, clean energy, and anti-corrosion products. It serves lithium-ion batteries, paints, plastics, tyres, technical rubber goods, aluminium, graphite electrodes, agrochemicals, defence, and construction chemicals industries. It also engages in industrial chemicals trading and petrochemicals trading. Himadri Speciality Chemical Limited was formerly known as Himadri Chemicals & Industries Limited and changed its name to Himadri Speciality Chemical Limited in July 2016. The company was incorporated in 1987 and is based in Kolkata, India.",
@@ -948,39 +1008,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,184",
-        "expenses": "934",
-        "operatingProfit": "250",
-        "opm": "21.1%",
-        "netProfit": "192",
-        "eps": "₹3.8"
+        "sales": "1,181",
+        "expenses": "924",
+        "operatingProfit": "257",
+        "opm": "21.8%",
+        "netProfit": "195",
+        "eps": "₹3.89"
       },
       {
         "period": "Mar 26",
-        "sales": "1,288",
-        "expenses": "1,018",
-        "operatingProfit": "270",
-        "opm": "21%",
-        "netProfit": "208",
-        "eps": "₹4.1"
+        "sales": "1,163",
+        "expenses": "920",
+        "operatingProfit": "243",
+        "opm": "20.9%",
+        "netProfit": "186",
+        "eps": "₹3.68"
       },
       {
         "period": "Jun 26",
-        "sales": "1,432",
-        "expenses": "1,136",
-        "operatingProfit": "296",
-        "opm": "20.7%",
-        "netProfit": "228",
-        "eps": "₹4.5"
+        "sales": "1,333",
+        "expenses": "1,039",
+        "operatingProfit": "294",
+        "opm": "22.1%",
+        "netProfit": "223",
+        "eps": "₹4.43"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,691",
-        "expenses": "1,389",
-        "operatingProfit": "302",
-        "opm": "17.9%",
-        "netProfit": "232",
-        "eps": "₹4.6"
+        "period": "Sep 26",
+        "sales": "1,587",
+        "expenses": "1,269",
+        "operatingProfit": "318",
+        "opm": "20.0%",
+        "netProfit": "240",
+        "eps": "₹4.75"
       }
     ],
     "balanceSheet": [
@@ -1043,6 +1103,18 @@
         "investments": "1,356",
         "otherAssets": "1,481",
         "totalAssets": "5,143"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "50",
+        "reserves": "4,999",
+        "borrowings": "1,086",
+        "otherLiabilities": "601",
+        "totalLiabilities": "6,736",
+        "fixedAssets": "1,808",
+        "investments": "1,425",
+        "otherAssets": "3,503",
+        "totalAssets": "6,736"
       }
     ],
     "cashFlows": [
@@ -1080,10 +1152,17 @@
         "cfi": "-304",
         "cff": "-249",
         "netCash": "153"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-96",
+        "cfi": "-248",
+        "cff": "277",
+        "netCashFlow": "-67"
       }
     ],
     "shareholding": {
-      "promoters": "57.43%",
+      "promoters": "52.49%",
       "fii": "3.89%",
       "dii": "2.10%",
       "public": "36.58%",
@@ -1163,9 +1242,10 @@
     ],
     "updatedAt": 1794038125788,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:19.947Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26)",
-    "cmp": 562.05
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.631Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 562.05,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1740408_16102026072443_WEB.xml"
   },
   "HEROMOTOCO": {
     "about": "Hero MotoCorp Limited primarily engages in the manufacture and sale of motorised two wheelers, spare parts and related services in India, Germany, Asia, Central and Latin America, Africa, and the Middle East. The company offers motorcycles and scooters, as well as electric scooters. It provides engines and accessories, as well as non-banking financial and other related services. The company is also involved in merchandise business. The company was formerly known as Hero Honda Motors Ltd. and changed its name to Hero MotoCorp Limited in July 2011. Hero MotoCorp Limited was incorporated in 1984 and is based in New Delhi, India.",
@@ -1242,39 +1322,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "12,328",
-        "expenses": "10,574",
-        "operatingProfit": "1,754",
-        "opm": "14.2%",
+        "sales": "12,624",
+        "expenses": "10,847",
+        "operatingProfit": "1,777",
+        "opm": "14.1%",
         "netProfit": "1,349",
-        "eps": "₹48.2"
+        "eps": "₹67.4"
       },
       {
         "period": "Mar 26",
-        "sales": "12,797",
-        "expenses": "10,976",
-        "operatingProfit": "1,821",
-        "opm": "14.2%",
+        "sales": "13,005",
+        "expenses": "11,150",
+        "operatingProfit": "1,855",
+        "opm": "14.3%",
         "netProfit": "1,401",
-        "eps": "₹50"
+        "eps": "₹70.04"
       },
       {
         "period": "Jun 26",
-        "sales": "12,999",
-        "expenses": "11,109",
-        "operatingProfit": "1,890",
-        "opm": "14.5%",
+        "sales": "13,440",
+        "expenses": "11,484",
+        "operatingProfit": "1,956",
+        "opm": "14.6%",
         "netProfit": "1,454",
-        "eps": "₹51.9"
+        "eps": "₹72.69"
       },
       {
-        "period": "Sept 26",
-        "sales": "14,687",
-        "expenses": "12,794",
-        "operatingProfit": "1,893",
-        "opm": "12.9%",
+        "period": "Sep 26",
+        "sales": "14,881",
+        "expenses": "12,942",
+        "operatingProfit": "1,939",
+        "opm": "13.0%",
         "netProfit": "1,456",
-        "eps": "₹52"
+        "eps": "₹72.75"
       }
     ],
     "balanceSheet": [
@@ -1337,6 +1417,18 @@
         "investments": "3,901",
         "otherAssets": "8,110",
         "totalAssets": "23,959"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "40",
+        "reserves": "22,950",
+        "borrowings": "0",
+        "otherLiabilities": "13,297",
+        "totalLiabilities": "36,287",
+        "fixedAssets": "5,907",
+        "investments": "11,967",
+        "otherAssets": "18,413",
+        "totalAssets": "36,287"
       }
     ],
     "cashFlows": [
@@ -1374,10 +1466,17 @@
         "cfi": "-2,394",
         "cff": "-1,074",
         "netCash": "1,337"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "3,239",
+        "cfi": "-1,386",
+        "cff": "-1,529",
+        "netCashFlow": "324"
       }
     ],
     "shareholding": {
-      "promoters": "37.24%",
+      "promoters": "34.72%",
       "fii": "24.20%",
       "dii": "13.03%",
       "public": "25.53%",
@@ -1423,7 +1522,7 @@
       "evToEbitda": 17.1,
       "roce": 33.6,
       "roe": 26.9,
-      "debtToEquity": 0.06,
+      "debtToEquity": 0,
       "interestCoverage": 39.6,
       "divYield": 2.8,
       "salesGrowth3Y": 11.5,
@@ -1433,7 +1532,7 @@
     "pe": 26.7,
     "roePct": 26.9,
     "rocePct": 33.6,
-    "debtToEquity": 0.06,
+    "debtToEquity": 0,
     "divYieldPct": 2.8,
     "salesGrowth3Y": 11.5,
     "profitGrowth3Y": 21.9,
@@ -1455,9 +1554,10 @@
     ],
     "updatedAt": 1794038125801,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:41.750Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 22.4% -> 26.9%",
-    "cmp": 5399.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.792Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 5399.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748299_28102026090747_WEB.xml"
   },
   "HINDUNILVR": {
     "about": "Hindustan Unilever Limited, a fast-moving consumer goods company, manufactures and sells food, home care, and personal care products in India and internationally. It operates through Home Care, Beauty & Wellbeing, Personal Care, Foods, and Others segments. The company offers detergent bars, detergent powders, detergent liquids, and scourers; skin care and hair care products; skin cleansing, oral care, bodywash, and deodorants; and culinary products, such as tomato based products, fruit based products, soups, etc., as well as tea, coffee, functional nutrition drinks, and lifestyle nutrition products. It is also involved in beauty salons, job work, real estate, and discharge trust business. Hindustan Unilever Limited was founded in 1888 and is headquartered in Mumbai, India.",
@@ -1534,39 +1634,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "15,805",
-        "expenses": "6,607",
-        "operatingProfit": "9,198",
-        "opm": "58.2%",
+        "sales": "16,026",
+        "expenses": "12,660",
+        "operatingProfit": "3,366",
+        "opm": "21.0%",
         "netProfit": "7,075",
-        "eps": "₹20.9"
+        "eps": "₹11.02"
       },
       {
         "period": "Mar 26",
-        "sales": "16,351",
-        "expenses": "12,461",
-        "operatingProfit": "3,890",
-        "opm": "23.8%",
-        "netProfit": "2,992",
-        "eps": "₹8.8"
+        "sales": "15,996",
+        "expenses": "12,162",
+        "operatingProfit": "3,834",
+        "opm": "24.0%",
+        "netProfit": "2,930",
+        "eps": "₹12.5"
       },
       {
         "period": "Jun 26",
-        "sales": "16,657",
-        "expenses": "13,237",
-        "operatingProfit": "3,420",
-        "opm": "20.5%",
+        "sales": "16,890",
+        "expenses": "13,342",
+        "operatingProfit": "3,548",
+        "opm": "21.0%",
         "netProfit": "2,631",
-        "eps": "₹7.8"
+        "eps": "₹11.2"
       },
       {
-        "period": "Sept 26",
-        "sales": "18,226",
-        "expenses": "14,599",
-        "operatingProfit": "3,627",
-        "opm": "19.9%",
-        "netProfit": "2,790",
-        "eps": "₹8.3"
+        "period": "Sep 26",
+        "sales": "17,802",
+        "expenses": "13,971",
+        "operatingProfit": "3,831",
+        "opm": "21.5%",
+        "netProfit": "2,844",
+        "eps": "₹12.1"
       }
     ],
     "balanceSheet": [
@@ -1629,6 +1729,18 @@
         "investments": "16,627",
         "otherAssets": "26,642",
         "totalAssets": "90,878"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "235",
+        "reserves": "49,092",
+        "borrowings": "0",
+        "otherLiabilities": "31,759",
+        "totalLiabilities": "81,086",
+        "fixedAssets": "7,437",
+        "investments": "111",
+        "otherAssets": "73,538",
+        "totalAssets": "81,086"
       }
     ],
     "cashFlows": [
@@ -1666,10 +1778,17 @@
         "cfi": "-6,476",
         "cff": "-3,038",
         "netCash": "2,662"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "7,946",
+        "cfi": "-3,381",
+        "cff": "-5,448",
+        "netCashFlow": "-883"
       }
     ],
     "shareholding": {
-      "promoters": "62.27%",
+      "promoters": "61.9%",
       "fii": "13.51%",
       "dii": "7.27%",
       "public": "16.95%",
@@ -1715,7 +1834,7 @@
       "evToEbitda": 32.2,
       "roce": 27,
       "roe": 21.6,
-      "debtToEquity": 0.03,
+      "debtToEquity": 0,
       "interestCoverage": 50.1,
       "divYield": 1.62,
       "salesGrowth3Y": 0.8,
@@ -1725,7 +1844,7 @@
     "pe": 43.2,
     "roePct": 21.6,
     "rocePct": 27,
-    "debtToEquity": 0.03,
+    "debtToEquity": 0,
     "divYieldPct": 1.62,
     "salesGrowth3Y": 0.8,
     "profitGrowth3Y": 14.1,
@@ -1749,9 +1868,10 @@
     ],
     "updatedAt": 1794038125808,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.002Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 20.5% -> 21.6%",
-    "cmp": 1977.1
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.174Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1977.1,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748387_28102026111155_WEB.xml"
   },
   "HINDALCO": {
     "about": "Hindalco Industries Limited, together with its subsidiaries, manufactures and distributes aluminum and copper products in India and internationally. It operates through four segments: Novelis, Aluminium Upstream, Aluminium Downstream, and Copper. The company offers primary aluminum, such as ingots, wirerods, primary foundry alloys, and billets; flat rolled products, including building and pattern sheets, PCB entry and cold-rolled sheets, closure and fin stocks, cable wrap and lamp cap stocks, foil and litho stocks, spiral fin stocks, circles, hot-rolled plates, cold-rolled coils, and flooring sheets/tread plates; extrusions; and foils, as well as aluminium sheet and light gauge products. It also engages in bauxite and coal mining, refineries, and metal and power; and specialty alumina solutions, including refractory, ceramic, polishing, flame retardant, battery, and water treatment solutions. In addition, the company provides copper wire and recycled rods, alloy rods, IGT tubes, and cathodes; precious metals, such as gold and silver bars, selenium, and platinum group metals; and di-ammonium phosphate, as well as internally grooved copper tube and copper scrap recycling operations. Further, it provides mining, investment, cargo, management, import and export aluminum, sales office, captive insurance cell, and welfare services. The company exports its products. It offers its products under the PrizTec, EcoEdge G, EcoEdge C, Everlast, Eternia, Freshwrapp, FUSALOX, and Totalis brands. The company serves the building and construction, batteries and renewable energy, commercial transport, consumer durables, circularity and home solutions, defence and aerospace, electrical and power, industrial machinery, packaging, and personal mobility industries. Hindalco Industries Limited was incorporated in 1958 and is headquartered in Mumbai, India.",

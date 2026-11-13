@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "892",
-        "expenses": "651",
-        "operatingProfit": "241",
-        "opm": "27%",
-        "netProfit": "185",
-        "eps": "₹27.1"
+        "sales": "590",
+        "expenses": "449",
+        "operatingProfit": "141",
+        "opm": "23.9%",
+        "netProfit": "106",
+        "eps": "₹20.66"
       },
       {
         "period": "Mar 26",
-        "sales": "938",
-        "expenses": "661",
-        "operatingProfit": "277",
-        "opm": "29.5%",
-        "netProfit": "213",
-        "eps": "₹31.2"
+        "sales": "646",
+        "expenses": "456",
+        "operatingProfit": "190",
+        "opm": "29.4%",
+        "netProfit": "135",
+        "eps": "₹26.35"
       },
       {
         "period": "Jun 26",
-        "sales": "1,045",
-        "expenses": "729",
-        "operatingProfit": "316",
-        "opm": "30.2%",
-        "netProfit": "243",
-        "eps": "₹35.6"
+        "sales": "731",
+        "expenses": "476",
+        "operatingProfit": "255",
+        "opm": "34.9%",
+        "netProfit": "191",
+        "eps": "₹37.18"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,191",
-        "expenses": "841",
-        "operatingProfit": "350",
-        "opm": "29.4%",
-        "netProfit": "269",
-        "eps": "₹39.4"
+        "period": "Sep 26",
+        "sales": "790",
+        "expenses": "523",
+        "operatingProfit": "267",
+        "opm": "33.8%",
+        "netProfit": "205",
+        "eps": "₹39.88"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "744",
         "otherAssets": "1,221",
         "totalAssets": "3,607"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "10",
+        "reserves": "4,025",
+        "borrowings": "0",
+        "otherLiabilities": "792",
+        "totalLiabilities": "4,827",
+        "fixedAssets": "851",
+        "investments": "1,149",
+        "otherAssets": "2,827",
+        "totalAssets": "4,827"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-391",
         "cff": "-248",
         "netCash": "248"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "301",
+        "cfi": "-243",
+        "cff": "-39",
+        "netCashFlow": "19"
       }
     ],
     "shareholding": {
-      "promoters": "28.58%",
+      "promoters": "27.08%",
       "fii": "26.57%",
       "dii": "14.31%",
       "public": "30.54%",
@@ -255,7 +274,7 @@
       "evToEbitda": 15.2,
       "roce": 28.3,
       "roe": 22.6,
-      "debtToEquity": 0.28,
+      "debtToEquity": 0,
       "interestCoverage": 40.1,
       "divYield": 0.35,
       "salesGrowth3Y": 26.7,
@@ -265,7 +284,7 @@
     "pe": 65.9,
     "roePct": 22.6,
     "rocePct": 28.3,
-    "debtToEquity": 0.28,
+    "debtToEquity": 0,
     "divYieldPct": 0.35,
     "salesGrowth3Y": 26.7,
     "profitGrowth3Y": 21,
@@ -289,9 +308,10 @@
     ],
     "updatedAt": 1794038125790,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:21.439Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 9.8% -> 22.6%; Debt/Equity updated: 0.42 -> 0.28",
-    "cmp": 8785
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.773Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 8785,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750016_30102026051129_WEB.xml"
   },
   "NTPC": {
     "about": "NTPC Limited operates as an integrated power company in India and Mauritius. It operates through two segments: Generation and Others. The company generates power from fossil fuels, hydro, solar, wind, nuclear, and renewable energy sources. It also engages in the coal mining and energy trading business. NTPC Limited was incorporated in 1975 and is based in New Delhi, India.",
@@ -368,39 +388,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "40,644",
-        "expenses": "34,161",
-        "operatingProfit": "6,483",
-        "opm": "16%",
+        "sales": "41,673",
+        "expenses": "35,045",
+        "operatingProfit": "6,628",
+        "opm": "15.9%",
         "netProfit": "4,987",
-        "eps": "₹3.7"
+        "eps": "₹5.14"
       },
       {
         "period": "Mar 26",
-        "sales": "49,688",
-        "expenses": "36,056",
-        "operatingProfit": "13,632",
-        "opm": "27.4%",
-        "netProfit": "10,486",
-        "eps": "₹7.7"
+        "sales": "44,030",
+        "expenses": "37,325",
+        "operatingProfit": "6,705",
+        "opm": "15.2%",
+        "netProfit": "8,747",
+        "eps": "₹9.02"
       },
       {
         "period": "Jun 26",
-        "sales": "43,832",
-        "expenses": "35,095",
-        "operatingProfit": "8,737",
-        "opm": "19.9%",
-        "netProfit": "6,721",
-        "eps": "₹4.9"
+        "sales": "44,512",
+        "expenses": "37,633",
+        "operatingProfit": "6,879",
+        "opm": "15.5%",
+        "netProfit": "5,342",
+        "eps": "₹5.51"
       },
       {
-        "period": "Sept 26",
-        "sales": "54,270",
-        "expenses": "45,131",
-        "operatingProfit": "9,139",
-        "opm": "16.8%",
-        "netProfit": "7,030",
-        "eps": "₹5.2"
+        "period": "Sep 26",
+        "sales": "46,842",
+        "expenses": "41,832",
+        "operatingProfit": "5,010",
+        "opm": "10.7%",
+        "netProfit": "5,320",
+        "eps": "₹5.49"
       }
     ],
     "balanceSheet": [
@@ -463,6 +483,18 @@
         "investments": "49,517",
         "otherAssets": "68,323",
         "totalAssets": "2,20,939"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "9,697",
+        "reserves": "1,72,340",
+        "borrowings": "1,89,627",
+        "otherLiabilities": "47,554",
+        "totalLiabilities": "4,19,218",
+        "fixedAssets": "2,06,761",
+        "investments": "540",
+        "otherAssets": "2,11,917",
+        "totalAssets": "4,19,218"
       }
     ],
     "cashFlows": [
@@ -500,10 +532,17 @@
         "cfi": "-11,814",
         "cff": "-7,844",
         "netCash": "6,277"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "21,995",
+        "cfi": "-10,819",
+        "cff": "-11,389",
+        "netCashFlow": "-213"
       }
     ],
     "shareholding": {
-      "promoters": "54.00%",
+      "promoters": "51.1%",
       "fii": "22.67%",
       "dii": "12.20%",
       "public": "11.13%",
@@ -549,7 +588,7 @@
       "evToEbitda": 8.7,
       "roce": 18.1,
       "roe": 14.5,
-      "debtToEquity": 1.26,
+      "debtToEquity": 1.04,
       "interestCoverage": 34.5,
       "divYield": 2.1,
       "salesGrowth3Y": -2.1,
@@ -559,7 +598,7 @@
     "pe": 15,
     "roePct": 14.5,
     "rocePct": 18.1,
-    "debtToEquity": 1.26,
+    "debtToEquity": 1.04,
     "divYieldPct": 2.1,
     "salesGrowth3Y": -2.1,
     "profitGrowth3Y": 16.9,
@@ -579,9 +618,10 @@
     ],
     "updatedAt": 1794038125794,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.048Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 13.8% -> 14.5%; Debt/Equity updated: 1.45 -> 1.26",
-    "cmp": 321.95
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:56.573Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 321.95,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750686_31102026042609_WEB.xml"
   },
   "NHPC": {
     "about": "NHPC Limited, together with its subsidiaries, engages in the generation, sale, and trading of electricity through hydro, wind, and solar power stations in India and Nepal. It also owns and operates power stations. In addition, the company offers consultancy, project execution, and maintenance services in the areas of design and engineering; geotechnical investigations; renovation and modernization of hydropower projects; procurement; project management and supervision; construction management; and operation and maintenance of power plants, rural road projects, and rural electrification projects. The company supplies electricity to various distribution companies, including state electricity distribution companies, state power departments, and private distribution companies. It exports its products and services. NHPC Limited was incorporated in 1975 and is based in Faridabad, India.",
@@ -658,39 +698,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,221",
-        "expenses": "1,936",
-        "operatingProfit": "285",
-        "opm": "12.8%",
-        "netProfit": "219",
-        "eps": "₹0.2"
+        "sales": "2,307",
+        "expenses": "2,647",
+        "operatingProfit": "-340",
+        "opm": "-14.7%",
+        "netProfit": "293",
+        "eps": "₹0.29"
       },
       {
         "period": "Mar 26",
-        "sales": "2,816",
-        "expenses": "918",
-        "operatingProfit": "1,898",
-        "opm": "67.4%",
-        "netProfit": "1,460",
-        "eps": "₹1.2"
+        "sales": "3,116",
+        "expenses": "2,711",
+        "operatingProfit": "405",
+        "opm": "13.0%",
+        "netProfit": "1,328",
+        "eps": "₹1.32"
       },
       {
         "period": "Jun 26",
-        "sales": "3,808",
-        "expenses": "2,383",
-        "operatingProfit": "1,425",
-        "opm": "37.4%",
-        "netProfit": "1,096",
-        "eps": "₹0.9"
+        "sales": "3,742",
+        "expenses": "2,551",
+        "operatingProfit": "1,191",
+        "opm": "31.8%",
+        "netProfit": "1,113",
+        "eps": "₹1.11"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,483",
-        "expenses": "2,469",
-        "operatingProfit": "2,014",
-        "opm": "44.9%",
-        "netProfit": "1,549",
-        "eps": "₹1.3"
+        "period": "Sep 26",
+        "sales": "4,329",
+        "expenses": "2,642",
+        "operatingProfit": "1,687",
+        "opm": "39.0%",
+        "netProfit": "1,525",
+        "eps": "₹1.52"
       }
     ],
     "balanceSheet": [
@@ -753,6 +793,18 @@
         "investments": "5,901",
         "otherAssets": "10,462",
         "totalAssets": "36,433"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "10,045",
+        "reserves": "32,231",
+        "borrowings": "47,622",
+        "otherLiabilities": "15,294",
+        "totalLiabilities": "1,05,192",
+        "fixedAssets": "48,138",
+        "investments": "6,328",
+        "otherAssets": "50,726",
+        "totalAssets": "1,05,192"
       }
     ],
     "cashFlows": [
@@ -790,10 +842,17 @@
         "cfi": "-3,379",
         "cff": "-1,324",
         "netCash": "1,248"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,985",
+        "cfi": "-3,222",
+        "cff": "1,659",
+        "netCashFlow": "1,422"
       }
     ],
     "shareholding": {
-      "promoters": "62.48%",
+      "promoters": "61.39%",
       "fii": "14.46%",
       "dii": "7.79%",
       "public": "15.27%",
@@ -869,9 +928,10 @@
     ],
     "updatedAt": 1794038125798,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.948Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 46% -> 52.5%; Quarterly results refreshed (Sept 26); ROE updated: 10.5% -> 9.6%; Debt/Equity updated: 0.78 -> 1.13",
-    "cmp": 78.49
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:00.030Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 78.49,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753174_04112026084237_WEB.xml"
   },
   "NESTLEIND": {
     "about": "Nestlé India Limited engages in the manufacture and sale of food products in India and internationally. It offers milk products and nutrition, including dairy whitener, condensed milk, UHT milk, yogurt, maternal and infant formula, baby foods, health care nutrition; prepared dishes and cooking aids, such as noodles, sauces, seasonings, pasta, cereals, and pet foods; powdered and liquid beverages comprising instant coffee and tea, as well as ready to drink beverages; and confectionery items consisting of bar countlines, tablets, and sugar confectionery products. The company was incorporated in 1959 and is headquartered in Gurugram, India.",
@@ -948,39 +1008,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "5,667",
-        "expenses": "4,344",
-        "operatingProfit": "1,323",
-        "opm": "23.3%",
+        "sales": "5,679",
+        "expenses": "4,511",
+        "operatingProfit": "1,168",
+        "opm": "20.6%",
         "netProfit": "1,018",
-        "eps": "₹8.4"
+        "eps": "₹5.28"
       },
       {
         "period": "Mar 26",
-        "sales": "6,748",
-        "expenses": "5,300",
-        "operatingProfit": "1,448",
-        "opm": "21.5%",
+        "sales": "6,766",
+        "expenses": "5,253",
+        "operatingProfit": "1,513",
+        "opm": "22.4%",
         "netProfit": "1,114",
-        "eps": "₹9.2"
+        "eps": "₹5.78"
       },
       {
         "period": "Jun 26",
-        "sales": "6,378",
-        "expenses": "5,110",
-        "operatingProfit": "1,268",
-        "opm": "19.9%",
+        "sales": "6,401",
+        "expenses": "5,077",
+        "operatingProfit": "1,324",
+        "opm": "20.7%",
         "netProfit": "975",
-        "eps": "₹8.1"
+        "eps": "₹5.06"
       },
       {
-        "period": "Sept 26",
-        "sales": "6,788",
-        "expenses": "5,453",
-        "operatingProfit": "1,335",
-        "opm": "19.7%",
+        "period": "Sep 26",
+        "sales": "6,809",
+        "expenses": "5,410",
+        "operatingProfit": "1,399",
+        "opm": "20.5%",
         "netProfit": "1,027",
-        "eps": "₹8.5"
+        "eps": "₹5.32"
       }
     ],
     "balanceSheet": [
@@ -1043,6 +1103,18 @@
         "investments": "2,592",
         "otherAssets": "2,191",
         "totalAssets": "9,558"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "193",
+        "reserves": "5,770",
+        "borrowings": "25",
+        "otherLiabilities": "8,396",
+        "totalLiabilities": "14,384",
+        "fixedAssets": "6,326",
+        "investments": "707",
+        "otherAssets": "7,351",
+        "totalAssets": "14,384"
       }
     ],
     "cashFlows": [
@@ -1080,10 +1152,17 @@
         "cfi": "-2,296",
         "cff": "-1,669",
         "netCash": "633"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,258",
+        "cfi": "-388",
+        "cff": "-1,416",
+        "netCashFlow": "454"
       }
     ],
     "shareholding": {
-      "promoters": "62.77%",
+      "promoters": "62.76%",
       "fii": "10.85%",
       "dii": "5.84%",
       "public": "20.54%",
@@ -1129,7 +1208,7 @@
       "evToEbitda": 21.6,
       "roce": 99.9,
       "roe": 79.9,
-      "debtToEquity": 0.08,
+      "debtToEquity": 0,
       "interestCoverage": 48.1,
       "divYield": 1.35,
       "salesGrowth3Y": 6.6,
@@ -1139,7 +1218,7 @@
     "pe": 36.5,
     "roePct": 79.9,
     "rocePct": 99.9,
-    "debtToEquity": 0.08,
+    "debtToEquity": 0,
     "divYieldPct": 1.35,
     "salesGrowth3Y": 6.6,
     "profitGrowth3Y": 5.7,
@@ -1163,9 +1242,10 @@
     ],
     "updatedAt": 1794038125809,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:44.993Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 108.5% -> 79.9%",
-    "cmp": 1248
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:09.692Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1248,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1739228_15102026060956_WEB.xml"
   },
   "NMDC": {
     "about": "NMDC Limited, together with its subsidiaries, explores for and produces iron ore in India and internationally. It operates through Iron Ore, Trading of HR Coil, and All Other Segments (Pellets, Other Mineral, Products, Services & Others). The company also explores for lithium, copper, rock phosphate, limestone, beach sand, coking and non-coking coal, magnesite, diamond, tungsten, nickel, gold, base metals, and rare earth metals. In addition, it produces and sells hot rolled coil and pellets; and generates and distributes solar and wind power. The company exports its products. NMDC Limited was incorporated in 1958 and is headquartered in Hyderabad, India.",

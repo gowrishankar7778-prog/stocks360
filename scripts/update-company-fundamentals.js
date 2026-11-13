@@ -311,10 +311,10 @@ async function run() {
       const sym = stock.symbol.toUpperCase();
       const k = shardKey(sym);
       const shard = getShard(k);
-      const profile = shard[sym];
+      let profile = shard[sym];
+      const isNewProfile = !profile;
       if (!profile) {
-        unchangedCount++;
-        return;
+        profile = { updatedAt: new Date().toISOString() };
       }
 
       const nseInfo = await fetchNseCorpInfo(sym);
@@ -325,10 +325,14 @@ async function run() {
 
       let changed = false;
 
-      if (nseInfo.promoterPct !== null && profile.shareholding) {
+      if (nseInfo.promoterPct !== null) {
+        if (!profile.shareholding) profile.shareholding = { total: '100.00%' };
         const nextProm = `${nseInfo.promoterPct}%`;
         if (profile.shareholding.promoters !== nextProm) {
           profile.shareholding.promoters = nextProm;
+          if (profile.shareholding.public === undefined) {
+            profile.shareholding.public = `${Math.max(0, Number((100 - nseInfo.promoterPct).toFixed(2)))}%`;
+          }
           changed = true;
         }
       }
@@ -346,14 +350,16 @@ async function run() {
       if (nseInfo.xbrlUrl && profile.lastXbrlUrl !== nseInfo.xbrlUrl) {
         const xbrlData = await fetchAndParseNseXbrl(nseInfo.xbrlUrl);
         if (xbrlData) {
-          if (xbrlData.balanceSheetRow && Array.isArray(profile.balanceSheet)) {
+          if (xbrlData.balanceSheetRow) {
+            if (!Array.isArray(profile.balanceSheet)) profile.balanceSheet = [];
             const idxBs = profile.balanceSheet.findIndex((r) => r.year === xbrlData.balanceSheetRow.year);
             if (idxBs >= 0) profile.balanceSheet[idxBs] = xbrlData.balanceSheetRow;
             else profile.balanceSheet.push(xbrlData.balanceSheetRow);
             if (profile.balanceSheet.length > 6) profile.balanceSheet = profile.balanceSheet.slice(-6);
             changed = true;
           }
-          if (xbrlData.cashFlowRow && Array.isArray(profile.cashFlows)) {
+          if (xbrlData.cashFlowRow) {
+            if (!Array.isArray(profile.cashFlows)) profile.cashFlows = [];
             const idxCf = profile.cashFlows.findIndex((r) => r.year === xbrlData.cashFlowRow.year);
             if (idxCf >= 0) profile.cashFlows[idxCf] = xbrlData.cashFlowRow;
             else profile.cashFlows.push(xbrlData.cashFlowRow);
@@ -363,7 +369,8 @@ async function run() {
           if (xbrlData.debtToEquity !== null) {
             stock.debtToEquity = xbrlData.debtToEquity;
             profile.debtToEquity = xbrlData.debtToEquity;
-            if (profile.ratios) profile.ratios.debtToEquity = xbrlData.debtToEquity;
+            if (!profile.ratios) profile.ratios = {};
+            profile.ratios.debtToEquity = xbrlData.debtToEquity;
             changed = true;
           }
           profile.lastXbrlUrl = nseInfo.xbrlUrl;
@@ -371,6 +378,7 @@ async function run() {
       }
 
       if (changed) {
+        if (isNewProfile) shard[sym] = profile;
         profile.hasFinancialUpdate = true;
         profile.lastFinancialStatementUpdate = new Date().toISOString();
         profile.financialChangeSummary = 'Synced official NSE quarterly results & shareholding pattern';

@@ -1089,27 +1089,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function buildShareholdingHtml(shareholding) {
-    const s = shareholding || { promoters: "51.00%", fii: "18.00%", dii: "10.00%", public: "21.00%", total: "100.00%" };
-    const defaultPeriods = ["Dec 25", "Mar 26", "Jun 26", "Sept 26"];
-    const quarters = (Array.isArray(s.quarters) && s.quarters.length >= 4)
+    if (!shareholding || typeof shareholding !== "object") {
+      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">Shareholding pattern pending official exchange filing.</div>`;
+    }
+    const s = shareholding;
+    const quarters = (Array.isArray(s.quarters) && s.quarters.length > 0)
       ? s.quarters.slice(-4)
-      : defaultPeriods.map((pLabel, idx) => {
-          const pVal = parseFloat(s.promoters) || 51.0;
-          const fVal = parseFloat(s.fii) || 18.0;
-          const dVal = parseFloat(s.dii) || 10.0;
-          const step = 3 - idx;
-          const fQ = Math.max(0.5, Number((fVal - step * 0.15).toFixed(2)));
-          const dQ = Math.max(0.5, Number((dVal + step * 0.10).toFixed(2)));
-          const pubQ = Math.max(4.0, Number((100 - (pVal + fQ + dQ)).toFixed(2)));
-          return {
-            period: pLabel,
-            promoters: pVal.toFixed(2) + "%",
-            fii: fQ.toFixed(2) + "%",
-            dii: dQ.toFixed(2) + "%",
-            public: pubQ.toFixed(2) + "%",
-            total: "100.00%"
-          };
-        });
+      : [{
+          period: s.period || "Latest Filing",
+          promoters: s.promoters || "--",
+          fii: s.fii || "--",
+          dii: s.dii || "--",
+          public: s.public || "--",
+          total: s.total || "100.00%"
+        }];
 
     const latest = quarters[quarters.length - 1] || s;
 
@@ -1209,13 +1202,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     topPeers.sort((a, b) => (Number(b.marketCapCr) || 0) - (Number(a.marketCapCr) || 0));
 
-    const peerCount = Math.max(1, topPeers.length);
-    const avgMcap = Math.round(topPeers.reduce((acc, p) => acc + (Number(p.marketCapCr) || 0), 0) / peerCount);
-    const avgPe = (topPeers.reduce((acc, p) => acc + (Number(p.pe) || 20), 0) / peerCount).toFixed(1);
-    const avgRoe = (topPeers.reduce((acc, p) => acc + (Number(p.roePct) || 15), 0) / peerCount).toFixed(1);
-    const avgRoce = (topPeers.reduce((acc, p) => acc + (Number(p.rocePct) || 18), 0) / peerCount).toFixed(1);
-    const avgDe = (topPeers.reduce((acc, p) => acc + (Number(p.debtToEquity) || 0.2), 0) / peerCount).toFixed(2);
-    const avgDiv = (topPeers.reduce((acc, p) => acc + (Number(p.divYieldPct) || 0.8), 0) / peerCount).toFixed(2);
+    function avgMetric(list, getter, digits, positiveOnly) {
+      const vals = list.map(getter).filter((v) => typeof v === "number" && !isNaN(v) && (!positiveOnly || v > 0));
+      if (vals.length === 0) return null;
+      const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+      return digits === 0 ? Math.round(avg) : avg.toFixed(digits);
+    }
+    const avgMcap = avgMetric(topPeers, (p) => (p.marketCapCr !== undefined && p.marketCapCr !== null ? Number(p.marketCapCr) : NaN), 0, true);
+    const avgPe = avgMetric(topPeers, (p) => (p.pe !== undefined && p.pe !== null ? Number(p.pe) : NaN), 1, true);
+    const avgRoe = avgMetric(topPeers, (p) => (p.roePct !== undefined && p.roePct !== null ? Number(p.roePct) : NaN), 1, false);
+    const avgRoce = avgMetric(topPeers, (p) => (p.rocePct !== undefined && p.rocePct !== null ? Number(p.rocePct) : NaN), 1, false);
+    const avgDe = avgMetric(topPeers, (p) => (p.debtToEquity !== undefined && p.debtToEquity !== null ? Number(p.debtToEquity) : NaN), 2, false);
+    const avgDiv = avgMetric(topPeers, (p) => (p.divYieldPct !== undefined && p.divYieldPct !== null ? Number(p.divYieldPct) : NaN), 2, false);
 
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
@@ -1239,11 +1237,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 const isCurrent = p.symbol === stock.symbol;
                 const pCmp = Number(p.cmp) || 0;
                 const pMcap = Number(p.marketCapCr) || 0;
-                const pPe = p.pe ? Number(p.pe).toFixed(1) + "x" : "--";
-                const pRoe = p.roePct !== undefined ? Number(p.roePct).toFixed(1) + "%" : "--";
-                const pRoce = p.rocePct !== undefined ? Number(p.rocePct).toFixed(1) + "%" : "--";
-                const pDe = p.debtToEquity !== undefined ? Number(p.debtToEquity).toFixed(2) : "0.10";
-                const pDiv = p.divYieldPct !== undefined ? Number(p.divYieldPct).toFixed(2) + "%" : "0.00%";
+                const pPe = (p.pe !== null && p.pe !== undefined && Number(p.pe) > 0) ? Number(p.pe).toFixed(1) + "x" : "--";
+                const pRoe = (p.roePct !== null && p.roePct !== undefined && !isNaN(Number(p.roePct))) ? Number(p.roePct).toFixed(1) + "%" : "--";
+                const pRoce = (p.rocePct !== null && p.rocePct !== undefined && !isNaN(Number(p.rocePct))) ? Number(p.rocePct).toFixed(1) + "%" : "--";
+                const pDe = (p.debtToEquity !== null && p.debtToEquity !== undefined && !isNaN(Number(p.debtToEquity))) ? Number(p.debtToEquity).toFixed(2) : "--";
+                const pDiv = (p.divYieldPct !== null && p.divYieldPct !== undefined && !isNaN(Number(p.divYieldPct))) ? Number(p.divYieldPct).toFixed(2) + "%" : "--";
                 return `
                   <tr style="background:${isCurrent ? "#eff6ff" : idx % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
                     <td style="padding:10px 12px; color:#64748b; font-weight:600;">${idx + 1}.</td>
@@ -1268,12 +1266,12 @@ document.addEventListener("DOMContentLoaded", function () {
               <td style="padding:10px 12px; color:#64748b;">—</td>
               <td style="padding:10px 14px; color:#0f172a;">Sector Average (${escapeHtml(stock.sector || "Peers")})</td>
               <td style="padding:10px 14px; text-align:right; color:#64748b;">—</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">₹ ${avgMcap.toLocaleString("en-IN")}</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgPe}x</td>
-              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoe}%</td>
-              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoce}%</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDe}</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDiv}%</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgMcap !== null ? "₹ " + avgMcap.toLocaleString("en-IN") : "--"}</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgPe !== null ? avgPe + "x" : "--"}</td>
+              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoe !== null ? avgRoe + "%" : "--"}</td>
+              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoce !== null ? avgRoce + "%" : "--"}</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDe !== null ? avgDe : "--"}</td>
+              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDiv !== null ? avgDiv + "%" : "--"}</td>
             </tr>
           </tbody>
         </table>
@@ -1382,30 +1380,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const salesGrowth3Y = stock.salesGrowth3Y || 0;
     const profitGrowth3Y = stock.profitGrowth3Y || 0;
 
-    // 2. Comprehensive Financial Statements Suites
-    const financials = (Array.isArray(stock.financials) && stock.financials.length > 0)
-      ? stock.financials
-      : generate5YearFinancials(stock);
-
-    const quarterlyResults = (Array.isArray(stock.quarterlyResults) && stock.quarterlyResults.length > 0)
-      ? stock.quarterlyResults
-      : generateQuarterlyResults(stock);
-
-    const balanceSheet = (Array.isArray(stock.balanceSheet) && stock.balanceSheet.length > 0)
-      ? stock.balanceSheet
-      : generateBalanceSheet(stock);
-
-    const cashFlows = (Array.isArray(stock.cashFlows) && stock.cashFlows.length > 0)
-      ? stock.cashFlows
-      : generateCashFlows(stock);
-
-    const shareholding = stock.shareholding
-      ? stock.shareholding
-      : generateShareholdingPattern(stock);
-
-    const ratios = stock.ratios
+    // 2. Comprehensive Financial Statements Suites (Official Exchange Filings Only - No Synthetic Numbers)
+    const financials = Array.isArray(stock.financials) ? stock.financials : [];
+    const quarterlyResults = Array.isArray(stock.quarterlyResults) ? stock.quarterlyResults : [];
+    const balanceSheet = Array.isArray(stock.balanceSheet) ? stock.balanceSheet : [];
+    const cashFlows = Array.isArray(stock.cashFlows) ? stock.cashFlows : [];
+    const shareholding = (stock.shareholding && typeof stock.shareholding === "object") ? stock.shareholding : null;
+    const ratios = (stock.ratios && typeof stock.ratios === "object")
       ? stock.ratios
-      : generateRatiosMatrix(stock);
+      : {
+          pe: stock.pe ?? null,
+          roe: stock.roePct ?? null,
+          roce: stock.rocePct ?? null,
+          debtToEquity: stock.debtToEquity ?? null,
+          divYield: stock.divYieldPct ?? null,
+          pb: null,
+          evToEbitda: null,
+          interestCoverage: null
+        };
 
     // 3. About the Company Profile Text & Investment Thesis
     const aboutText = stock.about
@@ -1883,6 +1875,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const shContainer = document.getElementById("company-shareholding-container");
         if (shContainer) shContainer.innerHTML = buildShareholdingHtml(profile.shareholding);
       }
+      const peersContainer = document.getElementById("company-peers-container");
+      if (peersContainer) peersContainer.innerHTML = buildStockPeerComparisonHtml(stock);
     }
 
     // Load official verified profile shard (audited statements, balance sheet, cash flows, ratios, shareholding)

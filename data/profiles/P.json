@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,778",
-        "expenses": "3,207",
-        "operatingProfit": "571",
-        "opm": "15.1%",
-        "netProfit": "439",
-        "eps": "₹21.5"
+        "sales": "3,738",
+        "expenses": "3,206",
+        "operatingProfit": "532",
+        "opm": "14.2%",
+        "netProfit": "388",
+        "eps": "₹24.85"
       },
       {
         "period": "Mar 26",
-        "sales": "4,056",
-        "expenses": "3,368",
-        "operatingProfit": "688",
-        "opm": "17%",
-        "netProfit": "529",
-        "eps": "₹26"
+        "sales": "4,020",
+        "expenses": "3,450",
+        "operatingProfit": "570",
+        "opm": "14.2%",
+        "netProfit": "420",
+        "eps": "₹26.87"
       },
       {
         "period": "Jun 26",
-        "sales": "4,303",
-        "expenses": "3,675",
-        "operatingProfit": "628",
-        "opm": "14.6%",
-        "netProfit": "483",
-        "eps": "₹23.7"
+        "sales": "4,168",
+        "expenses": "3,622",
+        "operatingProfit": "546",
+        "opm": "13.1%",
+        "netProfit": "402",
+        "eps": "₹25.7"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,664",
-        "expenses": "4,206",
-        "operatingProfit": "458",
-        "opm": "9.8%",
-        "netProfit": "352",
-        "eps": "₹17.3"
+        "period": "Sep 26",
+        "sales": "4,514",
+        "expenses": "3,858",
+        "operatingProfit": "656",
+        "opm": "14.5%",
+        "netProfit": "483",
+        "eps": "₹30.8"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "2,496",
         "otherAssets": "1,998",
         "totalAssets": "9,856"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "79",
+        "reserves": "7,392",
+        "borrowings": "0",
+        "otherLiabilities": "3,609",
+        "totalLiabilities": "11,080",
+        "fixedAssets": "358",
+        "investments": "1,708",
+        "otherAssets": "9,014",
+        "totalAssets": "11,080"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-774",
         "cff": "-471",
         "netCash": "141"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "662",
+        "cfi": "229",
+        "cff": "-415",
+        "netCashFlow": "476"
       }
     ],
     "shareholding": {
-      "promoters": "31.43%",
+      "promoters": "28.82%",
       "fii": "28.05%",
       "dii": "15.10%",
       "public": "25.42%",
@@ -255,7 +274,7 @@
       "evToEbitda": 50.5,
       "roce": 28.6,
       "roe": 22.9,
-      "debtToEquity": 0.07,
+      "debtToEquity": 0,
       "interestCoverage": 37.9,
       "divYield": 0.55,
       "salesGrowth3Y": 20.9,
@@ -265,7 +284,7 @@
     "pe": 68.5,
     "roePct": 22.9,
     "rocePct": 28.6,
-    "debtToEquity": 0.07,
+    "debtToEquity": 0,
     "divYieldPct": 0.55,
     "salesGrowth3Y": 20.9,
     "profitGrowth3Y": 26.5,
@@ -287,9 +306,10 @@
     ],
     "updatedAt": 1794038125771,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:11.271Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 11%; Quarterly results refreshed (Sept 26); ROE updated: 26.5% -> 22.9%",
-    "cmp": 6065
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:42.462Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 6065,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1739409_15102026082131_WEB.xml"
   },
   "PNB": {
     "about": "Punjab National Bank provides various banking and financial products and services in India and internationally. The company operates through Treasury, Corporate/Wholesale Banking, Retail Banking, and Other Banking Operations segments. The company offers personal banking products and services, including saving fund accounts, current accounts, fixed deposit, and capital gain account and gold monetization schemes; and housing, vehicle, education, personal, gold, and mortgage and other loans. It also provides various micro, small, and medium enterprises schemes and loans; banking products for government customers; agricultural schemes and loans; corporate banking products and services consist of loans against future lease rentals, working capital financing, and term loans; EXIM finance and cash management services, as well as gold card schemes for exporters; and international banking products and services. In addition, the company offers life and general insurance services; depository, mutual funds, merchant banking, and application supported by blocked amount services; and NRI banking and services. Further, the company provides mobile and internet banking, UPI, SMS banking, missed call, e-statement, ATM, passbook updating machine, and electronic cheque deposit machine services; and point of sale (PoS) is the payment acceptance solutions, NFC-enabled terminals facilitating quick payments, as well as debit and credit cards. Punjab National Bank was incorporated in 1894 and is headquartered in New Delhi, India.",
@@ -366,39 +386,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "15,555",
-        "expenses": "8,925",
-        "operatingProfit": "6,630",
-        "opm": "42.6%",
+        "sales": "37,253",
+        "expenses": "30,922",
+        "operatingProfit": "6,331",
+        "opm": "17.0%",
         "netProfit": "5,100",
-        "eps": "₹2.6"
+        "eps": "₹4.44"
       },
       {
         "period": "Mar 26",
-        "sales": "14,542",
-        "expenses": "7,749",
-        "operatingProfit": "6,793",
-        "opm": "46.7%",
+        "sales": "36,319",
+        "expenses": "29,242",
+        "operatingProfit": "7,077",
+        "opm": "19.5%",
         "netProfit": "5,225",
-        "eps": "₹2.7"
+        "eps": "₹4.55"
       },
       {
         "period": "Jun 26",
-        "sales": "15,132",
-        "expenses": "8,303",
-        "operatingProfit": "6,829",
-        "opm": "45.1%",
+        "sales": "37,231",
+        "expenses": "30,253",
+        "operatingProfit": "6,978",
+        "opm": "18.7%",
         "netProfit": "5,253",
-        "eps": "₹2.7"
+        "eps": "₹4.57"
       },
       {
-        "period": "Sept 26",
-        "sales": "15,202",
-        "expenses": "8,010",
-        "operatingProfit": "7,192",
-        "opm": "47.3%",
+        "period": "Sep 26",
+        "sales": "38,185",
+        "expenses": "30,750",
+        "operatingProfit": "7,435",
+        "opm": "19.5%",
         "netProfit": "5,532",
-        "eps": "₹2.9"
+        "eps": "₹4.81"
       }
     ],
     "balanceSheet": [
@@ -461,6 +481,18 @@
         "investments": "34,391",
         "otherAssets": "27,375",
         "totalAssets": "1,39,824"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "20,79,601",
+        "totalLiabilities": "20,79,601",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "20,79,601",
+        "totalAssets": "20,79,601"
       }
     ],
     "cashFlows": [
@@ -498,6 +530,13 @@
         "cfi": "-15,490",
         "cff": "-8,863",
         "netCash": "2,461"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-6,082",
+        "cfi": "-574",
+        "cff": "-4,725",
+        "netCashFlow": "-11,381"
       }
     ],
     "shareholding": {
@@ -577,9 +616,10 @@
     ],
     "updatedAt": 1794038125780,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:15.925Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 11.8% -> 15.1%",
-    "cmp": 122.42
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.859Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 122.42,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740465_16102026082727_WEB.xml"
   },
   "PFC": {
     "about": "Power Finance Corporation Limited, a non-banking finance company, provides financial products and related advisory services to the power, logistics, and infrastructure sectors in India. The company offers fund-based financial policies and products, such as project-specific funding; a revamped distribution sector scheme; funding for clearance of dues-LPS; a revolving bill payment facility; guidelines for solar and wind power generation projects, as well as for funding private sector independent transmission projects (ITP); a debt refinancing policy; a prepayment policy for solar wind ITP and other projects; takeout financing, asset acquisition, bridge loans, buyer's lines of credit, credit facilities for the purchase of power through power exchanges, and conventional and energy-saving projects; and project, medium, and short-term loan services. Its fund-based financial policies/products also include grants/interest-free loans for studies/consultancies; lease financing for the purchase of equipment and wind power projects; a line of credit for the import of coal; a policy for underwriting of debt; and financial assistance to distribution franchisees. The company also provides non-fund-based policies/products comprising guarantees, letters of comfort, and a policy for guarantees for credit enhancement; and non-fund-based consultancy services. Power Finance Corporation Limited was incorporated in 1986 and is headquartered in New Delhi, India.",
@@ -656,39 +696,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "6,162",
-        "expenses": "1",
-        "operatingProfit": "6,162",
-        "opm": "100%",
+        "sales": "14,661",
+        "expenses": "8,704",
+        "operatingProfit": "5,957",
+        "opm": "40.6%",
         "netProfit": "4,763",
-        "eps": "₹16"
+        "eps": "₹14.43"
       },
       {
         "period": "Mar 26",
-        "sales": "6,913",
-        "expenses": "1",
-        "operatingProfit": "6,913",
-        "opm": "100%",
+        "sales": "15,348",
+        "expenses": "7,584",
+        "operatingProfit": "7,764",
+        "opm": "50.6%",
         "netProfit": "6,325",
-        "eps": "₹21.3"
+        "eps": "₹19.16"
       },
       {
         "period": "Jun 26",
-        "sales": "5,515",
-        "expenses": "1",
-        "operatingProfit": "5,515",
-        "opm": "100%",
+        "sales": "13,995",
+        "expenses": "8,082",
+        "operatingProfit": "5,913",
+        "opm": "42.3%",
         "netProfit": "4,745",
-        "eps": "₹16"
+        "eps": "₹14.38"
       },
       {
-        "period": "Sept 26",
-        "sales": "6,391",
-        "expenses": "1",
-        "operatingProfit": "6,391",
-        "opm": "100%",
+        "period": "Sep 26",
+        "sales": "14,973",
+        "expenses": "8,816",
+        "operatingProfit": "6,157",
+        "opm": "41.1%",
         "netProfit": "4,987",
-        "eps": "₹16.8"
+        "eps": "₹15.11"
       }
     ],
     "balanceSheet": [
@@ -751,6 +791,18 @@
         "investments": "22,089",
         "otherAssets": "42,873",
         "totalAssets": "1,33,611"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "3,300",
+        "reserves": "1,07,806",
+        "borrowings": "0",
+        "otherLiabilities": "5,02,493",
+        "totalLiabilities": "6,13,599",
+        "fixedAssets": "57",
+        "investments": "0",
+        "otherAssets": "6,13,542",
+        "totalAssets": "6,13,599"
       }
     ],
     "cashFlows": [
@@ -788,10 +840,17 @@
         "cfi": "-10,942",
         "cff": "-4,788",
         "netCash": "5,378"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "19,502",
+        "cfi": "56",
+        "cff": "-20,000",
+        "netCashFlow": "-442"
       }
     ],
     "shareholding": {
-      "promoters": "56.00%",
+      "promoters": "55.99%",
       "fii": "16.63%",
       "dii": "8.95%",
       "public": "18.42%",
@@ -837,7 +896,7 @@
       "evToEbitda": 4.2,
       "roce": 23.4,
       "roe": 18.7,
-      "debtToEquity": 5.31,
+      "debtToEquity": 0,
       "interestCoverage": 42.5,
       "divYield": 2.85,
       "salesGrowth3Y": 15.7,
@@ -847,7 +906,7 @@
     "pe": 4.6,
     "roePct": 18.7,
     "rocePct": 23.4,
-    "debtToEquity": 5.31,
+    "debtToEquity": 0,
     "divYieldPct": 2.85,
     "salesGrowth3Y": 15.7,
     "profitGrowth3Y": 20,
@@ -869,9 +928,10 @@
     ],
     "updatedAt": 1794038125785,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.105Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 85.5% -> 93%; Quarterly results refreshed (Sept 26); ROE updated: 21.2% -> 18.7%; Debt/Equity updated: 6.2 -> 5.31",
-    "cmp": 322.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.273Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 322.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1752680_04112026045535_WEB.xml"
   },
   "PIIND": {
     "about": "PI Industries Limited, together with its subsidiaries, manufactures and distributes of agricultural chemicals in India, rest of Asia, North America, Europe, and internationally. It operates through Agro Chemicals and Pharma segments. The company offers agrochemicals, including insecticides, fungicides, herbicides, and biologicals; crop solutions for soybeans, chili, sugarcane, rice, wheat, cotton, and corn, as well as horticulture products; and plant nutrients and specialty chemicals. It also provides custom synthesis and manufacturing services to other companies; and pharmaceuticals, medicinal chemical, and botanical products. The company sells its products to farmers, distributors, retailers, and sellers. It also exports its products. PI Industries Limited was incorporated in 1946 and is based in Gurugram, India.",
@@ -948,39 +1008,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,376",
-        "expenses": "972",
-        "operatingProfit": "404",
-        "opm": "29.4%",
-        "netProfit": "311",
-        "eps": "₹38.2"
+        "sales": "1,346",
+        "expenses": "1,001",
+        "operatingProfit": "345",
+        "opm": "25.6%",
+        "netProfit": "282",
+        "eps": "₹18.56"
       },
       {
         "period": "Mar 26",
-        "sales": "1,565",
-        "expenses": "1,305",
-        "operatingProfit": "260",
-        "opm": "16.6%",
-        "netProfit": "200",
-        "eps": "₹24.6"
+        "sales": "1,463",
+        "expenses": "1,205",
+        "operatingProfit": "258",
+        "opm": "17.6%",
+        "netProfit": "198",
+        "eps": "₹13.04"
       },
       {
         "period": "Jun 26",
-        "sales": "1,702",
-        "expenses": "1,385",
-        "operatingProfit": "317",
-        "opm": "18.6%",
-        "netProfit": "244",
-        "eps": "₹30"
+        "sales": "1,660",
+        "expenses": "1,223",
+        "operatingProfit": "437",
+        "opm": "26.3%",
+        "netProfit": "342",
+        "eps": "₹22.5"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,702",
-        "expenses": "1,543",
-        "operatingProfit": "159",
-        "opm": "9.3%",
-        "netProfit": "122",
-        "eps": "₹15"
+        "period": "Sep 26",
+        "sales": "1,596",
+        "expenses": "1,321",
+        "operatingProfit": "275",
+        "opm": "17.2%",
+        "netProfit": "207",
+        "eps": "₹13.66"
       }
     ],
     "balanceSheet": [
@@ -1043,6 +1103,18 @@
         "investments": "4,947",
         "otherAssets": "4,828",
         "totalAssets": "19,819"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "15",
+        "reserves": "11,794",
+        "borrowings": "0",
+        "otherLiabilities": "1,847",
+        "totalLiabilities": "13,656",
+        "fixedAssets": "3,203",
+        "investments": "2,326",
+        "otherAssets": "8,127",
+        "totalAssets": "13,656"
       }
     ],
     "cashFlows": [
@@ -1080,10 +1152,17 @@
         "cfi": "-313",
         "cff": "-206",
         "netCash": "96"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "1,033",
+        "cfi": "-825",
+        "cff": "-167",
+        "netCashFlow": "41"
       }
     ],
     "shareholding": {
-      "promoters": "46.14%",
+      "promoters": "46.09%",
       "fii": "26.20%",
       "dii": "14.11%",
       "public": "13.55%",
@@ -1129,7 +1208,7 @@
       "evToEbitda": 39.1,
       "roce": 9.9,
       "roe": 7.9,
-      "debtToEquity": 0.03,
+      "debtToEquity": 0,
       "interestCoverage": 34.7,
       "divYield": 0.35,
       "salesGrowth3Y": 1.1,
@@ -1139,7 +1218,7 @@
     "pe": 20.3,
     "roePct": 7.9,
     "rocePct": 9.9,
-    "debtToEquity": 0.03,
+    "debtToEquity": 0,
     "divYieldPct": 0.35,
     "salesGrowth3Y": 1.1,
     "profitGrowth3Y": 2.4,
@@ -1159,9 +1238,10 @@
     ],
     "updatedAt": 1794038125790,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:21.400Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 15.5% -> 11.1%; Quarterly results refreshed (Sept 26); ROE updated: 21.4% -> 7.9%",
-    "cmp": 2187
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.695Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2187,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753163_04112026083540_WEB.xml"
   },
   "POWERGRID": {
     "about": "Power Grid Corporation of India Limited, an electric power transmission utility, engages in the power transmission business in India and internationally. It operates in three segments: Transmission Services, Telecom Services, and Consultancy Services. As of 31 March 2026, the company owned and operated 184,960 circuit kilometers of transmission lines, and 291 substations with an aggregate transformation capacity of 624,016 mega volt amperes. It also provides telecom services that offer overhead optic fiber network services using optical ground wire on power transmission lines under the POWERTEL brand name, as well as lease lines, MPLS-VPN, data, infrastructure, and international long-distance services. In addition, it provides consultancy services; environmental and social studies; design and engineering; contract/procurement services; project management and construction supervision; capacity building; operation and maintenance; asset management; owners and lenders engineer services; preparation of grid code, tariff mechanisms, and market analysis; legal and technical advisory in power transmission; power system studies/DPR preparation; smart grid and EV charging; load despatch and communication; sub-transmission/distribution/rural electrification services; testing and quality assurance and inspection; energy efficiency; capacity building; owners and lenders' engineer; operation and maintenance; and preventive vigilance; and oil testing laboratory services, as well as human resource development. Further, it operates electric vehicle charging stations; and engages in solar power generation, smart metering solutions, battery energy storage system, and green hydrogen production. The company was formerly known as National Power Transmission Corporation Limited and changed its name to Power Grid Corporation of India Limited in October 1992. The company was incorporated in 1989 and is based in Gurugram, India.",
@@ -1239,36 +1319,36 @@
       {
         "period": "Dec 25",
         "sales": "12,436",
-        "expenses": "7,028",
-        "operatingProfit": "5,408",
-        "opm": "43.5%",
+        "expenses": "7,367",
+        "operatingProfit": "5,069",
+        "opm": "40.8%",
         "netProfit": "4,160",
-        "eps": "₹4.4"
+        "eps": "₹4.47"
       },
       {
         "period": "Mar 26",
         "sales": "11,955",
-        "expenses": "6,036",
-        "operatingProfit": "5,919",
-        "opm": "49.5%",
+        "expenses": "8,181",
+        "operatingProfit": "3,774",
+        "opm": "31.6%",
         "netProfit": "4,553",
         "eps": "₹4.9"
       },
       {
         "period": "Jun 26",
         "sales": "11,370",
-        "expenses": "6,936",
-        "operatingProfit": "4,434",
-        "opm": "39%",
+        "expenses": "7,124",
+        "operatingProfit": "4,246",
+        "opm": "37.3%",
         "netProfit": "3,411",
-        "eps": "₹3.6"
+        "eps": "₹3.67"
       },
       {
-        "period": "Sept 26",
-        "sales": "12,055",
-        "expenses": "7,090",
-        "operatingProfit": "4,965",
-        "opm": "41.2%",
+        "period": "Sep 26",
+        "sales": "11,900",
+        "expenses": "7,531",
+        "operatingProfit": "4,369",
+        "opm": "36.7%",
         "netProfit": "3,819",
         "eps": "₹4.1"
       }
@@ -1333,6 +1413,18 @@
         "investments": "28,485",
         "otherAssets": "40,666",
         "totalAssets": "1,33,434"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "9,301",
+        "reserves": "96,789",
+        "borrowings": "1,51,207",
+        "otherLiabilities": "31,186",
+        "totalLiabilities": "2,88,483",
+        "fixedAssets": "1,49,000",
+        "investments": "19,580",
+        "otherAssets": "1,19,903",
+        "totalAssets": "2,88,483"
       }
     ],
     "cashFlows": [
@@ -1370,10 +1462,17 @@
         "cfi": "-12,026",
         "cff": "-7,300",
         "netCash": "5,956"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "18,110",
+        "cfi": "-17,326",
+        "cff": "-3,553",
+        "netCashFlow": "-2,769"
       }
     ],
     "shareholding": {
-      "promoters": "52.91%",
+      "promoters": "51.34%",
       "fii": "24.50%",
       "dii": "13.19%",
       "public": "9.40%",
@@ -1419,7 +1518,7 @@
       "evToEbitda": 8.2,
       "roce": 19.6,
       "roe": 15.7,
-      "debtToEquity": 1.46,
+      "debtToEquity": 1.43,
       "interestCoverage": 51.4,
       "divYield": 3.42,
       "salesGrowth3Y": 1,
@@ -1429,7 +1528,7 @@
     "pe": 15.4,
     "roePct": 15.7,
     "rocePct": 19.6,
-    "debtToEquity": 1.46,
+    "debtToEquity": 1.43,
     "divYieldPct": 3.42,
     "salesGrowth3Y": 1,
     "profitGrowth3Y": 1.1,
@@ -1449,9 +1548,10 @@
     ],
     "updatedAt": 1794038125795,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.171Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 19.2% -> 15.7%",
-    "cmp": 262.05
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:58.164Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 262.05,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750896_01112026090823_WEB.xml"
   },
   "PETRONET": {
     "about": "Petronet LNG Limited engages in the import, storage, regasification, and supply of liquefied natural gas (LNG) in India. It owns and operates an LNG import and regasification terminal with name plate capacity of 22.5 MMTPA located in Dahej, Gujarat; and an LNG terminal with name plate capacity of 5 MMTPA located in Kochi, Kerala. The company was incorporated in 1998 and is based in New Delhi, India.",
@@ -1528,39 +1628,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "11,164",
-        "expenses": "10,033",
-        "operatingProfit": "1,131",
+        "sales": "11,380",
+        "expenses": "10,236",
+        "operatingProfit": "1,144",
         "opm": "10.1%",
-        "netProfit": "870",
-        "eps": "₹4.5"
+        "netProfit": "848",
+        "eps": "₹5.66"
       },
       {
         "period": "Mar 26",
-        "sales": "9,442",
-        "expenses": "7,660",
-        "operatingProfit": "1,782",
-        "opm": "18.9%",
-        "netProfit": "1,371",
-        "eps": "₹7.1"
+        "sales": "9,642",
+        "expenses": "7,847",
+        "operatingProfit": "1,795",
+        "opm": "18.6%",
+        "netProfit": "1,338",
+        "eps": "₹8.92"
       },
       {
         "period": "Jun 26",
-        "sales": "5,554",
-        "expenses": "4,081",
-        "operatingProfit": "1,473",
-        "opm": "26.5%",
+        "sales": "5,789",
+        "expenses": "4,275",
+        "operatingProfit": "1,514",
+        "opm": "26.2%",
         "netProfit": "1,133",
-        "eps": "₹5.9"
+        "eps": "₹7.55"
       },
       {
-        "period": "Sept 26",
-        "sales": "7,200",
-        "expenses": "5,594",
-        "operatingProfit": "1,606",
+        "period": "Sep 26",
+        "sales": "7,432",
+        "expenses": "5,773",
+        "operatingProfit": "1,659",
         "opm": "22.3%",
         "netProfit": "1,235",
-        "eps": "₹6.4"
+        "eps": "₹8.24"
       }
     ],
     "balanceSheet": [
@@ -1623,6 +1723,18 @@
         "investments": "6,286",
         "otherAssets": "6,617",
         "totalAssets": "25,072"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "1,500",
+        "reserves": "22,138",
+        "borrowings": "0",
+        "otherLiabilities": "5,836",
+        "totalLiabilities": "29,474",
+        "fixedAssets": "7,480",
+        "investments": "183",
+        "otherAssets": "21,811",
+        "totalAssets": "29,474"
       }
     ],
     "cashFlows": [
@@ -1660,10 +1772,17 @@
         "cfi": "-4,498",
         "cff": "-3,152",
         "netCash": "1,712"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,914",
+        "cfi": "-2,041",
+        "cff": "-494",
+        "netCashFlow": "379"
       }
     ],
     "shareholding": {
-      "promoters": "50.18%",
+      "promoters": "50%",
       "fii": "17.78%",
       "dii": "9.57%",
       "public": "22.47%",
@@ -1709,7 +1828,7 @@
       "evToEbitda": 4.2,
       "roce": 25.5,
       "roe": 20.4,
-      "debtToEquity": 0.09,
+      "debtToEquity": 0,
       "interestCoverage": 50.3,
       "divYield": 3.5,
       "salesGrowth3Y": -10.1,
@@ -1719,7 +1838,7 @@
     "pe": 13,
     "roePct": 20.4,
     "rocePct": 25.5,
-    "debtToEquity": 0.09,
+    "debtToEquity": 0,
     "divYieldPct": 3.5,
     "salesGrowth3Y": -10.1,
     "profitGrowth3Y": 5.6,
@@ -1743,9 +1862,10 @@
     ],
     "updatedAt": 1794038125797,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.941Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 20.5% -> 22.3%; Quarterly results refreshed (Sept 26); ROE updated: 22.4% -> 20.4%; Debt/Equity updated: 0.18 -> 0.09",
-    "cmp": 311
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:59.234Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 311,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751283_02112026061232_WEB.xml"
   },
   "POLYCAB": {
     "about": "Polycab India Limited manufactures and sells wires and cables under the POLYCAB brand in India and internationally. The company operates through three segments: Wires and Cables; Fast Moving Electrical Goods (FMEG); and Engineering, Procurement and Construction (EPC). The Wires and Cables segment provides wires, such as PolycabSuprema house wires, PolycabMaxima+ Green wire, PolycabPrimma house wires, ETIRA house wires, PolycabOptima+, GREENWIRE 180m, and POLYCAB LF FR 180m; and cables, such as control, rubber, defense, special, fire protection, marine offshore/onshore, domestic appliance and lighting, aerial bunched, industrial, high temperature, LV power, MV power, EHV power, communication and data, and instrumentation. The Fast Moving Electrical Goods segment offers ceiling, table, pedestal, wall, exhaust, farrata, and air circulated fans; LED lighting and luminaires, such as LED Bulb, downlight, panel light, led batten, outdoor lights, and rope and strip lights; water heaters; switches and accessories; switchgears consisting of isolators, MCB, RCCB, RCBO, distribution board, ACCL, and MCB changeover switches; solar products, including solar panel and invertors; and pumps, conduits, and domestic appliances. The EPC segment designs, engineers, and supplies materials; and engages in the survey, execution, and commissioning of turn-key power distribution, transmission, and rural electrification projects. The company provides coolers and iron appliances. It operates a distribution network through authorized dealers and distributors, and retail outlets. The company was founded in 1964 and is based in Mumbai, India.",

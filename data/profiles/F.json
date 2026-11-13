@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,753",
-        "expenses": "2,400",
-        "operatingProfit": "1,353",
-        "opm": "36.1%",
+        "sales": "7,968",
+        "expenses": "6,571",
+        "operatingProfit": "1,397",
+        "opm": "17.5%",
         "netProfit": "1,041",
-        "eps": "₹3.7"
+        "eps": "₹4.23"
       },
       {
         "period": "Mar 26",
-        "sales": "4,318",
-        "expenses": "2,681",
-        "operatingProfit": "1,637",
-        "opm": "37.9%",
+        "sales": "8,544",
+        "expenses": "7,009",
+        "operatingProfit": "1,535",
+        "opm": "18.0%",
         "netProfit": "1,259",
-        "eps": "₹4.4"
+        "eps": "₹5.11"
       },
       {
         "period": "Jun 26",
-        "sales": "3,994",
-        "expenses": "2,464",
-        "operatingProfit": "1,530",
-        "opm": "38.3%",
+        "sales": "8,287",
+        "expenses": "6,707",
+        "operatingProfit": "1,580",
+        "opm": "19.1%",
         "netProfit": "1,177",
-        "eps": "₹4.1"
+        "eps": "₹4.77"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,644",
-        "expenses": "2,842",
-        "operatingProfit": "1,802",
-        "opm": "38.8%",
+        "period": "Sep 26",
+        "sales": "9,211",
+        "expenses": "7,328",
+        "operatingProfit": "1,883",
+        "opm": "20.4%",
         "netProfit": "1,386",
-        "eps": "₹4.9"
+        "eps": "₹5.61"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "10,601",
         "otherAssets": "6,891",
         "totalAssets": "37,693"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "4,26,927",
+        "totalLiabilities": "4,26,927",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "4,26,927",
+        "totalAssets": "4,26,927"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-3,177",
         "cff": "-2,180",
         "netCash": "442"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "3,724",
+        "cfi": "-7,022",
+        "cff": "3,253",
+        "netCashFlow": "-45"
       }
     ],
     "shareholding": {
-      "promoters": "11.05%",
+      "promoters": "0%",
       "fii": "39.46%",
       "dii": "21.25%",
       "public": "28.24%",
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125780,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:15.949Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14.6% -> 13.3%",
-    "cmp": 335.2
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.699Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 335.2,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740409_16102026072531_WEB.xml"
   },
   "FINEORG": {
     "about": "Fine Organic Industries Limited engages in manufacture, processing, supply, distribution, dealing, import, and export of oleochemical-based additives in India and internationally. The company offers food ingredient, such as emulsifiers, antifungal agents, bakery products, starch complexity agents, viscosity modifiers, anti-blooming agents, anti-splattering agents, crystal promoters, and anti-foam agents. It also provides polymer additives, including lubricants, anti-fogging additives, anti-slip agents, anti-static additives, anti-scratch additives, processing aids, slip and anti-blocking, dispersants, mold release agents, and rubber processor additives; personal care ingredients; feed ingredients; and specialty additives. The company's products are used in plastics, foods, rubbers, coatings, cosmetics, feed nutrition, and other specialty applications. Fine Organic Industries Limited was founded in 1970 and is based in Mumbai, India.",
@@ -364,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "555",
-        "expenses": "459",
-        "operatingProfit": "96",
-        "opm": "17.3%",
-        "netProfit": "74",
-        "eps": "₹20.3"
+        "sales": "549",
+        "expenses": "458",
+        "operatingProfit": "91",
+        "opm": "16.6%",
+        "netProfit": "68",
+        "eps": "₹22.22"
       },
       {
         "period": "Mar 26",
-        "sales": "625",
-        "expenses": "473",
-        "operatingProfit": "152",
-        "opm": "24.3%",
-        "netProfit": "117",
-        "eps": "₹32.1"
+        "sales": "650",
+        "expenses": "523",
+        "operatingProfit": "127",
+        "opm": "19.5%",
+        "netProfit": "90",
+        "eps": "₹29.38"
       },
       {
         "period": "Jun 26",
-        "sales": "694",
-        "expenses": "515",
-        "operatingProfit": "179",
-        "opm": "25.8%",
-        "netProfit": "138",
-        "eps": "₹37.9"
+        "sales": "692",
+        "expenses": "509",
+        "operatingProfit": "183",
+        "opm": "26.4%",
+        "netProfit": "136",
+        "eps": "₹44.19"
       },
       {
-        "period": "Sept 26",
-        "sales": "729",
-        "expenses": "531",
-        "operatingProfit": "198",
-        "opm": "27.2%",
-        "netProfit": "152",
-        "eps": "₹41.7"
+        "period": "Sep 26",
+        "sales": "721",
+        "expenses": "538",
+        "operatingProfit": "183",
+        "opm": "25.4%",
+        "netProfit": "135",
+        "eps": "₹44.08"
       }
     ],
     "balanceSheet": [
@@ -459,6 +479,18 @@
         "investments": "605",
         "otherAssets": "709",
         "totalAssets": "2,944"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "15",
+        "reserves": "2,747",
+        "borrowings": "0",
+        "otherLiabilities": "263",
+        "totalLiabilities": "3,025",
+        "fixedAssets": "256",
+        "investments": "397",
+        "otherAssets": "2,372",
+        "totalAssets": "3,025"
       }
     ],
     "cashFlows": [
@@ -496,10 +528,17 @@
         "cfi": "-322",
         "cff": "-157",
         "netCash": "85"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "78",
+        "cfi": "-51",
+        "cff": "-40",
+        "netCashFlow": "-13"
       }
     ],
     "shareholding": {
-      "promoters": "76.03%",
+      "promoters": "75%",
       "fii": "9.29%",
       "dii": "5.00%",
       "public": "9.68%",
@@ -545,7 +584,7 @@
       "evToEbitda": 22.1,
       "roce": 22.1,
       "roe": 17.7,
-      "debtToEquity": 0.06,
+      "debtToEquity": 0,
       "interestCoverage": 42.9,
       "divYield": 0.55,
       "salesGrowth3Y": -7.9,
@@ -555,7 +594,7 @@
     "pe": 38.9,
     "roePct": 17.7,
     "rocePct": 22.1,
-    "debtToEquity": 0.06,
+    "debtToEquity": 0,
     "divYieldPct": 0.55,
     "salesGrowth3Y": -7.9,
     "profitGrowth3Y": -11,
@@ -577,9 +616,10 @@
     ],
     "updatedAt": 1794038125792,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:38.088Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 26.5% -> 17.7%; Debt/Equity updated: 0 -> 0.06",
-    "cmp": 5135
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:56.092Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 5135,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751235_02112026054729_WEB.xml"
   },
   "FORTIS": {
     "about": "Fortis Healthcare Limited operates as a healthcare delivery service provider in India. The company services in the areas of cardiac science, nephrology, diabetology/endocrinology, foetal medicine, infectious diseases, mental health and behavioral science, oncology, orthopedics, physiotherapy and rehabilitation, rheumatology, urology, nuclear medicine, critical care, emergency and trauma, general surgery, internal medicine, neurointerventional radiology, obstetrics and gynaecology, pediatrics, pediatrics, vascular surgery, and support facilities. It also provides services in the areas of infertility medicine, dental science, endocrine surgery, geriatric medicine, liver transplant and hepatobiliary sciences, neurology, ophthalmology, pain and palliative medicine, pulmonology, thoracic surgery, gastroenterology sciences, dermatology, ENT, haematology, medical generics, neurology, organ transplant, radiology, and transfusion medicines. In addition, the company offers various spectrum integrated healthcare services ranging from clinics to quaternary care facilities and a range of ancillary services, as well as secondary, and tertiary care services. The company's healthcare verticals comprise hospitals, diagnostics, and day care specialty facilities. Fortis Healthcare Limited was incorporated in 1996 and is based in Gurugram, India.",
@@ -656,39 +696,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,331",
-        "expenses": "1,912",
-        "operatingProfit": "419",
-        "opm": "18%",
-        "netProfit": "322",
-        "eps": "₹2.8"
+        "sales": "459",
+        "expenses": "425",
+        "operatingProfit": "34",
+        "opm": "7.4%",
+        "netProfit": "28",
+        "eps": "₹0.38"
       },
       {
         "period": "Mar 26",
-        "sales": "2,265",
-        "expenses": "2,013",
-        "operatingProfit": "252",
-        "opm": "11.1%",
-        "netProfit": "194",
-        "eps": "₹1.7"
+        "sales": "477",
+        "expenses": "440",
+        "operatingProfit": "37",
+        "opm": "7.8%",
+        "netProfit": "25",
+        "eps": "₹0.33"
       },
       {
         "period": "Jun 26",
-        "sales": "2,365",
-        "expenses": "2,019",
-        "operatingProfit": "346",
-        "opm": "14.6%",
-        "netProfit": "266",
-        "eps": "₹2.3"
+        "sales": "508",
+        "expenses": "449",
+        "operatingProfit": "59",
+        "opm": "11.6%",
+        "netProfit": "48",
+        "eps": "₹0.63"
       },
       {
-        "period": "Sept 26",
-        "sales": "2,545",
-        "expenses": "2,199",
-        "operatingProfit": "346",
-        "opm": "13.6%",
-        "netProfit": "266",
-        "eps": "₹2.3"
+        "period": "Sep 26",
+        "sales": "611",
+        "expenses": "465",
+        "operatingProfit": "146",
+        "opm": "23.9%",
+        "netProfit": "130",
+        "eps": "₹1.72"
       }
     ],
     "balanceSheet": [
@@ -751,6 +791,18 @@
         "investments": "3,473",
         "otherAssets": "4,112",
         "totalAssets": "14,884"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "755",
+        "reserves": "8,649",
+        "borrowings": "1,945",
+        "otherLiabilities": "797",
+        "totalLiabilities": "12,146",
+        "fixedAssets": "1,042",
+        "investments": "10,092",
+        "otherAssets": "1,012",
+        "totalAssets": "12,146"
       }
     ],
     "cashFlows": [
@@ -788,10 +840,17 @@
         "cfi": "-623",
         "cff": "-402",
         "netCash": "253"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "169",
+        "cfi": "53",
+        "cff": "-240",
+        "netCashFlow": "-18"
       }
     ],
     "shareholding": {
-      "promoters": "35.19%",
+      "promoters": "31.17%",
       "fii": "33.40%",
       "dii": "17.99%",
       "public": "13.42%",
@@ -837,7 +896,7 @@
       "evToEbitda": 35.1,
       "roce": 10.2,
       "roe": 8.5,
-      "debtToEquity": 0.34,
+      "debtToEquity": 0.21,
       "interestCoverage": 38.4,
       "divYield": 0.18,
       "salesGrowth3Y": 13.2,
@@ -847,7 +906,7 @@
     "pe": 87.3,
     "roePct": 8.5,
     "rocePct": 10.2,
-    "debtToEquity": 0.34,
+    "debtToEquity": 0.21,
     "divYieldPct": 0.18,
     "salesGrowth3Y": 13.2,
     "profitGrowth3Y": 20.9,
@@ -867,9 +926,10 @@
     ],
     "updatedAt": 1794038125808,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:44.997Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26); Debt/Equity updated: 0.15 -> 0.34",
-    "cmp": 790.65
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.320Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 790.65,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754104_05112026073944_WEB.xml"
   },
   "FABTECH": {
     "about": "Fabtech Technologies Limited operates as a biopharma engineering company that provides aseptic manufacturing facilities internationally. The company offers designing, engineering, procurement, installation, and testing of pharmaceutical equipment. It serves pharmaceuticals, biotech, and healthcare companies. The company was founded in 2001 and is based in Mumbai, India.",

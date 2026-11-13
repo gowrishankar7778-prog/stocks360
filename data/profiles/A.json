@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "20,512",
-        "expenses": "12,075",
-        "operatingProfit": "8,437",
-        "opm": "41.1%",
+        "sales": "38,500",
+        "expenses": "29,870",
+        "operatingProfit": "8,630",
+        "opm": "22.4%",
         "netProfit": "6,490",
-        "eps": "₹20.5"
+        "eps": "₹20.91"
       },
       {
         "period": "Mar 26",
-        "sales": "20,480",
-        "expenses": "11,288",
-        "operatingProfit": "9,192",
-        "opm": "44.9%",
+        "sales": "38,747",
+        "expenses": "32,256",
+        "operatingProfit": "6,491",
+        "opm": "16.8%",
         "netProfit": "7,071",
-        "eps": "₹22.3"
+        "eps": "₹22.76"
       },
       {
         "period": "Jun 26",
-        "sales": "21,382",
-        "expenses": "12,134",
-        "operatingProfit": "9,248",
-        "opm": "43.3%",
+        "sales": "40,721",
+        "expenses": "31,284",
+        "operatingProfit": "9,437",
+        "opm": "23.2%",
         "netProfit": "7,114",
-        "eps": "₹22.5"
+        "eps": "₹22.88"
       },
       {
-        "period": "Sept 26",
-        "sales": "21,902",
-        "expenses": "12,798",
-        "operatingProfit": "9,104",
-        "opm": "41.6%",
+        "period": "Sep 26",
+        "sales": "42,949",
+        "expenses": "33,560",
+        "operatingProfit": "9,389",
+        "opm": "21.9%",
         "netProfit": "7,003",
-        "eps": "₹22.1"
+        "eps": "₹22.5"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "55,847",
         "otherAssets": "32,039",
         "totalAssets": "2,07,670"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "20,46,240",
+        "totalLiabilities": "20,46,240",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "20,46,240",
+        "totalAssets": "20,46,240"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-19,127",
         "cff": "-11,432",
         "netCash": "1,192"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "36,202",
+        "cfi": "-52,496",
+        "cff": "37,848",
+        "netCashFlow": "21,554"
       }
     ],
     "shareholding": {
-      "promoters": "3.60%",
+      "promoters": "7.86%",
       "fii": "45.77%",
       "dii": "24.64%",
       "public": "25.99%",
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125778,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:14.892Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 16.4% -> 13.9%",
-    "cmp": 1232
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:48.757Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1232,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740814_17102026042011_WEB.xml"
   },
   "AUBANK": {
     "about": "AU Small Finance Bank Limited provides various banking and financial services in India. The company operates through Treasury, Retail Banking, Wholesale Banking, and Other Banking Operations segments. It offers savings, NRI, corporate salary, senior citizen, women and family, minor, current, premium banking, special offerings, RERA and escrow, collection, share capital and dividend, EXIM, institution current, government banking, Forex, SNRR, and grouping of business and personal accounts; and fixed, recurring, FCNR, and green fixed deposits. The company also provides home, car, commercial vehicle and equipment, gold, personal, two-wheeler, tractor, micro business, working capital, term, commercial vehicle, and tractor loans; loan secured by vehicle, and against FD and property; supply chain finance, renewables funding, real estate funding and project finance, and NBFC and startup funding; and trade finance, such as letter of credit, bank guarantees, buyer's credit, export credit, and Forex and hedging solutions. In addition, it offers cards and payments, including debit and credit cards, ATM and micro-ATM, UPI/Scan and Pay, fund transfer, doorstep banking, international payments, bill pay, mobile recharge, FASTag, and tax payments; AU 0101 and AU 0101 Business applications; and wealth products comprising mutual funds, ASBA/IPO, PMS/AIF/Bonds, and 3-in-1 trading and demat accounts. Further, the company provides life, health, and general insurance; and locker products. It serves urban, semi-urban, and rural markets, as well as salaried and self-employed individuals, small businesses, merchants, women entrepreneurs, farmers, micro-enterprises, and emerging affluent households. The company was formerly known as AU Financiers (India) Limited and changed its name to AU Small Finance Bank Limited in May 2017. AU Small Finance Bank Limited was incorporated in 1996 and is headquartered in Mumbai, India.",
@@ -364,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,065",
-        "expenses": "2,197",
-        "operatingProfit": "868",
-        "opm": "28.3%",
+        "sales": "5,451",
+        "expenses": "4,567",
+        "operatingProfit": "884",
+        "opm": "16.2%",
         "netProfit": "668",
-        "eps": "₹5.1"
+        "eps": "₹8.94"
       },
       {
         "period": "Mar 26",
-        "sales": "3,313",
-        "expenses": "2,231",
+        "sales": "5,750",
+        "expenses": "4,668",
         "operatingProfit": "1,082",
-        "opm": "32.7%",
+        "opm": "18.8%",
         "netProfit": "832",
-        "eps": "₹6.4"
+        "eps": "₹11.13"
       },
       {
         "period": "Jun 26",
-        "sales": "3,385",
-        "expenses": "2,350",
-        "operatingProfit": "1,035",
-        "opm": "30.6%",
+        "sales": "5,992",
+        "expenses": "4,928",
+        "operatingProfit": "1,064",
+        "opm": "17.8%",
         "netProfit": "796",
-        "eps": "₹6.1"
+        "eps": "₹10.63"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,590",
-        "expenses": "2,475",
-        "operatingProfit": "1,115",
-        "opm": "31.1%",
+        "period": "Sep 26",
+        "sales": "6,382",
+        "expenses": "5,228",
+        "operatingProfit": "1,154",
+        "opm": "18.1%",
         "netProfit": "858",
-        "eps": "₹6.6"
+        "eps": "₹11.44"
       }
     ],
     "balanceSheet": [
@@ -459,6 +479,18 @@
         "investments": "5,639",
         "otherAssets": "3,920",
         "totalAssets": "20,582"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "2,11,804",
+        "totalLiabilities": "2,11,804",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "2,11,804",
+        "totalAssets": "2,11,804"
       }
     ],
     "cashFlows": [
@@ -496,10 +528,17 @@
         "cfi": "-2,055",
         "cff": "-1,376",
         "netCash": "323"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "8,327",
+        "cfi": "-6,448",
+        "cff": "462",
+        "netCashFlow": "2,341"
       }
     ],
     "shareholding": {
-      "promoters": "31.39%",
+      "promoters": "22.67%",
       "fii": "32.51%",
       "dii": "17.50%",
       "public": "18.60%",
@@ -575,9 +614,10 @@
     ],
     "updatedAt": 1794038125783,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:16.824Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14.2% -> 15.7%",
-    "cmp": 904.35
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.622Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 904.35,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1745462_24102026082223_WEB.xml"
   },
   "ANGELONE": {
     "about": "Angel One Limited provides broking and advisory services, margin funding, and financial products to its clients in India and internationally. The company provides equity, commodities, derivatives, and currency derivative products. It also manages client's securities in the electronic form; facilitates clients in applying for initial public offerings; and provides funds to investors for trading. In addition, the company offers insurance, mutual funds, sovereign gold bonds, and credit products; and investment insight and market research services; as well as educates clients on financial markets and investing strategies. Further, it provides portfolio management, trading accounts, and DEMAT account services. Additionally, the company engages in stock, currency and commodity broking, provides margin trading facility, depository services, and distribution of mutual funds; asset and wealth management services, software consultancy, annual maintenance services and other financial services. The company operates through Angel One Super App, Angel One Trade, and Smart API investing and trading platforms. It serves resident and non-resident individuals, salaried professionals, high net worth individuals, Hindu undivided Families, corporates and trusts, partnership firms and LLP, and co-operative societies. The company was formerly known as Angel Broking Limited and changed its name to Angel One Limited in September 2021. Angel One Limited was incorporated in 1996 and is based in Mumbai, India.",
@@ -654,39 +694,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,028",
-        "expenses": "678",
-        "operatingProfit": "350",
-        "opm": "34%",
-        "netProfit": "269",
-        "eps": "₹3.4"
+        "sales": "1,317",
+        "expenses": "913",
+        "operatingProfit": "404",
+        "opm": "30.7%",
+        "netProfit": "301",
+        "eps": "₹33.16"
       },
       {
         "period": "Mar 26",
-        "sales": "1,135",
-        "expenses": "719",
-        "operatingProfit": "416",
-        "opm": "36.7%",
-        "netProfit": "320",
-        "eps": "₹4"
+        "sales": "1,452",
+        "expenses": "983",
+        "operatingProfit": "469",
+        "opm": "32.3%",
+        "netProfit": "351",
+        "eps": "₹3.87"
       },
       {
         "period": "Jun 26",
-        "sales": "1,101",
-        "expenses": "801",
-        "operatingProfit": "300",
-        "opm": "27.2%",
-        "netProfit": "231",
-        "eps": "₹2.9"
+        "sales": "1,413",
+        "expenses": "1,049",
+        "operatingProfit": "364",
+        "opm": "25.8%",
+        "netProfit": "271",
+        "eps": "₹2.97"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,093",
-        "expenses": "657",
-        "operatingProfit": "436",
-        "opm": "39.9%",
-        "netProfit": "335",
-        "eps": "₹4.2"
+        "period": "Sep 26",
+        "sales": "1,401",
+        "expenses": "913",
+        "operatingProfit": "488",
+        "opm": "34.8%",
+        "netProfit": "367",
+        "eps": "₹4.01"
       }
     ],
     "balanceSheet": [
@@ -749,6 +789,18 @@
         "investments": "1,438",
         "otherAssets": "1,725",
         "totalAssets": "6,259"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "91",
+        "reserves": "6,733",
+        "borrowings": "0",
+        "otherLiabilities": "15,920",
+        "totalLiabilities": "22,744",
+        "fixedAssets": "339",
+        "investments": "0",
+        "otherAssets": "22,405",
+        "totalAssets": "22,744"
       }
     ],
     "cashFlows": [
@@ -786,10 +838,17 @@
         "cfi": "-641",
         "cff": "-403",
         "netCash": "257"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "1,054",
+        "cfi": "-400",
+        "cff": "-679",
+        "netCashFlow": "-25"
       }
     ],
     "shareholding": {
-      "promoters": "48.97%",
+      "promoters": "28.55%",
       "fii": "15.40%",
       "dii": "8.29%",
       "public": "27.34%",
@@ -835,7 +894,7 @@
       "evToEbitda": 15.8,
       "roce": 23,
       "roe": 18.4,
-      "debtToEquity": 1.14,
+      "debtToEquity": 0,
       "interestCoverage": 44.1,
       "divYield": 1.85,
       "salesGrowth3Y": 20.4,
@@ -845,7 +904,7 @@
     "pe": 21.5,
     "roePct": 18.4,
     "rocePct": 23,
-    "debtToEquity": 1.14,
+    "debtToEquity": 0,
     "divYieldPct": 1.85,
     "salesGrowth3Y": 20.4,
     "profitGrowth3Y": 0.9,
@@ -867,9 +926,10 @@
     ],
     "updatedAt": 1794038125788,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:19.819Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 36.8% -> 18.4%; Debt/Equity updated: 0.85 -> 1.14",
-    "cmp": 312.1
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.746Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 312.1,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739182_15102026055626_WEB.xml"
   },
   "AARTIIND": {
     "about": "Aarti Industries Limited engages in the manufacturing and dealing in specialty chemicals and intermediates in India and internationally. The company offers chemistry products, such as alkylation, ammonolysis, balz schiemann, bromination, chlorination, condensation, denitrochlorination, diazotization, dinitro chlorination, esterification, fluorination, grignard's reagent, halex, hydrogenation, hydrolysis, neutralization, nitration, oxidation, photochlorination, and propylation. It provides its products for acid, agrochemicals, API, dyes, fertilizers, metal and mining, miscellaneous, other, pharma, plasticizer, polymers, PU/epoxy, refinery and oil, field chemicals, thermal paper, and UV absorbers end use. Aarti Industries Limited was incorporated in 1984 and is headquartered in Mumbai, India.",
@@ -946,39 +1006,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,319",
-        "expenses": "2,146",
-        "operatingProfit": "173",
-        "opm": "7.5%",
-        "netProfit": "133",
-        "eps": "₹2.6"
+        "sales": "2,278",
+        "expenses": "2,162",
+        "operatingProfit": "116",
+        "opm": "5.1%",
+        "netProfit": "131",
+        "eps": "₹3.63"
       },
       {
         "period": "Mar 26",
-        "sales": "2,206",
-        "expenses": "2,028",
-        "operatingProfit": "178",
-        "opm": "8.1%",
-        "netProfit": "137",
-        "eps": "₹2.7"
+        "sales": "2,439",
+        "expenses": "2,320",
+        "operatingProfit": "119",
+        "opm": "4.9%",
+        "netProfit": "147",
+        "eps": "₹4.05"
       },
       {
         "period": "Jun 26",
-        "sales": "2,390",
-        "expenses": "2,188",
-        "operatingProfit": "202",
-        "opm": "8.5%",
-        "netProfit": "155",
-        "eps": "₹3.1"
+        "sales": "2,244",
+        "expenses": "2,081",
+        "operatingProfit": "163",
+        "opm": "7.3%",
+        "netProfit": "144",
+        "eps": "₹3.98"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,668",
-        "expenses": "3,450",
-        "operatingProfit": "218",
-        "opm": "5.9%",
-        "netProfit": "168",
-        "eps": "₹3.3"
+        "period": "Sep 26",
+        "sales": "3,947",
+        "expenses": "3,706",
+        "operatingProfit": "241",
+        "opm": "6.1%",
+        "netProfit": "186",
+        "eps": "₹5.13"
       }
     ],
     "balanceSheet": [
@@ -1041,6 +1101,18 @@
         "investments": "1,477",
         "otherAssets": "1,437",
         "totalAssets": "5,250"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "181",
+        "reserves": "6,104",
+        "borrowings": "5,147",
+        "otherLiabilities": "2,776",
+        "totalLiabilities": "14,208",
+        "fixedAssets": "6,200",
+        "investments": "225",
+        "otherAssets": "7,783",
+        "totalAssets": "14,208"
       }
     ],
     "cashFlows": [
@@ -1078,10 +1150,17 @@
         "cfi": "-255",
         "cff": "-224",
         "netCash": "118"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "233",
+        "cfi": "-545",
+        "cff": "24",
+        "netCashFlow": "-288"
       }
     ],
     "shareholding": {
-      "promoters": "42.15%",
+      "promoters": "41.82%",
       "fii": "15.51%",
       "dii": "8.35%",
       "public": "33.99%",
@@ -1127,7 +1206,7 @@
       "evToEbitda": 21.2,
       "roce": 12.4,
       "roe": 9.9,
-      "debtToEquity": 0.83,
+      "debtToEquity": 0.82,
       "interestCoverage": 41.8,
       "divYield": 0.38,
       "salesGrowth3Y": 7.8,
@@ -1137,7 +1216,7 @@
     "pe": 37.9,
     "roePct": 9.9,
     "rocePct": 12.4,
-    "debtToEquity": 0.83,
+    "debtToEquity": 0.82,
     "divYieldPct": 0.38,
     "salesGrowth3Y": 7.8,
     "profitGrowth3Y": -8.4,
@@ -1157,9 +1236,10 @@
     ],
     "updatedAt": 1794038125789,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:20.299Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 8.6% -> 9.9%; Debt/Equity updated: 0.65 -> 0.83",
-    "cmp": 447.55
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.678Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 447.55,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751718_03112026023500_WEB.xml"
   },
   "ATUL": {
     "about": "Atul Ltd manufactures and sells chemicals and other chemical products worldwide. The company offers 2 nitro para cresol, 2-methylcyclohexyl acetate, allyl caproate and heptanoate, ambrettolide, anethole, cresol mixture, manganese sulphate monohydrate, ortho cresol and methoxy toluene, phenyl acetic acid, skatole, and sodium sulfite and sulphate, as well as anisic aldehyde, anisyl acetate and alcohol, anisyl propanal, cresidine, cresol, cresyl acetate and methyl ether, methoxy phenyl acetic acid, aceto nitrile, benzylamine hydrochloride, and 4-chloro-3-ethyl-1-methyl-1h-pyrazole-5-carboxylic acid; and bulk chemicals and intermediates, including 1,3-cyclohexanedione, 2-methylresorcinol, 4-chlororesorcinol, anisole, caustic soda lye, chlorosulphonic and hydrochloric acid, gypsum, hydrogen gas, liquid chlorine, liquid sulphur dioxide and trioxide, oleum, resoform, resorcinol, resorcinol dimethyl ether, sodium hypochlorite, sodium sulphite, and sulphuric acid. It also provides synthetic and natural food colors; biostimulants, fungicides, herbicides, and insecticides; amino acid derivatives, active pharmaceutical ingredients (API), API intermediates, and phosgene derivatives; and epoxy resins, curing agents, reactive diluents, accelerators and catalysts, formulations, and sulfones. In addition, the company produces tissue culture raised date palm plants, as well as engages in crop protection retail and polymers retail operations. It serves various industries, such as adhesives, agriculture, animal feed, aerospace and defense, automotive, composites, construction, electrical and electronics, food and beverage packaging, marine, medical device, paint and coatings, sport and leisure, transport, wind energy, cosmetics, dyestuff, flavor, footwear, fragrance, glass, home care, horticulture, hospitality, paper, personal care, pharmaceutical, plastic, polymer, rubber, soap and detergent, textile, and tire. Atul Ltd was incorporated in 1947 and is headquartered in Valsad, India.",
@@ -1236,39 +1316,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,574",
-        "expenses": "1,365",
-        "operatingProfit": "209",
-        "opm": "13.3%",
-        "netProfit": "161",
-        "eps": "₹26.2"
+        "sales": "1,388",
+        "expenses": "1,233",
+        "operatingProfit": "155",
+        "opm": "11.2%",
+        "netProfit": "121",
+        "eps": "₹41.15"
       },
       {
         "period": "Mar 26",
-        "sales": "1,670",
-        "expenses": "1,397",
-        "operatingProfit": "273",
-        "opm": "16.3%",
-        "netProfit": "210",
-        "eps": "₹34.2"
+        "sales": "1,573",
+        "expenses": "1,324",
+        "operatingProfit": "249",
+        "opm": "15.8%",
+        "netProfit": "204",
+        "eps": "₹69.24"
       },
       {
         "period": "Jun 26",
-        "sales": "1,848",
-        "expenses": "1,529",
-        "operatingProfit": "319",
-        "opm": "17.3%",
-        "netProfit": "245",
-        "eps": "₹39.9"
+        "sales": "1,615",
+        "expenses": "1,345",
+        "operatingProfit": "270",
+        "opm": "16.7%",
+        "netProfit": "201",
+        "eps": "₹68.28"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,877",
-        "expenses": "1,674",
-        "operatingProfit": "203",
-        "opm": "10.8%",
-        "netProfit": "156",
-        "eps": "₹25.4"
+        "period": "Sep 26",
+        "sales": "1,673",
+        "expenses": "1,487",
+        "operatingProfit": "186",
+        "opm": "11.1%",
+        "netProfit": "141",
+        "eps": "₹48.04"
       }
     ],
     "balanceSheet": [
@@ -1331,6 +1411,18 @@
         "investments": "1,588",
         "otherAssets": "2,261",
         "totalAssets": "6,937"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "29",
+        "reserves": "6,325",
+        "borrowings": "1",
+        "otherLiabilities": "1,357",
+        "totalLiabilities": "7,712",
+        "fixedAssets": "1,592",
+        "investments": "2,152",
+        "otherAssets": "3,968",
+        "totalAssets": "7,712"
       }
     ],
     "cashFlows": [
@@ -1368,10 +1460,17 @@
         "cfi": "-222",
         "cff": "-161",
         "netCash": "138"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "262",
+        "cfi": "-179",
+        "cff": "-95",
+        "netCashFlow": "-12"
       }
     ],
     "shareholding": {
-      "promoters": "46.15%",
+      "promoters": "45.33%",
       "fii": "18.49%",
       "dii": "9.95%",
       "public": "25.41%",
@@ -1417,7 +1516,7 @@
       "evToEbitda": 23.7,
       "roce": 15.5,
       "roe": 12.4,
-      "debtToEquity": 0.03,
+      "debtToEquity": 0,
       "interestCoverage": 45.4,
       "divYield": 0.4,
       "salesGrowth3Y": 4.9,
@@ -1427,7 +1526,7 @@
     "pe": 41,
     "roePct": 12.4,
     "rocePct": 15.5,
-    "debtToEquity": 0.03,
+    "debtToEquity": 0,
     "divYieldPct": 0.4,
     "salesGrowth3Y": 4.9,
     "profitGrowth3Y": 9.7,
@@ -1447,9 +1546,10 @@
     ],
     "updatedAt": 1794038125791,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:21.433Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 7.8% -> 12.4%",
-    "cmp": 5156.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.811Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 5156.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1744957_23102026065328_WEB.xml"
   },
   "ALKYLAMINE": {
     "about": "Alkyl Amines Chemicals Limited manufactures and supplies amines, amine derivatives, and other specialty chemicals in India and internationally. The company offers aliphatic amines, such as methylamines, ethylamines, isopropylamines, n-propylamines, n-butylamines, ethylhexylamines, furfurylamines, n-propylamines, and cyclohexylamines; and amine derivatives, including dimethylamine hydrochloride, diethylamine hydrochloride, triethylamine hydrochloride, dimethylaminopropylamine, 3-ethoxy propylamine, 3-(methylaminopropyl) amine, dimethylaminopropylamine, 3-(2-ethylhexyloxy) propylamine, n-methylbenzylamine, diisopropyl ethylamine, diethylhydroxylamine, diethyl toluamide, and diethylphenyl acetamide. It also provides specialty chemicals comprising acetonitrile, 1,8-diazabicyclo[5.4.0]undec-7-ene, diethylketone/3-pentanone, alchan 100, alchan 300, 2-aminoethoxy ethanol, 2-ethoxy ethylamine, dimethylpropyleneurea, tetramethyl ethylenediamine, monomethylamine, and tempo free radical. The company serves pharmaceutical, agro-chemicals, water treatment chemicals, rubber chemicals, and other industries. Alkyl Amines Chemicals Limited was incorporated in 1979 and is headquartered in Navi Mumbai, India.",
@@ -1526,39 +1626,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "354",
-        "expenses": "299",
-        "operatingProfit": "55",
-        "opm": "15.5%",
+        "sales": "362",
+        "expenses": "305",
+        "operatingProfit": "57",
+        "opm": "15.7%",
         "netProfit": "42",
-        "eps": "₹5.8"
+        "eps": "₹8.26"
       },
       {
         "period": "Mar 26",
-        "sales": "387",
-        "expenses": "328",
-        "operatingProfit": "59",
-        "opm": "15.2%",
+        "sales": "395",
+        "expenses": "334",
+        "operatingProfit": "61",
+        "opm": "15.4%",
         "netProfit": "45",
-        "eps": "₹6.2"
+        "eps": "₹8.87"
       },
       {
         "period": "Jun 26",
-        "sales": "528",
-        "expenses": "404",
-        "operatingProfit": "124",
-        "opm": "23.5%",
+        "sales": "537",
+        "expenses": "412",
+        "operatingProfit": "125",
+        "opm": "23.3%",
         "netProfit": "95",
-        "eps": "₹13.2"
+        "eps": "₹18.5"
       },
       {
-        "period": "Sept 26",
-        "sales": "491",
-        "expenses": "406",
-        "operatingProfit": "85",
-        "opm": "17.3%",
+        "period": "Sep 26",
+        "sales": "502",
+        "expenses": "412",
+        "operatingProfit": "90",
+        "opm": "17.9%",
         "netProfit": "65",
-        "eps": "₹9"
+        "eps": "₹12.74"
       }
     ],
     "balanceSheet": [
@@ -1621,6 +1721,18 @@
         "investments": "307",
         "otherAssets": "444",
         "totalAssets": "1,632"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "10",
+        "reserves": "1,631",
+        "borrowings": "19",
+        "otherLiabilities": "374",
+        "totalLiabilities": "2,034",
+        "fixedAssets": "983",
+        "investments": "0",
+        "otherAssets": "1,051",
+        "totalAssets": "2,034"
       }
     ],
     "cashFlows": [
@@ -1658,10 +1770,17 @@
         "cfi": "-144",
         "cff": "-67",
         "netCash": "49"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "48",
+        "cfi": "-35",
+        "cff": "-33",
+        "netCashFlow": "-20"
       }
     ],
     "shareholding": {
-      "promoters": "72.72%",
+      "promoters": "72.04%",
       "fii": "3.46%",
       "dii": "1.87%",
       "public": "21.95%",
@@ -1739,9 +1858,10 @@
     ],
     "updatedAt": 1794038125793,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:38.091Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 21.9% -> 18%; Quarterly results refreshed (Sept 26); Debt/Equity updated: 0.08 -> 0.01",
-    "cmp": 1589.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:55.799Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1589.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752093_03112026065322_WEB.xml"
   },
   "ASHOKLEY": {
     "about": "Ashok Leyland Limited, together with its subsidiaries, manufactures and sells commercial vehicles in India. It operates in Commercial Vehicle and Financial Service segments. The company offers ICV trucks, haulage vehicles, tractors, and tippers; buses; light commercial vehicle goods carriers and passenger vehicles, and small commercial vehicle goods carriers; defense vehicles, such as armored, high mobility, specialist, and logistics vehicles; transit mixers for use in construction and mining operations; and tanker trucks, reefers, ambulances, and other custom-built vehicles. It also provides power solutions, such as diesel gensets, agriculture and industrial non-emission and emission engines, and marine genset and propulsion engines; spare parts; forgings and castings; manpower supply, air chartering, and IT services; and vehicle and housing financing services. In addition, the company trades in commercial vehicles; and operates retail parts stores. Further, it provides at-site and e-commerce service support; AL Revive Program, which restores accident vehicles; technical and driving training; AL Care, a one-stop solution designed to take care of service needs; iAlert, a telematics solution for vehicle and fuel platforms; uptime solution centers; AL Live, which provides live location tracking of mobile service vans; Re-AL, a vehicle buying, selling, and exchange platform; and LeyKart app. The company serves various customer categories, including commercial fleet operators, retail customers, government, industrial customers, defense and military customers, and special application vehicle customers through its distributors. It also exports its products to the Middle East, Africa, South Asia, Latin America, and the Commonwealth of Independent States countries. Ashok Leyland Limited was incorporated in 1948 and is headquartered in Chennai, India. Ashok Leyland Limited operates as a subsidiary of Hinduja Automotive Limited.",
@@ -1817,40 +1937,40 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "9,588",
-        "expenses": "8,586",
-        "operatingProfit": "1,002",
-        "opm": "10.5%",
+        "period": "Sep 25",
+        "sales": "9,723",
+        "expenses": "8,680",
+        "operatingProfit": "1,043",
+        "opm": "10.7%",
         "netProfit": "771",
-        "eps": "₹2"
+        "eps": "₹1.31"
+      },
+      {
+        "period": "Dec 25",
+        "sales": "11,593",
+        "expenses": "10,528",
+        "operatingProfit": "1,065",
+        "opm": "9.2%",
+        "netProfit": "796",
+        "eps": "₹1.36"
       },
       {
         "period": "Mar 26",
-        "sales": "11,534",
-        "expenses": "10,499",
-        "operatingProfit": "1,035",
-        "opm": "9%",
-        "netProfit": "796",
-        "eps": "₹2.1"
+        "sales": "14,229",
+        "expenses": "12,320",
+        "operatingProfit": "1,909",
+        "opm": "13.4%",
+        "netProfit": "1,405",
+        "eps": "₹2.39"
       },
       {
         "period": "Jun 26",
-        "sales": "14,160",
-        "expenses": "12,333",
-        "operatingProfit": "1,827",
-        "opm": "12.9%",
-        "netProfit": "1,405",
-        "eps": "₹3.7"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "9,634",
-        "expenses": "8,842",
-        "operatingProfit": "792",
-        "opm": "8.2%",
+        "sales": "9,719",
+        "expenses": "8,889",
+        "operatingProfit": "830",
+        "opm": "8.5%",
         "netProfit": "609",
-        "eps": "₹1.6"
+        "eps": "₹1.04"
       }
     ],
     "balanceSheet": [
@@ -1953,7 +2073,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "36.36%",
+      "promoters": "51.51%",
       "fii": "20.51%",
       "dii": "11.05%",
       "public": "32.08%",
@@ -2029,8 +2149,8 @@
     ],
     "updatedAt": 1794038125801,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:41.754Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26); Debt/Equity updated: 0.65 -> 3.45",
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.209Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 154.03
   },
   "APOLLOTYRE": {
@@ -2108,39 +2228,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "7,743",
-        "expenses": "7,131",
-        "operatingProfit": "612",
-        "opm": "7.9%",
-        "netProfit": "471",
-        "eps": "₹7.6"
+        "sales": "5,371",
+        "expenses": "4,742",
+        "operatingProfit": "629",
+        "opm": "11.7%",
+        "netProfit": "449",
+        "eps": "₹7.09"
       },
       {
         "period": "Mar 26",
-        "sales": "7,336",
-        "expenses": "6,516",
-        "operatingProfit": "820",
-        "opm": "11.2%",
-        "netProfit": "631",
-        "eps": "₹10.2"
+        "sales": "5,272",
+        "expenses": "4,785",
+        "operatingProfit": "487",
+        "opm": "9.2%",
+        "netProfit": "903",
+        "eps": "₹14.27"
       },
       {
         "period": "Jun 26",
-        "sales": "7,398",
-        "expenses": "6,944",
-        "operatingProfit": "454",
-        "opm": "6.1%",
-        "netProfit": "349",
-        "eps": "₹5.6"
+        "sales": "5,495",
+        "expenses": "5,087",
+        "operatingProfit": "408",
+        "opm": "7.4%",
+        "netProfit": "304",
+        "eps": "₹4.81"
       },
       {
-        "period": "Sept 26",
-        "sales": "7,968",
-        "expenses": "7,588",
-        "operatingProfit": "380",
-        "opm": "4.8%",
-        "netProfit": "292",
-        "eps": "₹4.7"
+        "period": "Sep 26",
+        "sales": "5,960",
+        "expenses": "5,584",
+        "operatingProfit": "376",
+        "opm": "6.3%",
+        "netProfit": "276",
+        "eps": "₹4.36"
       }
     ],
     "balanceSheet": [
@@ -2203,6 +2323,18 @@
         "investments": "4,044",
         "otherAssets": "3,720",
         "totalAssets": "15,968"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "64",
+        "reserves": "12,257",
+        "borrowings": "3,888",
+        "otherLiabilities": "7,372",
+        "totalLiabilities": "23,581",
+        "fixedAssets": "9,736",
+        "investments": "2,434",
+        "otherAssets": "11,411",
+        "totalAssets": "23,581"
       }
     ],
     "cashFlows": [
@@ -2240,10 +2372,17 @@
         "cfi": "-580",
         "cff": "-380",
         "netCash": "158"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "629",
+        "cfi": "-1,567",
+        "cff": "1,133",
+        "netCashFlow": "195"
       }
     ],
     "shareholding": {
-      "promoters": "49.66%",
+      "promoters": "36.93%",
       "fii": "22.39%",
       "dii": "12.06%",
       "public": "15.89%",
@@ -2289,7 +2428,7 @@
       "evToEbitda": 17.4,
       "roce": 13.1,
       "roe": 10.5,
-      "debtToEquity": 0.31,
+      "debtToEquity": 0.32,
       "interestCoverage": 39.4,
       "divYield": 1.15,
       "salesGrowth3Y": -6.9,
@@ -2299,7 +2438,7 @@
     "pe": 14.3,
     "roePct": 10.5,
     "rocePct": 13.1,
-    "debtToEquity": 0.31,
+    "debtToEquity": 0.32,
     "divYieldPct": 1.15,
     "salesGrowth3Y": -6.9,
     "profitGrowth3Y": 7.5,
@@ -2319,9 +2458,10 @@
     ],
     "updatedAt": 1794038125803,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:42.754Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14.2% -> 10.5%; Debt/Equity updated: 0.38 -> 0.31",
-    "cmp": 402.4
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.511Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 402.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752660_04112026044444_WEB.xml"
   },
   "AUROPHARMA": {
     "about": "Aurobindo Pharma Limited, a pharmaceutical company, develops, manufactures, and commercializes generic pharmaceuticals in India, the United States, Europe, and internationally. The company manufactures a range of finished formulation products in various forms, such as oral solids, liquids, injectables for generic pharmaceuticals, branded specialty pharmaceuticals, and active pharmaceutical ingredients for CNS, anti-retroviral, cardiovascular, antibiotics, gastroenterology, anti-diabetics, and anti-allergic therapeutic areas. It also provides ointments, creams, gels, powders, transdermal, and lotions; antiretroviral drugs for PLHIV & CLHIV; and injectable products, including Penems, Penicillin, Cephalosporin, ophthalmic, inhalation, oncology, and hormone products. The company was incorporated in 1986 and is headquartered in Hyderabad, India.",
@@ -2398,39 +2538,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "8,646",
-        "expenses": "7,463",
-        "operatingProfit": "1,183",
-        "opm": "13.7%",
-        "netProfit": "910",
-        "eps": "₹14"
+        "sales": "2,877",
+        "expenses": "2,095",
+        "operatingProfit": "782",
+        "opm": "27.2%",
+        "netProfit": "582",
+        "eps": "₹10.02"
       },
       {
         "period": "Mar 26",
-        "sales": "8,853",
-        "expenses": "7,656",
-        "operatingProfit": "1,197",
-        "opm": "13.5%",
-        "netProfit": "921",
-        "eps": "₹14.2"
+        "sales": "3,001",
+        "expenses": "2,125",
+        "operatingProfit": "876",
+        "opm": "29.2%",
+        "netProfit": "692",
+        "eps": "₹11.92"
       },
       {
         "period": "Jun 26",
-        "sales": "9,150",
-        "expenses": "7,807",
-        "operatingProfit": "1,343",
-        "opm": "14.7%",
-        "netProfit": "1,033",
-        "eps": "₹15.9"
+        "sales": "3,041",
+        "expenses": "2,033",
+        "operatingProfit": "1,008",
+        "opm": "33.1%",
+        "netProfit": "737",
+        "eps": "₹12.75"
       },
       {
-        "period": "Sept 26",
-        "sales": "10,263",
-        "expenses": "8,799",
-        "operatingProfit": "1,464",
-        "opm": "14.3%",
-        "netProfit": "1,126",
-        "eps": "₹17.4"
+        "period": "Sep 26",
+        "sales": "3,280",
+        "expenses": "2,309",
+        "operatingProfit": "971",
+        "opm": "29.6%",
+        "netProfit": "724",
+        "eps": "₹12.58"
       }
     ],
     "balanceSheet": [
@@ -2493,6 +2633,18 @@
         "investments": "11,635",
         "otherAssets": "9,543",
         "totalAssets": "40,208"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "58",
+        "reserves": "23,317",
+        "borrowings": "3,889",
+        "otherLiabilities": "2,555",
+        "totalLiabilities": "29,819",
+        "fixedAssets": "2,471",
+        "investments": "17,581",
+        "otherAssets": "9,767",
+        "totalAssets": "29,819"
       }
     ],
     "cashFlows": [
@@ -2530,10 +2682,17 @@
         "cfi": "-2,350",
         "cff": "-1,955",
         "netCash": "755"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "922",
+        "cfi": "194",
+        "cff": "-1,217",
+        "netCashFlow": "-101"
       }
     ],
     "shareholding": {
-      "promoters": "54.84%",
+      "promoters": "51.88%",
       "fii": "19.03%",
       "dii": "10.24%",
       "public": "15.89%",
@@ -2579,7 +2738,7 @@
       "evToEbitda": 15.1,
       "roce": 13.4,
       "roe": 10.7,
-      "debtToEquity": 0.22,
+      "debtToEquity": 0.17,
       "interestCoverage": 40.1,
       "divYield": 0.45,
       "salesGrowth3Y": 10.6,
@@ -2589,7 +2748,7 @@
     "pe": 27.7,
     "roePct": 10.7,
     "rocePct": 13.4,
-    "debtToEquity": 0.22,
+    "debtToEquity": 0.17,
     "divYieldPct": 0.45,
     "salesGrowth3Y": 10.6,
     "profitGrowth3Y": 22,
@@ -2611,9 +2770,10 @@
     ],
     "updatedAt": 1794038125806,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:44.134Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 15.2% -> 17.2%; Quarterly results refreshed (Sept 26); ROE updated: 14.8% -> 10.7%; Debt/Equity updated: 0.15 -> 0.22",
-    "cmp": 1705
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:08.100Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1705,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753285_04112026104508_WEB.xml"
   },
   "APOLLOHOSP": {
     "about": "Apollo Hospitals Enterprise Limited, together with its subsidiaries, provides healthcare services in India. It operates through Healthcare Services, Retail Health & Diagnostics, Digital Health & Pharmacy Distribution, and Others segments. The company's healthcare facilities comprise primary, secondary, and tertiary care, as well as specialty facilities. It offers services in cardiac sciences, oncology, neurosciences, gastroenterology, orthopedics, urology, organ transplantation, pulmonology, obstetrics and gynecology, internal medicine, vascular surgery, pediatrics, cosmetology, emergency medicine, bariatric surgery, general surgery, colorectal surgery, dentistry, nephrology, dermatology, endocrinology, preventive medicine, interventional radiology, ophthalmology, and integrative medicine, as well as robotic surgery and genomics. The company also provides project consultancy, medical educational institutes, Medvarsity for e-learning, and research services, as well as acts as an agent for life, general, and health insurance. In addition, it operates hospitals, pharmacies, primary care clinics, and diagnostic centers; short stay facilities, boutique birthing centers, multi-specialty clinics, dental and dialysis facilities, and preventive care; day surgery, diabetes management, and cradle and fertility centers; and Apollo 24/7, a digital health mobile platform that provides teleconsultations, online pharmacy deliveries, home diagnostics, and insurance services. Further, the company engages in the business of bio-banking of tissues. It serves patients, corporate clients, and the government and public sectors. Apollo Hospitals Enterprise Limited was incorporated in 1979 and is based in Chennai, India.",
@@ -2690,39 +2850,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "6,477",
-        "expenses": "5,824",
-        "operatingProfit": "653",
-        "opm": "10.1%",
-        "netProfit": "502",
-        "eps": "₹17.7"
+        "sales": "2,472",
+        "expenses": "1,970",
+        "operatingProfit": "502",
+        "opm": "20.3%",
+        "netProfit": "384",
+        "eps": "₹26.67"
       },
       {
         "period": "Mar 26",
-        "sales": "6,606",
-        "expenses": "5,918",
-        "operatingProfit": "688",
-        "opm": "10.4%",
-        "netProfit": "529",
-        "eps": "₹18.6"
+        "sales": "2,529",
+        "expenses": "2,035",
+        "operatingProfit": "494",
+        "opm": "19.5%",
+        "netProfit": "382",
+        "eps": "₹26.59"
       },
       {
         "period": "Jun 26",
-        "sales": "7,044",
-        "expenses": "6,289",
-        "operatingProfit": "755",
-        "opm": "10.7%",
-        "netProfit": "581",
-        "eps": "₹20.5"
+        "sales": "2,703",
+        "expenses": "2,202",
+        "operatingProfit": "501",
+        "opm": "18.5%",
+        "netProfit": "385",
+        "eps": "₹26.79"
       },
       {
-        "period": "Sept 26",
-        "sales": "7,615",
-        "expenses": "6,796",
-        "operatingProfit": "819",
-        "opm": "10.8%",
-        "netProfit": "630",
-        "eps": "₹22.2"
+        "period": "Sep 26",
+        "sales": "3,014",
+        "expenses": "2,392",
+        "operatingProfit": "622",
+        "opm": "20.6%",
+        "netProfit": "476",
+        "eps": "₹33.08"
       }
     ],
     "balanceSheet": [
@@ -2785,6 +2945,18 @@
         "investments": "2,455",
         "otherAssets": "3,029",
         "totalAssets": "11,035"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "72",
+        "reserves": "10,638",
+        "borrowings": "1,724",
+        "otherLiabilities": "3,349",
+        "totalLiabilities": "15,783",
+        "fixedAssets": "7,014",
+        "investments": "3,879",
+        "otherAssets": "4,890",
+        "totalAssets": "15,783"
       }
     ],
     "cashFlows": [
@@ -2822,10 +2994,17 @@
         "cfi": "-1,553",
         "cff": "-925",
         "netCash": "604"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "1,112",
+        "cfi": "-777",
+        "cff": "-401",
+        "netCashFlow": "-66"
       }
     ],
     "shareholding": {
-      "promoters": "28.39%",
+      "promoters": "28.02%",
       "fii": "32.71%",
       "dii": "17.61%",
       "public": "21.29%",
@@ -2871,7 +3050,7 @@
       "evToEbitda": 32.8,
       "roce": 28.1,
       "roe": 22.5,
-      "debtToEquity": 0.73,
+      "debtToEquity": 0.16,
       "interestCoverage": 46.7,
       "divYield": 0.22,
       "salesGrowth3Y": 14.9,
@@ -2881,7 +3060,7 @@
     "pe": 108.9,
     "roePct": 22.5,
     "rocePct": 28.1,
-    "debtToEquity": 0.73,
+    "debtToEquity": 0.16,
     "divYieldPct": 0.22,
     "salesGrowth3Y": 14.9,
     "profitGrowth3Y": 33.3,
@@ -2901,9 +3080,10 @@
     ],
     "updatedAt": 1794038125807,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:44.139Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 12.2% -> 13.1%; Quarterly results refreshed (Sept 26); ROE updated: 14.5% -> 22.5%; Debt/Equity updated: 0.65 -> 0.73",
-    "cmp": 8599.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:08.260Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 8599.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752980_04112026070309_WEB.xml"
   },
   "ABB": {
     "about": "ABB India Limited develops and sells products and system solutions to utilities, industries, channel partners, and original equipment manufacturers in India and internationally. It operates through Motion, Robotics and Discrete Automation, Electrification, and Process Automation segments. The Motion segment offers motors, generators, and drives that provide power, motion, and control for a range of automation applications, as well as solutions and related services. The Robotics and Discrete Automation segment provides value-added solutions in robotics, machine, and factory automation. The Electrification segment offers a range of digital and connected solutions for low- and medium-voltage applications, including EV infrastructure, solar inverters, modular substations, distribution automation, power protection, wiring accessories, switchgear, enclosures, cabling, sensing, and control. The Process Automation segment provides products, systems, and services, such as turnkey engineering, control systems, measurement products, life cycle services, outsourced maintenance, and industry specific products for the optimization of the productivity of industrial processes in oil and gas, power, chemicals and pharmaceuticals, pulp and paper, metals and minerals, marine, and turbocharging industries. The company was formerly known as ABB Limited and changed its name to ABB India Limited in June 2013. The company was incorporated in 1949 and is headquartered in Bengaluru, India. ABB India Limited operates as a subsidiary of ABB Asea Brown Boveri Ltd.",

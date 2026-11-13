@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "5,710",
-        "expenses": "454",
-        "operatingProfit": "5,256",
-        "opm": "92%",
+        "sales": "14,953",
+        "expenses": "9,837",
+        "operatingProfit": "5,116",
+        "opm": "34.2%",
         "netProfit": "4,043",
-        "eps": "₹16.5"
+        "eps": "₹15.35"
       },
       {
         "period": "Mar 26",
-        "sales": "5,475",
-        "expenses": "1,104",
-        "operatingProfit": "4,371",
-        "opm": "79.8%",
+        "sales": "14,406",
+        "expenses": "10,009",
+        "operatingProfit": "4,397",
+        "opm": "30.5%",
         "netProfit": "3,362",
-        "eps": "₹13.7"
+        "eps": "₹12.64"
       },
       {
         "period": "Jun 26",
-        "sales": "5,583",
-        "expenses": "189",
-        "operatingProfit": "5,394",
-        "opm": "96.6%",
+        "sales": "14,331",
+        "expenses": "9,122",
+        "operatingProfit": "5,209",
+        "opm": "36.3%",
         "netProfit": "4,149",
-        "eps": "₹17"
+        "eps": "₹15.76"
       },
       {
-        "period": "Sept 26",
-        "sales": "5,214",
-        "expenses": "806",
-        "operatingProfit": "4,408",
-        "opm": "84.5%",
+        "period": "Sep 26",
+        "sales": "14,737",
+        "expenses": "10,463",
+        "operatingProfit": "4,274",
+        "opm": "29.0%",
         "netProfit": "3,391",
-        "eps": "₹13.9"
+        "eps": "₹12.88"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "29,599",
         "otherAssets": "25,812",
         "totalAssets": "1,25,336"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "2,633",
+        "reserves": "91,692",
+        "borrowings": "0",
+        "otherLiabilities": "5,78,316",
+        "totalLiabilities": "6,72,641",
+        "fixedAssets": "556",
+        "investments": "0",
+        "otherAssets": "6,72,085",
+        "totalAssets": "6,72,641"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-11,470",
         "cff": "-6,317",
         "netCash": "2,084"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-17,586",
+        "cfi": "95",
+        "cff": "17,852",
+        "netCashFlow": "361"
       }
     ],
     "shareholding": {
-      "promoters": "52.65%",
+      "promoters": "52.63%",
       "fii": "16.61%",
       "dii": "8.95%",
       "public": "21.79%",
@@ -255,7 +274,7 @@
       "evToEbitda": 4.2,
       "roce": 21.1,
       "roe": 16.9,
-      "debtToEquity": 6.06,
+      "debtToEquity": 0,
       "interestCoverage": 49.3,
       "divYield": 3.1,
       "salesGrowth3Y": 13.9,
@@ -265,7 +284,7 @@
     "pe": 4.7,
     "roePct": 16.9,
     "rocePct": 21.1,
-    "debtToEquity": 6.06,
+    "debtToEquity": 0,
     "divYieldPct": 3.1,
     "salesGrowth3Y": 13.9,
     "profitGrowth3Y": 13.8,
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125785,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.140Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 22.4% -> 16.9%; Debt/Equity updated: 6.8 -> 6.06",
-    "cmp": 287
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.368Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 287,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1746176_26102026070657_WEB.xml"
   },
   "RELIANCE": {
     "about": "Reliance Industries Limited engages in hydrocarbon exploration and production, petroleum refining and marketing, petrochemicals, advanced materials and composites, renewable, financial services, retail, and digital services worldwide. It operates through the Oil to Chemicals, Oil and Gas, Retail, Digital Services, and Others segments. The company is involved in refining and marketing products, including liquefied petroleum gas, propylene, naphtha, gasoline, jet/aviation turbine fuel, kerosine oil, diesel, sulfur, and petroleum coke. It also provides polymers comprising high-density and low-density polyethylene (PE), linear low-density PE, homopolymer, random and impact copolymer, and polyvinyl chloride; fiber intermediates that include purified terephthalic acid, and ethylene glycols and oxide; aromatics, such as paraxylene, ortho xylene, benzene, and linear alkyl benzene and paraffin; and textiles that consist of fabrics, apparel, and auto furnishings. In addition, the company offers elastomers, such as polybutadiene rubber, styrene butadiene rubber, and butyl rubber; fiber and yarn polyesters; and bioenergy solutions, including compressed biogas, and pellets and briquettes. Further, it engages in oil and gas exploration and production activities; operation of various stores comprising supermarkets, hypermarket, wholesale cash and carry, specialty, and online stores; operation of media and entertainment platforms, and Network18 and television channels; and publishing of magazines. Additionally, the company provides highway hospitality and fleet management services, as well as digital services, such as connectivity, fiber, mobile devices, apps, business, and other digital solutions. Reliance Industries Limited was founded in 1957 and is based in Mumbai, India.",
@@ -364,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,64,905",
-        "expenses": "2,40,666",
-        "operatingProfit": "24,239",
-        "opm": "9.2%",
-        "netProfit": "18,645",
-        "eps": "₹13.8"
+        "sales": "1,29,153",
+        "expenses": "1,16,758",
+        "operatingProfit": "12,395",
+        "opm": "9.6%",
+        "netProfit": "9,396",
+        "eps": "₹6.94"
       },
       {
         "period": "Mar 26",
-        "sales": "1,41,823",
-        "expenses": "1,32,174",
-        "operatingProfit": "9,649",
-        "opm": "6.8%",
+        "sales": "1,49,742",
+        "expenses": "1,39,959",
+        "operatingProfit": "9,783",
+        "opm": "6.5%",
         "netProfit": "7,422",
-        "eps": "₹5.5"
+        "eps": "₹5.48"
       },
       {
         "period": "Jun 26",
-        "sales": "1,63,631",
-        "expenses": "1,36,401",
-        "operatingProfit": "27,230",
-        "opm": "16.6%",
-        "netProfit": "20,946",
-        "eps": "₹15.4"
+        "sales": "1,70,121",
+        "expenses": "1,52,521",
+        "operatingProfit": "17,600",
+        "opm": "10.3%",
+        "netProfit": "13,272",
+        "eps": "₹9.81"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,30,601",
-        "expenses": "3,10,641",
-        "operatingProfit": "19,960",
-        "opm": "6%",
+        "period": "Sep 26",
+        "sales": "1,78,567",
+        "expenses": "1,58,228",
+        "operatingProfit": "20,339",
+        "opm": "11.4%",
         "netProfit": "15,354",
-        "eps": "₹11.3"
+        "eps": "₹11.34"
       }
     ],
     "balanceSheet": [
@@ -459,6 +479,18 @@
         "investments": "1,41,960",
         "otherAssets": "1,78,183",
         "totalAssets": "6,16,466"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "13,533",
+        "reserves": "5,73,384",
+        "borrowings": "2,45,206",
+        "otherLiabilities": "3,88,081",
+        "totalLiabilities": "12,20,204",
+        "fixedAssets": "2,72,194",
+        "investments": "3,72,071",
+        "otherAssets": "5,75,939",
+        "totalAssets": "12,20,204"
       }
     ],
     "cashFlows": [
@@ -496,10 +528,17 @@
         "cfi": "-55,482",
         "cff": "-36,310",
         "netCash": "25,200"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "34,613",
+        "cfi": "-25,770",
+        "cff": "-2,551",
+        "netCashFlow": "6,292"
       }
     ],
     "shareholding": {
-      "promoters": "51.80%",
+      "promoters": "50.44%",
       "fii": "18.30%",
       "dii": "9.85%",
       "public": "20.05%",
@@ -545,7 +584,7 @@
       "evToEbitda": 13.4,
       "roce": 11,
       "roe": 8.8,
-      "debtToEquity": 0.44,
+      "debtToEquity": 0.42,
       "interestCoverage": 41.3,
       "divYield": 0.35,
       "salesGrowth3Y": 25.9,
@@ -555,7 +594,7 @@
     "pe": 28.5,
     "roePct": 8.8,
     "rocePct": 11,
-    "debtToEquity": 0.44,
+    "debtToEquity": 0.42,
     "divYieldPct": 0.35,
     "salesGrowth3Y": 25.9,
     "profitGrowth3Y": -0.3,
@@ -575,9 +614,10 @@
     ],
     "updatedAt": 1794038125794,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-05T17:55:00.696Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26)",
-    "cmp": 1311
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:57.979Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1311,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750535_30102026093155_WEB.xml"
   },
   "RVNL": {
     "about": "Rail Vikas Nigam Limited, together with its subsidiaries, engages in rail infrastructure works in India and internationally. The company undertakes rail project development and implementation, as well as provides financial resources mobilization services. It also executes various railway projects, including new lines, doubling, gauge conversion, railway electrification, workshops, bridge work, mega and monumental bridges, metro and metropolitan transport projects, new lines, hilly railway projects, construction of cable stayed bridges, institutional buildings, track renewal, training institutes, railway and other safety works, traffic facilities, and road over bridges, etc. In addition, the company engages in civil engineering; equipment and engine; installation of solar energy systems, and electricity transmission and control apparatus; installation and maintenance of underwater telecommunications and power cables; contracting of electrical fittings, ports and marine construction, bridges and dams, and tunnels; construction and reconstruction; tourism sector engagement; business planning and implementation; consulting; construction of rail links, subways, irrigation systems, canals, water main storage towers, transmission lines, and feeder bays; installation, maintenance, and repair of solar energy collectors; multimodal logistics park; and operation and maintenance of railway facilities. It serves Indian Railways, various central and state government ministries, departments, and public sector undertakings. Rail Vikas Nigam Limited was incorporated in 2003 and is based in New Delhi, India.",

@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,188",
-        "expenses": "3,863",
-        "operatingProfit": "325",
-        "opm": "7.8%",
-        "netProfit": "250",
-        "eps": "₹5"
+        "sales": "2,187",
+        "expenses": "2,075",
+        "operatingProfit": "112",
+        "opm": "5.1%",
+        "netProfit": "85",
+        "eps": "₹2.53"
       },
       {
         "period": "Mar 26",
-        "sales": "4,450",
-        "expenses": "3,654",
-        "operatingProfit": "796",
-        "opm": "17.9%",
-        "netProfit": "612",
-        "eps": "₹12.1"
+        "sales": "3,129",
+        "expenses": "2,540",
+        "operatingProfit": "589",
+        "opm": "18.8%",
+        "netProfit": "553",
+        "eps": "₹15.85"
       },
       {
         "period": "Jun 26",
-        "sales": "5,528",
-        "expenses": "4,853",
-        "operatingProfit": "675",
-        "opm": "12.2%",
-        "netProfit": "519",
-        "eps": "₹10.3"
+        "sales": "3,200",
+        "expenses": "2,922",
+        "operatingProfit": "278",
+        "opm": "8.7%",
+        "netProfit": "205",
+        "eps": "₹4.87"
       },
       {
-        "period": "Sept 26",
-        "sales": "6,171",
-        "expenses": "5,407",
-        "operatingProfit": "764",
-        "opm": "12.4%",
-        "netProfit": "588",
-        "eps": "₹11.6"
+        "period": "Sep 26",
+        "sales": "3,884",
+        "expenses": "3,597",
+        "operatingProfit": "287",
+        "opm": "7.4%",
+        "netProfit": "210",
+        "eps": "₹4.75"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "3,771",
         "otherAssets": "3,678",
         "totalAssets": "15,400"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "89",
+        "reserves": "20,283",
+        "borrowings": "5,507",
+        "otherLiabilities": "3,825",
+        "totalLiabilities": "29,704",
+        "fixedAssets": "379",
+        "investments": "19,154",
+        "otherAssets": "10,171",
+        "totalAssets": "29,704"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-1,336",
         "cff": "-843",
         "netCash": "382"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-301",
+        "cfi": "-4,985",
+        "cff": "4,926",
+        "netCashFlow": "-360"
       }
     ],
     "shareholding": {
-      "promoters": "21.34%",
+      "promoters": "0%",
       "fii": "38.73%",
       "dii": "20.86%",
       "public": "19.07%",
@@ -287,9 +306,10 @@
     ],
     "updatedAt": 1794038125771,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:11.247Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 16%; Quarterly results refreshed (Sept 26); ROE updated: 22.1% -> 13.3%",
-    "cmp": 2060
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:42.498Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2060,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751792_03112026040614_WEB.xml"
   },
   "CYIENT": {
     "about": "Cyient Limited provides geospatial, engineering design, manufacturing, networks and operations, data transformation, and analytic services in North America, Europe, Middle East, and the Asia Pacific. The company operates through three segments: Digital, Engineering & Technology; Design Led Manufacturing; and Others. The company offers digital thread; electrification and energy storage; autonomous systems; digital twin; product to platform engineering; data platforms and GenAI; Industry 4.0; industry AI advisor platform; Coddy, a legacy application migration; CYARC, a regulatory compliance watch for medical devices; CYFAST, for equipment testing and validation; CYIOPS, a power outage planning and scheduling platform; CYPRED forecast and prediction engine; CYTEXT that transforms PDFs and documents into searchable text; SmartHub, a field inspection and data capture; and CYXTRACT which extract, search, and analyze documents. It also provides manufacturing operations management solutions, including industrial automation, data engineering, operations management, asset operations, and manufacturing intelligence; FACTORYDTECT, Monitoring and predictive solutions; FACTORYPRO; DIGITAL DATA FOUNDATION data platform; ENERGYCARE, a platform to monitor, analyze, and balance energy usage; and ASSET TWIN that monito asset health and upcoming failure mode. In addition, the company offers Vismon, a suite of solutions that simplifies network management; and CyPlaNet which streamlines fiber optic networks. It serves aerospace and defense, rail transportation, automotive and mobility, mining, energy, utilities and spatial intelligence, communications, healthcare and life science, and semiconductor industries. Cyient Limited and Vodafone entered into an agreement and launched an AI-powered global network configuration management solution supported by data-driven, intelligent configuration analytics. Cyient Limited was incorporated in 1991 and is headquartered in Hyderabad, India.",
@@ -366,39 +386,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,849",
-        "expenses": "1,729",
-        "operatingProfit": "120",
-        "opm": "6.5%",
-        "netProfit": "92",
-        "eps": "₹16.1"
+        "sales": "636",
+        "expenses": "750",
+        "operatingProfit": "-114",
+        "opm": "-17.9%",
+        "netProfit": "-146",
+        "eps": "₹-13.2"
       },
       {
         "period": "Mar 26",
-        "sales": "1,927",
-        "expenses": "1,855",
-        "operatingProfit": "72",
-        "opm": "3.7%",
-        "netProfit": "55",
-        "eps": "₹9.6"
+        "sales": "635",
+        "expenses": "584",
+        "operatingProfit": "51",
+        "opm": "8.0%",
+        "netProfit": "38",
+        "eps": "₹3.46"
       },
       {
         "period": "Jun 26",
-        "sales": "2,076",
-        "expenses": "1,941",
-        "operatingProfit": "135",
-        "opm": "6.5%",
-        "netProfit": "104",
-        "eps": "₹18.2"
+        "sales": "700",
+        "expenses": "509",
+        "operatingProfit": "191",
+        "opm": "27.3%",
+        "netProfit": "144",
+        "eps": "₹13"
       },
       {
-        "period": "Sept 26",
-        "sales": "2,235",
-        "expenses": "2,078",
-        "operatingProfit": "157",
-        "opm": "7%",
-        "netProfit": "121",
-        "eps": "₹21.2"
+        "period": "Sep 26",
+        "sales": "695",
+        "expenses": "550",
+        "operatingProfit": "145",
+        "opm": "20.9%",
+        "netProfit": "103",
+        "eps": "₹9.77"
       }
     ],
     "balanceSheet": [
@@ -461,6 +481,18 @@
         "investments": "1,489",
         "otherAssets": "2,267",
         "totalAssets": "7,442"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "52",
+        "reserves": "3,102",
+        "borrowings": "1,145",
+        "otherLiabilities": "1,524",
+        "totalLiabilities": "5,823",
+        "fixedAssets": "280",
+        "investments": "4,038",
+        "otherAssets": "1,505",
+        "totalAssets": "5,823"
       }
     ],
     "cashFlows": [
@@ -498,10 +530,17 @@
         "cfi": "-308",
         "cff": "-169",
         "netCash": "147"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "277",
+        "cfi": "-1,200",
+        "cff": "373",
+        "netCashFlow": "-550"
       }
     ],
     "shareholding": {
-      "promoters": "25.32%",
+      "promoters": "24.76%",
       "fii": "33.72%",
       "dii": "18.16%",
       "public": "22.80%",
@@ -547,7 +586,7 @@
       "evToEbitda": 14.6,
       "roce": 8.6,
       "roe": 6.9,
-      "debtToEquity": 0.49,
+      "debtToEquity": 0.36,
       "interestCoverage": 36.5,
       "divYield": 1.45,
       "salesGrowth3Y": 6.5,
@@ -557,7 +596,7 @@
     "pe": 17.1,
     "roePct": 6.9,
     "rocePct": 8.6,
-    "debtToEquity": 0.49,
+    "debtToEquity": 0.36,
     "divYieldPct": 1.45,
     "salesGrowth3Y": 6.5,
     "profitGrowth3Y": -5.9,
@@ -577,9 +616,10 @@
     ],
     "updatedAt": 1794038125773,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:12.064Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 10.2%; Quarterly results refreshed (Sept 26); ROE updated: 18.5% -> 6.9%; Debt/Equity updated: 0.15 -> 0.49",
-    "cmp": 1113
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:48.546Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1113,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1744214_22102026071929_WEB.xml"
   },
   "CANBK": {
     "about": "Canara Bank provides various banking products and services in India and internationally. The company offers deposits and accounts, such as savings accounts, current accounts, recurring deposits, and term deposits; unclaimed deposits; loan products, including home, vehicle, education, personal, mortgage, gold, MSME, agri, and solar loans; life, general, and health insurance products; corporate loans comprising working capital, infrastructure, and export finance products, as well as term loans; depository services, merchant banking, and online trading services; and mutual funds. The company also provides digital lending portal; mobile and internet banking; credit, debit, and prepaid cards; UPI and fastag; missed call banking; online account opening services; and payment solutions; NRI banking accounts; remittance facilities; attorneyship service; and nomination facility. In addition, it offers supply chain finance management; syndication services; IPO monitoring services; locker services; doorstep banking services; and consultancy services, which includes estate and wills, private and charitable religious trustee, debenture and security trusteeship, and attorney services. Further, the company offers government business products. Canara Bank was incorporated in 1906 and is headquartered in Bengaluru, India.",
@@ -656,39 +696,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "17,152",
-        "expenses": "10,450",
-        "operatingProfit": "6,702",
-        "opm": "39.1%",
+        "sales": "39,881",
+        "expenses": "33,176",
+        "operatingProfit": "6,705",
+        "opm": "16.8%",
         "netProfit": "5,155",
-        "eps": "₹4.4"
+        "eps": "₹5.68"
       },
       {
         "period": "Mar 26",
-        "sales": "14,632",
-        "expenses": "8,774",
-        "operatingProfit": "5,858",
-        "opm": "40%",
+        "sales": "36,662",
+        "expenses": "30,896",
+        "operatingProfit": "5,766",
+        "opm": "15.7%",
         "netProfit": "4,506",
-        "eps": "₹3.9"
+        "eps": "₹4.97"
       },
       {
         "period": "Jun 26",
-        "sales": "16,942",
-        "expenses": "10,629",
-        "operatingProfit": "6,313",
-        "opm": "37.3%",
+        "sales": "39,684",
+        "expenses": "33,128",
+        "operatingProfit": "6,556",
+        "opm": "16.5%",
         "netProfit": "4,856",
-        "eps": "₹4.2"
+        "eps": "₹5.35"
       },
       {
-        "period": "Sept 26",
-        "sales": "16,777",
-        "expenses": "10,049",
-        "operatingProfit": "6,728",
-        "opm": "40.1%",
+        "period": "Sep 26",
+        "sales": "40,931",
+        "expenses": "33,955",
+        "operatingProfit": "6,976",
+        "opm": "17.0%",
         "netProfit": "5,175",
-        "eps": "₹4.4"
+        "eps": "₹5.7"
       }
     ],
     "balanceSheet": [
@@ -751,6 +791,18 @@
         "investments": "32,705",
         "otherAssets": "39,679",
         "totalAssets": "1,67,478"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "20,33,198",
+        "totalLiabilities": "20,33,198",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "20,33,198",
+        "totalAssets": "20,33,198"
       }
     ],
     "cashFlows": [
@@ -788,10 +840,17 @@
         "cfi": "-17,229",
         "cff": "-7,744",
         "netCash": "4,209"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "8,879",
+        "cfi": "-645",
+        "cff": "-6,013",
+        "netCashFlow": "2,221"
       }
     ],
     "shareholding": {
-      "promoters": "64.32%",
+      "promoters": "62.93%",
       "fii": "11.52%",
       "dii": "6.21%",
       "public": "17.95%",
@@ -867,9 +926,10 @@
     ],
     "updatedAt": 1794038125781,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:16.821Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 17.5% -> 15.1%",
-    "cmp": 118.32
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.670Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 118.32,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1737953_14102026054031_WEB.xml"
   },
   "CHOLAFIN": {
     "about": "Cholamandalam Investment and Finance Company Limited, operates as a non-banking finance company in India. The company operates through Vehicle Finance, Loan Against Property, Home Loans, and Other Loans segments. It offers loans for commercial vehicles, passenger vehicle, two- and three- wheelers, and tractors and farm equipment, as well as construction equipment. The company also provides secured loans against property, and home and SME loans, as well as consumer and small enterprise loans, including personal loans, professional loans, and business loans to salaried, self-employed professionals, and proprietorship, partnership, and private limited companies. In addition, it offers gold loans, consumer durable loans, corporate insurance agencies, stockbroking and depository participants, offline payment aggregator, home extension, balance transfer of existing loans, supply chain finance, and secured term loans. Further, the company provides dealer platform services under the Gaadi Bazaar brand, which integrates vehicle trading, auctions, and trade advances. Additionally, it operates Payswiff, an omnichannel payment transaction solution that lets business owners accept payments from their customers in-store, at-home deliveries, online and on-the-go using mPOS, and POS solutions. The company was incorporated in 1978 and is based in Chennai, India.",
@@ -946,39 +1006,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,363",
-        "expenses": "2,686",
-        "operatingProfit": "1,677",
-        "opm": "38.4%",
-        "netProfit": "1,290",
-        "eps": "₹9.1"
+        "sales": "7,985",
+        "expenses": "6,252",
+        "operatingProfit": "1,733",
+        "opm": "21.7%",
+        "netProfit": "1,288",
+        "eps": "₹15.26"
       },
       {
         "period": "Mar 26",
-        "sales": "4,789",
-        "expenses": "2,656",
-        "operatingProfit": "2,133",
-        "opm": "44.5%",
+        "sales": "8,539",
+        "expenses": "6,402",
+        "operatingProfit": "2,137",
+        "opm": "25.0%",
         "netProfit": "1,641",
-        "eps": "₹11.6"
+        "eps": "₹19.28"
       },
       {
         "period": "Jun 26",
-        "sales": "4,930",
-        "expenses": "2,780",
-        "operatingProfit": "2,150",
-        "opm": "43.6%",
+        "sales": "8,933",
+        "expenses": "6,713",
+        "operatingProfit": "2,220",
+        "opm": "24.9%",
         "netProfit": "1,654",
-        "eps": "₹11.7"
+        "eps": "₹19.4"
       },
       {
-        "period": "Sept 26",
-        "sales": "5,037",
-        "expenses": "2,918",
-        "operatingProfit": "2,119",
-        "opm": "42.1%",
+        "period": "Sep 26",
+        "sales": "9,367",
+        "expenses": "7,179",
+        "operatingProfit": "2,188",
+        "opm": "23.4%",
         "netProfit": "1,630",
-        "eps": "₹11.5"
+        "eps": "₹19.09"
       }
     ],
     "balanceSheet": [
@@ -1041,6 +1101,18 @@
         "investments": "5,611",
         "otherAssets": "10,079",
         "totalAssets": "30,434"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "172",
+        "reserves": "34,303",
+        "borrowings": "0",
+        "otherLiabilities": "2,34,961",
+        "totalLiabilities": "2,69,436",
+        "fixedAssets": "2,017",
+        "investments": "0",
+        "otherAssets": "2,67,419",
+        "totalAssets": "2,69,436"
       }
     ],
     "cashFlows": [
@@ -1078,10 +1150,17 @@
         "cfi": "-3,718",
         "cff": "-1,950",
         "netCash": "2,090"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-19,806",
+        "cfi": "-1,394",
+        "cff": "20,737",
+        "netCashFlow": "-463"
       }
     ],
     "shareholding": {
-      "promoters": "51.75%",
+      "promoters": "48.93%",
       "fii": "21.89%",
       "dii": "11.79%",
       "public": "14.57%",
@@ -1127,7 +1206,7 @@
       "evToEbitda": 13.2,
       "roce": 25.8,
       "roe": 20.6,
-      "debtToEquity": 6.72,
+      "debtToEquity": 0,
       "interestCoverage": 36.3,
       "divYield": 0.18,
       "salesGrowth3Y": 32.6,
@@ -1137,7 +1216,7 @@
     "pe": 37.8,
     "roePct": 20.6,
     "rocePct": 25.8,
-    "debtToEquity": 6.72,
+    "debtToEquity": 0,
     "divYieldPct": 0.18,
     "salesGrowth3Y": 32.6,
     "profitGrowth3Y": 25.2,
@@ -1159,9 +1238,10 @@
     ],
     "updatedAt": 1794038125786,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.921Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); Debt/Equity updated: 6.2 -> 6.72",
-    "cmp": 1658
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.530Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1658,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1748394_28102026112850_WEB.xml"
   },
   "CDSL": {
     "about": "Central Depository Services (India) Limited, together with its subsidiaries, provides depository services in India. It operates through Depository; Data Entry and Storage; and Repository segments. The Depository segment offers various services to investors, such as dematerialisation, rematerialisation, holding, transfer, and pledge of securities in electronic form; and provides e-voting services to companies. Its Data Entry and Stroage segment provides centralized record keeping of KYC document of capital market investors. The Repository segment offers policyholders/warehouse receipt holders a facility to keep insurance policies/warehouse receipts in electronic form and to undertake changes, modifications, and revisions in the policy/receipt. It also provides account opening, processing delivery and receipt instructions, pledging, nomination, transmission of securities, change in address, bank account details, and SMS services for depository participants (DPs). In addition, the company offers various services, such as electronic access to security information and execution of secured transaction, SMS alerts related to transactions, electronic consolidated account statements, and virtual annual general meetings; Myeasi mobile application; application programming interfaces for DPs, electronic delivery instruction slip, and electronic margin pledge; and electronic foreign investment monitoring, electronic system driven disclosure services, and electronic notices, as well as e-locker services. Further, it provides KYC registration agency, eKYC, electronic signature service, tax filing, stamp duty calendar, electronic negotiable warehouse receipts and electronic non-negotiable warehouse receipts, and electronic insurance account. The company serves market participants, exchanges, clearing corporations, DPs, issuers, and investors. Central Depository Services (India) Limited was incorporated in 1997 and is based in Mumbai, India.",
@@ -1238,39 +1318,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "304",
-        "expenses": "131",
-        "operatingProfit": "173",
-        "opm": "56.9%",
-        "netProfit": "133",
-        "eps": "₹6.4"
+        "sales": "279",
+        "expenses": "125",
+        "operatingProfit": "154",
+        "opm": "55.2%",
+        "netProfit": "120",
+        "eps": "₹5.74"
       },
       {
         "period": "Mar 26",
-        "sales": "263",
-        "expenses": "159",
-        "operatingProfit": "104",
-        "opm": "39.5%",
-        "netProfit": "80",
-        "eps": "₹3.8"
+        "sales": "215",
+        "expenses": "128",
+        "operatingProfit": "87",
+        "opm": "40.5%",
+        "netProfit": "69",
+        "eps": "₹3.29"
       },
       {
         "period": "Jun 26",
-        "sales": "293",
-        "expenses": "140",
-        "operatingProfit": "153",
-        "opm": "52.2%",
-        "netProfit": "118",
-        "eps": "₹5.7"
+        "sales": "327",
+        "expenses": "138",
+        "operatingProfit": "189",
+        "opm": "57.8%",
+        "netProfit": "144",
+        "eps": "₹6.91"
       },
       {
-        "period": "Sept 26",
-        "sales": "394",
-        "expenses": "168",
-        "operatingProfit": "226",
-        "opm": "57.4%",
-        "netProfit": "174",
-        "eps": "₹8.4"
+        "period": "Sep 26",
+        "sales": "359",
+        "expenses": "143",
+        "operatingProfit": "216",
+        "opm": "60.2%",
+        "netProfit": "163",
+        "eps": "₹7.82"
       }
     ],
     "balanceSheet": [
@@ -1333,6 +1413,18 @@
         "investments": "446",
         "otherAssets": "724",
         "totalAssets": "2,213"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "209",
+        "reserves": "1,428",
+        "borrowings": "0",
+        "otherLiabilities": "649",
+        "totalLiabilities": "2,286",
+        "fixedAssets": "380",
+        "investments": "952",
+        "otherAssets": "954",
+        "totalAssets": "2,286"
       }
     ],
     "cashFlows": [
@@ -1370,10 +1462,17 @@
         "cfi": "-273",
         "cff": "-162",
         "netCash": "157"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "454",
+        "cfi": "-190",
+        "cff": "-267",
+        "netCashFlow": "-3"
       }
     ],
     "shareholding": {
-      "promoters": "51.00%",
+      "promoters": "15%",
       "fii": "10.34%",
       "dii": "5.57%",
       "public": "33.09%",
@@ -1453,9 +1552,10 @@
     ],
     "updatedAt": 1794038125787,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.906Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 31.2% -> 26.4%",
-    "cmp": 1323.8
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.453Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1323.8,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750642_31102026034300_WEB.xml"
   },
   "CLEAN": {
     "about": "Clean Science and Technology Limited, together with its subsidiaries, manufactures fine and specialty chemicals in India, China, the United States, Europe, and internationally. It operates through Performance Chemicals, FMCG Chemicals, and Pharma & Agro Intermediates segments. The company offers performance chemicals, including monomethyl ether of hydroquinone, butylated hydroxy anisole, ascorbyl palmitate, tertiary butyl hydroquinone, hydroquinone, hindered amine light stabilisers, catechol, and butylated hydroxytoluene, as well as clean antiOX 962, 4-oxo tempo, 4-butoxy tempo, clean light stab 770, 4-hydroxy tempo, and dimethyl sebacate. It also provides FMCG chemicals, such as 4-methoxy acetophenone, anisole, guaiacol, butylated hydroxy anisole, l-ascorbyl palmitate, para di-methoxy benzene, and ortho methoxy toluene. In addition, the company offers pharmaceutical and agro intermediates, which includes dicyclohexyl carbodiimide, veratrole, DHDT, para benzoquinone, para di-methoxy benzene, anisole, and ortho methoxy toluene. It serves acrylic monomers and polymers; animal nutrition and feed; coatings, resins, paints, and inks; cosmetic and personal care; electronics and electronic chemicals; edible oils; flavors and fragrances; food and beverages; fuel, lubricants, and industrial fluids; nutraceuticals and dietary supplements; petrochemicals; peptide and fine chemicals synthesis; pharmaceuticals intermediates; plastics; rubber and elastomers; light/UV stabilizers; and water treatment industries. The company was incorporated in 2003 and is headquartered in Pune, India.",
@@ -1532,39 +1632,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "220",
-        "expenses": "160",
-        "operatingProfit": "60",
-        "opm": "27.3%",
-        "netProfit": "46",
-        "eps": "₹2.3"
+        "sales": "194",
+        "expenses": "124",
+        "operatingProfit": "70",
+        "opm": "36.1%",
+        "netProfit": "52",
+        "eps": "₹4.88"
       },
       {
         "period": "Mar 26",
-        "sales": "249",
-        "expenses": "174",
-        "operatingProfit": "75",
-        "opm": "30.1%",
+        "sales": "197",
+        "expenses": "120",
+        "operatingProfit": "77",
+        "opm": "39.1%",
         "netProfit": "58",
-        "eps": "₹2.8"
+        "eps": "₹5.47"
       },
       {
         "period": "Jun 26",
-        "sales": "268",
-        "expenses": "173",
-        "operatingProfit": "95",
-        "opm": "35.4%",
+        "sales": "228",
+        "expenses": "130",
+        "operatingProfit": "98",
+        "opm": "43.0%",
         "netProfit": "73",
-        "eps": "₹3.6"
+        "eps": "₹6.9"
       },
       {
-        "period": "Sept 26",
-        "sales": "299",
-        "expenses": "226",
-        "operatingProfit": "73",
-        "opm": "24.4%",
-        "netProfit": "56",
-        "eps": "₹2.7"
+        "period": "Sep 26",
+        "sales": "237",
+        "expenses": "163",
+        "operatingProfit": "74",
+        "opm": "31.2%",
+        "netProfit": "55",
+        "eps": "₹5.21"
       }
     ],
     "balanceSheet": [
@@ -1627,6 +1727,18 @@
         "investments": "471",
         "otherAssets": "343",
         "totalAssets": "1,903"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "11",
+        "reserves": "1,723",
+        "borrowings": "0",
+        "otherLiabilities": "185",
+        "totalLiabilities": "1,919",
+        "fixedAssets": "320",
+        "investments": "952",
+        "otherAssets": "647",
+        "totalAssets": "1,919"
       }
     ],
     "cashFlows": [
@@ -1664,10 +1776,17 @@
         "cfi": "-123",
         "cff": "-68",
         "netCash": "15"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "81",
+        "cfi": "-51",
+        "cff": "-44",
+        "netCashFlow": "-14"
       }
     ],
     "shareholding": {
-      "promoters": "55.21%",
+      "promoters": "51.29%",
       "fii": "15.46%",
       "dii": "8.33%",
       "public": "21.00%",
@@ -1745,9 +1864,10 @@
     ],
     "updatedAt": 1794038125791,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:21.430Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 24.5% -> 14.7%",
-    "cmp": 656.4
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.575Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 656.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750701_31102026045531_WEB.xml"
   },
   "COALINDIA": {
     "about": "Coal India Limited, together with its subsidiaries, produces and sells coal and coal products in India. The company offers coking coal for steel making and metallurgical industries, as well as for hard coke manufacturing; semi coking coal for blend-able coal in steel making, merchant coke manufacturing, and other metallurgical industries; and non-coking coal for cement, fertilizer, glass, ceramic, paper, chemical, and brick manufacturing, as well as power generation and other heating purposes. It also provides washed and beneficiated coal for manufacturing of hard coke for steel making and power generation, as well as for cement, sponge iron, and other industrial plants; middling products for power generation, domestic fuel plants, brick manufacturing units, cement plants, and industrial plants, etc.; and reject products for fluidized bed combustion boilers for power generation, road repairs, briquette making, and land filling, etc. In addition, the company offers CIL/LTC coke for use in furnaces and kilns of industrial units, as well as for domestic fuel by halwais and hotels, etc.; coal/coke fines for use in industrial furnaces and domestic purposes; and tar, heavy and light oil, and soft pitch for use in furnaces and boilers of industrial plants, power houses, oil, dye, and pharmaceutical industries, etc. Further, it engages in coal mining and gasification; consultancy support in coal and mineral exploration; and renewable energy activities. The company serves the power and non-power sectors. The company was formerly known as Coal Mines Authority Limited and changed its name to Coal India Limited in January 1975. Coal India Limited was incorporated in 1973 and is headquartered in Kolkata, India.",
@@ -1824,39 +1944,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "34,924",
-        "expenses": "25,620",
-        "operatingProfit": "9,304",
-        "opm": "26.6%",
-        "netProfit": "7,157",
-        "eps": "₹12.8"
+        "sales": "5,294",
+        "expenses": "389",
+        "operatingProfit": "4,905",
+        "opm": "92.7%",
+        "netProfit": "4,872",
+        "eps": "₹7.91"
       },
       {
         "period": "Mar 26",
-        "sales": "51,618",
-        "expenses": "37,527",
-        "operatingProfit": "14,091",
-        "opm": "27.3%",
-        "netProfit": "10,839",
-        "eps": "₹19.4"
+        "sales": "6,242",
+        "expenses": "371",
+        "operatingProfit": "5,871",
+        "opm": "94.1%",
+        "netProfit": "5,534",
+        "eps": "₹8.98"
       },
       {
         "period": "Jun 26",
-        "sales": "48,295",
-        "expenses": "36,787",
-        "operatingProfit": "11,508",
-        "opm": "23.8%",
-        "netProfit": "8,852",
-        "eps": "₹15.8"
+        "sales": "444",
+        "expenses": "233",
+        "operatingProfit": "211",
+        "opm": "47.5%",
+        "netProfit": "153",
+        "eps": "₹0.25"
       },
       {
-        "period": "Sept 26",
-        "sales": "46,833",
-        "expenses": "38,362",
-        "operatingProfit": "8,471",
-        "opm": "18.1%",
-        "netProfit": "6,516",
-        "eps": "₹11.6"
+        "period": "Sep 26",
+        "sales": "9,749",
+        "expenses": "542",
+        "operatingProfit": "9,207",
+        "opm": "94.4%",
+        "netProfit": "9,121",
+        "eps": "₹14.8"
       }
     ],
     "balanceSheet": [
@@ -1919,6 +2039,18 @@
         "investments": "28,030",
         "otherAssets": "44,151",
         "totalAssets": "1,31,819"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "6,163",
+        "reserves": "16,979",
+        "borrowings": "1,139",
+        "otherLiabilities": "8,749",
+        "totalLiabilities": "33,030",
+        "fixedAssets": "2,335",
+        "investments": "15,586",
+        "otherAssets": "15,109",
+        "totalAssets": "33,030"
       }
     ],
     "cashFlows": [
@@ -1956,10 +2088,17 @@
         "cfi": "-9,187",
         "cff": "-6,054",
         "netCash": "5,802"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "419",
+        "cfi": "7,477",
+        "cff": "-6,295",
+        "netCashFlow": "1,601"
       }
     ],
     "shareholding": {
-      "promoters": "61.14%",
+      "promoters": "61.13%",
       "fii": "18.39%",
       "dii": "9.90%",
       "public": "10.57%",
@@ -2005,7 +2144,7 @@
       "evToEbitda": 8.6,
       "roce": 35.4,
       "roe": 28.3,
-      "debtToEquity": 0.12,
+      "debtToEquity": 0.05,
       "interestCoverage": 36.5,
       "divYield": 5.65,
       "salesGrowth3Y": 9.1,
@@ -2015,7 +2154,7 @@
     "pe": 6.7,
     "roePct": 28.3,
     "rocePct": 35.4,
-    "debtToEquity": 0.12,
+    "debtToEquity": 0.05,
     "divYieldPct": 5.65,
     "salesGrowth3Y": 9.1,
     "profitGrowth3Y": 3.4,
@@ -2037,9 +2176,10 @@
     ],
     "updatedAt": 1794038125796,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.042Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 48.5% -> 28.3%",
-    "cmp": 399.65
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:56.287Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 399.65,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749145_29102026062328_WEB.xml"
   },
   "CIPLA": {
     "about": "Cipla Limited, together with its subsidiaries, manufactures, develops, sells, and distributes pharmaceutical products in India, the United States, South Africa, and internationally. It offers generic and branded generic medicines, vaccines, active pharmaceutical ingredients, and formulations for various therapeutic areas, such as MI, angina, heart disease, pulmonary disease, kidney disorders, alzheimer's disease, hypertension, arrhythmia, lipid abnormalities and diabetes, obesity, central nervous system, HIV/AIDS, respiratory, asthma, urology, oncology, cardio-metabolism, child health, infectious diseases and critical care, hepatitis, women's health, ophthalmology, and neuro psychiatry. The company is also involved in the consumer healthcare, biosimilars, and specialty businesses. Cipla Limited was incorporated in 1935 and is based in Mumbai, India.",
@@ -2116,39 +2256,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "7,074",
-        "expenses": "6,195",
-        "operatingProfit": "879",
-        "opm": "12.4%",
-        "netProfit": "676",
-        "eps": "₹12.9"
+        "sales": "4,915",
+        "expenses": "4,179",
+        "operatingProfit": "736",
+        "opm": "15.0%",
+        "netProfit": "617",
+        "eps": "₹7.64"
       },
       {
         "period": "Mar 26",
-        "sales": "6,541",
-        "expenses": "5,819",
-        "operatingProfit": "722",
-        "opm": "11%",
-        "netProfit": "555",
-        "eps": "₹10.6"
+        "sales": "4,390",
+        "expenses": "3,868",
+        "operatingProfit": "522",
+        "opm": "11.9%",
+        "netProfit": "385",
+        "eps": "₹4.76"
       },
       {
         "period": "Jun 26",
-        "sales": "7,119",
-        "expenses": "6,093",
-        "operatingProfit": "1,026",
-        "opm": "14.4%",
-        "netProfit": "789",
-        "eps": "₹15.1"
+        "sales": "5,320",
+        "expenses": "4,166",
+        "operatingProfit": "1,154",
+        "opm": "21.7%",
+        "netProfit": "862",
+        "eps": "₹10.67"
       },
       {
-        "period": "Sept 26",
-        "sales": "7,404",
-        "expenses": "6,263",
-        "operatingProfit": "1,141",
-        "opm": "15.4%",
-        "netProfit": "878",
-        "eps": "₹16.8"
+        "period": "Sep 26",
+        "sales": "5,215",
+        "expenses": "4,153",
+        "operatingProfit": "1,062",
+        "opm": "20.4%",
+        "netProfit": "787",
+        "eps": "₹9.74"
       }
     ],
     "balanceSheet": [
@@ -2211,6 +2351,18 @@
         "investments": "17,324",
         "otherAssets": "13,946",
         "totalAssets": "60,931"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "162",
+        "reserves": "34,750",
+        "borrowings": "0",
+        "otherLiabilities": "4,166",
+        "totalLiabilities": "39,078",
+        "fixedAssets": "3,924",
+        "investments": "11,638",
+        "otherAssets": "23,516",
+        "totalAssets": "39,078"
       }
     ],
     "cashFlows": [
@@ -2248,10 +2400,17 @@
         "cfi": "-1,855",
         "cff": "-1,460",
         "netCash": "530"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "724",
+        "cfi": "439",
+        "cff": "-1,082",
+        "netCashFlow": "81"
       }
     ],
     "shareholding": {
-      "promoters": "31.13%",
+      "promoters": "29.21%",
       "fii": "29.30%",
       "dii": "15.77%",
       "public": "23.80%",
@@ -2297,7 +2456,7 @@
       "evToEbitda": 24.7,
       "roce": 10.4,
       "roe": 8.3,
-      "debtToEquity": 0.02,
+      "debtToEquity": 0,
       "interestCoverage": 49.9,
       "divYield": 0.82,
       "salesGrowth3Y": 7.4,
@@ -2307,7 +2466,7 @@
     "pe": 25.3,
     "roePct": 8.3,
     "rocePct": 10.4,
-    "debtToEquity": 0.02,
+    "debtToEquity": 0,
     "divYieldPct": 0.82,
     "salesGrowth3Y": 7.4,
     "profitGrowth3Y": 11.5,
@@ -2327,9 +2486,10 @@
     ],
     "updatedAt": 1794038125804,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:43.436Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 16.8% -> 8.3%",
-    "cmp": 1402
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:07.811Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1402,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747270_27102026091306_WEB.xml"
   },
   "COLPAL": {
     "about": "Colgate-Palmolive (India) Limited manufactures and trades in personal and oral care products in India. The company offers toothpastes, toothpowder, toothbrushes, mouth wash, serum, rinses, whitening products, hand washes, and shower gels under the Colgate and Palmolive brand name. It also offers soaps, cosmetics, and toiletries. In addition, the company exports its products. Colgate-Palmolive (India) Limited was incorporated in 1937 and is headquartered in Mumbai, India.",
@@ -2406,39 +2566,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,486",
-        "expenses": "1,065",
-        "operatingProfit": "421",
-        "opm": "28.3%",
+        "sales": "1,525",
+        "expenses": "1,089",
+        "operatingProfit": "436",
+        "opm": "28.6%",
         "netProfit": "324",
-        "eps": "₹6.3"
+        "eps": "₹11.91"
       },
       {
         "period": "Mar 26",
-        "sales": "1,595",
-        "expenses": "1,136",
-        "operatingProfit": "459",
-        "opm": "28.8%",
+        "sales": "1,612",
+        "expenses": "1,138",
+        "operatingProfit": "474",
+        "opm": "29.4%",
         "netProfit": "353",
-        "eps": "₹6.8"
+        "eps": "₹12.99"
       },
       {
         "period": "Jun 26",
-        "sales": "1,603",
-        "expenses": "1,157",
-        "operatingProfit": "446",
-        "opm": "27.8%",
+        "sales": "1,626",
+        "expenses": "1,164",
+        "operatingProfit": "462",
+        "opm": "28.4%",
         "netProfit": "343",
-        "eps": "₹6.6"
+        "eps": "₹12.61"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,706",
-        "expenses": "1,261",
-        "operatingProfit": "445",
-        "opm": "26.1%",
+        "period": "Sep 26",
+        "sales": "1,728",
+        "expenses": "1,268",
+        "operatingProfit": "460",
+        "opm": "26.6%",
         "netProfit": "342",
-        "eps": "₹6.6"
+        "eps": "₹12.56"
       }
     ],
     "balanceSheet": [
@@ -2501,6 +2661,18 @@
         "investments": "588",
         "otherAssets": "498",
         "totalAssets": "2,431"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "27",
+        "reserves": "1,590",
+        "borrowings": "0",
+        "otherLiabilities": "2,021",
+        "totalLiabilities": "3,638",
+        "fixedAssets": "673",
+        "investments": "0",
+        "otherAssets": "2,965",
+        "totalAssets": "3,638"
       }
     ],
     "cashFlows": [
@@ -2538,10 +2710,17 @@
         "cfi": "-809",
         "cff": "-461",
         "netCash": "147"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "839",
+        "cfi": "-17",
+        "cff": "-660",
+        "netCashFlow": "162"
       }
     ],
     "shareholding": {
-      "promoters": "51.43%",
+      "promoters": "51%",
       "fii": "14.55%",
       "dii": "7.84%",
       "public": "26.18%",
@@ -2587,7 +2766,7 @@
       "evToEbitda": 52.2,
       "roce": 106.4,
       "roe": 85.1,
-      "debtToEquity": 0.03,
+      "debtToEquity": 0,
       "interestCoverage": 44.1,
       "divYield": 1.75,
       "salesGrowth3Y": 4.9,
@@ -2597,7 +2776,7 @@
     "pe": 63.1,
     "roePct": 85.1,
     "rocePct": 106.4,
-    "debtToEquity": 0.03,
+    "debtToEquity": 0,
     "divYieldPct": 1.75,
     "salesGrowth3Y": 4.9,
     "profitGrowth3Y": 8.2,
@@ -2621,9 +2800,10 @@
     ],
     "updatedAt": 1794038125811,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.682Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 74.5% -> 85.1%",
-    "cmp": 1660.7
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.480Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1660.7,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1744095_22102026054238_WEB.xml"
   },
   "COCHINSHIP": {
     "about": "Cochin Shipyard Limited, together with its subsidiaries, engages in the building and repair of ships and offshore structures in India and internationally. The company operates through two segments, Shipbuilding and Ship Repair. It offers shipbuilding products, including aircraft carriers, missile vessels, anti-submarine warfare shallow water crafts, technology demonstration vessels, floating border outpost vessels, fast patrol vessels, hydrographic survey vessels, offshore patrol vessels, and pollution control vessels for the defence market; oil tankers, bulk carriers, dredgers, pax vessels, tugs, special purpose vessels, deck cargo/jacket launch barges, electric autonomous vessels and passenger ferries, ro-pax vessels, specialised fishing vessels, marine ambulances, zero emission feeder container vessels, and commissioning and hybrid operation vessels for the commercial market; and platform supply vessels and anchor handling/tug supply vessels for the offshore market, as well as product carriers, passenger vessels, high bollard pull tugs, and air defence ships. The company also provides ship repair services, such as maintenance and repair of aircraft carriers and other defense vessels, as well as tankers, bulk carriers, and other commercial and specialized vessels; oil rig upgradation, repair projects, and conversion services; and upgradation of ships for oil exploration, periodical maintenance, and life extension services. In addition, the company offers marine engineering training services. It exports its products in the United Arab Emirates, Bahamas, Cyprus, Germany, Saudi Arabia, the Netherlands, Norway, the United States, and Liberia. Cochin Shipyard Limited was founded in 1969 and is based in Ernakulam, India.",

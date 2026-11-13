@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "34,076",
-        "expenses": "31,992",
-        "operatingProfit": "2,084",
-        "opm": "6.1%",
+        "sales": "34,755",
+        "expenses": "32,725",
+        "operatingProfit": "2,030",
+        "opm": "5.8%",
         "netProfit": "1,603",
-        "eps": "₹1.9"
+        "eps": "₹2.44"
       },
       {
         "period": "Mar 26",
-        "sales": "34,797",
-        "expenses": "32,866",
-        "operatingProfit": "1,931",
-        "opm": "5.5%",
-        "netProfit": "1,485",
-        "eps": "₹1.7"
+        "sales": "35,820",
+        "expenses": "34,243",
+        "operatingProfit": "1,577",
+        "opm": "4.4%",
+        "netProfit": "1,262",
+        "eps": "₹1.92"
       },
       {
         "period": "Jun 26",
-        "sales": "41,350",
-        "expenses": "35,285",
-        "operatingProfit": "6,065",
-        "opm": "14.7%",
-        "netProfit": "4,665",
-        "eps": "₹5.5"
+        "sales": "39,554",
+        "expenses": "33,781",
+        "operatingProfit": "5,773",
+        "opm": "14.6%",
+        "netProfit": "4,292",
+        "eps": "₹6.53"
       },
       {
-        "period": "Sept 26",
-        "sales": "45,895",
-        "expenses": "39,850",
-        "operatingProfit": "6,045",
-        "opm": "13.2%",
+        "period": "Sep 26",
+        "sales": "46,563",
+        "expenses": "40,725",
+        "operatingProfit": "5,838",
+        "opm": "12.5%",
         "netProfit": "4,650",
-        "eps": "₹5.4"
+        "eps": "₹7.07"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "15,416",
         "otherAssets": "21,552",
         "totalAssets": "69,219"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "6,575",
+        "reserves": "74,702",
+        "borrowings": "13,393",
+        "otherLiabilities": "41,316",
+        "totalLiabilities": "1,35,986",
+        "fixedAssets": "52,849",
+        "investments": "19,191",
+        "otherAssets": "63,946",
+        "totalAssets": "1,35,986"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-7,129",
         "cff": "-4,715",
         "netCash": "3,840"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "9,100",
+        "cfi": "0",
+        "cff": "54,215",
+        "netCashFlow": "63,315"
       }
     ],
     "shareholding": {
-      "promoters": "58.98%",
+      "promoters": "51.85%",
       "fii": "17.36%",
       "dii": "9.34%",
       "public": "14.32%",
@@ -255,7 +274,7 @@
       "evToEbitda": 6.1,
       "roce": 17,
       "roe": 13.6,
-      "debtToEquity": 0.25,
+      "debtToEquity": 0.16,
       "interestCoverage": 41.9,
       "divYield": 2.8,
       "salesGrowth3Y": -1.7,
@@ -265,7 +284,7 @@
     "pe": 12.8,
     "roePct": 13.6,
     "rocePct": 17,
-    "debtToEquity": 0.25,
+    "debtToEquity": 0.16,
     "divYieldPct": 2.8,
     "salesGrowth3Y": -1.7,
     "profitGrowth3Y": 10.5,
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125797,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.956Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14.5% -> 13.6%",
-    "cmp": 186.22
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:00.175Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 186.22,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749866_30102026040256_WEB.xml"
   },
   "GODREJCP": {
     "about": "Godrej Consumer Products Limited, a fast-moving consumer goods company, manufactures and sells personal care and home care products in India, Africa, Indonesia, the Middle East, the United States, and internationally. The company offers household insecticides, home hygiene, and air and fabric care products; and personal wash and hygiene, hair color, beauty and professional products, and deodorants and fragrances. It provides its products under the Godrej Aer-O, Goodknight Agarbatti, Godrej Ninja, Godrej Good knight, Godrej aer, Godrej Expert, Darling, HIT, Godrej Ezee, Godrej No.1, CINTHOL, Ilicit, ISSUE, INECTO, Godrej magic, Godrej nupur, Godrej Professional, tcb, ROBY, Villeneuve, Millefiori, African Pride, Stella, Godrej spic, Godrej bloq, Mitu baby, NYU, Godrej Genteel, Park Avenune, Profectiy Mega Growth,and KamaSutra brands names. Godrej Consumer Products Limited was founded in 1897 and is headquartered in Mumbai, India.",
@@ -364,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,099",
-        "expenses": "3,452",
-        "operatingProfit": "647",
-        "opm": "15.8%",
-        "netProfit": "498",
-        "eps": "₹5"
+        "sales": "2,542",
+        "expenses": "2,035",
+        "operatingProfit": "507",
+        "opm": "19.9%",
+        "netProfit": "383",
+        "eps": "₹3.74"
       },
       {
         "period": "Mar 26",
-        "sales": "3,900",
-        "expenses": "3,312",
-        "operatingProfit": "588",
-        "opm": "15.1%",
-        "netProfit": "452",
-        "eps": "₹4.6"
+        "sales": "2,418",
+        "expenses": "1,863",
+        "operatingProfit": "555",
+        "opm": "23.0%",
+        "netProfit": "422",
+        "eps": "₹4.12"
       },
       {
         "period": "Jun 26",
-        "sales": "4,225",
-        "expenses": "3,568",
-        "operatingProfit": "657",
-        "opm": "15.6%",
-        "netProfit": "505",
-        "eps": "₹5.1"
+        "sales": "2,586",
+        "expenses": "2,102",
+        "operatingProfit": "484",
+        "opm": "18.7%",
+        "netProfit": "363",
+        "eps": "₹3.54"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,413",
-        "expenses": "3,733",
-        "operatingProfit": "680",
-        "opm": "15.4%",
-        "netProfit": "523",
-        "eps": "₹5.3"
+        "period": "Sep 26",
+        "sales": "2,677",
+        "expenses": "2,218",
+        "operatingProfit": "459",
+        "opm": "17.1%",
+        "netProfit": "337",
+        "eps": "₹3.3"
       }
     ],
     "balanceSheet": [
@@ -459,6 +479,18 @@
         "investments": "4,051",
         "otherAssets": "2,009",
         "totalAssets": "14,290"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "102",
+        "reserves": "7,417",
+        "borrowings": "3,341",
+        "otherLiabilities": "2,727",
+        "totalLiabilities": "13,587",
+        "fixedAssets": "1,331",
+        "investments": "4,506",
+        "otherAssets": "7,750",
+        "totalAssets": "13,587"
       }
     ],
     "cashFlows": [
@@ -496,10 +528,17 @@
         "cfi": "-1,342",
         "cff": "-846",
         "netCash": "45"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "521",
+        "cfi": "78",
+        "cff": "-610",
+        "netCashFlow": "-11"
       }
     ],
     "shareholding": {
-      "promoters": "64.25%",
+      "promoters": "53.05%",
       "fii": "15.09%",
       "dii": "8.12%",
       "public": "12.54%",
@@ -545,7 +584,7 @@
       "evToEbitda": 29.7,
       "roce": 20,
       "roe": 16,
-      "debtToEquity": 0.4,
+      "debtToEquity": 0.44,
       "interestCoverage": 40.2,
       "divYield": 0.4,
       "salesGrowth3Y": 4.5,
@@ -555,7 +594,7 @@
     "pe": 42.4,
     "roePct": 16,
     "rocePct": 20,
-    "debtToEquity": 0.4,
+    "debtToEquity": 0.44,
     "divYieldPct": 0.4,
     "salesGrowth3Y": 4.5,
     "profitGrowth3Y": 3,
@@ -575,9 +614,10 @@
     ],
     "updatedAt": 1794038125810,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.677Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14.2% -> 16%; Debt/Equity updated: 0.35 -> 0.4",
-    "cmp": 849
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.356Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 849,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748863_29102026042559_WEB.xml"
   },
   "GODREJPROP": {
     "about": "Godrej Properties Limited, together with its subsidiaries, engages primarily in the business of real estate construction, development, hospitality, and other related activities in India. It develops residential and commercial projects. Godrej Properties Limited was incorporated in 1985 and is headquartered in Mumbai, India.",

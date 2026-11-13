@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "23,556",
-        "expenses": "19,501",
-        "operatingProfit": "4,055",
-        "opm": "17.2%",
-        "netProfit": "3,119",
-        "eps": "₹2"
+        "sales": "19,045",
+        "expenses": "15,250",
+        "operatingProfit": "3,795",
+        "opm": "19.9%",
+        "netProfit": "2,782",
+        "eps": "₹2.66"
       },
       {
         "period": "Mar 26",
-        "sales": "24,236",
-        "expenses": "19,683",
-        "operatingProfit": "4,553",
-        "opm": "18.8%",
-        "netProfit": "3,502",
-        "eps": "₹2.3"
+        "sales": "19,149",
+        "expenses": "15,071",
+        "operatingProfit": "4,078",
+        "opm": "21.3%",
+        "netProfit": "3,037",
+        "eps": "₹2.9"
       },
       {
         "period": "Jun 26",
-        "sales": "24,479",
-        "expenses": "20,121",
-        "operatingProfit": "4,358",
-        "opm": "17.8%",
-        "netProfit": "3,352",
-        "eps": "₹2.2"
+        "sales": "19,286",
+        "expenses": "15,589",
+        "operatingProfit": "3,697",
+        "opm": "19.2%",
+        "netProfit": "2,866",
+        "eps": "₹2.74"
       },
       {
-        "period": "Sept 26",
-        "sales": "24,753",
-        "expenses": "20,592",
-        "operatingProfit": "4,161",
-        "opm": "16.8%",
-        "netProfit": "3,201",
-        "eps": "₹2.1"
+        "period": "Sep 26",
+        "sales": "19,612",
+        "expenses": "15,753",
+        "operatingProfit": "3,859",
+        "opm": "19.7%",
+        "netProfit": "2,863",
+        "eps": "₹2.89"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "23,615",
         "otherAssets": "18,966",
         "totalAssets": "1,06,028"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "1,981",
+        "reserves": "51,185",
+        "borrowings": "7,150",
+        "otherLiabilities": "28,216",
+        "totalLiabilities": "88,532",
+        "fixedAssets": "8,033",
+        "investments": "23,897",
+        "otherAssets": "56,602",
+        "totalAssets": "88,532"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-8,821",
         "cff": "-4,201",
         "netCash": "953"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "6,069",
+        "cfi": "9,441",
+        "cff": "-16,639",
+        "netCashFlow": "-1,129"
       }
     ],
     "shareholding": {
-      "promoters": "72.69%",
+      "promoters": "72.58%",
       "fii": "6.74%",
       "dii": "3.63%",
       "public": "16.94%",
@@ -255,7 +274,7 @@
       "evToEbitda": 16.9,
       "roce": 19.9,
       "roe": 15.9,
-      "debtToEquity": 0.28,
+      "debtToEquity": 0.13,
       "interestCoverage": 46.5,
       "divYield": 0.18,
       "salesGrowth3Y": 0.8,
@@ -265,7 +284,7 @@
     "pe": 23,
     "roePct": 15.9,
     "rocePct": 19.9,
-    "debtToEquity": 0.28,
+    "debtToEquity": 0.13,
     "divYieldPct": 0.18,
     "salesGrowth3Y": 0.8,
     "profitGrowth3Y": 5.2,
@@ -287,9 +306,10 @@
     ],
     "updatedAt": 1794038125769,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:07.260Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 16.2%; Quarterly results refreshed (Sept 26); ROE updated: 14.2% -> 15.9%; Debt/Equity updated: 0.18 -> 0.28",
-    "cmp": 194.55
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:45.693Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 194.55,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1738910_15102026040914_WEB.xml"
   },
   "WAAREEENER": {
     "about": "Waaree Energies Limited manufactures and trades in solar photovoltaic modules in India and internationally. It operates through Solar Photovoltaic Modules; Generation of Power; and Engineering, Procurement and Construction Contract segments. The company offers PV modules, such as HJT, N Type, mono PERC, flexible, and special modules; single and three phase on-grid inverter; solar kits; battery energy storage system; electrolyzer stacks; smart meter; transformer; and Waaree lights. It also provides engineering, procurement, and construction services; asset management; and solar systems for emerging, hybrid, and niche formats, including tracker-integrated systems, agrovoltaics, BIPV, and repowering legacy plants. The company serves engineering, procurement and construction companies; power production companies; power generation utilities; and individual consumers. The company was founded in 1989 and is based in Mumbai, India.",

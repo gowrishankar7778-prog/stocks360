@@ -321,39 +321,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "14,393",
-        "expenses": "12,934",
-        "operatingProfit": "1,459",
+        "sales": "12,443",
+        "expenses": "11,182",
+        "operatingProfit": "1,261",
         "opm": "10.1%",
-        "netProfit": "1,122",
-        "eps": "₹6.4"
+        "netProfit": "964",
+        "eps": "₹9.83"
       },
       {
         "period": "Mar 26",
-        "sales": "15,076",
-        "expenses": "13,316",
-        "operatingProfit": "1,760",
-        "opm": "11.7%",
-        "netProfit": "1,354",
-        "eps": "₹7.7"
+        "sales": "12,761",
+        "expenses": "11,933",
+        "operatingProfit": "828",
+        "opm": "6.5%",
+        "netProfit": "541",
+        "eps": "₹5.52"
       },
       {
         "period": "Jun 26",
-        "sales": "15,712",
-        "expenses": "13,807",
-        "operatingProfit": "1,905",
-        "opm": "12.1%",
-        "netProfit": "1,465",
-        "eps": "₹8.3"
+        "sales": "13,081",
+        "expenses": "11,571",
+        "operatingProfit": "1,510",
+        "opm": "11.5%",
+        "netProfit": "1,138",
+        "eps": "₹11.6"
       },
       {
-        "period": "Sept 26",
-        "sales": "16,180",
-        "expenses": "14,118",
-        "operatingProfit": "2,062",
-        "opm": "12.7%",
-        "netProfit": "1,586",
-        "eps": "₹9"
+        "period": "Sep 26",
+        "sales": "14,280",
+        "expenses": "12,076",
+        "operatingProfit": "2,204",
+        "opm": "15.4%",
+        "netProfit": "1,614",
+        "eps": "₹16.45"
       }
     ],
     "balanceSheet": [
@@ -416,6 +416,18 @@
         "investments": "8,125",
         "otherAssets": "6,671",
         "totalAssets": "29,750"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "490",
+        "reserves": "20,746",
+        "borrowings": "1,599",
+        "otherLiabilities": "14,483",
+        "totalLiabilities": "37,318",
+        "fixedAssets": "1,857",
+        "investments": "0",
+        "otherAssets": "35,461",
+        "totalAssets": "37,318"
       }
     ],
     "cashFlows": [
@@ -453,10 +465,17 @@
         "cfi": "-3,518",
         "cff": "-2,553",
         "netCash": "916"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,191",
+        "cfi": "907",
+        "cff": "-3,808",
+        "netCashFlow": "-710"
       }
     ],
     "shareholding": {
-      "promoters": "37.09%",
+      "promoters": "34.96%",
       "fii": "28.85%",
       "dii": "15.54%",
       "public": "18.52%",
@@ -502,7 +521,7 @@
       "evToEbitda": 18.2,
       "roce": 24,
       "roe": 19.2,
-      "debtToEquity": 0.07,
+      "debtToEquity": 0.08,
       "interestCoverage": 35.2,
       "divYield": 1.65,
       "salesGrowth3Y": 2.2,
@@ -512,7 +531,7 @@
     "pe": 57,
     "roePct": 19.2,
     "rocePct": 24,
-    "debtToEquity": 0.07,
+    "debtToEquity": 0.08,
     "divYieldPct": 1.65,
     "salesGrowth3Y": 2.2,
     "profitGrowth3Y": -0.2,
@@ -534,9 +553,10 @@
     ],
     "updatedAt": 1794038125770,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:07.269Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 14.8%; Quarterly results refreshed (Sept 26); ROE updated: 9.8% -> 19.2%",
-    "cmp": 1783
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:44.308Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1783,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1739118_15102026053405_WEB.xml"
   },
   "TATAELXSI": {
     "about": "Tata Elxsi Limited provides product design and engineering, systems integration, and support services in India, the United States, Europe, and Internationally. The company operates through two segments, Systems Integration and Support, and Software Development and Services. It offers iCX, a SaaS-based solution for automating, monitoring, and managing CPEs; and AIVA, an AI-based video analytics platform that automates video tagging, object detection, content indexing, and metadata generation. It also provides QoEtient, a platform for video streaming services; TEPlay, an OTT/IPTV platform; Neuron, an autonomous network platform for telco operators; and uLike, a platform for AI-powered content recommendation engine. In addition, it offers TETHER, a cloud-based platform for vehicle connectivity; eMobility HILS, a scalable solution for validating electric vehicle systems; Robo-Taxi, a platform for autonomous ride-hailing; AVENIR, a platform for real-time data processing, validation, and integration for software defined vehicles; AutonomAI, an AI-driven platform for self-driving capabilities; and MOBIUS+, a blockchain-powered solution. Further, it provides TEDREG, a regulatory intelligence platform for compliance management; Digital Health Platform, a customizable platform for remote patient monitoring, virtual consultations, and personalized health insights; TEngage, a digital health platform for patient engagement tools with customizable workflows, interactive communication channels, and performance tracking dashboards; TEDAX Big Data, an AI-driven analytics platform; and TEcare, a care management platform for multi-channel support and care plan customization. It serves automotive, broadcast and media, communications, off-highway equipment, healthcare and life sciences, appliances and consumer electronics, rail, semiconductor, and aerospace industries. The company was incorporated in 1989 and is headquartered in Bengaluru, India.",
@@ -613,39 +633,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "953",
-        "expenses": "811",
-        "operatingProfit": "142",
-        "opm": "14.9%",
+        "sales": "1,000",
+        "expenses": "854",
+        "operatingProfit": "146",
+        "opm": "14.6%",
         "netProfit": "109",
-        "eps": "₹22.1"
+        "eps": "₹17.48"
       },
       {
         "period": "Mar 26",
-        "sales": "994",
-        "expenses": "708",
-        "operatingProfit": "286",
-        "opm": "28.8%",
+        "sales": "1,044",
+        "expenses": "776",
+        "operatingProfit": "268",
+        "opm": "25.7%",
         "netProfit": "220",
-        "eps": "₹44.5"
+        "eps": "₹35.37"
       },
       {
         "period": "Jun 26",
-        "sales": "1,021",
-        "expenses": "799",
-        "operatingProfit": "222",
-        "opm": "21.7%",
+        "sales": "1,063",
+        "expenses": "831",
+        "operatingProfit": "232",
+        "opm": "21.8%",
         "netProfit": "171",
-        "eps": "₹34.6"
+        "eps": "₹27.38"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,056",
-        "expenses": "835",
-        "operatingProfit": "221",
-        "opm": "20.9%",
+        "period": "Sep 26",
+        "sales": "1,091",
+        "expenses": "852",
+        "operatingProfit": "239",
+        "opm": "21.9%",
         "netProfit": "170",
-        "eps": "₹34.4"
+        "eps": "₹27.34"
       }
     ],
     "balanceSheet": [
@@ -708,6 +728,18 @@
         "investments": "745",
         "otherAssets": "632",
         "totalAssets": "3,138"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "62",
+        "reserves": "2,850",
+        "borrowings": "0",
+        "otherLiabilities": "937",
+        "totalLiabilities": "3,849",
+        "fixedAssets": "231",
+        "investments": "7",
+        "otherAssets": "3,611",
+        "totalAssets": "3,849"
       }
     ],
     "cashFlows": [
@@ -745,10 +777,17 @@
         "cfi": "-360",
         "cff": "-198",
         "netCash": "61"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "374",
+        "cfi": "99",
+        "cff": "-502",
+        "netCashFlow": "-29"
       }
     ],
     "shareholding": {
-      "promoters": "44.85%",
+      "promoters": "43.89%",
       "fii": "9.41%",
       "dii": "5.06%",
       "public": "40.68%",
@@ -794,7 +833,7 @@
       "evToEbitda": 27.7,
       "roce": 29.9,
       "roe": 23.9,
-      "debtToEquity": 0.05,
+      "debtToEquity": 0,
       "interestCoverage": 35.8,
       "divYield": 0.95,
       "salesGrowth3Y": 6.1,
@@ -804,7 +843,7 @@
     "pe": 27.7,
     "roePct": 23.9,
     "rocePct": 29.9,
-    "debtToEquity": 0.05,
+    "debtToEquity": 0,
     "divYieldPct": 0.95,
     "salesGrowth3Y": 6.1,
     "profitGrowth3Y": -6,
@@ -828,9 +867,10 @@
     ],
     "updatedAt": 1794038125773,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:13.044Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 19.7%; Quarterly results refreshed (Sept 26); ROE updated: 34.5% -> 23.9%; Debt/Equity updated: 0 -> 0.05",
-    "cmp": 3755
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:47.499Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 3755,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1737319_13102026094213_WEB.xml"
   },
   "TATATECH": {
     "about": "Tata Technologies Limited provides product engineering and digital services in India, the United Kingdom, North America, rest of Europe, and internationally. The company offers software-defined vehicles, end to end electric vehicle engineering, and turnkey full vehicle development, end to end engineering and electrification, product benchmarking, and embedded engineering solutions; HIL testing and validation solutions; and model-based systems engineering, digital transformation, smart manufacturing, and digital customer experience solutions. It also provides enterprise transformation SAP S/4 HANA, aerospace engineering, and aerospace MRO solutions, as well as upskilling competency centers. In addition, it offers i GET IT, an online training platform for self-paced training courses; modular EV platform for product launches and reduces time to market; Pulse, an agile product data and management tool; Factorymagix, a manufacturing execution system tool; and AMP.IoT, a suite of modular applications designed to cater to the Industrial IOT requirements of the manufacturing industry. Further, it provides centralized hybrid integration platform, an enterprise hybrid integration ecosystem that connects and maps applications, data, and devices in the cloud; Power of 8, a digital application to enable OEMs to attract customers; TRACE, a connected vehicle platform that helps OEMs to develop and deliver end-to-end connected services; RightWeighting 5R, a solution that enables manufacturing companies to optimize weight and engineer products; and Visimatic, a suite of machine learning solutions. The company was formerly known as Tata Technologies (India) Limited and changed its name to Tata Technologies Limited in February 2001. Tata Technologies Limited was incorporated in 1994 and is based in Pune, India. The company operates as a subsidiary of Tata Motors Limited.",
@@ -907,39 +947,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,366",
-        "expenses": "1,357",
-        "operatingProfit": "9",
-        "opm": "0.7%",
-        "netProfit": "7",
-        "eps": "₹0.2"
+        "sales": "789",
+        "expenses": "792",
+        "operatingProfit": "-3",
+        "opm": "-0.4%",
+        "netProfit": "-1",
+        "eps": "₹-0.04"
       },
       {
         "period": "Mar 26",
-        "sales": "1,572",
-        "expenses": "1,307",
-        "operatingProfit": "265",
-        "opm": "16.9%",
-        "netProfit": "204",
-        "eps": "₹6.1"
+        "sales": "863",
+        "expenses": "654",
+        "operatingProfit": "209",
+        "opm": "24.2%",
+        "netProfit": "159",
+        "eps": "₹3.92"
       },
       {
         "period": "Jun 26",
-        "sales": "1,665",
-        "expenses": "1,430",
-        "operatingProfit": "235",
-        "opm": "14.1%",
-        "netProfit": "181",
-        "eps": "₹5.4"
+        "sales": "1,030",
+        "expenses": "735",
+        "operatingProfit": "295",
+        "opm": "28.6%",
+        "netProfit": "249",
+        "eps": "₹6.13"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,699",
-        "expenses": "1,477",
-        "operatingProfit": "222",
-        "opm": "13.1%",
-        "netProfit": "171",
-        "eps": "₹5.1"
+        "period": "Sep 26",
+        "sales": "957",
+        "expenses": "765",
+        "operatingProfit": "192",
+        "opm": "20.1%",
+        "netProfit": "146",
+        "eps": "₹3.59"
       }
     ],
     "balanceSheet": [
@@ -1002,6 +1042,18 @@
         "investments": "1,216",
         "otherAssets": "560",
         "totalAssets": "4,558"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "81",
+        "reserves": "1,615",
+        "borrowings": "0",
+        "otherLiabilities": "3,047",
+        "totalLiabilities": "4,743",
+        "fixedAssets": "282",
+        "investments": "219",
+        "otherAssets": "4,242",
+        "totalAssets": "4,743"
       }
     ],
     "cashFlows": [
@@ -1039,10 +1091,17 @@
         "cfi": "-422",
         "cff": "-233",
         "netCash": "-3"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-217",
+        "cfi": "730",
+        "cff": "-495",
+        "netCashFlow": "18"
       }
     ],
     "shareholding": {
-      "promoters": "60.15%",
+      "promoters": "55.17%",
       "fii": "5.10%",
       "dii": "2.74%",
       "public": "32.01%",
@@ -1088,7 +1147,7 @@
       "evToEbitda": 32.8,
       "roce": 19,
       "roe": 15.2,
-      "debtToEquity": 0.29,
+      "debtToEquity": 0,
       "interestCoverage": 45.1,
       "divYield": 0.85,
       "salesGrowth3Y": 28.4,
@@ -1098,7 +1157,7 @@
     "pe": 39,
     "roePct": 15.2,
     "rocePct": 19,
-    "debtToEquity": 0.29,
+    "debtToEquity": 0,
     "divYieldPct": 0.85,
     "salesGrowth3Y": 28.4,
     "profitGrowth3Y": -4.3,
@@ -1118,9 +1177,10 @@
     ],
     "updatedAt": 1794038125774,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:12.169Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 12.9%; Quarterly results refreshed (Sept 26); ROE updated: 22.4% -> 15.2%; Debt/Equity updated: 0 -> 0.29",
-    "cmp": 652.45
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:48.393Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 652.45,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1738034_14102026061813_WEB.xml"
   },
   "TATACHEM": {
     "about": "Tata Chemicals Limited, together with its subsidiaries, manufactures, markets, sells, and distributes basic chemistry and specialty products in India, Asia, Africa, Europe, the United Kingdom, the Americas, and internationally. It operates through two segments, Basic Chemistry Products and Specialty Products. The company offers dense, heavy, high purity, industrial grade, and light soda ash; allied chemicals, such as caustic soda, chlorine and bromine-based products, and gypsum; sodium bicarbonate; sodium chloride; calcium chloride; crushed refined soda; standard ash Magadi; natural and synthetic light soda ash; crex; energy; ordinary Portland and masonry cement under the Tata Shudh brand name; and livestock and dry industrial salt. It also provides nano zinc oxide and silica; prebiotics and dietary fibers; herbicides, insecticides, fungicides, bio-fertilizers, bio-stimulants, micronutrients, organic fertilizers, water-soluble fertilizers, bio-pesticides, and seeds; and energy storage solutions. The company's products are used in various applications, such as agriculture; animal nutrition; chemicals; construction; food and nutrition; glass; high performance rubber; metals; oral care and cosmetics; paints, inks, and adhesives; pharmaceuticals; safety and environment; soaps and detergents; textiles and leather; lithium-ion, dry cell, and other batteries; and others. Tata Chemicals Limited was founded in 1927 and is headquartered in Mumbai, India.",
@@ -1197,39 +1257,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,877",
-        "expenses": "3,777",
-        "operatingProfit": "100",
-        "opm": "2.6%",
-        "netProfit": "77",
-        "eps": "₹96.3"
+        "sales": "1,220",
+        "expenses": "1,147",
+        "operatingProfit": "73",
+        "opm": "6.0%",
+        "netProfit": "73",
+        "eps": "₹2.87"
       },
       {
         "period": "Mar 26",
-        "sales": "3,550",
-        "expenses": "3,369",
-        "operatingProfit": "181",
-        "opm": "5.1%",
-        "netProfit": "-93",
-        "eps": "₹0.2"
+        "sales": "1,282",
+        "expenses": "1,227",
+        "operatingProfit": "55",
+        "opm": "4.3%",
+        "netProfit": "48",
+        "eps": "₹1.88"
       },
       {
         "period": "Jun 26",
-        "sales": "3,438",
-        "expenses": "3,263",
-        "operatingProfit": "175",
-        "opm": "5.1%",
-        "netProfit": "-2,132",
-        "eps": "₹0.2"
+        "sales": "1,497",
+        "expenses": "1,105",
+        "operatingProfit": "392",
+        "opm": "26.2%",
+        "netProfit": "343",
+        "eps": "₹13.46"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,281",
-        "expenses": "1,216",
-        "operatingProfit": "65",
-        "opm": "5.1%",
-        "netProfit": "-17",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "1,357",
+        "expenses": "1,205",
+        "operatingProfit": "152",
+        "opm": "11.2%",
+        "netProfit": "122",
+        "eps": "₹4.79"
       }
     ],
     "balanceSheet": [
@@ -1292,6 +1352,18 @@
         "investments": "1,533",
         "otherAssets": "1,411",
         "totalAssets": "6,147"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "255",
+        "reserves": "20,220",
+        "borrowings": "3,476",
+        "otherLiabilities": "2,362",
+        "totalLiabilities": "26,313",
+        "fixedAssets": "5,327",
+        "investments": "18,017",
+        "otherAssets": "2,969",
+        "totalAssets": "26,313"
       }
     ],
     "cashFlows": [
@@ -1329,10 +1401,17 @@
         "cfi": "-384",
         "cff": "-243",
         "netCash": "100"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "323",
+        "cfi": "139",
+        "cff": "-450",
+        "netCashFlow": "12"
       }
     ],
     "shareholding": {
-      "promoters": "38.75%",
+      "promoters": "37.98%",
       "fii": "16.81%",
       "dii": "9.05%",
       "public": "35.39%",
@@ -1378,7 +1457,7 @@
       "evToEbitda": 18.1,
       "roce": 8.5,
       "roe": 6.8,
-      "debtToEquity": 0.36,
+      "debtToEquity": 0.17,
       "interestCoverage": 51.6,
       "divYield": 1.15,
       "salesGrowth3Y": -4.6,
@@ -1388,7 +1467,7 @@
     "pe": 18.1,
     "roePct": 6.8,
     "rocePct": 8.5,
-    "debtToEquity": 0.36,
+    "debtToEquity": 0.17,
     "divYieldPct": 1.15,
     "salesGrowth3Y": -4.6,
     "profitGrowth3Y": 14,
@@ -1408,9 +1487,10 @@
     ],
     "updatedAt": 1794038125792,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:21.397Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26)",
-    "cmp": 603.1
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.933Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 603.1,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755498_07112026075211_WEB.xml"
   },
   "TATAPOWER": {
     "about": "The Tata Power Company Limited engages in the generation, transmission, distribution, and trading of electricity in India and internationally. It operates through four segments: Thermal & Hydro, Transmission & Distribution, Renewables, and Others. The company generates power from hydroelectric and thermal sources, such as coal, gas, and oil; and provides related ancillary services. It also engages in the operation of transmission and distribution networks; and sale of power to retail customers through distribution networks. In addition, the company offers project management contracts and infrastructure management, and property development services, as well as rents oil tanks. Further, it is involved in the generation of power from renewable energy sources, such as wind and solar; rooftop solar projects; electric vehicle charging stations; manufactures solar cells and modules; engineering, procurement, and construction; home automation solutions; and maintenance services. Additionally, the company trades in power and coal; generates and distributes power; hydro pump storage, coal mining, trading, shipping, and related infra business; and provides smart meter, consultancy, networking solution, shipping and coal handling, logistics, and equipment business and related services, as well as infrastructure for electric vehicles. As of March 31, 2026, the company had an installed generation capacity of 16,716 megawatt. The Tata Power Company Limited was founded in 1915 and is based in Mumbai, India.",
@@ -1487,39 +1567,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "15,545",
-        "expenses": "14,350",
-        "operatingProfit": "1,195",
-        "opm": "7.7%",
-        "netProfit": "919",
-        "eps": "₹2.9"
+        "sales": "2,741",
+        "expenses": "2,854",
+        "operatingProfit": "-113",
+        "opm": "-4.1%",
+        "netProfit": "-160",
+        "eps": "₹-0.5"
       },
       {
         "period": "Mar 26",
-        "sales": "14,269",
-        "expenses": "13,265",
-        "operatingProfit": "1,004",
-        "opm": "7%",
-        "netProfit": "772",
-        "eps": "₹2.4"
+        "sales": "3,125",
+        "expenses": "3,023",
+        "operatingProfit": "102",
+        "opm": "3.3%",
+        "netProfit": "334",
+        "eps": "₹1.04"
       },
       {
         "period": "Jun 26",
-        "sales": "15,455",
-        "expenses": "14,160",
-        "operatingProfit": "1,295",
-        "opm": "8.4%",
-        "netProfit": "996",
-        "eps": "₹3.1"
+        "sales": "5,880",
+        "expenses": "5,369",
+        "operatingProfit": "511",
+        "opm": "8.7%",
+        "netProfit": "277",
+        "eps": "₹0.87"
       },
       {
-        "period": "Sept 26",
-        "sales": "19,440",
-        "expenses": "17,911",
-        "operatingProfit": "1,529",
-        "opm": "7.9%",
-        "netProfit": "1,176",
-        "eps": "₹3.7"
+        "period": "Sep 26",
+        "sales": "7,113",
+        "expenses": "6,267",
+        "operatingProfit": "846",
+        "opm": "11.9%",
+        "netProfit": "704",
+        "eps": "₹2.2"
       }
     ],
     "balanceSheet": [
@@ -1582,6 +1662,18 @@
         "investments": "7,020",
         "otherAssets": "10,701",
         "totalAssets": "36,207"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "320",
+        "reserves": "18,378",
+        "borrowings": "22,819",
+        "otherLiabilities": "14,663",
+        "totalLiabilities": "56,180",
+        "fixedAssets": "21,154",
+        "investments": "15,406",
+        "otherAssets": "19,620",
+        "totalAssets": "56,180"
       }
     ],
     "cashFlows": [
@@ -1619,10 +1711,17 @@
         "cfi": "-4,022",
         "cff": "-2,062",
         "netCash": "1,740"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,824",
+        "cfi": "-957",
+        "cff": "-2,025",
+        "netCashFlow": "-158"
       }
     ],
     "shareholding": {
-      "promoters": "48.71%",
+      "promoters": "46.86%",
       "fii": "13.18%",
       "dii": "7.10%",
       "public": "31.01%",
@@ -1668,7 +1767,7 @@
       "evToEbitda": 10.8,
       "roce": 11.8,
       "roe": 12.4,
-      "debtToEquity": 1.68,
+      "debtToEquity": 1.22,
       "interestCoverage": 36.3,
       "divYield": 0.48,
       "salesGrowth3Y": 50.9,
@@ -1678,7 +1777,7 @@
     "pe": 29.4,
     "roePct": 12.4,
     "rocePct": 11.8,
-    "debtToEquity": 1.68,
+    "debtToEquity": 1.22,
     "divYieldPct": 0.48,
     "salesGrowth3Y": 50.9,
     "profitGrowth3Y": 4.7,
@@ -1698,9 +1797,10 @@
     ],
     "updatedAt": 1794038125795,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:39.038Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26); Debt/Equity updated: 1.35 -> 1.68",
-    "cmp": 360
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:57.255Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 360,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756232_11112026070241_WEB.xml"
   },
   "TATAMOTORS": {
     "cmp": 880,
@@ -2046,39 +2146,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "12,476",
-        "expenses": "11,254",
-        "operatingProfit": "1,222",
-        "opm": "9.8%",
+        "sales": "12,448",
+        "expenses": "11,175",
+        "operatingProfit": "1,273",
+        "opm": "10.2%",
         "netProfit": "940",
-        "eps": "₹9.6"
+        "eps": "₹19.79"
       },
       {
         "period": "Mar 26",
-        "sales": "12,808",
-        "expenses": "11,511",
-        "operatingProfit": "1,297",
-        "opm": "10.1%",
+        "sales": "12,791",
+        "expenses": "11,433",
+        "operatingProfit": "1,358",
+        "opm": "10.6%",
         "netProfit": "998",
-        "eps": "₹10.2"
+        "eps": "₹21"
       },
       {
         "period": "Jun 26",
-        "sales": "13,896",
-        "expenses": "12,370",
-        "operatingProfit": "1,526",
-        "opm": "11%",
+        "sales": "14,047",
+        "expenses": "12,458",
+        "operatingProfit": "1,589",
+        "opm": "11.3%",
         "netProfit": "1,174",
-        "eps": "₹12"
+        "eps": "₹24.71"
       },
       {
-        "period": "Sept 26",
-        "sales": "17,103",
-        "expenses": "15,313",
-        "operatingProfit": "1,790",
-        "opm": "10.5%",
+        "period": "Sep 26",
+        "sales": "17,148",
+        "expenses": "15,283",
+        "operatingProfit": "1,865",
+        "opm": "10.9%",
         "netProfit": "1,377",
-        "eps": "₹14.1"
+        "eps": "₹28.99"
       }
     ],
     "balanceSheet": [
@@ -2141,6 +2241,18 @@
         "investments": "5,251",
         "otherAssets": "5,161",
         "totalAssets": "18,634"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "48",
+        "reserves": "13,761",
+        "borrowings": "5,463",
+        "otherLiabilities": "13,560",
+        "totalLiabilities": "32,832",
+        "fixedAssets": "5,230",
+        "investments": "13,613",
+        "otherAssets": "13,989",
+        "totalAssets": "32,832"
       }
     ],
     "cashFlows": [
@@ -2178,10 +2290,17 @@
         "cfi": "-2,208",
         "cff": "-1,972",
         "netCash": "1,057"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "3,844",
+        "cfi": "-5,894",
+        "cff": "2,023",
+        "netCashFlow": "-27"
       }
     ],
     "shareholding": {
-      "promoters": "52.29%",
+      "promoters": "50.27%",
       "fii": "19.66%",
       "dii": "10.58%",
       "public": "17.47%",
@@ -2227,7 +2346,7 @@
       "evToEbitda": 30.1,
       "roce": 46.5,
       "roe": 37.2,
-      "debtToEquity": 3.21,
+      "debtToEquity": 0.4,
       "interestCoverage": 40.7,
       "divYield": 0.32,
       "salesGrowth3Y": 13.9,
@@ -2237,7 +2356,7 @@
     "pe": 94.3,
     "roePct": 37.2,
     "rocePct": 46.5,
-    "debtToEquity": 3.21,
+    "debtToEquity": 0.4,
     "divYieldPct": 0.32,
     "salesGrowth3Y": 13.9,
     "profitGrowth3Y": 31.4,
@@ -2257,9 +2376,10 @@
     ],
     "updatedAt": 1794038125801,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:41.734Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 28% -> 37.2%; Debt/Equity updated: 0.95 -> 3.21",
-    "cmp": 4331.2
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.779Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 4331.2,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748255_28102026082531_WEB.xml"
   },
   "TORNTPHARM": {
     "about": "Torrent Pharmaceuticals Limited engages in the research, development, manufacturing, marketing, and distribution of branded and generic pharmaceutical formulations in India, the United States, Brazil, Germany, Malta, and internationally. The company offers products in various therapeutic areas, including anti-diabetic, anti-microbial, cardiovascular, CNS, urology, gynecology, oncology, gastro-intestinal, nephrology, neuro-psychiatric, dermatology, pulmonology, pediatric treatments, nutritional, pain management, anti-infective, and miscellaneous, as well as vitamins, minerals, and nutrients. It also provides contract manufacturing services. The company offers its products under Tedibar, Shelcal, Unienzyme, ProZuca, and Ahaglow brands. The company was formerly known as Trinity Laboratories and changed its name to Torrent Pharmaceuticals Limited in 1971. The company was founded in 1959 and is based in Ahmedabad, India. Torrent Pharmaceuticals Limited is a subsidiary of Torrent Investments Private Limited.",
@@ -2336,39 +2456,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,303",
-        "expenses": "2,477",
-        "operatingProfit": "826",
-        "opm": "25%",
-        "netProfit": "635",
-        "eps": "₹16.7"
+        "sales": "2,591",
+        "expenses": "1,834",
+        "operatingProfit": "757",
+        "opm": "29.2%",
+        "netProfit": "577",
+        "eps": "₹17.04"
       },
       {
         "period": "Mar 26",
-        "sales": "4,197",
-        "expenses": "3,691",
-        "operatingProfit": "506",
-        "opm": "12.1%",
-        "netProfit": "389",
-        "eps": "₹10.3"
+        "sales": "2,793",
+        "expenses": "2,201",
+        "operatingProfit": "592",
+        "opm": "21.2%",
+        "netProfit": "467",
+        "eps": "₹13.8"
       },
       {
         "period": "Jun 26",
-        "sales": "4,921",
-        "expenses": "4,185",
-        "operatingProfit": "736",
-        "opm": "15%",
-        "netProfit": "566",
-        "eps": "₹14.9"
+        "sales": "4,137",
+        "expenses": "3,474",
+        "operatingProfit": "663",
+        "opm": "16.0%",
+        "netProfit": "492",
+        "eps": "₹12.94"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,979",
-        "expenses": "4,285",
-        "operatingProfit": "694",
-        "opm": "13.9%",
-        "netProfit": "534",
-        "eps": "₹14.1"
+        "period": "Sep 26",
+        "sales": "4,134",
+        "expenses": "3,458",
+        "operatingProfit": "676",
+        "opm": "16.4%",
+        "netProfit": "498",
+        "eps": "₹13.09"
       }
     ],
     "balanceSheet": [
@@ -2431,6 +2551,18 @@
         "investments": "3,030",
         "otherAssets": "3,847",
         "totalAssets": "17,140"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "190",
+        "reserves": "18,066",
+        "borrowings": "13,135",
+        "otherLiabilities": "10,670",
+        "totalLiabilities": "42,061",
+        "fixedAssets": "4,676",
+        "investments": "887",
+        "otherAssets": "36,498",
+        "totalAssets": "42,061"
       }
     ],
     "cashFlows": [
@@ -2468,10 +2600,17 @@
         "cfi": "-1,673",
         "cff": "-640",
         "netCash": "335"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,730",
+        "cfi": "-1,179",
+        "cff": "-1,566",
+        "netCashFlow": "-15"
       }
     ],
     "shareholding": {
-      "promoters": "63.18%",
+      "promoters": "60.78%",
       "fii": "13.42%",
       "dii": "7.22%",
       "public": "16.18%",
@@ -2517,7 +2656,7 @@
       "evToEbitda": 47.5,
       "roce": 19.6,
       "roe": 15.7,
-      "debtToEquity": 0.77,
+      "debtToEquity": 0.72,
       "interestCoverage": 42.2,
       "divYield": 0.85,
       "salesGrowth3Y": 13.3,
@@ -2527,7 +2666,7 @@
     "pe": 84.6,
     "roePct": 15.7,
     "rocePct": 19.6,
-    "debtToEquity": 0.77,
+    "debtToEquity": 0.72,
     "divYieldPct": 0.85,
     "salesGrowth3Y": 13.3,
     "profitGrowth3Y": 20.2,
@@ -2547,9 +2686,10 @@
     ],
     "updatedAt": 1794038125806,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:44.228Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 24.5% -> 15.7%; Debt/Equity updated: 0.72 -> 0.77",
-    "cmp": 4738.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:06.507Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 4738.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1745013_23102026080745_WEB.xml"
   },
   "TATACONSUM": {
     "about": "Tata Consumer Products Limited, together with its subsidiaries, manufactures, distributes, and trades in food products in India, the United States, the United Kingdom, and internationally. It operates through Branded Business and Non Branded Business segments. The company provides tea, coffee, water, salt, pulses, spices, snacks, ready-to-eat packaged and processed food products, ready to cook, ready to drink beverages, breakfast cereals, sauces, instant masala noodles, meal solutions, staples, mini-meals, breakfast, chilli ginger garlic paste, cooking aids and condiments, dry fruits, floor and millets, honey, chutneys, and cold-pressed oils. It also offers health supplements; glucose and jelly drinks; juices; food; and out-of-home consumptions products. The company provides its products primarily under the Tata Tea, Tata Tea Premium, Tetley, 1868 by Tata Tea, Organic India, Tata Coffee Grand, Tata Coffee Gold, Tata Coffee Quick Filter, Sonnets by Tata Coffee, Tata Salt, Tata Sampann, Smith & Jones, Tata Soulfull, Himalayan honey and preserves, Ching's Secret, Tata Simply Better, Himalayan water, Tata Copper+, Tata Gluco+, Tata Coffee Grand Cold Coffee, Zip Zap, Tetley Ready-To-Drink Green Tea, Tata Starbucks, Tata Consumer Specialist Solutions, Tata MyBistro, Good Earth, Teapigs, Eight O'Clock, Vitax, Himalayan, Laager, Tea4Kidz, Tea time, Society Coffee, Phendula, Teeco, Southalls, Tata Tea Gold, Kanan Devan, Chakra Gold, Tata Tea Agni, Joekels, Tata Coffee Cold Coffee, Tata Fruski, Tata GoFit, Himalayan Honey & Preserves, Himalayan Saffron, and Tata MyBistro Vending brands. The company was formerly known as Tata Global Beverages Limited and changed its name to Tata Consumer Products Limited in February 2020. Tata Consumer Products Limited was incorporated in 1962 and is based in Mumbai, India.",
@@ -2626,39 +2766,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "5,112",
-        "expenses": "4,611",
-        "operatingProfit": "501",
-        "opm": "9.8%",
-        "netProfit": "385",
-        "eps": "₹3.2"
+        "sales": "3,699",
+        "expenses": "3,264",
+        "operatingProfit": "435",
+        "opm": "11.8%",
+        "netProfit": "321",
+        "eps": "₹3.24"
       },
       {
         "period": "Mar 26",
-        "sales": "5,434",
-        "expenses": "4,889",
-        "operatingProfit": "545",
-        "opm": "10%",
-        "netProfit": "419",
-        "eps": "₹3.5"
+        "sales": "3,920",
+        "expenses": "3,499",
+        "operatingProfit": "421",
+        "opm": "10.7%",
+        "netProfit": "315",
+        "eps": "₹3.18"
       },
       {
         "period": "Jun 26",
-        "sales": "5,349",
-        "expenses": "4,794",
-        "operatingProfit": "555",
-        "opm": "10.4%",
-        "netProfit": "427",
-        "eps": "₹3.5"
+        "sales": "4,455",
+        "expenses": "3,623",
+        "operatingProfit": "832",
+        "opm": "18.7%",
+        "netProfit": "714",
+        "eps": "₹7.22"
       },
       {
-        "period": "Sept 26",
-        "sales": "5,661",
-        "expenses": "5,051",
-        "operatingProfit": "610",
-        "opm": "10.8%",
-        "netProfit": "469",
-        "eps": "₹3.9"
+        "period": "Sep 26",
+        "sales": "4,230",
+        "expenses": "3,875",
+        "operatingProfit": "355",
+        "opm": "8.4%",
+        "netProfit": "243",
+        "eps": "₹2.45"
       }
     ],
     "balanceSheet": [
@@ -2721,6 +2861,18 @@
         "investments": "5,857",
         "otherAssets": "5,249",
         "totalAssets": "25,526"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "99",
+        "reserves": "17,725",
+        "borrowings": "312",
+        "otherLiabilities": "4,597",
+        "totalLiabilities": "22,733",
+        "fixedAssets": "1,076",
+        "investments": "9,896",
+        "otherAssets": "11,761",
+        "totalAssets": "22,733"
       }
     ],
     "cashFlows": [
@@ -2758,10 +2910,17 @@
         "cfi": "-1,180",
         "cff": "-622",
         "netCash": "209"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "342",
+        "cfi": "523",
+        "cff": "-1,008",
+        "netCashFlow": "-143"
       }
     ],
     "shareholding": {
-      "promoters": "34.37%",
+      "promoters": "33.83%",
       "fii": "22.53%",
       "dii": "12.13%",
       "public": "30.97%",
@@ -2807,7 +2966,7 @@
       "evToEbitda": 40.4,
       "roce": 9.5,
       "roe": 7.6,
-      "debtToEquity": 0.11,
+      "debtToEquity": 0.02,
       "interestCoverage": 44,
       "divYield": 0.75,
       "salesGrowth3Y": 13.8,
@@ -2817,7 +2976,7 @@
     "pe": 76.4,
     "roePct": 7.6,
     "rocePct": 9.5,
-    "debtToEquity": 0.11,
+    "debtToEquity": 0.02,
     "divYieldPct": 0.75,
     "salesGrowth3Y": 13.8,
     "profitGrowth3Y": 8.6,
@@ -2837,9 +2996,10 @@
     ],
     "updatedAt": 1794038125809,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.667Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 8.5% -> 7.6%; Debt/Equity updated: 0.18 -> 0.11",
-    "cmp": 1068
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:09.844Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1068,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746147_26102026064810_WEB.xml"
   },
   "TITAN": {
     "about": "Titan Company Limited, together with its subsidiaries, manufactures and sells watches, jewelry, eyewear, fragrances, women's bags, and other accessories and products in India and internationally. The company operates through four segments: Watches and Wearables, Jewellery, Eyecare, and Others. The company designs, manufactures, and retails watches and wearables under the Nebula, Titan, Titan Clock, Zoop, Titan Octane, Titan Raga, Xylys, Edge, Fastrack, Sonata, Titan Smart, Fastrack smart, SF, Titan World, and Helios brands; jewellery products under the Mia, CaratLane, Tanishq, and Zoya brands; and eyecare products under the Titan Glares, Titan Eye+ and Fastrack Eyecare brands. It also offers sarees, dress materials, and ready-to-wear kurtas under the Taneira brand; perfumes under the SKINN brand; belts and wallets under the TITAN brand; and bags under the Fastrack and IRTH brands. In addition, the company provides manufacturing services and automation solutions for the aerospace, defense, transportation, electrical and electronics, and medical sectors. Further, it provides automation and precision engineering solutions. It offers its products through owned and franchised retail stores, as well as online. The company was formerly known as Titan Industries Limited and changed its name to Titan Company Limited in August 2013. Titan Company Limited was incorporated in 1984 and is based in Bengaluru, India.",

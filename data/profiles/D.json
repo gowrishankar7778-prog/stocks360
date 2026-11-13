@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "694",
-        "expenses": "564",
-        "operatingProfit": "130",
-        "opm": "18.7%",
-        "netProfit": "100",
-        "eps": "₹5.9"
+        "sales": "699",
+        "expenses": "687",
+        "operatingProfit": "12",
+        "opm": "1.7%",
+        "netProfit": "8",
+        "eps": "₹0.6"
       },
       {
         "period": "Mar 26",
-        "sales": "2,120",
-        "expenses": "1,834",
-        "operatingProfit": "286",
-        "opm": "13.5%",
-        "netProfit": "220",
-        "eps": "₹13"
+        "sales": "726",
+        "expenses": "673",
+        "operatingProfit": "53",
+        "opm": "7.3%",
+        "netProfit": "39",
+        "eps": "₹2.84"
       },
       {
         "period": "Jun 26",
-        "sales": "807",
-        "expenses": "358",
-        "operatingProfit": "449",
-        "opm": "55.6%",
-        "netProfit": "345",
-        "eps": "₹20.4"
+        "sales": "813",
+        "expenses": "726",
+        "operatingProfit": "87",
+        "opm": "10.7%",
+        "netProfit": "65",
+        "eps": "₹4.74"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,076",
-        "expenses": "2,559",
-        "operatingProfit": "517",
-        "opm": "16.8%",
-        "netProfit": "398",
-        "eps": "₹23.6"
+        "period": "Sep 26",
+        "sales": "921",
+        "expenses": "761",
+        "operatingProfit": "160",
+        "opm": "17.4%",
+        "netProfit": "144",
+        "eps": "₹10.54"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "788",
         "otherAssets": "972",
         "totalAssets": "3,813"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "27",
+        "reserves": "3,293",
+        "borrowings": "19",
+        "otherLiabilities": "621",
+        "totalLiabilities": "3,960",
+        "fixedAssets": "1,014",
+        "investments": "1,513",
+        "otherAssets": "1,433",
+        "totalAssets": "3,960"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-680",
         "cff": "-345",
         "netCash": "208"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "129",
+        "cfi": "-29",
+        "cff": "-101",
+        "netCashFlow": "-1"
       }
     ],
     "shareholding": {
-      "promoters": "49.86%",
+      "promoters": "49.39%",
       "fii": "16.91%",
       "dii": "9.11%",
       "public": "24.12%",
@@ -255,7 +274,7 @@
       "evToEbitda": 13.2,
       "roce": 22,
       "roe": 17.6,
-      "debtToEquity": 0.27,
+      "debtToEquity": 0.01,
       "interestCoverage": 38.9,
       "divYield": 0.32,
       "salesGrowth3Y": -0.4,
@@ -265,7 +284,7 @@
     "pe": 25.1,
     "roePct": 17.6,
     "rocePct": 22,
-    "debtToEquity": 0.27,
+    "debtToEquity": 0.01,
     "divYieldPct": 0.32,
     "salesGrowth3Y": -0.4,
     "profitGrowth3Y": -13.5,
@@ -287,9 +306,10 @@
     ],
     "updatedAt": 1794038125788,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:20.465Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 18.2% -> 17.6%; Debt/Equity updated: 0.04 -> 0.27",
-    "cmp": 1578.4
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.664Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1578.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749360_29102026080412_WEB.xml"
   },
   "DRREDDY": {
     "about": "Dr. Reddy's Laboratories Limited, together with its subsidiaries, operates as an integrated pharmaceutical company North America, Europe, India, Russia, and internationally. The company operates through Global Generics, Pharmaceutical Services and Active Ingredients (PSAI), and Others segment. Its Global Generics segment manufactures and markets prescription and over-the-counter finished pharmaceutical products that are marketed under a brand name or as a generic finished dosages with therapeutic equivalence to branded formulations, as well as engages in the biologics business. The PSAI segment manufactures and markets active pharmaceutical ingredients and intermediates, which are principal ingredients for finished pharmaceutical products. This segment also provides contract research services; and manufactures and sells active pharmaceutical ingredients and steroids with the customer requirements. Its Others segment engages in developing therapies in the fields of oncology and inflammation; and research, development, and commercialization of differentiated formulations. The company offers its products for various therapeutic categories, including gastro-intestinal, cardiovascular, anti-diabetic, dermatology, oncology, respiratory, stomatology, urology, and nephrology, vaccines, vitamins and minerals, and pain management. Dr. Reddy's Laboratories Limited was incorporated in 1984 and is headquartered in Hyderabad, India.",
@@ -366,39 +386,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "8,727",
-        "expenses": "7,154",
-        "operatingProfit": "1,573",
-        "opm": "18%",
-        "netProfit": "1,210",
-        "eps": "₹29"
+        "sales": "4,643",
+        "expenses": "4,539",
+        "operatingProfit": "104",
+        "opm": "2.2%",
+        "netProfit": "91",
+        "eps": "₹1.09"
       },
       {
         "period": "Mar 26",
-        "sales": "7,516",
-        "expenses": "7,230",
-        "operatingProfit": "286",
-        "opm": "3.8%",
-        "netProfit": "220",
-        "eps": "₹5.3"
+        "sales": "4,389",
+        "expenses": "4,694",
+        "operatingProfit": "-305",
+        "opm": "-6.9%",
+        "netProfit": "-219",
+        "eps": "₹-2.63"
       },
       {
         "period": "Jun 26",
-        "sales": "8,071",
-        "expenses": "7,494",
-        "operatingProfit": "577",
-        "opm": "7.1%",
-        "netProfit": "444",
-        "eps": "₹10.6"
+        "sales": "5,577",
+        "expenses": "5,080",
+        "operatingProfit": "497",
+        "opm": "8.9%",
+        "netProfit": "405",
+        "eps": "₹4.86"
       },
       {
-        "period": "Sept 26",
-        "sales": "8,671",
-        "expenses": "7,468",
-        "operatingProfit": "1,203",
-        "opm": "13.9%",
-        "netProfit": "925",
-        "eps": "₹22.1"
+        "period": "Sep 26",
+        "sales": "5,790",
+        "expenses": "4,889",
+        "operatingProfit": "901",
+        "opm": "15.6%",
+        "netProfit": "696",
+        "eps": "₹8.35"
       }
     ],
     "balanceSheet": [
@@ -461,6 +481,18 @@
         "investments": "17,085",
         "otherAssets": "13,338",
         "totalAssets": "70,834"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "84",
+        "reserves": "31,851",
+        "borrowings": "5,450",
+        "otherLiabilities": "6,985",
+        "totalLiabilities": "44,370",
+        "fixedAssets": "8,076",
+        "investments": "11,963",
+        "otherAssets": "24,331",
+        "totalAssets": "44,370"
       }
     ],
     "cashFlows": [
@@ -498,10 +530,17 @@
         "cfi": "-2,495",
         "cff": "-1,362",
         "netCash": "343"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "76",
+        "cfi": "775",
+        "cff": "-812",
+        "netCashFlow": "39"
       }
     ],
     "shareholding": {
-      "promoters": "31.33%",
+      "promoters": "26.63%",
       "fii": "34.96%",
       "dii": "18.82%",
       "public": "14.89%",
@@ -547,7 +586,7 @@
       "evToEbitda": 19.8,
       "roce": 9.1,
       "roe": 7.3,
-      "debtToEquity": 0.19,
+      "debtToEquity": 0.17,
       "interestCoverage": 37.4,
       "divYield": 0.6,
       "salesGrowth3Y": 10.8,
@@ -557,7 +596,7 @@
     "pe": 20.5,
     "roePct": 7.3,
     "rocePct": 9.1,
-    "debtToEquity": 0.19,
+    "debtToEquity": 0.17,
     "divYieldPct": 0.6,
     "salesGrowth3Y": 10.8,
     "profitGrowth3Y": -1.7,
@@ -577,9 +616,10 @@
     ],
     "updatedAt": 1794038125805,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:43.440Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 21.5% -> 7.3%; Debt/Equity updated: 0.06 -> 0.19",
-    "cmp": 1374
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:06.827Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1374,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1744950_23102026064911_WEB.xml"
   },
   "DIVISLAB": {
     "about": "Divi's Laboratories Limited engages in the manufacture and sale of generic active pharmaceutical ingredients (APIs), intermediates, and nutraceuticals in India, North America, Asia, Europe, and internationally. The company also undertakes custom synthesis contract manufacturing services of APIs and intermediates; and supplies a range of carotenoids, such as astaxanthin, beta-carotene, lycopene, canthaxanthin, apocarotenal, and vitamins used in the food, beverage, dietary supplement, pet food, and feed industries. It also exports its products. The company was formerly known as Divi's Research Center and changed its name to Divi's Laboratories Limited in 1994. Divi's Laboratories Limited was incorporated in 1990 and is based in Hyderabad, India.",
@@ -656,39 +696,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,715",
-        "expenses": "1,819",
-        "operatingProfit": "896",
-        "opm": "33%",
-        "netProfit": "689",
-        "eps": "₹19.1"
+        "sales": "2,665",
+        "expenses": "1,867",
+        "operatingProfit": "798",
+        "opm": "29.9%",
+        "netProfit": "598",
+        "eps": "₹22.56"
       },
       {
         "period": "Mar 26",
-        "sales": "2,604",
-        "expenses": "1,846",
-        "operatingProfit": "758",
-        "opm": "29.1%",
-        "netProfit": "583",
-        "eps": "₹16.2"
+        "sales": "2,947",
+        "expenses": "1,976",
+        "operatingProfit": "971",
+        "opm": "32.9%",
+        "netProfit": "756",
+        "eps": "₹28.44"
       },
       {
         "period": "Jun 26",
-        "sales": "2,831",
-        "expenses": "1,855",
-        "operatingProfit": "976",
-        "opm": "34.5%",
-        "netProfit": "751",
-        "eps": "₹20.8"
+        "sales": "3,037",
+        "expenses": "1,872",
+        "operatingProfit": "1,165",
+        "opm": "38.4%",
+        "netProfit": "891",
+        "eps": "₹33.55"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,080",
-        "expenses": "1,907",
-        "operatingProfit": "1,173",
-        "opm": "38.1%",
-        "netProfit": "902",
-        "eps": "₹25"
+        "period": "Sep 26",
+        "sales": "3,735",
+        "expenses": "2,215",
+        "operatingProfit": "1,520",
+        "opm": "40.7%",
+        "netProfit": "1,140",
+        "eps": "₹42.97"
       }
     ],
     "balanceSheet": [
@@ -751,6 +791,18 @@
         "investments": "7,075",
         "otherAssets": "2,796",
         "totalAssets": "24,285"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "53",
+        "reserves": "17,895",
+        "borrowings": "0",
+        "otherLiabilities": "3,930",
+        "totalLiabilities": "21,878",
+        "fixedAssets": "7,451",
+        "investments": "78",
+        "otherAssets": "14,349",
+        "totalAssets": "21,878"
       }
     ],
     "cashFlows": [
@@ -788,10 +840,17 @@
         "cfi": "-1,992",
         "cff": "-1,240",
         "netCash": "-44"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "370",
+        "cfi": "597",
+        "cff": "-804",
+        "netCashFlow": "163"
       }
     ],
     "shareholding": {
-      "promoters": "52.00%",
+      "promoters": "51.88%",
       "fii": "19.12%",
       "dii": "10.29%",
       "public": "18.59%",
@@ -869,9 +928,10 @@
     ],
     "updatedAt": 1794038125805,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:43.444Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26)",
-    "cmp": 10037.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:06.733Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 10037.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755422_07112026045152_WEB.xml"
   },
   "DABUR": {
     "about": "Dabur India Limited operates as a fast moving consumer goods company worldwide. It operates through Consumer Care Business, Foods Business, Retail Business, and Other segments. The company provides health supplements under the Dabur Chyawanprash, Dabur Honey, and Dabur Glucose brand name; digestive products under the Hajmola, Pudin Hara, Hingoli, Dabur Nature Care, and Sat Isabgol brands; cough and throat products under the Dabur Honitus brand name; baby care products under the Dabur Lal Tail; ayurvedic health juices; rejuvenators under the Dabur Shilajit brand name; Women's Health Tonics; and nutraceuticals under the Siens brand name, as well as Ayurvedic Ethicals. It also offers hair care products comprising hair oil and shampoo under the Dabur Amla, Vatika, and Dabur Almond brands; oral care products that includes toothpastes, gels, and toothpowders under the Dabur Red Paste, Dabur Babool, Meswak, Dabur Herb'l, and Dabur Lal Dant Manjan brands; skin care products, including rose water, moisturising creams and lotions, soaps, body wash, toners, facial bleaches, and depilatory creams under the Dabur Gulabari and Fem & OxyLife brand names; and home care products, such as air fresheners under Odonil name, mosquito repellents under the Odomos brand, and floor and toilet cleaner products under the Sanifresh brand name. In addition, the company provides beverages under the Réal and Réal Activ brand names; foods under the Dabur and Hommade brands; and spices under the Badshah brand, as well as edible oils and ghee which includes Dabur Cold Pressed Mustard, Sesame and Groundnut Oils, Virgin Coconut Oil, and Dabur 100% Cow Ghee. Further, it offers Guar gum, pharma, and other products. The company also operates specialized beauty retail stores that offer a range of cosmetics, fragrances, skin care, and personal care products, as well as beauty and fashion accessories under the NewU brand name. Dabur India Limited was founded in 1884 and is based in Ghaziabad, India.",
@@ -948,39 +1008,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,559",
-        "expenses": "2,831",
-        "operatingProfit": "728",
-        "opm": "20.5%",
-        "netProfit": "560",
-        "eps": "₹2.9"
+        "sales": "2,655",
+        "expenses": "2,095",
+        "operatingProfit": "560",
+        "opm": "21.1%",
+        "netProfit": "439",
+        "eps": "₹2.48"
       },
       {
         "period": "Mar 26",
-        "sales": "3,038",
-        "expenses": "2,558",
-        "operatingProfit": "480",
-        "opm": "15.8%",
-        "netProfit": "369",
-        "eps": "₹1.9"
+        "sales": "2,279",
+        "expenses": "1,905",
+        "operatingProfit": "374",
+        "opm": "16.4%",
+        "netProfit": "296",
+        "eps": "₹1.67"
       },
       {
         "period": "Jun 26",
-        "sales": "3,764",
-        "expenses": "2,996",
-        "operatingProfit": "768",
-        "opm": "20.4%",
-        "netProfit": "591",
-        "eps": "₹3"
+        "sales": "2,818",
+        "expenses": "2,240",
+        "operatingProfit": "578",
+        "opm": "20.5%",
+        "netProfit": "452",
+        "eps": "₹2.55"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,563",
-        "expenses": "2,905",
-        "operatingProfit": "658",
-        "opm": "18.5%",
-        "netProfit": "506",
-        "eps": "₹2.6"
+        "period": "Sep 26",
+        "sales": "2,561",
+        "expenses": "2,066",
+        "operatingProfit": "495",
+        "opm": "19.3%",
+        "netProfit": "388",
+        "eps": "₹2.19"
       }
     ],
     "balanceSheet": [
@@ -1043,6 +1103,18 @@
         "investments": "2,304",
         "otherAssets": "4,678",
         "totalAssets": "13,773"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "177",
+        "reserves": "7,228",
+        "borrowings": "806",
+        "otherLiabilities": "4,007",
+        "totalLiabilities": "12,218",
+        "fixedAssets": "1,900",
+        "investments": "3,271",
+        "otherAssets": "7,047",
+        "totalAssets": "12,218"
       }
     ],
     "cashFlows": [
@@ -1080,10 +1152,17 @@
         "cfi": "-839",
         "cff": "-392",
         "netCash": "479"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "588",
+        "cfi": "158",
+        "cff": "-753",
+        "netCashFlow": "-7"
       }
     ],
     "shareholding": {
-      "promoters": "67.67%",
+      "promoters": "66.25%",
       "fii": "14.45%",
       "dii": "7.78%",
       "public": "10.10%",
@@ -1129,7 +1208,7 @@
       "evToEbitda": 32.3,
       "roce": 21.5,
       "roe": 17.2,
-      "debtToEquity": 0.12,
+      "debtToEquity": 0.11,
       "interestCoverage": 43,
       "divYield": 1.45,
       "salesGrowth3Y": 4.6,
@@ -1139,7 +1218,7 @@
     "pe": 38.1,
     "roePct": 17.2,
     "rocePct": 21.5,
-    "debtToEquity": 0.12,
+    "debtToEquity": 0.11,
     "divYieldPct": 1.45,
     "salesGrowth3Y": 4.6,
     "profitGrowth3Y": 3.5,
@@ -1159,9 +1238,10 @@
     ],
     "updatedAt": 1794038125810,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.672Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 16.5% -> 14.4%; Quarterly results refreshed (Sept 26); ROE updated: 19.8% -> 17.2%",
-    "cmp": 395
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.062Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 395,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752823_04112026060315_WEB.xml"
   },
   "DMART": {
     "about": "Avenue Supermarts Limited engages in the business of organized retail and operation of supermarkets under the D-Mart brand name in India. The company offers food products, such as groceries, staples, processed food products, dairy, frozen products, beverages and confectionery products, and fruits and vegetables; non-food products, including home care and personal care products, toiletries, and other over the counter products; and general merchandise and apparel products comprising bed and bath products, toys and games, crockery, plastic goods, garments, footwear, utensils, and home appliances. It is also involved in the online and multi-channel retail of grocery and household products under the DMart Ready brand name; packing and sale of grocery products, spices, dry fruits, etc.; operation of food outlets and pharmacy stores; and development of land and construction. The company was incorporated in 2000 and is based in Mumbai, India.",

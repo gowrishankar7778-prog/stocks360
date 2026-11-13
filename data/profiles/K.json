@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,617",
-        "expenses": "1,444",
-        "operatingProfit": "173",
-        "opm": "10.7%",
-        "netProfit": "133",
-        "eps": "₹1.9"
+        "sales": "607",
+        "expenses": "549",
+        "operatingProfit": "58",
+        "opm": "9.6%",
+        "netProfit": "50",
+        "eps": "₹1.85"
       },
       {
         "period": "Mar 26",
-        "sales": "1,711",
-        "expenses": "1,499",
-        "operatingProfit": "212",
-        "opm": "12.4%",
-        "netProfit": "163",
-        "eps": "₹2.3"
+        "sales": "731",
+        "expenses": "529",
+        "operatingProfit": "202",
+        "opm": "27.6%",
+        "netProfit": "147",
+        "eps": "₹5.4"
       },
       {
         "period": "Jun 26",
-        "sales": "1,675",
-        "expenses": "1,523",
-        "operatingProfit": "152",
-        "opm": "9.1%",
-        "netProfit": "117",
-        "eps": "₹1.7"
+        "sales": "667",
+        "expenses": "540",
+        "operatingProfit": "127",
+        "opm": "19.0%",
+        "netProfit": "97",
+        "eps": "₹3.55"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,691",
-        "expenses": "1,534",
-        "operatingProfit": "157",
-        "opm": "9.3%",
-        "netProfit": "121",
-        "eps": "₹1.7"
+        "period": "Sep 26",
+        "sales": "728",
+        "expenses": "556",
+        "operatingProfit": "172",
+        "opm": "23.6%",
+        "netProfit": "130",
+        "eps": "₹4.79"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "1,180",
         "otherAssets": "1,206",
         "totalAssets": "5,455"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "273",
+        "reserves": "2,124",
+        "borrowings": "0",
+        "otherLiabilities": "840",
+        "totalLiabilities": "3,237",
+        "fixedAssets": "171",
+        "investments": "2,040",
+        "otherAssets": "1,026",
+        "totalAssets": "3,237"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-464",
         "cff": "-232",
         "netCash": "99"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "410",
+        "cfi": "-212",
+        "cff": "-171",
+        "netCashFlow": "27"
       }
     ],
     "shareholding": {
-      "promoters": "44.66%",
+      "promoters": "38.6%",
       "fii": "18.89%",
       "dii": "10.17%",
       "public": "26.28%",
@@ -255,7 +274,7 @@
       "evToEbitda": 49.4,
       "roce": 19.1,
       "roe": 15.3,
-      "debtToEquity": 0.21,
+      "debtToEquity": 0,
       "interestCoverage": 50.8,
       "divYield": 0.28,
       "salesGrowth3Y": 24.3,
@@ -265,7 +284,7 @@
     "pe": 68.5,
     "roePct": 15.3,
     "rocePct": 19.1,
-    "debtToEquity": 0.21,
+    "debtToEquity": 0,
     "divYieldPct": 0.28,
     "salesGrowth3Y": 24.3,
     "profitGrowth3Y": 18.7,
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125772,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:11.243Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 12.7%; Quarterly results refreshed (Sept 26); ROE updated: 31.2% -> 15.3%; Debt/Equity updated: 0.12 -> 0.21",
-    "cmp": 520
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:43.782Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 520,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748349_28102026101814_WEB.xml"
   },
   "KOTAKBANK": {
     "about": "Kotak Mahindra Bank Limited provides a range of banking and financial services to corporate and individual customers in India. It operates through Corporate/Wholesale Banking; Retail Banking; Treasury, BMU and Corporate Centre; Vehicle Financing; Other Lending Activities; Broking; Advisory and Transactional Services; Asset Management; and Insurance segments. The company offers savings, current, retail institution, corporate, private banking, and salary accounts; NRE and NRO fixed deposits and foreign currency nonresident deposits; home, personal, business, payday, gold, education, two-wheeler, commercial vehicle and equipment, working capital, home improvement, car, business, and crop loans, as well as loans against securities and properties; smart EMI services; bill payment, fund transfer, FASTag, taxes, loan/utility payment, forex, and remittance; and forex, credit, and debit card services. It also provides life, health, vehicle, travel, car, and two-wheeler insurance; domestic and international trade, international export and import, bank guarantee, letter of credit, and export credit; digital banking services; and cash management, trade and supply chain finance, trade services, corporate accounts, and sector based solutions. In addition, the company offers investment products, such as demat accounts, Government schemes, mutual funds, application supported by blocked amount facility, deposits, and portfolio investment schemes; and wire transfer, click2remit, and remittance exchange house services. Kotak Mahindra Bank Limited was incorporated in 1985 and is based in Mumbai, India.",
@@ -364,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "10,402",
-        "expenses": "5,922",
-        "operatingProfit": "4,480",
-        "opm": "43.1%",
+        "sales": "16,741",
+        "expenses": "12,171",
+        "operatingProfit": "4,570",
+        "opm": "27.3%",
         "netProfit": "3,446",
-        "eps": "₹5.1"
+        "eps": "₹3.47"
       },
       {
         "period": "Mar 26",
-        "sales": "10,992",
-        "expenses": "5,757",
-        "operatingProfit": "5,235",
-        "opm": "47.6%",
+        "sales": "17,291",
+        "expenses": "11,952",
+        "operatingProfit": "5,339",
+        "opm": "30.9%",
         "netProfit": "4,027",
-        "eps": "₹6"
+        "eps": "₹4.05"
       },
       {
         "period": "Jun 26",
-        "sales": "11,267",
-        "expenses": "5,907",
-        "operatingProfit": "5,360",
-        "opm": "47.6%",
+        "sales": "17,816",
+        "expenses": "12,353",
+        "operatingProfit": "5,463",
+        "opm": "30.7%",
         "netProfit": "4,123",
-        "eps": "₹6.1"
+        "eps": "₹4.15"
       },
       {
-        "period": "Sept 26",
-        "sales": "11,653",
-        "expenses": "6,177",
-        "operatingProfit": "5,476",
-        "opm": "47%",
+        "period": "Sep 26",
+        "sales": "19,141",
+        "expenses": "13,562",
+        "operatingProfit": "5,579",
+        "opm": "29.1%",
         "netProfit": "4,212",
-        "eps": "₹6.2"
+        "eps": "₹4.23"
       }
     ],
     "balanceSheet": [
@@ -459,6 +479,18 @@
         "investments": "32,068",
         "otherAssets": "48,089",
         "totalAssets": "1,94,963"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "8,86,758",
+        "totalLiabilities": "8,86,758",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "8,86,758",
+        "totalAssets": "8,86,758"
       }
     ],
     "cashFlows": [
@@ -496,10 +528,17 @@
         "cfi": "-8,122",
         "cff": "-2,965",
         "netCash": "2,046"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-24,757",
+        "cfi": "-586",
+        "cff": "22,152",
+        "netCashFlow": "-3,191"
       }
     ],
     "shareholding": {
-      "promoters": "28.41%",
+      "promoters": "25.87%",
       "fii": "30.66%",
       "dii": "16.51%",
       "public": "24.42%",
@@ -575,9 +614,10 @@
     ],
     "updatedAt": 1794038125776,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:14.889Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14.8% -> 11.8%",
-    "cmp": 459.4
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:50.166Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 459.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1745379_24102026050751_WEB.xml"
   },
   "KALYANKJIL": {
     "about": "Kalyan Jewellers India Limited, together with its subsidiaries, engages in the manufacture and retail of various gold and precious stone studded jewelry products in India, the Middle East, the United states of America, and United Kingdom, and internationally. It offers gold, diamond, silver, platinum, gemstone, and white and rose gold jewelry, including wedding, staple regional, aspirational, studded, and other jewelries. The company also provides chains, necklaces, bangles, bracelets, nose studs, choker, jewelry, and moti sets, daily wear, vaddanam, rings, earrings, pendants, anklets, pearls, studs, jhumka, lockets, harams, kadas, payals, and second studs. It offers its products under MUDHRA, NIMAH, ANOKHI, RANG, TEJASVI, ZIAH, LAYA, GLO, CANDERE, VEDHA, APOORVA, HERA, and MUHURAT brand names. Further, it sells its products through an online platform, candere.com. Kalyan Jewellers India Limited was founded in 1993 and is headquartered in Thrissur, India.",

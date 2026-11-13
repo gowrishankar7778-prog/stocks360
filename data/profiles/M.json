@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,902",
-        "expenses": "3,292",
-        "operatingProfit": "610",
-        "opm": "15.6%",
-        "netProfit": "469",
-        "eps": "₹21.2"
+        "sales": "2,446",
+        "expenses": "1,992",
+        "operatingProfit": "454",
+        "opm": "18.6%",
+        "netProfit": "339",
+        "eps": "₹17.81"
       },
       {
         "period": "Mar 26",
-        "sales": "4,003",
-        "expenses": "3,428",
-        "operatingProfit": "575",
-        "opm": "14.4%",
-        "netProfit": "442",
-        "eps": "₹20"
+        "sales": "2,494",
+        "expenses": "1,995",
+        "operatingProfit": "499",
+        "opm": "20.0%",
+        "netProfit": "372",
+        "eps": "₹19.51"
       },
       {
         "period": "Jun 26",
-        "sales": "4,243",
-        "expenses": "3,580",
-        "operatingProfit": "663",
-        "opm": "15.6%",
-        "netProfit": "510",
-        "eps": "₹23"
+        "sales": "2,761",
+        "expenses": "2,140",
+        "operatingProfit": "621",
+        "opm": "22.5%",
+        "netProfit": "459",
+        "eps": "₹24.06"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,384",
-        "expenses": "3,747",
-        "operatingProfit": "637",
-        "opm": "14.5%",
-        "netProfit": "490",
-        "eps": "₹22.1"
+        "period": "Sep 26",
+        "sales": "2,810",
+        "expenses": "2,115",
+        "operatingProfit": "695",
+        "opm": "24.7%",
+        "netProfit": "514",
+        "eps": "₹26.91"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "2,428",
         "otherAssets": "3,298",
         "totalAssets": "13,752"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "191",
+        "reserves": "6,218",
+        "borrowings": "170",
+        "otherLiabilities": "2,608",
+        "totalLiabilities": "9,187",
+        "fixedAssets": "114",
+        "investments": "2,083",
+        "otherAssets": "6,990",
+        "totalAssets": "9,187"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-1,386",
         "cff": "-547",
         "netCash": "334"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "276",
+        "cfi": "379",
+        "cff": "-1,126",
+        "netCashFlow": "-471"
       }
     ],
     "shareholding": {
-      "promoters": "31.12%",
+      "promoters": "30.53%",
       "fii": "36.48%",
       "dii": "19.64%",
       "public": "12.76%",
@@ -255,7 +274,7 @@
       "evToEbitda": 17.4,
       "roce": 22.1,
       "roe": 17.7,
-      "debtToEquity": 0.25,
+      "debtToEquity": 0.03,
       "interestCoverage": 50.3,
       "divYield": 1.85,
       "salesGrowth3Y": 4.8,
@@ -265,7 +284,7 @@
     "pe": 28.6,
     "roePct": 17.7,
     "rocePct": 22.1,
-    "debtToEquity": 0.25,
+    "debtToEquity": 0.03,
     "divYieldPct": 1.85,
     "salesGrowth3Y": 4.8,
     "profitGrowth3Y": 4.4,
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125772,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:11.267Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 0% -> 14.8%; Quarterly results refreshed (Jun 26); ROE updated: 19.8% -> 17.7%; Debt/Equity updated: 0.18 -> 0.25",
-    "cmp": 2468.4
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:44.142Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2468.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754414_05112026115428_WEB.xml"
   },
   "MUTHOOTFIN": {
     "about": "Muthoot Finance Limited, a non-banking financing company, provides gold loans in India. The company offers various loans, including personal, small business, home, corporate business, SME, and vehicle loans, as well as loans against property; insurance products, such as health, home, vehicle, life, travel, shop, bike, and group insurance; housing and micro finance; and mutual funds. It also provides PAN card services; money transfer; non-convertible debentures; national pension scheme; digital and cashless payments; bank mapping; milligram rewards; WhatsApp services; and other custom offerings. In addition, the company generates electric power through three windmills with a combined capacity of 3.75 MW in Tamil Nadu. It serves small business owners, vendors, traders, farmers, and salaried individuals through its network of branches. Muthoot Finance Limited was founded in 1887 and is headquartered in Kochi, India.",
@@ -364,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,616",
-        "expenses": "945",
-        "operatingProfit": "3,671",
-        "opm": "79.5%",
-        "netProfit": "2,824",
-        "eps": "₹25.4"
+        "sales": "7,263",
+        "expenses": "3,681",
+        "operatingProfit": "3,582",
+        "opm": "49.3%",
+        "netProfit": "2,656",
+        "eps": "₹66.16"
       },
       {
         "period": "Mar 26",
-        "sales": "6,137",
-        "expenses": "1,783",
-        "operatingProfit": "4,354",
-        "opm": "70.9%",
-        "netProfit": "3,349",
-        "eps": "₹30.1"
+        "sales": "8,194",
+        "expenses": "4,027",
+        "operatingProfit": "4,167",
+        "opm": "50.9%",
+        "netProfit": "3,086",
+        "eps": "₹76.88"
       },
       {
         "period": "Jun 26",
-        "sales": "4,457",
-        "expenses": "818",
-        "operatingProfit": "3,639",
-        "opm": "81.6%",
-        "netProfit": "2,799",
-        "eps": "₹25.1"
+        "sales": "7,603",
+        "expenses": "4,180",
+        "operatingProfit": "3,423",
+        "opm": "45.0%",
+        "netProfit": "2,550",
+        "eps": "₹63.53"
       },
       {
-        "period": "Sept 26",
-        "sales": "5,477",
-        "expenses": "1,256",
-        "operatingProfit": "4,221",
-        "opm": "77.1%",
-        "netProfit": "3,247",
-        "eps": "₹29.2"
+        "period": "Sep 26",
+        "sales": "8,842",
+        "expenses": "4,849",
+        "operatingProfit": "3,993",
+        "opm": "45.2%",
+        "netProfit": "3,186",
+        "eps": "₹74.14"
       }
     ],
     "balanceSheet": [
@@ -459,6 +479,18 @@
         "investments": "7,713",
         "otherAssets": "10,153",
         "totalAssets": "43,974"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "401",
+        "reserves": "41,614",
+        "borrowings": "0",
+        "otherLiabilities": "1,68,632",
+        "totalLiabilities": "2,10,647",
+        "fixedAssets": "536",
+        "investments": "0",
+        "otherAssets": "2,10,111",
+        "totalAssets": "2,10,647"
       }
     ],
     "cashFlows": [
@@ -496,6 +528,13 @@
         "cfi": "-8,284",
         "cff": "-3,179",
         "netCash": "1,792"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-19,992",
+        "cfi": "-3,097",
+        "cff": "20,609",
+        "netCashFlow": "-2,480"
       }
     ],
     "shareholding": {
@@ -545,7 +584,7 @@
       "evToEbitda": 7,
       "roce": 39.5,
       "roe": 31.6,
-      "debtToEquity": 4.01,
+      "debtToEquity": 0,
       "interestCoverage": 51,
       "divYield": 1.3,
       "salesGrowth3Y": 18.9,
@@ -555,7 +594,7 @@
     "pe": 24.7,
     "roePct": 31.6,
     "rocePct": 39.5,
-    "debtToEquity": 4.01,
+    "debtToEquity": 0,
     "divYieldPct": 1.3,
     "salesGrowth3Y": 18.9,
     "profitGrowth3Y": 45,
@@ -577,9 +616,10 @@
     ],
     "updatedAt": 1794038125786,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.936Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 18.9% -> 31.6%; Debt/Equity updated: 3.6 -> 4.01",
-    "cmp": 2709.8
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.631Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2709.8,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1750817_31102026081106_WEB.xml"
   },
   "MARUTI": {
     "about": "Maruti Suzuki India Limited manufactures and sells motor vehicles, parts, and accessories in India. The company offers passenger and commercial vehicles, including hatchbacks, sedans, SUVs, MPVs, and vans, as well as light commercial vehicles. It is also involved in the facilitation of pre-owned car sales, fleet management, and car financing activities. In addition, the company offers driving school, insurance, accessories, and financing products and services. It also exports its products to South Africa, Saudi Arabia, Chile, Japan, Mexico, and internationally. The company was formerly known as Maruti Udyog Limited and changed its name to Maruti Suzuki India Limited in September 2007. The company was incorporated in 1981 and is headquartered in New Delhi, India. Maruti Suzuki India Limited operates as a subsidiary of Suzuki Motor Corporation.",
@@ -656,39 +696,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "49,892",
-        "expenses": "44,960",
-        "operatingProfit": "4,932",
-        "opm": "9.9%",
+        "sales": "50,946",
+        "expenses": "46,116",
+        "operatingProfit": "4,830",
+        "opm": "9.5%",
         "netProfit": "3,794",
-        "eps": "₹125.4"
+        "eps": "₹120.67"
       },
       {
         "period": "Mar 26",
-        "sales": "52,449",
-        "expenses": "47,781",
-        "operatingProfit": "4,668",
-        "opm": "8.9%",
+        "sales": "52,949",
+        "expenses": "48,113",
+        "operatingProfit": "4,836",
+        "opm": "9.1%",
         "netProfit": "3,591",
-        "eps": "₹118.7"
+        "eps": "₹114.2"
       },
       {
         "period": "Jun 26",
-        "sales": "52,455",
-        "expenses": "48,097",
-        "operatingProfit": "4,358",
-        "opm": "8.3%",
+        "sales": "54,329",
+        "expenses": "49,988",
+        "operatingProfit": "4,341",
+        "opm": "8.0%",
         "netProfit": "3,352",
-        "eps": "₹110.8"
+        "eps": "₹106.62"
       },
       {
-        "period": "Sept 26",
-        "sales": "53,340",
-        "expenses": "50,200",
-        "operatingProfit": "3,140",
+        "period": "Sep 26",
+        "sales": "53,770",
+        "expenses": "50,604",
+        "operatingProfit": "3,166",
         "opm": "5.9%",
         "netProfit": "2,415",
-        "eps": "₹79.8"
+        "eps": "₹76.81"
       }
     ],
     "balanceSheet": [
@@ -751,6 +791,18 @@
         "investments": "38,429",
         "otherAssets": "29,987",
         "totalAssets": "1,36,914"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "157",
+        "reserves": "1,06,653",
+        "borrowings": "0",
+        "otherLiabilities": "45,664",
+        "totalLiabilities": "1,52,474",
+        "fixedAssets": "42,782",
+        "investments": "65,538",
+        "otherAssets": "44,154",
+        "totalAssets": "1,52,474"
       }
     ],
     "cashFlows": [
@@ -788,10 +840,17 @@
         "cfi": "-4,223",
         "cff": "-3,166",
         "netCash": "1,050"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "5,473",
+        "cfi": "-122",
+        "cff": "-4,532",
+        "netCashFlow": "819"
       }
     ],
     "shareholding": {
-      "promoters": "58.34%",
+      "promoters": "58.72%",
       "fii": "19.28%",
       "dii": "10.38%",
       "public": "12.00%",
@@ -867,9 +926,10 @@
     ],
     "updatedAt": 1794038125799,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:40.841Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 17.8% -> 12.9%",
-    "cmp": 11995
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:00.109Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 11995,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747191_27102026072947_WEB.xml"
   },
   "M&M": {
     "about": "Mahindra & Mahindra Limited provides mobility products and farm solutions in India and internationally. It operates through Automotive; Farm Equipment; Auto Investments; Farm Investments; and Investments in Industrial Businesses and Consumer Services segments. The Automotive segment provides automobiles, two wheelers, spares, construction equipment and related services. The Farm Equipment segment sells tractors, implements, spares, powerol, and related services. The Auto Investments segment invests in automotive-related subsidiaries, associates and joint ventures. The Farm Investments segment is involved in the investment of farm equipment related subsidiaries, associates, and joint ventures. The Industrial Businesses and Consumer Services' segment invests in automotive & farm related subsidiaries, associates and joint ventures. The company was incorporated in 1945 and is headquartered in Mumbai, India.",
@@ -946,39 +1006,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "38,517",
-        "expenses": "33,407",
-        "operatingProfit": "5,110",
-        "opm": "13.3%",
+        "sales": "39,639",
+        "expenses": "34,437",
+        "operatingProfit": "5,202",
+        "opm": "13.1%",
         "netProfit": "3,931",
-        "eps": "₹22.7"
+        "eps": "₹32.72"
       },
       {
         "period": "Mar 26",
-        "sales": "39,554",
-        "expenses": "34,696",
-        "operatingProfit": "4,858",
-        "opm": "12.3%",
+        "sales": "40,245",
+        "expenses": "35,364",
+        "operatingProfit": "4,881",
+        "opm": "12.1%",
         "netProfit": "3,737",
-        "eps": "₹21.6"
+        "eps": "₹31.1"
       },
       {
         "period": "Jun 26",
-        "sales": "41,920",
-        "expenses": "37,129",
-        "operatingProfit": "4,791",
-        "opm": "11.4%",
+        "sales": "42,735",
+        "expenses": "37,959",
+        "operatingProfit": "4,776",
+        "opm": "11.2%",
         "netProfit": "3,685",
-        "eps": "₹21.3"
+        "eps": "₹30.65"
       },
       {
-        "period": "Sept 26",
-        "sales": "42,477",
-        "expenses": "35,844",
-        "operatingProfit": "6,633",
-        "opm": "15.6%",
+        "period": "Sep 26",
+        "sales": "45,343",
+        "expenses": "38,705",
+        "operatingProfit": "6,638",
+        "opm": "14.6%",
         "netProfit": "5,102",
-        "eps": "₹29.4"
+        "eps": "₹42.42"
       }
     ],
     "balanceSheet": [
@@ -1041,6 +1101,18 @@
         "investments": "29,432",
         "otherAssets": "18,289",
         "totalAssets": "1,03,315"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "601",
+        "reserves": "78,560",
+        "borrowings": "527",
+        "otherLiabilities": "52,650",
+        "totalLiabilities": "1,32,338",
+        "fixedAssets": "16,549",
+        "investments": "27,598",
+        "otherAssets": "88,191",
+        "totalAssets": "1,32,338"
       }
     ],
     "cashFlows": [
@@ -1078,10 +1150,17 @@
         "cfi": "-12,863",
         "cff": "-8,888",
         "netCash": "1,603"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "10,246",
+        "cfi": "-5,094",
+        "cff": "-4,773",
+        "netCashFlow": "379"
       }
     ],
     "shareholding": {
-      "promoters": "25.23%",
+      "promoters": "18.39%",
       "fii": "33.50%",
       "dii": "18.04%",
       "public": "23.23%",
@@ -1127,7 +1206,7 @@
       "evToEbitda": 13,
       "roce": 18.2,
       "roe": 19.5,
-      "debtToEquity": 1.25,
+      "debtToEquity": 0.01,
       "interestCoverage": 47.9,
       "divYield": 0.72,
       "salesGrowth3Y": 6.3,
@@ -1137,7 +1216,7 @@
     "pe": 31.2,
     "roePct": 19.5,
     "rocePct": 18.2,
-    "debtToEquity": 1.25,
+    "debtToEquity": 0.01,
     "divYieldPct": 0.72,
     "salesGrowth3Y": 6.3,
     "profitGrowth3Y": 33.7,
@@ -1157,9 +1236,10 @@
     ],
     "updatedAt": 1794038125800,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:40.833Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); Debt/Equity updated: 0.18 -> 1.25",
-    "cmp": 2961.9
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:02.084Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2961.9,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753613_05112026052243_WEB.xml"
   },
   "MOTHERSON": {
     "about": "Samvardhana Motherson International Limited, together with its subsidiaries, manufactures and sells components to automotive original equipment manufacturers in India, Germany, the United States, and internationally. It operates through Wiring Harness, Modules and Polymer Products, Vision Systems, Integrated Assemblies, and Emerging Businesses segments. The company offers wiring harness components, power modules, electrical cabinets and power packs, and electrical distribution systems; and exterior and interior rearview mirrors, and camera monitoring systems. It also provides plastic parts and system modules for vehicle interiors and exteriors, under-bonnet products, upholstery, sunroofs, and fuel tanks; cockpit modules, centre consoles, headliners, door panels, and exterior front-end modules, as well as value-added module assemblies; and full module service and system integration, and logistic services. In addition, the company engages in emerging businesses, including elastomers and extruded rubber components, lighting and electronics, precision metals and modules, technology and industrial, aerospace, and health and medical solutions; provision of HVAC and compressors, body control modules, struts, shock absorbers, and backward integration products; and other support services, such as engineering, consultation, project management, and turnkey solutions, as well as operation of an industrial park; and OEM-certified products, such as vehicle lighting and accessories, plastic components, safety systems, wiring harnesses, and body electronics. Further, it offers enterprise resource planning system; waste recycling; and product engineering, in-house application tooling, and testing and validation services. The company was formerly known as Motherson Sumi Systems Limited and changed its name to Samvardhana Motherson International Limited in May 2022. The company was founded in 1975 and is headquartered in Noida, India.",
@@ -1236,39 +1316,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "31,409",
-        "expenses": "30,078",
-        "operatingProfit": "1,331",
-        "opm": "4.2%",
-        "netProfit": "1,024",
-        "eps": "₹0.9"
+        "sales": "3,226",
+        "expenses": "2,931",
+        "operatingProfit": "295",
+        "opm": "9.1%",
+        "netProfit": "227",
+        "eps": "₹0.21"
       },
       {
         "period": "Mar 26",
-        "sales": "34,309",
-        "expenses": "32,363",
-        "operatingProfit": "1,946",
-        "opm": "5.7%",
-        "netProfit": "1,497",
-        "eps": "₹1.3"
+        "sales": "3,769",
+        "expenses": "3,184",
+        "operatingProfit": "585",
+        "opm": "15.5%",
+        "netProfit": "483",
+        "eps": "₹0.46"
       },
       {
         "period": "Jun 26",
-        "sales": "35,244",
-        "expenses": "33,902",
-        "operatingProfit": "1,342",
-        "opm": "3.8%",
-        "netProfit": "1,032",
-        "eps": "₹0.9"
+        "sales": "3,828",
+        "expenses": "3,415",
+        "operatingProfit": "413",
+        "opm": "10.8%",
+        "netProfit": "348",
+        "eps": "₹0.33"
       },
       {
-        "period": "Sept 26",
-        "sales": "38,280",
-        "expenses": "36,752",
-        "operatingProfit": "1,528",
-        "opm": "4%",
-        "netProfit": "1,175",
-        "eps": "₹1"
+        "period": "Sep 26",
+        "sales": "4,337",
+        "expenses": "3,804",
+        "operatingProfit": "533",
+        "opm": "12.3%",
+        "netProfit": "451",
+        "eps": "₹0.43"
       }
     ],
     "balanceSheet": [
@@ -1331,6 +1411,18 @@
         "investments": "14,243",
         "otherAssets": "10,696",
         "totalAssets": "52,419"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "1,055",
+        "reserves": "37,685",
+        "borrowings": "8,336",
+        "otherLiabilities": "4,346",
+        "totalLiabilities": "51,422",
+        "fixedAssets": "2,055",
+        "investments": "9",
+        "otherAssets": "49,358",
+        "totalAssets": "51,422"
       }
     ],
     "cashFlows": [
@@ -1368,10 +1460,17 @@
         "cfi": "-3,209",
         "cff": "-2,192",
         "netCash": "627"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "777",
+        "cfi": "-204",
+        "cff": "-546",
+        "netCashFlow": "27"
       }
     ],
     "shareholding": {
-      "promoters": "59.00%",
+      "promoters": "48.6%",
       "fii": "16.45%",
       "dii": "8.86%",
       "public": "15.69%",
@@ -1417,7 +1516,7 @@
       "evToEbitda": 15,
       "roce": 14,
       "roe": 12.8,
-      "debtToEquity": 0.44,
+      "debtToEquity": 0.22,
       "interestCoverage": 49.3,
       "divYield": 0.4,
       "salesGrowth3Y": 16.6,
@@ -1427,7 +1526,7 @@
     "pe": 38.3,
     "roePct": 12.8,
     "rocePct": 14,
-    "debtToEquity": 0.44,
+    "debtToEquity": 0.22,
     "divYieldPct": 0.4,
     "salesGrowth3Y": 16.6,
     "profitGrowth3Y": 37.2,
@@ -1447,9 +1546,10 @@
     ],
     "updatedAt": 1794038125802,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:42.688Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); Debt/Equity updated: 0.68 -> 0.44",
-    "cmp": 159.49
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:05.412Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 159.49,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754220_05112026083435_WEB.xml"
   },
   "MRF": {
     "about": "MRF Limited, together with its subsidiaries, engages in the manufacture and sale of rubber products in India and internationally. The company provides tires for passenger cars, two wheelers, farms, trucks, OTR, SCV, LCV, pick up, three-wheeler, MCV, ICV, tubes, and flap products; tread rubber product; and manufactures specialty coatings. It is also involved in the paints and coats, sports goods, pretreads, and motorsports businesses; and heavy-duty truck/bus tyres, light truck, MUV/RCV/passenger cars, farm services, military services, fork-lift, off the road/earth movers, and MRF commercial tyres products. In addition, the company offers MRF tyres and services that provide buy tyres, tubeless repair, purest nitrogen filling, wheel alignment and balancing, and tire changing; MRF TireTok which offers robotic wheel aligner, vehicle safety test lane, diagnostic wheel balancer, semi-automatic tyre changer, A/C recovery and recharging unit, electronic headlight aligner, nitrogen generator membrane type, and special two-wheeler tire changer; MRF Tyredrome; MRF FASST that offers wheels removal and refitment, nitrogen inflation, and tire mounting and de-mounting services; and MRF MuscleZone, as well as provides training for light and heavy commercial vehicle driving. MRF Limited was founded in 1946 and is based in Chennai, India.",
@@ -1526,39 +1626,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "7,250",
-        "expenses": "6,584",
-        "operatingProfit": "666",
-        "opm": "9.2%",
-        "netProfit": "512",
-        "eps": "₹1086.9"
+        "sales": "8,057",
+        "expenses": "7,156",
+        "operatingProfit": "901",
+        "opm": "11.2%",
+        "netProfit": "679",
+        "eps": "₹1601.33"
       },
       {
         "period": "Mar 26",
-        "sales": "7,934",
-        "expenses": "7,051",
-        "operatingProfit": "883",
-        "opm": "11.1%",
-        "netProfit": "679",
-        "eps": "₹1441.5"
+        "sales": "8,041",
+        "expenses": "7,141",
+        "operatingProfit": "900",
+        "opm": "11.2%",
+        "netProfit": "680",
+        "eps": "₹1604.37"
       },
       {
         "period": "Jun 26",
-        "sales": "7,908",
-        "expenses": "7,024",
-        "operatingProfit": "884",
-        "opm": "11.2%",
-        "netProfit": "680",
-        "eps": "₹1443.6"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "8,292",
-        "expenses": "7,676",
-        "operatingProfit": "616",
+        "sales": "8,483",
+        "expenses": "7,858",
+        "operatingProfit": "625",
         "opm": "7.4%",
         "netProfit": "474",
-        "eps": "₹1006.3"
+        "eps": "₹1118.51"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "8,652",
+        "expenses": "8,154",
+        "operatingProfit": "498",
+        "opm": "5.8%",
+        "netProfit": "369",
+        "eps": "₹870.4"
       }
     ],
     "balanceSheet": [
@@ -1621,6 +1721,18 @@
         "investments": "5,250",
         "otherAssets": "3,087",
         "totalAssets": "20,965"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "4",
+        "reserves": "21,204",
+        "borrowings": "1,183",
+        "otherLiabilities": "11,799",
+        "totalLiabilities": "34,190",
+        "fixedAssets": "12,533",
+        "investments": "364",
+        "otherAssets": "21,293",
+        "totalAssets": "34,190"
       }
     ],
     "cashFlows": [
@@ -1658,10 +1770,17 @@
         "cfi": "-1,200",
         "cff": "-634",
         "netCash": "52"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "1,239",
+        "cfi": "-1,357",
+        "cff": "24",
+        "netCashFlow": "-94"
       }
     ],
     "shareholding": {
-      "promoters": "47.88%",
+      "promoters": "27.61%",
       "fii": "12.06%",
       "dii": "6.49%",
       "public": "33.57%",
@@ -1707,7 +1826,7 @@
       "evToEbitda": 22,
       "roce": 17.2,
       "roe": 14.5,
-      "debtToEquity": 0.15,
+      "debtToEquity": 0.06,
       "interestCoverage": 48.3,
       "divYield": 0.15,
       "salesGrowth3Y": 10.7,
@@ -1717,7 +1836,7 @@
     "pe": 23.7,
     "roePct": 14.5,
     "rocePct": 17.2,
-    "debtToEquity": 0.15,
+    "debtToEquity": 0.06,
     "divYieldPct": 0.15,
     "salesGrowth3Y": 10.7,
     "profitGrowth3Y": 42.4,
@@ -1737,9 +1856,10 @@
     ],
     "updatedAt": 1794038125803,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:42.450Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26)",
-    "cmp": 117985
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.295Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 117985,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755856_10112026051755_WEB.xml"
   },
   "MANKIND": {
     "about": "Mankind Pharma Limited develops, manufactures, and markets pharmaceutical formulations and consumer healthcare products in India and internationally. The company develops pharmaceuticals for acute and chronic therapeutics in the areas of anti-infective, cardiovascular, gastrointestinal, gynaecology, urology, anti-diabetic, dermatology, pain/analgesics, neuro/CNS, vitamins/minerals/nutrients, respiratory, and other diseases. It also provides consumer healthcare products, such as condoms, pregnancy detection, emergency contraceptives, antacid powders, vitamin and mineral supplements, and anti-acne preparations. In addition, the company engages in the trading of pharmaceutical and health care products; manufacture of packing materials, ayurvedic products, and consumer goods; real estate, leasing, and hospitality businesses; trading of agricultural and pet food products; and provision of IT services. It offers its products under the Manforce, Moxi Kind-Cv, AmLokind-At, Unwanted-Kit, Prega News, Dydroboon, Telmikind-Am, Gudcef, Glimestar-M, Candi Force, Nurokind-Gold, Telmikind-H, Telmikind, Nurokind-Lc, Nurokind Plus-Rf, Vomikind, Cefakind, Glizid-M, Monticope, and Gudcef-Cv brand names. Mankind Pharma Limited was incorporated in 1991 and is based in New Delhi, India.",
@@ -1816,39 +1936,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,567",
-        "expenses": "3,035",
-        "operatingProfit": "532",
-        "opm": "14.9%",
-        "netProfit": "409",
-        "eps": "₹9.7"
+        "sales": "2,689",
+        "expenses": "2,184",
+        "operatingProfit": "505",
+        "opm": "18.8%",
+        "netProfit": "449",
+        "eps": "₹10.89"
       },
       {
         "period": "Mar 26",
-        "sales": "3,443",
-        "expenses": "2,723",
-        "operatingProfit": "720",
-        "opm": "20.9%",
-        "netProfit": "554",
-        "eps": "₹13.1"
+        "sales": "2,709",
+        "expenses": "1,921",
+        "operatingProfit": "788",
+        "opm": "29.1%",
+        "netProfit": "714",
+        "eps": "₹17.29"
       },
       {
         "period": "Jun 26",
-        "sales": "4,031",
-        "expenses": "3,293",
-        "operatingProfit": "738",
-        "opm": "18.3%",
-        "netProfit": "568",
-        "eps": "₹13.5"
+        "sales": "2,998",
+        "expenses": "2,241",
+        "operatingProfit": "757",
+        "opm": "25.3%",
+        "netProfit": "558",
+        "eps": "₹13.53"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,338",
-        "expenses": "3,414",
-        "operatingProfit": "924",
-        "opm": "21.3%",
-        "netProfit": "711",
-        "eps": "₹16.8"
+        "period": "Sep 26",
+        "sales": "3,204",
+        "expenses": "2,420",
+        "operatingProfit": "784",
+        "opm": "24.5%",
+        "netProfit": "582",
+        "eps": "₹14.09"
       }
     ],
     "balanceSheet": [
@@ -1911,6 +2031,18 @@
         "investments": "4,610",
         "otherAssets": "4,514",
         "totalAssets": "16,828"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "41",
+        "reserves": "17,523",
+        "borrowings": "4,601",
+        "otherLiabilities": "3,009",
+        "totalLiabilities": "25,174",
+        "fixedAssets": "2,066",
+        "investments": "15,633",
+        "otherAssets": "7,475",
+        "totalAssets": "25,174"
       }
     ],
     "cashFlows": [
@@ -1948,10 +2080,17 @@
         "cfi": "-1,148",
         "cff": "-948",
         "netCash": "491"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "1,624",
+        "cfi": "288",
+        "cff": "-1,170",
+        "netCashFlow": "742"
       }
     ],
     "shareholding": {
-      "promoters": "70.64%",
+      "promoters": "72.62%",
       "fii": "11.29%",
       "dii": "6.07%",
       "public": "12.00%",
@@ -1997,7 +2136,7 @@
       "evToEbitda": 28.9,
       "roce": 17,
       "roe": 13.6,
-      "debtToEquity": 0.3,
+      "debtToEquity": 0.26,
       "interestCoverage": 36.1,
       "divYield": 0,
       "salesGrowth3Y": 17.7,
@@ -2007,7 +2146,7 @@
     "pe": 47.8,
     "roePct": 13.6,
     "rocePct": 17,
-    "debtToEquity": 0.3,
+    "debtToEquity": 0.26,
     "divYieldPct": 0,
     "salesGrowth3Y": 17.7,
     "profitGrowth3Y": 14.3,
@@ -2029,9 +2168,10 @@
     ],
     "updatedAt": 1794038125806,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:44.125Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 21% -> 13.6%; Debt/Equity updated: 0.05 -> 0.3",
-    "cmp": 2537.9
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:08.734Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2537.9,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746296_26102026085927_WEB.xml"
   },
   "MAXHEALTH": {
     "about": "Max Healthcare Institute Limited provides medical and healthcare services in India. It offers services in various specialties, including cardiac sciences, orthopedics, oncology, renal sciences, neurosciences, minimal access and general surgery, pulmonology, obstetrics, bone marrow transplant, bariatric/weight loss surgery, gynecology, minimal access/laparoscopic surgery, eye care/ophthalmology, robotic surgery, paediatrics, nephrology, liver and biliary sciences, gastroenterology and GI surgery, internal medicine, organ transplants, and plastic and reconstructive surgery. The company also provides Max@Home, a platform that offers health and wellness services at home; and Max Lab, which provides diagnostic testing services to patients. In addition, it offers organ and tissue donation, preventive health checks, ambulance and immigration, air ambulance, and insurance and TPA services. The company provides healthcare services through a network of primary care clinics, multi-specialty hospitals/medical centres, and super-specialty hospital facilities. Max Healthcare Institute Limited was incorporated in 2001 and is based in Gurugram, India.",
@@ -2108,39 +2248,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,068",
-        "expenses": "1,677",
-        "operatingProfit": "391",
-        "opm": "18.9%",
-        "netProfit": "301",
-        "eps": "₹2.9"
+        "sales": "794",
+        "expenses": "569",
+        "operatingProfit": "225",
+        "opm": "28.3%",
+        "netProfit": "187",
+        "eps": "₹1.92"
       },
       {
         "period": "Mar 26",
-        "sales": "2,143",
-        "expenses": "1,698",
-        "operatingProfit": "445",
-        "opm": "20.8%",
-        "netProfit": "342",
-        "eps": "₹3.3"
+        "sales": "824",
+        "expenses": "564",
+        "operatingProfit": "260",
+        "opm": "31.6%",
+        "netProfit": "203",
+        "eps": "₹2.09"
       },
       {
         "period": "Jun 26",
-        "sales": "2,366",
-        "expenses": "1,947",
-        "operatingProfit": "419",
-        "opm": "17.7%",
-        "netProfit": "322",
-        "eps": "₹3.1"
+        "sales": "875",
+        "expenses": "649",
+        "operatingProfit": "226",
+        "opm": "25.8%",
+        "netProfit": "168",
+        "eps": "₹1.72"
       },
       {
-        "period": "Sept 26",
-        "sales": "2,569",
-        "expenses": "2,029",
-        "operatingProfit": "540",
-        "opm": "21%",
-        "netProfit": "415",
-        "eps": "₹4"
+        "period": "Sep 26",
+        "sales": "891",
+        "expenses": "665",
+        "operatingProfit": "226",
+        "opm": "25.4%",
+        "netProfit": "168",
+        "eps": "₹1.73"
       }
     ],
     "balanceSheet": [
@@ -2203,6 +2343,18 @@
         "investments": "2,743",
         "otherAssets": "2,633",
         "totalAssets": "13,866"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "973",
+        "reserves": "8,145",
+        "borrowings": "1,162",
+        "otherLiabilities": "1,204",
+        "totalLiabilities": "11,484",
+        "fixedAssets": "1,435",
+        "investments": "3,101",
+        "otherAssets": "6,948",
+        "totalAssets": "11,484"
       }
     ],
     "cashFlows": [
@@ -2240,10 +2392,17 @@
         "cfi": "-1,065",
         "cff": "-440",
         "netCash": "134"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "326",
+        "cfi": "-643",
+        "cff": "119",
+        "netCashFlow": "-198"
       }
     ],
     "shareholding": {
-      "promoters": "28.14%",
+      "promoters": "23.71%",
       "fii": "36.53%",
       "dii": "19.67%",
       "public": "15.66%",
@@ -2289,7 +2448,7 @@
       "evToEbitda": 42.3,
       "roce": 16,
       "roe": 12.8,
-      "debtToEquity": 0.33,
+      "debtToEquity": 0.13,
       "interestCoverage": 40.5,
       "divYield": 0,
       "salesGrowth3Y": 22.4,
@@ -2299,7 +2458,7 @@
     "pe": 70,
     "roePct": 12.8,
     "rocePct": 16,
-    "debtToEquity": 0.33,
+    "debtToEquity": 0.13,
     "divYieldPct": 0,
     "salesGrowth3Y": 22.4,
     "profitGrowth3Y": 9.3,
@@ -2319,9 +2478,10 @@
     ],
     "updatedAt": 1794038125807,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:44.129Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 16.5% -> 12.8%; Debt/Equity updated: 0.12 -> 0.33",
-    "cmp": 927.15
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:06.727Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 927.15,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750032_30102026051418_WEB.xml"
   },
   "MARICO": {
     "about": "Marico Limited, together with its subsidiaries, manufactures and sells branded consumer products in India, Bangladesh, Vietnam, and internationally. It offers coconut oils, refined edible oils, hair oils, anti-lice treatments, fabric care, functional and other processed food, hair creams and gels, hair serums, shampoos, conditioners, shower gels, hair relaxers and straighteners, deodorants, female personal care, baby care, skin care, male grooming and hair styling, packaged food, health care, and hygiene products. The company markets its products under the Parachute, Parachute Advansed, Saffola, Hair & Care, Parachute Advansed, Nihar Naturals, Mediker, Pure Sense, Coco Soul, Revive, Set Wet, Livon, Just Herbs, True Elements, Kaya, Beardo, and Plix, HairCode, Fiancée, Purité de Prôvence, Ôliv, Lashe', Caivil, Hercules, Black Chic, Code 10, Ingwe, X-Men, Studio X, Thuan Phat and Isoplus brand names. It sells its products through distribution network, including regional offices, carrying and forwarding agents, redistribution centers, and distributors. Marico Limited was incorporated in 1988 and is headquartered in Mumbai, India.",
@@ -2398,39 +2558,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,537",
-        "expenses": "2,956",
-        "operatingProfit": "581",
-        "opm": "16.4%",
-        "netProfit": "447",
-        "eps": "₹2.6"
+        "sales": "2,638",
+        "expenses": "2,130",
+        "operatingProfit": "508",
+        "opm": "19.3%",
+        "netProfit": "441",
+        "eps": "₹3.41"
       },
       {
         "period": "Mar 26",
-        "sales": "3,333",
-        "expenses": "2,825",
-        "operatingProfit": "508",
-        "opm": "15.2%",
-        "netProfit": "391",
-        "eps": "₹2.3"
+        "sales": "2,371",
+        "expenses": "1,975",
+        "operatingProfit": "396",
+        "opm": "16.7%",
+        "netProfit": "336",
+        "eps": "₹2.61"
       },
       {
         "period": "Jun 26",
-        "sales": "3,957",
-        "expenses": "3,138",
-        "operatingProfit": "819",
-        "opm": "20.7%",
-        "netProfit": "630",
-        "eps": "₹3.7"
+        "sales": "2,847",
+        "expenses": "2,298",
+        "operatingProfit": "549",
+        "opm": "19.3%",
+        "netProfit": "460",
+        "eps": "₹3.55"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,897",
-        "expenses": "3,182",
-        "operatingProfit": "715",
-        "opm": "18.3%",
-        "netProfit": "550",
-        "eps": "₹3.2"
+        "period": "Sep 26",
+        "sales": "3,052",
+        "expenses": "2,290",
+        "operatingProfit": "762",
+        "opm": "25.0%",
+        "netProfit": "683",
+        "eps": "₹5.27"
       }
     ],
     "balanceSheet": [
@@ -2493,6 +2653,18 @@
         "investments": "1,010",
         "otherAssets": "1,876",
         "totalAssets": "5,667"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "130",
+        "reserves": "6,424",
+        "borrowings": "489",
+        "otherLiabilities": "2,514",
+        "totalLiabilities": "9,557",
+        "fixedAssets": "827",
+        "investments": "1,666",
+        "otherAssets": "7,064",
+        "totalAssets": "9,557"
       }
     ],
     "cashFlows": [
@@ -2530,10 +2702,17 @@
         "cfi": "-1,056",
         "cff": "-527",
         "netCash": "582"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "462",
+        "cfi": "-426",
+        "cff": "-79",
+        "netCashFlow": "-43"
       }
     ],
     "shareholding": {
-      "promoters": "59.01%",
+      "promoters": "58.83%",
       "fii": "16.86%",
       "dii": "9.08%",
       "public": "15.05%",
@@ -2579,7 +2758,7 @@
       "evToEbitda": 44.7,
       "roce": 56.1,
       "roe": 44.9,
-      "debtToEquity": 0.24,
+      "debtToEquity": 0.07,
       "interestCoverage": 49.6,
       "divYield": 1.55,
       "salesGrowth3Y": 11.7,
@@ -2589,7 +2768,7 @@
     "pe": 75.1,
     "roePct": 44.9,
     "rocePct": 56.1,
-    "debtToEquity": 0.24,
+    "debtToEquity": 0.07,
     "divYieldPct": 1.55,
     "salesGrowth3Y": 11.7,
     "profitGrowth3Y": 10.6,
@@ -2613,9 +2792,10 @@
     ],
     "updatedAt": 1794038125810,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.786Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 36.5% -> 44.9%; Debt/Equity updated: 0.15 -> 0.24",
-    "cmp": 890
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.327Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 890,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751509_02112026090214_WEB.xml"
   },
   "MAZDOCK": {
     "about": "Mazagon Dock Shipbuilders Limited engages in the building and repairing of ships, submarines, vessels, and related engineering products in India and internationally. The company operates in two segments, Shipbuilding, and Submarine and Heavy Engineering. The company offers cargo ships, passenger ships, supply vessels, multipurpose support vessels, water tankers, tugs, dredgers, fishing trawlers, barges, and border outposts. It also provides services, including repairs and refit, designing of ships, know how provider, training, tug support, supply chain management, and self-propeller modular transporter. In addition, it offers offshore patrol vessels, fast patrol vessels, and floating boarder outposts. Further, the company provides AI products, including remotely operated vehicles, AI-enabled phased array ultrasonic testing, and AI-enabled computerized radiography. The company was formerly known as Mazagon Dock Limited and changed its name to Mazagon Dock Shipbuilders Limited in May 2015. Mazagon Dock Shipbuilders Limited was founded in 1774 and is based in Mumbai, India.",

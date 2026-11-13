@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,098",
-        "expenses": "2,860",
-        "operatingProfit": "1,238",
-        "opm": "30.2%",
+        "sales": "9,176",
+        "expenses": "7,964",
+        "operatingProfit": "1,212",
+        "opm": "13.2%",
         "netProfit": "952",
-        "eps": "₹0.2"
+        "eps": "₹0.3"
       },
       {
         "period": "Mar 26",
-        "sales": "4,368",
-        "expenses": "2,980",
-        "operatingProfit": "1,388",
-        "opm": "31.8%",
+        "sales": "9,381",
+        "expenses": "7,950",
+        "operatingProfit": "1,431",
+        "opm": "15.3%",
         "netProfit": "1,068",
-        "eps": "₹0.2"
+        "eps": "₹0.34"
       },
       {
         "period": "Jun 26",
-        "sales": "4,584",
-        "expenses": "3,192",
-        "operatingProfit": "1,392",
-        "opm": "30.4%",
+        "sales": "9,842",
+        "expenses": "8,533",
+        "operatingProfit": "1,309",
+        "opm": "13.3%",
         "netProfit": "1,071",
-        "eps": "₹0.2"
+        "eps": "₹0.34"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,704",
-        "expenses": "3,300",
-        "operatingProfit": "1,404",
-        "opm": "29.8%",
+        "period": "Sep 26",
+        "sales": "10,521",
+        "expenses": "9,161",
+        "operatingProfit": "1,360",
+        "opm": "12.9%",
         "netProfit": "1,080",
-        "eps": "₹0.2"
+        "eps": "₹0.34"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "13,209",
         "otherAssets": "10,858",
         "totalAssets": "50,056"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "5,13,770",
+        "totalLiabilities": "5,13,770",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "5,13,770",
+        "totalAssets": "5,13,770"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-2,190",
         "cff": "-1,473",
         "netCash": "504"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "562",
+        "cfi": "-8,277",
+        "cff": "12,884",
+        "netCashFlow": "5,169"
       }
     ],
     "shareholding": {
-      "promoters": "44.16%",
+      "promoters": "0%",
       "fii": "11.73%",
       "dii": "6.31%",
       "public": "37.80%",
@@ -285,9 +304,10 @@
     ],
     "updatedAt": 1794038125781,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:16.817Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 3.2% -> 8.2%",
-    "cmp": 15.73
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.722Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 15.73,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1741018_17102026091804_WEB.xml"
   },
   "YASHO": {
     "about": "Yasho Industries Limited engages in the manufacture and sale of specialty and fine chemicals in India, the United States, Europe, Asia, and the Middle East. The company offers aroma chemicals, including clove oil and derivatives; food antioxidants; and rubber chemicals comprising accelerators/antioxidants/co-agents for processing EPDM, SBR, NBR, ECO, Acrylic, NR, and others. It also provides pre-dispersed rubber chemicals, such as sulfur and metal oxides, dithiocarbamate, thiuram and sulfur donors, guinidines/sulphenamides/thioureas, thiazoles and thioures, crosslinking agents, peroxide co-agents and dithiophosphates, and antioxidants; additives for industrial/automotive lube and greases, including molybdenum based friction modifiers/antiwear agents, thiadiazoles corrosion inhibitor and extreme pressure additives, and triazole metal deactivators; and electroplating chemicals, intermediates for API/bulk drugs, UPR resins/fibre composites resins, thermoplastics urethanes, and printing inks and agrochemicals. The company's products are used for various applications comprising flavours and fragrances, personal care products, agro chemicals and pharmaceutical products, oral care preparations, edible oil, confectioneries and food stuff, animal feed, vitamin premix, nutraceutical, tyres, automobile components, conveyor belts, surgical gloves, latex gloves, condoms, balloons, hydraulic, turbine, engine and gear oils, metal working fluids and greases, acrylics, printing inks/coating, upr resins, and fibre composite resins applications. Yasho Industries Limited was incorporated in 1985 and is headquartered in Mumbai, India.",

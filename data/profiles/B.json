@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "13,875",
-        "expenses": "8,704",
-        "operatingProfit": "5,171",
-        "opm": "37.3%",
-        "netProfit": "3,978",
-        "eps": "₹6.8"
+        "sales": "18,068",
+        "expenses": "12,130",
+        "operatingProfit": "5,938",
+        "opm": "32.9%",
+        "netProfit": "4,581",
+        "eps": "₹7.37"
       },
       {
         "period": "Mar 26",
-        "sales": "14,209",
-        "expenses": "7,917",
-        "operatingProfit": "6,292",
-        "opm": "44.3%",
+        "sales": "18,431",
+        "expenses": "11,947",
+        "operatingProfit": "6,484",
+        "opm": "35.2%",
         "netProfit": "4,840",
-        "eps": "₹8.3"
+        "eps": "₹7.78"
       },
       {
         "period": "Jun 26",
-        "sales": "15,224",
-        "expenses": "8,274",
-        "operatingProfit": "6,950",
-        "opm": "45.7%",
+        "sales": "19,803",
+        "expenses": "12,640",
+        "operatingProfit": "7,163",
+        "opm": "36.2%",
         "netProfit": "5,346",
-        "eps": "₹9.1"
+        "eps": "₹8.6"
       },
       {
-        "period": "Sept 26",
-        "sales": "14,521",
-        "expenses": "6,375",
-        "operatingProfit": "8,146",
-        "opm": "56.1%",
-        "netProfit": "6,266",
-        "eps": "₹10.7"
+        "period": "Sep 26",
+        "sales": "20,919",
+        "expenses": "13,498",
+        "operatingProfit": "7,421",
+        "opm": "35.5%",
+        "netProfit": "5,536",
+        "eps": "₹8.9"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "26,278",
         "otherAssets": "39,065",
         "totalAssets": "1,23,093"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "622",
+        "reserves": "1,10,286",
+        "borrowings": "0",
+        "otherLiabilities": "3,79,841",
+        "totalLiabilities": "4,90,749",
+        "fixedAssets": "3,108",
+        "investments": "0",
+        "otherAssets": "4,87,641",
+        "totalAssets": "4,90,749"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-12,046",
         "cff": "-7,580",
         "netCash": "6,625"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-45,210",
+        "cfi": "1,236",
+        "cff": "44,004",
+        "netCashFlow": "30"
       }
     ],
     "shareholding": {
-      "promoters": "56.47%",
+      "promoters": "54.67%",
       "fii": "18.03%",
       "dii": "9.71%",
       "public": "15.79%",
@@ -255,7 +274,7 @@
       "evToEbitda": 12.7,
       "roce": 23.8,
       "roe": 19,
-      "debtToEquity": 3.42,
+      "debtToEquity": 0,
       "interestCoverage": 40.4,
       "divYield": 0.52,
       "salesGrowth3Y": 18.9,
@@ -265,7 +284,7 @@
     "pe": 28.5,
     "roePct": 19,
     "rocePct": 23.8,
-    "debtToEquity": 3.42,
+    "debtToEquity": 0,
     "divYieldPct": 0.52,
     "salesGrowth3Y": 18.9,
     "profitGrowth3Y": 18.2,
@@ -287,9 +306,10 @@
     ],
     "updatedAt": 1794038125778,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:14.895Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 22.4% -> 19%",
-    "cmp": 994
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:47.772Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 994,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1742038_19102026075842_WEB.xml"
   },
   "BAJAJFINSV": {
     "about": "Bajaj Finserv Ltd., through its subsidiaries, provides financial services in India. The company operates through Life Insurance, General Insurance, Windmill, Retail Financing, and Investments and Others segments. It offers personal, home, business, gold, loan for doctors and lawyers; loan against properties, securities, car, fixed deposit, insurance policy, mutual funds, and shares; unsecured and secured loans to small and medium-sized enterprises; two- and three-wheeler loans; used car and tractor loan; financing for products, such as consumer electronics, digital, furniture, e-commerce purchases and retail spends; developer financing; and lease rental discounting products. The company also provides investment products, including fixed deposits, stock trading, and mutual funds; savings products; life, health, motor, fire, engineering, liabilities, marine, crop, car, two-wheeler, pet, home, travel, and personal accident insurance products; wealth management and retirement planning services; healthcare services comprising wellness, outpatient, and inpatient services; and credit cards. In addition, it owns and operates 138 windmills with total installed capacity of 65.2 megawatts. Bajaj Finserv Ltd. was incorporated in 2007 and is based in Pune, India.",
@@ -366,39 +386,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "39,708",
-        "expenses": "36,810",
-        "operatingProfit": "2,898",
-        "opm": "7.3%",
-        "netProfit": "2,229",
-        "eps": "₹24.4"
+        "sales": "71",
+        "expenses": "69",
+        "operatingProfit": "2",
+        "opm": "2.8%",
+        "netProfit": "1",
+        "eps": "₹0"
       },
       {
         "period": "Mar 26",
-        "sales": "38,494",
-        "expenses": "35,193",
-        "operatingProfit": "3,301",
-        "opm": "8.6%",
-        "netProfit": "2,539",
-        "eps": "₹27.7"
+        "sales": "70",
+        "expenses": "83",
+        "operatingProfit": "-13",
+        "opm": "-18.6%",
+        "netProfit": "16",
+        "eps": "₹0.1"
       },
       {
         "period": "Jun 26",
-        "sales": "42,037",
-        "expenses": "25,348",
-        "operatingProfit": "16,689",
-        "opm": "39.7%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "1,542",
+        "expenses": "116",
+        "operatingProfit": "1,426",
+        "opm": "92.5%",
+        "netProfit": "1,118",
+        "eps": "₹6.99"
       },
       {
-        "period": "Sept 26",
-        "sales": "43,416",
-        "expenses": "26,180",
-        "operatingProfit": "17,236",
-        "opm": "39.7%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "2,047",
+        "expenses": "125",
+        "operatingProfit": "1,922",
+        "opm": "93.9%",
+        "netProfit": "1,459",
+        "eps": "₹9.11"
       }
     ],
     "balanceSheet": [
@@ -461,6 +481,18 @@
         "investments": "13,463",
         "otherAssets": "10,396",
         "totalAssets": "59,331"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "160",
+        "reserves": "12,742",
+        "borrowings": "0",
+        "otherLiabilities": "421",
+        "totalLiabilities": "13,323",
+        "fixedAssets": "802",
+        "investments": "0",
+        "otherAssets": "12,521",
+        "totalAssets": "13,323"
       }
     ],
     "cashFlows": [
@@ -498,10 +530,17 @@
         "cfi": "-33,127",
         "cff": "-16,080",
         "netCash": "3,335"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,953",
+        "cfi": "-2,887",
+        "cff": "-44",
+        "netCashFlow": "22"
       }
     ],
     "shareholding": {
-      "promoters": "63.86%",
+      "promoters": "58.65%",
       "fii": "10.05%",
       "dii": "5.41%",
       "public": "20.68%",
@@ -547,7 +586,7 @@
       "evToEbitda": 4.2,
       "roce": 19,
       "roe": 15.2,
-      "debtToEquity": 2.82,
+      "debtToEquity": 0,
       "interestCoverage": 40.7,
       "divYield": 0.08,
       "salesGrowth3Y": 29.1,
@@ -557,7 +596,7 @@
     "pe": 33.7,
     "roePct": 15.2,
     "rocePct": 19,
-    "debtToEquity": 2.82,
+    "debtToEquity": 0,
     "divYieldPct": 0.08,
     "salesGrowth3Y": 29.1,
     "profitGrowth3Y": -39.3,
@@ -577,9 +616,10 @@
     ],
     "updatedAt": 1794038125779,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:15.914Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 39.2% -> 39.7%; Quarterly results refreshed (Sept 26); ROE updated: 14.5% -> 15.2%; Debt/Equity updated: 1.85 -> 2.82",
-    "cmp": 1756.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:52.154Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1756.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1752286_03112026090953_WEB.xml"
   },
   "BANKBARODA": {
     "about": "Bank of Baroda Limited provides various banking products and services to individuals, government departments, and corporate customers in India and internationally. It operates through Treasury, Wholesale Banking, Retail Banking, and Other Banking Operations segments. The company offers savings, salary, and current accounts; and fixed and recurring deposits. It also provides loans, including home, vehicle, digital, personal, education, gold, mortgage, and other loans, as well as Baroda Yoddha loans for defense personnel and fintech credit; loans and advances for corporate, agriculture, and micro, small, and medium enterprises; export finance, foreign currency credits, foreign currency non-resident loans, treasury, external commercial borrowing, and import finance; and supply chain finance. In addition, the company offers life insurance, general insurance, and standalone health insurance products; digital payment, instant banking, and merchant payment solutions; debit, credit, and prepaid cards; investment products; trade, FX, and remittances; and other services. Bank of Baroda Limited was incorporated in 1908 and is headquartered in Vadodara, India.",
@@ -656,39 +696,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "15,401",
-        "expenses": "8,829",
-        "operatingProfit": "6,572",
-        "opm": "42.7%",
+        "sales": "35,350",
+        "expenses": "28,772",
+        "operatingProfit": "6,578",
+        "opm": "18.6%",
         "netProfit": "5,055",
-        "eps": "₹9.7"
+        "eps": "₹9.77"
       },
       {
         "period": "Mar 26",
-        "sales": "16,461",
-        "expenses": "9,160",
-        "operatingProfit": "7,301",
-        "opm": "44.4%",
+        "sales": "36,609",
+        "expenses": "30,690",
+        "operatingProfit": "5,919",
+        "opm": "16.2%",
         "netProfit": "5,616",
-        "eps": "₹10.8"
+        "eps": "₹10.86"
       },
       {
         "period": "Jun 26",
-        "sales": "15,995",
-        "expenses": "14,334",
-        "operatingProfit": "1,661",
-        "opm": "10.4%",
+        "sales": "36,681",
+        "expenses": "34,877",
+        "operatingProfit": "1,804",
+        "opm": "4.9%",
         "netProfit": "1,278",
-        "eps": "₹2.5"
+        "eps": "₹2.47"
       },
       {
-        "period": "Sept 26",
-        "sales": "19,907",
-        "expenses": "11,415",
-        "operatingProfit": "8,492",
-        "opm": "42.7%",
+        "period": "Sep 26",
+        "sales": "41,966",
+        "expenses": "32,918",
+        "operatingProfit": "9,048",
+        "opm": "21.6%",
         "netProfit": "6,532",
-        "eps": "₹12.6"
+        "eps": "₹12.63"
       }
     ],
     "balanceSheet": [
@@ -751,6 +791,18 @@
         "investments": "45,735",
         "otherAssets": "62,052",
         "totalAssets": "2,10,917"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "21,32,159",
+        "totalLiabilities": "21,32,159",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "21,32,159",
+        "totalAssets": "21,32,159"
       }
     ],
     "cashFlows": [
@@ -788,10 +840,17 @@
         "cfi": "-13,082",
         "cff": "-7,901",
         "netCash": "5,975"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-32,889",
+        "cfi": "-583",
+        "cff": "4,663",
+        "netCashFlow": "-28,809"
       }
     ],
     "shareholding": {
-      "promoters": "66.46%",
+      "promoters": "63.97%",
       "fii": "13.36%",
       "dii": "7.19%",
       "public": "12.99%",
@@ -867,9 +926,10 @@
     ],
     "updatedAt": 1794038125781,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:16.828Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 16.8% -> 11.9%",
-    "cmp": 245.37
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.638Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 245.37,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1750415_30102026074739_WEB.xml"
   },
   "BSE": {
     "about": "BSE Limited, together with its subsidiaries, provides a platform for the listing and trading of equity, debt instruments, currencies, commodities, derivatives, mutual funds, and small and medium enterprise securities in India and internationally. The company provides clearing and settlement, IT support, training, and stock exchange and index services, as well as engages in the corporate social responsibility activities. It also offers market data, risk management, data feeds, and investor education services, as well as operates as an intermediary for trading in overseas exchanges. The company was formerly known as Bombay Stock Exchange Limited and changed its name to BSE Limited in July 2011. BSE Limited was founded in 1875 and is based in Mumbai, India.",
@@ -946,39 +1006,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,068",
-        "expenses": "343",
-        "operatingProfit": "725",
-        "opm": "67.9%",
-        "netProfit": "558",
-        "eps": "₹12"
+        "sales": "1,230",
+        "expenses": "494",
+        "operatingProfit": "736",
+        "opm": "59.8%",
+        "netProfit": "552",
+        "eps": "₹13.41"
       },
       {
         "period": "Mar 26",
-        "sales": "1,244",
-        "expenses": "461",
-        "operatingProfit": "783",
-        "opm": "62.9%",
-        "netProfit": "602",
-        "eps": "₹13"
+        "sales": "1,583",
+        "expenses": "534",
+        "operatingProfit": "1,049",
+        "opm": "66.3%",
+        "netProfit": "799",
+        "eps": "₹19.4"
       },
       {
         "period": "Jun 26",
-        "sales": "1,630",
-        "expenses": "594",
-        "operatingProfit": "1,036",
-        "opm": "63.6%",
-        "netProfit": "797",
-        "eps": "₹17.1"
+        "sales": "1,601",
+        "expenses": "528",
+        "operatingProfit": "1,073",
+        "opm": "67.0%",
+        "netProfit": "801",
+        "eps": "₹19.45"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,707",
-        "expenses": "571",
-        "operatingProfit": "1,136",
-        "opm": "66.5%",
-        "netProfit": "874",
-        "eps": "₹18.8"
+        "period": "Sep 26",
+        "sales": "1,494",
+        "expenses": "473",
+        "operatingProfit": "1,021",
+        "opm": "68.3%",
+        "netProfit": "773",
+        "eps": "₹18.77"
       }
     ],
     "balanceSheet": [
@@ -1041,6 +1101,18 @@
         "investments": "1,723",
         "otherAssets": "3,591",
         "totalAssets": "10,734"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "82",
+        "reserves": "6,848",
+        "borrowings": "0",
+        "otherLiabilities": "2,455",
+        "totalLiabilities": "9,385",
+        "fixedAssets": "516",
+        "investments": "2,297",
+        "otherAssets": "6,572",
+        "totalAssets": "9,385"
       }
     ],
     "cashFlows": [
@@ -1078,10 +1150,17 @@
         "cfi": "-1,821",
         "cff": "-793",
         "netCash": "981"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2,091",
+        "cfi": "-1,706",
+        "cff": "-412",
+        "netCashFlow": "-27"
       }
     ],
     "shareholding": {
-      "promoters": "51.00%",
+      "promoters": "0%",
       "fii": "17.41%",
       "dii": "9.37%",
       "public": "22.22%",
@@ -1157,9 +1236,10 @@
     ],
     "updatedAt": 1794038125787,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:13:18.910Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26)",
-    "cmp": 3601.5
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.540Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 3601.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753025_04112026071425_WEB.xml"
   },
   "BALAMINES": {
     "about": "Balaji Amines Limited engages in the manufacture and sale of methylamines, ethylamines, and derivatives of specialty chemicals and pharma excipients in India and internationally. The company operates in two segments, Chemicals and Hotel. It offers monomethylamine, dimethylamine, trimethylamine, monoethylamine, diethylamine, triethylamine, and dimethyl and diethyl amino ethanol; and specialty chemicals, including N-methyl pyrrolidone, morpholine, 2-pyrrolidone, N-ethyl-2-pyrrolidone, gamma-butyrolactone, dimethylformamide, acetonitrile, dimethylcarbonate, propylene glycol, and propylene carbonate. The company also provides derivatives comprising di-methyl acetamide, di-methyl amine hydrochloride, tri-methyl amine hydrochloride, di-ethyl amine hydrochloride, tri-ethyl amine hydrochloride, di-methyl urea, choline chloride, mono-ethyl amine hydrochloride, and benzyl tri ethyl ammonium chloride; and pharma excipients, such as poly vinyl pyrrolidone. It also provides hotels, restaurants, and hospitality services. The company also exports its products to Europe, the United States, and Japan. Balaji Amines Limited was incorporated in 1988 and is headquartered in Hyderabad, India.",
@@ -1236,39 +1316,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "331",
-        "expenses": "291",
-        "operatingProfit": "40",
-        "opm": "12.1%",
-        "netProfit": "31",
-        "eps": "₹60"
+        "sales": "307",
+        "expenses": "259",
+        "operatingProfit": "48",
+        "opm": "15.6%",
+        "netProfit": "32",
+        "eps": "₹10"
       },
       {
         "period": "Mar 26",
-        "sales": "395",
-        "expenses": "319",
-        "operatingProfit": "76",
-        "opm": "19.2%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "370",
+        "expenses": "288",
+        "operatingProfit": "82",
+        "opm": "22.2%",
+        "netProfit": "62",
+        "eps": "₹19.09"
       },
       {
         "period": "Jun 26",
-        "sales": "456",
-        "expenses": "368",
-        "operatingProfit": "88",
-        "opm": "19.3%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "429",
+        "expenses": "331",
+        "operatingProfit": "98",
+        "opm": "22.8%",
+        "netProfit": "72",
+        "eps": "₹22.27"
       },
       {
-        "period": "Sept 26",
-        "sales": "468",
-        "expenses": "378",
+        "period": "Sep 26",
+        "sales": "434",
+        "expenses": "344",
         "operatingProfit": "90",
-        "opm": "19.2%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "opm": "20.7%",
+        "netProfit": "69",
+        "eps": "₹21.21"
       }
     ],
     "balanceSheet": [
@@ -1331,6 +1411,18 @@
         "investments": "389",
         "otherAssets": "566",
         "totalAssets": "1,818"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "6",
+        "reserves": "1,884",
+        "borrowings": "0",
+        "otherLiabilities": "240",
+        "totalLiabilities": "2,130",
+        "fixedAssets": "1,005",
+        "investments": "66",
+        "otherAssets": "1,059",
+        "totalAssets": "2,130"
       }
     ],
     "cashFlows": [
@@ -1368,10 +1460,17 @@
         "cfi": "-111",
         "cff": "-69",
         "netCash": "57"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "87",
+        "cfi": "-72",
+        "cff": "-36",
+        "netCashFlow": "-21"
       }
     ],
     "shareholding": {
-      "promoters": "67.56%",
+      "promoters": "54.56%",
       "fii": "1.61%",
       "dii": "0.87%",
       "public": "29.96%",
@@ -1417,7 +1516,7 @@
       "evToEbitda": 18.4,
       "roce": 14,
       "roe": 11.2,
-      "debtToEquity": 0.07,
+      "debtToEquity": 0,
       "interestCoverage": 39.1,
       "divYield": 0.45,
       "salesGrowth3Y": -15.4,
@@ -1427,7 +1526,7 @@
     "pe": 29.5,
     "roePct": 11.2,
     "rocePct": 14,
-    "debtToEquity": 0.07,
+    "debtToEquity": 0,
     "divYieldPct": 0.45,
     "salesGrowth3Y": -15.4,
     "profitGrowth3Y": -20,
@@ -1449,9 +1548,10 @@
     ],
     "updatedAt": 1794038125793,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:38.084Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 15.8% -> 11.2%",
-    "cmp": 1771.1
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:55.921Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1771.1,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751433_02112026074444_WEB.xml"
   },
   "BPCL": {
     "about": "Bharat Petroleum Corporation Limited engages in refining crude oil and marketing petroleum products in India and internationally. It operates through two segments, Downstream Petroleum; and Exploration and Production of Hydrocarbons. The company operates fuel stations that sell motor spirits, high-speed diesel, compressed and liquefied natural gas, automotive liquefied petroleum gas (LPG), and lubricants; operate convenience stores, restaurants, and electric vehicle charging facilities; and offer ATM, money transfer, insurance, and vehicle care services. It also provides LPG for domestic, commercial, and metal cutting gas under the Bharatgas brand name; automobile lubricants, such as automotive engine and gear oils, greases, and specialties, as well as industrial lubricants under the MAK brand; jet fuel; and aviation services, including transportation, storage, and intoplane services. In addition, the company offers industrial fuels products, white oils, bitumen and specialty bitumen, petcoke, sulphur, solvents, petrochemicals, bunkering, and petrochemical feedstock products; and operates pipelines to transport petroleum products. Further, it exports naphtha and fuel oils; and engages in city gas distribution activities. The company's marketing infrastructure includes a network of installations, depots, retail outlets, aviation fueling stations, and LPG distributors. The company was formerly known as Bharat Refineries Limited and changed its name to Bharat Petroleum Corporation Limited in August 1977. Bharat Petroleum Corporation Limited was incorporated in 1952 and is headquartered in Mumbai, India.",
@@ -1528,39 +1628,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,18,999",
-        "expenses": "1,09,190",
-        "operatingProfit": "9,809",
-        "opm": "8.2%",
+        "sales": "1,37,373",
+        "expenses": "1,27,279",
+        "operatingProfit": "10,094",
+        "opm": "7.3%",
         "netProfit": "7,545",
-        "eps": "₹38.3"
+        "eps": "₹17.66"
       },
       {
         "period": "Mar 26",
-        "sales": "1,18,649",
-        "expenses": "1,14,501",
-        "operatingProfit": "4,148",
-        "opm": "3.5%",
+        "sales": "1,35,960",
+        "expenses": "1,31,702",
+        "operatingProfit": "4,258",
+        "opm": "3.1%",
         "netProfit": "3,191",
-        "eps": "₹16.2"
+        "eps": "₹7.47"
       },
       {
         "period": "Jun 26",
-        "sales": "1,51,229",
-        "expenses": "1,44,272",
-        "operatingProfit": "6,957",
-        "opm": "4.6%",
+        "sales": "1,60,733",
+        "expenses": "1,66,038",
+        "operatingProfit": "-5,305",
+        "opm": "-3.3%",
         "netProfit": "-3,962",
-        "eps": "₹0.2"
+        "eps": "₹-9.27"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,49,041",
-        "expenses": "1,42,550",
-        "operatingProfit": "6,491",
-        "opm": "4.4%",
+        "period": "Sep 26",
+        "sales": "1,58,245",
+        "expenses": "1,51,559",
+        "operatingProfit": "6,686",
+        "opm": "4.2%",
         "netProfit": "4,993",
-        "eps": "₹25.3"
+        "eps": "₹11.69"
       }
     ],
     "balanceSheet": [
@@ -1623,6 +1723,18 @@
         "investments": "35,142",
         "otherAssets": "52,219",
         "totalAssets": "1,80,215"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "4,273",
+        "reserves": "91,927",
+        "borrowings": "15,246",
+        "otherLiabilities": "1,05,373",
+        "totalLiabilities": "2,16,819",
+        "fixedAssets": "93,500",
+        "investments": "11,038",
+        "otherAssets": "1,12,281",
+        "totalAssets": "2,16,819"
       }
     ],
     "cashFlows": [
@@ -1660,10 +1772,17 @@
         "cfi": "-9,646",
         "cff": "-4,913",
         "netCash": "3,979"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-3,285",
+        "cfi": "586",
+        "cff": "2,760",
+        "netCashFlow": "61"
       }
     ],
     "shareholding": {
-      "promoters": "56.73%",
+      "promoters": "52.98%",
       "fii": "19.62%",
       "dii": "10.56%",
       "public": "13.09%",
@@ -1709,7 +1828,7 @@
       "evToEbitda": 5.5,
       "roce": 20.3,
       "roe": 16.2,
-      "debtToEquity": 0.62,
+      "debtToEquity": 0.16,
       "interestCoverage": 41.3,
       "divYield": 6.2,
       "salesGrowth3Y": -1.3,
@@ -1719,7 +1838,7 @@
     "pe": 5.1,
     "roePct": 16.2,
     "rocePct": 20.3,
-    "debtToEquity": 0.62,
+    "debtToEquity": 0.16,
     "divYieldPct": 6.2,
     "salesGrowth3Y": -1.3,
     "profitGrowth3Y": 122,
@@ -1739,9 +1858,10 @@
     ],
     "updatedAt": 1794038125796,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:40.053Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 38.5% -> 16.2%",
-    "cmp": 304.7
+    "lastFinancialStatementUpdate": "2026-11-13T09:22:59.830Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 304.7,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1744981_23102026071700_WEB.xml"
   },
   "BAJAJ-AUTO": {
     "about": "Bajaj Auto Limited, together with its subsidiaries, engages in the development, manufacture, and distribution of automobiles in India and internationally. The company offers motorcycles, bikes, commercial vehicles, electric two-wheelers, and three-wheeler, as well as related parts and accessories. It also provides financing services for automobiles, as well as exports its products. The company was founded in 1945 and is based in Pune, India.",
@@ -1818,39 +1938,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "15,220",
-        "expenses": "11,966",
-        "operatingProfit": "3,254",
+        "sales": "15,562",
+        "expenses": "12,235",
+        "operatingProfit": "3,327",
         "opm": "21.4%",
         "netProfit": "2,503",
-        "eps": "₹60.5"
+        "eps": "₹89.7"
       },
       {
         "period": "Mar 26",
-        "sales": "16,006",
-        "expenses": "12,436",
-        "operatingProfit": "3,570",
+        "sales": "16,427",
+        "expenses": "12,764",
+        "operatingProfit": "3,663",
         "opm": "22.3%",
         "netProfit": "2,746",
-        "eps": "₹66.3"
+        "eps": "₹98.3"
       },
       {
         "period": "Jun 26",
-        "sales": "17,244",
-        "expenses": "13,366",
-        "operatingProfit": "3,878",
-        "opm": "22.5%",
+        "sales": "17,756",
+        "expenses": "13,771",
+        "operatingProfit": "3,985",
+        "opm": "22.4%",
         "netProfit": "2,983",
-        "eps": "₹72.1"
+        "eps": "₹106.8"
       },
       {
-        "period": "Sept 26",
-        "sales": "20,003",
-        "expenses": "15,643",
-        "operatingProfit": "4,360",
+        "period": "Sep 26",
+        "sales": "20,423",
+        "expenses": "15,966",
+        "operatingProfit": "4,457",
         "opm": "21.8%",
         "netProfit": "3,354",
-        "eps": "₹81"
+        "eps": "₹121.6"
       }
     ],
     "balanceSheet": [
@@ -1913,6 +2033,18 @@
         "investments": "10,549",
         "otherAssets": "8,694",
         "totalAssets": "37,695"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "275",
+        "reserves": "31,901",
+        "borrowings": "326",
+        "otherLiabilities": "13,535",
+        "totalLiabilities": "46,037",
+        "fixedAssets": "3,451",
+        "investments": "16,017",
+        "otherAssets": "26,569",
+        "totalAssets": "46,037"
       }
     ],
     "cashFlows": [
@@ -1950,10 +2082,17 @@
         "cfi": "-5,029",
         "cff": "-3,871",
         "netCash": "1,447"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "6,790",
+        "cfi": "1,920",
+        "cff": "-9,526",
+        "netCashFlow": "-816"
       }
     ],
     "shareholding": {
-      "promoters": "60.96%",
+      "promoters": "55.95%",
       "fii": "10.85%",
       "dii": "5.84%",
       "public": "22.35%",
@@ -1999,7 +2138,7 @@
       "evToEbitda": 22.5,
       "roce": 44.5,
       "roe": 35.6,
-      "debtToEquity": 0.7,
+      "debtToEquity": 0.01,
       "interestCoverage": 42.9,
       "divYield": 1.45,
       "salesGrowth3Y": 17.2,
@@ -2009,7 +2148,7 @@
     "pe": 37.9,
     "roePct": 35.6,
     "rocePct": 44.5,
-    "debtToEquity": 0.7,
+    "debtToEquity": 0.01,
     "divYieldPct": 1.45,
     "salesGrowth3Y": 17.2,
     "profitGrowth3Y": 21,
@@ -2031,9 +2170,10 @@
     ],
     "updatedAt": 1794038125800,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:40.721Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 28.5% -> 35.6%; Debt/Equity updated: 0 -> 0.7",
-    "cmp": 10608
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:00.266Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 10608,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746742_27102026041403_WEB.xml"
   },
   "BHARATFORG": {
     "about": "Bharat Forge Limited engages in the manufacture and sale of forged and machined components in India and internationally. It operates through three segments: Forgings, Defence, and Others. The company offers automotive components comprising crankshafts, connecting rods, emission/after treatment, and fuel injection systems; chassis, such as front axle beams, steering knuckles, control arms, knuckle, forks, and reinforcement brackets; transmission and driveline components; and power generation components for thermal, hydro, and wind energy. It provides oil and gas forging products, such as subsea, surface, and drilling components; rail products, including engine and bogie components, turbochargers, and power electronics; and marine products that include propellers, marine motor, stern tube, crankshaft, conrod, piston rod, stock, trunk, and pintle. In addition, the company offers various components, such as turbochargers and superchargers, rotor assembly, and air cycle machine for land, marine, and aviation application; construction and mining products, including machined crankshafts, injector bodies, front spindles, and track links; and e-mobility, castings, and defense products. Further, it provides aerostructures, landing gear, and critical engine components. The company was incorporated in 1961 and is headquartered in Pune, India.",
@@ -2110,39 +2250,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,032",
-        "expenses": "3,643",
-        "operatingProfit": "389",
-        "opm": "9.6%",
-        "netProfit": "299",
-        "eps": "₹11.6"
+        "sales": "2,111",
+        "expenses": "1,719",
+        "operatingProfit": "392",
+        "opm": "18.6%",
+        "netProfit": "288",
+        "eps": "₹6.03"
       },
       {
         "period": "Mar 26",
-        "sales": "4,343",
-        "expenses": "4,000",
-        "operatingProfit": "343",
-        "opm": "7.9%",
-        "netProfit": "264",
-        "eps": "₹10.2"
+        "sales": "2,289",
+        "expenses": "2,289",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "-118",
+        "eps": "₹-2.47"
       },
       {
         "period": "Jun 26",
-        "sales": "2,260",
-        "expenses": "2,043",
-        "operatingProfit": "217",
-        "opm": "9.6%",
-        "netProfit": "-118",
-        "eps": "₹0.2"
+        "sales": "2,382",
+        "expenses": "1,945",
+        "operatingProfit": "437",
+        "opm": "18.3%",
+        "netProfit": "321",
+        "eps": "₹6.72"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,640",
-        "expenses": "4,223",
-        "operatingProfit": "417",
-        "opm": "9%",
-        "netProfit": "321",
-        "eps": "₹12.4"
+        "period": "Sep 26",
+        "sales": "2,557",
+        "expenses": "2,060",
+        "operatingProfit": "497",
+        "opm": "19.4%",
+        "netProfit": "371",
+        "eps": "₹7.74"
       }
     ],
     "balanceSheet": [
@@ -2205,6 +2345,18 @@
         "investments": "1,368",
         "otherAssets": "1,907",
         "totalAssets": "7,140"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "98",
+        "reserves": "13,328",
+        "borrowings": "4,200",
+        "otherLiabilities": "3,036",
+        "totalLiabilities": "20,662",
+        "fixedAssets": "2,760",
+        "investments": "476",
+        "otherAssets": "17,426",
+        "totalAssets": "20,662"
       }
     ],
     "cashFlows": [
@@ -2242,10 +2394,17 @@
         "cfi": "-848",
         "cff": "-398",
         "netCash": "281"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "187",
+        "cfi": "-284",
+        "cff": "2,038",
+        "netCashFlow": "1,941"
       }
     ],
     "shareholding": {
-      "promoters": "47.03%",
+      "promoters": "43.12%",
       "fii": "24.29%",
       "dii": "13.08%",
       "public": "15.60%",
@@ -2291,7 +2450,7 @@
       "evToEbitda": 45.8,
       "roce": 16.5,
       "roe": 14.8,
-      "debtToEquity": 0.76,
+      "debtToEquity": 0.31,
       "interestCoverage": 48.2,
       "divYield": 0.45,
       "salesGrowth3Y": 30.5,
@@ -2301,7 +2460,7 @@
     "pe": 61.1,
     "roePct": 14.8,
     "rocePct": 16.5,
-    "debtToEquity": 0.76,
+    "debtToEquity": 0.31,
     "divYieldPct": 0.45,
     "salesGrowth3Y": 30.5,
     "profitGrowth3Y": -7.8,
@@ -2321,9 +2480,10 @@
     ],
     "updatedAt": 1794038125802,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:41.640Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26); Debt/Equity updated: 0.85 -> 0.76",
-    "cmp": 1812.8
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.562Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1812.8,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753983_05112026065240_WEB.xml"
   },
   "BOSCHLTD": {
     "about": "Bosch Limited engages in the manufacture and trading of automotive products in India. It operates through Automotive Products, Consumer Goods, and Others segments. The company offers products, such as spark and glow plugs; ignition coil; nozzle holder, components, and fuel rail assembly; LAG, SAG, rotary drill, hammer, and marble cutter; impact drilling machine; fuel injection pump and components; blower; and machines and components. It also provides diesel and gasoline fuel injection systems; automotive aftermarket products; industrial equipment; electrical power tools; security systems; and industrial and consumer energy products and solutions. In addition, the company offers components and systems for internal combustion engines; develops thermal management systems; two wheeler and power sports; filters to batteries, lubricants, wiper blades, and diagnostic equipment and software; diesel systems, braking systems, auto electricals, and gasoline system products; trading activities in power tools and consumables; engages in hydrogen business; industrial and building technology products and services; and operates authorized workshops and service centers. Further, it supplies power tools and related accessories, garden tools, and measuring technology. Additionally, the company provides fire safety solutions. It also exports its products. The company was founded in 1886 and is headquartered in Bengaluru, India. Bosch Limited operates as a subsidiary of Robert Bosch Internationale Beteiligungen AG.",
@@ -2400,39 +2560,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,795",
-        "expenses": "4,075",
-        "operatingProfit": "720",
-        "opm": "15%",
-        "netProfit": "554",
-        "eps": "₹164.2"
+        "sales": "5,086",
+        "expenses": "4,377",
+        "operatingProfit": "709",
+        "opm": "13.9%",
+        "netProfit": "532",
+        "eps": "₹180.43"
       },
       {
         "period": "Mar 26",
-        "sales": "4,886",
-        "expenses": "4,194",
-        "operatingProfit": "692",
-        "opm": "14.2%",
-        "netProfit": "532",
-        "eps": "₹157.7"
+        "sales": "5,722",
+        "expenses": "4,914",
+        "operatingProfit": "808",
+        "opm": "14.1%",
+        "netProfit": "569",
+        "eps": "₹192.76"
       },
       {
         "period": "Jun 26",
-        "sales": "5,566",
-        "expenses": "4,826",
-        "operatingProfit": "740",
-        "opm": "13.3%",
-        "netProfit": "569",
-        "eps": "₹168.6"
+        "sales": "6,068",
+        "expenses": "5,129",
+        "operatingProfit": "939",
+        "opm": "15.5%",
+        "netProfit": "702",
+        "eps": "₹237.95"
       },
       {
-        "period": "Sept 26",
-        "sales": "5,842",
-        "expenses": "4,929",
-        "operatingProfit": "913",
-        "opm": "15.6%",
-        "netProfit": "702",
-        "eps": "₹208.1"
+        "period": "Sep 26",
+        "sales": "6,254",
+        "expenses": "5,352",
+        "operatingProfit": "902",
+        "opm": "14.4%",
+        "netProfit": "675",
+        "eps": "₹228.72"
       }
     ],
     "balanceSheet": [
@@ -2495,6 +2655,18 @@
         "investments": "5,499",
         "otherAssets": "3,745",
         "totalAssets": "23,566"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "30",
+        "reserves": "15,405",
+        "borrowings": "0",
+        "otherLiabilities": "8,070",
+        "totalLiabilities": "23,505",
+        "fixedAssets": "1,203",
+        "investments": "1,204",
+        "otherAssets": "21,098",
+        "totalAssets": "23,505"
       }
     ],
     "cashFlows": [
@@ -2532,10 +2704,17 @@
         "cfi": "-1,518",
         "cff": "-741",
         "netCash": "99"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "976",
+        "cfi": "-310",
+        "cff": "-817",
+        "netCashFlow": "-151"
       }
     ],
     "shareholding": {
-      "promoters": "70.66%",
+      "promoters": "70.54%",
       "fii": "11.93%",
       "dii": "6.43%",
       "public": "10.98%",
@@ -2581,7 +2760,7 @@
       "evToEbitda": 53,
       "roce": 19.8,
       "roe": 15.2,
-      "debtToEquity": 0.01,
+      "debtToEquity": 0,
       "interestCoverage": 48.5,
       "divYield": 1.12,
       "salesGrowth3Y": 10.3,
@@ -2591,7 +2770,7 @@
     "pe": 72.9,
     "roePct": 15.2,
     "rocePct": 19.8,
-    "debtToEquity": 0.01,
+    "debtToEquity": 0,
     "divYieldPct": 1.12,
     "salesGrowth3Y": 10.3,
     "profitGrowth3Y": 24.8,
@@ -2611,9 +2790,10 @@
     ],
     "updatedAt": 1794038125803,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:42.695Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26)",
-    "cmp": 50925
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.582Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 50925,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754603_06112026025356_WEB.xml"
   },
   "BALKRISIND": {
     "about": "Balkrishna Industries Limited manufactures and sells tires under the BKT brand in India, Europe, North America, and internationally. The company provides manufacturing and selling of off-highway tires (OHT) for use in various applications, such as agriculture, construction, earthmoving, mining and quarrying, industry, and port operations. It also offers two-wheeler, passenger car radial, and commercial vehicle radial tyres, as well as carbon black. Balkrishna Industries Limited was incorporated in 1961 and is headquartered in Mumbai, India.",
@@ -2690,39 +2870,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,393",
-        "expenses": "2,048",
-        "operatingProfit": "345",
-        "opm": "14.4%",
-        "netProfit": "265",
-        "eps": "₹15"
+        "sales": "2,806",
+        "expenses": "2,323",
+        "operatingProfit": "483",
+        "opm": "17.2%",
+        "netProfit": "375",
+        "eps": "₹19.4"
       },
       {
         "period": "Mar 26",
-        "sales": "2,730",
-        "expenses": "2,242",
-        "operatingProfit": "488",
-        "opm": "17.9%",
-        "netProfit": "375",
-        "eps": "₹21.2"
+        "sales": "2,938",
+        "expenses": "2,543",
+        "operatingProfit": "395",
+        "opm": "13.4%",
+        "netProfit": "295",
+        "eps": "₹15.26"
       },
       {
         "period": "Jun 26",
-        "sales": "2,941",
-        "expenses": "2,552",
-        "operatingProfit": "389",
-        "opm": "13.2%",
-        "netProfit": "299",
-        "eps": "₹16.9"
+        "sales": "3,543",
+        "expenses": "2,961",
+        "operatingProfit": "582",
+        "opm": "16.4%",
+        "netProfit": "432",
+        "eps": "₹22.35"
       },
       {
-        "period": "Sept 26",
-        "sales": "3,445",
-        "expenses": "2,859",
-        "operatingProfit": "586",
-        "opm": "17%",
-        "netProfit": "451",
-        "eps": "₹25.5"
+        "period": "Sep 26",
+        "sales": "3,534",
+        "expenses": "3,146",
+        "operatingProfit": "388",
+        "opm": "11.0%",
+        "netProfit": "291",
+        "eps": "₹15.06"
       }
     ],
     "balanceSheet": [
@@ -2785,6 +2965,18 @@
         "investments": "2,769",
         "otherAssets": "2,379",
         "totalAssets": "9,730"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "39",
+        "reserves": "11,627",
+        "borrowings": "5,986",
+        "otherLiabilities": "2,927",
+        "totalLiabilities": "20,579",
+        "fixedAssets": "7,695",
+        "investments": "1,796",
+        "otherAssets": "11,088",
+        "totalAssets": "20,579"
       }
     ],
     "cashFlows": [
@@ -2822,10 +3014,17 @@
         "cfi": "-708",
         "cff": "-584",
         "netCash": "243"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-1",
+        "cfi": "-1,804",
+        "cff": "1,831",
+        "netCashFlow": "26"
       }
     ],
     "shareholding": {
-      "promoters": "58.54%",
+      "promoters": "58.29%",
       "fii": "19.83%",
       "dii": "10.68%",
       "public": "10.95%",
@@ -2871,7 +3070,7 @@
       "evToEbitda": 22.5,
       "roce": 18.2,
       "roe": 15.8,
-      "debtToEquity": 0.38,
+      "debtToEquity": 0.51,
       "interestCoverage": 44,
       "divYield": 0.65,
       "salesGrowth3Y": 3.3,
@@ -2881,7 +3080,7 @@
     "pe": 28.6,
     "roePct": 15.8,
     "rocePct": 18.2,
-    "debtToEquity": 0.38,
+    "debtToEquity": 0.51,
     "divYieldPct": 0.65,
     "salesGrowth3Y": 3.3,
     "profitGrowth3Y": 4.2,
@@ -2901,9 +3100,10 @@
     ],
     "updatedAt": 1794038125804,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:42.410Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26); Debt/Equity updated: 0.28 -> 0.38",
-    "cmp": 2243.7
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.653Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 2243.7,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753185_04112026085030_WEB.xml"
   },
   "BRITANNIA": {
     "about": "Britannia Industries Limited engages in manufacturing, trading, and sale of various food products in India and internationally. The company offers biscuits under the Good Day, Marie Gold, NutriChoice, Milk Bikis, Tiger, 50-50, Jim Jam, Britannia Bourbon, Little Hearts, Treat, Pure Magic, Nice Time, and Biscafe brand names; cakes under the Muffills, Fudge It, Gobbles, Layerz, Tiffin Fun, Rollyo, and Nut & Raisin Romance Cake brand names; rusks under the Toastea brand; snacks under the Treat Croissant, Treat Creme Wafers; and Snacks under Time Pass brand name. It also offers dairy products, such as ghee, cheese, and dairy whitener; milkshakes, lassi, and flavored milk under Winkin' Cow brand; gourmet, wheat flour, and white breads under Britannia brand; paneer and dahi under Come Alive brand, and nutritious bars under Be You Protein Bars brand name. The company exports its products to approximately 80 countries worldwide. Britannia Industries Limited was founded in 1892 and is based in Bengaluru, India.",
@@ -2980,39 +3180,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "4,841",
-        "expenses": "3,991",
-        "operatingProfit": "850",
-        "opm": "17.6%",
-        "netProfit": "654",
-        "eps": "₹24.9"
+        "sales": "4,869",
+        "expenses": "3,950",
+        "operatingProfit": "919",
+        "opm": "18.9%",
+        "netProfit": "688",
+        "eps": "₹28.57"
       },
       {
         "period": "Mar 26",
-        "sales": "4,970",
-        "expenses": "4,086",
-        "operatingProfit": "884",
-        "opm": "17.8%",
-        "netProfit": "680",
-        "eps": "₹25.9"
+        "sales": "4,614",
+        "expenses": "3,826",
+        "operatingProfit": "788",
+        "opm": "17.1%",
+        "netProfit": "685",
+        "eps": "₹28.45"
       },
       {
         "period": "Jun 26",
-        "sales": "4,719",
-        "expenses": "3,838",
-        "operatingProfit": "881",
-        "opm": "18.7%",
-        "netProfit": "678",
-        "eps": "₹25.8"
+        "sales": "4,893",
+        "expenses": "4,114",
+        "operatingProfit": "779",
+        "opm": "15.9%",
+        "netProfit": "576",
+        "eps": "₹23.93"
       },
       {
-        "period": "Sept 26",
-        "sales": "5,000",
-        "expenses": "4,232",
-        "operatingProfit": "768",
-        "opm": "15.4%",
-        "netProfit": "591",
-        "eps": "₹22.5"
+        "period": "Sep 26",
+        "sales": "5,477",
+        "expenses": "4,523",
+        "operatingProfit": "954",
+        "opm": "17.4%",
+        "netProfit": "706",
+        "eps": "₹29.29"
       }
     ],
     "balanceSheet": [
@@ -3075,6 +3275,18 @@
         "investments": "1,693",
         "otherAssets": "2,341",
         "totalAssets": "7,441"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "24",
+        "reserves": "3,719",
+        "borrowings": "2,584",
+        "otherLiabilities": "3,447",
+        "totalLiabilities": "9,774",
+        "fixedAssets": "2,346",
+        "investments": "2,271",
+        "otherAssets": "5,157",
+        "totalAssets": "9,774"
       }
     ],
     "cashFlows": [
@@ -3112,10 +3324,17 @@
         "cfi": "-1,109",
         "cff": "-767",
         "netCash": "624"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "907",
+        "cfi": "71",
+        "cff": "-989",
+        "netCashFlow": "-11"
       }
     ],
     "shareholding": {
-      "promoters": "51.18%",
+      "promoters": "50.55%",
       "fii": "16.15%",
       "dii": "8.70%",
       "public": "23.97%",
@@ -3161,7 +3380,7 @@
       "evToEbitda": 35.8,
       "roce": 46.5,
       "roe": 54,
-      "debtToEquity": 0.27,
+      "debtToEquity": 0.69,
       "interestCoverage": 38.4,
       "divYield": 1.25,
       "salesGrowth3Y": 5.5,
@@ -3171,7 +3390,7 @@
     "pe": 49.9,
     "roePct": 54,
     "rocePct": 46.5,
-    "debtToEquity": 0.27,
+    "debtToEquity": 0.69,
     "divYieldPct": 1.25,
     "salesGrowth3Y": 5.5,
     "profitGrowth3Y": 2.9,
@@ -3193,9 +3412,10 @@
     ],
     "updatedAt": 1794038125809,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:36:45.006Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26); Debt/Equity updated: 0.85 -> 0.27",
-    "cmp": 4946.3
+    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.373Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 4946.3,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754370_05112026110303_WEB.xml"
   },
   "BEL": {
     "about": "Bharat Electronics Limited designs, manufactures, and supplies electronic equipment and systems for the defense and civilian markets in India. The company's defense products include defense communication products, land-based radars, naval systems, electronic warfare systems, avionics, electro optics, tank and armored fighting vehicle electronic systems, weapon systems, C4I systems, upgrades, shelters and masts, simulators, batteries, components and devices, fuzes and unmanned systems; microwave tubes and power modules, microwave super components, digital multichannel data recorders, and hybrid micro circuits; and micro-electro mechanical systems, such as pressure transducers, and conductivity temperature and depth sensors. Its non-defense products comprise e-governance systems, homeland security products, civilian radars, and telecom and broadcast systems; integrated traffic management systems, real time train information systems, and solar power solutions; and PD and strategic products, silicon radiation detectors, passive vacuum devices, EMI filters, and multichannel voice logging recorder systems. It also provides electronic manufacturing services, including PCB assembly and testing, precision fabrication, microwave integrated circuit assemblies, super components modules, cable assemblies, and antennae manufacturing services; designs and manufactures transformers, coils, chokes, and sub-assemblies; and software services. In addition, the company offers cyber security products, such as data diodes and secure storage products; EV charging stations; and platform screen doors. Further, the company provides security architecture conceptualization and consulting, and information security audit services. It exports its products to the United States, France, Spain, the United Kingdom, Mauritius, Seychelles, Mauritius, the Republic of Armenia, Sri Lanka, Sweden, and Israel. Bharat Electronics Limited was incorporated in 1954 and is headquartered in Bengaluru, India.",
