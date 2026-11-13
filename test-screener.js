@@ -13,7 +13,7 @@ function loadScriptInSandbox(relativePath, sandbox) {
 
 console.log('--- 1. Testing Syntax & Integrity of Data Layer ---');
 const dataSandbox = { window: {} };
-loadScriptInSandbox('js/screener-data.js', dataSandbox);
+loadScriptInSandbox('js/screener-index.js', dataSandbox);
 const dataset = dataSandbox.window.STOCKS_SCREENER_DATASET;
 const defs = dataSandbox.window.SCREENER_METRIC_DEFINITIONS;
 
@@ -50,7 +50,7 @@ console.log(`✓ Matching virtually debt-free compounders (Debt/Eq <= 0.1 & ROE 
 
 console.log('\n--- 3. Testing HTML file links and references ---');
 const screenerHtml = fs.readFileSync(path.join(projectDir, 'screener.html'), 'utf8');
-const requiredScripts = ['js/firebase-config.js', 'js/auth.js', 'js/screener-data.js', 'js/gemini-ai.js', 'js/screener.js'];
+const requiredScripts = ['js/firebase-config.js', 'js/auth.js', 'js/screener-index.js', 'js/gemini-ai.js', 'js/screener.js'];
 requiredScripts.forEach(s => {
   if (screenerHtml.includes(s)) {
     console.log(`✓ screener.html includes ${s}`);

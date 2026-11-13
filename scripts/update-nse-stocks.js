@@ -1,389 +1,259 @@
 /**
- * Stocks 360 - Automated NSE Stock Prices & Indicators Synchronizer
+ * Stocks 360 - Automated NSE Stock Prices & Indicators Synchronizer (100% Official NSE Bhavcopy)
  * Runs automatically every weekday (Mon-Fri) at 4:45 PM IST (after NSE market close at 3:30 PM).
  *
  * Capabilities:
- * - Fetches closing prices & trading volume from NSE/Yahoo Finance
- * - Recalculates 50-DMA, 200-DMA, Golden Crossover flags, and Volume Surge
- * - Updates js/screener-data.js with fresh market numbers
- * - Zero external npm dependencies (uses native Node.js https)
+ * - Downloads official NSE UDiFF Bhavcopy ZIP directly from nsearchives.nseindia.com
+ * - Extracts closing prices, OHLC, previous close, and trading volume for ALL NSE equities in 1 request
+ * - Updates 50-DMA, 200-DMA, Golden Crossover, 52W High/Low, and Volume Surge
+ * - Updates js/screener-index.js (and js/screener-data.js if present locally)
+ * - Zero Yahoo Finance dependency & zero external npm dependencies (uses native Node.js https + zlib)
  */
 
-const fs = require('fs');
-const path = require('path');
 const https = require('https');
+const zlib = require('zlib');
+const {
+  loadScreenerDataset,
+  writeScreenerIndex,
+  writeScreenerDataIfPresent,
+  syncMarketSummaryToFirestore
+} = require('./lib/screener-store');
 
-const DATA_FILE_PATH = path.join(__dirname, '..', 'js', 'screener-data.js');
-
-function fetchJson(url) {
+function fetchBuffer(url, redirectsLeft = 3) {
   return new Promise((resolve) => {
-    const options = {
+    if (redirectsLeft <= 0) return resolve({ status: 0, buffer: null });
+    const req = https.get(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'application/json'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': '*/*',
+        'Referer': 'https://www.nseindia.com/'
       },
-      timeout: 8000
-    };
-
-    https.get(url, options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => { data += chunk; });
-      res.on('end', () => {
-        try {
-          if (res.statusCode >= 200 && res.statusCode < 300) {
-            resolve(JSON.parse(data));
-          } else {
-            resolve(null);
-          }
-        } catch (_) {
-          resolve(null);
-        }
-      });
-    }).on('error', () => {
-      resolve(null);
-    }).on('timeout', () => {
-      resolve(null);
+      timeout: 20000
+    }, (res) => {
+      if ([301, 302, 307, 308].includes(res.statusCode) && res.headers.location) {
+        const nextUrl = res.headers.location.startsWith('http')
+          ? res.headers.location
+          : new URL(res.headers.location, url).href;
+        res.resume();
+        return resolve(fetchBuffer(nextUrl, redirectsLeft - 1));
+      }
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        res.resume();
+        return resolve({ status: res.statusCode, buffer: null });
+      }
+      const chunks = [];
+      res.on('data', (c) => chunks.push(c));
+      res.on('end', () => resolve({ status: res.statusCode, buffer: Buffer.concat(chunks) }));
     });
+    req.on('error', () => resolve({ status: 0, buffer: null }));
+    req.on('timeout', () => { req.destroy(); resolve({ status: 0, buffer: null }); });
   });
 }
 
-function calculateSMA(numbers, period) {
-  if (!numbers || numbers.length < period) return null;
-  const slice = numbers.slice(-period);
-  const sum = slice.reduce((a, b) => a + b, 0);
-  return Number((sum / period).toFixed(2));
+function unzipFirstEntry(buf) {
+  if (!buf || buf.length < 30 || buf.readUInt32LE(0) !== 0x04034b50) {
+    throw new Error('Invalid ZIP buffer from NSE Bhavcopy');
+  }
+  const compMethod = buf.readUInt16LE(8);
+  const compSize = buf.readUInt32LE(18);
+  const nameLen = buf.readUInt16LE(26);
+  const extraLen = buf.readUInt16LE(28);
+  const start = 30 + nameLen + extraLen;
+  const payload = compSize > 0 ? buf.subarray(start, start + compSize) : buf.subarray(start);
+  if (compMethod === 8) return zlib.inflateRawSync(payload).toString('utf8');
+  if (compMethod === 0) return payload.toString('utf8');
+  throw new Error(`Unsupported ZIP compression method: ${compMethod}`);
 }
 
-function calculateRSI(closes, period = 14) {
-  if (!closes || closes.length <= period) return 50.0;
-  let gains = 0;
-  let losses = 0;
-  for (let i = closes.length - period; i < closes.length; i++) {
-    const diff = closes[i] - closes[i - 1];
-    if (diff >= 0) gains += diff;
-    else losses += Math.abs(diff);
+function parseCsvLine(line) {
+  const result = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      inQuotes = !inQuotes;
+    } else if (ch === ',' && !inQuotes) {
+      result.push(cur.trim());
+      cur = '';
+    } else {
+      cur += ch;
+    }
   }
-  const avgGain = gains / period;
-  const avgLoss = losses / period;
-  if (avgLoss === 0) return 100.0;
-  const rs = avgGain / avgLoss;
-  return Number((100 - (100 / (1 + rs))).toFixed(1));
+  result.push(cur.trim());
+  return result;
 }
 
-async function fetchStockHistory(symbol) {
-  const yahooSymbol = `${symbol}.NS`;
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${yahooSymbol}?range=1y&interval=1d`;
-  
-  const data = await fetchJson(url);
-  if (!data || !data.chart || !data.chart.result || !data.chart.result[0]) {
-    return null;
-  }
+async function fetchLatestNseBhavcopy() {
+  // Walk back up to 7 calendar days in IST to find the most recent trading session Bhavcopy
+  const nowUtc = Date.now();
+  const istNow = new Date(nowUtc + 5.5 * 3600 * 1000);
 
-  const result = data.chart.result[0];
-  const meta = result.meta || {};
-  const quote = (result.indicators && result.indicators.quote && result.indicators.quote[0]) || {};
-  const timestamps = result.timestamp || [];
+  for (let daysBack = 0; daysBack <= 7; daysBack++) {
+    const d = new Date(istNow.getTime() - daysBack * 86400000);
+    const yyyy = d.getUTCFullYear();
+    const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(d.getUTCDate()).padStart(2, '0');
+    const yyyymmdd = `${yyyy}${mm}${dd}`;
+    const url = `https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_${yyyymmdd}_F_0000.csv.zip`;
 
-  const rawCloses = quote.close || [];
-  const rawVolumes = quote.volume || [];
-  const rawOpens = quote.open || [];
-  const rawHighs = quote.high || [];
-  const rawLows = quote.low || [];
-
-  const closes = [];
-  const volumes = [];
-  const opens = [];
-  const highs = [];
-  const lows = [];
-
-  for (let i = 0; i < rawCloses.length; i++) {
-    if (rawCloses[i] !== null && rawCloses[i] !== undefined) {
-      closes.push(Number(rawCloses[i].toFixed(2)));
-      volumes.push(rawVolumes[i] || 0);
-      if (rawOpens[i] !== null && rawOpens[i] !== undefined) {
-        opens.push(Number(rawOpens[i].toFixed(2)));
-      }
-      if (rawHighs[i] !== null && rawHighs[i] !== undefined) {
-        highs.push(Number(rawHighs[i].toFixed(2)));
-      }
-      if (rawLows[i] !== null && rawLows[i] !== undefined) {
-        lows.push(Number(rawLows[i].toFixed(2)));
+    const res = await fetchBuffer(url);
+    if (res.status === 200 && res.buffer && res.buffer.length > 500) {
+      const csvText = unzipFirstEntry(res.buffer);
+      const lines = csvText.split(/\r?\n/).filter(Boolean);
+      if (lines.length > 10) {
+        console.log(`✓ Downloaded official NSE Bhavcopy for ${dd}-${mm}-${yyyy} (${lines.length - 1} rows)`);
+        return { csvLines: lines, tradeDate: `${dd}-${mm}-${yyyy}` };
       }
     }
   }
+  return null;
+}
 
-  if (closes.length === 0) return null;
-
-  const currentPrice = meta.regularMarketPrice || meta.fulldayPrice || closes[closes.length - 1];
-  const latestVolume = meta.regularMarketVolume || volumes[volumes.length - 1];
-  const dayOpen = meta.regularMarketOpen || (opens.length ? opens[opens.length - 1] : currentPrice);
-
-  // Authenticate whether the latest candle represents today's trading session via IST date comparison
-  let isLastCandleCurrent = false;
-  if (timestamps.length > 0) {
-    const lastCandleDate = new Date(timestamps[timestamps.length - 1] * 1000).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata' });
-    const marketTime = meta.regularMarketTime ? meta.regularMarketTime * 1000 : Date.now();
-    const marketDate = new Date(marketTime).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata' });
-    isLastCandleCurrent = (lastCandleDate === marketDate);
-  } else {
-    isLastCandleCurrent = closes.length >= 2 && Math.abs(closes[closes.length - 1] - currentPrice) < 0.05;
-  }
-
-  // Authenticate previous trading session close
-  let prevClose = null;
-  if (closes.length >= 2) {
-    const lastClose = closes[closes.length - 1];
-    const secondLastClose = closes[closes.length - 2];
-    prevClose = isLastCandleCurrent ? secondLastClose : lastClose;
-  } else if (meta.regularMarketPreviousClose && meta.regularMarketPreviousClose > 0) {
-    prevClose = Number(meta.regularMarketPreviousClose.toFixed(2));
-  } else if (meta.previousClose && meta.previousClose > 0) {
-    prevClose = Number(meta.previousClose.toFixed(2));
-  } else {
-    prevClose = currentPrice;
-  }
-
-  // Exact mathematical change and percentage matching exchange & Groww live numbers:
-  // Strictly enforces: prevClose + dayChange === currentPrice (100% mathematically aligned)
-  const dayChange = Number((currentPrice - prevClose).toFixed(2));
-  const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
-  const isGain = dayChange >= 0;
-
-  const latestHigh = (highs.length && highs[highs.length - 1]) || currentPrice;
-  const latestLow = (lows.length && lows[lows.length - 1]) || currentPrice;
-  const dayHigh = meta.regularMarketDayHigh || latestHigh;
-  const dayLow = meta.regularMarketDayLow || latestLow;
-  const high52 = meta.fiftyTwoWeekHigh || (closes.length ? Math.max(...closes) : currentPrice);
-  const low52 = meta.fiftyTwoWeekLow || (closes.length ? Math.min(...closes) : currentPrice);
-
-  const dma50 = calculateSMA(closes, Math.min(50, closes.length));
-  const dma200 = calculateSMA(closes, Math.min(200, closes.length)) || (dma50 ? Number((dma50 * 0.96).toFixed(2)) : null);
-  const avgVolume10 = calculateSMA(volumes, Math.min(10, volumes.length)) || latestVolume;
-
-  const volumeSurge = avgVolume10 > 0 ? Number((latestVolume / avgVolume10).toFixed(2)) : 1.0;
-  const goldenCross = dma50 && dma200 ? (dma50 > dma200 && currentPrice > dma50) : false;
-  const rsi14 = calculateRSI(closes, 14);
-
-  return {
-    cmp: currentPrice,
-    dayOpen: dayOpen,
-    prevClose: prevClose,
-    dayChange: dayChange,
-    dayChangePct: dayChangePct,
-    isGain: isGain,
-    dayHigh: dayHigh,
-    dayLow: dayLow,
-    high52: high52,
-    low52: low52,
-    volume: latestVolume,
-    avgVolume: avgVolume10,
-    volumeSurge: volumeSurge,
-    dma50: dma50,
-    dma200: dma200,
-    goldenCross: goldenCross,
-    rsi14: rsi14
+function parseBhavcopyMap(csvLines) {
+  const headers = parseCsvLine(csvLines[0]);
+  const idx = {
+    symbol: headers.indexOf('TckrSymb'),
+    series: headers.indexOf('SctySrs'),
+    open: headers.indexOf('OpnPric'),
+    high: headers.indexOf('HghPric'),
+    low: headers.indexOf('LwPric'),
+    close: headers.indexOf('ClsPric'),
+    last: headers.indexOf('LastPric'),
+    prevClose: headers.indexOf('PrvsClsgPric'),
+    volume: headers.indexOf('TtlTradgVol')
   };
+
+  const map = new Map();
+  const allowedSeries = new Set(['EQ', 'BE', 'BZ', 'SM', 'ST']);
+
+  for (let i = 1; i < csvLines.length; i++) {
+    const cols = parseCsvLine(csvLines[i]);
+    const symbol = (cols[idx.symbol] || '').toUpperCase();
+    const series = (cols[idx.series] || '').toUpperCase();
+    if (!symbol || !allowedSeries.has(series)) continue;
+
+    // Prefer EQ series if a symbol appears in multiple series
+    if (map.has(symbol) && series !== 'EQ') continue;
+
+    const close = Number(cols[idx.close]) || Number(cols[idx.last]) || 0;
+    if (close <= 0) continue;
+
+    const prevClose = Number(cols[idx.prevClose]) || close;
+    const open = Number(cols[idx.open]) || close;
+    const high = Number(cols[idx.high]) || close;
+    const low = Number(cols[idx.low]) || close;
+    const volume = Math.round(Number(cols[idx.volume]) || 0);
+
+    const dayChange = Number((close - prevClose).toFixed(2));
+    const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
+
+    map.set(symbol, {
+      cmp: close,
+      dayOpen: open,
+      dayHigh: high,
+      dayLow: low,
+      prevClose,
+      dayChange,
+      dayChangePct,
+      isGain: dayChange >= 0,
+      volume
+    });
+  }
+  return map;
 }
 
 async function updateAllStocks() {
-  console.log('Stocks 360: Starting automated weekday stock synchronizer...');
+  console.log('Stocks 360: Starting 100% Official NSE Bhavcopy stock synchronizer...');
   const now = new Date();
   const timeString = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true });
   const dateString = now.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short' });
   const lastUpdatedLabel = `Today (${dateString}), ${timeString} IST`;
 
-  // Read current screener data
-  if (!fs.existsSync(DATA_FILE_PATH)) {
-    console.error('screener-data.js not found at:', DATA_FILE_PATH);
-    process.exit(1);
-  }
-
-  const fileContent = fs.readFileSync(DATA_FILE_PATH, 'utf8');
-
-  // Extract array of stocks
-  const arrayMatch = fileContent.match(/const STOCKS_SCREENER_DATASET = (\[[\s\S]*?\]);/);
-  if (!arrayMatch) {
-    console.error('Could not locate STOCKS_SCREENER_DATASET in file.');
-    process.exit(1);
-  }
-
-  let stocks;
+  let stocks, defsContent, sourcePath;
   try {
-    stocks = eval(arrayMatch[1]);
+    ({ stocks, defsContent, sourcePath } = loadScreenerDataset());
+    console.log(`Loaded ${stocks.length} stocks from ${sourcePath}`);
   } catch (e) {
-    console.error('Failed to parse current stock dataset:', e);
+    console.error('Failed to load stock dataset:', e.message);
     process.exit(1);
   }
+
+  const bhav = await fetchLatestNseBhavcopy();
+  if (!bhav) {
+    console.warn('Warning: NSE Bhavcopy unavailable right now. Leaving existing stock prices untouched.');
+    return;
+  }
+
+  const nseMap = parseBhavcopyMap(bhav.csvLines);
+  console.log(`Parsed ${nseMap.size} active NSE equity quotes from official Bhavcopy (${bhav.tradeDate}).`);
 
   const updateLimit = process.env.UPDATE_LIMIT ? parseInt(process.env.UPDATE_LIMIT, 10) : stocks.length;
-  console.log(`Synchronizing ${updateLimit} active NSE stocks (out of ${stocks.length} total listed equities) at 4:45 PM IST...`);
-
   let updatedCount = 0;
-  const CHUNK_SIZE = 12;
-  for (let i = 0; i < updateLimit; i += CHUNK_SIZE) {
-    const chunk = stocks.slice(i, Math.min(i + CHUNK_SIZE, updateLimit));
-    await Promise.all(chunk.map(async (s, cIdx) => {
-      const idx = i + cIdx + 1;
-      try {
-        const fresh = await fetchStockHistory(s.symbol);
-        if (fresh && fresh.cmp) {
-          const priceRatio = fresh.cmp / s.cmp;
-          if (priceRatio > 0.5 && priceRatio < 2.0) {
-            s.marketCapCr = Math.round(s.marketCapCr * priceRatio);
-            s.pe = Number((s.pe * priceRatio).toFixed(1));
-          }
 
-          s.cmp = fresh.cmp;
-          if (fresh.dayOpen !== undefined) s.dayOpen = fresh.dayOpen;
-          if (fresh.prevClose !== undefined) s.prevClose = fresh.prevClose;
-          if (fresh.dayChange !== undefined) s.dayChange = fresh.dayChange;
-          if (fresh.dayChangePct !== undefined) s.dayChangePct = fresh.dayChangePct;
-          if (fresh.isGain !== undefined) s.isGain = fresh.isGain;
-          if (fresh.dayHigh !== undefined) s.dayHigh = fresh.dayHigh;
-          if (fresh.dayLow !== undefined) s.dayLow = fresh.dayLow;
-          if (fresh.high52 !== undefined) s.high52 = fresh.high52;
-          if (fresh.low52 !== undefined) s.low52 = fresh.low52;
-          s.volume = fresh.volume;
-          s.avgVolume = fresh.avgVolume;
-          s.volumeSurge = fresh.volumeSurge;
-          s.dma50 = fresh.dma50 || s.dma50;
-          s.dma200 = fresh.dma200 || s.dma200;
-          s.goldenCross = fresh.goldenCross;
-          s.rsi14 = fresh.rsi14;
-          s.lastUpdated = lastUpdatedLabel;
-          updatedCount++;
-          console.log(`✓ [${idx}/${stocks.length}] ${s.symbol}: ₹${s.cmp} (${s.isGain ? '+' : ''}${s.dayChangePct}%) | 50 DMA: ₹${s.dma50} | Golden Cross: ${s.goldenCross}`);
-        } else {
-          s.lastUpdated = lastUpdatedLabel;
-          console.log(`- [${idx}/${stocks.length}] ${s.symbol}: Kept current (₹${s.cmp})`);
-        }
-      } catch (err) {
-        console.log(`! [${idx}/${stocks.length}] ${s.symbol}: Error (${err.message})`);
+  for (let i = 0; i < Math.min(updateLimit, stocks.length); i++) {
+    const s = stocks[i];
+    const sym = String(s.symbol || '').toUpperCase();
+    const fresh = nseMap.get(sym);
+
+    if (fresh && fresh.cmp > 0) {
+      const priceRatio = s.cmp > 0 ? (fresh.cmp / s.cmp) : 1;
+      if (priceRatio > 0.5 && priceRatio < 2.0) {
+        s.marketCapCr = Math.round((s.marketCapCr || 0) * priceRatio);
+        s.pe = Number(((s.pe || 0) * priceRatio).toFixed(1));
       }
-    }));
-    await new Promise((r) => setTimeout(r, 150));
-  }
 
-  // Re-serialize formatted file
-  const defsMatch = fileContent.match(/const SCREENER_METRIC_DEFINITIONS = (\{[\s\S]*?\});/);
-  const defsContent = defsMatch ? defsMatch[0] : '';
+      s.cmp = fresh.cmp;
+      s.dayOpen = fresh.dayOpen;
+      s.dayHigh = fresh.dayHigh;
+      s.dayLow = fresh.dayLow;
+      s.prevClose = fresh.prevClose;
+      s.dayChange = fresh.dayChange;
+      s.dayChangePct = fresh.dayChangePct;
+      s.isGain = fresh.isGain;
+      s.high52 = s.high52 > 0 ? Math.max(s.high52, fresh.dayHigh) : fresh.dayHigh;
+      s.low52 = s.low52 > 0 ? Math.min(s.low52, fresh.dayLow) : fresh.dayLow;
 
-  const newFileContent = `/**
- * Stocks 360 - Comprehensive Stock Screener Dataset (screener-data.js)
- * Automatically synchronized on weekdays at 4:45 PM IST.
- * Last Update: ${lastUpdatedLabel}
- */
-
-${defsContent}
-
-const STOCKS_SCREENER_DATASET = ${JSON.stringify(stocks, null, 2)};
-
-if (typeof window !== "undefined") {
-  window.SCREENER_METRIC_DEFINITIONS = SCREENER_METRIC_DEFINITIONS;
-  window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
-}
-`;
-
-  fs.writeFileSync(DATA_FILE_PATH, newFileContent, 'utf8');
-  console.log(`\nSuccessfully updated ${updatedCount} stocks in js/screener-data.js with timestamp: "${lastUpdatedLabel}"!`);
-
-  // Automatically compile and write production lightweight index (screener-index.js)
-  try {
-    const INDEX_FILE_PATH = path.join(__dirname, '..', 'js', 'screener-index.js');
-    const compactIndex = stocks.map(s => ({
-      symbol: s.symbol,
-      name: s.name,
-      sector: s.sector || 'Equities',
-      cmp: s.cmp || 0,
-      dayChange: s.dayChange || 0,
-      dayChangePct: s.dayChangePct || 0,
-      isGain: s.isGain !== undefined ? s.isGain : (s.dayChange >= 0),
-      prevClose: s.prevClose || 0,
-      marketCapCr: s.marketCapCr || 0,
-      pe: s.pe || 0,
-      roePct: s.roePct || 0,
-      rocePct: s.rocePct || 0,
-      debtToEquity: s.debtToEquity !== undefined ? s.debtToEquity : 0,
-      divYieldPct: s.divYieldPct || 0,
-      dma50: s.dma50 || 0,
-      dma200: s.dma200 || 0,
-      goldenCross: !!s.goldenCross,
-      rsi14: s.rsi14 || 50,
-      volume: s.volume || 0,
-      avgVolume: s.avgVolume || 0,
-      volumeSurge: s.volumeSurge || 1.0,
-      salesGrowth3Y: s.salesGrowth3Y || 0,
-      profitGrowth3Y: s.profitGrowth3Y || 0,
-      dayOpen: s.dayOpen || 0,
-      dayHigh: s.dayHigh || 0,
-      dayLow: s.dayLow || 0,
-      high52: s.high52 || 0,
-      low52: s.low52 || 0,
-      lastUpdated: s.lastUpdated || lastUpdatedLabel
-    }));
-
-    const indexFileContent = `/**
- * Stocks 360 - Ultra-Fast Lightweight Screener & Search Index (screener-index.js)
- * Automatically synchronized on weekdays at 4:45 PM IST.
- * Last Update: ${lastUpdatedLabel}
- */
-
-${defsContent}
-
-const STOCKS_SCREENER_DATASET = ${JSON.stringify(compactIndex)};
-
-if (typeof window !== "undefined") {
-  window.SCREENER_METRIC_DEFINITIONS = SCREENER_METRIC_DEFINITIONS;
-  window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
-}
-`;
-    fs.writeFileSync(INDEX_FILE_PATH, indexFileContent, 'utf8');
-    console.log(`✓ Automatically rebuilt js/screener-index.js (${(Buffer.byteLength(indexFileContent) / 1024).toFixed(1)} KB) - production search index in sync!`);
-  } catch (idxErr) {
-    console.error('Error rebuilding lightweight index:', idxErr);
-  }
-
-  // Sync compact market summary to Firebase Firestore for real-time cloud access (< 1MB)
-  try {
-    const secretPath = path.join(__dirname, '..', 'js', 'firebase-secret.json');
-    if (fs.existsSync(secretPath)) {
-      const secret = JSON.parse(fs.readFileSync(secretPath, 'utf8'));
-      const apiKey = secret.apiKey || secret.geminiApiKey;
-      const projectId = secret.projectId || 'project-b005dc8f-09b3-4af6-b2b';
-      if (apiKey) {
-        const topStocks = stocks.slice(0, 50).map(s => ({
-          symbol: s.symbol,
-          cmp: s.cmp,
-          dayChangePct: s.dayChangePct,
-          isGain: s.isGain
-        }));
-        const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/site_settings/stock_screener_data?key=${apiKey}`;
-        const payload = JSON.stringify({
-          fields: {
-            topStocksJson: { stringValue: JSON.stringify(topStocks) },
-            count: { integerValue: String(stocks.length) },
-            lastUpdated: { stringValue: lastUpdatedLabel },
-            updatedAt: { integerValue: String(Date.now()) }
-          }
-        });
-
-        const req = https.request(firestoreUrl, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(payload)
-          }
-        }, (res) => {
-          if (res.statusCode >= 200 && res.statusCode < 300) {
-            console.log('✓ Successfully synced market summary to Firebase Firestore!');
-          }
-        });
-        req.on('error', () => {});
-        req.write(payload);
-        req.end();
+      // Update moving averages & volume surge incrementally using NSE EOD data
+      if (fresh.volume > 0) {
+        s.avgVolume = s.avgVolume > 0
+          ? Number(((s.avgVolume * 9 + fresh.volume) / 10).toFixed(1))
+          : fresh.volume;
+        s.volume = fresh.volume;
+        s.volumeSurge = s.avgVolume > 0 ? Number((fresh.volume / s.avgVolume).toFixed(2)) : 1.0;
       }
+
+      if (s.dma50 > 0) {
+        s.dma50 = Number(((s.dma50 * 49 + fresh.cmp) / 50).toFixed(2));
+      } else {
+        s.dma50 = fresh.cmp;
+      }
+      if (s.dma200 > 0) {
+        s.dma200 = Number(((s.dma200 * 199 + fresh.cmp) / 200).toFixed(2));
+      } else {
+        s.dma200 = fresh.cmp;
+      }
+      s.goldenCross = s.dma50 > s.dma200 && s.cmp > s.dma50;
+      s.lastUpdated = lastUpdatedLabel;
+      updatedCount++;
+    } else {
+      s.lastUpdated = lastUpdatedLabel;
     }
-  } catch (_) {}
+  }
+
+  console.log(`✓ Updated ${updatedCount} / ${Math.min(updateLimit, stocks.length)} NSE stocks from official Bhavcopy (${bhav.tradeDate}).`);
+
+  if (writeScreenerDataIfPresent(stocks, defsContent, 'Automatically synchronized from Official NSE Bhavcopy.', lastUpdatedLabel)) {
+    console.log(`✓ Updated js/screener-data.js`);
+  }
+
+  const indexBytes = writeScreenerIndex(stocks, defsContent, lastUpdatedLabel);
+  console.log(`✓ Rebuilt js/screener-index.js (${(indexBytes / 1024).toFixed(1)} KB) with official NSE Bhavcopy prices!`);
+
+  await syncMarketSummaryToFirestore(stocks, lastUpdatedLabel);
 }
 
-updateAllStocks();
+updateAllStocks().catch((err) => {
+  console.error('Fatal stock sync error:', err.message);
+  process.exit(1);
+});

@@ -46,6 +46,138 @@ function fetchAmfiNavs(url = 'https://www.amfiindia.com/spages/NAVAll.txt', redi
   });
 }
 
+function fetchMfApiHistory(schemeCode) {
+  return new Promise((resolve) => {
+    const req = https.get(`https://api.mfapi.in/mf/${encodeURIComponent(schemeCode)}`, {
+      headers: { 'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json' },
+      timeout: 12000
+    }, (res) => {
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        res.resume();
+        return resolve(null);
+      }
+      let body = '';
+      res.on('data', (c) => { body += c; });
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(body));
+        } catch (_) {
+          resolve(null);
+        }
+      });
+    });
+    req.on('error', () => resolve(null));
+    req.on('timeout', () => { req.destroy(); resolve(null); });
+  });
+}
+
+function parseMfApiDate(ddmmyyyy) {
+  const [dd, mm, yyyy] = String(ddmmyyyy || '').split('-').map(Number);
+  if (!dd || !mm || !yyyy) return null;
+  return new Date(Date.UTC(yyyy, mm - 1, dd));
+}
+
+async function enrichWithMfApiHistory(schemes) {
+  if (!Array.isArray(schemes) || schemes.length === 0) return;
+  let enriched = 0;
+  const CHUNK = 6;
+  for (let i = 0; i < schemes.length; i += CHUNK) {
+    const batch = schemes.slice(i, i + CHUNK);
+    await Promise.all(batch.map(async (scheme) => {
+      const json = await fetchMfApiHistory(scheme.schemeCode);
+      const rows = json && Array.isArray(json.data) ? json.data : [];
+      if (rows.length < 30) return;
+
+      const latestNav = parseFloat(rows[0].nav);
+      const latestDate = parseMfApiDate(rows[0].date);
+      if (!latestNav || !latestDate) return;
+
+      const findNavDaysAgo = (days) => {
+        const targetMs = latestDate.getTime() - days * 86400000;
+        for (let j = 0; j < rows.length; j++) {
+          const d = parseMfApiDate(rows[j].date);
+          if (d && d.getTime() <= targetMs) {
+            const v = parseFloat(rows[j].nav);
+            return v > 0 ? { nav: v, years: (latestDate.getTime() - d.getTime()) / (365.25 * 86400000) } : null;
+          }
+        }
+        return null;
+      };
+
+      const absRet = (days) => {
+        const ref = findNavDaysAgo(days);
+        return ref ? Number((((latestNav / ref.nav) - 1) * 100).toFixed(1)) : null;
+      };
+      const cagrRet = (days) => {
+        const ref = findNavDaysAgo(days);
+        if (!ref || ref.years < 0.5) return null;
+        return Number(((Math.pow(latestNav / ref.nav, 1 / ref.years) - 1) * 100).toFixed(1));
+      };
+
+      const r1M = absRet(30);
+      const r3M = absRet(91);
+      const r6M = absRet(182);
+      const r1Y = absRet(365);
+      const r3Y = cagrRet(365 * 3);
+      const r5Y = cagrRet(365 * 5);
+
+      const oldest = rows[rows.length - 1];
+      const oldestNav = parseFloat(oldest.nav);
+      const oldestDate = parseMfApiDate(oldest.date);
+      let rIncep = null;
+      if (oldestNav > 0 && oldestDate) {
+        const yrs = (latestDate.getTime() - oldestDate.getTime()) / (365.25 * 86400000);
+        if (yrs >= 1) {
+          rIncep = Number(((Math.pow(latestNav / oldestNav, 1 / yrs) - 1) * 100).toFixed(1));
+        }
+      }
+
+      if (r1Y !== null) scheme.return1Y = r1Y;
+      if (r3Y !== null) scheme.return3Y = r3Y;
+      if (r5Y !== null) scheme.return5Y = r5Y;
+      scheme.returns = {
+        ...scheme.returns,
+        ...(r1M !== null ? { '1M': r1M } : {}),
+        ...(r3M !== null ? { '3M': r3M } : {}),
+        ...(r6M !== null ? { '6M': r6M } : {}),
+        ...(r1Y !== null ? { '1Y': r1Y } : {}),
+        ...(r3Y !== null ? { '3Y': r3Y } : {}),
+        ...(r5Y !== null ? { '5Y': r5Y } : {}),
+        ...(rIncep !== null ? { inception: rIncep } : {})
+      };
+
+      const recent = rows.slice(0, Math.min(253, rows.length)).map(r => parseFloat(r.nav)).filter(v => v > 0).reverse();
+      if (recent.length >= 60) {
+        const dailyRets = [];
+        for (let k = 1; k < recent.length; k++) {
+          dailyRets.push((recent[k] - recent[k - 1]) / recent[k - 1]);
+        }
+        const mean = dailyRets.reduce((a, b) => a + b, 0) / dailyRets.length;
+        const variance = dailyRets.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / (dailyRets.length - 1);
+        const stdDev = Number((Math.sqrt(variance) * Math.sqrt(252) * 100).toFixed(2));
+        const downRets = dailyRets.filter(r => r < 0);
+        const downVar = downRets.length > 1
+          ? downRets.reduce((a, b) => a + Math.pow(b, 2), 0) / downRets.length
+          : variance;
+        const downDev = Math.sqrt(downVar) * Math.sqrt(252) * 100;
+        const annRet = r1Y !== null ? r1Y : (mean * 252 * 100);
+        const rf = 6.5;
+        const sharpe = stdDev > 0 ? Number(((annRet - rf) / stdDev).toFixed(2)) : scheme.riskRatios.sharpe;
+        const sortino = downDev > 0 ? Number(((annRet - rf) / downDev).toFixed(2)) : scheme.riskRatios.sortino;
+
+        scheme.riskRatios = {
+          ...scheme.riskRatios,
+          stdDev,
+          sharpe,
+          sortino
+        };
+      }
+      enriched++;
+    }));
+  }
+  console.log(`✓ Enriched ${enriched} flagship schemes with real AMFI historical NAV returns & risk ratios (via api.mfapi.in).`);
+}
+
 // Import full objective-aware instrument baskets and SEBI asset allocations (40 to 75+ realistic instruments)
 const { PORTFOLIO_BASKETS, ASSET_ALLOCATIONS, getAssetAllocationForBasket } = require('./mutual-fund-baskets.js');
 
@@ -2691,6 +2823,9 @@ async function updateMutualFunds() {
     if (Boolean(a.holdings) !== Boolean(b.holdings)) return a.holdings ? -1 : 1;
     return a.shortName.localeCompare(b.shortName);
   });
+
+  // Enrich flagship curated schemes with real AMFI historical NAV returns & risk ratios via api.mfapi.in
+  await enrichWithMfApiHistory(finalFunds.filter(f => f.isTopQuickPill || Array.isArray(f.holdings)).slice(0, 30));
 
   const uniqueAmcsCount = new Set(finalFunds.map(f => f.fundHouse)).size;
   const totalPlansInFeed = finalFunds.reduce((sum, f) => sum + (Array.isArray(f.plans) ? f.plans.length : 1), 0);

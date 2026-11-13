@@ -337,7 +337,20 @@ const StocksScreener = (function () {
         ]);
         if (doc && doc.exists) {
           const data = doc.data();
-          if (data && data.stocksJson) {
+          if (data && data.topStocksJson) {
+            const topUpdates = JSON.parse(data.topStocksJson);
+            if (Array.isArray(topUpdates) && Array.isArray(window.STOCKS_SCREENER_DATASET)) {
+              const updateMap = new Map(topUpdates.map((u) => [String(u.symbol || "").toUpperCase(), u]));
+              window.STOCKS_SCREENER_DATASET.forEach((s) => {
+                const u = updateMap.get(String(s.symbol || "").toUpperCase());
+                if (u && typeof u.cmp === "number" && u.cmp > 0) {
+                  s.cmp = u.cmp;
+                  if (typeof u.dayChangePct === "number") s.dayChangePct = u.dayChangePct;
+                  if (typeof u.isGain === "boolean") s.isGain = u.isGain;
+                }
+              });
+            }
+          } else if (data && data.stocksJson && (!Array.isArray(window.STOCKS_SCREENER_DATASET) || window.STOCKS_SCREENER_DATASET.length === 0)) {
             const parsed = JSON.parse(data.stocksJson);
             if (Array.isArray(parsed) && parsed.length > 0) {
               window.STOCKS_SCREENER_DATASET = parsed;

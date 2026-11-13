@@ -36,5 +36,6 @@ jobs:
             echo "No AMFI NAV changes detected today."
           else
             git commit -m "Auto-update daily AMFI Mutual Fund NAVs & holdings [9:15 PM IST]"
+            git pull --rebase --autostash origin main
             git push origin main
           fi

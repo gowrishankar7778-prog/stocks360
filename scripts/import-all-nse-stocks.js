@@ -7,20 +7,40 @@
  * and writes to js/screener-data.js and Firebase Firestore.
  */
 
-const fs = require('fs');
-const path = require('path');
 const https = require('https');
+const {
+  loadScreenerDataset,
+  writeScreenerIndex,
+  writeScreenerDataIfPresent,
+  syncMarketSummaryToFirestore
+} = require('./lib/screener-store');
 
-const DATA_FILE_PATH = path.join(__dirname, '..', 'js', 'screener-data.js');
 const NSE_CSV_URL = 'https://archives.nseindia.com/content/equities/EQUITY_L.csv';
 
-function fetchUrl(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' } }, (res) => {
+function fetchUrl(url, redirectsLeft = 3) {
+  return new Promise((resolve) => {
+    if (redirectsLeft <= 0) return resolve('');
+    const req = https.get(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+      timeout: 20000
+    }, (res) => {
+      if ([301, 302, 307, 308].includes(res.statusCode) && res.headers.location) {
+        const nextUrl = res.headers.location.startsWith('http')
+          ? res.headers.location
+          : new URL(res.headers.location, url).href;
+        res.resume();
+        return resolve(fetchUrl(nextUrl, redirectsLeft - 1));
+      }
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        res.resume();
+        return resolve('');
+      }
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => resolve(data));
-    }).on('error', reject);
+    });
+    req.on('error', () => resolve(''));
+    req.on('timeout', () => { req.destroy(); resolve(''); });
   });
 }
 
@@ -49,19 +69,15 @@ async function runImport() {
   console.log('Stocks 360: Downloading official master NSE equity list...');
   const csvData = await fetchUrl(NSE_CSV_URL);
   const lines = csvData.split('\n').map(l => l.trim()).filter(Boolean);
+  if (lines.length < 2 || !lines[0].toUpperCase().startsWith('SYMBOL,')) {
+    console.log('NSE master CSV unavailable or invalid right now. Leaving existing stock universe unchanged.');
+    return;
+  }
   console.log(`Downloaded ${lines.length} total equity rows from archives.nseindia.com`);
 
-  // Read existing screener dataset
-  let existingContent = fs.readFileSync(DATA_FILE_PATH, 'utf8');
-  let existingStocks = [];
-  try {
-    const arrayMatch = existingContent.match(/const STOCKS_SCREENER_DATASET = (\[[\s\S]*?\]);/);
-    if (arrayMatch) {
-      existingStocks = eval(arrayMatch[1]);
-    }
-  } catch (e) {
-    console.error('Error reading existing stocks:', e.message);
-  }
+  // Read existing screener dataset (prefers js/screener-data.js locally, falls back to js/screener-index.js in CI)
+  const { stocks: existingStocks, defsContent, sourcePath } = loadScreenerDataset();
+  console.log(`Found ${existingStocks.length} existing stocks in ${sourcePath}.`);
 
   const existingMap = new Map();
   existingStocks.forEach(s => {
@@ -152,97 +168,27 @@ async function runImport() {
 
   console.log(`Successfully merged ${importedCount} new NSE stocks! Total universe: ${mergedStocks.length} listed equities.`);
 
-  // Extract definitions
-  const defsMatch = existingContent.match(/const SCREENER_METRIC_DEFINITIONS = (\{[\s\S]*?\});/);
-  const defsContent = defsMatch ? defsMatch[0] : '';
+  if (importedCount === 0) {
+    console.log('No new NSE listings to add. Existing files untouched.');
+    return;
+  }
 
   const now = new Date();
   const timeString = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true });
   const dateString = now.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short' });
   const lastUpdatedLabel = `Today (${dateString}), ${timeString} IST`;
 
-  const newFileContent = `/**
- * Stocks 360 - Comprehensive Stock Screener Dataset (screener-data.js)
- * Master National Stock Exchange (NSE) Equities Database: ${mergedStocks.length} Companies
- * Last Update: ${lastUpdatedLabel}
- */
-
-${defsContent}
-
-const STOCKS_SCREENER_DATASET = ${JSON.stringify(mergedStocks, null, 2)};
-
-if (typeof window !== "undefined") {
-  window.SCREENER_METRIC_DEFINITIONS = SCREENER_METRIC_DEFINITIONS;
-  window.STOCKS_SCREENER_DATASET = STOCKS_SCREENER_DATASET;
-}
-`;
-
-  fs.writeFileSync(DATA_FILE_PATH, newFileContent, 'utf8');
-  console.log(`✓ Wrote ${mergedStocks.length} NSE stocks to js/screener-data.js`);
-
-  // Sync to Firebase Firestore
-  try {
-    const secretPath = path.join(__dirname, '..', 'js', 'firebase-secret.json');
-    if (fs.existsSync(secretPath)) {
-      const secret = JSON.parse(fs.readFileSync(secretPath, 'utf8'));
-      const apiKey = secret.apiKey || secret.geminiApiKey;
-      const projectId = secret.projectId || 'project-b005dc8f-09b3-4af6-b2b';
-      if (apiKey) {
-        const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/site_settings/stock_screener_data?key=${apiKey}`;
-        
-        // Clean schema representation for Firestore
-        const cleanPayload = mergedStocks.map(s => ({
-          symbol: s.symbol,
-          name: s.name,
-          sector: s.sector,
-          cmp: s.cmp,
-          dayChange: s.dayChange,
-          dayChangePct: s.dayChangePct,
-          isGain: s.isGain,
-          marketCapCr: s.marketCapCr,
-          pe: s.pe,
-          roePct: s.roePct,
-          rocePct: s.rocePct,
-          debtToEquity: s.debtToEquity,
-          divYieldPct: s.divYieldPct,
-          dma50: s.dma50,
-          dma200: s.dma200,
-          goldenCross: s.goldenCross,
-          rsi14: s.rsi14,
-          volumeSurge: s.volumeSurge,
-          salesGrowth3Y: s.salesGrowth3Y
-        }));
-
-        const payload = JSON.stringify({
-          fields: {
-            stocksJson: { stringValue: JSON.stringify(cleanPayload) },
-            count: { integerValue: String(mergedStocks.length) },
-            lastUpdated: { stringValue: lastUpdatedLabel },
-            updatedAt: { integerValue: String(Date.now()) }
-          }
-        });
-
-        const req = https.request(firestoreUrl, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(payload)
-          }
-        }, (res) => {
-          if (res.statusCode >= 200 && res.statusCode < 300) {
-            console.log(`✓ Successfully synced ${mergedStocks.length} stocks to Firebase Firestore (site_settings/stock_screener_data)!`);
-          } else {
-            console.log(`Firestore response status: ${res.statusCode}`);
-          }
-        });
-        req.on('error', (e) => console.log('Firestore sync notice:', e.message));
-        req.write(payload);
-        req.end();
-      }
-    }
-  } catch (err) {
-    console.log('Firestore sync notice:', err.message);
+  if (writeScreenerDataIfPresent(mergedStocks, defsContent, `Master National Stock Exchange (NSE) Equities Database: ${mergedStocks.length} Companies`, lastUpdatedLabel)) {
+    console.log(`✓ Wrote ${mergedStocks.length} NSE stocks to js/screener-data.js`);
   }
+
+  const indexBytes = writeScreenerIndex(mergedStocks, defsContent, lastUpdatedLabel);
+  console.log(`✓ Updated js/screener-index.js (${(indexBytes / 1024).toFixed(1)} KB) with ${mergedStocks.length} NSE stocks`);
+
+  await syncMarketSummaryToFirestore(mergedStocks, lastUpdatedLabel);
 }
 
-runImport();
+runImport().catch((err) => {
+  console.error('Import script error:', err.message);
+  process.exit(1);
+});

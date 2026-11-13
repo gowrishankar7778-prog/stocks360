@@ -24,13 +24,13 @@ for (const f of files) {
   const d = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/profiles', f), 'utf8'));
   for (const [sym, p] of Object.entries(d)) {
     totalProfiles++;
-    const sKey = p.financials && p.financials[0] ? p.financials[0].sales + '|' + p.financials[4].sales : 'none';
+    const sKey = p.financials && p.financials.length ? p.financials[0].sales + '|' + p.financials[p.financials.length - 1].sales : 'none';
     salesCounts[sKey] = (salesCounts[sKey] || 0) + 1;
-    const bKey = p.balanceSheet && p.balanceSheet[0] ? p.balanceSheet[0].totalAssets + '|' + p.balanceSheet[4].totalAssets : 'none';
+    const bKey = p.balanceSheet && p.balanceSheet.length ? p.balanceSheet[0].totalAssets + '|' + p.balanceSheet[p.balanceSheet.length - 1].totalAssets : 'none';
     bsCounts[bKey] = (bsCounts[bKey] || 0) + 1;
-    const cKey = p.cashFlows && p.cashFlows[0] ? p.cashFlows[0].cfo + '|' + p.cashFlows[4].cfo : 'none';
+    const cKey = p.cashFlows && p.cashFlows.length ? p.cashFlows[0].cfo + '|' + p.cashFlows[p.cashFlows.length - 1].cfo : 'none';
     cfCounts[cKey] = (cfCounts[cKey] || 0) + 1;
-    const qKey = p.quarterlyResults && p.quarterlyResults[0] ? p.quarterlyResults[0].sales + '|' + p.quarterlyResults[3].sales : 'none';
+    const qKey = p.quarterlyResults && p.quarterlyResults.length ? p.quarterlyResults[0].sales + '|' + p.quarterlyResults[p.quarterlyResults.length - 1].sales : 'none';
     qtrCounts[qKey] = (qtrCounts[qKey] || 0) + 1;
   }
 }

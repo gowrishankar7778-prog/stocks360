@@ -147,8 +147,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const cleanName = cleanAlphanumeric(nameUpper);
     const sectorUpper = String(s.sector || "").toUpperCase();
 
-    // 1. Exact Symbol match -> top priority
+    // 1. Exact Symbol or BSE Scrip Code match -> top priority
     if (symClean === cleanQ) return 1000;
+    if (s.bseCode && String(s.bseCode).toUpperCase() === cleanQ) return 950;
 
     // 2. Symbol starts with clean query (e.g. HS -> HSCL, AEGIS -> AEGISLOG)
     if (symClean.startsWith(cleanQ)) return 850;
@@ -1295,6 +1296,18 @@ document.addEventListener("DOMContentLoaded", function () {
     return profileShardCache[key].then((shard) => (shard && shard[String(symbol).toUpperCase()]) || null);
   }
 
+  const bseShardCache = {};
+
+  function loadBseQuote(symbol) {
+    const key = newsShardKey(symbol);
+    if (!bseShardCache[key]) {
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=62")
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({}));
+    }
+    return bseShardCache[key].then((shard) => (shard && shard[String(symbol).toUpperCase()]) || null);
+  }
+
   // ---------------- REAL CORPORATE NEWS & ANNOUNCEMENTS ----------------
   // Announcements come from the official NSE feed, synced daily by
   // scripts/update-nse-news.js into data/news/<first-letter>.json (no AI cost).
@@ -1450,7 +1463,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
             <div>
               <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                <span class="badge badge-success" style="font-size:0.75rem; background:#10b981; color:#ffffff; padding:3px 8px; border-radius:4px; font-weight:700;">NSE: ${escapeHtml(stock.symbol)}</span>
+                <span id="company-exchange-badge" class="badge badge-success" style="font-size:0.75rem; background:${stock.exchanges === 'BSE' ? '#2563eb' : '#10b981'}; color:#ffffff; padding:3px 8px; border-radius:4px; font-weight:700;">${stock.exchanges === 'BSE' ? `BSE: ${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE: ${escapeHtml(stock.symbol)}`}</span>
                 <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
                 <a id="company-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.8rem; color:#2563eb; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
                   Official Website ↗
@@ -1459,11 +1472,11 @@ document.addEventListener("DOMContentLoaded", function () {
               <h2 id="company-view-title" style="margin:8px 0 4px 0; font-size:1.75rem; color:#0f172a; font-weight:800;">${escapeHtml(stock.name)}</h2>
               
               <div style="display:flex; align-items:baseline; gap:12px; margin-top:6px; flex-wrap:wrap;">
-                <span style="font-size:2.1rem; font-weight:800; color:#0f172a;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
-                <span class="price-performance-pill" style="font-size:1.02rem; font-weight:700; padding:4px 12px; border-radius:6px; background:${isGain ? "#f0fdf4" : "#fef2f2"}; color:${isGain ? "#16a34a" : "#dc2626"}; border:1px solid ${isGain ? "#bbf7d0" : "#fecaca"};">
+                <span id="company-hero-cmp" style="font-size:2.1rem; font-weight:800; color:#0f172a;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+                <span id="company-hero-day-pill" class="price-performance-pill" style="font-size:1.02rem; font-weight:700; padding:4px 12px; border-radius:6px; background:${isGain ? "#f0fdf4" : "#fef2f2"}; color:${isGain ? "#16a34a" : "#dc2626"}; border:1px solid ${isGain ? "#bbf7d0" : "#fecaca"};">
                   ${dayPerformanceText}
                 </span>
-                <span style="font-size:0.82rem; color:#64748b;">(Session: ${escapeHtml(stock.lastUpdated || "Today, 3:30 PM IST")})</span>
+                <span id="company-hero-session" style="font-size:0.82rem; color:#64748b;">(Session: ${escapeHtml(stock.lastUpdated || "Today, 3:30 PM IST")})</span>
               </div>
             </div>
 
@@ -1488,33 +1501,47 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>
 
+        <!-- EXCHANGE SWITCHER (NSE / BSE) -->
+        <div id="exchange-switcher-bar" role="group" aria-label="Switch Stock Exchange" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding:10px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px;">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span style="font-size:0.85rem; font-weight:700; color:#334155;">Exchange View:</span>
+            <button type="button" id="btn-exchange-nse" data-exchange="NSE" aria-pressed="${stock.exchanges !== 'BSE' ? 'true' : 'false'}" ${stock.exchanges === 'BSE' ? 'disabled title="Not listed on NSE"' : ''} style="padding:6px 14px; font-size:0.84rem; font-weight:700; border-radius:6px; cursor:${stock.exchanges === 'BSE' ? 'not-allowed' : 'pointer'}; border:1px solid ${stock.exchanges !== 'BSE' ? '#0f172a' : '#cbd5e1'}; background:${stock.exchanges !== 'BSE' ? '#0f172a' : '#ffffff'}; color:${stock.exchanges !== 'BSE' ? '#ffffff' : '#64748b'}; opacity:${stock.exchanges === 'BSE' ? '0.5' : '1'};">
+              NSE (${escapeHtml(stock.symbol)})
+            </button>
+            <button type="button" id="btn-exchange-bse" data-exchange="BSE" aria-pressed="${stock.exchanges === 'BSE' ? 'true' : 'false'}" ${!stock.bseCode ? 'disabled title="Loading BSE data..."' : ''} style="padding:6px 14px; font-size:0.84rem; font-weight:700; border-radius:6px; cursor:${stock.bseCode ? 'pointer' : 'not-allowed'}; border:1px solid ${stock.exchanges === 'BSE' ? '#2563eb' : '#cbd5e1'}; background:${stock.exchanges === 'BSE' ? '#2563eb' : '#ffffff'}; color:${stock.exchanges === 'BSE' ? '#ffffff' : '#334155'}; opacity:${stock.bseCode ? '1' : '0.55'};">
+              BSE ${stock.bseCode ? `(${escapeHtml(stock.bseCode)})` : ''}
+            </button>
+          </div>
+          <span id="exchange-switcher-status" style="font-size:0.78rem; color:#64748b;">${stock.exchanges === 'BSE' ? 'Showing Official BSE Bhavcopy Data' : 'Showing Official NSE Bhavcopy Data'}</span>
+        </div>
+
         <!-- SECTION 1: PRICE PERFORMANCE -->
         <section id="sec-price" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Price Performance</h3>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Today Open</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">₹ ${dayOpen.toLocaleString("en-IN")}</strong>
+              <strong id="pp-open" style="font-size:0.92rem; color:#0f172a;">₹ ${dayOpen.toLocaleString("en-IN")}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Today High</span>
-              <strong style="font-size:0.92rem; color:#16a34a;">₹ ${dayHigh.toLocaleString("en-IN")}</strong>
+              <strong id="pp-high" style="font-size:0.92rem; color:#16a34a;">₹ ${dayHigh.toLocaleString("en-IN")}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Today Low</span>
-              <strong style="font-size:0.92rem; color:#dc2626;">₹ ${dayLow.toLocaleString("en-IN")}</strong>
+              <strong id="pp-low" style="font-size:0.92rem; color:#dc2626;">₹ ${dayLow.toLocaleString("en-IN")}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Previous Close</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">₹ ${prevClose.toLocaleString("en-IN")}</strong>
+              <strong id="pp-prev-close" style="font-size:0.92rem; color:#0f172a;">₹ ${prevClose.toLocaleString("en-IN")}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">52-Week High</span>
-              <strong style="font-size:0.92rem; color:#16a34a;">₹ ${high52.toLocaleString("en-IN")}</strong>
+              <strong id="pp-high52" style="font-size:0.92rem; color:#16a34a;">₹ ${high52.toLocaleString("en-IN")}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">52-Week Low</span>
-              <strong style="font-size:0.92rem; color:#dc2626;">₹ ${low52.toLocaleString("en-IN")}</strong>
+              <strong id="pp-low52" style="font-size:0.92rem; color:#dc2626;">₹ ${low52.toLocaleString("en-IN")}</strong>
             </div>
           </div>
         </section>
@@ -1533,7 +1560,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
               <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Current Price</span>
-              <span style="display:block; font-size:1.1rem; font-weight:700; color:#2563eb; margin-top:2px;">₹ ${stock.cmp.toLocaleString("en-IN")}</span>
+              <span id="metric-current-price" style="display:block; font-size:1.1rem; font-weight:700; color:#2563eb; margin-top:2px;">₹ ${stock.cmp.toLocaleString("en-IN")}</span>
               <div style="margin-top:8px;">
                 <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Current Price Information</button>
                 <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Current Market Price (CMP) is the latest traded price of the stock on NSE/BSE.</div>
@@ -1858,6 +1885,122 @@ document.addEventListener("DOMContentLoaded", function () {
         if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
           applyVerifiedProfileToView(verified);
         }
+      }
+    });
+
+    // NSE / BSE Exchange Switcher (loads official BSE Bhavcopy quote on demand)
+    const nseQuoteSnapshot = {
+      cmp: stock.cmp,
+      dayOpen,
+      dayHigh,
+      dayLow,
+      prevClose,
+      dayChange,
+      dayChangePct,
+      isGain,
+      high52,
+      low52,
+      lastUpdated: stock.lastUpdated || "Today, 3:30 PM IST"
+    };
+    let bseQuoteSnapshot = null;
+
+    function applyExchangeQuote(exch) {
+      const q = exch === "BSE" && bseQuoteSnapshot ? bseQuoteSnapshot : nseQuoteSnapshot;
+      const badgeEl = document.getElementById("company-exchange-badge");
+      const cmpEl = document.getElementById("company-hero-cmp");
+      const pillEl = document.getElementById("company-hero-day-pill");
+      const sessEl = document.getElementById("company-hero-session");
+      const openEl = document.getElementById("pp-open");
+      const highEl = document.getElementById("pp-high");
+      const lowEl = document.getElementById("pp-low");
+      const prevEl = document.getElementById("pp-prev-close");
+      const h52El = document.getElementById("pp-high52");
+      const l52El = document.getElementById("pp-low52");
+      const curPriceEl = document.getElementById("metric-current-price");
+      const statusEl = document.getElementById("exchange-switcher-status");
+      const btnNse = document.getElementById("btn-exchange-nse");
+      const btnBse = document.getElementById("btn-exchange-bse");
+
+      if (badgeEl) {
+        badgeEl.textContent = exch === "BSE"
+          ? `BSE: ${(bseQuoteSnapshot && bseQuoteSnapshot.bseCode) || stock.bseCode || stock.symbol}`
+          : `NSE: ${stock.symbol}`;
+        badgeEl.style.background = exch === "BSE" ? "#2563eb" : "#10b981";
+      }
+      if (cmpEl) cmpEl.textContent = `₹ ${Number(q.cmp).toLocaleString("en-IN", { minimumFractionDigits: 2 })}`;
+      if (pillEl) {
+        const gain = q.isGain;
+        const dc = Math.abs(Number(q.dayChange) || 0).toFixed(2);
+        const dcp = Math.abs(Number(q.dayChangePct) || 0);
+        pillEl.textContent = gain ? `+ ₹${dc} (+${dcp}%) Day Gain` : `- ₹${dc} (-${dcp}%) Day Loss`;
+        pillEl.style.background = gain ? "#f0fdf4" : "#fef2f2";
+        pillEl.style.color = gain ? "#16a34a" : "#dc2626";
+        pillEl.style.borderColor = gain ? "#bbf7d0" : "#fecaca";
+      }
+      if (sessEl) sessEl.textContent = `(Session: ${q.lastUpdated || "Today, 3:30 PM IST"})`;
+      if (openEl) openEl.textContent = `₹ ${Number(q.dayOpen).toLocaleString("en-IN")}`;
+      if (highEl) highEl.textContent = `₹ ${Number(q.dayHigh).toLocaleString("en-IN")}`;
+      if (lowEl) lowEl.textContent = `₹ ${Number(q.dayLow).toLocaleString("en-IN")}`;
+      if (prevEl) prevEl.textContent = `₹ ${Number(q.prevClose).toLocaleString("en-IN")}`;
+      if (h52El) h52El.textContent = `₹ ${Number(q.high52 || high52).toLocaleString("en-IN")}`;
+      if (l52El) l52El.textContent = `₹ ${Number(q.low52 || low52).toLocaleString("en-IN")}`;
+      if (curPriceEl) curPriceEl.textContent = `₹ ${Number(q.cmp).toLocaleString("en-IN")}`;
+      if (statusEl) statusEl.textContent = exch === "BSE" ? "Showing Official BSE Bhavcopy Data" : "Showing Official NSE Bhavcopy Data";
+
+      if (btnNse) {
+        const active = exch === "NSE";
+        btnNse.setAttribute("aria-pressed", active ? "true" : "false");
+        btnNse.style.background = active ? "#0f172a" : "#ffffff";
+        btnNse.style.color = active ? "#ffffff" : "#334155";
+        btnNse.style.borderColor = active ? "#0f172a" : "#cbd5e1";
+      }
+      if (btnBse) {
+        const active = exch === "BSE";
+        btnBse.setAttribute("aria-pressed", active ? "true" : "false");
+        btnBse.style.background = active ? "#2563eb" : "#ffffff";
+        btnBse.style.color = active ? "#ffffff" : "#334155";
+        btnBse.style.borderColor = active ? "#2563eb" : "#cbd5e1";
+      }
+    }
+
+    const btnNseInit = document.getElementById("btn-exchange-nse");
+    const btnBseInit = document.getElementById("btn-exchange-bse");
+    if (btnNseInit) {
+      btnNseInit.addEventListener("click", () => {
+        if (stock.exchanges !== "BSE") applyExchangeQuote("NSE");
+      });
+    }
+    if (btnBseInit) {
+      btnBseInit.addEventListener("click", () => {
+        if (bseQuoteSnapshot) applyExchangeQuote("BSE");
+      });
+    }
+
+    loadBseQuote(stock.symbol).then((bse) => {
+      if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
+      const btnBse = document.getElementById("btn-exchange-bse");
+      if (bse && bse.cmp) {
+        bseQuoteSnapshot = {
+          ...bse,
+          high52: Math.max(high52 || 0, bse.dayHigh || 0),
+          low52: low52 > 0 ? Math.min(low52, bse.dayLow || low52) : (bse.dayLow || 0)
+        };
+        if (btnBse) {
+          btnBse.disabled = false;
+          btnBse.removeAttribute("title");
+          btnBse.style.cursor = "pointer";
+          btnBse.style.opacity = "1";
+          btnBse.textContent = `BSE (${bse.bseCode})`;
+        }
+        if (stock.exchanges === "BSE") {
+          applyExchangeQuote("BSE");
+        }
+      } else if (btnBse && stock.exchanges !== "BSE") {
+        btnBse.disabled = true;
+        btnBse.title = "Not listed on BSE";
+        btnBse.style.cursor = "not-allowed";
+        btnBse.style.opacity = "0.5";
+        btnBse.textContent = "BSE (N/A)";
       }
     });
 
