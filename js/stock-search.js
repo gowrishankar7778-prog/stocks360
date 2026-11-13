@@ -1552,7 +1552,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
               <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Price Chart &amp; Dynamic Indicators</h3>
               <span id="tv-chart-symbol-label" style="font-size:0.8rem; font-weight:600; color:#2563eb; background:#eff6ff; border:1px solid #bfdbfe; padding:3px 10px; border-radius:999px;">
-                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; 1D &bull; Delayed (TV Free Feed)
+                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; 15m &bull; ~15m Delayed (TV Free Feed)
               </span>
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;" role="group" aria-label="Chart Accessibility Tools">
@@ -1568,11 +1568,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;" role="group" aria-label="Chart Candle Interval">
               <span style="font-size:0.78rem; font-weight:700; color:#475569; margin-right:4px;">Interval:</span>
               <button type="button" class="tv-interval-btn" data-interval="5" data-label="5m" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">5m</button>
-              <button type="button" class="tv-interval-btn" data-interval="15" data-label="15m" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">15m</button>
+              <button type="button" class="tv-interval-btn" data-interval="15" data-label="15m" style="padding:4px 9px; font-size:0.78rem; font-weight:700; color:#ffffff; background:#2563eb; border:1px solid #2563eb; border-radius:5px; cursor:pointer;">15m</button>
               <button type="button" class="tv-interval-btn" data-interval="60" data-label="1H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1H</button>
               <button type="button" class="tv-interval-btn" data-interval="120" data-label="2H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">2H</button>
               <button type="button" class="tv-interval-btn" data-interval="240" data-label="4H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">4H</button>
-              <button type="button" class="tv-interval-btn" data-interval="D" data-label="1D" style="padding:4px 9px; font-size:0.78rem; font-weight:700; color:#ffffff; background:#2563eb; border:1px solid #2563eb; border-radius:5px; cursor:pointer;">1D</button>
+              <button type="button" class="tv-interval-btn" data-interval="D" data-label="1D" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1D</button>
               <button type="button" class="tv-interval-btn" data-interval="W" data-label="1W" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1W</button>
               <button type="button" class="tv-interval-btn" data-interval="D" data-range="1M" data-label="2W View (1D)" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;" title="TradingView free embed supports 1D/1W candles; opens 1D candles with short-term view">2W</button>
               <select id="tv-custom-interval" aria-label="Custom Candle Interval" style="padding:4px 8px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">
@@ -1599,6 +1599,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <option value="60M">5 Years</option>
                 <option value="ALL">All Time</option>
               </select>
+              <button type="button" id="btn-chart-refresh" title="Reload TradingView widget to fetch latest available delayed bars" style="padding:4px 10px; font-size:0.78rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:5px; cursor:pointer;">Refresh</button>
             </div>
           </div>
           <div id="tv-chart-text-summary" aria-live="polite" hidden style="margin-bottom:12px; padding:12px 16px; background:#f8fafc; border:1px solid #cbd5e1; border-left:4px solid #2563eb; border-radius:8px; font-size:0.9rem; color:#1e293b; line-height:1.55;"></div>
@@ -2025,8 +2026,8 @@ document.addEventListener("DOMContentLoaded", function () {
       renderTradingViewChart(exch);
     }
 
-    let activeChartInterval = "D";
-    let activeChartIntervalLabel = "1D";
+    let activeChartInterval = "15";
+    let activeChartIntervalLabel = "15m";
     let activeChartRange = "";
 
     function renderTradingViewChart(exch) {
@@ -2037,7 +2038,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
       if (labelEl) {
         const rangeSuffix = activeChartRange ? ` (${activeChartRange})` : "";
-        labelEl.textContent = `${tvSymbol} \u2022 ${activeChartIntervalLabel}${rangeSuffix} \u2022 Delayed (TV Free Feed)`;
+        labelEl.textContent = `${tvSymbol} \u2022 ${activeChartIntervalLabel}${rangeSuffix} \u2022 ~15m Delayed (TV Free Feed)`;
       }
       container.innerHTML = "";
       const widgetWrap = document.createElement("div");
@@ -2231,6 +2232,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (rangeSel) {
       rangeSel.addEventListener("change", () => {
         activeChartRange = rangeSel.value || "";
+        renderTradingViewChart(activeChartExchange);
+      });
+    }
+
+    const refreshChartBtn = document.getElementById("btn-chart-refresh");
+    if (refreshChartBtn) {
+      refreshChartBtn.addEventListener("click", () => {
         renderTradingViewChart(activeChartExchange);
       });
     }
