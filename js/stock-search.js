@@ -1619,7 +1619,6 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
             </div>
           </div>
-          ${stock.exchanges === 'BSE' && marketCapCr <= 0 ? `<p style="margin:10px 0 0; font-size:0.78rem; color:#64748b;">Note: Price &amp; volume data is sourced from BSE exchange records. Fundamental ratios and financial statements are currently synced for NSE-listed equities.</p>` : ''}
         </section>
 
         <!-- SECTION 3: TECHNICALS -->

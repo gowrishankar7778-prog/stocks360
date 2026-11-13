@@ -730,9 +730,6 @@
                 <strong style="display:block; font-size:0.88rem; color:#0f172a; margin-top:3px;">${lockInOrExitLoad}</strong>
               </div>
             </div>
-            <p style="margin:10px 0 0; font-size:0.76rem; color:#64748b;">
-              Data Source: Daily NAV and scheme names are synced from AMFI, with historical returns from MFAPI. ${(Array.isArray(scheme.holdings) && scheme.holdings.length > 0) ? 'Portfolio holdings and ratios reflect scheme disclosures.' : 'For schemes without direct AMC fact-sheet disclosures, AUM, Expense Ratio, and Risk Ratios are category-level estimates.'}
-            </p>
 
             <!-- ASSET ALLOCATION BREAKDOWN -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px 20px; margin-top:20px;">
