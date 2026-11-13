@@ -1548,12 +1548,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <!-- LIVE INTRADAY CHART & DYNAMIC INDICATORS (TRADINGVIEW) -->
         <section id="sec-live-chart" style="margin-bottom:28px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
-            <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Live Price Chart &amp; Dynamic Indicators</h3>
-            <span id="tv-chart-symbol-label" style="font-size:0.8rem; font-weight:600; color:#2563eb; background:#eff6ff; border:1px solid #bfdbfe; padding:3px 10px; border-radius:999px;">
-              ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; Live
-            </span>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Live Price Chart &amp; Dynamic Indicators</h3>
+              <span id="tv-chart-symbol-label" style="font-size:0.8rem; font-weight:600; color:#2563eb; background:#eff6ff; border:1px solid #bfdbfe; padding:3px 10px; border-radius:999px;">
+                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; Live
+              </span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;" role="group" aria-label="Chart Accessibility Tools">
+              <button type="button" id="btn-chart-ai-summary" style="padding:6px 12px; font-size:0.82rem; font-weight:700; color:#0f172a; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; cursor:pointer;">
+                Read Chart Summary (Text &amp; Audio)
+              </button>
+              <button type="button" id="btn-chart-table-toggle" aria-expanded="false" aria-controls="tv-chart-accessible-table-wrap" style="padding:6px 12px; font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; cursor:pointer;">
+                View Chart as Table
+              </button>
+            </div>
           </div>
+          <div id="tv-chart-text-summary" aria-live="polite" hidden style="margin-bottom:12px; padding:12px 16px; background:#f8fafc; border:1px solid #cbd5e1; border-left:4px solid #2563eb; border-radius:8px; font-size:0.9rem; color:#1e293b; line-height:1.55;"></div>
+          <div id="tv-chart-accessible-table-wrap" hidden style="margin-bottom:14px; overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; background:#ffffff;"></div>
           <div id="tv-live-chart-container" style="height:460px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
         </section>
 
@@ -2013,7 +2025,122 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(widgetWrap);
     }
 
-    renderTradingViewChart(stock.exchanges === "BSE" ? "BSE" : "NSE");
+    let activeChartExchange = stock.exchanges === "BSE" ? "BSE" : "NSE";
+    const origRenderTv = renderTradingViewChart;
+    renderTradingViewChart = function (exch) {
+      activeChartExchange = exch;
+      origRenderTv(exch);
+      renderAccessibleChartTable(exch);
+      const sumBox = document.getElementById("tv-chart-text-summary");
+      if (sumBox && !sumBox.hidden) {
+        generateAndShowChartSummary(false);
+      }
+    };
+
+    function getActiveChartSnapshot(exch) {
+      const q = exch === "BSE" && bseQuoteSnapshot ? bseQuoteSnapshot : nseQuoteSnapshot;
+      return {
+        symbol: stock.symbol,
+        name: stock.name,
+        exchange: exch,
+        cmp: Number(q.cmp) || 0,
+        dayOpen: Number(q.dayOpen) || 0,
+        dayHigh: Number(q.dayHigh) || 0,
+        dayLow: Number(q.dayLow) || 0,
+        prevClose: Number(q.prevClose) || 0,
+        dayChange: Number(q.dayChange) || 0,
+        dayChangePct: Number(q.dayChangePct) || 0,
+        high52: Number(q.high52 || high52) || 0,
+        low52: Number(q.low52 || low52) || 0,
+        dma50: Number(stock.dma50) || 0,
+        dma200: Number(stock.dma200) || 0,
+        goldenCross: !!stock.goldenCross,
+        rsi14: Number(stock.rsi14) || 50,
+        volumeSurge: Number(stock.volumeSurge) || 1.0
+      };
+    }
+
+    function renderAccessibleChartTable(exch) {
+      const wrap = document.getElementById("tv-chart-accessible-table-wrap");
+      if (!wrap) return;
+      const snap = getActiveChartSnapshot(exch);
+      const rsiZone = snap.rsi14 >= 70 ? "Overbought (>= 70)" : snap.rsi14 <= 30 ? "Oversold (<= 30)" : "Neutral (30 - 70)";
+      const maSignal = snap.dma50 > snap.dma200 ? "Bullish (50-DMA above 200-DMA)" : "Bearish (50-DMA below 200-DMA)";
+      const rows = [
+        ["Exchange & Symbol", `${snap.exchange}: ${snap.symbol}`, "Active exchange feed"],
+        ["Current Market Price (CMP)", `₹ ${snap.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`, `${snap.dayChange >= 0 ? "+" : ""}${snap.dayChangePct}% vs previous close`],
+        ["Day Range (Low - High)", `₹ ${snap.dayLow.toLocaleString("en-IN")} - ₹ ${snap.dayHigh.toLocaleString("en-IN")}`, `Opened at ₹ ${snap.dayOpen.toLocaleString("en-IN")}`],
+        ["Previous Close", `₹ ${snap.prevClose.toLocaleString("en-IN")}`, "Prior session closing price"],
+        ["52-Week Range (Low - High)", `₹ ${snap.low52.toLocaleString("en-IN")} - ₹ ${snap.high52.toLocaleString("en-IN")}`, "Annual trading range"],
+        ["50-Day Moving Average", `₹ ${snap.dma50.toLocaleString("en-IN")}`, snap.cmp >= snap.dma50 ? "Price trading above 50-DMA" : "Price trading below 50-DMA"],
+        ["200-Day Moving Average", `₹ ${snap.dma200.toLocaleString("en-IN")}`, maSignal],
+        ["14-Day RSI", `${snap.rsi14}`, rsiZone],
+        ["Volume Surge", `${snap.volumeSurge}x`, snap.volumeSurge >= 1.2 ? "Above-average trading volume" : "Normal trading volume"]
+      ];
+      wrap.innerHTML = `
+        <table id="tv-chart-accessible-table" style="width:100%; border-collapse:collapse; font-size:0.86rem;">
+          <caption style="text-align:left; padding:10px 14px; font-weight:700; color:#0f172a; background:#f8fafc; border-bottom:1px solid #e2e8f0;">${escapeHtml(snap.name)} (${escapeHtml(snap.exchange)}) - Chart &amp; Technical Indicator Values</caption>
+          <thead>
+            <tr style="background:#f1f5f9; border-bottom:1px solid #cbd5e1;">
+              <th scope="col" style="padding:8px 14px; text-align:left; color:#334155;">Metric</th>
+              <th scope="col" style="padding:8px 14px; text-align:left; color:#334155;">Value</th>
+              <th scope="col" style="padding:8px 14px; text-align:left; color:#334155;">Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map((r) => `<tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 14px; font-weight:600; color:#0f172a;">${escapeHtml(r[0])}</td><td style="padding:8px 14px; font-weight:700; color:#1e293b;">${escapeHtml(r[1])}</td><td style="padding:8px 14px; color:#475569;">${escapeHtml(r[2])}</td></tr>`).join("")}
+          </tbody>
+        </table>`;
+    }
+
+    function buildDeterministicChartSummary(snap) {
+      const dir = snap.dayChange >= 0 ? "up" : "down";
+      const maRel = snap.cmp >= snap.dma50 ? "above" : "below";
+      const cross = snap.dma50 > snap.dma200 ? "50-DMA is above the 200-DMA (bullish trend)" : "50-DMA is below the 200-DMA (cautious trend)";
+      const rsiTxt = snap.rsi14 >= 70 ? "overbought" : snap.rsi14 <= 30 ? "oversold" : "neutral";
+      return `${snap.name} on ${snap.exchange} is trading at ₹${snap.cmp.toLocaleString("en-IN")}, ${dir} ${Math.abs(snap.dayChangePct)}% from its previous close of ₹${snap.prevClose.toLocaleString("en-IN")}, with an intraday range of ₹${snap.dayLow.toLocaleString("en-IN")} to ₹${snap.dayHigh.toLocaleString("en-IN")}. The stock sits within its 52-week range of ₹${snap.low52.toLocaleString("en-IN")} to ₹${snap.high52.toLocaleString("en-IN")}. Technically, the price is ${maRel} its 50-DMA of ₹${snap.dma50.toLocaleString("en-IN")}, and the ${cross} (200-DMA at ₹${snap.dma200.toLocaleString("en-IN")}). Its 14-day RSI is ${snap.rsi14} (${rsiTxt}), with volume at ${snap.volumeSurge}x of average.`;
+    }
+
+    async function generateAndShowChartSummary(speakAfter) {
+      const box = document.getElementById("tv-chart-text-summary");
+      if (!box) return;
+      const snap = getActiveChartSnapshot(activeChartExchange);
+      box.hidden = false;
+      box.textContent = `Generating ${snap.exchange} chart summary for ${snap.symbol}...`;
+      let summaryText = null;
+      if (typeof StocksGeminiAI !== "undefined" && StocksGeminiAI && typeof StocksGeminiAI.summarizeChartData === "function") {
+        summaryText = await StocksGeminiAI.summarizeChartData(snap);
+      }
+      if (!summaryText) {
+        summaryText = buildDeterministicChartSummary(snap);
+      }
+      box.textContent = summaryText;
+      if (speakAfter && window.speechSynthesis && typeof window.speechSynthesis.cancel === "function" && typeof SpeechSynthesisUtterance === "function") {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(summaryText);
+        u.rate = 0.96;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    const btnSummary = document.getElementById("btn-chart-ai-summary");
+    if (btnSummary) {
+      btnSummary.addEventListener("click", () => generateAndShowChartSummary(true));
+    }
+    const btnTable = document.getElementById("btn-chart-table-toggle");
+    if (btnTable) {
+      btnTable.addEventListener("click", () => {
+        const wrap = document.getElementById("tv-chart-accessible-table-wrap");
+        if (!wrap) return;
+        const isHidden = wrap.hidden;
+        wrap.hidden = !isHidden;
+        btnTable.setAttribute("aria-expanded", isHidden ? "true" : "false");
+        btnTable.textContent = isHidden ? "Hide Chart Table" : "View Chart as Table";
+        if (isHidden) renderAccessibleChartTable(activeChartExchange);
+      });
+    }
+
+    renderTradingViewChart(activeChartExchange);
 
     const btnNseInit = document.getElementById("btn-exchange-nse");
     const btnBseInit = document.getElementById("btn-exchange-bse");

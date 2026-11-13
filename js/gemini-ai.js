@@ -1376,6 +1376,38 @@ Provide its business overview, latest reported fundamentals, investment thesis (
     return profile;
   }
 
+  async function summarizeChartData(chartPayload) {
+    if (!chartPayload || !chartPayload.symbol) return null;
+    const cacheKey = `chart_summary_${chartPayload.symbol}_${chartPayload.exchange}_${chartPayload.cmp}`;
+    try {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) return cached;
+    } catch (_) {}
+
+    const systemInstruction =
+      "You are a financial accessibility assistant. Convert the provided JSON of stock price and technical indicators into a clear, 3-to-4 sentence plain-text summary for screen-reader users. State ONLY numbers present in the JSON. Do not use markdown, emojis, bullet points, or price forecasts.";
+
+    const prompt = `Summarize this ${chartPayload.exchange} stock chart data in plain text:\n${JSON.stringify(chartPayload)}`;
+
+    try {
+      const rawText = await callGeminiModel(systemInstruction, prompt, true, null, {
+        maxOutputTokens: 260,
+        timeoutMs: 12000,
+        fallbackTimeoutMs: 8000,
+        totalBudgetMs: 18000,
+        temperature: 0.1
+      });
+      const cleaned = stripHtml(rawText || "").trim();
+      if (cleaned) {
+        try {
+          sessionStorage.setItem(cacheKey, cleaned);
+        } catch (_) {}
+        return cleaned;
+      }
+    } catch (_) {}
+    return null;
+  }
+
   return {
     loadConfig: loadConfig,
     saveConfig: saveConfig,
@@ -1384,7 +1416,8 @@ Provide its business overview, latest reported fundamentals, investment thesis (
     askGeneralMarketTrends: askGeneralMarketTrends,
     renderAiResponseCard: renderAiResponseCard,
     parseScreenerQuery: parseScreenerQuery,
-    fetchCompanyAiProfile: fetchCompanyAiProfile
+    fetchCompanyAiProfile: fetchCompanyAiProfile,
+    summarizeChartData: summarizeChartData
   };
 })();
 
