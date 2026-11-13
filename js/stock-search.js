@@ -1546,68 +1546,20 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- LIVE INTRADAY CHART & DYNAMIC INDICATORS (TRADINGVIEW) -->
+        <!-- LIVE INTRADAY CHART (TRADINGVIEW) -->
         <section id="sec-live-chart" style="margin-bottom:28px;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-              <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Price Chart &amp; Dynamic Indicators</h3>
+              <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">TradingView Chart</h3>
               <span id="tv-chart-symbol-label" style="font-size:0.8rem; font-weight:600; color:#2563eb; background:#eff6ff; border:1px solid #bfdbfe; padding:3px 10px; border-radius:999px;">
-                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; 15m &bull; ~15m Delayed (TV Free Feed)
+                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`}
               </span>
             </div>
-            <div id="tv-chart-a11y-tools" hidden style="display:none; gap:8px; flex-wrap:wrap;" role="group" aria-label="Chart Accessibility Tools">
-              <button type="button" id="btn-chart-ai-summary" style="padding:6px 12px; font-size:0.82rem; font-weight:700; color:#0f172a; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; cursor:pointer;">
-                Read Chart Summary (Text &amp; Audio)
-              </button>
-              <button type="button" id="btn-chart-table-toggle" aria-expanded="false" aria-controls="tv-chart-accessible-table-wrap" style="padding:6px 12px; font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; cursor:pointer;">
-                View Chart as Table
-              </button>
-            </div>
+            <a id="tv-open-external-link" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent(stock.exchanges === 'BSE' ? `BSE:${stock.bseCode || stock.symbol}` : `NSE:${stock.symbol}`)}" target="_blank" rel="noopener noreferrer" style="padding:6px 12px; font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; text-decoration:none;">
+              Open in TradingView
+            </a>
           </div>
-          <div id="tv-chart-controls" hidden style="display:none; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:10px 12px; margin-bottom:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;">
-            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;" role="group" aria-label="Chart Candle Interval">
-              <span style="font-size:0.78rem; font-weight:700; color:#475569; margin-right:4px;">Interval:</span>
-              <button type="button" class="tv-interval-btn" data-interval="5" data-label="5m" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">5m</button>
-              <button type="button" class="tv-interval-btn" data-interval="15" data-label="15m" style="padding:4px 9px; font-size:0.78rem; font-weight:700; color:#ffffff; background:#2563eb; border:1px solid #2563eb; border-radius:5px; cursor:pointer;">15m</button>
-              <button type="button" class="tv-interval-btn" data-interval="60" data-label="1H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1H</button>
-              <button type="button" class="tv-interval-btn" data-interval="120" data-label="2H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">2H</button>
-              <button type="button" class="tv-interval-btn" data-interval="240" data-label="4H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">4H</button>
-              <button type="button" class="tv-interval-btn" data-interval="D" data-label="1D" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1D</button>
-              <button type="button" class="tv-interval-btn" data-interval="W" data-label="1W" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1W</button>
-              <button type="button" class="tv-interval-btn" data-interval="D" data-range="1M" data-label="2W View (1D)" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;" title="TradingView free embed supports 1D/1W candles; opens 1D candles with short-term view">2W</button>
-              <select id="tv-custom-interval" aria-label="Custom Candle Interval" style="padding:4px 8px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">
-                <option value="">More intervals...</option>
-                <option value="1">1 min</option>
-                <option value="3">3 min</option>
-                <option value="30">30 min</option>
-                <option value="45">45 min</option>
-                <option value="180">3 hours</option>
-                <option value="M">1 month</option>
-              </select>
-            </div>
-            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-              <label for="tv-chart-range-select" style="font-size:0.78rem; font-weight:700; color:#475569;">Time Frame:</label>
-              <select id="tv-chart-range-select" style="padding:4px 8px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">
-                <option value="">Auto (by interval)</option>
-                <option value="1D">1 Day</option>
-                <option value="5D">5 Days</option>
-                <option value="1M">1 Month</option>
-                <option value="3M">3 Months</option>
-                <option value="6M">6 Months</option>
-                <option value="YTD">YTD</option>
-                <option value="12M">1 Year</option>
-                <option value="60M">5 Years</option>
-                <option value="ALL">All Time</option>
-              </select>
-              <button type="button" id="btn-chart-refresh" title="Reload TradingView widget to fetch latest available delayed bars" style="padding:4px 10px; font-size:0.78rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:5px; cursor:pointer;">Refresh</button>
-            </div>
-          </div>
-          <div id="tv-chart-text-summary" aria-live="polite" hidden style="margin-bottom:12px; padding:12px 16px; background:#f8fafc; border:1px solid #cbd5e1; border-left:4px solid #2563eb; border-radius:8px; font-size:0.9rem; color:#1e293b; line-height:1.55;"></div>
-          <div id="tv-chart-accessible-table-wrap" hidden style="margin-bottom:14px; overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; background:#ffffff;"></div>
-          <div id="tv-symbol-info-container" style="min-height:140px; margin-bottom:14px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
           <div id="tv-live-chart-container" style="height:460px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
-          <div id="tv-technical-analysis-container" style="height:450px; margin-top:14px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
-          <p style="margin:6px 0 0; font-size:0.74rem; color:#64748b;">Note: TradingView's free embedded widget provides delayed NSE/BSE exchange quotes per exchange licensing policy. Use the bottom bar inside the chart for Go-to-Date and custom date ranges.</p>
         </section>
 
         <!-- SECTION 2: FUNDAMENTALS -->
@@ -2028,22 +1980,19 @@ document.addEventListener("DOMContentLoaded", function () {
       renderTradingViewChart(exch);
     }
 
-    const SHOW_PRIVATE_CHART_FEATURES = (function () {
-      try { return localStorage.getItem("stocks360_private_chart_features") === "1"; } catch (_) { return false; }
-    })();
-    if (SHOW_PRIVATE_CHART_FEATURES) {
-      const a11yTools = document.getElementById("tv-chart-a11y-tools");
-      const ctrlBar = document.getElementById("tv-chart-controls");
-      if (a11yTools) { a11yTools.hidden = false; a11yTools.style.display = "flex"; }
-      if (ctrlBar) { ctrlBar.hidden = false; ctrlBar.style.display = "flex"; }
-    }
-
-    let activeChartInterval = "15";
-    let activeChartIntervalLabel = "15m";
-    let activeChartRange = "";
-
-    function mountTradingViewWidget(container, scriptUrl, configObj) {
+    function renderTradingViewChart(exch) {
+      const container = document.getElementById("tv-live-chart-container");
+      const labelEl = document.getElementById("tv-chart-symbol-label");
+      const extLinkEl = document.getElementById("tv-open-external-link");
       if (!container) return;
+      const bseSym = (bseQuoteSnapshot && bseQuoteSnapshot.bseSymbol) || stock.bseCode || stock.symbol;
+      const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
+      if (labelEl) {
+        labelEl.textContent = tvSymbol;
+      }
+      if (extLinkEl) {
+        extLinkEl.setAttribute("href", `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(tvSymbol)}`);
+      }
       container.innerHTML = "";
       const widgetWrap = document.createElement("div");
       widgetWrap.className = "tradingview-widget-container";
@@ -2056,246 +2005,26 @@ document.addEventListener("DOMContentLoaded", function () {
       widgetWrap.appendChild(widgetDiv);
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = scriptUrl;
+      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
       script.async = true;
-      script.textContent = JSON.stringify(configObj);
-      widgetWrap.appendChild(script);
-      container.appendChild(widgetWrap);
-    }
-
-    function renderTradingViewChart(exch) {
-      const symbolInfoEl = document.getElementById("tv-symbol-info-container");
-      const container = document.getElementById("tv-live-chart-container");
-      const taContainer = document.getElementById("tv-technical-analysis-container");
-      const labelEl = document.getElementById("tv-chart-symbol-label");
-      if (!container) return;
-      const bseSym = (bseQuoteSnapshot && bseQuoteSnapshot.bseSymbol) || stock.bseCode || stock.symbol;
-      const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
-      if (labelEl) {
-        const rangeSuffix = activeChartRange ? ` (${activeChartRange})` : "";
-        labelEl.textContent = `${tvSymbol} \u2022 ${activeChartIntervalLabel}${rangeSuffix} \u2022 ~15m Delayed (TV Free Feed)`;
-      }
-
-      mountTradingViewWidget(
-        symbolInfoEl,
-        "https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js",
-        {
-          symbol: tvSymbol,
-          width: "100%",
-          locale: "en",
-          colorTheme: "light",
-          isTransparent: false
-        }
-      );
-
-      const chartCfg = {
+      script.textContent = JSON.stringify({
         autosize: true,
         symbol: tvSymbol,
-        interval: activeChartInterval,
+        interval: "D",
         timezone: "Asia/Kolkata",
         theme: "light",
         style: "1",
         locale: "en",
         allow_symbol_change: false,
         calendar: false,
-        withdateranges: true,
-        hide_side_toolbar: false,
         studies: ["MASimple@tv-basicstudies", "RSI@tv-basicstudies"],
         support_host: "https://www.tradingview.com"
-      };
-      if (activeChartRange) {
-        chartCfg.range = activeChartRange;
-      }
-      mountTradingViewWidget(
-        container,
-        "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js",
-        chartCfg
-      );
-
-      mountTradingViewWidget(
-        taContainer,
-        "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js",
-        {
-          symbol: tvSymbol,
-          interval: "15m",
-          colorTheme: "light",
-          isTransparent: false,
-          height: "100%",
-          width: "100%",
-          showIntervalTabs: true,
-          displayMode: "multiple",
-          locale: "en"
-        }
-      );
-    }
-
-    let activeChartExchange = stock.exchanges === "BSE" ? "BSE" : "NSE";
-    const origRenderTv = renderTradingViewChart;
-    renderTradingViewChart = function (exch) {
-      activeChartExchange = exch;
-      origRenderTv(exch);
-      renderAccessibleChartTable(exch);
-      const sumBox = document.getElementById("tv-chart-text-summary");
-      if (sumBox && !sumBox.hidden) {
-        generateAndShowChartSummary(false);
-      }
-    };
-
-    function getActiveChartSnapshot(exch) {
-      const q = exch === "BSE" && bseQuoteSnapshot ? bseQuoteSnapshot : nseQuoteSnapshot;
-      return {
-        symbol: stock.symbol,
-        name: stock.name,
-        exchange: exch,
-        cmp: Number(q.cmp) || 0,
-        dayOpen: Number(q.dayOpen) || 0,
-        dayHigh: Number(q.dayHigh) || 0,
-        dayLow: Number(q.dayLow) || 0,
-        prevClose: Number(q.prevClose) || 0,
-        dayChange: Number(q.dayChange) || 0,
-        dayChangePct: Number(q.dayChangePct) || 0,
-        high52: Number(q.high52 || high52) || 0,
-        low52: Number(q.low52 || low52) || 0,
-        dma50: Number(stock.dma50) || 0,
-        dma200: Number(stock.dma200) || 0,
-        goldenCross: !!stock.goldenCross,
-        rsi14: Number(stock.rsi14) || 50,
-        volumeSurge: Number(stock.volumeSurge) || 1.0
-      };
-    }
-
-    function renderAccessibleChartTable(exch) {
-      const wrap = document.getElementById("tv-chart-accessible-table-wrap");
-      if (!wrap) return;
-      const snap = getActiveChartSnapshot(exch);
-      const rsiZone = snap.rsi14 >= 70 ? "Overbought (>= 70)" : snap.rsi14 <= 30 ? "Oversold (<= 30)" : "Neutral (30 - 70)";
-      const maSignal = snap.dma50 > snap.dma200 ? "Bullish (50-DMA above 200-DMA)" : "Bearish (50-DMA below 200-DMA)";
-      const rows = [
-        ["Exchange & Symbol", `${snap.exchange}: ${snap.symbol}`, "Active exchange feed"],
-        ["Current Market Price (CMP)", `₹ ${snap.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`, `${snap.dayChange >= 0 ? "+" : ""}${snap.dayChangePct}% vs previous close`],
-        ["Day Range (Low - High)", `₹ ${snap.dayLow.toLocaleString("en-IN")} - ₹ ${snap.dayHigh.toLocaleString("en-IN")}`, `Opened at ₹ ${snap.dayOpen.toLocaleString("en-IN")}`],
-        ["Previous Close", `₹ ${snap.prevClose.toLocaleString("en-IN")}`, "Prior session closing price"],
-        ["52-Week Range (Low - High)", `₹ ${snap.low52.toLocaleString("en-IN")} - ₹ ${snap.high52.toLocaleString("en-IN")}`, "Annual trading range"],
-        ["50-Day Moving Average", `₹ ${snap.dma50.toLocaleString("en-IN")}`, snap.cmp >= snap.dma50 ? "Price trading above 50-DMA" : "Price trading below 50-DMA"],
-        ["200-Day Moving Average", `₹ ${snap.dma200.toLocaleString("en-IN")}`, maSignal],
-        ["14-Day RSI", `${snap.rsi14}`, rsiZone],
-        ["Volume Surge", `${snap.volumeSurge}x`, snap.volumeSurge >= 1.2 ? "Above-average trading volume" : "Normal trading volume"]
-      ];
-      wrap.innerHTML = `
-        <table id="tv-chart-accessible-table" style="width:100%; border-collapse:collapse; font-size:0.86rem;">
-          <caption style="text-align:left; padding:10px 14px; font-weight:700; color:#0f172a; background:#f8fafc; border-bottom:1px solid #e2e8f0;">${escapeHtml(snap.name)} (${escapeHtml(snap.exchange)}) - Chart &amp; Technical Indicator Values</caption>
-          <thead>
-            <tr style="background:#f1f5f9; border-bottom:1px solid #cbd5e1;">
-              <th scope="col" style="padding:8px 14px; text-align:left; color:#334155;">Metric</th>
-              <th scope="col" style="padding:8px 14px; text-align:left; color:#334155;">Value</th>
-              <th scope="col" style="padding:8px 14px; text-align:left; color:#334155;">Interpretation</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${rows.map((r) => `<tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 14px; font-weight:600; color:#0f172a;">${escapeHtml(r[0])}</td><td style="padding:8px 14px; font-weight:700; color:#1e293b;">${escapeHtml(r[1])}</td><td style="padding:8px 14px; color:#475569;">${escapeHtml(r[2])}</td></tr>`).join("")}
-          </tbody>
-        </table>`;
-    }
-
-    function buildDeterministicChartSummary(snap) {
-      const dir = snap.dayChange >= 0 ? "up" : "down";
-      const maRel = snap.cmp >= snap.dma50 ? "above" : "below";
-      const cross = snap.dma50 > snap.dma200 ? "50-DMA is above the 200-DMA (bullish trend)" : "50-DMA is below the 200-DMA (cautious trend)";
-      const rsiTxt = snap.rsi14 >= 70 ? "overbought" : snap.rsi14 <= 30 ? "oversold" : "neutral";
-      return `${snap.name} on ${snap.exchange} is trading at ₹${snap.cmp.toLocaleString("en-IN")}, ${dir} ${Math.abs(snap.dayChangePct)}% from its previous close of ₹${snap.prevClose.toLocaleString("en-IN")}, with an intraday range of ₹${snap.dayLow.toLocaleString("en-IN")} to ₹${snap.dayHigh.toLocaleString("en-IN")}. The stock sits within its 52-week range of ₹${snap.low52.toLocaleString("en-IN")} to ₹${snap.high52.toLocaleString("en-IN")}. Technically, the price is ${maRel} its 50-DMA of ₹${snap.dma50.toLocaleString("en-IN")}, and the ${cross} (200-DMA at ₹${snap.dma200.toLocaleString("en-IN")}). Its 14-day RSI is ${snap.rsi14} (${rsiTxt}), with volume at ${snap.volumeSurge}x of average.`;
-    }
-
-    async function generateAndShowChartSummary(speakAfter) {
-      const box = document.getElementById("tv-chart-text-summary");
-      if (!box) return;
-      const snap = getActiveChartSnapshot(activeChartExchange);
-      box.hidden = false;
-      box.textContent = `Generating ${snap.exchange} chart summary for ${snap.symbol}...`;
-      let summaryText = null;
-      if (typeof StocksGeminiAI !== "undefined" && StocksGeminiAI && typeof StocksGeminiAI.summarizeChartData === "function") {
-        summaryText = await StocksGeminiAI.summarizeChartData(snap);
-      }
-      if (!summaryText) {
-        summaryText = buildDeterministicChartSummary(snap);
-      }
-      box.textContent = summaryText;
-      if (speakAfter && window.speechSynthesis && typeof window.speechSynthesis.cancel === "function" && typeof SpeechSynthesisUtterance === "function") {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(summaryText);
-        u.rate = 0.96;
-        window.speechSynthesis.speak(u);
-      }
-    }
-
-    const btnSummary = document.getElementById("btn-chart-ai-summary");
-    if (btnSummary) {
-      btnSummary.addEventListener("click", () => generateAndShowChartSummary(true));
-    }
-    const btnTable = document.getElementById("btn-chart-table-toggle");
-    if (btnTable) {
-      btnTable.addEventListener("click", () => {
-        const wrap = document.getElementById("tv-chart-accessible-table-wrap");
-        if (!wrap) return;
-        const isHidden = wrap.hidden;
-        wrap.hidden = !isHidden;
-        btnTable.setAttribute("aria-expanded", isHidden ? "true" : "false");
-        btnTable.textContent = isHidden ? "Hide Chart Table" : "View Chart as Table";
-        if (isHidden) renderAccessibleChartTable(activeChartExchange);
       });
+      widgetWrap.appendChild(script);
+      container.appendChild(widgetWrap);
     }
 
-    const intervalBtns = document.querySelectorAll(".tv-interval-btn");
-    const customIntervalSel = document.getElementById("tv-custom-interval");
-    const rangeSel = document.getElementById("tv-chart-range-select");
-
-    function updateIntervalButtonStyles(activeBtn) {
-      intervalBtns.forEach((b) => {
-        const isOn = b === activeBtn;
-        b.style.background = isOn ? "#2563eb" : "#ffffff";
-        b.style.color = isOn ? "#ffffff" : "#334155";
-        b.style.borderColor = isOn ? "#2563eb" : "#cbd5e1";
-        b.style.fontWeight = isOn ? "700" : "600";
-      });
-    }
-
-    intervalBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        activeChartInterval = btn.getAttribute("data-interval") || "D";
-        activeChartIntervalLabel = btn.getAttribute("data-label") || activeChartInterval;
-        activeChartRange = btn.getAttribute("data-range") || "";
-        if (customIntervalSel) customIntervalSel.value = "";
-        if (rangeSel) rangeSel.value = activeChartRange;
-        updateIntervalButtonStyles(btn);
-        renderTradingViewChart(activeChartExchange);
-      });
-    });
-
-    if (customIntervalSel) {
-      customIntervalSel.addEventListener("change", () => {
-        if (!customIntervalSel.value) return;
-        activeChartInterval = customIntervalSel.value;
-        const opt = customIntervalSel.options && customIntervalSel.selectedIndex >= 0 ? customIntervalSel.options[customIntervalSel.selectedIndex] : null;
-        activeChartIntervalLabel = opt ? opt.textContent : activeChartInterval;
-        updateIntervalButtonStyles(null);
-        renderTradingViewChart(activeChartExchange);
-      });
-    }
-
-    if (rangeSel) {
-      rangeSel.addEventListener("change", () => {
-        activeChartRange = rangeSel.value || "";
-        renderTradingViewChart(activeChartExchange);
-      });
-    }
-
-    const refreshChartBtn = document.getElementById("btn-chart-refresh");
-    if (refreshChartBtn) {
-      refreshChartBtn.addEventListener("click", () => {
-        renderTradingViewChart(activeChartExchange);
-      });
-    }
-
-    renderTradingViewChart(activeChartExchange);
+    renderTradingViewChart(stock.exchanges === "BSE" ? "BSE" : "NSE");
 
     const btnNseInit = document.getElementById("btn-exchange-nse");
     const btnBseInit = document.getElementById("btn-exchange-bse");
