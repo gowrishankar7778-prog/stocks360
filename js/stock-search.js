@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; 15m &bull; ~15m Delayed (TV Free Feed)
               </span>
             </div>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;" role="group" aria-label="Chart Accessibility Tools">
+            <div id="tv-chart-a11y-tools" hidden style="display:none; gap:8px; flex-wrap:wrap;" role="group" aria-label="Chart Accessibility Tools">
               <button type="button" id="btn-chart-ai-summary" style="padding:6px 12px; font-size:0.82rem; font-weight:700; color:#0f172a; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; cursor:pointer;">
                 Read Chart Summary (Text &amp; Audio)
               </button>
@@ -1564,7 +1564,7 @@ document.addEventListener("DOMContentLoaded", function () {
               </button>
             </div>
           </div>
-          <div id="tv-chart-controls" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:10px 12px; margin-bottom:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;">
+          <div id="tv-chart-controls" hidden style="display:none; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:10px 12px; margin-bottom:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;">
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;" role="group" aria-label="Chart Candle Interval">
               <span style="font-size:0.78rem; font-weight:700; color:#475569; margin-right:4px;">Interval:</span>
               <button type="button" class="tv-interval-btn" data-interval="5" data-label="5m" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">5m</button>
@@ -2024,6 +2024,16 @@ document.addEventListener("DOMContentLoaded", function () {
         btnBse.style.borderColor = active ? "#2563eb" : "#cbd5e1";
       }
       renderTradingViewChart(exch);
+    }
+
+    const SHOW_PRIVATE_CHART_FEATURES = (function () {
+      try { return localStorage.getItem("stocks360_private_chart_features") === "1"; } catch (_) { return false; }
+    })();
+    if (SHOW_PRIVATE_CHART_FEATURES) {
+      const a11yTools = document.getElementById("tv-chart-a11y-tools");
+      const ctrlBar = document.getElementById("tv-chart-controls");
+      if (a11yTools) { a11yTools.hidden = false; a11yTools.style.display = "flex"; }
+      if (ctrlBar) { ctrlBar.hidden = false; ctrlBar.style.display = "flex"; }
     }
 
     let activeChartInterval = "15";
