@@ -384,39 +384,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "114",
-        "expenses": "95",
-        "operatingProfit": "19",
-        "opm": "16.7%",
-        "netProfit": "12",
-        "eps": "₹34.2"
+        "sales": "198",
+        "expenses": "193",
+        "operatingProfit": "5",
+        "opm": "2.5%",
+        "netProfit": "3",
+        "eps": "₹2.9"
       },
       {
         "period": "Mar 26",
-        "sales": "120",
-        "expenses": "100",
-        "operatingProfit": "20",
-        "opm": "16.7%",
-        "netProfit": "13",
-        "eps": "₹37.1"
+        "sales": "246",
+        "expenses": "233",
+        "operatingProfit": "13",
+        "opm": "5.3%",
+        "netProfit": "9",
+        "eps": "₹7.87"
       },
       {
         "period": "Jun 26",
-        "sales": "126",
-        "expenses": "104",
-        "operatingProfit": "22",
-        "opm": "17.5%",
-        "netProfit": "14",
-        "eps": "₹39.9"
+        "sales": "315",
+        "expenses": "266",
+        "operatingProfit": "49",
+        "opm": "15.6%",
+        "netProfit": "36",
+        "eps": "₹30.23"
       },
       {
-        "period": "Sept 26",
-        "sales": "132",
-        "expenses": "109",
-        "operatingProfit": "23",
-        "opm": "17.4%",
-        "netProfit": "15",
-        "eps": "₹42.8"
+        "period": "Sep 26",
+        "sales": "337",
+        "expenses": "296",
+        "operatingProfit": "41",
+        "opm": "12.2%",
+        "netProfit": "31",
+        "eps": "₹25.42"
       }
     ],
     "balanceSheet": [
@@ -479,6 +479,18 @@
         "investments": "189",
         "otherAssets": "261",
         "totalAssets": "850"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "12",
+        "reserves": "495",
+        "borrowings": "615",
+        "otherLiabilities": "405",
+        "totalLiabilities": "1,527",
+        "fixedAssets": "595",
+        "investments": "6",
+        "otherAssets": "926",
+        "totalAssets": "1,527"
       }
     ],
     "cashFlows": [
@@ -516,10 +528,17 @@
         "cfi": "-33",
         "cff": "-22",
         "netCash": "17"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "94",
+        "cfi": "-139",
+        "cff": "43",
+        "netCashFlow": "-2"
       }
     ],
     "shareholding": {
-      "promoters": "74.33%",
+      "promoters": "67.91%",
       "fii": "3.00%",
       "dii": "1.61%",
       "public": "21.06%",
@@ -565,7 +584,7 @@
       "evToEbitda": 16.5,
       "roce": 23,
       "roe": 18.4,
-      "debtToEquity": 1.22,
+      "debtToEquity": 1.21,
       "interestCoverage": 2.4,
       "divYield": 0.6,
       "salesGrowth3Y": 67.5,
@@ -575,7 +594,7 @@
     "pe": 21.5,
     "roePct": 18.4,
     "rocePct": 23,
-    "debtToEquity": 1.22,
+    "debtToEquity": 1.21,
     "divYieldPct": 0.6,
     "salesGrowth3Y": 67.5,
     "profitGrowth3Y": 66.1,
@@ -597,9 +616,10 @@
     ],
     "updatedAt": 1794038126875,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:45:28.473Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.71 -> 1.22",
-    "cmp": 3310
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.452Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 3310,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747515_28102026014320_WEB.xml"
   },
   "YATHARTH": {
     "about": "Yatharth Hospital & Trauma Care Services Limited, together with its subsidiaries, owns and operates super-specialty hospitals in India. The company offers services in the areas of medicine, cardiology, neurosciences, general surgery, nephrology and urology, pediatrics, gastroenterology, pulmonology, gynecology, orthopedics, spine and rheumatology, plastic and cosmetic surgery, ear, nose, throat, endocrinology, critical care, dermatology, nuclear medicine, and cancer and bone marrow transplant. It also provides services in the areas of GI surgery and liver transplant, robotic surgery, kidney transplant, IVF and fertility, emergency medicine, ophthalmology, dentistry, psychology and psychiatry, physiotherapy and rehabilitation, anesthesiology, radiology, pathology and laboratory medicine, nutrition and health, interventional spine and pain medicine, and transfusion medicine and cellular therapy. In addition, the company sells medicines, as well as provide cafeteria services. The company was incorporated in 2008 and is based in Noida, India.",
@@ -676,39 +696,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "320",
-        "expenses": "261",
-        "operatingProfit": "59",
-        "opm": "18.4%",
-        "netProfit": "45",
-        "eps": "₹5.5"
+        "sales": "164",
+        "expenses": "132",
+        "operatingProfit": "32",
+        "opm": "19.5%",
+        "netProfit": "24",
+        "eps": "₹2.48"
       },
       {
         "period": "Mar 26",
-        "sales": "342",
-        "expenses": "280",
-        "operatingProfit": "62",
+        "sales": "171",
+        "expenses": "140",
+        "operatingProfit": "31",
         "opm": "18.1%",
-        "netProfit": "48",
-        "eps": "₹5.9"
+        "netProfit": "24",
+        "eps": "₹2.47"
       },
       {
         "period": "Jun 26",
-        "sales": "393",
-        "expenses": "332",
-        "operatingProfit": "61",
-        "opm": "15.5%",
-        "netProfit": "47",
-        "eps": "₹5.8"
+        "sales": "190",
+        "expenses": "152",
+        "operatingProfit": "38",
+        "opm": "20.0%",
+        "netProfit": "28",
+        "eps": "₹2.92"
       },
       {
-        "period": "Sept 26",
-        "sales": "431",
-        "expenses": "365",
-        "operatingProfit": "66",
-        "opm": "15.3%",
-        "netProfit": "51",
-        "eps": "₹6.2"
+        "period": "Sep 26",
+        "sales": "210",
+        "expenses": "166",
+        "operatingProfit": "44",
+        "opm": "21.0%",
+        "netProfit": "37",
+        "eps": "₹3.85"
       }
     ],
     "balanceSheet": [
@@ -771,6 +791,18 @@
         "investments": "413",
         "otherAssets": "555",
         "totalAssets": "2,202"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "96",
+        "reserves": "1,586",
+        "borrowings": "255",
+        "otherLiabilities": "108",
+        "totalLiabilities": "2,045",
+        "fixedAssets": "422",
+        "investments": "534",
+        "otherAssets": "1,089",
+        "totalAssets": "2,045"
       }
     ],
     "cashFlows": [
@@ -808,10 +840,17 @@
         "cfi": "-108",
         "cff": "-47",
         "netCash": "31"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "46",
+        "cfi": "-69",
+        "cff": "-1",
+        "netCashFlow": "-24"
       }
     ],
     "shareholding": {
-      "promoters": "56.94%",
+      "promoters": "55.8%",
       "fii": "8.38%",
       "dii": "4.51%",
       "public": "30.17%",
@@ -857,7 +896,7 @@
       "evToEbitda": 33,
       "roce": 12.5,
       "roe": 10,
-      "debtToEquity": 0.25,
+      "debtToEquity": 0.15,
       "interestCoverage": 44.1,
       "divYield": 1.1,
       "salesGrowth3Y": 56.2,
@@ -867,7 +906,7 @@
     "pe": 43.9,
     "roePct": 10,
     "rocePct": 12.5,
-    "debtToEquity": 0.25,
+    "debtToEquity": 0.15,
     "divYieldPct": 1.1,
     "salesGrowth3Y": 56.2,
     "profitGrowth3Y": 38.4,
@@ -889,9 +928,10 @@
     ],
     "updatedAt": 1794038126876,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:45:28.736Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 17% -> 10%; Debt/Equity updated: 0.61 -> 0.25",
-    "cmp": 1027.9
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.987Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1027.9,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751894_03112026051425_WEB.xml"
   },
   "YATRA": {
     "about": "Yatra Online Limited provides reservation and booking services, and customized solutions related to transport, travel, tours, and tourism in India and internationally. It is involved in air travel, hotel and package, cabs and ground transportation, rail and bus, corporate travel management, personal travel, and expense management, as well as meetings, incentives, conferences, and events (MICE) activities. It serves travelers its products through internet, mobile, call center, and retail lounges. The company was incorporated in 2005 and is based in Gurugram, India. Yatra Online Limited operates as a subsidiary of THCL Travel Holding Cyprus Limited.",
@@ -968,38 +1008,38 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "210",
-        "expenses": "189",
-        "operatingProfit": "21",
-        "opm": "10%",
-        "netProfit": "16",
-        "eps": "₹1.2"
+        "sales": "150",
+        "expenses": "145",
+        "operatingProfit": "5",
+        "opm": "3.3%",
+        "netProfit": "5",
+        "eps": "₹0.31"
       },
       {
         "period": "Mar 26",
-        "sales": "351",
-        "expenses": "333",
-        "operatingProfit": "18",
-        "opm": "5.1%",
+        "sales": "159",
+        "expenses": "145",
+        "operatingProfit": "14",
+        "opm": "8.8%",
         "netProfit": "14",
-        "eps": "₹1"
+        "eps": "₹0.88"
       },
       {
         "period": "Jun 26",
-        "sales": "257",
-        "expenses": "247",
-        "operatingProfit": "10",
-        "opm": "3.9%",
-        "netProfit": "8",
-        "eps": "₹0.6"
+        "sales": "163",
+        "expenses": "157",
+        "operatingProfit": "6",
+        "opm": "3.7%",
+        "netProfit": "6",
+        "eps": "₹0.4"
       },
       {
-        "period": "Sept 26",
-        "sales": "189",
-        "expenses": "179",
+        "period": "Sep 26",
+        "sales": "172",
+        "expenses": "162",
         "operatingProfit": "10",
-        "opm": "5.3%",
-        "netProfit": "8",
+        "opm": "5.8%",
+        "netProfit": "9",
         "eps": "₹0.6"
       }
     ],
@@ -1063,6 +1103,18 @@
         "investments": "99",
         "otherAssets": "97",
         "totalAssets": "406"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "16",
+        "reserves": "771",
+        "borrowings": "78",
+        "otherLiabilities": "335",
+        "totalLiabilities": "1,200",
+        "fixedAssets": "9",
+        "investments": "187",
+        "otherAssets": "1,004",
+        "totalAssets": "1,200"
       }
     ],
     "cashFlows": [
@@ -1100,10 +1152,17 @@
         "cfi": "-3",
         "cff": "-2",
         "netCash": "1"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-34",
+        "cfi": "-9",
+        "cff": "25",
+        "netCashFlow": "-18"
       }
     ],
     "shareholding": {
-      "promoters": "63.87%",
+      "promoters": "62.66%",
       "fii": "8.98%",
       "dii": "4.83%",
       "public": "22.32%",
@@ -1149,7 +1208,7 @@
       "evToEbitda": 65,
       "roce": 35.4,
       "roe": 29,
-      "debtToEquity": 0.12,
+      "debtToEquity": 0.1,
       "interestCoverage": 44.4,
       "divYield": 1.7,
       "salesGrowth3Y": -10.4,
@@ -1159,7 +1218,7 @@
     "pe": 22.2,
     "roePct": 29,
     "rocePct": 35.4,
-    "debtToEquity": 0.12,
+    "debtToEquity": 0.1,
     "divYieldPct": 1.7,
     "salesGrowth3Y": -10.4,
     "profitGrowth3Y": 80.4,
@@ -1179,9 +1238,10 @@
     ],
     "updatedAt": 1794038126877,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:45:28.562Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 26); Debt/Equity updated: 0.57 -> 0.12",
-    "cmp": 76.51
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.755Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 76.51,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1757100_12112026114439_WEB.xml"
   },
   "YOGI": {
     "about": "Yogi Limited engages in trading of machines and ancillary products in India. The company operates through Real Estate and Trading in Machinery segments. It is also involved in contracting, building, and development of real estate; acquisition and development of immovable and movable properties; and town planning and infrastructure development activities. In addition, the company engages in renting and leasing properties and assets, including equipment, construction machinery, buildings, plots, vehicles, plants, ships, aircraft, vessels, computers, and other assets. The company was formerly known as Parsharti Investment Limited and changed its name to Yogi Limited in June 2022. Yogi Limited was incorporated in 1992 and is based in Mumbai, India.",
@@ -1547,40 +1607,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "98",
+        "expenses": "93",
+        "operatingProfit": "5",
+        "opm": "5.1%",
+        "netProfit": "4",
+        "eps": "₹3.09"
+      },
+      {
         "period": "Dec 25",
-        "sales": "139",
-        "expenses": "111",
-        "operatingProfit": "28",
-        "opm": "20%",
-        "netProfit": "16",
-        "eps": "₹16.4"
+        "sales": "100",
+        "expenses": "97",
+        "operatingProfit": "3",
+        "opm": "3.0%",
+        "netProfit": "2",
+        "eps": "₹1.29"
       },
       {
         "period": "Mar 26",
-        "sales": "141",
-        "expenses": "112",
-        "operatingProfit": "29",
-        "opm": "20.4%",
-        "netProfit": "17",
-        "eps": "₹16.5"
+        "sales": "117",
+        "expenses": "111",
+        "operatingProfit": "6",
+        "opm": "5.1%",
+        "netProfit": "4",
+        "eps": "₹3.22"
       },
       {
         "period": "Jun 26",
-        "sales": "151",
-        "expenses": "120",
-        "operatingProfit": "31",
-        "opm": "20.8%",
-        "netProfit": "18",
-        "eps": "₹17.7"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "154",
-        "expenses": "121",
-        "operatingProfit": "33",
-        "opm": "21.2%",
-        "netProfit": "19",
-        "eps": "₹18.2"
+        "sales": "116",
+        "expenses": "111",
+        "operatingProfit": "5",
+        "opm": "4.3%",
+        "netProfit": "4",
+        "eps": "₹2.7"
       }
     ],
     "balanceSheet": [
@@ -1683,7 +1743,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "68.86%",
+      "promoters": "58.04%",
       "fii": "0.01%",
       "dii": "0.01%",
       "public": "31.12%",
@@ -1759,8 +1819,8 @@
     ],
     "updatedAt": 1794038126878,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:45:29.404Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.01 -> 0.31",
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.928Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 1117.2
   }
 }

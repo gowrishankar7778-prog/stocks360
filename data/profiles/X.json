@@ -74,39 +74,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "139",
-        "expenses": "120",
-        "operatingProfit": "19",
-        "opm": "13.7%",
-        "netProfit": "12",
-        "eps": "₹0.3"
+        "sales": "13",
+        "expenses": "8",
+        "operatingProfit": "5",
+        "opm": "38.5%",
+        "netProfit": "3",
+        "eps": "₹0.31"
       },
       {
         "period": "Mar 26",
-        "sales": "144",
-        "expenses": "124",
-        "operatingProfit": "20",
-        "opm": "13.9%",
-        "netProfit": "13",
-        "eps": "₹0.4"
+        "sales": "12",
+        "expenses": "6",
+        "operatingProfit": "6",
+        "opm": "50.0%",
+        "netProfit": "5",
+        "eps": "₹0.43"
       },
       {
         "period": "Jun 26",
-        "sales": "154",
-        "expenses": "132",
-        "operatingProfit": "22",
-        "opm": "14.3%",
-        "netProfit": "14",
-        "eps": "₹0.4"
+        "sales": "13",
+        "expenses": "7",
+        "operatingProfit": "6",
+        "opm": "46.2%",
+        "netProfit": "4",
+        "eps": "₹0.35"
       },
       {
-        "period": "Sept 26",
-        "sales": "160",
-        "expenses": "137",
-        "operatingProfit": "23",
-        "opm": "14.4%",
-        "netProfit": "15",
-        "eps": "₹0.4"
+        "period": "Sep 26",
+        "sales": "13",
+        "expenses": "7",
+        "operatingProfit": "6",
+        "opm": "46.2%",
+        "netProfit": "4",
+        "eps": "₹0.39"
       }
     ],
     "balanceSheet": [
@@ -169,6 +169,18 @@
         "investments": "116",
         "otherAssets": "151",
         "totalAssets": "479"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "111",
+        "reserves": "179",
+        "borrowings": "0",
+        "otherLiabilities": "33",
+        "totalLiabilities": "323",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "323",
+        "totalAssets": "323"
       }
     ],
     "cashFlows": [
@@ -206,10 +218,17 @@
         "cfi": "-31",
         "cff": "-23",
         "netCash": "18"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2",
+        "cfi": "8",
+        "cff": "-22",
+        "netCashFlow": "-12"
       }
     ],
     "shareholding": {
-      "promoters": "75.00%",
+      "promoters": "75%",
       "fii": "0.00%",
       "dii": "0.00%",
       "public": "25.00%",
@@ -255,7 +274,7 @@
       "evToEbitda": 22,
       "roce": 19.1,
       "roe": 15.3,
-      "debtToEquity": 0.12,
+      "debtToEquity": 0,
       "interestCoverage": 25,
       "divYield": 0.4,
       "salesGrowth3Y": 5.8,
@@ -265,7 +284,7 @@
     "pe": 38.1,
     "roePct": 15.3,
     "rocePct": 19.1,
-    "debtToEquity": 0.12,
+    "debtToEquity": 0,
     "divYieldPct": 0.4,
     "salesGrowth3Y": 5.8,
     "profitGrowth3Y": 6.1,
@@ -287,9 +306,10 @@
     ],
     "updatedAt": 1794038126873,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:45:27.545Z",
-    "financialChangeSummary": "ROE updated: 14% -> 15.3%; Debt/Equity updated: 0.74 -> 0.12",
-    "cmp": 58.09
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:15.619Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 58.09,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750086_30102026053606_WEB.xml"
   },
   "XELPMOC": {
     "about": "Xelpmoc Design and Tech Limited, a technology-driven company, provides consulting, software development, and digital transformation solutions to enterprises, startups, and government organizations in India and internationally. The company's products include DocuXray, an AI-powered document intelligence platform designed to help enterprises process, analyse, and derive actionable insights from large volumes of structured and unstructured documents; VideoXray, a video intelligence platform designed to analyze, process, and derive actionable insights from video content and workflows; and RELY, an ERP platform built for senior living operators to streamline operations, workflows, and decision-making across facilities. It also provides technology services and solutions to public and private sector clients engaged in e-commerce, hospitality, healthcare, education, and various other industries. In addition, the company offers mobile and web application development, prototype development, thematic product development, and data analytics assistance. Further, it provides enterprise AI and digital transformation solutions; and LegalTech and BFSI solutions. Xelpmoc Design and Tech Limited was incorporated in 2015 and is based in Bengaluru, India.",
@@ -365,40 +385,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "1",
+        "expenses": "3",
+        "operatingProfit": "-2",
+        "opm": "-200.0%",
+        "netProfit": "-2",
+        "eps": "₹-1.29"
+      },
+      {
         "period": "Dec 25",
-        "sales": "306",
-        "expenses": "222",
-        "operatingProfit": "84",
-        "opm": "27.4%",
-        "netProfit": "60",
-        "eps": "₹0.9"
+        "sales": "1",
+        "expenses": "3",
+        "operatingProfit": "-2",
+        "opm": "-200.0%",
+        "netProfit": "-2",
+        "eps": "₹-1.34"
       },
       {
         "period": "Mar 26",
-        "sales": "316",
-        "expenses": "228",
-        "operatingProfit": "88",
-        "opm": "27.8%",
-        "netProfit": "62",
-        "eps": "₹1"
+        "sales": "1",
+        "expenses": "3",
+        "operatingProfit": "-2",
+        "opm": "-200.0%",
+        "netProfit": "-2",
+        "eps": "₹-1.19"
       },
       {
         "period": "Jun 26",
-        "sales": "328",
-        "expenses": "236",
-        "operatingProfit": "92",
-        "opm": "28.2%",
-        "netProfit": "66",
-        "eps": "₹1"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "335",
-        "expenses": "239",
-        "operatingProfit": "96",
-        "opm": "28.6%",
-        "netProfit": "68",
-        "eps": "₹1"
+        "sales": "1",
+        "expenses": "3",
+        "operatingProfit": "-2",
+        "opm": "-200.0%",
+        "netProfit": "-2",
+        "eps": "₹-1.48"
       }
     ],
     "balanceSheet": [
@@ -501,7 +521,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "59.01%",
+      "promoters": "48.71%",
       "fii": "18.20%",
       "dii": "9.80%",
       "public": "12.99%",
@@ -577,8 +597,8 @@
     ],
     "updatedAt": 1794038126873,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:45:27.569Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.54 -> 0.01",
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:15.652Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 80.77
   },
   "XPROINDIA": {
@@ -656,39 +676,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "82",
-        "expenses": "62",
-        "operatingProfit": "20",
-        "opm": "24%",
-        "netProfit": "13",
-        "eps": "₹10.4"
+        "sales": "111",
+        "expenses": "99",
+        "operatingProfit": "12",
+        "opm": "10.8%",
+        "netProfit": "9",
+        "eps": "₹3.72"
       },
       {
         "period": "Mar 26",
-        "sales": "88",
-        "expenses": "67",
-        "operatingProfit": "21",
-        "opm": "24.4%",
-        "netProfit": "14",
-        "eps": "₹11.1"
+        "sales": "141",
+        "expenses": "125",
+        "operatingProfit": "16",
+        "opm": "11.3%",
+        "netProfit": "12",
+        "eps": "₹4.95"
       },
       {
         "period": "Jun 26",
-        "sales": "91",
-        "expenses": "68",
-        "operatingProfit": "23",
-        "opm": "24.8%",
-        "netProfit": "14",
-        "eps": "₹11.4"
+        "sales": "179",
+        "expenses": "165",
+        "operatingProfit": "14",
+        "opm": "7.8%",
+        "netProfit": "10",
+        "eps": "₹4.17"
       },
       {
-        "period": "Sept 26",
-        "sales": "95",
-        "expenses": "71",
-        "operatingProfit": "24",
-        "opm": "25.2%",
-        "netProfit": "15",
-        "eps": "₹12"
+        "period": "Sep 26",
+        "sales": "181",
+        "expenses": "168",
+        "operatingProfit": "13",
+        "opm": "7.2%",
+        "netProfit": "10",
+        "eps": "₹4.06"
       }
     ],
     "balanceSheet": [
@@ -751,6 +771,18 @@
         "investments": "70",
         "otherAssets": "76",
         "totalAssets": "316"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "23",
+        "reserves": "706",
+        "borrowings": "120",
+        "otherLiabilities": "118",
+        "totalLiabilities": "967",
+        "fixedAssets": "359",
+        "investments": "175",
+        "otherAssets": "433",
+        "totalAssets": "967"
       }
     ],
     "cashFlows": [
@@ -788,10 +820,17 @@
         "cfi": "-41",
         "cff": "-22",
         "netCash": "11"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "11",
+        "cfi": "-4",
+        "cff": "-9",
+        "netCashFlow": "-2"
       }
     ],
     "shareholding": {
-      "promoters": "50.82%",
+      "promoters": "40.31%",
       "fii": "8.32%",
       "dii": "4.48%",
       "public": "36.38%",
@@ -837,7 +876,7 @@
       "evToEbitda": 14.2,
       "roce": 36.6,
       "roe": 30,
-      "debtToEquity": 0.41,
+      "debtToEquity": 0.16,
       "interestCoverage": 13.4,
       "divYield": 1.52,
       "salesGrowth3Y": 15.3,
@@ -847,7 +886,7 @@
     "pe": 24.4,
     "roePct": 30,
     "rocePct": 36.6,
-    "debtToEquity": 0.41,
+    "debtToEquity": 0.16,
     "divYieldPct": 1.52,
     "salesGrowth3Y": 15.3,
     "profitGrowth3Y": 15.2,
@@ -867,9 +906,10 @@
     ],
     "updatedAt": 1794038126873,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:45:27.539Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.12 -> 0.41",
-    "cmp": 1103.3
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:15.734Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1103.3,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752166_03112026073632_WEB.xml"
   },
   "XTGLOBAL": {
     "about": "XTGlobal Infotech Limited provides software product development, training, and related software services in India and internationally. The company offers software services, including application development, product engineering, cloud and infrastructure, ERP, RPA, low-code, QA-test planning, manual and automated testing services; and Circulus enterprise services comprising accounts payable automation solutions, document process automation, data extraction, and image review services. It also provides Microsoft services, such as application modernization, DevOps, cloud managed, and cloud advisory and migration services; business and technology consulting delivery models, which include SOW time and materials, SOW fixed bid, managed services, on-demand talent partnership on-shore and offshore, and BOT services; and finance and accounting services that consist of AP, AR, HR, payroll, and finance services. In addition, the company offers Oracle cloud applications, including financials, HCM, and SCM cloud; Oracle e-business suite, which comprises financials, SCM, and HRMs; Oracle analytics; and Oracle integrations services. Further, it provides artificial intelligence, enterprise technology, and finance transformation solutions. The company serves banking and financial services, toll and transportation authorities, healthcare providers, public sector agencies, media and entertainment organizations, telecommunications companies, and IT product and services firms. The company was formerly known as Frontier Informatics Limited and changed its name to XTGlobal Infotech Limited in December 2019. XTGlobal Infotech Limited was incorporated in 1986 and is based in Hyderabad, India.",
@@ -1066,40 +1106,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "19",
+        "expenses": "17",
+        "operatingProfit": "2",
+        "opm": "10.5%",
+        "netProfit": "2",
+        "eps": "₹0.13"
+      },
+      {
         "period": "Dec 25",
-        "sales": "85",
-        "expenses": "65",
-        "operatingProfit": "20",
-        "opm": "23.7%",
-        "netProfit": "13",
-        "eps": "₹0.2"
+        "sales": "19",
+        "expenses": "16",
+        "operatingProfit": "3",
+        "opm": "15.8%",
+        "netProfit": "2",
+        "eps": "₹0.12"
       },
       {
         "period": "Mar 26",
-        "sales": "90",
-        "expenses": "68",
-        "operatingProfit": "22",
-        "opm": "24.1%",
-        "netProfit": "14",
-        "eps": "₹0.2"
+        "sales": "20",
+        "expenses": "18",
+        "operatingProfit": "2",
+        "opm": "10.0%",
+        "netProfit": "2",
+        "eps": "₹0.13"
       },
       {
         "period": "Jun 26",
-        "sales": "92",
-        "expenses": "69",
-        "operatingProfit": "23",
-        "opm": "24.5%",
-        "netProfit": "14",
-        "eps": "₹0.2"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "96",
-        "expenses": "72",
-        "operatingProfit": "24",
-        "opm": "24.9%",
-        "netProfit": "15",
-        "eps": "₹0.2"
+        "sales": "20",
+        "expenses": "18",
+        "operatingProfit": "2",
+        "opm": "10.0%",
+        "netProfit": "2",
+        "eps": "₹0.14"
       }
     ],
     "ratios": {
@@ -1115,7 +1155,7 @@
       "profitGrowth3Y": 0.6
     },
     "shareholding": {
-      "promoters": "56.28%",
+      "promoters": "62.54%",
       "fii": "13.65%",
       "dii": "10.82%",
       "public": "19.25%",
@@ -1156,7 +1196,10 @@
       ]
     },
     "cmp": 26.84,
-    "rocePct": 34.2
+    "rocePct": 34.2,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:15.664Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern"
   },
   "XTRANET": {
     "about": "Xtranet Technologies Limited provides integrated information technology solutions. It offers enterprise applications, digital services, managed services, proprietary platforms, and technology partnerships for clients across industries and geographies. The company's IT system integration services include network and security solutions, virtualization and cloud integration, infrastructure management services, testing, commissioning, and training, data centre, and application development and maintenance; managed services include infrastructure management; and digital services include digital transformation, AI, IoT, cloud, and blockchain; and proprietary platform comprise synergy low-code digital transformation. Xtranet Technologies Limited was incorporated in 2002 and is headquartered in Bhopal, India.",
@@ -1233,7 +1276,7 @@
     "marketCapCr": 1337,
     "pe": 24.2,
     "roePct": 34,
-    "debtToEquity": 0.21,
+    "debtToEquity": 0.2,
     "divYieldPct": 0,
     "salesGrowth3Y": 47.2,
     "profitGrowth3Y": 47.9,
@@ -1314,6 +1357,18 @@
         "investments": "57",
         "otherAssets": "57",
         "totalAssets": "292"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "52",
+        "reserves": "247",
+        "borrowings": "59",
+        "otherLiabilities": "107",
+        "totalLiabilities": "465",
+        "fixedAssets": "23",
+        "investments": "46",
+        "otherAssets": "396",
+        "totalAssets": "465"
       }
     ],
     "cashFlows": [
@@ -1351,44 +1406,33 @@
         "cfi": "-53",
         "cff": "-22",
         "netCash": "8"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-35",
+        "cfi": "-40",
+        "cff": "125",
+        "netCashFlow": "50"
       }
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "84",
-        "expenses": "62",
-        "operatingProfit": "22",
-        "opm": "26.7%",
-        "netProfit": "15",
-        "eps": "₹2.7"
-      },
-      {
-        "period": "Mar 26",
-        "sales": "93",
-        "expenses": "68",
-        "operatingProfit": "25",
-        "opm": "27.1%",
-        "netProfit": "17",
-        "eps": "₹2.9"
-      },
-      {
         "period": "Jun 26",
-        "sales": "92",
-        "expenses": "67",
-        "operatingProfit": "25",
-        "opm": "27.5%",
-        "netProfit": "17",
-        "eps": "₹2.9"
+        "sales": "44",
+        "expenses": "37",
+        "operatingProfit": "7",
+        "opm": "15.9%",
+        "netProfit": "5",
+        "eps": "₹1.37"
       },
       {
-        "period": "Sept 26",
-        "sales": "98",
-        "expenses": "71",
-        "operatingProfit": "27",
-        "opm": "27.9%",
-        "netProfit": "19",
-        "eps": "₹3.1"
+        "period": "Sep 26",
+        "sales": "101",
+        "expenses": "83",
+        "operatingProfit": "18",
+        "opm": "17.8%",
+        "netProfit": "14",
+        "eps": "₹3.15"
       }
     ],
     "ratios": {
@@ -1397,14 +1441,14 @@
       "evToEbitda": 12.1,
       "roce": 41.5,
       "roe": 34,
-      "debtToEquity": 0.21,
+      "debtToEquity": 0.2,
       "interestCoverage": 27.4,
       "divYield": 0,
       "salesGrowth3Y": 47.2,
       "profitGrowth3Y": 47.9
     },
     "shareholding": {
-      "promoters": "50.36%",
+      "promoters": "62.62%",
       "fii": "18.34%",
       "dii": "8.60%",
       "public": "22.70%",
@@ -1445,6 +1489,10 @@
       ]
     },
     "cmp": 280.65,
-    "rocePct": 41.5
+    "rocePct": 41.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751468_02112026082337_WEB.xml",
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.715Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern"
   }
 }

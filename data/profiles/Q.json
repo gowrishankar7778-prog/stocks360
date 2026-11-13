@@ -73,40 +73,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "84",
+        "expenses": "77",
+        "operatingProfit": "7",
+        "opm": "8.3%",
+        "netProfit": "5",
+        "eps": "₹2.93"
+      },
+      {
         "period": "Dec 25",
-        "sales": "217",
-        "expenses": "193",
-        "operatingProfit": "24",
-        "opm": "10.9%",
-        "netProfit": "15",
-        "eps": "₹1.5"
+        "sales": "30",
+        "expenses": "29",
+        "operatingProfit": "1",
+        "opm": "3.3%",
+        "netProfit": "1",
+        "eps": "₹0.3"
       },
       {
         "period": "Mar 26",
-        "sales": "227",
-        "expenses": "201",
-        "operatingProfit": "26",
-        "opm": "11.3%",
-        "netProfit": "16",
-        "eps": "₹1.5"
+        "sales": "69",
+        "expenses": "67",
+        "operatingProfit": "2",
+        "opm": "2.9%",
+        "netProfit": "1",
+        "eps": "₹0.7"
       },
       {
         "period": "Jun 26",
-        "sales": "230",
-        "expenses": "203",
-        "operatingProfit": "27",
-        "opm": "11.7%",
-        "netProfit": "17",
-        "eps": "₹1.6"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "246",
-        "expenses": "216",
-        "operatingProfit": "30",
-        "opm": "12.1%",
-        "netProfit": "19",
-        "eps": "₹1.7"
+        "sales": "53",
+        "expenses": "49",
+        "operatingProfit": "4",
+        "opm": "7.5%",
+        "netProfit": "3",
+        "eps": "₹1.38"
       }
     ],
     "balanceSheet": [
@@ -209,7 +209,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "57.88%",
+      "promoters": "68.11%",
       "fii": "10.08%",
       "dii": "6.33%",
       "public": "25.71%",
@@ -285,8 +285,8 @@
     ],
     "updatedAt": 1794038126442,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:43:10.709Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.04 -> 0.65",
+    "lastFinancialStatementUpdate": "2026-11-13T12:10:48.930Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 172.59
   },
   "QPOWER": {
@@ -364,39 +364,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "293",
-        "expenses": "243",
-        "operatingProfit": "50",
-        "opm": "17.1%",
-        "netProfit": "33",
-        "eps": "₹7.4"
+        "sales": "59",
+        "expenses": "40",
+        "operatingProfit": "19",
+        "opm": "32.2%",
+        "netProfit": "15",
+        "eps": "₹1.88"
       },
       {
         "period": "Mar 26",
-        "sales": "306",
-        "expenses": "254",
-        "operatingProfit": "52",
-        "opm": "17%",
-        "netProfit": "34",
-        "eps": "₹7.6"
+        "sales": "72",
+        "expenses": "51",
+        "operatingProfit": "21",
+        "opm": "29.2%",
+        "netProfit": "16",
+        "eps": "₹2.13"
       },
       {
         "period": "Jun 26",
-        "sales": "318",
-        "expenses": "264",
-        "operatingProfit": "54",
-        "opm": "17%",
-        "netProfit": "36",
-        "eps": "₹8"
+        "sales": "69",
+        "expenses": "36",
+        "operatingProfit": "33",
+        "opm": "47.8%",
+        "netProfit": "25",
+        "eps": "₹3.17"
       },
       {
-        "period": "Sept 26",
-        "sales": "331",
-        "expenses": "275",
-        "operatingProfit": "56",
-        "opm": "16.9%",
-        "netProfit": "37",
-        "eps": "₹8.2"
+        "period": "Sep 26",
+        "sales": "77",
+        "expenses": "47",
+        "operatingProfit": "30",
+        "opm": "39.0%",
+        "netProfit": "22",
+        "eps": "₹2.89"
       }
     ],
     "balanceSheet": [
@@ -459,6 +459,18 @@
         "investments": "282",
         "otherAssets": "121",
         "totalAssets": "990"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "77",
+        "reserves": "352",
+        "borrowings": "0",
+        "otherLiabilities": "38",
+        "totalLiabilities": "467",
+        "fixedAssets": "36",
+        "investments": "132",
+        "otherAssets": "299",
+        "totalAssets": "467"
       }
     ],
     "cashFlows": [
@@ -496,10 +508,17 @@
         "cfi": "-118",
         "cff": "-72",
         "netCash": "-1"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "49",
+        "cfi": "-31",
+        "cff": "-12",
+        "netCashFlow": "6"
       }
     ],
     "shareholding": {
-      "promoters": "75.46%",
+      "promoters": "73.91%",
       "fii": "3.47%",
       "dii": "1.87%",
       "public": "19.20%",
@@ -545,7 +564,7 @@
       "evToEbitda": 28.3,
       "roce": 23.2,
       "roe": 19,
-      "debtToEquity": 0.05,
+      "debtToEquity": 0,
       "interestCoverage": 48,
       "divYield": 1.1,
       "salesGrowth3Y": 23.8,
@@ -555,7 +574,7 @@
     "pe": 46.6,
     "roePct": 19,
     "rocePct": 23.2,
-    "debtToEquity": 0.05,
+    "debtToEquity": 0,
     "divYieldPct": 1.1,
     "salesGrowth3Y": 23.8,
     "profitGrowth3Y": 23.8,
@@ -577,9 +596,10 @@
     ],
     "updatedAt": 1794038126442,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:43:10.752Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.16 -> 0.05",
-    "cmp": 1452.5
+    "lastFinancialStatementUpdate": "2026-11-13T12:10:48.928Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1452.5,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750809_31102026075234_WEB.xml"
   },
   "QUADFUTURE": {
     "about": "Quadrant Future Tek Limited, a research-oriented company, develops and sells train control and signaling systems in India. The company offers train control systems, such as train collision avoidance and electronic interlocking systems; and interconnect products, including electrical connectors and wiring harness products. It also provides specialty cables comprising railway rolling stock and naval defense industries, and solar installations and electric vehicles; and renewable energy, automotive, and railway signalling cables. The company was incorporated in 2015 and is based in Mohali, India.",
@@ -656,7 +676,7 @@
     "marketCapCr": 1001,
     "pe": 18.2,
     "roePct": 31,
-    "debtToEquity": 0.1,
+    "debtToEquity": 0.09,
     "divYieldPct": 0.1,
     "salesGrowth3Y": 31,
     "profitGrowth3Y": 31.8,
@@ -735,6 +755,18 @@
         "investments": "74",
         "otherAssets": "68",
         "totalAssets": "273"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "40",
+        "reserves": "201",
+        "borrowings": "21",
+        "otherLiabilities": "36",
+        "totalLiabilities": "298",
+        "fixedAssets": "24",
+        "investments": "0",
+        "otherAssets": "274",
+        "totalAssets": "298"
       }
     ],
     "cashFlows": [
@@ -772,44 +804,42 @@
         "cfi": "-42",
         "cff": "-33",
         "netCash": "15"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "5",
+        "cfi": "1",
+        "cff": "-4",
+        "netCashFlow": "2"
       }
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "102",
-        "expenses": "78",
-        "operatingProfit": "24",
-        "opm": "23.9%",
-        "netProfit": "14",
-        "eps": "₹5.3"
-      },
-      {
         "period": "Mar 26",
-        "sales": "108",
-        "expenses": "82",
-        "operatingProfit": "26",
-        "opm": "24.3%",
-        "netProfit": "16",
-        "eps": "₹5.7"
+        "sales": "56",
+        "expenses": "67",
+        "operatingProfit": "-11",
+        "opm": "-19.6%",
+        "netProfit": "1",
+        "eps": "₹0.31"
       },
       {
         "period": "Jun 26",
-        "sales": "115",
-        "expenses": "87",
-        "operatingProfit": "28",
-        "opm": "24.7%",
-        "netProfit": "17",
-        "eps": "₹6"
+        "sales": "41",
+        "expenses": "48",
+        "operatingProfit": "-7",
+        "opm": "-17.1%",
+        "netProfit": "-9",
+        "eps": "₹-2.29"
       },
       {
-        "period": "Sept 26",
-        "sales": "118",
-        "expenses": "88",
-        "operatingProfit": "30",
-        "opm": "25.1%",
-        "netProfit": "18",
-        "eps": "₹6.2"
+        "period": "Sep 26",
+        "sales": "38",
+        "expenses": "46",
+        "operatingProfit": "-8",
+        "opm": "-21.1%",
+        "netProfit": "-8",
+        "eps": "₹-1.91"
       }
     ],
     "ratios": {
@@ -818,14 +848,14 @@
       "evToEbitda": 8.2,
       "roce": 37.8,
       "roe": 31,
-      "debtToEquity": 0.1,
+      "debtToEquity": 0.09,
       "interestCoverage": 48,
       "divYield": 0.1,
       "salesGrowth3Y": 31,
       "profitGrowth3Y": 31.8
     },
     "shareholding": {
-      "promoters": "49.29%",
+      "promoters": "70%",
       "fii": "7.65%",
       "dii": "16.00%",
       "public": "27.06%",
@@ -866,7 +896,11 @@
       ]
     },
     "cmp": 425.2,
-    "rocePct": 37.8
+    "rocePct": 37.8,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755866_10112026054323_WEB.xml",
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-13T12:10:49.281Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern"
   },
   "QUESS": {
     "about": "Quess Corp Limited, together with its subsidiaries, provides staffing and workforce solutions in India and internationally. It operates through four segments: General Staffing, Professional Staffing, Overseas Staffing, and Digital Platforms. The company offers general staffing, such as sourcing and recruitment, apprenticeship program, and center of experience; and flexi staffing, payroll and compliance management, apprenticeship solutions, gig workforce management, and workforce lifecycle services. It also provides professional staffing, including digital technology skills, GCC services, recruitment services, and mobility solutions; and niche talent acquisition, project staffing, contractual hiring, and specialist recruitment across technology domains, including AI, cloud, analytics, cybersecurity, and digital engineering. In addition, the company offers international staffing and workforce mobility solutions in APAC markets in engineering, healthcare, infrastructure, construction, hospitality, and services sectors through sourcing, deployment, and workforce management solutions. Further, it provides blue-collar job and HRMS platforms; and on-demand gig workforce platforms. Additionally, the company offers IT solutions comprising digital engineering, r and d solutions, managed services, managed capacity, staff augmentation, managed solutions provider, and hire-train-deploy and hire-deploy-train solutions; and RPO, executive search, and permanent recruitment services. The company was formerly known as Ikya Human Capital Solutions Limited and changed its name to Quess Corp Limited in January 2015. Quess Corp Limited was incorporated in 2007 and is headquartered in Bengaluru, India.",
@@ -943,39 +977,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "3,930",
-        "expenses": "3,858",
-        "operatingProfit": "72",
-        "opm": "1.8%",
-        "netProfit": "55",
-        "eps": "₹3.2"
+        "sales": "3,647",
+        "expenses": "3,607",
+        "operatingProfit": "40",
+        "opm": "1.1%",
+        "netProfit": "51",
+        "eps": "₹3.39"
       },
       {
         "period": "Mar 26",
-        "sales": "3,892",
-        "expenses": "3,809",
-        "operatingProfit": "83",
-        "opm": "2.1%",
-        "netProfit": "64",
-        "eps": "₹3.7"
+        "sales": "3,580",
+        "expenses": "3,519",
+        "operatingProfit": "61",
+        "opm": "1.7%",
+        "netProfit": "59",
+        "eps": "₹3.94"
       },
       {
         "period": "Jun 26",
-        "sales": "4,182",
-        "expenses": "4,075",
-        "operatingProfit": "107",
-        "opm": "2.6%",
-        "netProfit": "82",
-        "eps": "₹4.7"
+        "sales": "3,887",
+        "expenses": "3,806",
+        "operatingProfit": "81",
+        "opm": "2.1%",
+        "netProfit": "79",
+        "eps": "₹5.28"
       },
       {
-        "period": "Sept 26",
-        "sales": "4,396",
-        "expenses": "4,298",
-        "operatingProfit": "98",
-        "opm": "2.2%",
-        "netProfit": "75",
-        "eps": "₹4.3"
+        "period": "Sep 26",
+        "sales": "4,089",
+        "expenses": "4,026",
+        "operatingProfit": "63",
+        "opm": "1.5%",
+        "netProfit": "76",
+        "eps": "₹5.18"
       }
     ],
     "balanceSheet": [
@@ -1038,6 +1072,18 @@
         "investments": "1,525",
         "otherAssets": "1,167",
         "totalAssets": "6,229"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "149",
+        "reserves": "793",
+        "borrowings": "0",
+        "otherLiabilities": "2,283",
+        "totalLiabilities": "3,225",
+        "fixedAssets": "113",
+        "investments": "243",
+        "otherAssets": "2,869",
+        "totalAssets": "3,225"
       }
     ],
     "cashFlows": [
@@ -1075,10 +1121,17 @@
         "cfi": "-142",
         "cff": "-79",
         "netCash": "19"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "365",
+        "cfi": "55",
+        "cff": "-160",
+        "netCashFlow": "260"
       }
     ],
     "shareholding": {
-      "promoters": "68.34%",
+      "promoters": "56.81%",
       "fii": "8.79%",
       "dii": "4.74%",
       "public": "18.13%",
@@ -1124,7 +1177,7 @@
       "evToEbitda": 54.3,
       "roce": 30,
       "roe": 24,
-      "debtToEquity": 0.11,
+      "debtToEquity": 0,
       "interestCoverage": 45.8,
       "divYield": 0,
       "salesGrowth3Y": -3.7,
@@ -1134,7 +1187,7 @@
     "pe": 20.5,
     "roePct": 24,
     "rocePct": 30,
-    "debtToEquity": 0.11,
+    "debtToEquity": 0,
     "divYieldPct": 0,
     "salesGrowth3Y": -3.7,
     "profitGrowth3Y": -0.3,
@@ -1156,9 +1209,10 @@
     ],
     "updatedAt": 1794038126442,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:43:12.024Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 20% -> 24%; Debt/Equity updated: 0.05 -> 0.11",
-    "cmp": 326.85
+    "lastFinancialStatementUpdate": "2026-11-13T12:10:49.284Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 326.85,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750536_30102026093254_WEB.xml"
   },
   "QUICKHEAL": {
     "about": "Quick Heal Technologies Limited engages in the provision of security software products and solutions to consumers, small businesses, government establishments, and corporate houses in India and internationally. It offers antivirus solutions, including total security, internet security, antivirus pro, security for mac, total security for android, mobile security, total security multi-device, and internet security essentials under the Quick Heal brand, as well as consumer fraud prevention products comprising the Quick Heal AntiFraud.AI. The company also provides endpoint protection, endpoint detection and response, extended detection and response, mobile device management, BYOD, zero trust network access, and data privacy, as well as malware analysis platform and threat intel under the Seqrite brand. In addition, it offers enterprise services, including DPDP compliance and managed detection and response. Quick Heal Technologies Limited was incorporated in 1995 and is headquartered in Pune, India.",
@@ -1235,39 +1289,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "59",
-        "expenses": "51",
-        "operatingProfit": "8",
-        "opm": "13.6%",
-        "netProfit": "6",
-        "eps": "₹0.9"
+        "sales": "80",
+        "expenses": "74",
+        "operatingProfit": "6",
+        "opm": "7.5%",
+        "netProfit": "7",
+        "eps": "₹1.23"
       },
       {
         "period": "Mar 26",
-        "sales": "66",
-        "expenses": "70",
-        "operatingProfit": "-4",
-        "opm": "-6.1%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "52",
+        "expenses": "82",
+        "operatingProfit": "-30",
+        "opm": "-57.7%",
+        "netProfit": "-20",
+        "eps": "₹-3.58"
       },
       {
         "period": "Jun 26",
-        "sales": "105",
-        "expenses": "56",
-        "operatingProfit": "49",
-        "opm": "46.7%",
-        "netProfit": "38",
-        "eps": "₹5.5"
+        "sales": "59",
+        "expenses": "66",
+        "operatingProfit": "-7",
+        "opm": "-11.9%",
+        "netProfit": "-5",
+        "eps": "₹-0.91"
       },
       {
-        "period": "Sept 26",
-        "sales": "65",
-        "expenses": "42",
-        "operatingProfit": "23",
-        "opm": "35.4%",
-        "netProfit": "18",
-        "eps": "₹2.6"
+        "period": "Sep 26",
+        "sales": "73",
+        "expenses": "69",
+        "operatingProfit": "4",
+        "opm": "5.5%",
+        "netProfit": "6",
+        "eps": "₹1.03"
       }
     ],
     "balanceSheet": [
@@ -1330,6 +1384,18 @@
         "investments": "119",
         "otherAssets": "58",
         "totalAssets": "400"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "54",
+        "reserves": "383",
+        "borrowings": "0",
+        "otherLiabilities": "134",
+        "totalLiabilities": "571",
+        "fixedAssets": "94",
+        "investments": "9",
+        "otherAssets": "468",
+        "totalAssets": "571"
       }
     ],
     "cashFlows": [
@@ -1367,10 +1433,17 @@
         "cfi": "-1",
         "cff": "-1",
         "netCash": "0"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "40",
+        "cfi": "-45",
+        "cff": "-3",
+        "netCashFlow": "-8"
       }
     ],
     "shareholding": {
-      "promoters": "71.47%",
+      "promoters": "71.46%",
       "fii": "0.00%",
       "dii": "0.00%",
       "public": "28.53%",
@@ -1416,7 +1489,7 @@
       "evToEbitda": 65,
       "roce": 33,
       "roe": 24.3,
-      "debtToEquity": 0.07,
+      "debtToEquity": 0,
       "interestCoverage": 50.7,
       "divYield": 0,
       "salesGrowth3Y": -1.9,
@@ -1426,7 +1499,7 @@
     "pe": 16.2,
     "roePct": 24.3,
     "rocePct": 33,
-    "debtToEquity": 0.07,
+    "debtToEquity": 0,
     "divYieldPct": 0,
     "salesGrowth3Y": -1.9,
     "profitGrowth3Y": -26.7,
@@ -1446,9 +1519,10 @@
     ],
     "updatedAt": 1794038126452,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:43:11.847Z",
-    "financialChangeSummary": "Quarterly results refreshed (Dec 19); ROE updated: 22% -> -2.9%; Debt/Equity updated: 0.65 -> 0.07",
-    "cmp": 146.49
+    "lastFinancialStatementUpdate": "2026-11-13T12:10:48.922Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 146.49,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747296_27102026102024_WEB.xml"
   },
   "QUINT": {
     "about": "Quint Digital Limited operates as a digital and media-tech/AI focused company in India and internationally. The company operates through Media and technology operations; and Operated Market (Times Out) segments. It provides Quintype, a digital newsroom platform that enables publishers to create, distribute, monetize their content; The Quint, a platform for news and views; Quint Hindi, a cutting-edge journalism in hindi; The News Minute, an independent news platform focus on five southern states; and Youth Ki Awaaz, a crowdsourced platform for young people to write and share stories. In addition, the company engages in the operation of websites through web, digital or mobile media, which include information related to current affairs, lifestyle, entertainment, etc. The company was formerly known as Quint Digital Media Limited and changed its name to Quint Digital Limited in October 2023. Quint Digital Limited was incorporated in 1985 and is headquartered in New Delhi, India.",
@@ -1894,6 +1968,18 @@
         "investments": "84",
         "otherAssets": "142",
         "totalAssets": "413"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "27",
+        "reserves": "-41",
+        "borrowings": "15",
+        "otherLiabilities": "0",
+        "totalLiabilities": "1",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "1"
       }
     ],
     "cashFlows": [
@@ -1931,6 +2017,13 @@
         "cfi": "-44",
         "cff": "-28",
         "netCash": "28"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-1",
+        "cfi": "0",
+        "cff": "1",
+        "netCashFlow": "0"
       }
     ],
     "quarterlyResults": [
@@ -1984,7 +2077,7 @@
       "profitGrowth3Y": 9.4
     },
     "shareholding": {
-      "promoters": "68.49%",
+      "promoters": "2.48%",
       "fii": "5.46%",
       "dii": "9.41%",
       "public": "16.64%",
@@ -2025,6 +2118,10 @@
       ]
     },
     "cmp": 3.34,
-    "rocePct": 31.7
+    "rocePct": 31.7,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752490_04112026021437_WEB.xml",
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-13T12:10:49.477Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern"
   }
 }

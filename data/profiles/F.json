@@ -1006,39 +1006,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "433",
-        "expenses": "352",
-        "operatingProfit": "81",
-        "opm": "18.6%",
-        "netProfit": "60",
-        "eps": "₹0.9"
+        "sales": "55",
+        "expenses": "54",
+        "operatingProfit": "1",
+        "opm": "1.8%",
+        "netProfit": "1",
+        "eps": "₹0.41"
       },
       {
         "period": "Mar 26",
-        "sales": "461",
-        "expenses": "373",
-        "operatingProfit": "88",
-        "opm": "19%",
-        "netProfit": "66",
-        "eps": "₹0.9"
+        "sales": "120",
+        "expenses": "103",
+        "operatingProfit": "17",
+        "opm": "14.2%",
+        "netProfit": "11",
+        "eps": "₹2.75"
       },
       {
         "period": "Jun 26",
-        "sales": "471",
-        "expenses": "380",
-        "operatingProfit": "91",
-        "opm": "19.4%",
-        "netProfit": "68",
-        "eps": "₹0.9"
+        "sales": "53",
+        "expenses": "52",
+        "operatingProfit": "1",
+        "opm": "1.9%",
+        "netProfit": "1",
+        "eps": "₹0.24"
       },
       {
-        "period": "Sept 26",
-        "sales": "483",
-        "expenses": "387",
-        "operatingProfit": "96",
-        "opm": "19.8%",
-        "netProfit": "72",
-        "eps": "₹1"
+        "period": "Sep 26",
+        "sales": "62",
+        "expenses": "43",
+        "operatingProfit": "19",
+        "opm": "30.6%",
+        "netProfit": "13",
+        "eps": "₹3.01"
       }
     ],
     "balanceSheet": [
@@ -1101,6 +1101,18 @@
         "investments": "527",
         "otherAssets": "229",
         "totalAssets": "1,954"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "44",
+        "reserves": "360",
+        "borrowings": "31",
+        "otherLiabilities": "139",
+        "totalLiabilities": "574",
+        "fixedAssets": "50",
+        "investments": "17",
+        "otherAssets": "507",
+        "totalAssets": "574"
       }
     ],
     "cashFlows": [
@@ -1138,10 +1150,17 @@
         "cfi": "-212",
         "cff": "-117",
         "netCash": "-4"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-50",
+        "cfi": "123",
+        "cff": "7",
+        "netCashFlow": "80"
       }
     ],
     "shareholding": {
-      "promoters": "74.12%",
+      "promoters": "69.03%",
       "fii": "0.76%",
       "dii": "0.41%",
       "public": "24.71%",
@@ -1187,7 +1206,7 @@
       "evToEbitda": 24.4,
       "roce": 24.4,
       "roe": 20,
-      "debtToEquity": 0.17,
+      "debtToEquity": 0.08,
       "interestCoverage": 18.5,
       "divYield": 1.6,
       "salesGrowth3Y": 7.7,
@@ -1197,7 +1216,7 @@
     "pe": 36.8,
     "roePct": 20,
     "rocePct": 24.4,
-    "debtToEquity": 0.17,
+    "debtToEquity": 0.08,
     "divYieldPct": 1.6,
     "salesGrowth3Y": 7.7,
     "profitGrowth3Y": 7.7,
@@ -1217,9 +1236,10 @@
     ],
     "updatedAt": 1794038126092,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:06.182Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.71 -> 0.17",
-    "cmp": 132.3
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:15.303Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 132.3,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748280_28102026085411_WEB.xml"
   },
   "FACT": {
     "about": "The Fertilisers and Chemicals Travancore Limited manufactures and markets fertilizers and petrochemicals in India. It operates through Fertilizer and Petrochemical segments. The company offers complex fertilizers, including ammonium phosphate and sulphate, and zincated factamfos; straight fertilizers, such as ammonium sulphate; organic fertilizers under the FACT Organic and FACT Organic Plus brands; imported fertilisers; and bagged gypsum under the FACT Gypsum brand. It also provides caprolactam, such as benzene, sulphur, ammonia, and carbon dioxide for use in manufacturing nylon tyre cords, nylon filament yarns, and engineering plastics, etc. for the textile and automobile industries; and by-products comprising anhydrous ammonia, cyclohexanone, soda ash, gypsum, sulphuric acid, and carbon dioxide. In addition, the company imports fertilizers, including muriate of potash and others; and offers various services for farmers. Further, it engages in engineering consultancy and design; and fabrication and erection of industrial equipment activities. The Fertilisers and Chemicals Travancore Limited was incorporated in 1943 and is headquartered in Kochi, India.",
@@ -1295,40 +1315,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "1,681",
+        "expenses": "1,660",
+        "operatingProfit": "21",
+        "opm": "1.2%",
+        "netProfit": "21",
+        "eps": "₹0.32"
+      },
+      {
         "period": "Dec 25",
-        "sales": "322",
-        "expenses": "283",
-        "operatingProfit": "39",
-        "opm": "12.1%",
-        "netProfit": "25",
-        "eps": "₹3.4"
+        "sales": "1,607",
+        "expenses": "1,681",
+        "operatingProfit": "-74",
+        "opm": "-4.6%",
+        "netProfit": "-68",
+        "eps": "₹-1.05"
       },
       {
         "period": "Mar 26",
-        "sales": "336",
-        "expenses": "296",
-        "operatingProfit": "40",
-        "opm": "11.9%",
-        "netProfit": "26",
-        "eps": "₹3.6"
+        "sales": "1,518",
+        "expenses": "1,512",
+        "operatingProfit": "6",
+        "opm": "0.4%",
+        "netProfit": "3",
+        "eps": "₹0.05"
       },
       {
         "period": "Jun 26",
-        "sales": "350",
-        "expenses": "308",
-        "operatingProfit": "42",
-        "opm": "12%",
-        "netProfit": "28",
-        "eps": "₹3.9"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "364",
-        "expenses": "320",
-        "operatingProfit": "44",
-        "opm": "12.1%",
-        "netProfit": "29",
-        "eps": "₹4"
+        "sales": "1,287",
+        "expenses": "1,351",
+        "operatingProfit": "-64",
+        "opm": "-5.0%",
+        "netProfit": "-62",
+        "eps": "₹-0.96"
       }
     ],
     "balanceSheet": [
@@ -1431,7 +1451,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "51.00%",
+      "promoters": "90%",
       "fii": "0.06%",
       "dii": "0.03%",
       "public": "48.91%",
@@ -1507,8 +1527,8 @@
     ],
     "updatedAt": 1794038126092,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:07.052Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.44 -> 2.95",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:15.289Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 764.05
   },
   "FAIRCHEMOR": {
@@ -1586,39 +1606,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "249",
-        "expenses": "231",
-        "operatingProfit": "18",
-        "opm": "7.2%",
-        "netProfit": "12",
-        "eps": "₹9.9"
+        "sales": "100",
+        "expenses": "100",
+        "operatingProfit": "-0",
+        "opm": "0.0%",
+        "netProfit": "-0",
+        "eps": "₹-0.07"
       },
       {
         "period": "Mar 26",
-        "sales": "267",
-        "expenses": "246",
-        "operatingProfit": "21",
-        "opm": "7.9%",
-        "netProfit": "14",
-        "eps": "₹11.6"
+        "sales": "117",
+        "expenses": "112",
+        "operatingProfit": "5",
+        "opm": "4.3%",
+        "netProfit": "4",
+        "eps": "₹2.85"
       },
       {
         "period": "Jun 26",
-        "sales": "272",
-        "expenses": "250",
-        "operatingProfit": "22",
-        "opm": "8.1%",
-        "netProfit": "14",
-        "eps": "₹11.6"
+        "sales": "176",
+        "expenses": "162",
+        "operatingProfit": "14",
+        "opm": "8.0%",
+        "netProfit": "10",
+        "eps": "₹7.95"
       },
       {
-        "period": "Sept 26",
-        "sales": "280",
-        "expenses": "256",
-        "operatingProfit": "24",
-        "opm": "8.6%",
-        "netProfit": "16",
-        "eps": "₹13.3"
+        "period": "Sep 26",
+        "sales": "167",
+        "expenses": "153",
+        "operatingProfit": "14",
+        "opm": "8.4%",
+        "netProfit": "10",
+        "eps": "₹8.07"
       }
     ],
     "balanceSheet": [
@@ -1681,6 +1701,18 @@
         "investments": "242",
         "otherAssets": "124",
         "totalAssets": "938"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "13",
+        "reserves": "269",
+        "borrowings": "69",
+        "otherLiabilities": "47",
+        "totalLiabilities": "398",
+        "fixedAssets": "205",
+        "investments": "0",
+        "otherAssets": "193",
+        "totalAssets": "398"
       }
     ],
     "cashFlows": [
@@ -1718,10 +1750,17 @@
         "cfi": "-50",
         "cff": "-27",
         "netCash": "0"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "24",
+        "cfi": "-4",
+        "cff": "-20",
+        "netCashFlow": "0"
       }
     ],
     "shareholding": {
-      "promoters": "69.88%",
+      "promoters": "63.26%",
       "fii": "1.42%",
       "dii": "0.76%",
       "public": "27.94%",
@@ -1767,7 +1806,7 @@
       "evToEbitda": 9.3,
       "roce": 10.4,
       "roe": 8.3,
-      "debtToEquity": 0.25,
+      "debtToEquity": 0.24,
       "interestCoverage": 11.9,
       "divYield": 1.3,
       "salesGrowth3Y": 37.3,
@@ -1777,7 +1816,7 @@
     "pe": 14.7,
     "roePct": 8.3,
     "rocePct": 10.4,
-    "debtToEquity": 0.25,
+    "debtToEquity": 0.24,
     "divYieldPct": 1.3,
     "salesGrowth3Y": 37.3,
     "profitGrowth3Y": 37.8,
@@ -1797,9 +1836,10 @@
     ],
     "updatedAt": 1794038126093,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:07.050Z",
-    "financialChangeSummary": "ROE updated: 33% -> 8.3%; Debt/Equity updated: 0.53 -> 0.25",
-    "cmp": 681.45
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:15.291Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 681.45,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1743979_22102026044325_WEB.xml"
   },
   "FAZE3Q": {
     "about": "Faze Three Limited manufactures and exports home textile products and auto fabrics in India, the United States, the United Kingdom, Europe, and internationally. The company offers bathmats, rugs, blankets, throws, cushions, durries, hand tufted carpets, cushion covers, curtains, chairpads, poly cotton and cotton mask, table covers, patio mats, seat covers, floor coverings, etc.; and recycled yarn, germieshield, microcapsules, boost yarn, and ani-flammatory yarn, as well as provides outdoor textiles, pet products, and beach products. It markets its products under the AA Living and NatureStep brand names. The company serves retailers, hotels, automotive, and cruises. Faze Three Limited was founded in 1982 and is based in Mumbai, India.",
@@ -1876,39 +1916,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "285",
-        "expenses": "258",
-        "operatingProfit": "27",
-        "opm": "9.3%",
-        "netProfit": "16",
-        "eps": "₹3.6"
+        "sales": "220",
+        "expenses": "213",
+        "operatingProfit": "7",
+        "opm": "3.2%",
+        "netProfit": "5",
+        "eps": "₹2.18"
       },
       {
         "period": "Mar 26",
-        "sales": "299",
-        "expenses": "270",
-        "operatingProfit": "29",
-        "opm": "9.7%",
-        "netProfit": "18",
-        "eps": "₹3.8"
+        "sales": "242",
+        "expenses": "225",
+        "operatingProfit": "17",
+        "opm": "7.0%",
+        "netProfit": "14",
+        "eps": "₹5.9"
       },
       {
         "period": "Jun 26",
-        "sales": "314",
-        "expenses": "282",
-        "operatingProfit": "32",
-        "opm": "10.1%",
-        "netProfit": "19",
-        "eps": "₹4"
+        "sales": "219",
+        "expenses": "207",
+        "operatingProfit": "12",
+        "opm": "5.5%",
+        "netProfit": "9",
+        "eps": "₹3.61"
       },
       {
-        "period": "Sept 26",
-        "sales": "328",
-        "expenses": "294",
-        "operatingProfit": "34",
-        "opm": "10.5%",
-        "netProfit": "21",
-        "eps": "₹4.1"
+        "period": "Sep 26",
+        "sales": "251",
+        "expenses": "235",
+        "operatingProfit": "16",
+        "opm": "6.4%",
+        "netProfit": "12",
+        "eps": "₹4.84"
       }
     ],
     "balanceSheet": [
@@ -1971,6 +2011,18 @@
         "investments": "269",
         "otherAssets": "355",
         "totalAssets": "1,197"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "25",
+        "reserves": "442",
+        "borrowings": "353",
+        "otherLiabilities": "90",
+        "totalLiabilities": "910",
+        "fixedAssets": "359",
+        "investments": "3",
+        "otherAssets": "548",
+        "totalAssets": "910"
       }
     ],
     "cashFlows": [
@@ -2008,10 +2060,17 @@
         "cfi": "-49",
         "cff": "-32",
         "netCash": "23"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "9",
+        "cfi": "-99",
+        "cff": "89",
+        "netCashFlow": "-1"
       }
     ],
     "shareholding": {
-      "promoters": "65.87%",
+      "promoters": "57.35%",
       "fii": "14.38%",
       "dii": "7.75%",
       "public": "12.00%",
@@ -2057,7 +2116,7 @@
       "evToEbitda": 17.1,
       "roce": 14.6,
       "roe": 12,
-      "debtToEquity": 0.61,
+      "debtToEquity": 0.76,
       "interestCoverage": 3.8,
       "divYield": 0.6,
       "salesGrowth3Y": 28,
@@ -2067,7 +2126,7 @@
     "pe": 34.7,
     "roePct": 12,
     "rocePct": 14.6,
-    "debtToEquity": 0.61,
+    "debtToEquity": 0.76,
     "divYieldPct": 0.6,
     "salesGrowth3Y": 28,
     "profitGrowth3Y": -24.5,
@@ -2087,9 +2146,10 @@
     ],
     "updatedAt": 1794038126093,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:07.096Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.31 -> 0.61",
-    "cmp": 541.8
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:15.350Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 541.8,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752231_03112026082344_WEB.xml"
   },
   "FCL": {
     "about": "Fineotex Chemical Limited manufactures and sells textile chemicals, auxiliaries, and specialty chemicals in India, Malaysia, and the United States. The company provides textile chemicals for pre-treatment, dyeing, printing, and finishing processes, as well as enzymes; water treatment chemicals; and oilfield chemicals, such as drilling fluids, cementing fluids, production chemicals, and fracturing solutions. It also offers home and personal care chemical products, including disinfection, housekeeping, kitchen and personal care, and laundry products. The company's products are used in textile, home care, hygiene, mining, garment, water treatment, leather, construction, paint, agrochemicals, adhesives, oil and gas sectors. It also exports its products. Fineotex Chemical Limited was founded in 1979 and is based in Mumbai, India.",
@@ -2165,40 +2225,40 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "186",
-        "expenses": "160",
-        "operatingProfit": "26",
-        "opm": "13.9%",
+        "period": "Sep 25",
+        "sales": "117",
+        "expenses": "84",
+        "operatingProfit": "33",
+        "opm": "28.2%",
         "netProfit": "25",
-        "eps": "₹0.4"
+        "eps": "₹2.2"
+      },
+      {
+        "period": "Dec 25",
+        "sales": "108",
+        "expenses": "77",
+        "operatingProfit": "31",
+        "opm": "28.7%",
+        "netProfit": "26",
+        "eps": "₹0.22"
       },
       {
         "period": "Mar 26",
-        "sales": "192",
-        "expenses": "165",
-        "operatingProfit": "27",
-        "opm": "14.3%",
-        "netProfit": "27",
-        "eps": "₹0.4"
+        "sales": "105",
+        "expenses": "81",
+        "operatingProfit": "24",
+        "opm": "22.9%",
+        "netProfit": "21",
+        "eps": "₹0.18"
       },
       {
         "period": "Jun 26",
-        "sales": "198",
-        "expenses": "169",
-        "operatingProfit": "29",
-        "opm": "14.7%",
-        "netProfit": "28",
-        "eps": "₹0.4"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "205",
-        "expenses": "174",
-        "operatingProfit": "31",
-        "opm": "15.1%",
-        "netProfit": "30",
-        "eps": "₹0.4"
+        "sales": "96",
+        "expenses": "72",
+        "operatingProfit": "24",
+        "opm": "25.0%",
+        "netProfit": "21",
+        "eps": "₹0.18"
       }
     ],
     "balanceSheet": [
@@ -2301,7 +2361,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "65.56%",
+      "promoters": "62.3%",
       "fii": "1.45%",
       "dii": "0.78%",
       "public": "32.21%",
@@ -2377,8 +2437,8 @@
     ],
     "updatedAt": 1794038126093,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:07.221Z",
-    "financialChangeSummary": "Quarterly results refreshed (Dec 25); Debt/Equity updated: 0.63 -> 0.01",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:15.317Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 53.42
   },
   "FCSSOFT": {
@@ -2456,7 +2516,7 @@
     "marketCapCr": 2078,
     "pe": 37.7,
     "roePct": 11,
-    "debtToEquity": 0.28,
+    "debtToEquity": 0,
     "divYieldPct": 1.3,
     "salesGrowth3Y": 90.2,
     "profitGrowth3Y": 90.1,
@@ -2535,6 +2595,18 @@
         "investments": "185",
         "otherAssets": "364",
         "totalAssets": "994"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "171",
+        "reserves": "145",
+        "borrowings": "0",
+        "otherLiabilities": "12",
+        "totalLiabilities": "328",
+        "fixedAssets": "30",
+        "investments": "132",
+        "otherAssets": "166",
+        "totalAssets": "328"
       }
     ],
     "cashFlows": [
@@ -2572,44 +2644,51 @@
         "cfi": "-47",
         "cff": "-28",
         "netCash": "34"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "7",
+        "cfi": "-4",
+        "cff": "0",
+        "netCashFlow": "3"
       }
     ],
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "263",
-        "expenses": "237",
-        "operatingProfit": "26",
-        "opm": "10%",
-        "netProfit": "15",
-        "eps": "₹0.2"
+        "sales": "8",
+        "expenses": "10",
+        "operatingProfit": "-2",
+        "opm": "-25.0%",
+        "netProfit": "-2",
+        "eps": "₹-0.01"
       },
       {
         "period": "Mar 26",
-        "sales": "265",
-        "expenses": "237",
-        "operatingProfit": "28",
-        "opm": "10.4%",
-        "netProfit": "16",
-        "eps": "₹0.2"
+        "sales": "9",
+        "expenses": "6",
+        "operatingProfit": "3",
+        "opm": "33.3%",
+        "netProfit": "3",
+        "eps": "₹0.02"
       },
       {
         "period": "Jun 26",
-        "sales": "276",
-        "expenses": "246",
-        "operatingProfit": "30",
-        "opm": "10.8%",
-        "netProfit": "17",
-        "eps": "₹0.2"
+        "sales": "8",
+        "expenses": "7",
+        "operatingProfit": "1",
+        "opm": "12.5%",
+        "netProfit": "1",
+        "eps": "₹0"
       },
       {
-        "period": "Sept 26",
-        "sales": "293",
-        "expenses": "260",
-        "operatingProfit": "33",
-        "opm": "11.2%",
-        "netProfit": "19",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "9",
+        "expenses": "9",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0"
       }
     ],
     "ratios": {
@@ -2618,14 +2697,14 @@
       "evToEbitda": 16.9,
       "roce": 13.4,
       "roe": 11,
-      "debtToEquity": 0.28,
+      "debtToEquity": 0,
       "interestCoverage": 8,
       "divYield": 1.3,
       "salesGrowth3Y": 90.2,
       "profitGrowth3Y": 90.1
     },
     "shareholding": {
-      "promoters": "65.40%",
+      "promoters": "19.65%",
       "fii": "5.17%",
       "dii": "7.71%",
       "public": "21.72%",
@@ -2666,7 +2745,11 @@
       ]
     },
     "cmp": 1.48,
-    "rocePct": 13.4
+    "rocePct": 13.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752820_04112026060309_WEB.xml",
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:15.553Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern"
   },
   "FDC": {
     "about": "FDC Limited, together with its subsidiaries, manufactures and trades in pharmaceutical products in India, the United States, and internationally. The company offers pharmaceutical formulations for various therapeutic segments, including anti-infectives, gastroenterology, ophthalmology, anti-diabetics, cardiovascular care, respiratory care, gynaecology, dermatology, paediatrics, analgesics, vitamins, and nutritional health in the form of tablets, capsules, oral liquids, ophthalmic drops, topical preparations, and paediatric-friendly solutions. It also provides functional food, such as flavoured oral rehydration solution powders, ready-to-drink electrolyte beverages, vitamin-enriched supplements, antioxidant blends and protein-fortified drinks; and various active pharmaceutical ingredients. The company sells its products under the Zifi, Zifi-0, Zocon, Mycoderm, Zathrin, Victofol, Cotaryl, Ziglim-M, Amodep-AT, MumMum 1, Victofol Injection, Simyl MCT, Victofol  C, Electral, and Enerzal brands. It also exports its products to approximately 50 countries. FDC Limited was founded in 1936 and is based in Mumbai, India.",
@@ -2743,39 +2826,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "342",
-        "expenses": "313",
-        "operatingProfit": "29",
-        "opm": "8.5%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "480",
+        "expenses": "445",
+        "operatingProfit": "35",
+        "opm": "7.3%",
+        "netProfit": "27",
+        "eps": "₹1.67"
       },
       {
         "period": "Mar 26",
-        "sales": "495",
-        "expenses": "453",
-        "operatingProfit": "42",
-        "opm": "8.5%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "612",
+        "expenses": "469",
+        "operatingProfit": "143",
+        "opm": "23.4%",
+        "netProfit": "107",
+        "eps": "₹6.58"
       },
       {
         "period": "Jun 26",
-        "sales": "445",
-        "expenses": "408",
-        "operatingProfit": "37",
-        "opm": "8.3%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "702",
+        "expenses": "528",
+        "operatingProfit": "174",
+        "opm": "24.8%",
+        "netProfit": "132",
+        "eps": "₹8.11"
       },
       {
-        "period": "Sept 26",
-        "sales": "409",
-        "expenses": "375",
-        "operatingProfit": "34",
-        "opm": "8.3%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "571",
+        "expenses": "507",
+        "operatingProfit": "64",
+        "opm": "11.2%",
+        "netProfit": "48",
+        "eps": "₹2.93"
       }
     ],
     "balanceSheet": [
@@ -2838,6 +2921,18 @@
         "investments": "407",
         "otherAssets": "551",
         "totalAssets": "2,242"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "16",
+        "reserves": "2,656",
+        "borrowings": "0",
+        "otherLiabilities": "496",
+        "totalLiabilities": "3,168",
+        "fixedAssets": "1,029",
+        "investments": "652",
+        "otherAssets": "1,487",
+        "totalAssets": "3,168"
       }
     ],
     "cashFlows": [
@@ -2875,10 +2970,17 @@
         "cfi": "-71",
         "cff": "-29",
         "netCash": "19"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "244",
+        "cfi": "-260",
+        "cff": "-4",
+        "netCashFlow": "-20"
       }
     ],
     "shareholding": {
-      "promoters": "69.94%",
+      "promoters": "69.66%",
       "fii": "4.82%",
       "dii": "2.59%",
       "public": "22.65%",
@@ -2954,9 +3056,10 @@
     ],
     "updatedAt": 1794038126094,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:08.090Z",
-    "financialChangeSummary": "Quarterly results refreshed (Dec 22); ROE updated: 24% -> 12.3%; Debt/Equity updated: 0.54 -> 0",
-    "cmp": 390.95
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.477Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 390.95,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747155_27102026070916_WEB.xml"
   },
   "FEDDERSHOL": {
     "about": "Fedders Holding Limited operates as a corporate and transaction advisory, asset management, and management consultancy company in the real estate and distress debt resolution advisory sectors in India and internationally. The company offers corporate transactional advisory services, which include commercial viability, regulatory clearances, technical requirements, business strategic advisory, transaction services, commercial leasing, workspace solutions, valuation services, roadmap implementation, strategic marketing plans, business/brand tie-ups, and legal assistance. It also offers leasing advisory services, which provides market analysis, property marketing, market positioning, pricing tactics, strategic leasing plans, marketing plans, and prospective tenant profile analysis services; and RERA advisory services, including viability and feasibility analysis, detailed project report, technical advisory, architectural and engineering designs, documentation and approval, legal advisory, commercial advisory, project management consultancy, and project delivery. In addition, the company provides strategic sales and marketing advisory services, such as primary sales, real estate intelligence, corporate divestments, management services, channel sales, brand strategy, marketing campaign, investment sales, project valuation and price discovery, renewal and negotiations, digital marketing, handling legal documentation, and building customer relationships, as well as home loans assistance, asset management, and fund-raising consultancy services. The company was formerly known as IM+ Capitals Limited and changed its name to Fedders Holding Limited in June 2024. Fedders Holding Limited was incorporated in 1991 and is based in Ghaziabad, India.",
@@ -3323,39 +3426,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "348",
-        "expenses": "234",
-        "operatingProfit": "114",
-        "opm": "32.8%",
+        "sales": "556",
+        "expenses": "438",
+        "operatingProfit": "118",
+        "opm": "21.2%",
         "netProfit": "88",
-        "eps": "₹1.9"
+        "eps": "₹2.35"
       },
       {
         "period": "Mar 26",
-        "sales": "378",
-        "expenses": "247",
-        "operatingProfit": "131",
-        "opm": "34.7%",
+        "sales": "617",
+        "expenses": "482",
+        "operatingProfit": "135",
+        "opm": "21.9%",
         "netProfit": "101",
-        "eps": "₹2.2"
+        "eps": "₹2.69"
       },
       {
         "period": "Jun 26",
-        "sales": "398",
-        "expenses": "250",
-        "operatingProfit": "148",
-        "opm": "37.2%",
+        "sales": "670",
+        "expenses": "517",
+        "operatingProfit": "153",
+        "opm": "22.8%",
         "netProfit": "114",
-        "eps": "₹2.5"
+        "eps": "₹3.05"
       },
       {
-        "period": "Sept 26",
-        "sales": "432",
-        "expenses": "262",
-        "operatingProfit": "170",
-        "opm": "39.4%",
+        "period": "Sep 26",
+        "sales": "720",
+        "expenses": "542",
+        "operatingProfit": "178",
+        "opm": "24.7%",
         "netProfit": "131",
-        "eps": "₹2.9"
+        "eps": "₹3.56"
       }
     ],
     "balanceSheet": [
@@ -3418,6 +3521,18 @@
         "investments": "457",
         "otherAssets": "731",
         "totalAssets": "2,751"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "375",
+        "reserves": "2,790",
+        "borrowings": "0",
+        "otherLiabilities": "15,375",
+        "totalLiabilities": "18,540",
+        "fixedAssets": "241",
+        "investments": "0",
+        "otherAssets": "18,299",
+        "totalAssets": "18,540"
       }
     ],
     "cashFlows": [
@@ -3455,10 +3570,17 @@
         "cfi": "-289",
         "cff": "-111",
         "netCash": "89"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-719",
+        "cfi": "-392",
+        "cff": "545",
+        "netCashFlow": "-566"
       }
     ],
     "shareholding": {
-      "promoters": "60.62%",
+      "promoters": "60.64%",
       "fii": "10.25%",
       "dii": "5.52%",
       "public": "23.61%",
@@ -3504,7 +3626,7 @@
       "evToEbitda": 8.9,
       "roce": 18.5,
       "roe": 14.8,
-      "debtToEquity": 4.68,
+      "debtToEquity": 0,
       "interestCoverage": 34.5,
       "divYield": 0.1,
       "salesGrowth3Y": 39.1,
@@ -3514,7 +3636,7 @@
     "pe": 16.7,
     "roePct": 14.8,
     "rocePct": 18.5,
-    "debtToEquity": 4.68,
+    "debtToEquity": 0,
     "divYieldPct": 0.1,
     "salesGrowth3Y": 39.1,
     "profitGrowth3Y": 24.1,
@@ -3534,9 +3656,10 @@
     ],
     "updatedAt": 1794038126095,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:08.159Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 11% -> 14.8%; Debt/Equity updated: 0.31 -> 4.68",
-    "cmp": 157.93
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.440Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 157.93,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739428_15102026090328_WEB.xml"
   },
   "FEL": {
     "about": "Future Enterprises Limited, together with its subsidiaries, engages in the retail business in India. The company offers integrated and IT enabled end-to-end supply chain and logistic services, which include modern warehousing, cold chain, and express and e-commerce logistics to food and beverages, lifestyle, consumer electronics and high tech, automotive and engineering, home and furniture, healthcare, general merchandise, and e-commerce industries. It also provides out-of-home media solutions to advertisers. The company was formerly known as Future Retail Limited and changed its name to Future Enterprises Limited in May 2016. The company was incorporated in 1987 and is based in Mumbai, India. Future Enterprises Limited is in reorganization.",
@@ -3612,40 +3735,40 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "2,773",
-        "expenses": "2,760",
-        "operatingProfit": "13",
-        "opm": "0.5%",
-        "netProfit": "10",
-        "eps": "₹0.3"
+        "period": "Jun 21",
+        "sales": "295",
+        "expenses": "571",
+        "operatingProfit": "-276",
+        "opm": "-93.6%",
+        "netProfit": "-276",
+        "eps": "₹-5.59"
       },
       {
-        "period": "Mar 26",
-        "sales": "2,899",
-        "expenses": "2,891",
-        "operatingProfit": "8",
-        "opm": "0.3%",
-        "netProfit": "6",
-        "eps": "₹0.2"
+        "period": "Sep 21",
+        "sales": "521",
+        "expenses": "780",
+        "operatingProfit": "-259",
+        "opm": "-49.7%",
+        "netProfit": "-259",
+        "eps": "₹-5.23"
       },
       {
-        "period": "Jun 26",
-        "sales": "3,326",
-        "expenses": "6,585",
-        "operatingProfit": "-3,259",
-        "opm": "-98%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Dec 21",
+        "sales": "393",
+        "expenses": "673",
+        "operatingProfit": "-280",
+        "opm": "-71.2%",
+        "netProfit": "-280",
+        "eps": "₹-5.66"
       },
       {
-        "period": "Sept 26",
-        "sales": "821",
-        "expenses": "1,626",
-        "operatingProfit": "-805",
-        "opm": "-98.1%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Mar 22",
+        "sales": "325",
+        "expenses": "1,835",
+        "operatingProfit": "-1,510",
+        "opm": "-464.6%",
+        "netProfit": "-1,510",
+        "eps": "₹-30.55"
       }
     ],
     "balanceSheet": [
@@ -3708,6 +3831,18 @@
         "investments": "560",
         "otherAssets": "803",
         "totalAssets": "3,245"
+      },
+      {
+        "year": "Mar 22",
+        "equityCapital": "99",
+        "reserves": "152",
+        "borrowings": "6,900",
+        "otherLiabilities": "846",
+        "totalLiabilities": "7,997",
+        "fixedAssets": "2,792",
+        "investments": "1,028",
+        "otherAssets": "4,177",
+        "totalAssets": "7,997"
       }
     ],
     "cashFlows": [
@@ -3745,10 +3880,17 @@
         "cfi": "-1",
         "cff": "-1",
         "netCash": "0"
+      },
+      {
+        "year": "Mar 22",
+        "cfo": "232",
+        "cfi": "19",
+        "cff": "-280",
+        "netCashFlow": "-29"
       }
     ],
     "shareholding": {
-      "promoters": "36.63%",
+      "promoters": "16.37%",
       "fii": "18.20%",
       "dii": "9.80%",
       "public": "35.37%",
@@ -3794,7 +3936,7 @@
       "evToEbitda": 65,
       "roce": 31.1,
       "roe": 26.8,
-      "debtToEquity": 0.08,
+      "debtToEquity": 27.49,
       "interestCoverage": 38.6,
       "divYield": 0.8,
       "salesGrowth3Y": -3.3,
@@ -3804,7 +3946,7 @@
     "pe": 21.2,
     "roePct": 26.8,
     "rocePct": 31.1,
-    "debtToEquity": 0.08,
+    "debtToEquity": 27.49,
     "divYieldPct": 0.8,
     "salesGrowth3Y": -3.3,
     "profitGrowth3Y": 128.9,
@@ -3824,9 +3966,10 @@
     ],
     "updatedAt": 1794038126095,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:08.076Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 16); ROE updated: 22% -> -238.3%",
-    "cmp": 0.27
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.426Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 0.27,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_713289_568_15092022141036_WEB.xml"
   },
   "FELDVR": {
     "about": "Future Enterprises Limited, together with its subsidiaries, engages in the retail business in India. The company offers integrated and IT enabled end-to-end supply chain and logistic services, which include modern warehousing, cold chain, and express and e-commerce logistics to food and beverages, lifestyle, consumer electronics and high tech, automotive and engineering, home and furniture, healthcare, general merchandise, and e-commerce industries. It also provides out-of-home media solutions to advertisers. The company was formerly known as Future Retail Limited and changed its name to Future Enterprises Limited in May 2016. The company was incorporated in 1987 and is based in Mumbai, India. Future Enterprises Limited is in reorganization.",
@@ -3902,40 +4045,40 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "2,773",
-        "expenses": "2,760",
-        "operatingProfit": "13",
-        "opm": "0.5%",
-        "netProfit": "10",
-        "eps": "₹0.3"
+        "period": "Jun 21",
+        "sales": "295",
+        "expenses": "571",
+        "operatingProfit": "-276",
+        "opm": "-93.6%",
+        "netProfit": "-276",
+        "eps": "₹-5.59"
       },
       {
-        "period": "Mar 26",
-        "sales": "2,899",
-        "expenses": "2,891",
-        "operatingProfit": "8",
-        "opm": "0.3%",
-        "netProfit": "6",
-        "eps": "₹0.2"
+        "period": "Sep 21",
+        "sales": "521",
+        "expenses": "780",
+        "operatingProfit": "-259",
+        "opm": "-49.7%",
+        "netProfit": "-259",
+        "eps": "₹-5.23"
       },
       {
-        "period": "Jun 26",
-        "sales": "3,326",
-        "expenses": "6,585",
-        "operatingProfit": "-3,259",
-        "opm": "-98%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Dec 21",
+        "sales": "393",
+        "expenses": "673",
+        "operatingProfit": "-280",
+        "opm": "-71.2%",
+        "netProfit": "-280",
+        "eps": "₹-5.66"
       },
       {
-        "period": "Sept 26",
-        "sales": "821",
-        "expenses": "1,626",
-        "operatingProfit": "-805",
-        "opm": "-98.1%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Mar 22",
+        "sales": "325",
+        "expenses": "1,835",
+        "operatingProfit": "-1,510",
+        "opm": "-464.6%",
+        "netProfit": "-1,510",
+        "eps": "₹-30.55"
       }
     ],
     "balanceSheet": [
@@ -3998,6 +4141,18 @@
         "investments": "758",
         "otherAssets": "887",
         "totalAssets": "3,309"
+      },
+      {
+        "year": "Mar 22",
+        "equityCapital": "99",
+        "reserves": "152",
+        "borrowings": "6,900",
+        "otherLiabilities": "846",
+        "totalLiabilities": "7,997",
+        "fixedAssets": "2,792",
+        "investments": "1,028",
+        "otherAssets": "4,177",
+        "totalAssets": "7,997"
       }
     ],
     "cashFlows": [
@@ -4035,10 +4190,17 @@
         "cfi": "-1",
         "cff": "-1",
         "netCash": "0"
+      },
+      {
+        "year": "Mar 22",
+        "cfo": "232",
+        "cfi": "19",
+        "cff": "-280",
+        "netCashFlow": "-29"
       }
     ],
     "shareholding": {
-      "promoters": "63.41%",
+      "promoters": "72.22%",
       "fii": "15.98%",
       "dii": "8.61%",
       "public": "12.00%",
@@ -4084,7 +4246,7 @@
       "evToEbitda": 65,
       "roce": 22.9,
       "roe": 18.3,
-      "debtToEquity": 0.34,
+      "debtToEquity": 27.49,
       "interestCoverage": 41.7,
       "divYield": 1.4,
       "salesGrowth3Y": -3.3,
@@ -4094,7 +4256,7 @@
     "pe": 23.3,
     "roePct": 18.3,
     "rocePct": 22.9,
-    "debtToEquity": 0.34,
+    "debtToEquity": 27.49,
     "divYieldPct": 1.4,
     "salesGrowth3Y": -3.3,
     "profitGrowth3Y": 128.9,
@@ -4114,9 +4276,10 @@
     ],
     "updatedAt": 1794038126095,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:08.120Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 16); ROE updated: 30% -> -238.3%",
-    "cmp": 1.92
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.423Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1.92,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_713327_998_15092022141925_WEB.xml"
   },
   "FERMENTA": {
     "about": "Fermenta Biotech Limited, together with its subsidiaries, engages in the manufacturing and marketing of chemicals, bulk drugs, enzymes, pharmaceutical formulations, and environmental solution products in India, Europe, the United States, and internationally. It operates through Chemicals/Bulk Drug and Property segments. The company offers vitamin D3, including crystalline oil, resin oil, cold water dispersible, and feed grade powder for injectables, soft gel capsules, premixes, food and beverage fortification applications; and vitamin K1, vitamin E50, phenyramidol and silicon dioxide, and fish oil cholesterol. It also provides fortified rice kernel; and Fermase PS 250 and penicillin G acylase used in manufacturing processes of various antibiotics. In addition, the company offers design, engineering, procurement, and construction of wastewater treatment plants, STPs, and ETPs, as well as operation and maintenance services. Further, it is involved in property development business; and renting and selling of properties. The company was formerly known as DIL Limited. Fermenta Biotech Limited was incorporated in 1951 and is based in Thane, India.",
@@ -4192,40 +4355,22 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "92",
-        "expenses": "83",
-        "operatingProfit": "9",
-        "opm": "10%",
-        "netProfit": "10",
-        "eps": "₹2.4"
-      },
-      {
-        "period": "Mar 26",
-        "sales": "96",
-        "expenses": "86",
-        "operatingProfit": "10",
-        "opm": "10.4%",
-        "netProfit": "11",
-        "eps": "₹2.5"
-      },
-      {
         "period": "Jun 26",
-        "sales": "97",
-        "expenses": "87",
-        "operatingProfit": "10",
-        "opm": "10.8%",
-        "netProfit": "12",
-        "eps": "₹2.6"
+        "sales": "117",
+        "expenses": "97",
+        "operatingProfit": "20",
+        "opm": "17.1%",
+        "netProfit": "15",
+        "eps": "₹5.23"
       },
       {
-        "period": "Sept 26",
-        "sales": "102",
-        "expenses": "91",
-        "operatingProfit": "11",
-        "opm": "11.2%",
-        "netProfit": "13",
-        "eps": "₹2.7"
+        "period": "Sep 26",
+        "sales": "121",
+        "expenses": "102",
+        "operatingProfit": "19",
+        "opm": "15.7%",
+        "netProfit": "14",
+        "eps": "₹4.86"
       }
     ],
     "balanceSheet": [
@@ -4288,6 +4433,18 @@
         "investments": "119",
         "otherAssets": "136",
         "totalAssets": "591"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "14",
+        "reserves": "430",
+        "borrowings": "104",
+        "otherLiabilities": "161",
+        "totalLiabilities": "709",
+        "fixedAssets": "203",
+        "investments": "0",
+        "otherAssets": "506",
+        "totalAssets": "709"
       }
     ],
     "cashFlows": [
@@ -4325,10 +4482,17 @@
         "cfi": "-23",
         "cff": "-11",
         "netCash": "5"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "62",
+        "cfi": "-32",
+        "cff": "-30",
+        "netCashFlow": "0"
       }
     ],
     "shareholding": {
-      "promoters": "65.80%",
+      "promoters": "60.12%",
       "fii": "0.00%",
       "dii": "0.00%",
       "public": "34.20%",
@@ -4374,7 +4538,7 @@
       "evToEbitda": 65,
       "roce": 12.2,
       "roe": 10,
-      "debtToEquity": 0.28,
+      "debtToEquity": 0.23,
       "interestCoverage": 47.6,
       "divYield": 0,
       "salesGrowth3Y": 29.2,
@@ -4384,7 +4548,7 @@
     "pe": 43.2,
     "roePct": 10,
     "rocePct": 12.2,
-    "debtToEquity": 0.28,
+    "debtToEquity": 0.23,
     "divYieldPct": 0,
     "salesGrowth3Y": 29.2,
     "profitGrowth3Y": -55.4,
@@ -4404,9 +4568,10 @@
     ],
     "updatedAt": 1794038126096,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:09.060Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 22)",
-    "cmp": 439.8
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.419Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 439.8,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753784_05112026055128_WEB.xml"
   },
   "FIBERWEB": {
     "about": "Fiberweb (India) Limited manufactures and sells spunbond and melt-blown nonwoven fabrics from polypropylene in India. The company's products are used in hygiene, medical, agricultural, industrial, and packaging applications, serving end uses such as personal hygiene products, medical disposables, wipes, filtration media, agricultural crop and soil covers, automotive interiors, geotextiles, and technical textiles. It offers nonwoven fabrics for applications including baby diapers, feminine hygiene, adult incontinence, face masks, crop covers, weed protection, bumper covers, trunk carpets, underbody panels, hospital masks, industrial garments, curtains, upholstery, luggage, bedsheets, and geotextiles, as well as melt-blown nonwoven fabrics for medical fabrics, face masks, disposable gowns, drapes, sterilization wraps, oil absorbents, filtration of chemicals, oil, air, and liquids, sanitary products, and disposable industrial apparel. The company exports its products to the United States, the United Kingdom, Europe, Australia, New Zealand, South Africa, and the Gulf countries. The company was formerly known as PVD Plast Mould Industries Limited. Fiberweb (India) Limited was incorporated in 1985 and is headquartered in Mumbai, India.",
@@ -4483,39 +4648,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "32",
-        "expenses": "25",
-        "operatingProfit": "7",
-        "opm": "21.9%",
-        "netProfit": "5",
-        "eps": "₹0.2"
+        "sales": "26",
+        "expenses": "22",
+        "operatingProfit": "4",
+        "opm": "15.4%",
+        "netProfit": "4",
+        "eps": "₹1.36"
       },
       {
         "period": "Mar 26",
-        "sales": "47",
-        "expenses": "38",
-        "operatingProfit": "9",
-        "opm": "19.1%",
-        "netProfit": "7",
-        "eps": "₹0.2"
+        "sales": "10",
+        "expenses": "8",
+        "operatingProfit": "2",
+        "opm": "20.0%",
+        "netProfit": "-2",
+        "eps": "₹-0.53"
       },
       {
         "period": "Jun 26",
-        "sales": "61",
-        "expenses": "51",
-        "operatingProfit": "10",
-        "opm": "16.4%",
-        "netProfit": "8",
-        "eps": "₹0.2"
+        "sales": "10",
+        "expenses": "10",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.09"
       },
       {
-        "period": "Sept 26",
-        "sales": "66",
-        "expenses": "56",
-        "operatingProfit": "10",
-        "opm": "15.2%",
-        "netProfit": "8",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "31",
+        "expenses": "29",
+        "operatingProfit": "2",
+        "opm": "6.5%",
+        "netProfit": "1",
+        "eps": "₹0.44"
       }
     ],
     "balanceSheet": [
@@ -4578,6 +4743,18 @@
         "investments": "153",
         "otherAssets": "97",
         "totalAssets": "571"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "29",
+        "reserves": "159",
+        "borrowings": "17",
+        "otherLiabilities": "8",
+        "totalLiabilities": "213",
+        "fixedAssets": "146",
+        "investments": "0",
+        "otherAssets": "67",
+        "totalAssets": "213"
       }
     ],
     "cashFlows": [
@@ -4615,10 +4792,17 @@
         "cfi": "-8",
         "cff": "-5",
         "netCash": "0"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "2",
+        "cfi": "-4",
+        "cff": "4",
+        "netCashFlow": "2"
       }
     ],
     "shareholding": {
-      "promoters": "52.10%",
+      "promoters": "47.16%",
       "fii": "18.20%",
       "dii": "9.80%",
       "public": "19.90%",
@@ -4694,9 +4878,10 @@
     ],
     "updatedAt": 1794038126096,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:09.050Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 18); ROE updated: 30% -> 2.1%",
-    "cmp": 26.59
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.488Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 26.59,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749135_29102026062100_WEB.xml"
   },
   "FIEMIND": {
     "about": "Fiem Industries Limited, together with its subsidiaries, manufactures and supplies automotive components in India and internationally. It operates in two segments, Automotive and Others. The company offers automotive lighting and signaling equipment, rear-view mirrors, prismatic mirrors, plastic moulded parts, bank angle sensors, and canister and sheet metal components for motorized vehicles. It also provides LED luminaries, including indoor and outdoor lighting, display panels, and LED integrated passengers information system. The company serves original equipment manufacturers. It exports its products. The company was formerly known as Rahul Auto Private Limited and changed its name to Fiem Industries Limited in May 1992. Fiem Industries Limited was incorporated in 1989 and is based in Gurugram, India.",
@@ -4773,39 +4958,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "658",
-        "expenses": "585",
-        "operatingProfit": "73",
-        "opm": "11.1%",
-        "netProfit": "56",
-        "eps": "₹14.5"
+        "sales": "695",
+        "expenses": "611",
+        "operatingProfit": "84",
+        "opm": "12.1%",
+        "netProfit": "63",
+        "eps": "₹24.11"
       },
       {
         "period": "Mar 26",
-        "sales": "715",
-        "expenses": "632",
-        "operatingProfit": "83",
-        "opm": "11.6%",
-        "netProfit": "64",
-        "eps": "₹16.6"
+        "sales": "755",
+        "expenses": "661",
+        "operatingProfit": "94",
+        "opm": "12.5%",
+        "netProfit": "71",
+        "eps": "₹26.82"
       },
       {
         "period": "Jun 26",
-        "sales": "690",
-        "expenses": "608",
-        "operatingProfit": "82",
-        "opm": "11.9%",
-        "netProfit": "63",
-        "eps": "₹16.3"
+        "sales": "780",
+        "expenses": "691",
+        "operatingProfit": "89",
+        "opm": "11.4%",
+        "netProfit": "65",
+        "eps": "₹24.77"
       },
       {
-        "period": "Sept 26",
-        "sales": "751",
-        "expenses": "659",
-        "operatingProfit": "92",
-        "opm": "12.3%",
-        "netProfit": "71",
-        "eps": "₹18.4"
+        "period": "Sep 26",
+        "sales": "940",
+        "expenses": "826",
+        "operatingProfit": "114",
+        "opm": "12.1%",
+        "netProfit": "84",
+        "eps": "₹31.98"
       }
     ],
     "balanceSheet": [
@@ -4868,6 +5053,18 @@
         "investments": "278",
         "otherAssets": "401",
         "totalAssets": "1,380"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "26",
+        "reserves": "1,226",
+        "borrowings": "0",
+        "otherLiabilities": "622",
+        "totalLiabilities": "1,874",
+        "fixedAssets": "619",
+        "investments": "4",
+        "otherAssets": "1,251",
+        "totalAssets": "1,874"
       }
     ],
     "cashFlows": [
@@ -4905,6 +5102,13 @@
         "cfi": "-142",
         "cff": "-76",
         "netCash": "61"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "95",
+        "cfi": "-99",
+        "cff": "-110",
+        "netCashFlow": "-114"
       }
     ],
     "shareholding": {
@@ -4954,7 +5158,7 @@
       "evToEbitda": 65,
       "roce": 28.1,
       "roe": 23,
-      "debtToEquity": 0.05,
+      "debtToEquity": 0,
       "interestCoverage": 42.9,
       "divYield": 1.5,
       "salesGrowth3Y": 15,
@@ -4964,7 +5168,7 @@
     "pe": 29,
     "roePct": 23,
     "rocePct": 28.1,
-    "debtToEquity": 0.05,
+    "debtToEquity": 0,
     "divYieldPct": 1.5,
     "salesGrowth3Y": 15,
     "profitGrowth3Y": 22,
@@ -4984,9 +5188,10 @@
     ],
     "updatedAt": 1794038126096,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:09.056Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 26); Debt/Equity updated: 0.6 -> 0.05",
-    "cmp": 1904
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.550Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1904,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756702_12112026060924_WEB.xml"
   },
   "FILATEX": {
     "about": "Filatex India Limited manufactures, sells, and trades polyester filament yarn, and synthetic yarn and textiles in India and internationally. The company offers polyethylene terephthalate, polyester yarn such as partially oriented yarn and fully drawn yarn; partially oriented yarn, including shirting and suiting, sarees and ladies dress wear, and raw materials used to manufacture DTY; and fully drawn yarn, such as apparel, fashion fabric, sportswear, home furnishing fabric, upholstery, and car seat cover. It also provides drawn textured yarn, including outer/inner garments, woven and knitted fabric, skin-clinging garments, home furnishing, upholstery, and bags; air-textured yarn, such as automotive product, furnishing fabric, sewing thread, shirting and blouse, shoelace, and tarpaulin; and polypropylene yarn, includes hosiery, filtration fabric, swim wear, lace, and other knitting and weaving application. In addition, the company offers narrow woven fabric for body armor, innerwear, helmet, parachute, pack wedding, seat belt, zipper, and military uniform; and specialty products, which include filigree, ocean, chubby yarn, cotslon, Soie FIL, and flexi FIL. Filatex India Limited was incorporated in 1990 and is headquartered in New Delhi, India.",
@@ -5062,40 +5267,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "2,142",
+        "expenses": "2,023",
+        "operatingProfit": "119",
+        "opm": "5.6%",
+        "netProfit": "88",
+        "eps": "₹1.99"
+      },
+      {
         "period": "Dec 25",
-        "sales": "704",
-        "expenses": "678",
-        "operatingProfit": "26",
-        "opm": "3.7%",
-        "netProfit": "20",
-        "eps": "₹0.2"
+        "sales": "1,058",
+        "expenses": "984",
+        "operatingProfit": "74",
+        "opm": "7.0%",
+        "netProfit": "55",
+        "eps": "₹1.25"
       },
       {
         "period": "Mar 26",
-        "sales": "0",
-        "expenses": "1",
-        "operatingProfit": "0",
-        "opm": "5%",
-        "netProfit": "9",
-        "eps": "₹0.2"
+        "sales": "990",
+        "expenses": "937",
+        "operatingProfit": "53",
+        "opm": "5.4%",
+        "netProfit": "40",
+        "eps": "₹0.91"
       },
       {
         "period": "Jun 26",
-        "sales": "0",
-        "expenses": "1",
-        "operatingProfit": "0",
-        "opm": "5%",
-        "netProfit": "98",
-        "eps": "₹1.1"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "1,090",
-        "expenses": "987",
-        "operatingProfit": "103",
-        "opm": "9.4%",
-        "netProfit": "79",
-        "eps": "₹0.9"
+        "sales": "1,155",
+        "expenses": "1,089",
+        "operatingProfit": "66",
+        "opm": "5.7%",
+        "netProfit": "49",
+        "eps": "₹1.11"
       }
     ],
     "balanceSheet": [
@@ -5198,7 +5403,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "71.77%",
+      "promoters": "65.51%",
       "fii": "5.96%",
       "dii": "3.21%",
       "public": "19.06%",
@@ -5274,8 +5479,8 @@
     ],
     "updatedAt": 1794038126097,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:09.065Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 22)",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.481Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 91.66
   },
   "FILATFASH": {
@@ -5473,40 +5678,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "23",
+        "expenses": "21",
+        "operatingProfit": "2",
+        "opm": "8.7%",
+        "netProfit": "1",
+        "eps": "₹0"
+      },
+      {
         "period": "Dec 25",
-        "sales": "126",
-        "expenses": "106",
-        "operatingProfit": "20",
-        "opm": "15.8%",
-        "netProfit": "13",
-        "eps": "₹0.2"
+        "sales": "22",
+        "expenses": "22",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0"
       },
       {
         "period": "Mar 26",
-        "sales": "133",
-        "expenses": "111",
-        "operatingProfit": "22",
-        "opm": "16.2%",
-        "netProfit": "14",
-        "eps": "₹0.2"
+        "sales": "23",
+        "expenses": "23",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0"
       },
       {
         "period": "Jun 26",
-        "sales": "136",
-        "expenses": "113",
-        "operatingProfit": "23",
-        "opm": "16.6%",
-        "netProfit": "15",
-        "eps": "₹0.2"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "142",
-        "expenses": "118",
-        "operatingProfit": "24",
-        "opm": "17%",
-        "netProfit": "16",
-        "eps": "₹0.2"
+        "sales": "20",
+        "expenses": "20",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0"
       }
     ],
     "ratios": {
@@ -5522,7 +5727,7 @@
       "profitGrowth3Y": -78.4
     },
     "shareholding": {
-      "promoters": "60.37%",
+      "promoters": "2.02%",
       "fii": "13.87%",
       "dii": "12.09%",
       "public": "13.67%",
@@ -5563,7 +5768,10 @@
       ]
     },
     "cmp": 0.17,
-    "rocePct": 22
+    "rocePct": 22,
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:16.415Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern"
   },
   "FINCABLES": {
     "about": "Finolex Cables Limited engages in the manufacture and sale of electrical and communication cables, and other electrical appliances in India and internationally. The company operates through Electrical Cables, Communication Cables, Copper Rods, and Others segments. It offers PVC, flame retardant low smoke, halogen free flame retardant insulated industrial, and 3 core flat cables; communication cables, including CCTV, CAT6 LAN, optic fiber, speaker, RG6 coaxial, telephone, and FinoGreen cables; power and control cables; and agricultural, solar, and automotive cables. The company also provides switches, smart switches, accessories, and mounting boxes; and LED spot downlights, LED battens, and Double and Tri color panels, as well as LED floodlights and lens streetlights. In addition, it offers ceiling, table, wall mounted, pedestal, and exhaust fans; switchgear products, such as miniature and residual current circuit breakers, isolators, auto changeover current limiters, moulded case circuit breakers, and distribution boards; instant, storage, and immersion water heaters; rigid PVC conduits and fittings; oil filled, quartz, and blower room heater; and smart door locks and switches. Finolex Cables Limited was founded in 1958 and is based in Pune, India.",
@@ -5639,40 +5847,31 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "1,376",
-        "expenses": "1,133",
-        "operatingProfit": "243",
-        "opm": "17.7%",
-        "netProfit": "187",
-        "eps": "₹7.2"
-      },
-      {
         "period": "Mar 26",
-        "sales": "1,599",
-        "expenses": "1,422",
-        "operatingProfit": "177",
-        "opm": "11.1%",
-        "netProfit": "136",
-        "eps": "₹5.3"
+        "sales": "1,984",
+        "expenses": "1,765",
+        "operatingProfit": "219",
+        "opm": "11.0%",
+        "netProfit": "161",
+        "eps": "₹10.54"
       },
       {
         "period": "Jun 26",
-        "sales": "1,951",
-        "expenses": "1,660",
-        "operatingProfit": "291",
-        "opm": "14.9%",
-        "netProfit": "224",
-        "eps": "₹8.7"
+        "sales": "2,065",
+        "expenses": "1,788",
+        "operatingProfit": "277",
+        "opm": "13.4%",
+        "netProfit": "221",
+        "eps": "₹14.47"
       },
       {
-        "period": "Sept 26",
-        "sales": "2,013",
-        "expenses": "1,726",
-        "operatingProfit": "287",
-        "opm": "14.3%",
-        "netProfit": "221",
-        "eps": "₹8.5"
+        "period": "Sep 26",
+        "sales": "2,358",
+        "expenses": "1,983",
+        "operatingProfit": "375",
+        "opm": "15.9%",
+        "netProfit": "286",
+        "eps": "₹18.72"
       }
     ],
     "balanceSheet": [
@@ -5735,6 +5934,18 @@
         "investments": "1,149",
         "otherAssets": "2,348",
         "totalAssets": "7,118"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "31",
+        "reserves": "5,452",
+        "borrowings": "28",
+        "otherLiabilities": "742",
+        "totalLiabilities": "6,253",
+        "fixedAssets": "888",
+        "investments": "19",
+        "otherAssets": "5,346",
+        "totalAssets": "6,253"
       }
     ],
     "cashFlows": [
@@ -5772,10 +5983,17 @@
         "cfi": "-301",
         "cff": "-131",
         "netCash": "157"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-106",
+        "cfi": "40",
+        "cff": "-4",
+        "netCashFlow": "-70"
       }
     ],
     "shareholding": {
-      "promoters": "58.70%",
+      "promoters": "35.86%",
       "fii": "13.76%",
       "dii": "7.41%",
       "public": "20.13%",
@@ -5821,7 +6039,7 @@
       "evToEbitda": 42,
       "roce": 14.6,
       "roe": 12,
-      "debtToEquity": 0,
+      "debtToEquity": 0.01,
       "interestCoverage": 36.1,
       "divYield": 1.4,
       "salesGrowth3Y": 12.2,
@@ -5831,7 +6049,7 @@
     "pe": 40.1,
     "roePct": 12,
     "rocePct": 14.6,
-    "debtToEquity": 0,
+    "debtToEquity": 0.01,
     "divYieldPct": 1.4,
     "salesGrowth3Y": 12.2,
     "profitGrowth3Y": 12.3,
@@ -5851,9 +6069,10 @@
     ],
     "updatedAt": 1794038126098,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:09.980Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 26); Debt/Equity updated: 0.64 -> 0",
-    "cmp": 1192
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.592Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 1192,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755504_07112026082832_WEB.xml"
   },
   "FINKURVE": {
     "about": "Finkurve Financial Services Limited, a non-banking financial company, provides loans and financial services in India. It offers personal loans; loans against gold jewelry; and other secured and unsecured lending, as well as inter-corporate loans. The company was formerly known as Sanjay Leasing Limited and changed its name to Finkurve Financial Services Limited in March 2012. Finkurve Financial Services Limited was incorporated in 1984 and is based in Mumbai, India.",
@@ -5929,40 +6148,31 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "79",
-        "expenses": "58",
-        "operatingProfit": "21",
-        "opm": "26.8%",
-        "netProfit": "15",
-        "eps": "₹0.5"
-      },
-      {
         "period": "Mar 26",
-        "sales": "82",
-        "expenses": "60",
-        "operatingProfit": "22",
-        "opm": "27.2%",
-        "netProfit": "15",
-        "eps": "₹0.5"
+        "sales": "69",
+        "expenses": "59",
+        "operatingProfit": "10",
+        "opm": "14.5%",
+        "netProfit": "8",
+        "eps": "₹0.58"
       },
       {
         "period": "Jun 26",
-        "sales": "85",
-        "expenses": "62",
-        "operatingProfit": "23",
-        "opm": "27.6%",
-        "netProfit": "16",
-        "eps": "₹0.5"
+        "sales": "76",
+        "expenses": "65",
+        "operatingProfit": "11",
+        "opm": "14.5%",
+        "netProfit": "8",
+        "eps": "₹0.6"
       },
       {
-        "period": "Sept 26",
-        "sales": "87",
-        "expenses": "63",
+        "period": "Sep 26",
+        "sales": "166",
+        "expenses": "142",
         "operatingProfit": "24",
-        "opm": "28%",
-        "netProfit": "17",
-        "eps": "₹0.6"
+        "opm": "14.5%",
+        "netProfit": "18",
+        "eps": "₹1.29"
       }
     ],
     "balanceSheet": [
@@ -6025,6 +6235,18 @@
         "investments": "271",
         "otherAssets": "174",
         "totalAssets": "1,030"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "14",
+        "reserves": "351",
+        "borrowings": "0",
+        "otherLiabilities": "997",
+        "totalLiabilities": "1,362",
+        "fixedAssets": "16",
+        "investments": "0",
+        "otherAssets": "1,346",
+        "totalAssets": "1,362"
       }
     ],
     "cashFlows": [
@@ -6062,10 +6284,17 @@
         "cfi": "-51",
         "cff": "-31",
         "netCash": "5"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-47",
+        "cfi": "1",
+        "cff": "30",
+        "netCashFlow": "-16"
       }
     ],
     "shareholding": {
-      "promoters": "65.85%",
+      "promoters": "56.21%",
       "fii": "14.40%",
       "dii": "7.75%",
       "public": "12.00%",
@@ -6111,7 +6340,7 @@
       "evToEbitda": 21.9,
       "roce": 32.9,
       "roe": 27,
-      "debtToEquity": 2.44,
+      "debtToEquity": 0,
       "interestCoverage": 2.4,
       "divYield": 1.5,
       "salesGrowth3Y": 55.2,
@@ -6121,7 +6350,7 @@
     "pe": 30.7,
     "roePct": 27,
     "rocePct": 32.9,
-    "debtToEquity": 2.44,
+    "debtToEquity": 0,
     "divYieldPct": 1.5,
     "salesGrowth3Y": 55.2,
     "profitGrowth3Y": 54.2,
@@ -6141,9 +6370,10 @@
     ],
     "updatedAt": 1794038126098,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:09.905Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.65 -> 2.44",
-    "cmp": 64.19
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.379Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 64.19,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1754074_05112026072728_WEB.xml"
   },
   "FINOPB": {
     "about": "Fino Payments Bank Limited provides financial solutions and services in India. The company offers savings, current, and salary accounts; personal, home and property, gold, and referral loans; debit and prepaid cards; and life, health, general, motor, and shopkeeper insurance products, as well as fixed deposit and sweep account facility. It also provides cash management services to various sectors, such as micro-finance, banking, logistics, e-commerce, agri-tech, and retail as well as mobile banking through the FinoPay app. In addition, the company offers loan referrals, business correspondent using the Aadhaar authentication, domestic money transfer, and micro ATM services, Aadhaar Pay; and bill payment and recharges. The company was formerly known as Fino Fintech Limited and changed its name to Fino Payments Bank Limited in April 2017. The company was founded in 2006 and is based in Navi Mumbai, India. Fino Payments Bank Limited is a subsidiary of FINO PayTech Limited.",
@@ -6220,39 +6450,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "350",
-        "expenses": "329",
-        "operatingProfit": "21",
-        "opm": "6%",
-        "netProfit": "1",
-        "eps": "₹1.7"
+        "sales": "394",
+        "expenses": "377",
+        "operatingProfit": "17",
+        "opm": "4.3%",
+        "netProfit": "12",
+        "eps": "₹1.47"
       },
       {
         "period": "Mar 26",
-        "sales": "360",
-        "expenses": "338",
-        "operatingProfit": "22",
-        "opm": "6.1%",
-        "netProfit": "1",
-        "eps": "₹1.7"
+        "sales": "340",
+        "expenses": "336",
+        "operatingProfit": "4",
+        "opm": "1.2%",
+        "netProfit": "7",
+        "eps": "₹0.85"
       },
       {
         "period": "Jun 26",
-        "sales": "384",
-        "expenses": "361",
-        "operatingProfit": "23",
-        "opm": "6%",
-        "netProfit": "1",
-        "eps": "₹1.7"
+        "sales": "307",
+        "expenses": "321",
+        "operatingProfit": "-14",
+        "opm": "-4.6%",
+        "netProfit": "-14",
+        "eps": "₹-1.65"
       },
       {
-        "period": "Sept 26",
-        "sales": "391",
-        "expenses": "368",
-        "operatingProfit": "23",
-        "opm": "5.9%",
-        "netProfit": "1",
-        "eps": "₹1.7"
+        "period": "Sep 26",
+        "sales": "334",
+        "expenses": "355",
+        "operatingProfit": "-21",
+        "opm": "-6.3%",
+        "netProfit": "-21",
+        "eps": "₹-2.51"
       }
     ],
     "balanceSheet": [
@@ -6315,6 +6545,18 @@
         "investments": "175",
         "otherAssets": "119",
         "totalAssets": "600"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "0",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "5,894",
+        "totalLiabilities": "5,894",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "5,894",
+        "totalAssets": "5,894"
       }
     ],
     "cashFlows": [
@@ -6352,10 +6594,17 @@
         "cfi": "-1",
         "cff": "-1",
         "netCash": "0"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-746",
+        "cfi": "-32",
+        "cff": "689",
+        "netCashFlow": "-89"
       }
     ],
     "shareholding": {
-      "promoters": "77.55%",
+      "promoters": "75%",
       "fii": "0.01%",
       "dii": "0.00%",
       "public": "22.44%",
@@ -6431,9 +6680,10 @@
     ],
     "updatedAt": 1794038126098,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:10.017Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 26); ROE updated: 35% -> -2%",
-    "cmp": 120.3
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.443Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 120.3,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1749384_29102026081942_WEB.xml"
   },
   "FINPIPE": {
     "about": "Finolex Industries Limited manufactures and sells polyvinyl chloride (PVC) pipes and fittings, and PVC resins in India. The company operates in two segments, PVC Resin and PVC Pipes and Fittings. It offers agriculture pipes and fittings; column pipes; casing pipes; and solvent cement and lubricants. The company also provides plumbing and sanitation pipes and fitting, such as ASTM pipes and fittings; CPVC pipes and fittings; SWR pipes and fittings; sewerage pipes; and solvent cement, lubricant, and primer. It distributes its products through dealers and retailers. Finolex Industries Limited was founded in 1956 and is headquartered in Pune, India.",
@@ -6510,39 +6760,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "898",
-        "expenses": "747",
-        "operatingProfit": "151",
-        "opm": "16.8%",
-        "netProfit": "116",
-        "eps": "₹0.9"
+        "sales": "950",
+        "expenses": "804",
+        "operatingProfit": "146",
+        "opm": "15.4%",
+        "netProfit": "110",
+        "eps": "₹1.78"
       },
       {
         "period": "Mar 26",
-        "sales": "1,314",
-        "expenses": "975",
-        "operatingProfit": "339",
-        "opm": "25.8%",
-        "netProfit": "261",
-        "eps": "₹2"
+        "sales": "1,350",
+        "expenses": "1,015",
+        "operatingProfit": "335",
+        "opm": "24.8%",
+        "netProfit": "254",
+        "eps": "₹4.11"
       },
       {
         "period": "Jun 26",
-        "sales": "884",
-        "expenses": "734",
-        "operatingProfit": "150",
-        "opm": "17%",
-        "netProfit": "115",
-        "eps": "₹0.9"
+        "sales": "959",
+        "expenses": "811",
+        "operatingProfit": "148",
+        "opm": "15.4%",
+        "netProfit": "107",
+        "eps": "₹1.74"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,094",
-        "expenses": "935",
-        "operatingProfit": "159",
-        "opm": "14.5%",
+        "period": "Sep 26",
+        "sales": "1,154",
+        "expenses": "1,001",
+        "operatingProfit": "153",
+        "opm": "13.3%",
         "netProfit": "122",
-        "eps": "₹0.9"
+        "eps": "₹1.98"
       }
     ],
     "balanceSheet": [
@@ -6605,6 +6855,18 @@
         "investments": "2,486",
         "otherAssets": "1,494",
         "totalAssets": "8,475"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "124",
+        "reserves": "7,293",
+        "borrowings": "137",
+        "otherLiabilities": "1,148",
+        "totalLiabilities": "8,702",
+        "fixedAssets": "990",
+        "investments": "3,713",
+        "otherAssets": "3,999",
+        "totalAssets": "8,702"
       }
     ],
     "cashFlows": [
@@ -6642,10 +6904,17 @@
         "cfi": "-181",
         "cff": "-131",
         "netCash": "23"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "150",
+        "cfi": "309",
+        "cff": "-485",
+        "netCashFlow": "-26"
       }
     ],
     "shareholding": {
-      "promoters": "59.33%",
+      "promoters": "52.47%",
       "fii": "9.95%",
       "dii": "5.36%",
       "public": "25.36%",
@@ -6721,9 +6990,10 @@
     ],
     "updatedAt": 1794038126099,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:10.032Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 16% -> 9%; Debt/Equity updated: 0.65 -> 0.02",
-    "cmp": 143.95
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.629Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 143.95,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750572_30102026103339_WEB.xml"
   },
   "FIRSTCRY": {
     "about": "Brainbees Solutions Limited operates multi-channel retailing platform for mothers, babies, and kids products in India and internationally. The company offers products in various categories, including boy and girl fashion products, footwear, toys, diapering and gear products, feeding and bath products, nursery products, health and safety products, boutiques, women's beauty and care products, moms and maternity products, birthday and gift products, books and CDs, and school supplies under third-party Indian brands and global brands, as well as its home brands, such as BabyHug, Babyoye, Cutewalk, Pine Kids, and others. It also owns and operates pre-schools. The company sells its products through company-owned modern stores, franchisee-owned stores, e-commerce website, and general trade retail distribution, as well as through FirstCry platform. Brainbees Solutions Limited was incorporated in 2010 and is headquartered in Pune, India.",
@@ -6800,39 +7070,30 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,863",
-        "expenses": "1,893",
-        "operatingProfit": "-30",
-        "opm": "-1.6%",
-        "netProfit": "-46",
-        "eps": "₹0.2"
+        "sales": "792",
+        "expenses": "732",
+        "operatingProfit": "60",
+        "opm": "7.6%",
+        "netProfit": "46",
+        "eps": "₹0.88"
       },
       {
         "period": "Mar 26",
-        "sales": "2,099",
-        "expenses": "2,133",
-        "operatingProfit": "-34",
-        "opm": "-1.6%",
-        "netProfit": "-35",
-        "eps": "₹0.2"
+        "sales": "721",
+        "expenses": "701",
+        "operatingProfit": "20",
+        "opm": "2.8%",
+        "netProfit": "9",
+        "eps": "₹0.61"
       },
       {
         "period": "Jun 26",
-        "sales": "2,424",
-        "expenses": "2,463",
-        "operatingProfit": "-39",
-        "opm": "-1.6%",
-        "netProfit": "-28",
-        "eps": "₹0.2"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "2,163",
-        "expenses": "2,198",
-        "operatingProfit": "-35",
-        "opm": "-1.6%",
-        "netProfit": "-30",
-        "eps": "₹0.2"
+        "sales": "724",
+        "expenses": "695",
+        "operatingProfit": "29",
+        "opm": "4.0%",
+        "netProfit": "22",
+        "eps": "₹0.41"
       }
     ],
     "balanceSheet": [
@@ -6935,7 +7196,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "58.79%",
+      "promoters": "0%",
       "fii": "15.03%",
       "dii": "8.10%",
       "public": "18.08%",
@@ -7011,8 +7272,8 @@
     ],
     "updatedAt": 1794038126099,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:10.005Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 26); Debt/Equity updated: 0.39 -> 0.3",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.474Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 166.37
   },
   "FISCHER": {
@@ -7089,40 +7350,40 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "9",
+        "expenses": "8",
+        "operatingProfit": "1",
+        "opm": "11.1%",
+        "netProfit": "1",
+        "eps": "₹0.13"
+      },
+      {
         "period": "Dec 25",
-        "sales": "84",
-        "expenses": "62",
-        "operatingProfit": "22",
-        "opm": "26.6%",
-        "netProfit": "15",
-        "eps": "₹0.3"
+        "sales": "2",
+        "expenses": "4",
+        "operatingProfit": "-2",
+        "opm": "-100.0%",
+        "netProfit": "-2",
+        "eps": "₹-0.03"
       },
       {
         "period": "Mar 26",
-        "sales": "90",
-        "expenses": "66",
-        "operatingProfit": "24",
-        "opm": "27%",
-        "netProfit": "16",
-        "eps": "₹0.4"
+        "sales": "5",
+        "expenses": "15",
+        "operatingProfit": "-10",
+        "opm": "-200.0%",
+        "netProfit": "-9",
+        "eps": "₹-0.14"
       },
       {
         "period": "Jun 26",
-        "sales": "94",
-        "expenses": "68",
-        "operatingProfit": "26",
-        "opm": "27.4%",
-        "netProfit": "17",
-        "eps": "₹0.4"
-      },
-      {
-        "period": "Sept 26",
-        "sales": "97",
-        "expenses": "70",
-        "operatingProfit": "27",
-        "opm": "27.8%",
-        "netProfit": "18",
-        "eps": "₹0.4"
+        "sales": "2",
+        "expenses": "5",
+        "operatingProfit": "-3",
+        "opm": "-150.0%",
+        "netProfit": "-4",
+        "eps": "₹-0.05"
       }
     ],
     "balanceSheet": [
@@ -7225,7 +7486,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "77.25%",
+      "promoters": "63.08%",
       "fii": "1.83%",
       "dii": "0.98%",
       "public": "19.94%",
@@ -7301,8 +7562,8 @@
     ],
     "updatedAt": 1794038126099,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:10.812Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.09 -> 0.28",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.452Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 25.23
   },
   "FIVESTAR": {
@@ -7379,40 +7640,31 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "634",
-        "expenses": "274",
-        "operatingProfit": "360",
-        "opm": "56.8%",
-        "netProfit": "277",
-        "eps": "₹4.6"
-      },
-      {
         "period": "Mar 26",
-        "sales": "645",
-        "expenses": "295",
-        "operatingProfit": "350",
-        "opm": "54.3%",
+        "sales": "826",
+        "expenses": "469",
+        "operatingProfit": "357",
+        "opm": "43.2%",
         "netProfit": "269",
-        "eps": "₹4.5"
+        "eps": "₹9.14"
       },
       {
         "period": "Jun 26",
-        "sales": "667",
-        "expenses": "315",
-        "operatingProfit": "352",
-        "opm": "52.8%",
+        "sales": "839",
+        "expenses": "477",
+        "operatingProfit": "362",
+        "opm": "43.1%",
         "netProfit": "271",
-        "eps": "₹4.5"
+        "eps": "₹9.19"
       },
       {
-        "period": "Sept 26",
-        "sales": "707",
-        "expenses": "318",
-        "operatingProfit": "389",
-        "opm": "55%",
+        "period": "Sep 26",
+        "sales": "875",
+        "expenses": "500",
+        "operatingProfit": "375",
+        "opm": "42.9%",
         "netProfit": "299",
-        "eps": "₹5"
+        "eps": "₹10.14"
       }
     ],
     "balanceSheet": [
@@ -7475,6 +7727,18 @@
         "investments": "1,946",
         "otherAssets": "2,205",
         "totalAssets": "8,814"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "30",
+        "reserves": "7,874",
+        "borrowings": "0",
+        "otherLiabilities": "8,274",
+        "totalLiabilities": "16,178",
+        "fixedAssets": "26",
+        "investments": "0",
+        "otherAssets": "16,152",
+        "totalAssets": "16,178"
       }
     ],
     "cashFlows": [
@@ -7512,10 +7776,17 @@
         "cfi": "-669",
         "cff": "-370",
         "netCash": "202"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-771",
+        "cfi": "477",
+        "cff": "-292",
+        "netCashFlow": "-586"
       }
     ],
     "shareholding": {
-      "promoters": "26.31%",
+      "promoters": "18.61%",
       "fii": "31.01%",
       "dii": "16.70%",
       "public": "25.98%",
@@ -7561,7 +7832,7 @@
       "evToEbitda": 14.4,
       "roce": 19,
       "roe": 15.2,
-      "debtToEquity": 1.01,
+      "debtToEquity": 0,
       "interestCoverage": 39,
       "divYield": 1.5,
       "salesGrowth3Y": 25.7,
@@ -7571,7 +7842,7 @@
     "pe": 21.5,
     "roePct": 15.2,
     "rocePct": 19,
-    "debtToEquity": 1.01,
+    "debtToEquity": 0,
     "divYieldPct": 1.5,
     "salesGrowth3Y": 25.7,
     "profitGrowth3Y": 22.1,
@@ -7591,9 +7862,10 @@
     ],
     "updatedAt": 1794038126100,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:10.950Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 11% -> 15.2%; Debt/Equity updated: 0.45 -> 1.01",
-    "cmp": 397.15
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.447Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 397.15,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1746173_26102026070534_WEB.xml"
   },
   "FLAIR": {
     "about": "Flair Writing Industries Limited manufactures and sells writing instruments, stationeries, and other allied products in India and internationally. The company offers ball, fountain, gel, roller, plastic, and metal pens; mechanical pencils, correction pens, and refills; sketch pens, colour pencils, wax crayons, oil pastels, activity kits and school stationery sets; art and hobby products; calculators; stainless steel vacuum-insulated bottles, flasks, and hydration solutions; storage and serving solutions under the Flair, Hauser, Pierre Cardin, Flair Creative, Flair Designer Houseware, HAUSER ARTZ, and Flair Calculator brands. It also provides steel bottles and houseware products; gift sets; wooden pencil; colouring range products; geometry box; crayons and oil pastel; office stationery; colour and writing kits; tumblers; coffee mugs and travel mugs; vacuum-insulated bottles; and kitchenware products. Flair Writing Industries Limited was founded in 1976 and is based in Mumbai, India.",
@@ -7670,39 +7942,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "318",
-        "expenses": "278",
-        "operatingProfit": "40",
-        "opm": "12.6%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "265",
+        "expenses": "229",
+        "operatingProfit": "36",
+        "opm": "13.6%",
+        "netProfit": "25",
+        "eps": "₹2.4"
       },
       {
         "period": "Mar 26",
-        "sales": "323",
-        "expenses": "276",
-        "operatingProfit": "47",
-        "opm": "14.6%",
-        "netProfit": "36",
-        "eps": "₹2.2"
+        "sales": "262",
+        "expenses": "223",
+        "operatingProfit": "39",
+        "opm": "14.9%",
+        "netProfit": "29",
+        "eps": "₹2.75"
       },
       {
         "period": "Jun 26",
-        "sales": "319",
-        "expenses": "281",
-        "operatingProfit": "38",
-        "opm": "11.9%",
-        "netProfit": "29",
-        "eps": "₹1.8"
+        "sales": "265",
+        "expenses": "231",
+        "operatingProfit": "34",
+        "opm": "12.8%",
+        "netProfit": "25",
+        "eps": "₹2.35"
       },
       {
-        "period": "Sept 26",
-        "sales": "340",
-        "expenses": "300",
-        "operatingProfit": "40",
-        "opm": "11.8%",
-        "netProfit": "31",
-        "eps": "₹1.9"
+        "period": "Sep 26",
+        "sales": "548",
+        "expenses": "476",
+        "operatingProfit": "72",
+        "opm": "13.1%",
+        "netProfit": "54",
+        "eps": "₹5.09"
       }
     ],
     "balanceSheet": [
@@ -7765,6 +8037,18 @@
         "investments": "466",
         "otherAssets": "217",
         "totalAssets": "1,577"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "53",
+        "reserves": "1,098",
+        "borrowings": "11",
+        "otherLiabilities": "206",
+        "totalLiabilities": "1,368",
+        "fixedAssets": "315",
+        "investments": "104",
+        "otherAssets": "949",
+        "totalAssets": "1,368"
       }
     ],
     "cashFlows": [
@@ -7802,10 +8086,17 @@
         "cfi": "-88",
         "cff": "-59",
         "netCash": "2"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "35",
+        "cfi": "27",
+        "cff": "45",
+        "netCashFlow": "107"
       }
     ],
     "shareholding": {
-      "promoters": "84.58%",
+      "promoters": "78.59%",
       "fii": "2.35%",
       "dii": "1.27%",
       "public": "11.80%",
@@ -7851,7 +8142,7 @@
       "evToEbitda": 33,
       "roce": 14.4,
       "roe": 11.5,
-      "debtToEquity": 0.05,
+      "debtToEquity": 0.01,
       "interestCoverage": 48.9,
       "divYield": 1.4,
       "salesGrowth3Y": 8.4,
@@ -7861,7 +8152,7 @@
     "pe": 40.6,
     "roePct": 11.5,
     "rocePct": 14.4,
-    "debtToEquity": 0.05,
+    "debtToEquity": 0.01,
     "divYieldPct": 1.4,
     "salesGrowth3Y": 8.4,
     "profitGrowth3Y": 8.4,
@@ -7881,9 +8172,10 @@
     ],
     "updatedAt": 1794038126100,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:10.886Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 14% -> 11.5%; Debt/Equity updated: 0.74 -> 0.05",
-    "cmp": 239.13
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.513Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 239.13,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751587_02112026115333_WEB.xml"
   },
   "FLEXITUFF": {
     "about": "Flexituff Ventures International Limited engages in the manufacture and sale of technical textiles in India, the United States, Singapore, and internationally. It offers flexible intermediate bulk containers (FIBCs), including four loop bags, single/two loop bags, builder bags/tunnel lift bags, conductive and dissipative bags, baffle bags, UN bags, ventilated bags, and FIBCs with special liners; biaxial oriented polypropylene woven bags; and non-woven retail products comprising non-woven floor covering carpets, interlining for apparel, non-woven filter fabrics, and synthetic leather substrates. The company also provides geosynthetics, such as geogrids, geotextiles, geomembranes, geo-nets, geosynthetic clay liners, geo-cells, geo-composites, and geo-foam, as well as woven and belt nonwoven geo-textiles, sand-filler geo mattresses, geo-synthetics-gravity reinforced wall chains, mega bags, and de-watering tubes. In addition, it is involved in investment, trading, and government contracting activities. The company exports its products. The company was formerly known as Flexituff International Limited and changed its name to Flexituff Ventures International Limited in September 2018. Flexituff Ventures International Limited was founded in 1966 and is based in Indore, India.",
@@ -8246,40 +8538,40 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "1,427",
-        "expenses": "1,341",
-        "operatingProfit": "86",
-        "opm": "6%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "period": "Dec 21",
+        "sales": "1,209",
+        "expenses": "1,297",
+        "operatingProfit": "-88",
+        "opm": "-7.3%",
+        "netProfit": "-88",
+        "eps": "₹-4.33"
       },
       {
-        "period": "Mar 26",
-        "sales": "1,502",
-        "expenses": "1,412",
-        "operatingProfit": "90",
-        "opm": "6%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "period": "Mar 22",
+        "sales": "295",
+        "expenses": "2,011",
+        "operatingProfit": "-1,716",
+        "opm": "-581.7%",
+        "netProfit": "-1,872",
+        "eps": "₹-94.13"
       },
       {
-        "period": "Jun 26",
-        "sales": "1,493",
-        "expenses": "1,403",
-        "operatingProfit": "90",
-        "opm": "6%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "period": "Jun 22",
+        "sales": "287",
+        "expenses": "429",
+        "operatingProfit": "-142",
+        "opm": "-49.5%",
+        "netProfit": "-142",
+        "eps": "₹-7.06"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,586",
-        "expenses": "1,491",
-        "operatingProfit": "95",
-        "opm": "6%",
-        "netProfit": "1",
-        "eps": "₹0.2"
+        "period": "Sep 22",
+        "sales": "317",
+        "expenses": "331",
+        "operatingProfit": "-14",
+        "opm": "-4.4%",
+        "netProfit": "-14",
+        "eps": "₹-0.68"
       }
     ],
     "balanceSheet": [
@@ -8382,7 +8674,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "51.00%",
+      "promoters": "20.3%",
       "fii": "2.09%",
       "dii": "1.12%",
       "public": "45.79%",
@@ -8458,8 +8750,8 @@
     ],
     "updatedAt": 1794038126100,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:10.917Z",
-    "financialChangeSummary": "Quarterly results refreshed (Jun 20)",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:17.561Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 0.77
   },
   "FLUOROCHEM": {
@@ -8537,39 +8829,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,026",
+        "sales": "1,033",
         "expenses": "861",
-        "operatingProfit": "165",
-        "opm": "16.1%",
+        "operatingProfit": "172",
+        "opm": "16.7%",
         "netProfit": "127",
-        "eps": "₹17.5"
+        "eps": "₹11.56"
       },
       {
         "period": "Mar 26",
-        "sales": "1,211",
-        "expenses": "1,065",
-        "operatingProfit": "146",
-        "opm": "12.1%",
-        "netProfit": "112",
-        "eps": "₹15.5"
+        "sales": "1,215",
+        "expenses": "978",
+        "operatingProfit": "237",
+        "opm": "19.5%",
+        "netProfit": "171",
+        "eps": "₹15.54"
       },
       {
         "period": "Jun 26",
-        "sales": "1,588",
-        "expenses": "1,301",
-        "operatingProfit": "287",
-        "opm": "18.1%",
-        "netProfit": "221",
-        "eps": "₹30.5"
+        "sales": "1,309",
+        "expenses": "1,037",
+        "operatingProfit": "272",
+        "opm": "20.8%",
+        "netProfit": "201",
+        "eps": "₹18.35"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,760",
-        "expenses": "1,444",
-        "operatingProfit": "316",
-        "opm": "18%",
-        "netProfit": "243",
-        "eps": "₹33.6"
+        "period": "Sep 26",
+        "sales": "1,705",
+        "expenses": "1,288",
+        "operatingProfit": "417",
+        "opm": "24.5%",
+        "netProfit": "309",
+        "eps": "₹28.12"
       }
     ],
     "balanceSheet": [
@@ -8632,6 +8924,18 @@
         "investments": "1,685",
         "otherAssets": "2,572",
         "totalAssets": "9,748"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "11",
+        "reserves": "7,575",
+        "borrowings": "1,403",
+        "otherLiabilities": "1,524",
+        "totalLiabilities": "10,513",
+        "fixedAssets": "3,554",
+        "investments": "1,388",
+        "otherAssets": "5,571",
+        "totalAssets": "10,513"
       }
     ],
     "cashFlows": [
@@ -8669,10 +8973,17 @@
         "cfi": "-497",
         "cff": "-201",
         "netCash": "153"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "890",
+        "cfi": "-694",
+        "cff": "-208",
+        "netCashFlow": "-12"
       }
     ],
     "shareholding": {
-      "promoters": "66.44%",
+      "promoters": "61.39%",
       "fii": "9.20%",
       "dii": "4.96%",
       "public": "19.40%",
@@ -8718,7 +9029,7 @@
       "evToEbitda": 25.1,
       "roce": 10.4,
       "roe": 8.3,
-      "debtToEquity": 0.26,
+      "debtToEquity": 0.18,
       "interestCoverage": 35.7,
       "divYield": 0.8,
       "salesGrowth3Y": -4.2,
@@ -8728,7 +9039,7 @@
     "pe": 47.5,
     "roePct": 8.3,
     "rocePct": 10.4,
-    "debtToEquity": 0.26,
+    "debtToEquity": 0.18,
     "divYieldPct": 0.8,
     "salesGrowth3Y": -4.2,
     "profitGrowth3Y": -20.1,
@@ -8750,9 +9061,10 @@
     ],
     "updatedAt": 1794038126101,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:11.946Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 19.7% -> 20.4%; Quarterly results refreshed (Sept 26); ROE updated: 16% -> 8.3%; Debt/Equity updated: 0.08 -> 0.26",
-    "cmp": 4613.3
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.601Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 4613.3,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752268_03112026085842_WEB.xml"
   },
   "FMGOETZE": {
     "about": "Federal-Mogul Goetze (India) Limited manufactures, supplies, and distributes automotive components for automobiles in India and internationally. It provides pistons, piston rings, and wet and dry cylinder liners for a range of applications, including bi-wheelers, passenger cars, SUVs, tractors, light and heavy commercial vehicles, locomotive engines, stationary engines, and high output locomotive diesel engines. The company also offers sintered metal products for various engines and automotive applications, such as valve trains, transmission, lubrication pumps, and other engine/structural parts. It exports its products. The company was formerly known as Goetze (India) Limited and changed its name to Federal-Mogul Goetze (India) Limited in 2006. Federal-Mogul Goetze (India) Limited was incorporated in 1954 and is based in Gurugram, India. Federal-Mogul Goetze (India) Limited is a subsidiary of Federal Mogul Holding Limited.",
@@ -8828,40 +9140,31 @@
     ],
     "quarterlyResults": [
       {
-        "period": "Dec 25",
-        "sales": "366",
-        "expenses": "337",
-        "operatingProfit": "29",
-        "opm": "7.9%",
-        "netProfit": "22",
-        "eps": "₹5.2"
-      },
-      {
         "period": "Mar 26",
-        "sales": "330",
-        "expenses": "301",
-        "operatingProfit": "29",
-        "opm": "8.8%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "498",
+        "expenses": "433",
+        "operatingProfit": "65",
+        "opm": "13.1%",
+        "netProfit": "48",
+        "eps": "₹8.68"
       },
       {
         "period": "Jun 26",
-        "sales": "313",
-        "expenses": "293",
-        "operatingProfit": "20",
-        "opm": "6.4%",
-        "netProfit": "15",
-        "eps": "₹3.6"
+        "sales": "535",
+        "expenses": "479",
+        "operatingProfit": "56",
+        "opm": "10.5%",
+        "netProfit": "41",
+        "eps": "₹7.43"
       },
       {
-        "period": "Sept 26",
-        "sales": "328",
-        "expenses": "299",
-        "operatingProfit": "29",
-        "opm": "8.8%",
-        "netProfit": "22",
-        "eps": "₹5.2"
+        "period": "Sep 26",
+        "sales": "585",
+        "expenses": "513",
+        "operatingProfit": "72",
+        "opm": "12.3%",
+        "netProfit": "54",
+        "eps": "₹9.65"
       }
     ],
     "balanceSheet": [
@@ -8924,6 +9227,18 @@
         "investments": "172",
         "otherAssets": "119",
         "totalAssets": "633"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "56",
+        "reserves": "879",
+        "borrowings": "0",
+        "otherLiabilities": "536",
+        "totalLiabilities": "1,471",
+        "fixedAssets": "437",
+        "investments": "15",
+        "otherAssets": "1,019",
+        "totalAssets": "1,471"
       }
     ],
     "cashFlows": [
@@ -8961,10 +9276,17 @@
         "cfi": "-63",
         "cff": "-41",
         "netCash": "9"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "33",
+        "cfi": "60",
+        "cff": "-530",
+        "netCashFlow": "-437"
       }
     ],
     "shareholding": {
-      "promoters": "78.03%",
+      "promoters": "74.98%",
       "fii": "0.23%",
       "dii": "0.12%",
       "public": "21.62%",
@@ -9040,9 +9362,10 @@
     ],
     "updatedAt": 1794038126101,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:11.955Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 18); Debt/Equity updated: 0.73 -> 0",
-    "cmp": 438.95
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.566Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 438.95,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1757077_12112026104329_WEB.xml"
   },
   "FMNL": {
     "about": "Future Market Networks Limited, together with its subsidiaries, engages in organizing of wholesale, trade, retail, and logistics infrastructure projects in India. The company also manages and operates shopping infrastructures and retail spaces; develops large-scale warehouses; supply chain management services; and provides mall management business. The company was formerly known as Agre Developers Limited and changed its name to Future Market Networks Limited in February 2012. The company was incorporated in 2008 and is based in Mumbai, India. Future Market Networks Limited is a subsidiary of Future Corporate Resources Private Limited.",
@@ -9119,39 +9442,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "120",
-        "expenses": "92",
-        "operatingProfit": "28",
-        "opm": "23.7%",
-        "netProfit": "15",
-        "eps": "₹0.2"
+        "sales": "24",
+        "expenses": "22",
+        "operatingProfit": "2",
+        "opm": "8.3%",
+        "netProfit": "2",
+        "eps": "₹0.36"
       },
       {
         "period": "Mar 26",
-        "sales": "120",
-        "expenses": "91",
-        "operatingProfit": "29",
-        "opm": "24.1%",
-        "netProfit": "15",
-        "eps": "₹0.2"
+        "sales": "24",
+        "expenses": "23",
+        "operatingProfit": "1",
+        "opm": "4.2%",
+        "netProfit": "2",
+        "eps": "₹0.25"
       },
       {
         "period": "Jun 26",
-        "sales": "126",
-        "expenses": "95",
-        "operatingProfit": "31",
-        "opm": "24.5%",
-        "netProfit": "16",
-        "eps": "₹0.2"
+        "sales": "24",
+        "expenses": "22",
+        "operatingProfit": "2",
+        "opm": "8.3%",
+        "netProfit": "3",
+        "eps": "₹0.4"
       },
       {
-        "period": "Sept 26",
-        "sales": "133",
-        "expenses": "100",
-        "operatingProfit": "33",
-        "opm": "24.9%",
-        "netProfit": "17",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "17",
+        "expenses": "17",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.05"
       }
     ],
     "balanceSheet": [
@@ -9214,6 +9537,18 @@
         "investments": "148",
         "otherAssets": "268",
         "totalAssets": "753"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "67",
+        "reserves": "63",
+        "borrowings": "65",
+        "otherLiabilities": "86",
+        "totalLiabilities": "281",
+        "fixedAssets": "50",
+        "investments": "7",
+        "otherAssets": "224",
+        "totalAssets": "281"
       }
     ],
     "cashFlows": [
@@ -9251,10 +9586,17 @@
         "cfi": "-49",
         "cff": "-30",
         "netCash": "35"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "18",
+        "cfi": "-3",
+        "cff": "-20",
+        "netCashFlow": "-5"
       }
     ],
     "shareholding": {
-      "promoters": "63.55%",
+      "promoters": "69.95%",
       "fii": "15.89%",
       "dii": "8.56%",
       "public": "12.00%",
@@ -9300,7 +9642,7 @@
       "evToEbitda": 22.3,
       "roce": 30.5,
       "roe": 25,
-      "debtToEquity": 1.3,
+      "debtToEquity": 0.5,
       "interestCoverage": 4.3,
       "divYield": 0.7,
       "salesGrowth3Y": 0.8,
@@ -9310,7 +9652,7 @@
     "pe": 50.4,
     "roePct": 25,
     "rocePct": 30.5,
-    "debtToEquity": 1.3,
+    "debtToEquity": 0.5,
     "divYieldPct": 0.7,
     "salesGrowth3Y": 0.8,
     "profitGrowth3Y": 0.6,
@@ -9330,9 +9672,10 @@
     ],
     "updatedAt": 1794038126101,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:11.835Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.22 -> 1.3",
-    "cmp": 8.01
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.597Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 8.01,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753736_05112026054054_WEB.xml"
   },
   "FOCUS": {
     "about": "Focus Lighting and Fixtures Limited, together with its subsidiaries, manufactures and deals in LED lighting, fixtures, and lighting solutions in India and internationally. The company offers retail, home, infrastructure, and railways lighting products under the Plus Light Tech, TRIX, and Lumens & Beyond brand names. It exports its products. The company was incorporated in 2005 and is based in Ahmedabad, India.",
@@ -9409,39 +9752,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "80",
-        "expenses": "60",
-        "operatingProfit": "20",
-        "opm": "25.2%",
-        "netProfit": "13",
-        "eps": "₹0.3"
+        "sales": "37",
+        "expenses": "37",
+        "operatingProfit": "-0",
+        "opm": "0.0%",
+        "netProfit": "-1",
+        "eps": "₹-0.1"
       },
       {
         "period": "Mar 26",
-        "sales": "83",
-        "expenses": "62",
-        "operatingProfit": "21",
-        "opm": "25.6%",
-        "netProfit": "14",
-        "eps": "₹0.3"
+        "sales": "58",
+        "expenses": "54",
+        "operatingProfit": "4",
+        "opm": "6.9%",
+        "netProfit": "3",
+        "eps": "₹0.39"
       },
       {
         "period": "Jun 26",
-        "sales": "88",
-        "expenses": "65",
-        "operatingProfit": "23",
-        "opm": "26%",
-        "netProfit": "15",
-        "eps": "₹0.3"
+        "sales": "47",
+        "expenses": "43",
+        "operatingProfit": "4",
+        "opm": "8.5%",
+        "netProfit": "3",
+        "eps": "₹0.4"
       },
       {
-        "period": "Sept 26",
-        "sales": "91",
-        "expenses": "67",
-        "operatingProfit": "24",
-        "opm": "26.4%",
-        "netProfit": "15",
-        "eps": "₹0.3"
+        "period": "Sep 26",
+        "sales": "56",
+        "expenses": "53",
+        "operatingProfit": "3",
+        "opm": "5.4%",
+        "netProfit": "2",
+        "eps": "₹0.34"
       }
     ],
     "balanceSheet": [
@@ -9504,6 +9847,18 @@
         "investments": "71",
         "otherAssets": "63",
         "totalAssets": "271"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "13",
+        "reserves": "113",
+        "borrowings": "20",
+        "otherLiabilities": "56",
+        "totalLiabilities": "202",
+        "fixedAssets": "60",
+        "investments": "1",
+        "otherAssets": "141",
+        "totalAssets": "202"
       }
     ],
     "cashFlows": [
@@ -9541,10 +9896,17 @@
         "cfi": "-40",
         "cff": "-27",
         "netCash": "11"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "9",
+        "cfi": "-8",
+        "cff": "0",
+        "netCashFlow": "1"
       }
     ],
     "shareholding": {
-      "promoters": "58.49%",
+      "promoters": "55.69%",
       "fii": "10.02%",
       "dii": "15.05%",
       "public": "16.44%",
@@ -9590,7 +9952,7 @@
       "evToEbitda": 24.5,
       "roce": 35.4,
       "roe": 29,
-      "debtToEquity": 0.14,
+      "debtToEquity": 0.16,
       "interestCoverage": 38.3,
       "divYield": 1.3,
       "salesGrowth3Y": 13.4,
@@ -9600,7 +9962,7 @@
     "pe": 43.9,
     "roePct": 29,
     "rocePct": 35.4,
-    "debtToEquity": 0.14,
+    "debtToEquity": 0.16,
     "divYieldPct": 1.3,
     "salesGrowth3Y": 13.4,
     "profitGrowth3Y": 13.1,
@@ -9620,9 +9982,10 @@
     ],
     "updatedAt": 1794038126101,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:11.698Z",
-    "financialChangeSummary": "Debt/Equity updated: 0.08 -> 0.14",
-    "cmp": 56.6
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.682Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 56.6,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754789_06112026044136_WEB.xml"
   },
   "FOODSIN": {
     "about": "Foods and Inns Limited manufactures and sells various processed fruits and vegetables, pulps, purees, spices, spray-dried powders, and frozen food in India and internationally. The company offers aseptic fruit and vegetable purees and concentrates; canned products, such as ready-to-eat fruits and vegetables; frozen fruits, vegetables, snacks, and flatbreads, including pastry sheets, puff pastry, and expanded frozen snack lines; and spray-dried powders. It also provides ground, blended, and whole spices; pectin; and tetra recart carton packaging products. The company offers its products under the Madhu, Kusum, and Greentop brands. Foods and Inns Limited was incorporated in 1967 and is headquartered in Mumbai, India.",
@@ -9699,39 +10062,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "198",
-        "expenses": "181",
-        "operatingProfit": "17",
-        "opm": "8.6%",
-        "netProfit": "6",
-        "eps": "₹0.2"
+        "sales": "149",
+        "expenses": "146",
+        "operatingProfit": "3",
+        "opm": "2.0%",
+        "netProfit": "2",
+        "eps": "₹0.21"
       },
       {
         "period": "Mar 26",
-        "sales": "218",
-        "expenses": "198",
-        "operatingProfit": "20",
-        "opm": "9.2%",
-        "netProfit": "7",
-        "eps": "₹0.2"
+        "sales": "290",
+        "expenses": "261",
+        "operatingProfit": "29",
+        "opm": "10.0%",
+        "netProfit": "20",
+        "eps": "₹2.78"
       },
       {
         "period": "Jun 26",
-        "sales": "223",
-        "expenses": "202",
-        "operatingProfit": "21",
-        "opm": "9.4%",
-        "netProfit": "7",
-        "eps": "₹0.2"
+        "sales": "155",
+        "expenses": "149",
+        "operatingProfit": "6",
+        "opm": "3.9%",
+        "netProfit": "4",
+        "eps": "₹0.57"
       },
       {
-        "period": "Sept 26",
-        "sales": "230",
-        "expenses": "207",
-        "operatingProfit": "23",
-        "opm": "10%",
-        "netProfit": "8",
-        "eps": "₹0.3"
+        "period": "Sep 26",
+        "sales": "322",
+        "expenses": "322",
+        "operatingProfit": "-0",
+        "opm": "0.0%",
+        "netProfit": "-0",
+        "eps": "₹-0.01"
       }
     ],
     "balanceSheet": [
@@ -9794,6 +10157,18 @@
         "investments": "86",
         "otherAssets": "49",
         "totalAssets": "330"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "7",
+        "reserves": "564",
+        "borrowings": "539",
+        "otherLiabilities": "356",
+        "totalLiabilities": "1,466",
+        "fixedAssets": "300",
+        "investments": "19",
+        "otherAssets": "1,147",
+        "totalAssets": "1,466"
       }
     ],
     "cashFlows": [
@@ -9831,10 +10206,17 @@
         "cfi": "-42",
         "cff": "-23",
         "netCash": "2"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-53",
+        "cfi": "-46",
+        "cff": "79",
+        "netCashFlow": "-20"
       }
     ],
     "shareholding": {
-      "promoters": "47.90%",
+      "promoters": "25.39%",
       "fii": "7.96%",
       "dii": "4.28%",
       "public": "39.86%",
@@ -9880,7 +10262,7 @@
       "evToEbitda": 15.4,
       "roce": 30.5,
       "roe": 25,
-      "debtToEquity": 0.76,
+      "debtToEquity": 0.94,
       "interestCoverage": 35.1,
       "divYield": 1.1,
       "salesGrowth3Y": -33.3,
@@ -9890,7 +10272,7 @@
     "pe": 50.4,
     "roePct": 25,
     "rocePct": 30.5,
-    "debtToEquity": 0.76,
+    "debtToEquity": 0.94,
     "divYieldPct": 1.1,
     "salesGrowth3Y": -33.3,
     "profitGrowth3Y": -15.9,
@@ -9910,9 +10292,10 @@
     ],
     "updatedAt": 1794038126102,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:12.088Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 18); Debt/Equity updated: 0.26 -> 0.76",
-    "cmp": 44.04
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.546Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 44.04,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754332_05112026100638_WEB.xml"
   },
   "FORCEMOT": {
     "about": "Force Motors Limited, an integrated automobile company, designs, develops, manufactures, and sells a range of automotive components, aggregates, and vehicles in India. The company provides passenger vehicles, ambulances, school buses, and delivery van; small commercial, light commercial, multi utility vehicles, special vehicles, and spare parts; special utility vehicles, such as mobile medical units, police vans, prison vans, troop carriers, and safari vehicles; and agricultural tractors. Its product portfolio consists of urbania, a ground-up modular monocoque van platform for shared urban mobility; traveller, a platform that caters to passenger transport, cargo delivery, ambulances, and school buses; monobus; trax, a rugged utility vehicle platform for rural and last mile transport; special application vehicles; gurkha off-road vehicle; and electric vehicles. In addition, the company offers shared mobility solutions, commercial fleets, specialized transport, and defense solutions. It exports its products to various countries in the Middle East, Asia, Latin America, and Africa. The company was incorporated in 1958 and is based in Pune, India. Force Motors Limited operates as a subsidiary of Jaya Hind Industries Pvt. Ltd.",
@@ -9989,39 +10372,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "1,043",
-        "expenses": "918",
-        "operatingProfit": "125",
-        "opm": "12%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "2,155",
+        "expenses": "1,616",
+        "operatingProfit": "539",
+        "opm": "25.0%",
+        "netProfit": "403",
+        "eps": "₹305.75"
       },
       {
         "period": "Mar 26",
-        "sales": "890",
-        "expenses": "837",
-        "operatingProfit": "53",
-        "opm": "6%",
-        "netProfit": "41",
-        "eps": "₹325.2"
+        "sales": "2,584",
+        "expenses": "2,211",
+        "operatingProfit": "373",
+        "opm": "14.4%",
+        "netProfit": "274",
+        "eps": "₹207.7"
       },
       {
         "period": "Jun 26",
-        "sales": "826",
-        "expenses": "727",
-        "operatingProfit": "99",
-        "opm": "12%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "2,478",
+        "expenses": "2,189",
+        "operatingProfit": "289",
+        "opm": "11.7%",
+        "netProfit": "212",
+        "eps": "₹160.95"
       },
       {
-        "period": "Sept 26",
-        "sales": "1,090",
-        "expenses": "1,039",
-        "operatingProfit": "51",
-        "opm": "4.7%",
-        "netProfit": "39",
-        "eps": "₹309.3"
+        "period": "Sep 26",
+        "sales": "2,967",
+        "expenses": "2,574",
+        "operatingProfit": "393",
+        "opm": "13.2%",
+        "netProfit": "291",
+        "eps": "₹221.18"
       }
     ],
     "balanceSheet": [
@@ -10084,6 +10467,18 @@
         "investments": "354",
         "otherAssets": "338",
         "totalAssets": "1,548"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "13",
+        "reserves": "4,687",
+        "borrowings": "0",
+        "otherLiabilities": "2,646",
+        "totalLiabilities": "7,346",
+        "fixedAssets": "1,626",
+        "investments": "339",
+        "otherAssets": "5,381",
+        "totalAssets": "7,346"
       }
     ],
     "cashFlows": [
@@ -10121,10 +10516,17 @@
         "cfi": "-243",
         "cff": "-131",
         "netCash": "52"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "759",
+        "cfi": "-788",
+        "cff": "-68",
+        "netCashFlow": "-97"
       }
     ],
     "shareholding": {
-      "promoters": "63.24%",
+      "promoters": "61.63%",
       "fii": "4.15%",
       "dii": "2.23%",
       "public": "30.38%",
@@ -10200,9 +10602,10 @@
     ],
     "updatedAt": 1794038126102,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:13.244Z",
-    "financialChangeSummary": "Quarterly results refreshed (Mar 19); ROE updated: 24% -> 29.3%",
-    "cmp": 18148
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.538Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 18148,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748311_28102026092235_WEB.xml"
   },
   "FOSECOIND": {
     "about": "Foseco India Limited engages in manufacturing of additives and consumables for the metallurgical industry in India and internationally. It offers feeder sleeves and risers, coatings for sand molds and cores, filters and gating systems, metal treatment for nonferrous alloys, crucibles and retorts, binders and molding materials, and ferrous metal treatment, as well as melt shop refractories and flow control and die coatings for permanent mold die casting. The company also provides foundry services, such as advice, practice magazines, white papers, training and support, and technical services, including analytical services and casting simulation support. It primarily serves the requirements of ferrous and non-ferrous foundries to automotive, tractors, M&HCV, 2 wheelers, general engineering, valves and pumps, power, railways and marine, construction, and mining equipment. The company was founded in 1932 and is based in Pune, India. Foseco India Limited operates as a subsidiary of Vesuvius plc.",
@@ -10279,39 +10682,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "87",
-        "expenses": "70",
-        "operatingProfit": "17",
-        "opm": "19.5%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "152",
+        "expenses": "130",
+        "operatingProfit": "22",
+        "opm": "14.5%",
+        "netProfit": "16",
+        "eps": "₹22.15"
       },
       {
         "period": "Mar 26",
-        "sales": "94",
-        "expenses": "76",
-        "operatingProfit": "18",
-        "opm": "19.1%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "168",
+        "expenses": "136",
+        "operatingProfit": "32",
+        "opm": "19.0%",
+        "netProfit": "24",
+        "eps": "₹31.79"
       },
       {
         "period": "Jun 26",
-        "sales": "88",
-        "expenses": "71",
-        "operatingProfit": "17",
-        "opm": "19.3%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "sales": "188",
+        "expenses": "156",
+        "operatingProfit": "32",
+        "opm": "17.0%",
+        "netProfit": "23",
+        "eps": "₹30.33"
       },
       {
-        "period": "Sept 26",
-        "sales": "91",
-        "expenses": "73",
-        "operatingProfit": "18",
-        "opm": "19.8%",
-        "netProfit": "0",
-        "eps": "₹0.2"
+        "period": "Sep 26",
+        "sales": "210",
+        "expenses": "167",
+        "operatingProfit": "43",
+        "opm": "20.5%",
+        "netProfit": "33",
+        "eps": "₹44.23"
       }
     ],
     "balanceSheet": [
@@ -10414,7 +10817,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "73.26%",
+      "promoters": "63.54%",
       "fii": "7.37%",
       "dii": "3.97%",
       "public": "15.40%",
@@ -10492,8 +10895,8 @@
     ],
     "updatedAt": 1794038126102,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:13.223Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 18); ROE updated: 24% -> 13.3%; Debt/Equity updated: 0.09 -> 0",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.526Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 5969
   },
   "FRACTAL": {
@@ -10571,39 +10974,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "797",
-        "expenses": "716",
-        "operatingProfit": "81",
-        "opm": "10.2%",
-        "netProfit": "67",
-        "eps": "₹5.5"
+        "sales": "491",
+        "expenses": "429",
+        "operatingProfit": "62",
+        "opm": "12.6%",
+        "netProfit": "49",
+        "eps": "₹3.08"
       },
       {
         "period": "Mar 26",
-        "sales": "832",
-        "expenses": "744",
-        "operatingProfit": "88",
-        "opm": "10.6%",
-        "netProfit": "72",
-        "eps": "₹6"
+        "sales": "541",
+        "expenses": "444",
+        "operatingProfit": "97",
+        "opm": "17.9%",
+        "netProfit": "73",
+        "eps": "₹4.41"
       },
       {
         "period": "Jun 26",
-        "sales": "825",
-        "expenses": "734",
-        "operatingProfit": "91",
-        "opm": "11%",
-        "netProfit": "74",
-        "eps": "₹6.1"
+        "sales": "529",
+        "expenses": "431",
+        "operatingProfit": "98",
+        "opm": "18.5%",
+        "netProfit": "75",
+        "eps": "₹4.38"
       },
       {
-        "period": "Sept 26",
-        "sales": "875",
-        "expenses": "775",
-        "operatingProfit": "100",
-        "opm": "11.4%",
-        "netProfit": "82",
-        "eps": "₹6.8"
+        "period": "Sep 26",
+        "sales": "563",
+        "expenses": "468",
+        "operatingProfit": "95",
+        "opm": "16.9%",
+        "netProfit": "73",
+        "eps": "₹4.26"
       }
     ],
     "balanceSheet": [
@@ -10666,6 +11069,18 @@
         "investments": "540",
         "otherAssets": "570",
         "totalAssets": "2,812"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "17",
+        "reserves": "3,482",
+        "borrowings": "0",
+        "otherLiabilities": "337",
+        "totalLiabilities": "3,836",
+        "fixedAssets": "160",
+        "investments": "0",
+        "otherAssets": "3,676",
+        "totalAssets": "3,836"
       }
     ],
     "cashFlows": [
@@ -10703,10 +11118,17 @@
         "cfi": "-221",
         "cff": "-90",
         "netCash": "34"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "120",
+        "cfi": "4",
+        "cff": "21",
+        "netCashFlow": "145"
       }
     ],
     "shareholding": {
-      "promoters": "63.66%",
+      "promoters": "16.81%",
       "fii": "7.09%",
       "dii": "3.82%",
       "public": "25.43%",
@@ -10752,7 +11174,7 @@
       "evToEbitda": 65,
       "roce": 17,
       "roe": 13.6,
-      "debtToEquity": 0.04,
+      "debtToEquity": 0,
       "interestCoverage": 50.7,
       "divYield": 2.32,
       "salesGrowth3Y": 19.8,
@@ -10762,7 +11184,7 @@
     "pe": 34.2,
     "roePct": 13.6,
     "rocePct": 17,
-    "debtToEquity": 0.04,
+    "debtToEquity": 0,
     "divYieldPct": 2.32,
     "salesGrowth3Y": 19.8,
     "profitGrowth3Y": 23.5,
@@ -10782,9 +11204,10 @@
     ],
     "updatedAt": 1794038126102,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:13.177Z",
-    "financialChangeSummary": "OPM % shifted for FY26: 11.3% -> 10.8%; Quarterly results refreshed (Sept 26); ROE updated: 32% -> 13.6%; Debt/Equity updated: 0.47 -> 0.04",
-    "cmp": 835.65
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:18.659Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 835.65,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752352_03112026110326_WEB.xml"
   },
   "FREDUN": {
     "about": "Fredun Pharmaceuticals Limited manufactures and sells pharmaceutical formulations, dietary/herbal supplements, nutraceuticals, animal healthcare products, cosmeceuticals, mobility and rehabilitation products, and other healthcare products in India, Africa, Southeast Asia, Commonwealth of Independent States countries, MENA region, and Latin America. The company offers allopathic formulations, including analgesics/NSAID, antacid/antiulcer, anthelmintic, antibacterial, anti-diabetic, anti-inflammatory, anti-malarial, anti-obesity, antacid, anthelmintic, anticoagulants, anticonvulsants, antidiarrhoeal, antidepressant, antifungal, antihistamines/antiallergic, antihypertensives, antiviral, bone modulating drugs, bronchodilators and anti-asthma drugs, calcium tablets, cardiovascular, diuretic, impotence drugs, laxative, and appetite stimulant with multivitamins. It also provides surgical products, such as IV fluids and cannulas, disposable syringes, infusion sets, surgical gloves and cottons, and personal healthcare products; APIs; direct compressible granules; pellets; animal healthcare products; aqua products; and niche products. Additionally, the company offers therapeutic products under the brand Hormone Range Products, a specialty therapeutics brand focused on longevity, hormone health, recovery science, and human performance solutions. Fredun Pharmaceuticals Limited was incorporated in 1987 and is headquartered in Mumbai, India.",
@@ -11443,39 +11866,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "2,467",
-        "expenses": "2,311",
-        "operatingProfit": "156",
-        "opm": "6.3%",
-        "netProfit": "120",
-        "eps": "₹3.4"
+        "sales": "763",
+        "expenses": "692",
+        "operatingProfit": "71",
+        "opm": "9.3%",
+        "netProfit": "59",
+        "eps": "₹0.85"
       },
       {
         "period": "Mar 26",
-        "sales": "2,583",
-        "expenses": "2,316",
-        "operatingProfit": "267",
-        "opm": "10.3%",
-        "netProfit": "205",
-        "eps": "₹5.8"
+        "sales": "782",
+        "expenses": "594",
+        "operatingProfit": "188",
+        "opm": "24.0%",
+        "netProfit": "140",
+        "eps": "₹2.03"
       },
       {
         "period": "Jun 26",
-        "sales": "2,752",
-        "expenses": "2,536",
-        "operatingProfit": "216",
-        "opm": "7.8%",
-        "netProfit": "166",
-        "eps": "₹4.7"
+        "sales": "894",
+        "expenses": "627",
+        "operatingProfit": "267",
+        "opm": "29.9%",
+        "netProfit": "207",
+        "eps": "₹2.99"
       },
       {
-        "period": "Sept 26",
-        "sales": "2,826",
-        "expenses": "2,523",
-        "operatingProfit": "303",
-        "opm": "10.7%",
-        "netProfit": "233",
-        "eps": "₹6.6"
+        "period": "Sep 26",
+        "sales": "929",
+        "expenses": "666",
+        "operatingProfit": "263",
+        "opm": "28.3%",
+        "netProfit": "199",
+        "eps": "₹2.88"
       }
     ],
     "balanceSheet": [
@@ -11538,6 +11961,18 @@
         "investments": "1,006",
         "otherAssets": "1,920",
         "totalAssets": "5,608"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "697",
+        "reserves": "2,057",
+        "borrowings": "375",
+        "otherLiabilities": "1,568",
+        "totalLiabilities": "4,697",
+        "fixedAssets": "184",
+        "investments": "1,643",
+        "otherAssets": "2,870",
+        "totalAssets": "4,697"
       }
     ],
     "cashFlows": [
@@ -11575,10 +12010,17 @@
         "cfi": "-542",
         "cff": "-282",
         "netCash": "328"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "109",
+        "cfi": "-44",
+        "cff": "-41",
+        "netCashFlow": "24"
       }
     ],
     "shareholding": {
-      "promoters": "54.91%",
+      "promoters": "53.66%",
       "fii": "21.40%",
       "dii": "11.52%",
       "public": "12.17%",
@@ -11624,7 +12066,7 @@
       "evToEbitda": 28.9,
       "roce": 19.6,
       "roe": 15.7,
-      "debtToEquity": 0.6,
+      "debtToEquity": 0.14,
       "interestCoverage": 50.2,
       "divYield": 0.8,
       "salesGrowth3Y": 16.9,
@@ -11634,7 +12076,7 @@
     "pe": 14.1,
     "roePct": 15.7,
     "rocePct": 19.6,
-    "debtToEquity": 0.6,
+    "debtToEquity": 0.14,
     "divYieldPct": 0.8,
     "salesGrowth3Y": 16.9,
     "profitGrowth3Y": 9.5,
@@ -11654,9 +12096,10 @@
     ],
     "updatedAt": 1794038126103,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:14.133Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); ROE updated: 18% -> 15.7%; Debt/Equity updated: 0.38 -> 0.6",
-    "cmp": 290.4
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:19.884Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 290.4,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749059_29102026054808_WEB.xml"
   },
   "FUSION": {
     "about": "Fusion Finance Limited, a non-banking financial company, provides micro finance and MSME lending services in India. The company offers income generation, top up, emergency, and cross sell loans; secured loans; and life insurance products. It provides its services underserved and unserved women in rural and semi-rural areas. The company was formerly known as Fusion Micro Finance Limited and changed its name to Fusion Finance Limited in July 2024. Fusion Finance Limited was incorporated in 1994 and is headquartered in Gurugram, India.",
@@ -11733,39 +12176,39 @@
     "quarterlyResults": [
       {
         "period": "Dec 25",
-        "sales": "301",
-        "expenses": "283",
-        "operatingProfit": "18",
-        "opm": "6%",
+        "sales": "424",
+        "expenses": "410",
+        "operatingProfit": "14",
+        "opm": "3.3%",
         "netProfit": "14",
-        "eps": "₹0.2"
+        "eps": "₹1.05"
       },
       {
         "period": "Mar 26",
-        "sales": "298",
-        "expenses": "150",
-        "operatingProfit": "148",
-        "opm": "49.7%",
+        "sales": "430",
+        "expenses": "393",
+        "operatingProfit": "37",
+        "opm": "8.6%",
         "netProfit": "114",
-        "eps": "₹1.2"
+        "eps": "₹7.06"
       },
       {
         "period": "Jun 26",
-        "sales": "308",
-        "expenses": "227",
-        "operatingProfit": "81",
-        "opm": "26.3%",
+        "sales": "458",
+        "expenses": "396",
+        "operatingProfit": "62",
+        "opm": "13.5%",
         "netProfit": "62",
-        "eps": "₹0.6"
+        "eps": "₹3.86"
       },
       {
-        "period": "Sept 26",
-        "sales": "336",
-        "expenses": "223",
-        "operatingProfit": "113",
-        "opm": "33.6%",
-        "netProfit": "87",
-        "eps": "₹0.9"
+        "period": "Sep 26",
+        "sales": "486",
+        "expenses": "400",
+        "operatingProfit": "86",
+        "opm": "17.7%",
+        "netProfit": "86",
+        "eps": "₹5.35"
       }
     ],
     "balanceSheet": [
@@ -11828,6 +12271,18 @@
         "investments": "126",
         "otherAssets": "64",
         "totalAssets": "458"
+      },
+      {
+        "year": "Sep 26",
+        "equityCapital": "162",
+        "reserves": "2,452",
+        "borrowings": "0",
+        "otherLiabilities": "6,243",
+        "totalLiabilities": "8,857",
+        "fixedAssets": "22",
+        "investments": "0",
+        "otherAssets": "8,835",
+        "totalAssets": "8,857"
       }
     ],
     "cashFlows": [
@@ -11865,10 +12320,17 @@
         "cfi": "-143",
         "cff": "-86",
         "netCash": "4"
+      },
+      {
+        "year": "Sep 26",
+        "cfo": "-572",
+        "cfi": "3",
+        "cff": "355",
+        "netCashFlow": "-214"
       }
     ],
     "shareholding": {
-      "promoters": "53.63%",
+      "promoters": "51.76%",
       "fii": "10.30%",
       "dii": "5.55%",
       "public": "30.52%",
@@ -11914,7 +12376,7 @@
       "evToEbitda": 4.2,
       "roce": 39,
       "roe": 32,
-      "debtToEquity": 2.28,
+      "debtToEquity": 0,
       "interestCoverage": 36.5,
       "divYield": 0.4,
       "salesGrowth3Y": 1.1,
@@ -11924,7 +12386,7 @@
     "pe": 53.2,
     "roePct": 32,
     "rocePct": 39,
-    "debtToEquity": 2.28,
+    "debtToEquity": 0,
     "divYieldPct": 0.4,
     "salesGrowth3Y": 1.1,
     "profitGrowth3Y": 33,
@@ -11944,9 +12406,10 @@
     ],
     "updatedAt": 1794038126104,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:14.068Z",
-    "financialChangeSummary": "Quarterly results refreshed (Sept 26); Debt/Equity updated: 0.49 -> 2.28",
-    "cmp": 153.54
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:19.629Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "cmp": 153.54,
+    "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1751386_02112026071637_WEB.xml"
   },
   "FUSIONCX": {
     "about": "Fusion CX Limited provides integrated customer experience (CX) services in India, the United States, the United Kingdom, Canada, Europe, and internationally. It offers its services across multiple channels, including voice, email, chat, social media, and message. Its services include customer acquisition, inbound and outbound sales, and cross-selling/upselling strategies; multichannel customer service across voice, chat, email, and social media and complaint handling; and efficient order fulfilment, covering order processing, returns, refunds, and billing support. It also assists with payment collections and debt resolution by managing early-stage collections and first-party omnichannel recovery efforts and support customer retention and loyalty through proactive outreach, feedback management, and loyalty programs; technical support, including L1/L2 troubleshooting, lifecycle management, and warranty services; and high-tech support, specializing in seller assistance, content moderation, and platform optimization for digital and technology-driven businesses. It provides Arya, an AI-powered platform that integrates conversational AI, real-time employee assist, AI-led quality monitoring, predictive analytics, and voice of customer into a unified ecosystem; MindVoice, a conversational AI platform that delivers AI-driven conversational voice bot and chatbot solutions; Mind Workplace that automates end-to-end HR processes from hire-to-retire, enhancing employee lifecycle management and MindSpeech, an AI-powered speech optimization tool that enhances voice communication by harmonizing accents, reducing noise, and improving clarity in real time. It serves telecom and utilities, healthcare and life sciences, high tech growth and travel, banking, financial services and insurance, and retail industries. The company was incorporated in 2004 and is headquartered in Kolkata, India.",
@@ -12158,7 +12621,7 @@
       }
     ],
     "shareholding": {
-      "promoters": "81.06%",
+      "promoters": "78.94%",
       "fii": "5.68%",
       "dii": "3.06%",
       "public": "10.20%",
@@ -12234,8 +12697,8 @@
     ],
     "updatedAt": 1794038126104,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-06T07:40:14.073Z",
-    "financialChangeSummary": "ROE updated: 24% -> 37%; Debt/Equity updated: 0.37 -> 0.59",
+    "lastFinancialStatementUpdate": "2026-11-13T12:08:19.325Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "cmp": 285.95
   }
 }
