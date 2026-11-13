@@ -112,6 +112,7 @@ const StocksAuth = (function () {
     modal.setAttribute("aria-modal", "true");
     modal.setAttribute("aria-labelledby", "auth-modal-title");
     modal.hidden = true;
+    modal.style.display = "none";
 
     modal.innerHTML = `
       <div class="stocks360-modal-card" tabindex="-1">
@@ -293,6 +294,7 @@ const StocksAuth = (function () {
     if (!modal) return;
     hideModalAlert();
     modal.hidden = false;
+    modal.style.display = "flex";
     modal.classList.add("open");
 
     const nameGroup = document.getElementById("auth-group-name");
@@ -325,6 +327,7 @@ const StocksAuth = (function () {
     const modal = document.getElementById("stocks360-auth-modal");
     if (modal) {
       modal.hidden = true;
+      modal.style.display = "none";
       modal.classList.remove("open");
     }
   }

@@ -2287,6 +2287,10 @@ body.high-contrast .stat-negative {
 }
 
 /* Authentication Modal Dialog */
+.stocks360-modal-overlay[hidden] {
+  display: none !important;
+}
+
 .stocks360-modal-overlay {
   position: fixed;
   inset: 0;
