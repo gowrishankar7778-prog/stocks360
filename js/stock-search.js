@@ -1238,10 +1238,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 const pCmp = Number(p.cmp) || 0;
                 const pMcap = Number(p.marketCapCr) || 0;
                 const pPe = (p.pe !== null && p.pe !== undefined && Number(p.pe) > 0) ? Number(p.pe).toFixed(1) + "x" : "--";
-                const pRoe = (p.roePct !== null && p.roePct !== undefined && !isNaN(Number(p.roePct))) ? Number(p.roePct).toFixed(1) + "%" : "--";
-                const pRoce = (p.rocePct !== null && p.rocePct !== undefined && !isNaN(Number(p.rocePct))) ? Number(p.rocePct).toFixed(1) + "%" : "--";
-                const pDe = (p.debtToEquity !== null && p.debtToEquity !== undefined && !isNaN(Number(p.debtToEquity))) ? Number(p.debtToEquity).toFixed(2) : "--";
-                const pDiv = (p.divYieldPct !== null && p.divYieldPct !== undefined && !isNaN(Number(p.divYieldPct))) ? Number(p.divYieldPct).toFixed(2) + "%" : "--";
+                const pHasFund = Number(p.marketCapCr) > 0;
+                const pRoe = (p.roePct !== null && p.roePct !== undefined && !isNaN(Number(p.roePct)) && (pHasFund || Number(p.roePct) !== 0)) ? Number(p.roePct).toFixed(1) + "%" : "--";
+                const pRoce = (p.rocePct !== null && p.rocePct !== undefined && !isNaN(Number(p.rocePct)) && (pHasFund || Number(p.rocePct) !== 0)) ? Number(p.rocePct).toFixed(1) + "%" : "--";
+                const pDe = (p.debtToEquity !== null && p.debtToEquity !== undefined && !isNaN(Number(p.debtToEquity)) && (pHasFund || Number(p.debtToEquity) !== 0)) ? Number(p.debtToEquity).toFixed(2) : "--";
+                const pDiv = (p.divYieldPct !== null && p.divYieldPct !== undefined && !isNaN(Number(p.divYieldPct)) && (pHasFund || Number(p.divYieldPct) !== 0)) ? Number(p.divYieldPct).toFixed(2) + "%" : "--";
                 return `
                   <tr style="background:${isCurrent ? "#eff6ff" : idx % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
                     <td style="padding:10px 12px; color:#64748b; font-weight:600;">${idx + 1}.</td>
@@ -1555,7 +1556,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
               <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Market Cap</span>
-              <span id="metric-market-cap" style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">₹ ${marketCapCr.toLocaleString("en-IN")} Cr</span>
+              <span id="metric-market-cap" style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">${marketCapCr > 0 ? "₹ " + marketCapCr.toLocaleString("en-IN") + " Cr" : "--"}</span>
               <div style="margin-top:8px;">
                 <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Market Cap Information</button>
                 <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Market Capitalization is the total market value of a company's outstanding equity shares (Current Share Price × Total Shares).</div>
@@ -1595,7 +1596,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
               <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Dividend Yield</span>
-              <span id="metric-div-yield" style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">${divYieldPct ? divYieldPct + '%' : '0.0%'}</span>
+              <span id="metric-div-yield" style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">${divYieldPct ? divYieldPct + '%' : (marketCapCr > 0 ? '0.0%' : '--')}</span>
               <div style="margin-top:8px;">
                 <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Dividend Yield Information</button>
                 <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Dividend Yield shows the annual cash dividend paid per share as a percentage of the current share price.</div>
@@ -1603,7 +1604,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
               <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">ROCE</span>
-              <span id="metric-roce" style="display:block; font-size:1.1rem; font-weight:700; color:#16a34a; margin-top:2px;">${rocePct}%</span>
+              <span id="metric-roce" style="display:block; font-size:1.1rem; font-weight:700; color:#16a34a; margin-top:2px;">${rocePct || marketCapCr > 0 ? rocePct + '%' : '--'}</span>
               <div style="margin-top:8px;">
                 <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">ROCE Information</button>
                 <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Return on Capital Employed (ROCE) measures how efficiently the company generates operating profit from total capital (equity + debt).</div>
@@ -1611,13 +1612,14 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
               <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">ROE</span>
-              <span id="metric-roe" style="display:block; font-size:1.1rem; font-weight:700; color:#16a34a; margin-top:2px;">${roePct}%</span>
+              <span id="metric-roe" style="display:block; font-size:1.1rem; font-weight:700; color:#16a34a; margin-top:2px;">${roePct || marketCapCr > 0 ? roePct + '%' : '--'}</span>
               <div style="margin-top:8px;">
                 <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">ROE Information</button>
                 <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Return on Equity (ROE) measures net profit generated as a percentage of shareholders' equity.</div>
               </div>
             </div>
           </div>
+          ${stock.exchanges === 'BSE' && marketCapCr <= 0 ? `<p style="margin:10px 0 0; font-size:0.78rem; color:#64748b;">Note: Price &amp; volume data is sourced from BSE exchange records. Fundamental ratios and financial statements are currently synced for NSE-listed equities.</p>` : ''}
         </section>
 
         <!-- SECTION 3: TECHNICALS -->
