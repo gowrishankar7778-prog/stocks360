@@ -1546,6 +1546,17 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
+        <!-- LIVE INTRADAY CHART & DYNAMIC INDICATORS (TRADINGVIEW) -->
+        <section id="sec-live-chart" style="margin-bottom:28px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Live Price Chart &amp; Dynamic Indicators</h3>
+            <span id="tv-chart-symbol-label" style="font-size:0.8rem; font-weight:600; color:#2563eb; background:#eff6ff; border:1px solid #bfdbfe; padding:3px 10px; border-radius:999px;">
+              ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; Live
+            </span>
+          </div>
+          <div id="tv-live-chart-container" style="height:460px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
+        </section>
+
         <!-- SECTION 2: FUNDAMENTALS -->
         <section id="sec-fundamentals" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Fundamentals</h3>
@@ -1961,7 +1972,48 @@ document.addEventListener("DOMContentLoaded", function () {
         btnBse.style.color = active ? "#ffffff" : "#334155";
         btnBse.style.borderColor = active ? "#2563eb" : "#cbd5e1";
       }
+      renderTradingViewChart(exch);
     }
+
+    function renderTradingViewChart(exch) {
+      const container = document.getElementById("tv-live-chart-container");
+      const labelEl = document.getElementById("tv-chart-symbol-label");
+      if (!container) return;
+      const bseSym = (bseQuoteSnapshot && bseQuoteSnapshot.bseSymbol) || stock.bseCode || stock.symbol;
+      const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
+      if (labelEl) labelEl.textContent = `${tvSymbol} ? Live`;
+      container.innerHTML = "";
+      const widgetWrap = document.createElement("div");
+      widgetWrap.className = "tradingview-widget-container";
+      widgetWrap.style.height = "100%";
+      widgetWrap.style.width = "100%";
+      const widgetDiv = document.createElement("div");
+      widgetDiv.className = "tradingview-widget-container__widget";
+      widgetDiv.style.height = "100%";
+      widgetDiv.style.width = "100%";
+      widgetWrap.appendChild(widgetDiv);
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+      script.async = true;
+      script.textContent = JSON.stringify({
+        autosize: true,
+        symbol: tvSymbol,
+        interval: "D",
+        timezone: "Asia/Kolkata",
+        theme: "light",
+        style: "1",
+        locale: "en",
+        allow_symbol_change: false,
+        calendar: false,
+        studies: ["MASimple@tv-basicstudies", "RSI@tv-basicstudies"],
+        support_host: "https://www.tradingview.com"
+      });
+      widgetWrap.appendChild(script);
+      container.appendChild(widgetWrap);
+    }
+
+    renderTradingViewChart(stock.exchanges === "BSE" ? "BSE" : "NSE");
 
     const btnNseInit = document.getElementById("btn-exchange-nse");
     const btnBseInit = document.getElementById("btn-exchange-bse");
