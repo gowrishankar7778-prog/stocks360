@@ -1550,9 +1550,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <section id="sec-live-chart" style="margin-bottom:28px;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-              <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Live Price Chart &amp; Dynamic Indicators</h3>
+              <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Price Chart &amp; Dynamic Indicators</h3>
               <span id="tv-chart-symbol-label" style="font-size:0.8rem; font-weight:600; color:#2563eb; background:#eff6ff; border:1px solid #bfdbfe; padding:3px 10px; border-radius:999px;">
-                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; Live
+                ${stock.exchanges === 'BSE' ? `BSE:${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE:${escapeHtml(stock.symbol)}`} &bull; 1D &bull; Delayed (TV Free Feed)
               </span>
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;" role="group" aria-label="Chart Accessibility Tools">
@@ -1564,9 +1564,47 @@ document.addEventListener("DOMContentLoaded", function () {
               </button>
             </div>
           </div>
+          <div id="tv-chart-controls" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:10px 12px; margin-bottom:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;">
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;" role="group" aria-label="Chart Candle Interval">
+              <span style="font-size:0.78rem; font-weight:700; color:#475569; margin-right:4px;">Interval:</span>
+              <button type="button" class="tv-interval-btn" data-interval="5" data-label="5m" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">5m</button>
+              <button type="button" class="tv-interval-btn" data-interval="15" data-label="15m" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">15m</button>
+              <button type="button" class="tv-interval-btn" data-interval="60" data-label="1H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1H</button>
+              <button type="button" class="tv-interval-btn" data-interval="120" data-label="2H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">2H</button>
+              <button type="button" class="tv-interval-btn" data-interval="240" data-label="4H" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">4H</button>
+              <button type="button" class="tv-interval-btn" data-interval="D" data-label="1D" style="padding:4px 9px; font-size:0.78rem; font-weight:700; color:#ffffff; background:#2563eb; border:1px solid #2563eb; border-radius:5px; cursor:pointer;">1D</button>
+              <button type="button" class="tv-interval-btn" data-interval="W" data-label="1W" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">1W</button>
+              <button type="button" class="tv-interval-btn" data-interval="D" data-range="1M" data-label="2W View (1D)" style="padding:4px 9px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;" title="TradingView free embed supports 1D/1W candles; opens 1D candles with short-term view">2W</button>
+              <select id="tv-custom-interval" aria-label="Custom Candle Interval" style="padding:4px 8px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">
+                <option value="">More intervals...</option>
+                <option value="1">1 min</option>
+                <option value="3">3 min</option>
+                <option value="30">30 min</option>
+                <option value="45">45 min</option>
+                <option value="180">3 hours</option>
+                <option value="M">1 month</option>
+              </select>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+              <label for="tv-chart-range-select" style="font-size:0.78rem; font-weight:700; color:#475569;">Time Frame:</label>
+              <select id="tv-chart-range-select" style="padding:4px 8px; font-size:0.78rem; font-weight:600; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:5px; cursor:pointer;">
+                <option value="">Auto (by interval)</option>
+                <option value="1D">1 Day</option>
+                <option value="5D">5 Days</option>
+                <option value="1M">1 Month</option>
+                <option value="3M">3 Months</option>
+                <option value="6M">6 Months</option>
+                <option value="YTD">YTD</option>
+                <option value="12M">1 Year</option>
+                <option value="60M">5 Years</option>
+                <option value="ALL">All Time</option>
+              </select>
+            </div>
+          </div>
           <div id="tv-chart-text-summary" aria-live="polite" hidden style="margin-bottom:12px; padding:12px 16px; background:#f8fafc; border:1px solid #cbd5e1; border-left:4px solid #2563eb; border-radius:8px; font-size:0.9rem; color:#1e293b; line-height:1.55;"></div>
           <div id="tv-chart-accessible-table-wrap" hidden style="margin-bottom:14px; overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; background:#ffffff;"></div>
           <div id="tv-live-chart-container" style="height:460px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
+          <p style="margin:6px 0 0; font-size:0.74rem; color:#64748b;">Note: TradingView's free embedded widget provides delayed NSE/BSE exchange quotes per exchange licensing policy. Use the bottom bar inside the chart for Go-to-Date and custom date ranges.</p>
         </section>
 
         <!-- SECTION 2: FUNDAMENTALS -->
@@ -1987,13 +2025,20 @@ document.addEventListener("DOMContentLoaded", function () {
       renderTradingViewChart(exch);
     }
 
+    let activeChartInterval = "D";
+    let activeChartIntervalLabel = "1D";
+    let activeChartRange = "";
+
     function renderTradingViewChart(exch) {
       const container = document.getElementById("tv-live-chart-container");
       const labelEl = document.getElementById("tv-chart-symbol-label");
       if (!container) return;
       const bseSym = (bseQuoteSnapshot && bseQuoteSnapshot.bseSymbol) || stock.bseCode || stock.symbol;
       const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
-      if (labelEl) labelEl.textContent = `${tvSymbol} ? Live`;
+      if (labelEl) {
+        const rangeSuffix = activeChartRange ? ` (${activeChartRange})` : "";
+        labelEl.textContent = `${tvSymbol} \u2022 ${activeChartIntervalLabel}${rangeSuffix} \u2022 Delayed (TV Free Feed)`;
+      }
       container.innerHTML = "";
       const widgetWrap = document.createElement("div");
       widgetWrap.className = "tradingview-widget-container";
@@ -2008,19 +2053,25 @@ document.addEventListener("DOMContentLoaded", function () {
       script.type = "text/javascript";
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
       script.async = true;
-      script.textContent = JSON.stringify({
+      const widgetCfg = {
         autosize: true,
         symbol: tvSymbol,
-        interval: "D",
+        interval: activeChartInterval,
         timezone: "Asia/Kolkata",
         theme: "light",
         style: "1",
         locale: "en",
         allow_symbol_change: false,
         calendar: false,
+        withdateranges: true,
+        hide_side_toolbar: false,
         studies: ["MASimple@tv-basicstudies", "RSI@tv-basicstudies"],
         support_host: "https://www.tradingview.com"
-      });
+      };
+      if (activeChartRange) {
+        widgetCfg.range = activeChartRange;
+      }
+      script.textContent = JSON.stringify(widgetCfg);
       widgetWrap.appendChild(script);
       container.appendChild(widgetWrap);
     }
@@ -2137,6 +2188,50 @@ document.addEventListener("DOMContentLoaded", function () {
         btnTable.setAttribute("aria-expanded", isHidden ? "true" : "false");
         btnTable.textContent = isHidden ? "Hide Chart Table" : "View Chart as Table";
         if (isHidden) renderAccessibleChartTable(activeChartExchange);
+      });
+    }
+
+    const intervalBtns = document.querySelectorAll(".tv-interval-btn");
+    const customIntervalSel = document.getElementById("tv-custom-interval");
+    const rangeSel = document.getElementById("tv-chart-range-select");
+
+    function updateIntervalButtonStyles(activeBtn) {
+      intervalBtns.forEach((b) => {
+        const isOn = b === activeBtn;
+        b.style.background = isOn ? "#2563eb" : "#ffffff";
+        b.style.color = isOn ? "#ffffff" : "#334155";
+        b.style.borderColor = isOn ? "#2563eb" : "#cbd5e1";
+        b.style.fontWeight = isOn ? "700" : "600";
+      });
+    }
+
+    intervalBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        activeChartInterval = btn.getAttribute("data-interval") || "D";
+        activeChartIntervalLabel = btn.getAttribute("data-label") || activeChartInterval;
+        activeChartRange = btn.getAttribute("data-range") || "";
+        if (customIntervalSel) customIntervalSel.value = "";
+        if (rangeSel) rangeSel.value = activeChartRange;
+        updateIntervalButtonStyles(btn);
+        renderTradingViewChart(activeChartExchange);
+      });
+    });
+
+    if (customIntervalSel) {
+      customIntervalSel.addEventListener("change", () => {
+        if (!customIntervalSel.value) return;
+        activeChartInterval = customIntervalSel.value;
+        const opt = customIntervalSel.options && customIntervalSel.selectedIndex >= 0 ? customIntervalSel.options[customIntervalSel.selectedIndex] : null;
+        activeChartIntervalLabel = opt ? opt.textContent : activeChartInterval;
+        updateIntervalButtonStyles(null);
+        renderTradingViewChart(activeChartExchange);
+      });
+    }
+
+    if (rangeSel) {
+      rangeSel.addEventListener("change", () => {
+        activeChartRange = rangeSel.value || "";
+        renderTradingViewChart(activeChartExchange);
       });
     }
 
