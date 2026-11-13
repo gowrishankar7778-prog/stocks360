@@ -1512,7 +1512,7 @@ document.addEventListener("DOMContentLoaded", function () {
               BSE ${stock.bseCode ? `(${escapeHtml(stock.bseCode)})` : ''}
             </button>
           </div>
-          <span id="exchange-switcher-status" style="font-size:0.78rem; color:#64748b;">${stock.exchanges === 'BSE' ? 'Showing Official BSE Bhavcopy Data' : 'Showing Official NSE Bhavcopy Data'}</span>
+          <span id="exchange-switcher-status" style="font-size:0.78rem; color:#64748b;">${stock.exchanges === 'BSE' ? 'Exchange: BSE' : 'Exchange: NSE'}</span>
         </div>
 
         <!-- SECTION 1: PRICE PERFORMANCE -->
@@ -1956,7 +1956,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (h52El) h52El.textContent = `₹ ${Number(q.high52 || high52).toLocaleString("en-IN")}`;
       if (l52El) l52El.textContent = `₹ ${Number(q.low52 || low52).toLocaleString("en-IN")}`;
       if (curPriceEl) curPriceEl.textContent = `₹ ${Number(q.cmp).toLocaleString("en-IN")}`;
-      if (statusEl) statusEl.textContent = exch === "BSE" ? "Showing Official BSE Bhavcopy Data" : "Showing Official NSE Bhavcopy Data";
+      if (statusEl) statusEl.textContent = exch === "BSE" ? "Exchange: BSE" : "Exchange: NSE";
 
       if (btnNse) {
         const active = exch === "NSE";
