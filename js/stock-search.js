@@ -1604,7 +1604,9 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div id="tv-chart-text-summary" aria-live="polite" hidden style="margin-bottom:12px; padding:12px 16px; background:#f8fafc; border:1px solid #cbd5e1; border-left:4px solid #2563eb; border-radius:8px; font-size:0.9rem; color:#1e293b; line-height:1.55;"></div>
           <div id="tv-chart-accessible-table-wrap" hidden style="margin-bottom:14px; overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; background:#ffffff;"></div>
+          <div id="tv-symbol-info-container" style="min-height:140px; margin-bottom:14px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
           <div id="tv-live-chart-container" style="height:460px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
+          <div id="tv-technical-analysis-container" style="height:450px; margin-top:14px; border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; background:#ffffff;"></div>
           <p style="margin:6px 0 0; font-size:0.74rem; color:#64748b;">Note: TradingView's free embedded widget provides delayed NSE/BSE exchange quotes per exchange licensing policy. Use the bottom bar inside the chart for Go-to-Date and custom date ranges.</p>
         </section>
 
@@ -2040,16 +2042,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let activeChartIntervalLabel = "15m";
     let activeChartRange = "";
 
-    function renderTradingViewChart(exch) {
-      const container = document.getElementById("tv-live-chart-container");
-      const labelEl = document.getElementById("tv-chart-symbol-label");
+    function mountTradingViewWidget(container, scriptUrl, configObj) {
       if (!container) return;
-      const bseSym = (bseQuoteSnapshot && bseQuoteSnapshot.bseSymbol) || stock.bseCode || stock.symbol;
-      const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
-      if (labelEl) {
-        const rangeSuffix = activeChartRange ? ` (${activeChartRange})` : "";
-        labelEl.textContent = `${tvSymbol} \u2022 ${activeChartIntervalLabel}${rangeSuffix} \u2022 ~15m Delayed (TV Free Feed)`;
-      }
       container.innerHTML = "";
       const widgetWrap = document.createElement("div");
       widgetWrap.className = "tradingview-widget-container";
@@ -2062,9 +2056,39 @@ document.addEventListener("DOMContentLoaded", function () {
       widgetWrap.appendChild(widgetDiv);
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+      script.src = scriptUrl;
       script.async = true;
-      const widgetCfg = {
+      script.textContent = JSON.stringify(configObj);
+      widgetWrap.appendChild(script);
+      container.appendChild(widgetWrap);
+    }
+
+    function renderTradingViewChart(exch) {
+      const symbolInfoEl = document.getElementById("tv-symbol-info-container");
+      const container = document.getElementById("tv-live-chart-container");
+      const taContainer = document.getElementById("tv-technical-analysis-container");
+      const labelEl = document.getElementById("tv-chart-symbol-label");
+      if (!container) return;
+      const bseSym = (bseQuoteSnapshot && bseQuoteSnapshot.bseSymbol) || stock.bseCode || stock.symbol;
+      const tvSymbol = exch === "BSE" ? `BSE:${bseSym}` : `NSE:${stock.symbol}`;
+      if (labelEl) {
+        const rangeSuffix = activeChartRange ? ` (${activeChartRange})` : "";
+        labelEl.textContent = `${tvSymbol} \u2022 ${activeChartIntervalLabel}${rangeSuffix} \u2022 ~15m Delayed (TV Free Feed)`;
+      }
+
+      mountTradingViewWidget(
+        symbolInfoEl,
+        "https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js",
+        {
+          symbol: tvSymbol,
+          width: "100%",
+          locale: "en",
+          colorTheme: "light",
+          isTransparent: false
+        }
+      );
+
+      const chartCfg = {
         autosize: true,
         symbol: tvSymbol,
         interval: activeChartInterval,
@@ -2080,11 +2104,29 @@ document.addEventListener("DOMContentLoaded", function () {
         support_host: "https://www.tradingview.com"
       };
       if (activeChartRange) {
-        widgetCfg.range = activeChartRange;
+        chartCfg.range = activeChartRange;
       }
-      script.textContent = JSON.stringify(widgetCfg);
-      widgetWrap.appendChild(script);
-      container.appendChild(widgetWrap);
+      mountTradingViewWidget(
+        container,
+        "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js",
+        chartCfg
+      );
+
+      mountTradingViewWidget(
+        taContainer,
+        "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js",
+        {
+          symbol: tvSymbol,
+          interval: "15m",
+          colorTheme: "light",
+          isTransparent: false,
+          height: "100%",
+          width: "100%",
+          showIntervalTabs: true,
+          displayMode: "multiple",
+          locale: "en"
+        }
+      );
     }
 
     let activeChartExchange = stock.exchanges === "BSE" ? "BSE" : "NSE";
