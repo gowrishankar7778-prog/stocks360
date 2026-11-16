@@ -226,7 +226,7 @@ async function runBseSync() {
       targetStock.bseCode = bseCode;
       if (isin && !targetStock.isin) targetStock.isin = isin;
       if (targetStock.exchanges === 'BSE') {
-        // BSE-only stock: update primary quote directly from BSE Bhavcopy
+        // BSE-only stock: update primary quote & rolling EOD technicals directly from BSE Bhavcopy
         targetStock.cmp = close;
         targetStock.dayOpen = open;
         targetStock.dayHigh = high;
@@ -235,9 +235,18 @@ async function runBseSync() {
         targetStock.dayChange = dayChange;
         targetStock.dayChangePct = dayChangePct;
         targetStock.isGain = isGain;
-        targetStock.volume = volume;
         targetStock.high52 = targetStock.high52 > 0 ? Math.max(targetStock.high52, high) : high;
         targetStock.low52 = targetStock.low52 > 0 ? Math.min(targetStock.low52, low) : low;
+        if (volume > 0) {
+          targetStock.avgVolume = targetStock.avgVolume > 0
+            ? Number(((targetStock.avgVolume * 9 + volume) / 10).toFixed(1))
+            : volume;
+          targetStock.volume = volume;
+          targetStock.volumeSurge = targetStock.avgVolume > 0 ? Number((volume / targetStock.avgVolume).toFixed(2)) : 1.0;
+        }
+        targetStock.dma50 = targetStock.dma50 > 0 ? Number(((targetStock.dma50 * 49 + close) / 50).toFixed(2)) : close;
+        targetStock.dma200 = targetStock.dma200 > 0 ? Number(((targetStock.dma200 * 199 + close) / 200).toFixed(2)) : close;
+        targetStock.goldenCross = targetStock.dma50 > targetStock.dma200 && close > targetStock.dma50;
         targetStock.lastUpdated = `BSE ${bhav.tradeDate}`;
         bseExclusiveUpdated++;
       } else {
@@ -262,12 +271,12 @@ async function runBseSync() {
         dayChangePct,
         isGain,
         prevClose,
-        marketCapCr: 0,
-        pe: 0,
-        roePct: 0,
-        rocePct: 0,
-        debtToEquity: 0,
-        divYieldPct: 0,
+        marketCapCr: null,
+        pe: null,
+        roePct: null,
+        rocePct: null,
+        debtToEquity: null,
+        divYieldPct: null,
         dma50: close,
         dma200: close,
         goldenCross: false,
@@ -275,8 +284,6 @@ async function runBseSync() {
         volume,
         avgVolume: volume,
         volumeSurge: 1.0,
-        salesGrowth3Y: 0,
-        profitGrowth3Y: 0,
         dayOpen: open,
         dayHigh: high,
         dayLow: low,

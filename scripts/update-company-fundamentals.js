@@ -181,7 +181,7 @@ async function fetchAndParseNseXbrl(xbrlUrl) {
       cfo: formatInr(cfo || 0),
       cfi: formatInr(cfi || 0),
       cff: formatInr(cff || 0),
-      netCashFlow: formatInr((cfo || 0) + (cfi || 0) + (cff || 0))
+      netCash: formatInr((cfo || 0) + (cfi || 0) + (cff || 0))
     } : null,
     debtToEquity
   };
@@ -236,7 +236,7 @@ async function fetchNseCorpInfo(symbol) {
       operatingProfit: formatInr(pbtCr),
       opm,
       netProfit: formatInr(netProfitCr),
-      eps: !isNaN(eps) ? `₹${eps}` : '₹0'
+      eps: !isNaN(eps) ? `₹${eps}` : '--'
     });
     if (quarterlyResults.length >= 4) break;
   }
@@ -326,13 +326,17 @@ async function run() {
       let changed = false;
 
       if (nseInfo.promoterPct !== null) {
-        if (!profile.shareholding) profile.shareholding = { total: '100.00%' };
         const nextProm = `${nseInfo.promoterPct}%`;
-        if (profile.shareholding.promoters !== nextProm) {
-          profile.shareholding.promoters = nextProm;
-          if (profile.shareholding.public === undefined) {
-            profile.shareholding.public = `${Math.max(0, Number((100 - nseInfo.promoterPct).toFixed(2)))}%`;
-          }
+        const nextPub = `${Math.max(0, Number((100 - nseInfo.promoterPct).toFixed(2)))}%`;
+        const prevProm = profile.shareholding && profile.shareholding.promoters;
+        const prevPub = profile.shareholding && profile.shareholding.public;
+        const hasSyntheticSh = profile.shareholding && (profile.shareholding.fii !== undefined || profile.shareholding.dii !== undefined || profile.shareholding.quarters !== undefined);
+        if (!profile.shareholding || prevProm !== nextProm || prevPub !== nextPub || hasSyntheticSh) {
+          profile.shareholding = {
+            promoters: nextProm,
+            public: nextPub,
+            total: '100.00%'
+          };
           changed = true;
         }
       }

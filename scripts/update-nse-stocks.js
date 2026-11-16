@@ -199,8 +199,12 @@ async function updateAllStocks() {
     if (fresh && fresh.cmp > 0) {
       const priceRatio = s.cmp > 0 ? (fresh.cmp / s.cmp) : 1;
       if (priceRatio > 0.5 && priceRatio < 2.0) {
-        s.marketCapCr = Math.round((s.marketCapCr || 0) * priceRatio);
-        s.pe = Number(((s.pe || 0) * priceRatio).toFixed(1));
+        if (typeof s.marketCapCr === 'number' && s.marketCapCr > 0) {
+          s.marketCapCr = Math.round(s.marketCapCr * priceRatio);
+        }
+        if (typeof s.pe === 'number' && s.pe > 0) {
+          s.pe = Number((s.pe * priceRatio).toFixed(1));
+        }
       }
 
       s.cmp = fresh.cmp;

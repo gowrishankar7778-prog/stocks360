@@ -115,48 +115,35 @@ async function runImport() {
 
     processedSymbols.add(symbol.toUpperCase());
 
-    // Deterministic pseudo-random seed from symbol & name for baseline metrics
-    let seed = 0;
-    const str = symbol + companyName;
-    for (let c = 0; c < str.length; c++) {
-      seed = (seed * 31 + str.charCodeAt(c)) % 100000;
-    }
-
-    const price = Math.round((25 + (seed % 1850)) * 10) / 10;
-    const pe = Number((14 + (seed % 38)).toFixed(1));
-    const roe = Number((10 + (seed % 26)).toFixed(1));
-    const roce = Number((roe * 1.22).toFixed(1));
-    const de = Number(((seed % 75) / 100).toFixed(2));
-    const mcap = Math.round(1500 + (seed % 45000));
-    const dma50 = Math.round(price * 0.98 * 10) / 10;
-    const dma200 = Math.round(price * 0.93 * 10) / 10;
-    const dayChange = Number((((seed % 60) - 28) * 0.1).toFixed(2));
-    const dayChangePct = Number(((dayChange / price) * 100).toFixed(2));
-
     const newStock = {
       symbol: symbol,
       name: companyName,
       sector: detectSector(companyName),
-      cmp: price,
-      dayChange: dayChange,
-      dayChangePct: dayChangePct,
-      isGain: dayChange >= 0,
+      exchanges: 'NSE',
+      cmp: 0,
+      dayChange: 0,
+      dayChangePct: 0,
+      isGain: true,
+      prevClose: 0,
       lastUpdated: "NSE Official Master",
-      marketCapCr: mcap,
-      pe: pe,
-      roePct: roe,
-      rocePct: roce,
-      debtToEquity: de,
-      divYieldPct: Number(((seed % 20) / 10).toFixed(2)),
-      dma50: dma50,
-      dma200: dma200,
-      goldenCross: dma50 >= dma200,
-      rsi14: 45 + (seed % 25),
-      volume: 450000 + (seed * 15),
-      avgVolume: 400000 + (seed * 12),
-      volumeSurge: 1.08,
-      salesGrowth3Y: Number((11 + (seed % 18)).toFixed(1)),
-      profitGrowth3Y: Number((13 + (seed % 22)).toFixed(1)),
+      marketCapCr: null,
+      pe: null,
+      roePct: null,
+      rocePct: null,
+      debtToEquity: null,
+      divYieldPct: null,
+      dma50: 0,
+      dma200: 0,
+      goldenCross: false,
+      rsi14: 50,
+      volume: 0,
+      avgVolume: 0,
+      volumeSurge: 1.0,
+      dayOpen: 0,
+      dayHigh: 0,
+      dayLow: 0,
+      high52: 0,
+      low52: 0,
       series: series,
       isin: isin,
       faceValue: faceValue

@@ -30,40 +30,40 @@ const StocksScreener = (function () {
     },
     {
       id: "featured-2",
-      name: "High ROE & ROCE Compounders",
-      description: "Companies with outstanding capital efficiency (ROE > 18% & ROCE > 20%) and safe conservative leverage.",
+      name: "Oversold Quality Rebound Candidates",
+      description: "Liquid listed equities trading in oversold territory (RSI <= 35) with active market participation.",
       author: "Stocks 360 Research",
       isPublic: true,
-      requestedColumns: ["marketCapCr", "roePct", "rocePct", "debtToEquity"],
+      requestedColumns: ["rsi14", "cmp", "dma50", "volume"],
       filters: [
-        { field: "roePct", operator: ">=", value: 18, label: "ROE >= 18%" },
-        { field: "rocePct", operator: ">=", value: 20, label: "ROCE >= 20%" },
-        { field: "debtToEquity", operator: "<=", value: 0.8, label: "Debt/Equity <= 0.8" }
+        { field: "rsi14", operator: "<=", value: 35, label: "RSI <= 35" },
+        { field: "cmp", operator: ">", value: 50, label: "CMP > ₹50" },
+        { field: "volume", operator: ">=", value: 100000, label: "Volume >= 1,00,000" }
       ]
     },
     {
       id: "featured-3",
-      name: "Low P/E Dividend Payers",
-      description: "Value-oriented companies trading at reasonable valuation (P/E < 25) with healthy dividend payouts.",
+      name: "Strong Uptrend Above 50 & 200 DMA",
+      description: "Bullish stocks in a confirmed Golden Crossover with sustained momentum (RSI 50 to 70).",
       author: "Stocks 360 Research",
       isPublic: true,
-      requestedColumns: ["pe", "divYieldPct", "marketCapCr"],
+      requestedColumns: ["goldenCross", "rsi14", "dma50", "dma200"],
       filters: [
-        { field: "pe", operator: "<=", value: 25, label: "P/E <= 25" },
-        { field: "divYieldPct", operator: ">=", value: 1.2, label: "Dividend Yield >= 1.2%" }
+        { field: "goldenCross", operator: "==", value: true, label: "Golden Crossover (50 DMA > 200 DMA)" },
+        { field: "rsi14", operator: ">=", value: 50, label: "RSI >= 50" },
+        { field: "rsi14", operator: "<=", value: 70, label: "RSI <= 70" }
       ]
     },
     {
       id: "featured-4",
-      name: "Virtually Debt-Free Growth Leaders",
-      description: "Fast-growing market leaders with almost zero debt (Debt/Eq <= 0.1) and strong sales momentum.",
+      name: "High Volume Breakout Movers",
+      description: "Equities witnessing heavy trading volume (>= 1.5x 10-day average) alongside strong daily gains (>= 1.5%).",
       author: "Stocks 360 Research",
       isPublic: true,
-      requestedColumns: ["debtToEquity", "roePct", "salesGrowth3Y"],
+      requestedColumns: ["volumeSurge", "dayChangePct", "volume"],
       filters: [
-        { field: "debtToEquity", operator: "<=", value: 0.1, label: "Debt/Equity <= 0.1" },
-        { field: "roePct", operator: ">=", value: 15, label: "ROE >= 15%" },
-        { field: "salesGrowth3Y", operator: ">=", value: 10, label: "3Y Sales Growth >= 10%" }
+        { field: "volumeSurge", operator: ">=", value: 1.5, label: "Volume Surge >= 1.5x" },
+        { field: "dayChangePct", operator: ">=", value: 1.5, label: "Day Change >= +1.5%" }
       ]
     }
   ];
@@ -375,14 +375,17 @@ const StocksScreener = (function () {
 
         // Custom computed checks
         if (field === "cmp_vs_dma200") {
+          if (!(stock.cmp > 0) || !(stock.dma200 > 0)) return false;
           return op === ">" ? stock.cmp > stock.dma200 : stock.cmp <= stock.dma200;
         }
         if (field === "cmp_vs_dma50") {
+          if (!(stock.cmp > 0) || !(stock.dma50 > 0)) return false;
           return op === ">" ? stock.cmp > stock.dma50 : stock.cmp <= stock.dma50;
         }
 
         const stockVal = stock[field];
         if (stockVal === undefined || stockVal === null) return false;
+        if ((field === "pe" || field === "marketCapCr") && Number(stockVal) <= 0) return false;
 
         switch (op) {
           case ">":
@@ -660,15 +663,15 @@ const StocksScreener = (function () {
       });
     }
 
-    // Initialize with 2 starter rules (Market Cap & ROE)
+    // Initialize with 2 starter rules (RSI & Volume Surge)
     manualRules = [
-      { field: "marketCapCr", operator: ">=", value: 5000 },
-      { field: "roePct", operator: ">=", value: 15 }
+      { field: "rsi14", operator: "<=", value: 40 },
+      { field: "volumeSurge", operator: ">=", value: 1.2 }
     ];
     renderManualRuleRows();
   }
 
-  function addManualRuleRow(field = "roePct", operator = ">=", value = 15) {
+  function addManualRuleRow(field = "rsi14", operator = "<=", value = 40) {
     manualRules.push({ field: field, operator: operator, value: value });
     renderManualRuleRows();
   }

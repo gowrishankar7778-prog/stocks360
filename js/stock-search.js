@@ -250,54 +250,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return scored.slice(0, limit).map((item) => item.stock);
   }
 
-  function synthesizeNseStock(query) {
-    const raw = String(query || "").trim().toUpperCase();
-    const cleanSym = cleanAlphanumeric(raw.replace(/\.NS$/, "")).slice(0, 14) || "NSESTOCK";
-
-    // Deterministic pseudo-random seed from symbol characters
-    let seed = 0;
-    for (let i = 0; i < cleanSym.length; i++) {
-      seed = (seed * 31 + cleanSym.charCodeAt(i)) % 100000;
-    }
-
-    const price = Math.round((80 + (seed % 1400)) * 10) / 10;
-    const pe = Number((16 + (seed % 35)).toFixed(1));
-    const roe = Number((12 + (seed % 28)).toFixed(1));
-    const roce = Number((roe * 1.25).toFixed(1));
-    const de = Number(((seed % 70) / 100).toFixed(2));
-    const mcap = Math.round(5000 + (seed % 85000));
-    const dma50 = Math.round(price * 0.97 * 10) / 10;
-    const dma200 = Math.round(price * 0.91 * 10) / 10;
-
-    const synth = {
-      symbol: cleanSym,
-      name: `${cleanSym} (NSE Listed Equity)`,
-      sector: "Diversified NSE Equities",
-      cmp: price,
-      lastUpdated: "Today, 3:30 PM IST",
-      marketCapCr: mcap,
-      pe: pe,
-      roePct: roe,
-      rocePct: roce,
-      debtToEquity: de,
-      divYieldPct: Number(((seed % 18) / 10).toFixed(2)),
-      dma50: dma50,
-      dma200: dma200,
-      goldenCross: dma50 >= dma200,
-      rsi14: 50 + (seed % 20),
-      volume: 1200000 + (seed * 20),
-      avgVolume: 1000000 + (seed * 18),
-      volumeSurge: 1.15,
-      salesGrowth3Y: Number((12 + (seed % 20)).toFixed(1)),
-      profitGrowth3Y: Number((15 + (seed % 25)).toFixed(1)),
-      isSynthesized: true
-    };
-
-    const dataset = getStockDataset();
-    dataset.push(synth);
-    return synth;
-  }
-
   // Interactive Live Suggestions Dropdown Setup
   let suggestionBox = document.getElementById("stock-search-suggestions");
   if (!suggestionBox && searchInput) {
@@ -493,10 +445,23 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    let stock = findStock(q);
+    const stock = findStock(q);
     if (!stock) {
-      // Dynamic fallback synthesizer for any valid NSE ticker or search query
-      stock = synthesizeNseStock(q);
+      activeCompanyData = null;
+      if (stockResult) {
+        stockResult.removeAttribute("hidden");
+        stockResult.hidden = false;
+        stockResult.style.display = "block";
+        stockResult.innerHTML = `
+          <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:24px; text-align:center;">
+            <h3 style="margin:0 0 8px 0; color:#0f172a; font-size:1.2rem;">Stock not found in NSE/BSE directory</h3>
+            <p style="margin:0 0 14px 0; color:#64748b; font-size:0.92rem;">No listed equity matched "${escapeHtml(q)}". Try searching by official NSE symbol or BSE company name (e.g. TCS, INFY, HDFC Bank).</p>
+            <button type="button" id="btn-notfound-close" class="nav-back-btn primary-back" style="cursor:pointer;">Back to Search</button>
+          </div>`;
+        const closeBtn = document.getElementById("btn-notfound-close");
+        if (closeBtn) closeBtn.addEventListener("click", closeCompanyAnalysis);
+      }
+      return;
     }
 
     activeCompanyData = stock;
@@ -526,290 +491,6 @@ document.addEventListener("DOMContentLoaded", function () {
       history.pushState({}, "", "index.html");
     } catch (_) {}
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  // ---------------- COMPREHENSIVE FINANCIAL STATEMENTS & RATIOS SUITE ----------------
-  function symbolSeedClient(symbol) {
-    const s = String(symbol || "STOCK").toUpperCase();
-    let h1 = 2166136261;
-    let h2 = 16777619;
-    for (let i = 0; i < s.length; i++) {
-      const c = s.charCodeAt(i);
-      h1 ^= c;
-      h1 = Math.imul(h1, 16777619);
-      h2 = (h2 * 31 + c) & 0x7fffffff;
-    }
-    return {
-      h1: Math.abs(h1),
-      h2: Math.abs(h2),
-      u1: (Math.abs(h1) % 1000) / 1000,
-      u2: (Math.abs(h2) % 1000) / 1000,
-      u3: (Math.abs(h1 ^ h2) % 1000) / 1000
-    };
-  }
-
-  function hasNonZeroMetric(arr, key) {
-    if (!Array.isArray(arr) || arr.length === 0) return false;
-    return arr.some((item) => {
-      const v = String(item[key] || "").replace(/[^0-9]/g, "");
-      return v && Number(v) > 0;
-    });
-  }
-
-  function generate5YearFinancials(stock) {
-    if (hasNonZeroMetric(stock.financials, "sales") && stock.financials.length === 5) {
-      return stock.financials;
-    }
-    const seed = symbolSeedClient(stock.symbol);
-    const years = ["FY22", "FY23", "FY24", "FY25", "FY26"];
-    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
-    const pe = stock.pe > 0 ? stock.pe : Number((14.2 + seed.u1 * 28.5).toFixed(1));
-    const roeBase = stock.roePct > 0 ? stock.roePct : Number((11.4 + seed.u2 * 19.8).toFixed(1));
-    const roceBase = stock.rocePct > 0 ? stock.rocePct : Number((roeBase * 1.18).toFixed(1));
-    const latestNetProfit = Math.max(8, Math.round(mcap / pe));
-    const opm = Math.min(42, Math.max(9.5, Number((roceBase * (0.66 + seed.u1 * 0.18)).toFixed(1))));
-    const netMargin = Math.max(0.045, Math.min(0.26, (opm / 100) * (0.60 + seed.u2 * 0.14)));
-    const latestSales = Math.max(35, Math.round(latestNetProfit / netMargin));
-    const growth = Math.max(0.05, Math.min(0.32, (stock.salesGrowth3Y || (8.4 + seed.u1 * 18.6)) / 100));
-    const netWorthEst = Math.max(15, Math.round(latestNetProfit / (roeBase / 100)));
-    const de = stock.debtToEquity !== undefined && stock.debtToEquity !== null ? stock.debtToEquity : Number((0.04 + seed.u3 * 0.78).toFixed(2));
-    const borrowingsEst = de > 0.01 ? Math.round(netWorthEst * de) : 0;
-    const latestEps = Math.max(0.8, Number((cmp / pe).toFixed(1)));
-
-    return years.map((yr, idx) => {
-      const stepBack = 4 - idx;
-      const factor = Math.pow(1 + (growth * 0.85), -stepBack);
-      const sales = Math.max(12, Math.round(latestSales * factor));
-      const yrOpm = Number(Math.max(6, opm - stepBack * 0.4).toFixed(1));
-      const opProfit = Math.max(2, Math.round(sales * (yrOpm / 100)));
-      const expenses = Math.max(1, sales - opProfit);
-      const netProfit = Math.max(1, Math.round(latestNetProfit * factor * (yrOpm / opm)));
-      const pbt = Math.round(netProfit * 1.33);
-      const roe = Number((roeBase * (0.85 + (idx * 0.038))).toFixed(1));
-      const borrowings = borrowingsEst > 0 ? Math.max(1, Math.round(borrowingsEst * (0.86 + (idx * 0.035)))) : 0;
-      const eps = Math.max(0.4, Number((latestEps * (netProfit / latestNetProfit)).toFixed(1)));
-
-      return {
-        year: yr,
-        sales: sales.toLocaleString("en-IN"),
-        expenses: expenses.toLocaleString("en-IN"),
-        operatingProfit: opProfit.toLocaleString("en-IN"),
-        opm: `${yrOpm}%`,
-        pbt: pbt.toLocaleString("en-IN"),
-        taxPct: `${23 + ((seed.h1 + idx) % 5)}%`,
-        netProfit: netProfit.toLocaleString("en-IN"),
-        eps: `₹${eps}`,
-        roe: `${roe}%`,
-        borrowings: borrowings > 0 ? borrowings.toLocaleString("en-IN") : "Nil"
-      };
-    });
-  }
-
-  function generateQuarterlyResults(stock) {
-    if (hasNonZeroMetric(stock.quarterlyResults, "sales") && stock.quarterlyResults.length >= 4) {
-      return stock.quarterlyResults;
-    }
-    const seed = symbolSeedClient(stock.symbol);
-    const quarters = ["Dec 25", "Mar 26", "Jun 26", "Sept 26"];
-    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
-    const pe = stock.pe > 0 ? stock.pe : Number((14.2 + seed.u1 * 28.5).toFixed(1));
-    const annualProfit = Math.max(8, Math.round(mcap / pe));
-    const roceBase = stock.rocePct > 0 ? stock.rocePct : Number((14.0 + seed.u2 * 22.0).toFixed(1));
-    const opm = Math.min(42, Math.max(9.5, Number((roceBase * (0.66 + seed.u1 * 0.18)).toFixed(1))));
-    const netMargin = Math.max(0.045, Math.min(0.26, (opm / 100) * (0.60 + seed.u2 * 0.14)));
-    const annualSales = Math.max(35, Math.round(annualProfit / netMargin));
-    const latestEps = Math.max(0.8, Number((cmp / pe).toFixed(1)));
-    const weights = [0.235, 0.246, 0.254, 0.265];
-
-    return quarters.map((q, idx) => {
-      const w = weights[idx];
-      const qSales = Math.max(4, Math.round(annualSales * w));
-      const qOpm = Number(Math.max(6, opm + (idx - 1.5) * 0.4).toFixed(1));
-      const qOp = Math.max(1, Math.round(qSales * (qOpm / 100)));
-      const qExp = Math.max(1, qSales - qOp);
-      const qNet = Math.max(1, Math.round(annualProfit * w));
-      const qEps = Math.max(0.2, Number((latestEps * w).toFixed(1)));
-
-      return {
-        period: q,
-        sales: qSales.toLocaleString("en-IN"),
-        expenses: qExp.toLocaleString("en-IN"),
-        operatingProfit: qOp.toLocaleString("en-IN"),
-        opm: `${qOpm}%`,
-        netProfit: qNet.toLocaleString("en-IN"),
-        eps: `₹${qEps}`
-      };
-    });
-  }
-
-  function generateBalanceSheet(stock) {
-    if (hasNonZeroMetric(stock.balanceSheet, "totalAssets") && stock.balanceSheet.length === 5) {
-      return stock.balanceSheet;
-    }
-    const seed = symbolSeedClient(stock.symbol);
-    const years = ["FY22", "FY23", "FY24", "FY25", "FY26"];
-    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
-    const netWorth = Math.max(15, Math.round(mcap / (2.2 + seed.u1 * 1.4)));
-    const debt = Math.round(netWorth * (stock.debtToEquity !== undefined && stock.debtToEquity !== null ? stock.debtToEquity : (0.04 + seed.u3 * 0.78)));
-    const totalAssets = netWorth + debt + Math.round(netWorth * (0.18 + seed.u2 * 0.14));
-
-    return years.map((yr, idx) => {
-      const factor = 0.80 + (idx * 0.05);
-      const nw = Math.round(netWorth * factor);
-      const eq = Math.max(5, Math.round(nw * (0.04 + seed.u1 * 0.04)));
-      const res = Math.max(5, nw - eq);
-      const b = Math.round(debt * (0.88 + idx * 0.03));
-      const tot = Math.round(totalAssets * factor);
-      const otherLiab = Math.max(2, tot - (eq + res + b));
-      const fa = Math.round(tot * (0.46 + seed.u2 * 0.16));
-      const inv = Math.round(tot * (0.18 + seed.u3 * 0.12));
-      const otherA = Math.max(2, tot - (fa + inv));
-
-      return {
-        year: yr,
-        equityCapital: eq.toLocaleString("en-IN"),
-        reserves: res.toLocaleString("en-IN"),
-        borrowings: b > 0 ? b.toLocaleString("en-IN") : "Nil",
-        otherLiabilities: otherLiab.toLocaleString("en-IN"),
-        totalLiabilities: tot.toLocaleString("en-IN"),
-        fixedAssets: fa.toLocaleString("en-IN"),
-        investments: inv.toLocaleString("en-IN"),
-        otherAssets: otherA.toLocaleString("en-IN"),
-        totalAssets: tot.toLocaleString("en-IN")
-      };
-    });
-  }
-
-  function generateCashFlows(stock) {
-    if (hasNonZeroMetric(stock.cashFlows, "cfo") && stock.cashFlows.length === 5) {
-      return stock.cashFlows;
-    }
-    const seed = symbolSeedClient(stock.symbol);
-    const years = ["FY22", "FY23", "FY24", "FY25", "FY26"];
-    const cmp = stock.cmp > 0 ? stock.cmp : Number((85 + seed.u1 * 1850).toFixed(2));
-    const pe = stock.pe > 0 ? stock.pe : Number((14.2 + seed.u1 * 28.5).toFixed(1));
-    const mcap = stock.marketCapCr && stock.marketCapCr > 0 ? stock.marketCapCr : Math.max(145, Math.round(cmp * (2.8 + seed.u1 * 18.5 + seed.u2 * 32.0)));
-    const netProfit = Math.max(8, Math.round(mcap / pe));
-
-    return years.map((yr, idx) => {
-      const factor = 0.80 + (idx * 0.05);
-      const cfo = Math.max(2, Math.round(netProfit * (1.08 + seed.u1 * 0.22) * factor));
-      const cfi = -Math.max(1, Math.round(cfo * (0.45 + seed.u2 * 0.22)));
-      const cff = -Math.max(1, Math.round(cfo * (0.22 + seed.u3 * 0.16)));
-      const net = cfo + cfi + cff;
-
-      return {
-        year: yr,
-        cfo: cfo.toLocaleString("en-IN"),
-        cfi: cfi.toLocaleString("en-IN"),
-        cff: cff.toLocaleString("en-IN"),
-        netCash: net.toLocaleString("en-IN")
-      };
-    });
-  }
-
-  function generateShareholdingPattern(stock) {
-    const seed = symbolSeedClient(stock && stock.symbol);
-    const targetQuarters = ["Dec 25", "Mar 26", "Jun 26", "Sept 26"];
-    if (stock && stock.shareholding && typeof stock.shareholding === "object") {
-      if (Array.isArray(stock.shareholding.quarters) && stock.shareholding.quarters.length >= 4) {
-        return stock.shareholding;
-      }
-      const p = parseFloat(stock.shareholding.promoters);
-      const f = parseFloat(stock.shareholding.fii);
-      const d = parseFloat(stock.shareholding.dii);
-      const pub = parseFloat(stock.shareholding.public);
-      if (!isNaN(p) && !isNaN(f) && (p + f + (isNaN(d) ? 0 : d)) > 0) {
-        const cleanD = !isNaN(d) ? d : 8.5;
-        const cleanPub = (!isNaN(pub) && pub > 0) ? pub : Math.max(4, 100 - (p + f + cleanD));
-        const quarters = targetQuarters.map((qLabel, idx) => {
-          const stepBack = 3 - idx;
-          const pDelta = Number((((seed.h1 % 3) - 1) * 0.08 * stepBack).toFixed(2));
-          const fDelta = Number((((seed.h2 % 5) - 2) * 0.18 * stepBack).toFixed(2));
-          const dDelta = Number((-fDelta * 0.65).toFixed(2));
-          const pQ = Number(Math.max(0, Math.min(85, p - pDelta)).toFixed(2));
-          const fQ = Number(Math.max(0.5, f - fDelta).toFixed(2));
-          const dQ = Number(Math.max(0.5, cleanD - dDelta).toFixed(2));
-          const pubQ = Number(Math.max(4.0, 100 - (pQ + fQ + dQ)).toFixed(2));
-          return {
-            period: qLabel,
-            promoters: pQ.toFixed(2) + "%",
-            fii: fQ.toFixed(2) + "%",
-            dii: dQ.toFixed(2) + "%",
-            public: pubQ.toFixed(2) + "%",
-            total: "100.00%"
-          };
-        });
-        return {
-          promoters: p.toFixed(2) + "%",
-          fii: f.toFixed(2) + "%",
-          dii: cleanD.toFixed(2) + "%",
-          public: cleanPub.toFixed(2) + "%",
-          total: "100.00%",
-          quarters: quarters
-        };
-      }
-    }
-    const isLarge = ((stock && stock.marketCapCr) || 0) > 25000;
-    const isBanking = /bank|finance|financial/i.test((stock && stock.sector) || "");
-    const prom = isBanking ? Number((22.4 + seed.u1 * 28.5).toFixed(2)) : (isLarge ? Number((44.5 + seed.u1 * 26.0).toFixed(2)) : Number((48.2 + seed.u1 * 25.4).toFixed(2)));
-    const fii = isBanking ? Number((18.5 + seed.u2 * 22.0).toFixed(2)) : (isLarge ? Number((14.0 + seed.u2 * 16.5).toFixed(2)) : Number((4.5 + seed.u2 * 14.8).toFixed(2)));
-    const dii = isBanking ? Number((14.2 + seed.u3 * 16.5).toFixed(2)) : (isLarge ? Number((10.5 + seed.u3 * 12.0).toFixed(2)) : Number((5.2 + seed.u3 * 13.5).toFixed(2)));
-    const pub = Math.max(5, Number((100 - (prom + fii + dii)).toFixed(2)));
-    const quarters = targetQuarters.map((qLabel, idx) => {
-      const stepBack = 3 - idx;
-      const fDelta = Number((((seed.h2 % 5) - 2) * 0.18 * stepBack).toFixed(2));
-      const dDelta = Number((-fDelta * 0.65).toFixed(2));
-      const fQ = Number(Math.max(0.5, fii - fDelta).toFixed(2));
-      const dQ = Number(Math.max(0.5, dii - dDelta).toFixed(2));
-      const pubQ = Number(Math.max(4.0, 100 - (prom + fQ + dQ)).toFixed(2));
-      return {
-        period: qLabel,
-        promoters: prom.toFixed(2) + "%",
-        fii: fQ.toFixed(2) + "%",
-        dii: dQ.toFixed(2) + "%",
-        public: pubQ.toFixed(2) + "%",
-        total: "100.00%"
-      };
-    });
-    return {
-      promoters: prom.toFixed(2) + "%",
-      fii: fii.toFixed(2) + "%",
-      dii: dii.toFixed(2) + "%",
-      public: pub.toFixed(2) + "%",
-      total: "100.00%",
-      quarters: quarters
-    };
-  }
-
-  function generateRatiosMatrix(stock) {
-    const rawR = stock.ratios || {};
-    const roe = (typeof stock.roePct === "number" && stock.roePct > 0) ? stock.roePct : (typeof rawR.roe === "number" ? rawR.roe : 16.5);
-    const roce = (typeof stock.rocePct === "number" && stock.rocePct > 0) ? stock.rocePct : (typeof rawR.roce === "number" ? rawR.roce : Number((roe * 1.25).toFixed(1)));
-    const pe = (typeof stock.pe === "number" && stock.pe > 0) ? stock.pe : (typeof rawR.pe === "number" ? rawR.pe : 22.0);
-    const de = (stock.debtToEquity !== undefined && stock.debtToEquity !== null) ? stock.debtToEquity : (rawR.debtToEquity !== undefined && rawR.debtToEquity !== null ? rawR.debtToEquity : 0.15);
-    const pb = (typeof rawR.pb === "number" && rawR.pb > 0) ? rawR.pb : Number((roe * 0.18).toFixed(2));
-    const evToEbitda = (typeof rawR.evToEbitda === "number" && rawR.evToEbitda > 0) ? rawR.evToEbitda : Number((pe * 0.72).toFixed(1));
-    const interestCoverage = (typeof rawR.interestCoverage === "number" && rawR.interestCoverage > 0) ? rawR.interestCoverage : (de > 0.6 ? 4.8 : 15.6);
-    const divYield = (stock.divYieldPct !== undefined && stock.divYieldPct !== null) ? stock.divYieldPct : (rawR.divYield !== undefined && rawR.divYield !== null ? rawR.divYield : 1.2);
-    const salesGrowth3Y = (typeof stock.salesGrowth3Y === "number") ? stock.salesGrowth3Y : (typeof rawR.salesGrowth3Y === "number" ? rawR.salesGrowth3Y : 12.8);
-    const profitGrowth3Y = (typeof stock.profitGrowth3Y === "number") ? stock.profitGrowth3Y : (typeof rawR.profitGrowth3Y === "number" ? rawR.profitGrowth3Y : 15.4);
-
-    return {
-      pe: pe,
-      pb: pb,
-      evToEbitda: evToEbitda,
-      roce: roce,
-      roe: roe,
-      debtToEquity: de,
-      interestCoverage: interestCoverage,
-      divYield: divYield,
-      salesGrowth3Y: salesGrowth3Y,
-      profitGrowth3Y: profitGrowth3Y
-    };
   }
 
   // Visual Statement Table Renderers (Reusable for initial render + verified shard async updates)
@@ -850,62 +531,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <tr>
               <td style="padding:10px 14px;">EPS in Rs</td>
               ${quarterlyResults.map(q => `<td style="padding:10px 14px; text-align:right;">${escapeHtml(String(q.eps))}</td>`).join('')}
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    `;
-  }
-
-  function buildFinancialsTableHtml(financials) {
-    if (!Array.isArray(financials) || financials.length === 0) {
-      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">Annual financial statements pending exchange filing.</div>`;
-    }
-    return `
-      <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
-        <table class="stocks360-data-table" id="company-financials-table" style="font-size:0.9rem; width:100%; border-collapse:collapse; min-width:540px;">
-          <thead>
-            <tr style="background:#f8fafc;">
-              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">Financial Metric (₹ Cr)</th>
-              ${financials.map(f => `<th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">${escapeHtml(String(f.year))}</th>`).join('')}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">Sales / Revenue</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(f.sales))}</td>`).join('')}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Expenses</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b;">₹ ${escapeHtml(String(f.expenses || f.sales))}</td>`).join('')}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">Operating Profit</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600;">₹ ${escapeHtml(String(f.operatingProfit || f.netProfit))}</td>`).join('')}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">OPM %</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(f.opm))}</td>`).join('')}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Profit before tax (PBT)</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(f.pbt || f.netProfit))}</td>`).join('')}
-            </tr>
-            <tr style="background:#fafafa;">
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a;">Net Profit (PAT)</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:700; color:#16a34a;">₹ ${escapeHtml(String(f.netProfit))}</td>`).join('')}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">EPS in Rs</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(f.eps || '--'))}</td>`).join('')}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Return on Equity (ROE)</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; font-weight:600; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(f.roe))}</td>`).join('')}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px;">Total Borrowings (Debt)</td>
-              ${financials.map(f => `<td style="padding:10px 14px; text-align:right; font-weight:600; color:${f.borrowings === 'Nil' ? '#16a34a' : '#0f172a'};">${f.borrowings === 'Nil' ? 'Nil' : '₹ ' + escapeHtml(String(f.borrowings))}</td>`).join('')}
             </tr>
           </tbody>
         </table>
@@ -997,162 +622,57 @@ document.addEventListener("DOMContentLoaded", function () {
             </tr>
             <tr style="background:#fafafa;">
               <td style="padding:10px 14px; font-weight:700;">Net Cash Flow</td>
-              ${cashFlows.map(c => `<td style="padding:10px 14px; text-align:right; font-weight:700;">₹ ${escapeHtml(String(c.netCash))}</td>`).join('')}
+              ${cashFlows.map(c => `<td style="padding:10px 14px; text-align:right; font-weight:700;">₹ ${escapeHtml(String(c.netCash ?? c.netCashFlow ?? '--'))}</td>`).join('')}
             </tr>
           </tbody>
         </table>
-      </div>
-    `;
-  }
-
-  function buildRatiosMatrixHtml(ratios, salesGrowth3Y, profitGrowth3Y) {
-    const r = ratios || {};
-    const items = [
-      {
-        label: "ROCE %",
-        btnLabel: "ROCE Information",
-        value: r.roce !== null && r.roce !== undefined ? r.roce + "%" : "--",
-        color: "#16a34a",
-        info: "Return on Capital Employed (ROCE) measures how efficiently a company generates operating profit from its total capital (both equity and debt). A ROCE above 15% generally indicates strong capital allocation efficiency."
-      },
-      {
-        label: "ROE %",
-        btnLabel: "ROE Information",
-        value: r.roe !== null && r.roe !== undefined ? r.roe + "%" : "--",
-        color: "#16a34a",
-        info: "Return on Equity (ROE) measures the net profit generated as a percentage of shareholders' equity. Consistently high ROE (above 15%) shows strong profitability for equity holders."
-      },
-      {
-        label: "Debt to Equity",
-        btnLabel: "Debt to Equity Information",
-        value: r.debtToEquity !== null && r.debtToEquity !== undefined ? r.debtToEquity : "--",
-        color: "#0f172a",
-        info: "Debt to Equity compares a company's total borrowings to its shareholder equity. A ratio below 0.5 indicates low financial leverage and a conservative balance sheet, while above 1.5 indicates higher debt reliance."
-      },
-      {
-        label: "Price to Book (P/B)",
-        btnLabel: "Price to Book Information",
-        value: r.pb ? r.pb + "x" : "--",
-        color: "#0f172a",
-        info: "Price to Book (P/B) compares the current market price of a stock to its book value per share (net asset value). Lower P/B ratios can signal value, while capital-light businesses often trade at higher P/B multiples."
-      },
-      {
-        label: "EV / EBITDA",
-        btnLabel: "EV / EBITDA Information",
-        value: r.evToEbitda ? r.evToEbitda + "x" : "--",
-        color: "#0f172a",
-        info: "Enterprise Value to EBITDA (EV/EBITDA) values the entire business (including debt and excluding cash) relative to its operating cash earnings before depreciation, interest, and taxes."
-      },
-      {
-        label: "Interest Coverage",
-        btnLabel: "Interest Coverage Information",
-        value: r.interestCoverage ? r.interestCoverage + "x" : "--",
-        color: "#0f172a",
-        info: "Interest Coverage Ratio measures how easily a company can pay interest on its outstanding debt from its operating profit (EBIT). A higher multiple (above 3x) indicates a wide safety margin."
-      },
-      {
-        label: "3-Yr Sales Growth",
-        btnLabel: "3-Yr Sales Growth Information",
-        value: salesGrowth3Y !== null && salesGrowth3Y !== undefined ? salesGrowth3Y + "%" : "--",
-        color: "#0f172a",
-        info: "3-Year Compounded Annual Sales Growth (CAGR) shows the pace at which the company's top-line revenue has expanded over the last three financial years."
-      },
-      {
-        label: "3-Yr Profit Growth",
-        btnLabel: "3-Yr Profit Growth Information",
-        value: profitGrowth3Y !== null && profitGrowth3Y !== undefined ? profitGrowth3Y + "%" : "--",
-        color: "#0f172a",
-        info: "3-Year Compounded Annual Profit Growth (CAGR) measures the annual rate at which Net Profit After Tax (PAT) has grown over the past three years."
-      }
-    ];
-
-    return `
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
-        ${items.map((item) => `
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px; display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.9rem; color:#475569; font-weight:600;">${escapeHtml(item.label)}</span>
-              <strong style="font-size:1rem; color:${item.color};">${escapeHtml(String(item.value))}</strong>
-            </div>
-            <div>
-              <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" data-info="${escapeHtml(item.info)}" style="cursor:pointer; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px; font-size:0.78rem; font-weight:600; width:100%; text-align:left;">
-                ${escapeHtml(item.btnLabel)}
-              </button>
-              <div class="ratio-info-box" hidden style="margin-top:8px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.82rem; color:#334155; line-height:1.5;">
-                ${escapeHtml(item.info)}
-              </div>
-            </div>
-          </div>
-        `).join("")}
       </div>
     `;
   }
 
   function buildShareholdingHtml(shareholding) {
-    if (!shareholding || typeof shareholding !== "object") {
+    if (!shareholding || typeof shareholding !== "object" || !shareholding.promoters) {
       return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">Shareholding pattern pending official exchange filing.</div>`;
     }
-    const s = shareholding;
-    const quarters = (Array.isArray(s.quarters) && s.quarters.length > 0)
-      ? s.quarters.slice(-4)
-      : [{
-          period: s.period || "Latest Filing",
-          promoters: s.promoters || "--",
-          fii: s.fii || "--",
-          dii: s.dii || "--",
-          public: s.public || "--",
-          total: s.total || "100.00%"
-        }];
-
-    const latest = quarters[quarters.length - 1] || s;
+    const promStr = String(shareholding.promoters).trim();
+    const promNum = parseFloat(promStr);
+    const pubStr = shareholding.public && shareholding.public !== "--"
+      ? String(shareholding.public).trim()
+      : (!isNaN(promNum) ? Math.max(0, Number((100 - promNum).toFixed(2))).toFixed(2) + "%" : "--");
+    const promWidth = !isNaN(promNum) ? Math.max(0, Math.min(100, promNum)) + "%" : "0%";
 
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
-        <table class="stocks360-data-table" id="company-shareholding-table" style="font-size:0.9rem; width:100%; border-collapse:collapse; min-width:540px;">
+        <table class="stocks360-data-table" id="company-shareholding-table" style="font-size:0.9rem; width:100%; border-collapse:collapse;">
           <thead>
             <tr style="background:#f8fafc;">
               <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">Shareholder Category</th>
-              ${quarters.map((q) => `<th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">${escapeHtml(String(q.period))}</th>`).join("")}
+              <th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">Latest Official Filing</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">
-                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#2563eb; margin-right:8px;"></span>Promoters
+                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#2563eb; margin-right:8px;"></span>Promoters &amp; Promoter Group
               </td>
-              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:#0f172a;">${escapeHtml(String(q.promoters))}</td>`).join("")}
+              <td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:#0f172a;">${escapeHtml(promStr)}</td>
             </tr>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">
-                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#10b981; margin-right:8px;"></span>FIIs (Foreign Institutions)
+                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#64748b; margin-right:8px;"></span>Public Shareholders (Institutional &amp; Retail)
               </td>
-              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(q.fii))}</td>`).join("")}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">
-                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#f59e0b; margin-right:8px;"></span>DIIs (Domestic Institutions)
-              </td>
-              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(q.dii))}</td>`).join("")}
-            </tr>
-            <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">
-                <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#94a3b8; margin-right:8px;"></span>Public &amp; Retail Shareholders
-              </td>
-              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#475569;">${escapeHtml(String(q.public))}</td>`).join("")}
+              <td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#475569;">${escapeHtml(pubStr)}</td>
             </tr>
             <tr style="background:#fafafa;">
               <td style="padding:10px 14px; font-weight:700; color:#0f172a;">Total Shareholding</td>
-              ${quarters.map((q) => `<td style="padding:10px 14px; text-align:right; font-weight:700; color:#0f172a;">${escapeHtml(String(q.total || "100.00%"))}</td>`).join("")}
+              <td style="padding:10px 14px; text-align:right; font-weight:700; color:#0f172a;">100.00%</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
-        <div style="height:12px; border-radius:6px; overflow:hidden; display:flex; background:#e2e8f0;">
-          <div style="width:${latest.promoters}; background:#2563eb;" title="Promoters: ${latest.promoters}"></div>
-          <div style="width:${latest.fii}; background:#10b981;" title="FIIs: ${latest.fii}"></div>
-          <div style="width:${latest.dii}; background:#f59e0b;" title="DIIs: ${latest.dii}"></div>
-          <div style="flex:1; background:#94a3b8;" title="Public: ${latest.public}"></div>
+        <div style="height:12px; border-radius:6px; overflow:hidden; display:flex; background:#94a3b8;">
+          <div style="width:${escapeHtml(promWidth)}; background:#2563eb;" title="Promoters: ${escapeHtml(promStr)}"></div>
         </div>
       </div>
     `;
@@ -1181,8 +701,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Sort by Market Cap descending so sector leaders appear cleanly
-    sameSector.sort((a, b) => (Number(b.marketCapCr) || 0) - (Number(a.marketCapCr) || 0));
+    // Sort by Volume descending so actively traded sector peers appear cleanly
+    sameSector.sort((a, b) => (Number(b.volume) || 0) - (Number(a.volume) || 0));
 
     // Take top 7 peers + ensure current stock is always included in the table
     const topPeers = [];
@@ -1200,7 +720,7 @@ document.addEventListener("DOMContentLoaded", function () {
       topPeers.push(stock);
     }
 
-    topPeers.sort((a, b) => (Number(b.marketCapCr) || 0) - (Number(a.marketCapCr) || 0));
+    topPeers.sort((a, b) => (Number(b.volume) || 0) - (Number(a.volume) || 0));
 
     function avgMetric(list, getter, digits, positiveOnly) {
       const vals = list.map(getter).filter((v) => typeof v === "number" && !isNaN(v) && (!positiveOnly || v > 0));
@@ -1208,27 +728,29 @@ document.addEventListener("DOMContentLoaded", function () {
       const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
       return digits === 0 ? Math.round(avg) : avg.toFixed(digits);
     }
-    const avgMcap = avgMetric(topPeers, (p) => (p.marketCapCr !== undefined && p.marketCapCr !== null ? Number(p.marketCapCr) : NaN), 0, true);
-    const avgPe = avgMetric(topPeers, (p) => (p.pe !== undefined && p.pe !== null ? Number(p.pe) : NaN), 1, true);
-    const avgRoe = avgMetric(topPeers, (p) => (p.roePct !== undefined && p.roePct !== null ? Number(p.roePct) : NaN), 1, false);
-    const avgRoce = avgMetric(topPeers, (p) => (p.rocePct !== undefined && p.rocePct !== null ? Number(p.rocePct) : NaN), 1, false);
-    const avgDe = avgMetric(topPeers, (p) => (p.debtToEquity !== undefined && p.debtToEquity !== null ? Number(p.debtToEquity) : NaN), 2, false);
-    const avgDiv = avgMetric(topPeers, (p) => (p.divYieldPct !== undefined && p.divYieldPct !== null ? Number(p.divYieldPct) : NaN), 2, false);
+    const avgCmp = avgMetric(topPeers, (p) => (p.cmp !== undefined && p.cmp !== null ? Number(p.cmp) : NaN), 2, true);
+    const avgChg = avgMetric(topPeers, (p) => (p.dayChangePct !== undefined && p.dayChangePct !== null ? Number(p.dayChangePct) : NaN), 2, false);
+    const avgDma50 = avgMetric(topPeers, (p) => (p.dma50 !== undefined && p.dma50 !== null ? Number(p.dma50) : NaN), 2, true);
+    const avgDma200 = avgMetric(topPeers, (p) => (p.dma200 !== undefined && p.dma200 !== null ? Number(p.dma200) : NaN), 2, true);
+    const avgRsi = avgMetric(topPeers, (p) => (p.rsi14 !== undefined && p.rsi14 !== null ? Number(p.rsi14) : NaN), 1, true);
+    const avgVol = avgMetric(topPeers, (p) => (p.volume !== undefined && p.volume !== null ? Number(p.volume) : NaN), 0, true);
 
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
-        <table id="company-peers-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:740px;">
+        <table id="company-peers-table" style="width:100%; border-collapse:collapse; font-size:0.86rem; min-width:860px;">
           <thead>
             <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; text-align:left;">
               <th style="padding:10px 12px; color:#1e293b; font-weight:700; width:46px;">S.No.</th>
               <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Company Name</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">CMP (₹)</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">Mar Cap (₹ Cr)</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">P/E</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">ROE %</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">ROCE %</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">Debt / Eq</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700; text-align:right;">Div Yld %</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700;">Exchange</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">CMP (₹)</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">Day Change %</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">52W High (₹)</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">52W Low (₹)</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">50-DMA (₹)</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">200-DMA (₹)</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">14-Day RSI</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">Volume</th>
             </tr>
           </thead>
           <tbody>
@@ -1236,13 +758,16 @@ document.addEventListener("DOMContentLoaded", function () {
               .map((p, idx) => {
                 const isCurrent = p.symbol === stock.symbol;
                 const pCmp = Number(p.cmp) || 0;
-                const pMcap = Number(p.marketCapCr) || 0;
-                const pPe = (p.pe !== null && p.pe !== undefined && Number(p.pe) > 0) ? Number(p.pe).toFixed(1) + "x" : "--";
-                const pHasFund = Number(p.marketCapCr) > 0;
-                const pRoe = (p.roePct !== null && p.roePct !== undefined && !isNaN(Number(p.roePct)) && (pHasFund || Number(p.roePct) !== 0)) ? Number(p.roePct).toFixed(1) + "%" : "--";
-                const pRoce = (p.rocePct !== null && p.rocePct !== undefined && !isNaN(Number(p.rocePct)) && (pHasFund || Number(p.rocePct) !== 0)) ? Number(p.rocePct).toFixed(1) + "%" : "--";
-                const pDe = (p.debtToEquity !== null && p.debtToEquity !== undefined && !isNaN(Number(p.debtToEquity)) && (pHasFund || Number(p.debtToEquity) !== 0)) ? Number(p.debtToEquity).toFixed(2) : "--";
-                const pDiv = (p.divYieldPct !== null && p.divYieldPct !== undefined && !isNaN(Number(p.divYieldPct)) && (pHasFund || Number(p.divYieldPct) !== 0)) ? Number(p.divYieldPct).toFixed(2) + "%" : "--";
+                const pChg = typeof p.dayChangePct === "number" && !isNaN(p.dayChangePct) ? p.dayChangePct : null;
+                const pH52 = Number(p.high52) > 0 ? "₹ " + Number(p.high52).toLocaleString("en-IN") : "--";
+                const pL52 = Number(p.low52) > 0 ? "₹ " + Number(p.low52).toLocaleString("en-IN") : "--";
+                const pDma50 = Number(p.dma50) > 0 ? "₹ " + Number(p.dma50).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
+                const pDma200 = Number(p.dma200) > 0 ? "₹ " + Number(p.dma200).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
+                const pRsi = typeof p.rsi14 === "number" && p.rsi14 > 0 ? Number(p.rsi14).toFixed(1) : "--";
+                const pVol = Number(p.volume) > 0 ? Number(p.volume).toLocaleString("en-IN") : "--";
+                const pExch = p.exchanges || (p.bseCode ? "NSE,BSE" : "NSE");
+                const chgColor = pChg === null ? "#64748b" : (pChg >= 0 ? "#16a34a" : "#dc2626");
+                const chgText = pChg === null ? "--" : `${pChg >= 0 ? "+" : ""}${pChg.toFixed(2)}%`;
                 return `
                   <tr style="background:${isCurrent ? "#eff6ff" : idx % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
                     <td style="padding:10px 12px; color:#64748b; font-weight:600;">${idx + 1}.</td>
@@ -1252,13 +777,15 @@ document.addEventListener("DOMContentLoaded", function () {
                       </a>
                       <span style="font-size:0.75rem; color:#64748b; margin-left:6px;">(${escapeHtml(p.symbol)})</span>
                     </td>
-                    <td style="padding:10px 14px; text-align:right; font-weight:700; color:#0f172a;">₹ ${pCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                    <td style="padding:10px 14px; text-align:right; font-weight:600; color:#0f172a;">₹ ${pMcap.toLocaleString("en-IN")}</td>
-                    <td style="padding:10px 14px; text-align:right; color:#334155; font-weight:600;">${pPe}</td>
-                    <td style="padding:10px 14px; text-align:right; font-weight:700; color:#16a34a;">${pRoe}</td>
-                    <td style="padding:10px 14px; text-align:right; font-weight:700; color:#16a34a;">${pRoce}</td>
-                    <td style="padding:10px 14px; text-align:right; color:#475569;">${pDe}</td>
-                    <td style="padding:10px 14px; text-align:right; color:#475569;">${pDiv}</td>
+                    <td style="padding:10px 12px; color:#475569; font-size:0.78rem; font-weight:600;">${escapeHtml(pExch)}</td>
+                    <td style="padding:10px 12px; text-align:right; font-weight:700; color:#0f172a;">₹ ${pCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td style="padding:10px 12px; text-align:right; font-weight:700; color:${chgColor};">${chgText}</td>
+                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pH52}</td>
+                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pL52}</td>
+                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pDma50}</td>
+                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pDma200}</td>
+                    <td style="padding:10px 12px; text-align:right; font-weight:600; color:#0f172a;">${pRsi}</td>
+                    <td style="padding:10px 12px; text-align:right; color:#475569;">${pVol}</td>
                   </tr>
                 `;
               })
@@ -1266,13 +793,15 @@ document.addEventListener("DOMContentLoaded", function () {
             <tr style="background:#f8fafc; border-top:2px solid #cbd5e1; font-weight:700;">
               <td style="padding:10px 12px; color:#64748b;">—</td>
               <td style="padding:10px 14px; color:#0f172a;">Sector Average (${escapeHtml(stock.sector || "Peers")})</td>
-              <td style="padding:10px 14px; text-align:right; color:#64748b;">—</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgMcap !== null ? "₹ " + avgMcap.toLocaleString("en-IN") : "--"}</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgPe !== null ? avgPe + "x" : "--"}</td>
-              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoe !== null ? avgRoe + "%" : "--"}</td>
-              <td style="padding:10px 14px; text-align:right; color:#16a34a;">${avgRoce !== null ? avgRoce + "%" : "--"}</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDe !== null ? avgDe : "--"}</td>
-              <td style="padding:10px 14px; text-align:right; color:#0f172a;">${avgDiv !== null ? avgDiv + "%" : "--"}</td>
+              <td style="padding:10px 12px; color:#64748b;">—</td>
+              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgCmp !== null ? "₹ " + Number(avgCmp).toLocaleString("en-IN") : "--"}</td>
+              <td style="padding:10px 12px; text-align:right; color:${avgChg !== null && Number(avgChg) >= 0 ? "#16a34a" : "#dc2626"};">${avgChg !== null ? (Number(avgChg) >= 0 ? "+" : "") + avgChg + "%" : "--"}</td>
+              <td style="padding:10px 12px; text-align:right; color:#64748b;">—</td>
+              <td style="padding:10px 12px; text-align:right; color:#64748b;">—</td>
+              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgDma50 !== null ? "₹ " + Number(avgDma50).toLocaleString("en-IN") : "--"}</td>
+              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgDma200 !== null ? "₹ " + Number(avgDma200).toLocaleString("en-IN") : "--"}</td>
+              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgRsi !== null ? avgRsi : "--"}</td>
+              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgVol !== null ? avgVol.toLocaleString("en-IN") : "--"}</td>
             </tr>
           </tbody>
         </table>
@@ -1371,69 +900,37 @@ document.addEventListener("DOMContentLoaded", function () {
     stockResult.hidden = false;
     stockResult.style.display = "block";
 
-    // 1. Fundamentals from verified profile or stock record
-    const marketCapCr = stock.marketCapCr || 0;
-    const pe = stock.pe || 0;
-    const roePct = stock.roePct || 0;
-    const rocePct = stock.rocePct || 0;
-    const debtToEquity = stock.debtToEquity !== undefined ? stock.debtToEquity : 0.1;
-    const divYieldPct = stock.divYieldPct || 0;
-    const salesGrowth3Y = stock.salesGrowth3Y || 0;
-    const profitGrowth3Y = stock.profitGrowth3Y || 0;
+    const isBseOnly = stock.exchanges === "BSE";
+
+
 
     // 2. Comprehensive Financial Statements Suites (Official Exchange Filings Only - No Synthetic Numbers)
-    const financials = Array.isArray(stock.financials) ? stock.financials : [];
-    const quarterlyResults = Array.isArray(stock.quarterlyResults) ? stock.quarterlyResults : [];
-    const balanceSheet = Array.isArray(stock.balanceSheet) ? stock.balanceSheet : [];
-    const cashFlows = Array.isArray(stock.cashFlows) ? stock.cashFlows : [];
-    const shareholding = (stock.shareholding && typeof stock.shareholding === "object") ? stock.shareholding : null;
-    const ratios = (stock.ratios && typeof stock.ratios === "object")
-      ? stock.ratios
-      : {
-          pe: stock.pe ?? null,
-          roe: stock.roePct ?? null,
-          roce: stock.rocePct ?? null,
-          debtToEquity: stock.debtToEquity ?? null,
-          divYield: stock.divYieldPct ?? null,
-          pb: null,
-          evToEbitda: null,
-          interestCoverage: null
-        };
+    const quarterlyResults = (!isBseOnly && Array.isArray(stock.quarterlyResults)) ? stock.quarterlyResults : [];
+    const balanceSheet = (!isBseOnly && Array.isArray(stock.balanceSheet)) ? stock.balanceSheet : [];
+    const cashFlows = (!isBseOnly && Array.isArray(stock.cashFlows)) ? stock.cashFlows : [];
+    const shareholding = (!isBseOnly && stock.shareholding && typeof stock.shareholding === "object") ? stock.shareholding : null;
 
-    // 3. About the Company Profile Text & Investment Thesis
+    // 3. About the Company Profile Text
     const aboutText = stock.about
       ? (typeof stock.about === "string" && stock.about.includes("<p>") ? stock.about : formatProfileAbout(stock.about))
-      : `<strong>${escapeHtml(stock.name)}</strong> is a leading enterprise in the <strong>${escapeHtml(stock.sector)}</strong> sector in India. The company commands a total market capitalization of ₹ ${marketCapCr.toLocaleString("en-IN")} Crores on the National Stock Exchange (NSE).`;
+      : `<strong>${escapeHtml(stock.name)}</strong> is an equity security listed on ${isBseOnly ? "BSE Ltd" : "NSE"} in the <strong>${escapeHtml(stock.sector)}</strong> sector.`;
 
-    const investmentThesis = stock.investmentThesis || {
-      strengths: [
-        debtToEquity <= 0.3 ? "Virtually debt-free balance sheet with conservative capital structure." : "Established capital base with strong access to debt and capital markets.",
-        roePct >= 15 ? `Strong capital efficiency track record with an attractive Return on Equity of ${roePct}%.` : "Stable market presence across key operating business verticals in India."
-      ],
-      risks: [
-        debtToEquity > 1.0 ? `Elevated debt levels with a Debt-to-Equity ratio of ${debtToEquity}.` : "Subject to industry cyclicality and macroeconomic shifts.",
-        pe > 45 ? `Trading at a premium valuation multiple with a trailing P/E of ${pe}.` : "Raw material price volatility and competitive landscape shifts."
-      ]
-    };
+    const initialNews = (!isBseOnly && Array.isArray(stock.news) && stock.news.length > 0) ? stock.news : null;
 
-    const initialNews = (Array.isArray(stock.news) && stock.news.length > 0) ? stock.news : null;
-
-    // 5. OHLC & Day Range metrics
-    const dayOpen = typeof stock.dayOpen === "number" ? stock.dayOpen : (typeof stock.open === "number" ? stock.open : Math.round(stock.cmp * 0.995 * 10) / 10);
-    const dayHigh = typeof stock.dayHigh === "number" ? stock.dayHigh : Math.round(stock.cmp * 1.018 * 10) / 10;
-    const dayLow = typeof stock.dayLow === "number" ? stock.dayLow : Math.round(stock.cmp * 0.985 * 10) / 10;
-    const high52 = typeof stock.high52 === "number" ? stock.high52 : Math.round(stock.cmp * 1.15);
-    const low52 = typeof stock.low52 === "number" ? stock.low52 : Math.round(stock.cmp * 0.75);
+    // 5. Authentic Exchange OHLC & 52-Week Range metrics (zero synthetic multipliers)
+    const dayOpen = (typeof stock.dayOpen === "number" && stock.dayOpen > 0) ? stock.dayOpen : ((typeof stock.open === "number" && stock.open > 0) ? stock.open : stock.cmp);
+    const dayHigh = (typeof stock.dayHigh === "number" && stock.dayHigh > 0) ? stock.dayHigh : stock.cmp;
+    const dayLow = (typeof stock.dayLow === "number" && stock.dayLow > 0) ? stock.dayLow : stock.cmp;
+    const high52 = (typeof stock.high52 === "number" && stock.high52 > 0) ? stock.high52 : dayHigh;
+    const low52 = (typeof stock.low52 === "number" && stock.low52 > 0) ? stock.low52 : dayLow;
 
     const dayChange = typeof stock.dayChange === "number" ? stock.dayChange : 0;
     const dayChangePct = typeof stock.dayChangePct === "number" ? stock.dayChangePct : 0;
     const isGain = stock.isGain !== undefined ? stock.isGain : dayChange >= 0;
-    const prevClose = typeof stock.prevClose === "number" ? stock.prevClose : Number((stock.cmp - dayChange).toFixed(2));
-    const dayPerformanceText = isGain 
+    const prevClose = (typeof stock.prevClose === "number" && stock.prevClose > 0) ? stock.prevClose : Number((stock.cmp - dayChange).toFixed(2));
+    const dayPerformanceText = isGain
       ? `+ ₹${Math.abs(dayChange).toFixed(2)} (+${Math.abs(dayChangePct)}%) Day Gain`
       : `- ₹${Math.abs(dayChange).toFixed(2)} (-${Math.abs(dayChangePct)}%) Day Loss`;
-
-    const bookValue = ratios.pb && ratios.pb > 0 ? Math.round(stock.cmp / ratios.pb) : Math.round(stock.cmp * 0.4);
 
     stockResult.innerHTML = `
       <div class="company-detail-card" style="background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); font-family:inherit;">
@@ -1444,9 +941,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <button type="button" id="btn-back-to-home-search" class="nav-back-btn primary-back" aria-label="Go back to Home and stock search">
               <span aria-hidden="true">&#8592;</span> Go Back to Home &amp; Stock Search
             </button>
-            <a href="mutual-funds.html?stock=${encodeURIComponent(stock.symbol)}&name=${encodeURIComponent(stock.name)}" class="nav-back-btn" aria-label="See this stock in Mutual Funds">
-              See This Stock in Mutual Funds &rarr;
-            </a>
           </div>
           <span class="focused-nav-hint">Press Esc or click back to return</span>
         </div>
@@ -1475,21 +969,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
               <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                <a href="mutual-funds.html?stock=${encodeURIComponent(stock.symbol)}&name=${encodeURIComponent(stock.name)}" class="btn-primary" id="btn-see-stock-in-mf" style="text-decoration:none; display:inline-flex; align-items:center; font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer; background:#2563eb; color:#ffffff; border:1px solid #1d4ed8;">
-                  See This Stock in Mutual Funds ↗
-                </a>
                 <button type="button" class="btn-secondary" id="btn-listen-company" aria-pressed="false" style="font-weight:700; padding:10px 16px; font-size:0.92rem; border-radius:8px; cursor:pointer;">
                   Listen to About the Company
                 </button>
               </div>
-              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              ${!isBseOnly ? `<div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                 <a id="btn-annual-report-header" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:5px 12px; border-radius:6px; text-decoration:none;">
                   ${stock.latestAnnualReportUrl ? 'View Latest Annual Report PDF ↗' : 'View Official Annual Report &amp; NSE Filings ↗'}
                 </a>
                 <a href="https://www.nseindia.com/companies-listing/corporate-filings-annual-reports" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:5px 12px; border-radius:6px; text-decoration:none;">
                   NSE Annual Reports Archive ↗
                 </a>
-              </div>
+              </div>` : ''}
             </div>
           </div>
         </div>
@@ -1550,77 +1041,6 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 2: FUNDAMENTALS -->
-        <section id="sec-fundamentals" style="margin-bottom:28px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Fundamentals</h3>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Market Cap</span>
-              <span id="metric-market-cap" style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">${marketCapCr > 0 ? "₹ " + marketCapCr.toLocaleString("en-IN") + " Cr" : "--"}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Market Cap Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Market Capitalization is the total market value of a company's outstanding equity shares (Current Share Price × Total Shares).</div>
-              </div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Current Price</span>
-              <span id="metric-current-price" style="display:block; font-size:1.1rem; font-weight:700; color:#2563eb; margin-top:2px;">₹ ${stock.cmp.toLocaleString("en-IN")}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Current Price Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Current Market Price (CMP) is the latest traded price of the stock on NSE/BSE.</div>
-              </div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">High / Low</span>
-              <span style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">₹${high52} / ${low52}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">High / Low Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">52-Week High and Low show the highest and lowest price at which the stock has traded over the past 52 weeks.</div>
-              </div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Stock P/E</span>
-              <span id="metric-pe" style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">${pe ? pe + 'x' : '--'}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Stock P/E Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Price-to-Earnings (P/E) Ratio measures how much investors pay per rupee of annual earnings (Share Price ÷ EPS).</div>
-              </div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Book Value</span>
-              <span style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">₹ ${bookValue}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Book Value Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Book Value per share represents the company's net asset value (Total Equity + Reserves ÷ Total Shares).</div>
-              </div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">Dividend Yield</span>
-              <span id="metric-div-yield" style="display:block; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">${divYieldPct ? divYieldPct + '%' : (marketCapCr > 0 ? '0.0%' : '--')}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">Dividend Yield Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Dividend Yield shows the annual cash dividend paid per share as a percentage of the current share price.</div>
-              </div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">ROCE</span>
-              <span id="metric-roce" style="display:block; font-size:1.1rem; font-weight:700; color:#16a34a; margin-top:2px;">${rocePct || marketCapCr > 0 ? rocePct + '%' : '--'}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">ROCE Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Return on Capital Employed (ROCE) measures how efficiently the company generates operating profit from total capital (equity + debt).</div>
-              </div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px;">
-              <span style="display:block; font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase;">ROE</span>
-              <span id="metric-roe" style="display:block; font-size:1.1rem; font-weight:700; color:#16a34a; margin-top:2px;">${roePct || marketCapCr > 0 ? roePct + '%' : '--'}</span>
-              <div style="margin-top:8px;">
-                <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.74rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px;">ROE Information</button>
-                <div class="ratio-info-box" hidden style="margin-top:6px; padding:8px 10px; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; font-size:0.78rem; color:#334155; line-height:1.45;">Return on Equity (ROE) measures net profit generated as a percentage of shareholders' equity.</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <!-- SECTION 3: TECHNICALS -->
         <section id="sec-technicals" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Technicals</h3>
@@ -1659,9 +1079,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ${aboutText}
           </div>
           <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-            <a id="btn-annual-report-about" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">
-              ${stock.latestAnnualReportUrl ? `Official Latest Annual Report PDF (${escapeHtml(stock.symbol)}) ↗` : `Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗`}
-            </a>
+            ${!isBseOnly ? `<a id="btn-annual-report-about" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">${stock.latestAnnualReportUrl ? `Official Latest Annual Report PDF (${escapeHtml(stock.symbol)}) ↗` : `Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗`}</a>` : ''}
             <a id="about-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.84rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
               Official Company Website ↗
             </a>
@@ -1669,7 +1087,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
 
         <!-- SECTION 5: NEWS AND CORPORATE FILINGS -->
-        <section id="sec-filings" style="margin-bottom:28px;">
+        <section id="sec-filings" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">News and Corporate Filings</h3>
           <div id="company-news-list" style="display:flex; flex-direction:column; gap:10px;">
             ${initialNews
@@ -1678,8 +1096,8 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 6: FINANCIALS -->
-        <section id="sec-financials" style="margin-bottom:12px;">
+        <!-- SECTION 6: FINANCIALS (OFFICIAL EXCHANGE FILINGS ONLY) -->
+        <section id="sec-financials" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:16px; font-weight:700; border-bottom:2px solid #e2e8f0; padding-bottom:8px;">Financials</h3>
 
           <!-- 6.1: QUARTERLY RESULTS -->
@@ -1690,15 +1108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
 
-          <!-- 6.2: PROFIT & LOSS (ANNUAL) -->
-          <div id="sec-pnl" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Profit &amp; Loss (Annual Performance)</h4>
-            <div id="company-financials-container">
-              ${buildFinancialsTableHtml(financials)}
-            </div>
-          </div>
-
-          <!-- 6.3: BALANCE SHEET -->
+          <!-- 6.2: BALANCE SHEET -->
           <div id="sec-balancesheet" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
             <div id="company-balancesheet-container">
@@ -1706,7 +1116,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
 
-          <!-- 6.4: CASH FLOWS -->
+          <!-- 6.3: CASH FLOWS -->
           <div id="sec-cashflow" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Cash Flows (₹ Crores)</h4>
             <div id="company-cashflow-container">
@@ -1714,28 +1124,20 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
 
-          <!-- 6.5: RATIOS MATRIX -->
-          <div id="sec-ratios" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Key Financial &amp; Valuation Ratios</h4>
-            <div id="company-ratios-container">
-              ${buildRatiosMatrixHtml(ratios, salesGrowth3Y, profitGrowth3Y)}
-            </div>
-          </div>
-
-          <!-- 6.6: SHAREHOLDING PATTERN -->
-          <div id="sec-shareholding" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <!-- 6.4: SHAREHOLDING PATTERN -->
+          <div id="sec-shareholding" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h4>
             <div id="company-shareholding-container">
               ${buildShareholdingHtml(shareholding)}
             </div>
           </div>
+        </section>
 
-          <!-- 6.7: PEER COMPARISON -->
-          <div id="sec-peers" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.sector || "Sector Peers")})</h4>
-            <div id="company-peers-container">
-              ${buildStockPeerComparisonHtml(stock)}
-            </div>
+        <!-- SECTION 7: PEER COMPARISON -->
+        <section id="sec-peers" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.sector || "Sector Peers")})</h4>
+          <div id="company-peers-container">
+            ${buildStockPeerComparisonHtml(stock)}
           </div>
         </section>
 
@@ -1831,34 +1233,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      if (profile.marketCapCr) {
-        const mcapEl = document.getElementById("metric-market-cap");
-        if (mcapEl) mcapEl.textContent = "₹ " + profile.marketCapCr.toLocaleString("en-IN") + " Cr";
-      }
-      if (profile.pe) {
-        const peEl = document.getElementById("metric-pe");
-        if (peEl) peEl.textContent = profile.pe + "x";
-      }
-      if (profile.roePct) {
-        const roeEl = document.getElementById("metric-roe");
-        if (roeEl) roeEl.textContent = profile.roePct + "%";
-      }
-      if (profile.rocePct) {
-        const roceEl = document.getElementById("metric-roce");
-        if (roceEl) roceEl.textContent = profile.rocePct + "%";
-      }
-      if (profile.divYieldPct !== undefined && profile.divYieldPct !== null) {
-        const divEl = document.getElementById("metric-div-yield");
-        if (divEl) divEl.textContent = profile.divYieldPct + "%";
-      }
 
       if (Array.isArray(profile.quarterlyResults) && profile.quarterlyResults.length > 0) {
         const qContainer = document.getElementById("company-quarterly-container");
         if (qContainer) qContainer.innerHTML = buildQuarterlyTableHtml(profile.quarterlyResults);
-      }
-      if (Array.isArray(profile.financials) && profile.financials.length > 0) {
-        const fContainer = document.getElementById("company-financials-container");
-        if (fContainer) fContainer.innerHTML = buildFinancialsTableHtml(profile.financials);
       }
       if (Array.isArray(profile.balanceSheet) && profile.balanceSheet.length > 0) {
         const bContainer = document.getElementById("company-balancesheet-container");
@@ -1867,10 +1245,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (Array.isArray(profile.cashFlows) && profile.cashFlows.length > 0) {
         const cContainer = document.getElementById("company-cashflow-container");
         if (cContainer) cContainer.innerHTML = buildCashFlowTableHtml(profile.cashFlows);
-      }
-      if (profile.ratios && typeof profile.ratios === "object") {
-        const rContainer = document.getElementById("company-ratios-container");
-        if (rContainer) rContainer.innerHTML = buildRatiosMatrixHtml(profile.ratios, profile.salesGrowth3Y, profile.profitGrowth3Y);
       }
       if (profile.shareholding && typeof profile.shareholding === "object") {
         const shContainer = document.getElementById("company-shareholding-container");
@@ -1881,7 +1255,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Load official verified profile shard (audited statements, balance sheet, cash flows, ratios, shareholding)
-    loadVerifiedProfile(stock.symbol).then((verified) => {
+    if (!isBseOnly) loadVerifiedProfile(stock.symbol).then((verified) => {
       if (verified) {
         Object.keys(verified).forEach((k) => {
           if (verified[k] !== null && verified[k] !== undefined) {
@@ -2019,7 +1393,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Load real NSE announcements for this company (free, refreshed daily by the sync script)
-    loadCompanyNews(stock.symbol).then((items) => {
+    if (!isBseOnly) loadCompanyNews(stock.symbol).then((items) => {
       if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
       const listEl = document.getElementById("company-news-list");
       if (listEl && (items.length > 0 || !initialNews)) {
@@ -2070,183 +1444,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (shouldScroll) {
       stockResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-  }
-
-  // ---------------- CROSS-RESEARCH: STOCK IN MUTUAL FUND PORTFOLIOS ----------------
-  let cachedMutualFundsList = null;
-
-  function loadMutualFundsDataset() {
-    if (cachedMutualFundsList) {
-      return Promise.resolve(cachedMutualFundsList);
-    }
-    return fetch("data/mutual-funds/top-mutual-funds.json?v=62")
-      .then((res) => (res.ok ? res.json() : { funds: [] }))
-      .then((data) => {
-        cachedMutualFundsList = Array.isArray(data.funds) ? data.funds : [];
-        return cachedMutualFundsList;
-      })
-      .catch(() => []);
-  }
-
-  function matchMutualFundsForStock(stock, allFunds) {
-    if (!Array.isArray(allFunds) || allFunds.length === 0) return [];
-    const symUpper = String(stock.symbol || "").toUpperCase();
-    const cleanStockName = String(stock.name || "")
-      .toLowerCase()
-      .replace(/\b(limited|ltd\.?|india|corporation|corp\.?|company|co\.?|private|pvt\.?)\b/g, "")
-      .trim();
-
-    const matched = [];
-    const seenCodes = new Set();
-
-    // 1. Direct holdings match by symbol or company name
-    allFunds.forEach((scheme) => {
-      if (!Array.isArray(scheme.holdings)) return;
-      const holding = scheme.holdings.find((h) => {
-        if (h.symbol && String(h.symbol).toUpperCase() === symUpper) return true;
-        const hName = String(h.company || "").toLowerCase();
-        return cleanStockName.length >= 4 && hName.includes(cleanStockName);
-      });
-      if (holding) {
-        seenCodes.add(scheme.schemeCode);
-        const aumCr = Number(scheme.aumCr) || 10000;
-        const weightPct = Number(holding.weightPct) || 2.5;
-        const valueHeldCr = Math.max(1, Math.round((aumCr * weightPct) / 100));
-        matched.push({
-          schemeCode: scheme.schemeCode,
-          schemeName: scheme.name,
-          shortName: scheme.shortName || scheme.name,
-          fundHouse: scheme.fundHouse,
-          category: scheme.category,
-          aumCr: aumCr,
-          weightPct: weightPct,
-          valueHeldCr: valueHeldCr,
-          monthlyChange: holding.monthlyChange || 0,
-          changeStatus: holding.changeStatus || "Unchanged"
-        });
-      }
-    });
-
-    // 2. If fewer than 8 direct top-14 matches, deterministically include category-appropriate institutional schemes holding this NSE equity
-    if (matched.length < 8) {
-      const mcap = Number(stock.marketCapCr) || 2500;
-      const seed = symbolSeedClient(symUpper);
-      const isLarge = mcap >= 35000;
-      const isMid = mcap >= 8000 && mcap < 35000;
-
-      const eligible = allFunds.filter((f) => {
-        if (seenCodes.has(f.schemeCode)) return false;
-        const cat = String(f.category || "").toLowerCase();
-        if (isLarge) {
-          return cat.includes("large") || cat.includes("flexi") || cat.includes("index") || cat.includes("value") || cat.includes("balanced") || cat.includes("elss");
-        }
-        if (isMid) {
-          return cat.includes("mid") || cat.includes("flexi") || cat.includes("value") || cat.includes("elss");
-        }
-        return cat.includes("small") || cat.includes("mid") || cat.includes("flexi") || cat.includes("value");
-      });
-
-      const targetCount = 8 + (seed.h1 % 4); // 8 to 11 schemes
-      const step = Math.max(1, Math.floor(eligible.length / targetCount));
-      for (let i = 0; i < eligible.length && matched.length < targetCount; i += step) {
-        const idx = (i + (seed.h2 % Math.max(1, step))) % eligible.length;
-        const scheme = eligible[idx];
-        if (!scheme || seenCodes.has(scheme.schemeCode)) continue;
-        seenCodes.add(scheme.schemeCode);
-
-        const sSeed = symbolSeedClient(symUpper + "_" + scheme.schemeCode);
-        const aumCr = Number(scheme.aumCr) || 8500;
-        const baseWeight = isLarge ? (2.15 + sSeed.u1 * 4.65) : isMid ? (1.45 + sSeed.u1 * 3.15) : (0.85 + sSeed.u1 * 2.45);
-        const weightPct = Number(baseWeight.toFixed(2));
-        const valueHeldCr = Math.max(1, Math.round((aumCr * weightPct) / 100));
-        const mChange = Number((((sSeed.h1 % 9) - 3) * 0.11).toFixed(2));
-        const cStatus = mChange > 0.35 ? "Increased" : mChange < -0.1 ? "Trimmed" : mChange > 0 ? "Increased" : "Unchanged";
-
-        matched.push({
-          schemeCode: scheme.schemeCode,
-          schemeName: scheme.name,
-          shortName: scheme.shortName || scheme.name,
-          fundHouse: scheme.fundHouse,
-          category: scheme.category,
-          aumCr: aumCr,
-          weightPct: weightPct,
-          valueHeldCr: valueHeldCr,
-          monthlyChange: mChange,
-          changeStatus: cStatus
-        });
-      }
-    }
-
-    return matched.sort((a, b) => b.weightPct - a.weightPct);
-  }
-
-  function renderStockInMutualFundsTable(stock) {
-    const container = document.getElementById("company-mf-cross-research-table-container");
-    if (!container) return;
-
-    loadMutualFundsDataset().then((allFunds) => {
-      const rows = matchMutualFundsForStock(stock, allFunds);
-      if (rows.length === 0) {
-        container.innerHTML = `<div style="padding:14px; color:#64748b;">No mutual fund scheme holdings found for ${escapeHtml(stock.name)}.</div>`;
-        return;
-      }
-
-      const totalValueCr = rows.reduce((sum, r) => sum + r.valueHeldCr, 0);
-      const avgWeight = (rows.reduce((sum, r) => sum + r.weightPct, 0) / rows.length).toFixed(2);
-
-      container.innerHTML = `
-        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
-          <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 14px;">
-            <span style="font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase; display:block;">Schemes Holding Stock</span>
-            <strong style="font-size:1.05rem; color:#0f172a;">${rows.length} Mutual Fund Schemes</strong>
-          </div>
-          <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 14px;">
-            <span style="font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase; display:block;">Avg Concentration vs AUM</span>
-            <strong style="font-size:1.05rem; color:#2563eb;">${avgWeight}% of Scheme AUM</strong>
-          </div>
-          <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 14px;">
-            <span style="font-size:0.75rem; color:#64748b; font-weight:600; text-transform:uppercase; display:block;">Total Institutional Value Held</span>
-            <strong style="font-size:1.05rem; color:#16a34a;">₹ ${totalValueCr.toLocaleString("en-IN")} Cr</strong>
-          </div>
-        </div>
-        <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; background:#ffffff;">
-          <table class="stocks360-data-table" id="company-mf-holdings-table" style="font-size:0.9rem; width:100%; border-collapse:collapse; min-width:600px;">
-            <thead>
-              <tr style="background:#f8fafc;">
-                <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">Name of the Scheme</th>
-                <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">AMC &amp; Category</th>
-                <th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">Particular Scheme AUM</th>
-                <th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">Concentration vs AUM (%)</th>
-                <th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">Value Held (₹ Cr)</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${rows.map((r) => `
-                <tr>
-                  <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700;">
-                    <a href="mutual-funds.html?scheme=${encodeURIComponent(r.schemeCode)}" style="color:#1d4ed8; text-decoration:none;">
-                      ${escapeHtml(r.schemeName)}
-                    </a>
-                  </td>
-                  <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; color:#475569; font-size:0.84rem;">
-                    ${escapeHtml(r.fundHouse)} • <span style="font-weight:600; color:#0f172a;">${escapeHtml(r.category)}</span>
-                  </td>
-                  <td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#334155; font-weight:600;">
-                    ₹ ${Number(r.aumCr).toLocaleString("en-IN")} Cr
-                  </td>
-                  <td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:800; color:#2563eb;">
-                    ${Number(r.weightPct).toFixed(2)}%
-                  </td>
-                  <td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:700; color:#16a34a;">
-                    ₹ ${Number(r.valueHeldCr).toLocaleString("en-IN")} Cr
-                  </td>
-                </tr>
-              `).join("")}
-            </tbody>
-          </table>
-        </div>
-      `;
-    });
   }
 
   // ---------------- DEDICATED RELIABLE SPEECH SYNTHESIS ENGINE ----------------
