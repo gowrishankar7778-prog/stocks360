@@ -83,16 +83,19 @@ document.addEventListener("DOMContentLoaded", function () {
     "THE", "AND", "&", "PVT", "INC", "HOLDINGS"
   ]);
 
-  // Common phonetic / alias substitutions for popular equities
+  // Common phonetic / alias substitutions for popular equities (longer keys first)
   const COMMON_ALIASES = {
-    "EGIS": "AEGIS",
     "AEGISLOGISTICS": "AEGISLOG",
-    "INFOSIS": "INFY",
-    "RELINCE": "RELIANCE",
+    "LTIMINDTREE": "LTM",
+    "TATAMOTORS": "TMPV",
+    "TATAPOWER": "TATAPOWER",
     "HDFCBANK": "HDFCBANK",
     "ICICIBANK": "ICICIBANK",
-    "TATAMOTORS": "TATAMOTORS",
-    "TATAPOWER": "TATAPOWER"
+    "INFOSIS": "INFY",
+    "RELINCE": "RELIANCE",
+    "ZOMATO": "ETERNAL",
+    "EGIS": "AEGIS",
+    "LTIM": "LTM"
   };
 
   function cleanAlphanumeric(str) {
@@ -134,10 +137,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let raw = String(rawQuery || "").trim().toUpperCase();
     if (!raw) return 0;
 
-    // Apply alias substitutions
+    // Apply alias substitutions (exact or token boundary so prefixes do not corrupt other names)
     for (const [k, v] of Object.entries(COMMON_ALIASES)) {
+      if (raw === k) {
+        raw = v;
+        break;
+      }
       if (raw.includes(k)) {
-        raw = raw.replace(new RegExp(k, "g"), v);
+        raw = raw.replace(new RegExp("\\b" + k + "\\b", "g"), v);
       }
     }
 
@@ -494,9 +501,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Visual Statement Table Renderers (Reusable for initial render + verified shard async updates)
-  function buildQuarterlyTableHtml(quarterlyResults) {
+  function parseClientFilingNum(val) {
+    if (val === null || val === undefined || val === "" || val === "--") return NaN;
+    const cleaned = String(val).replace(/[^0-9.-]/g, "");
+    if (!cleaned || cleaned === "-" || cleaned === ".") return NaN;
+    const n = parseFloat(cleaned);
+    return isFinite(n) ? n : NaN;
+  }
+
+  function buildQuarterlyTableHtml(quarterlyResults, isLoading) {
     if (!Array.isArray(quarterlyResults) || quarterlyResults.length === 0) {
-      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">Quarterly results pending exchange filing.</div>`;
+      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE quarterly results..." : "Quarterly results pending exchange filing."}</div>`;
     }
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
@@ -518,7 +533,11 @@ document.addEventListener("DOMContentLoaded", function () {
             </tr>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">Operating Profit</td>
-              ${quarterlyResults.map(q => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600;">₹ ${escapeHtml(String(q.operatingProfit))}</td>`).join('')}
+              ${quarterlyResults.map(q => {
+                const n = parseClientFilingNum(q.operatingProfit);
+                const col = !isNaN(n) && n < 0 ? "#dc2626" : "#0f172a";
+                return `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${col};">₹ ${escapeHtml(String(q.operatingProfit))}</td>`;
+              }).join('')}
             </tr>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">OPM %</td>
@@ -526,7 +545,11 @@ document.addEventListener("DOMContentLoaded", function () {
             </tr>
             <tr style="background:#fafafa;">
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a;">Net Profit (PAT)</td>
-              ${quarterlyResults.map(q => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:700; color:#16a34a;">₹ ${escapeHtml(String(q.netProfit))}</td>`).join('')}
+              ${quarterlyResults.map(q => {
+                const n = parseClientFilingNum(q.netProfit);
+                const col = !isNaN(n) && n < 0 ? "#dc2626" : "#16a34a";
+                return `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:700; color:${col};">₹ ${escapeHtml(String(q.netProfit))}</td>`;
+              }).join('')}
             </tr>
             <tr>
               <td style="padding:10px 14px;">EPS in Rs</td>
@@ -538,9 +561,9 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  function buildBalanceSheetTableHtml(balanceSheet) {
+  function buildBalanceSheetTableHtml(balanceSheet, isLoading) {
     if (!Array.isArray(balanceSheet) || balanceSheet.length === 0) {
-      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">Balance sheet statements pending exchange filing.</div>`;
+      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE XBRL balance sheet..." : "Balance sheet statements pending exchange filing."}</div>`;
     }
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
@@ -562,7 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </tr>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">Borrowings (Debt)</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${b.borrowings === 'Nil' ? '#16a34a' : '#0f172a'};">${b.borrowings === 'Nil' ? 'Nil' : '₹ ' + escapeHtml(String(b.borrowings))}</td>`).join('')}
+              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${b.borrowings === 'Nil' || b.borrowings === '0' ? '#16a34a' : '#0f172a'};">${b.borrowings === 'Nil' ? 'Nil' : '₹ ' + escapeHtml(String(b.borrowings))}</td>`).join('')}
             </tr>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Other Liabilities</td>
@@ -594,9 +617,9 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  function buildCashFlowTableHtml(cashFlows) {
+  function buildCashFlowTableHtml(cashFlows, isLoading) {
     if (!Array.isArray(cashFlows) || cashFlows.length === 0) {
-      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">Cash flow statements pending exchange filing.</div>`;
+      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE XBRL cash flows..." : "Cash flow statements pending exchange filing."}</div>`;
     }
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
@@ -609,8 +632,12 @@ document.addEventListener("DOMContentLoaded", function () {
           </thead>
           <tbody>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; color:#16a34a;">Cash from Operating Activity (CFO)</td>
-              ${cashFlows.map(c => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:#16a34a;">₹ ${escapeHtml(String(c.cfo))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; color:#0f172a;">Cash from Operating Activity (CFO)</td>
+              ${cashFlows.map(c => {
+                const n = parseClientFilingNum(c.cfo);
+                const col = !isNaN(n) && n < 0 ? "#dc2626" : "#16a34a";
+                return `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${col};">₹ ${escapeHtml(String(c.cfo))}</td>`;
+              }).join('')}
             </tr>
             <tr>
               <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Cash from Investing Activity (CFI)</td>
@@ -622,7 +649,12 @@ document.addEventListener("DOMContentLoaded", function () {
             </tr>
             <tr style="background:#fafafa;">
               <td style="padding:10px 14px; font-weight:700;">Net Cash Flow</td>
-              ${cashFlows.map(c => `<td style="padding:10px 14px; text-align:right; font-weight:700;">₹ ${escapeHtml(String(c.netCash ?? c.netCashFlow ?? '--'))}</td>`).join('')}
+              ${cashFlows.map(c => {
+                const val = c.netCash ?? c.netCashFlow ?? '--';
+                const n = parseClientFilingNum(val);
+                const col = !isNaN(n) && n < 0 ? "#dc2626" : "#0f172a";
+                return `<td style="padding:10px 14px; text-align:right; font-weight:700; color:${col};">₹ ${escapeHtml(String(val))}</td>`;
+              }).join('')}
             </tr>
           </tbody>
         </table>
@@ -630,9 +662,9 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  function buildShareholdingHtml(shareholding) {
+  function buildShareholdingHtml(shareholding, isLoading) {
     if (!shareholding || typeof shareholding !== "object" || !shareholding.promoters) {
-      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">Shareholding pattern pending official exchange filing.</div>`;
+      return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE shareholding pattern..." : "Shareholding pattern pending official exchange filing."}</div>`;
     }
     const promStr = String(shareholding.promoters).trim();
     const promNum = parseFloat(promStr);
@@ -678,31 +710,166 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  function buildStockPeerComparisonHtml(stock) {
-    const dataset = getStockDataset();
-    const targetSector = String(stock.sector || "").trim().toLowerCase();
-    const primarySectorWord = targetSector.split(/[\s/&,-]+/).filter((w) => w.length >= 3)[0] || "";
+  function buildFundamentalsGridHtml(stock, quoteOverride) {
+    const activeCmp = Number((quoteOverride && quoteOverride.cmp) || stock.cmp) || 0;
+    const activeVol = Number(quoteOverride && quoteOverride.volume !== undefined ? quoteOverride.volume : stock.volume) || 0;
+    const activeHigh52 = Number((quoteOverride && quoteOverride.high52) || stock.high52) || 0;
+    const activeLow52 = Number((quoteOverride && quoteOverride.low52) || stock.low52) || 0;
+    const activeExch = (quoteOverride && quoteOverride.exchangeLabel) || (stock.exchanges === "BSE" ? "BSE" : "NSE");
 
-    // Find same-sector peers
-    let sameSector = dataset.filter(
-      (s) => s && s.symbol && String(s.sector || "").trim().toLowerCase() === targetSector
-    );
+    const tradedValCr = activeCmp > 0 && activeVol > 0 ? (activeCmp * activeVol) / 10000000 : 0;
+    const tradedValText = tradedValCr >= 0.1
+      ? `₹ ${tradedValCr.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Cr`
+      : (activeCmp > 0 && activeVol > 0 ? `₹ ${((activeCmp * activeVol) / 100000).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} L` : "--");
 
-    if (sameSector.length < 5 && primarySectorWord) {
-      const broader = dataset.filter(
-        (s) => s && s.symbol && String(s.sector || "").toLowerCase().includes(primarySectorWord)
-      );
-      const seenSyms = new Set(sameSector.map((x) => x.symbol));
-      broader.forEach((b) => {
-        if (!seenSyms.has(b.symbol)) {
-          seenSyms.add(b.symbol);
-          sameSector.push(b);
-        }
-      });
+    let activeMcapCr = null;
+    if (typeof stock.sharesCr === "number" && stock.sharesCr > 0 && activeCmp > 0) {
+      activeMcapCr = Math.round(activeCmp * stock.sharesCr);
+    } else if (typeof stock.marketCapCr === "number" && stock.marketCapCr > 0) {
+      activeMcapCr = stock.cmp > 0 ? Math.round(stock.marketCapCr * (activeCmp / stock.cmp)) : stock.marketCapCr;
     }
 
-    // Sort by Volume descending so actively traded sector peers appear cleanly
-    sameSector.sort((a, b) => (Number(b.volume) || 0) - (Number(a.volume) || 0));
+    let activePe = null;
+    if (typeof stock.ttmEps === "number" && stock.ttmEps > 0 && activeCmp > 0) {
+      const rawPe = activeCmp / stock.ttmEps;
+      if (rawPe > 0 && rawPe < 2000) activePe = Number(rawPe.toFixed(1));
+    } else if (typeof stock.pe === "number" && stock.pe > 0) {
+      const ratio = stock.cmp > 0 ? (activeCmp / stock.cmp) : 1;
+      activePe = Number((stock.pe * ratio).toFixed(1));
+    }
+
+    const fmtNum = (val, digits = 2) => Number(val).toLocaleString("en-IN", { minimumFractionDigits: digits, maximumFractionDigits: digits });
+
+    const cards = [
+      {
+        id: "metric-current-price",
+        label: "Current Price",
+        value: activeCmp > 0 ? `₹ ${fmtNum(activeCmp)}` : "--",
+        info: `Latest closing equity price from official ${activeExch} Bhavcopy.`
+      },
+      {
+        id: "metric-high-low-52",
+        label: "52W High / Low",
+        value: activeHigh52 > 0 && activeLow52 > 0 ? `₹ ${fmtNum(activeHigh52)} / ₹ ${fmtNum(activeLow52)}` : "--",
+        info: "Highest and lowest traded prices tracked over the past 52 weeks."
+      },
+      {
+        id: "metric-traded-value",
+        label: "Daily Traded Value",
+        value: tradedValText,
+        info: "Session turnover computed directly from Bhavcopy Price x Volume."
+      },
+      {
+        id: "metric-volume",
+        label: "Trading Volume",
+        value: activeVol > 0 ? `${activeVol.toLocaleString("en-IN")}` : "--",
+        info: "Total number of equity shares traded in the latest exchange session."
+      },
+      {
+        id: "metric-mcap",
+        label: "Market Cap",
+        value: activeMcapCr ? `₹ ${activeMcapCr.toLocaleString("en-IN")} Cr` : "--",
+        info: "Bhavcopy CMP multiplied by diluted equity shares derived from latest official NSE quarterly filings."
+      },
+      {
+        id: "metric-pe",
+        label: "Stock P/E (TTM)",
+        value: activePe !== null ? `${activePe}` : "--",
+        info: "Bhavcopy CMP divided by Trailing 12-Month (4-quarter) Diluted EPS from official NSE filings."
+      },
+      {
+        id: "metric-ttm-eps",
+        label: "TTM EPS",
+        value: typeof stock.ttmEps === "number" ? `₹ ${fmtNum(stock.ttmEps)}` : "--",
+        info: "Trailing 12-Month Diluted Earnings Per Share summed across the last 4 official NSE quarterly filings."
+      },
+      {
+        id: "metric-book-value",
+        label: "Book Value",
+        value: typeof stock.bookValue === "number" ? `₹ ${fmtNum(stock.bookValue, 1)}` : "--",
+        info: "Net Worth (Equity Capital + Reserves) from official NSE XBRL Balance Sheet divided by diluted shares."
+      },
+      {
+        id: "metric-roe",
+        label: "ROE % (TTM)",
+        value: typeof stock.roePct === "number" ? `${stock.roePct}%` : "--",
+        info: "Trailing 12-Month Net Profit divided by Total Equity (Equity Capital + Reserves) from official NSE filings."
+      },
+      {
+        id: "metric-roce",
+        label: "ROCE % (TTM)",
+        value: typeof stock.rocePct === "number" ? `${stock.rocePct}%` : "--",
+        info: "Trailing 12-Month Operating Profit (PBT) divided by Capital Employed (Total Equity + Borrowings) from official NSE filings."
+      },
+      {
+        id: "metric-de",
+        label: "Debt to Equity",
+        value: typeof stock.debtToEquity === "number" ? `${stock.debtToEquity}` : "--",
+        info: "Total Borrowings divided by Total Equity from latest official NSE Ind-AS XBRL Balance Sheet filing."
+      },
+      {
+        id: "metric-ttm-rev-pat",
+        label: "TTM Sales / Net Profit",
+        value: typeof stock.ttmSalesCr === "number"
+          ? `₹ ${stock.ttmSalesCr.toLocaleString("en-IN")} / ₹ ${(stock.ttmPatCr ?? 0).toLocaleString("en-IN")} Cr`
+          : "--",
+        info: "Cumulative Trailing 12-Month Sales and Net Profit (₹ Crores) summed from the last 4 official NSE quarterly filings."
+      }
+    ];
+
+    return `
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+        ${cards.map((c) => `
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+              <span style="font-size:0.86rem; color:#475569;">${escapeHtml(c.label)}</span>
+              <strong id="${escapeHtml(c.id)}" style="font-size:0.93rem; color:#0f172a; text-align:right;">${escapeHtml(c.value)}</strong>
+            </div>
+            <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="margin-top:6px; background:none; border:none; padding:0; font-size:0.74rem; color:#2563eb; cursor:pointer; font-weight:600;">Ratio Information</button>
+            <div class="ratio-info-box" hidden style="margin-top:6px; font-size:0.78rem; color:#334155; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:7px 9px; line-height:1.45;">
+              ${escapeHtml(c.info)}
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function buildStockPeerComparisonHtml(stock) {
+    const dataset = getStockDataset();
+    const targetInd = String(stock.industry || "").trim().toLowerCase();
+    const targetSec = String(stock.sector || "").trim().toLowerCase();
+
+    // Match exact industry peers first, then backfill from normalized sector if fewer than 7
+    const sameSector = [];
+    const seenSyms = new Set();
+
+    if (targetInd) {
+      for (const s of dataset) {
+        if (s && s.symbol && String(s.industry || "").trim().toLowerCase() === targetInd) {
+          seenSyms.add(s.symbol);
+          sameSector.push(s);
+        }
+      }
+    }
+
+    if (sameSector.length < 7 && targetSec) {
+      for (const s of dataset) {
+        if (s && s.symbol && !seenSyms.has(s.symbol) && String(s.sector || "").trim().toLowerCase() === targetSec) {
+          seenSyms.add(s.symbol);
+          sameSector.push(s);
+        }
+      }
+    }
+
+    function peerRankScore(p) {
+      const mcap = Number(p.marketCapCr) || 0;
+      if (mcap > 0) return mcap * 100000;
+      return ((Number(p.cmp) || 0) * (Number(p.volume) || 0)) / 10000000;
+    }
+
+    // Rank peers by Market Cap (when filed) and Daily Traded Value (never penny-stock share count)
+    sameSector.sort((a, b) => peerRankScore(b) - peerRankScore(a));
 
     // Take top 7 peers + ensure current stock is always included in the table
     const topPeers = [];
@@ -720,37 +887,41 @@ document.addEventListener("DOMContentLoaded", function () {
       topPeers.push(stock);
     }
 
-    topPeers.sort((a, b) => (Number(b.volume) || 0) - (Number(a.volume) || 0));
+    topPeers.sort((a, b) => peerRankScore(b) - peerRankScore(a));
 
     function avgMetric(list, getter, digits, positiveOnly) {
       const vals = list.map(getter).filter((v) => typeof v === "number" && !isNaN(v) && (!positiveOnly || v > 0));
       if (vals.length === 0) return null;
       const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-      return digits === 0 ? Math.round(avg) : avg.toFixed(digits);
+      return digits === 0 ? Math.round(avg) : Number(avg.toFixed(digits));
     }
     const avgCmp = avgMetric(topPeers, (p) => (p.cmp !== undefined && p.cmp !== null ? Number(p.cmp) : NaN), 2, true);
     const avgChg = avgMetric(topPeers, (p) => (p.dayChangePct !== undefined && p.dayChangePct !== null ? Number(p.dayChangePct) : NaN), 2, false);
+    const avgMcap = avgMetric(topPeers, (p) => (typeof p.marketCapCr === "number" && p.marketCapCr > 0 ? p.marketCapCr : NaN), 0, true);
+    const avgPe = avgMetric(topPeers, (p) => (typeof p.pe === "number" && p.pe > 0 ? p.pe : NaN), 1, true);
+    const avgRoe = avgMetric(topPeers, (p) => (typeof p.roePct === "number" ? p.roePct : NaN), 1, false);
+    const avgDe = avgMetric(topPeers, (p) => (typeof p.debtToEquity === "number" ? p.debtToEquity : NaN), 2, false);
     const avgDma50 = avgMetric(topPeers, (p) => (p.dma50 !== undefined && p.dma50 !== null ? Number(p.dma50) : NaN), 2, true);
-    const avgDma200 = avgMetric(topPeers, (p) => (p.dma200 !== undefined && p.dma200 !== null ? Number(p.dma200) : NaN), 2, true);
     const avgRsi = avgMetric(topPeers, (p) => (p.rsi14 !== undefined && p.rsi14 !== null ? Number(p.rsi14) : NaN), 1, true);
-    const avgVol = avgMetric(topPeers, (p) => (p.volume !== undefined && p.volume !== null ? Number(p.volume) : NaN), 0, true);
+    const avgTurnover = avgMetric(topPeers, (p) => (Number(p.cmp) > 0 && Number(p.volume) > 0 ? (Number(p.cmp) * Number(p.volume)) / 10000000 : NaN), 2, true);
 
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
-        <table id="company-peers-table" style="width:100%; border-collapse:collapse; font-size:0.86rem; min-width:860px;">
+        <table id="company-peers-table" style="width:100%; border-collapse:collapse; font-size:0.85rem; min-width:960px;">
           <thead>
             <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; text-align:left;">
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; width:46px;">S.No.</th>
-              <th style="padding:10px 14px; color:#1e293b; font-weight:700;">Company Name</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700;">Exchange</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">CMP (₹)</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">Day Change %</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">52W High (₹)</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">52W Low (₹)</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">50-DMA (₹)</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">200-DMA (₹)</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">14-Day RSI</th>
-              <th style="padding:10px 12px; color:#1e293b; font-weight:700; text-align:right;">Volume</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; width:42px;">S.No.</th>
+              <th style="padding:10px 12px; color:#1e293b; font-weight:700;">Company Name</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700;">Exchange</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">CMP (₹)</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">Day Chg %</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">Mar Cap (₹ Cr)</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">P/E</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">ROE %</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">Debt/Eq</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">50-DMA (₹)</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">14D RSI</th>
+              <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">Traded Val (₹ Cr)</th>
             </tr>
           </thead>
           <tbody>
@@ -759,49 +930,52 @@ document.addEventListener("DOMContentLoaded", function () {
                 const isCurrent = p.symbol === stock.symbol;
                 const pCmp = Number(p.cmp) || 0;
                 const pChg = typeof p.dayChangePct === "number" && !isNaN(p.dayChangePct) ? p.dayChangePct : null;
-                const pH52 = Number(p.high52) > 0 ? "₹ " + Number(p.high52).toLocaleString("en-IN") : "--";
-                const pL52 = Number(p.low52) > 0 ? "₹ " + Number(p.low52).toLocaleString("en-IN") : "--";
+                const pMcap = typeof p.marketCapCr === "number" && p.marketCapCr > 0 ? Number(p.marketCapCr).toLocaleString("en-IN") : "--";
+                const pPe = typeof p.pe === "number" && p.pe > 0 ? Number(p.pe).toFixed(1) : "--";
+                const pRoe = typeof p.roePct === "number" ? Number(p.roePct).toFixed(1) + "%" : "--";
+                const pDe = typeof p.debtToEquity === "number" ? Number(p.debtToEquity).toFixed(2) : "--";
                 const pDma50 = Number(p.dma50) > 0 ? "₹ " + Number(p.dma50).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
-                const pDma200 = Number(p.dma200) > 0 ? "₹ " + Number(p.dma200).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
                 const pRsi = typeof p.rsi14 === "number" && p.rsi14 > 0 ? Number(p.rsi14).toFixed(1) : "--";
-                const pVol = Number(p.volume) > 0 ? Number(p.volume).toLocaleString("en-IN") : "--";
+                const pTurnoverCr = pCmp > 0 && Number(p.volume) > 0 ? ((pCmp * Number(p.volume)) / 10000000).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
                 const pExch = p.exchanges || (p.bseCode ? "NSE,BSE" : "NSE");
                 const chgColor = pChg === null ? "#64748b" : (pChg >= 0 ? "#16a34a" : "#dc2626");
                 const chgText = pChg === null ? "--" : `${pChg >= 0 ? "+" : ""}${pChg.toFixed(2)}%`;
                 return `
                   <tr style="background:${isCurrent ? "#eff6ff" : idx % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
-                    <td style="padding:10px 12px; color:#64748b; font-weight:600;">${idx + 1}.</td>
-                    <td style="padding:10px 14px;">
+                    <td style="padding:10px 10px; color:#64748b; font-weight:600;">${idx + 1}.</td>
+                    <td style="padding:10px 12px;">
                       <a href="index.html?symbol=${encodeURIComponent(p.symbol)}" class="stock-peer-link" data-symbol="${escapeHtml(p.symbol)}" style="color:${isCurrent ? "#1d4ed8" : "#2563eb"}; font-weight:${isCurrent ? "800" : "700"}; text-decoration:none;">
                         ${escapeHtml(p.name)}
                       </a>
                       <span style="font-size:0.75rem; color:#64748b; margin-left:6px;">(${escapeHtml(p.symbol)})</span>
                     </td>
-                    <td style="padding:10px 12px; color:#475569; font-size:0.78rem; font-weight:600;">${escapeHtml(pExch)}</td>
-                    <td style="padding:10px 12px; text-align:right; font-weight:700; color:#0f172a;">₹ ${pCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                    <td style="padding:10px 12px; text-align:right; font-weight:700; color:${chgColor};">${chgText}</td>
-                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pH52}</td>
-                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pL52}</td>
-                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pDma50}</td>
-                    <td style="padding:10px 12px; text-align:right; color:#334155;">${pDma200}</td>
-                    <td style="padding:10px 12px; text-align:right; font-weight:600; color:#0f172a;">${pRsi}</td>
-                    <td style="padding:10px 12px; text-align:right; color:#475569;">${pVol}</td>
+                    <td style="padding:10px 10px; color:#475569; font-size:0.78rem; font-weight:600;">${escapeHtml(pExch)}</td>
+                    <td style="padding:10px 10px; text-align:right; font-weight:700; color:#0f172a;">₹ ${pCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td style="padding:10px 10px; text-align:right; font-weight:700; color:${chgColor};">${chgText}</td>
+                    <td style="padding:10px 10px; text-align:right; font-weight:600; color:#0f172a;">${pMcap}</td>
+                    <td style="padding:10px 10px; text-align:right; color:#334155;">${pPe}</td>
+                    <td style="padding:10px 10px; text-align:right; color:#334155;">${pRoe}</td>
+                    <td style="padding:10px 10px; text-align:right; color:#334155;">${pDe}</td>
+                    <td style="padding:10px 10px; text-align:right; color:#334155;">${pDma50}</td>
+                    <td style="padding:10px 10px; text-align:right; font-weight:600; color:#0f172a;">${pRsi}</td>
+                    <td style="padding:10px 10px; text-align:right; color:#475569;">${pTurnoverCr}</td>
                   </tr>
                 `;
               })
               .join("")}
             <tr style="background:#f8fafc; border-top:2px solid #cbd5e1; font-weight:700;">
-              <td style="padding:10px 12px; color:#64748b;">—</td>
-              <td style="padding:10px 14px; color:#0f172a;">Sector Average (${escapeHtml(stock.sector || "Peers")})</td>
-              <td style="padding:10px 12px; color:#64748b;">—</td>
-              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgCmp !== null ? "₹ " + Number(avgCmp).toLocaleString("en-IN") : "--"}</td>
-              <td style="padding:10px 12px; text-align:right; color:${avgChg !== null && Number(avgChg) >= 0 ? "#16a34a" : "#dc2626"};">${avgChg !== null ? (Number(avgChg) >= 0 ? "+" : "") + avgChg + "%" : "--"}</td>
-              <td style="padding:10px 12px; text-align:right; color:#64748b;">—</td>
-              <td style="padding:10px 12px; text-align:right; color:#64748b;">—</td>
-              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgDma50 !== null ? "₹ " + Number(avgDma50).toLocaleString("en-IN") : "--"}</td>
-              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgDma200 !== null ? "₹ " + Number(avgDma200).toLocaleString("en-IN") : "--"}</td>
-              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgRsi !== null ? avgRsi : "--"}</td>
-              <td style="padding:10px 12px; text-align:right; color:#0f172a;">${avgVol !== null ? avgVol.toLocaleString("en-IN") : "--"}</td>
+              <td style="padding:10px 10px; color:#64748b;">—</td>
+              <td style="padding:10px 12px; color:#0f172a;">Peer Average (${escapeHtml(stock.industry || stock.sector || "Peers")})</td>
+              <td style="padding:10px 10px; color:#64748b;">—</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgCmp !== null ? "₹ " + avgCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:${avgChg !== null && avgChg >= 0 ? "#16a34a" : "#dc2626"};">${avgChg !== null ? (avgChg >= 0 ? "+" : "") + avgChg.toFixed(2) + "%" : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgMcap !== null ? avgMcap.toLocaleString("en-IN") : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgPe !== null ? avgPe.toFixed(1) : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgRoe !== null ? avgRoe.toFixed(1) + "%" : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgDe !== null ? avgDe.toFixed(2) : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgDma50 !== null ? "₹ " + avgDma50.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgRsi !== null ? avgRsi.toFixed(1) : "--"}</td>
+              <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgTurnover !== null ? avgTurnover.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
             </tr>
           </tbody>
         </table>
@@ -901,8 +1075,7 @@ document.addEventListener("DOMContentLoaded", function () {
     stockResult.style.display = "block";
 
     const isBseOnly = stock.exchanges === "BSE";
-
-
+    const isProfileLoading = !isBseOnly && !stock._profileLoaded;
 
     // 2. Comprehensive Financial Statements Suites (Official Exchange Filings Only - No Synthetic Numbers)
     const quarterlyResults = (!isBseOnly && Array.isArray(stock.quarterlyResults)) ? stock.quarterlyResults : [];
@@ -913,11 +1086,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // 3. About the Company Profile Text
     const aboutText = stock.about
       ? (typeof stock.about === "string" && stock.about.includes("<p>") ? stock.about : formatProfileAbout(stock.about))
-      : `<strong>${escapeHtml(stock.name)}</strong> is an equity security listed on ${isBseOnly ? "BSE Ltd" : "NSE"} in the <strong>${escapeHtml(stock.sector)}</strong> sector.`;
+      : `<strong>${escapeHtml(stock.name)}</strong> is an equity security listed on ${isBseOnly ? "BSE Ltd" : "NSE"} in the <strong>${escapeHtml(stock.sector)}</strong> sector${stock.industry ? ` (${escapeHtml(stock.industry)})` : ""}.`;
 
     const initialNews = (!isBseOnly && Array.isArray(stock.news) && stock.news.length > 0) ? stock.news : null;
 
     // 5. Authentic Exchange OHLC & 52-Week Range metrics (zero synthetic multipliers)
+    const fmtPrice = (v) => Number(v || 0).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const dayOpen = (typeof stock.dayOpen === "number" && stock.dayOpen > 0) ? stock.dayOpen : ((typeof stock.open === "number" && stock.open > 0) ? stock.open : stock.cmp);
     const dayHigh = (typeof stock.dayHigh === "number" && stock.dayHigh > 0) ? stock.dayHigh : stock.cmp;
     const dayLow = (typeof stock.dayLow === "number" && stock.dayLow > 0) ? stock.dayLow : stock.cmp;
@@ -929,8 +1103,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const isGain = stock.isGain !== undefined ? stock.isGain : dayChange >= 0;
     const prevClose = (typeof stock.prevClose === "number" && stock.prevClose > 0) ? stock.prevClose : Number((stock.cmp - dayChange).toFixed(2));
     const dayPerformanceText = isGain
-      ? `+ ₹${Math.abs(dayChange).toFixed(2)} (+${Math.abs(dayChangePct)}%) Day Gain`
-      : `- ₹${Math.abs(dayChange).toFixed(2)} (-${Math.abs(dayChangePct)}%) Day Loss`;
+      ? `+ ₹${Math.abs(dayChange).toFixed(2)} (+${Math.abs(dayChangePct).toFixed(2)}%) Day Gain`
+      : `- ₹${Math.abs(dayChange).toFixed(2)} (-${Math.abs(dayChangePct).toFixed(2)}%) Day Loss`;
+    const sectorHeadingLabel = stock.industry && stock.industry !== stock.sector
+      ? `${stock.sector} • ${stock.industry}`
+      : (stock.sector || "Sector Peers");
 
     stockResult.innerHTML = `
       <div class="company-detail-card" style="background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); font-family:inherit;">
@@ -951,7 +1128,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div>
               <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                 <span id="company-exchange-badge" class="badge badge-success" style="font-size:0.75rem; background:${stock.exchanges === 'BSE' ? '#2563eb' : '#10b981'}; color:#ffffff; padding:3px 8px; border-radius:4px; font-weight:700;">${stock.exchanges === 'BSE' ? `BSE: ${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE: ${escapeHtml(stock.symbol)}`}</span>
-                <span style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(stock.sector)}</span>
+                <span id="company-sector-label" style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(sectorHeadingLabel)}</span>
                 <a id="company-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.8rem; color:#2563eb; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
                   Official Website ↗
                 </a>
@@ -959,7 +1136,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <h2 id="company-view-title" style="margin:8px 0 4px 0; font-size:1.75rem; color:#0f172a; font-weight:800;">${escapeHtml(stock.name)}</h2>
               
               <div style="display:flex; align-items:baseline; gap:12px; margin-top:6px; flex-wrap:wrap;">
-                <span id="company-hero-cmp" style="font-size:2.1rem; font-weight:800; color:#0f172a;">₹ ${stock.cmp.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+                <span id="company-hero-cmp" style="font-size:2.1rem; font-weight:800; color:#0f172a;">₹ ${fmtPrice(stock.cmp)}</span>
                 <span id="company-hero-day-pill" class="price-performance-pill" style="font-size:1.02rem; font-weight:700; padding:4px 12px; border-radius:6px; background:${isGain ? "#f0fdf4" : "#fef2f2"}; color:${isGain ? "#16a34a" : "#dc2626"}; border:1px solid ${isGain ? "#bbf7d0" : "#fecaca"};">
                   ${dayPerformanceText}
                 </span>
@@ -1005,27 +1182,27 @@ document.addEventListener("DOMContentLoaded", function () {
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Today Open</span>
-              <strong id="pp-open" style="font-size:0.92rem; color:#0f172a;">₹ ${dayOpen.toLocaleString("en-IN")}</strong>
+              <strong id="pp-open" style="font-size:0.92rem; color:#0f172a;">₹ ${fmtPrice(dayOpen)}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Today High</span>
-              <strong id="pp-high" style="font-size:0.92rem; color:#16a34a;">₹ ${dayHigh.toLocaleString("en-IN")}</strong>
+              <strong id="pp-high" style="font-size:0.92rem; color:#16a34a;">₹ ${fmtPrice(dayHigh)}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Today Low</span>
-              <strong id="pp-low" style="font-size:0.92rem; color:#dc2626;">₹ ${dayLow.toLocaleString("en-IN")}</strong>
+              <strong id="pp-low" style="font-size:0.92rem; color:#dc2626;">₹ ${fmtPrice(dayLow)}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Previous Close</span>
-              <strong id="pp-prev-close" style="font-size:0.92rem; color:#0f172a;">₹ ${prevClose.toLocaleString("en-IN")}</strong>
+              <strong id="pp-prev-close" style="font-size:0.92rem; color:#0f172a;">₹ ${fmtPrice(prevClose)}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">52-Week High</span>
-              <strong id="pp-high52" style="font-size:0.92rem; color:#16a34a;">₹ ${high52.toLocaleString("en-IN")}</strong>
+              <strong id="pp-high52" style="font-size:0.92rem; color:#16a34a;">₹ ${fmtPrice(high52)}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">52-Week Low</span>
-              <strong id="pp-low52" style="font-size:0.92rem; color:#dc2626;">₹ ${low52.toLocaleString("en-IN")}</strong>
+              <strong id="pp-low52" style="font-size:0.92rem; color:#dc2626;">₹ ${fmtPrice(low52)}</strong>
             </div>
           </div>
         </section>
@@ -1041,17 +1218,25 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
+        <!-- SECTION 2: FUNDAMENTALS (BHAVCOPY + OFFICIAL EXCHANGE FILINGS) -->
+        <section id="sec-fundamentals" style="margin-bottom:28px;">
+          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Fundamentals</h3>
+          <div id="company-fundamentals-container">
+            ${buildFundamentalsGridHtml(stock)}
+          </div>
+        </section>
+
         <!-- SECTION 3: TECHNICALS -->
         <section id="sec-technicals" style="margin-bottom:28px;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Technicals</h3>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">50-DMA</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">₹ ${stock.dma50.toLocaleString("en-IN")}</strong>
+              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma50 === "number" && stock.dma50 > 0 ? "₹ " + fmtPrice(stock.dma50) : "--"}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">200-DMA</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">₹ ${stock.dma200.toLocaleString("en-IN")}</strong>
+              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma200 === "number" && stock.dma200 > 0 ? "₹ " + fmtPrice(stock.dma200) : "--"}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Golden Crossover</span>
@@ -1059,15 +1244,15 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">14-Day RSI</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${stock.rsi14}</strong>
+              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? Number(stock.rsi14).toFixed(1) : "--"}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Volume Surge</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${stock.volumeSurge}x</strong>
+              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volumeSurge === "number" && stock.volumeSurge > 0 ? Number(stock.volumeSurge).toFixed(2) + "x" : "--"}</strong>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">Trading Volume</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volume === "number" && stock.volume > 0 ? stock.volume.toLocaleString("en-IN") : "Active"}</strong>
+              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volume === "number" && stock.volume > 0 ? stock.volume.toLocaleString("en-IN") : "--"}</strong>
             </div>
           </div>
         </section>
@@ -1104,7 +1289,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div id="sec-quarterly" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Quarterly Results (₹ Crores)</h4>
             <div id="company-quarterly-container">
-              ${buildQuarterlyTableHtml(quarterlyResults)}
+              ${buildQuarterlyTableHtml(quarterlyResults, isProfileLoading)}
             </div>
           </div>
 
@@ -1112,7 +1297,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div id="sec-balancesheet" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
             <div id="company-balancesheet-container">
-              ${buildBalanceSheetTableHtml(balanceSheet)}
+              ${buildBalanceSheetTableHtml(balanceSheet, isProfileLoading)}
             </div>
           </div>
 
@@ -1120,7 +1305,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div id="sec-cashflow" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Cash Flows (₹ Crores)</h4>
             <div id="company-cashflow-container">
-              ${buildCashFlowTableHtml(cashFlows)}
+              ${buildCashFlowTableHtml(cashFlows, isProfileLoading)}
             </div>
           </div>
 
@@ -1128,14 +1313,14 @@ document.addEventListener("DOMContentLoaded", function () {
           <div id="sec-shareholding" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h4>
             <div id="company-shareholding-container">
-              ${buildShareholdingHtml(shareholding)}
+              ${buildShareholdingHtml(shareholding, isProfileLoading)}
             </div>
           </div>
         </section>
 
         <!-- SECTION 7: PEER COMPARISON -->
         <section id="sec-peers" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-          <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.sector || "Sector Peers")})</h4>
+          <h4 id="company-peers-title" style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.industry || stock.sector || "Sector Peers")})</h4>
           <div id="company-peers-container">
             ${buildStockPeerComparisonHtml(stock)}
           </div>
@@ -1210,17 +1395,43 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
+    // NSE / BSE Exchange Switcher state (declared before applyVerifiedProfileToView)
+    const nseQuoteSnapshot = {
+      exchangeLabel: "NSE",
+      cmp: stock.cmp,
+      dayOpen,
+      dayHigh,
+      dayLow,
+      prevClose,
+      dayChange,
+      dayChangePct,
+      isGain,
+      high52,
+      low52,
+      volume: stock.volume,
+      lastUpdated: stock.lastUpdated || "Today, 3:30 PM IST"
+    };
+    let bseQuoteSnapshot = null;
+    let activeExchangeView = stock.exchanges === "BSE" ? "BSE" : "NSE";
+
     // Helper to apply Verified profile data to DOM elements live
     function applyVerifiedProfileToView(profile) {
-      if (!profile) return;
       if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
 
+      const sectorEl = document.getElementById("company-sector-label");
+      if (sectorEl && (stock.sector || stock.industry)) {
+        const lbl = stock.industry && stock.industry !== stock.sector
+          ? `${stock.sector} • ${stock.industry}`
+          : (stock.sector || "Sector Peers");
+        sectorEl.textContent = lbl;
+      }
+
       const aboutEl = document.getElementById("company-about-content");
-      if (aboutEl && profile.about) {
+      if (aboutEl && profile && profile.about) {
         aboutEl.innerHTML = formatProfileAbout(profile.about);
       }
 
-      if (profile.website) {
+      if (profile && profile.website) {
         const siteLinkEl = document.getElementById("company-official-website-link");
         if (siteLinkEl) {
           siteLinkEl.href = profile.website;
@@ -1233,22 +1444,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      const fundContainer = document.getElementById("company-fundamentals-container");
+      if (fundContainer) {
+        const activeQuote = activeExchangeView === "BSE" && bseQuoteSnapshot ? bseQuoteSnapshot : nseQuoteSnapshot;
+        fundContainer.innerHTML = buildFundamentalsGridHtml(stock, activeQuote);
+      }
 
-      if (Array.isArray(profile.quarterlyResults) && profile.quarterlyResults.length > 0) {
-        const qContainer = document.getElementById("company-quarterly-container");
-        if (qContainer) qContainer.innerHTML = buildQuarterlyTableHtml(profile.quarterlyResults);
-      }
-      if (Array.isArray(profile.balanceSheet) && profile.balanceSheet.length > 0) {
-        const bContainer = document.getElementById("company-balancesheet-container");
-        if (bContainer) bContainer.innerHTML = buildBalanceSheetTableHtml(profile.balanceSheet);
-      }
-      if (Array.isArray(profile.cashFlows) && profile.cashFlows.length > 0) {
-        const cContainer = document.getElementById("company-cashflow-container");
-        if (cContainer) cContainer.innerHTML = buildCashFlowTableHtml(profile.cashFlows);
-      }
-      if (profile.shareholding && typeof profile.shareholding === "object") {
-        const shContainer = document.getElementById("company-shareholding-container");
-        if (shContainer) shContainer.innerHTML = buildShareholdingHtml(profile.shareholding);
+      const qContainer = document.getElementById("company-quarterly-container");
+      if (qContainer) qContainer.innerHTML = buildQuarterlyTableHtml(stock.quarterlyResults, false);
+
+      const bContainer = document.getElementById("company-balancesheet-container");
+      if (bContainer) bContainer.innerHTML = buildBalanceSheetTableHtml(stock.balanceSheet, false);
+
+      const cContainer = document.getElementById("company-cashflow-container");
+      if (cContainer) cContainer.innerHTML = buildCashFlowTableHtml(stock.cashFlows, false);
+
+      const shContainer = document.getElementById("company-shareholding-container");
+      if (shContainer) shContainer.innerHTML = buildShareholdingHtml(stock.shareholding, false);
+
+      const peersTitle = document.getElementById("company-peers-title");
+      if (peersTitle) {
+        peersTitle.textContent = `Peer Comparison (${stock.industry || stock.sector || "Sector Peers"})`;
       }
       const peersContainer = document.getElementById("company-peers-container");
       if (peersContainer) peersContainer.innerHTML = buildStockPeerComparisonHtml(stock);
@@ -1256,35 +1472,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load official verified profile shard (audited statements, balance sheet, cash flows, ratios, shareholding)
     if (!isBseOnly) loadVerifiedProfile(stock.symbol).then((verified) => {
+      stock._profileLoaded = true;
       if (verified) {
+        const protectedFields = new Set([
+          "cmp", "dayOpen", "dayHigh", "dayLow", "prevClose", "dayChange", "dayChangePct",
+          "isGain", "high52", "low52", "volume", "avgVolume", "volumeSurge",
+          "dma50", "dma200", "rsi14", "goldenCross", "lastUpdated", "sector", "name", "symbol"
+        ]);
         Object.keys(verified).forEach((k) => {
-          if (verified[k] !== null && verified[k] !== undefined) {
+          if (!protectedFields.has(k) && verified[k] !== null && verified[k] !== undefined) {
             stock[k] = verified[k];
           }
         });
-        if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
-          applyVerifiedProfileToView(verified);
+        if (verified.ratios && typeof verified.ratios === "object") {
+          ["marketCapCr", "pe", "ttmEps", "ttmSalesCr", "ttmPatCr", "bookValue", "roePct", "rocePct", "debtToEquity", "promoterPct"].forEach((rk) => {
+            if (stock[rk] === null || stock[rk] === undefined) {
+              if (typeof verified.ratios[rk] === "number" && isFinite(verified.ratios[rk])) {
+                stock[rk] = verified.ratios[rk];
+              }
+            }
+          });
         }
+      }
+      if (activeCompanyData && activeCompanyData.symbol === stock.symbol) {
+        applyVerifiedProfileToView(verified || {});
       }
     });
 
-    // NSE / BSE Exchange Switcher (loads official BSE Bhavcopy quote on demand)
-    const nseQuoteSnapshot = {
-      cmp: stock.cmp,
-      dayOpen,
-      dayHigh,
-      dayLow,
-      prevClose,
-      dayChange,
-      dayChangePct,
-      isGain,
-      high52,
-      low52,
-      lastUpdated: stock.lastUpdated || "Today, 3:30 PM IST"
-    };
-    let bseQuoteSnapshot = null;
-
     function applyExchangeQuote(exch) {
+      activeExchangeView = exch;
       const q = exch === "BSE" && bseQuoteSnapshot ? bseQuoteSnapshot : nseQuoteSnapshot;
       const badgeEl = document.getElementById("company-exchange-badge");
       const cmpEl = document.getElementById("company-hero-cmp");
@@ -1296,7 +1512,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const prevEl = document.getElementById("pp-prev-close");
       const h52El = document.getElementById("pp-high52");
       const l52El = document.getElementById("pp-low52");
-      const curPriceEl = document.getElementById("metric-current-price");
+      const fundContainer = document.getElementById("company-fundamentals-container");
       const statusEl = document.getElementById("exchange-switcher-status");
       const btnNse = document.getElementById("btn-exchange-nse");
       const btnBse = document.getElementById("btn-exchange-bse");
@@ -1307,24 +1523,26 @@ document.addEventListener("DOMContentLoaded", function () {
           : `NSE: ${stock.symbol}`;
         badgeEl.style.background = exch === "BSE" ? "#2563eb" : "#10b981";
       }
-      if (cmpEl) cmpEl.textContent = `₹ ${Number(q.cmp).toLocaleString("en-IN", { minimumFractionDigits: 2 })}`;
+      if (cmpEl) cmpEl.textContent = `₹ ${fmtPrice(q.cmp)}`;
       if (pillEl) {
         const gain = q.isGain;
         const dc = Math.abs(Number(q.dayChange) || 0).toFixed(2);
-        const dcp = Math.abs(Number(q.dayChangePct) || 0);
+        const dcp = Math.abs(Number(q.dayChangePct) || 0).toFixed(2);
         pillEl.textContent = gain ? `+ ₹${dc} (+${dcp}%) Day Gain` : `- ₹${dc} (-${dcp}%) Day Loss`;
         pillEl.style.background = gain ? "#f0fdf4" : "#fef2f2";
         pillEl.style.color = gain ? "#16a34a" : "#dc2626";
         pillEl.style.borderColor = gain ? "#bbf7d0" : "#fecaca";
       }
       if (sessEl) sessEl.textContent = `(Session: ${q.lastUpdated || "Today, 3:30 PM IST"})`;
-      if (openEl) openEl.textContent = `₹ ${Number(q.dayOpen).toLocaleString("en-IN")}`;
-      if (highEl) highEl.textContent = `₹ ${Number(q.dayHigh).toLocaleString("en-IN")}`;
-      if (lowEl) lowEl.textContent = `₹ ${Number(q.dayLow).toLocaleString("en-IN")}`;
-      if (prevEl) prevEl.textContent = `₹ ${Number(q.prevClose).toLocaleString("en-IN")}`;
-      if (h52El) h52El.textContent = `₹ ${Number(q.high52 || high52).toLocaleString("en-IN")}`;
-      if (l52El) l52El.textContent = `₹ ${Number(q.low52 || low52).toLocaleString("en-IN")}`;
-      if (curPriceEl) curPriceEl.textContent = `₹ ${Number(q.cmp).toLocaleString("en-IN")}`;
+      if (openEl) openEl.textContent = `₹ ${fmtPrice(q.dayOpen)}`;
+      if (highEl) highEl.textContent = `₹ ${fmtPrice(q.dayHigh)}`;
+      if (lowEl) lowEl.textContent = `₹ ${fmtPrice(q.dayLow)}`;
+      if (prevEl) prevEl.textContent = `₹ ${fmtPrice(q.prevClose)}`;
+      if (h52El) h52El.textContent = `₹ ${fmtPrice(q.high52 || high52)}`;
+      if (l52El) l52El.textContent = `₹ ${fmtPrice(q.low52 || low52)}`;
+      if (fundContainer) {
+        fundContainer.innerHTML = buildFundamentalsGridHtml(stock, Object.assign({ exchangeLabel: exch, high52, low52 }, q));
+      }
       if (statusEl) statusEl.textContent = exch === "BSE" ? "Exchange: BSE" : "Exchange: NSE";
 
       if (btnNse) {

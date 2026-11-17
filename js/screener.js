@@ -65,6 +65,33 @@ const StocksScreener = (function () {
         { field: "volumeSurge", operator: ">=", value: 1.5, label: "Volume Surge >= 1.5x" },
         { field: "dayChangePct", operator: ">=", value: 1.5, label: "Day Change >= +1.5%" }
       ]
+    },
+    {
+      id: "featured-5",
+      name: "High ROE & Low Debt Quality Compounders",
+      description: "Profitable NSE businesses with ROE >= 15%, ROCE >= 18%, low leverage (Debt/Equity <= 0.5), and Market Cap >= ₹1,000 Cr.",
+      author: "Stocks 360 Research",
+      isPublic: true,
+      requestedColumns: ["marketCapCr", "pe", "roePct", "rocePct", "debtToEquity"],
+      filters: [
+        { field: "marketCapCr", operator: ">=", value: 1000, label: "Market Cap >= ₹1,000 Cr" },
+        { field: "roePct", operator: ">=", value: 15, label: "ROE >= 15%" },
+        { field: "rocePct", operator: ">=", value: 18, label: "ROCE >= 18%" },
+        { field: "debtToEquity", operator: "<=", value: 0.5, label: "Debt/Equity <= 0.5" }
+      ]
+    },
+    {
+      id: "featured-6",
+      name: "Value Stocks (P/E <= 25 & ROE >= 15%)",
+      description: "Established companies trading below 25x TTM P/E with strong Return on Equity (>= 15%).",
+      author: "Stocks 360 Research",
+      isPublic: true,
+      requestedColumns: ["marketCapCr", "pe", "roePct", "debtToEquity"],
+      filters: [
+        { field: "marketCapCr", operator: ">=", value: 1000, label: "Market Cap >= ₹1,000 Cr" },
+        { field: "pe", operator: "<=", value: 25, label: "Stock P/E <= 25" },
+        { field: "roePct", operator: ">=", value: 15, label: "ROE >= 15%" }
+      ]
     }
   ];
 
@@ -384,7 +411,7 @@ const StocksScreener = (function () {
         }
 
         const stockVal = stock[field];
-        if (stockVal === undefined || stockVal === null) return false;
+        if (stockVal === undefined || stockVal === null || stockVal === "") return false;
         if ((field === "pe" || field === "marketCapCr") && Number(stockVal) <= 0) return false;
 
         switch (op) {
@@ -419,7 +446,11 @@ const StocksScreener = (function () {
     const dataset = (typeof window !== "undefined" && Array.isArray(window.STOCKS_SCREENER_DATASET) && window.STOCKS_SCREENER_DATASET.length > 0)
       ? window.STOCKS_SCREENER_DATASET
       : ((typeof STOCKS_SCREENER_DATASET !== "undefined") ? STOCKS_SCREENER_DATASET : []);
-    const matchedStocks = executeFilters(dataset, screenObj.filters);
+    const matchedStocks = executeFilters(dataset, screenObj.filters).slice().sort((a, b) => {
+      const mDiff = (Number(b.marketCapCr) || 0) - (Number(a.marketCapCr) || 0);
+      if (mDiff !== 0) return mDiff;
+      return ((Number(b.cmp) || 0) * (Number(b.volume) || 0)) - ((Number(a.cmp) || 0) * (Number(a.volume) || 0));
+    });
 
     // Dynamic Columns:
     // User Requirement: "fetch only the filters the user asked and along with that it has to fetch the current market price which was last updated"

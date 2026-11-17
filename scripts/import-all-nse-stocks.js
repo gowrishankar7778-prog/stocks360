@@ -10,6 +10,7 @@
 const https = require('https');
 const {
   loadScreenerDataset,
+  normalizeSectorName,
   writeScreenerIndex,
   writeScreenerDataIfPresent,
   syncMarketSummaryToFirestore
@@ -45,24 +46,7 @@ function fetchUrl(url, redirectsLeft = 3) {
 }
 
 function detectSector(name) {
-  const n = String(name || '').toUpperCase();
-  if (n.includes('BANK')) return 'Banking & Financial Services';
-  if (n.includes('FINANC') || n.includes('FINSERV') || n.includes('CAPITAL') || n.includes('INVEST') || n.includes('HOLDING') || n.includes('WEALTH')) return 'Financial Services & NBFC';
-  if (n.includes('TECH') || n.includes('SOFT') || n.includes('INFOTECH') || n.includes('DIGITAL') || n.includes('SYSTEMS')) return 'Information Technology';
-  if (n.includes('PHARMA') || n.includes('HEALTH') || n.includes('BIO') || n.includes('LAB') || n.includes('DRUG') || n.includes('MEDIC') || n.includes('HOSPITAL')) return 'Pharmaceuticals & Healthcare';
-  if (n.includes('CHEM') || n.includes('CARBON') || n.includes('POLY') || n.includes('PETRO') || n.includes('FERTIL')) return 'Chemicals & Materials';
-  if (n.includes('AUTO') || n.includes('MOTOR') || n.includes('TYRE') || n.includes('VEHICLE') || n.includes('BRAKE')) return 'Automotive & Ancillaries';
-  if (n.includes('STEEL') || n.includes('METAL') || n.includes('MINING') || n.includes('IRON') || n.includes('ALUMIN')) return 'Metals & Mining';
-  if (n.includes('POWER') || n.includes('ENERGY') || n.includes('SOLAR') || n.includes('WIND') || n.includes('OIL') || n.includes('GAS') || n.includes('ELECTRIC')) return 'Energy, Oil & Power';
-  if (n.includes('INFRA') || n.includes('ENGINEER') || n.includes('CONSTRUCT') || n.includes('CEMENT') || n.includes('BUILD') || n.includes('PIPES')) return 'Infrastructure & Construction';
-  if (n.includes('FOOD') || n.includes('BEVERAG') || n.includes('SUGAR') || n.includes('TEA') || n.includes('AGRO') || n.includes('CONSUMER') || n.includes('FMCG') || n.includes('DAIRY')) return 'Consumer & FMCG';
-  if (n.includes('TEXTILE') || n.includes('COTTON') || n.includes('GARMENT') || n.includes('SPINNING') || n.includes('SILK') || n.includes('APPAREL')) return 'Textiles & Apparels';
-  if (n.includes('REALTY') || n.includes('ESTATE') || n.includes('HOUSING') || n.includes('DEVELOPERS') || n.includes('PROPERT')) return 'Real Estate & Housing';
-  if (n.includes('LOGISTIC') || n.includes('SHIPPING') || n.includes('PORTS') || n.includes('TRANSPORT') || n.includes('AIR')) return 'Logistics & Transport';
-  if (n.includes('MEDIA') || n.includes('TELECOM') || n.includes('COMMUNICATION') || n.includes('ENTERTAINMENT') || n.includes('NETWORK')) return 'Media & Telecommunications';
-  if (n.includes('HOTEL') || n.includes('RESORT') || n.includes('TOUR') || n.includes('TRAVEL')) return 'Hospitality & Tourism';
-  if (n.includes('RETAIL') || n.includes('FASHION') || n.includes('JEWEL')) return 'Retail & Lifestyle';
-  return 'Diversified NSE Equities';
+  return normalizeSectorName(null, null, name);
 }
 
 async function runImport() {
@@ -131,7 +115,6 @@ async function runImport() {
       roePct: null,
       rocePct: null,
       debtToEquity: null,
-      divYieldPct: null,
       dma50: 0,
       dma200: 0,
       goldenCross: false,

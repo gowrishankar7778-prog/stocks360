@@ -15,6 +15,8 @@ const path = require('path');
 const https = require('https');
 const {
   loadScreenerDataset,
+  normalizeSectorName,
+  computeFilingFundamentals,
   writeScreenerIndex,
   writeScreenerDataIfPresent,
   syncMarketSummaryToFirestore
@@ -383,9 +385,27 @@ async function run() {
 
       if (changed) {
         if (isNewProfile) shard[sym] = profile;
+        profile.sector = normalizeSectorName(profile.sector || stock.sector, profile.industry || stock.industry, stock.name);
+        stock.sector = profile.sector;
+        if (profile.industry) stock.industry = profile.industry;
+
+        const derived = computeFilingFundamentals(stock.cmp, profile);
+        const cleanRatios = {};
+        for (const [rk, rv] of Object.entries(derived)) {
+          if (typeof rv === 'number' && Number.isFinite(rv)) {
+            stock[rk] = rv;
+            if (rk !== 'sharesCr' && rk !== 'ttmOpProfitCr') {
+              cleanRatios[rk] = rv;
+            }
+          } else if (rk !== 'ttmOpProfitCr') {
+            stock[rk] = null;
+          }
+        }
+        if (Object.keys(cleanRatios).length > 0) profile.ratios = cleanRatios;
+
         profile.hasFinancialUpdate = true;
         profile.lastFinancialStatementUpdate = new Date().toISOString();
-        profile.financialChangeSummary = 'Synced official NSE quarterly results & shareholding pattern';
+        profile.financialChangeSummary = 'Synced official NSE quarterly results & XBRL balance sheet filings';
         dirtyShards.add(k);
         updatedCount++;
         console.log(`  ★ [NSE SYNCED] ${sym}`);

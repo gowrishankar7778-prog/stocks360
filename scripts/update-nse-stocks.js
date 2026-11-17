@@ -197,12 +197,22 @@ async function updateAllStocks() {
     const fresh = nseMap.get(sym);
 
     if (fresh && fresh.cmp > 0) {
-      const priceRatio = s.cmp > 0 ? (fresh.cmp / s.cmp) : 1;
-      if (priceRatio > 0.5 && priceRatio < 2.0) {
-        if (typeof s.marketCapCr === 'number' && s.marketCapCr > 0) {
+      if (typeof s.sharesCr === 'number' && s.sharesCr > 0) {
+        s.marketCapCr = Math.round(fresh.cmp * s.sharesCr);
+      } else {
+        const priceRatio = s.cmp > 0 ? (fresh.cmp / s.cmp) : 1;
+        if (priceRatio > 0.5 && priceRatio < 2.0 && typeof s.marketCapCr === 'number' && s.marketCapCr > 0) {
           s.marketCapCr = Math.round(s.marketCapCr * priceRatio);
         }
-        if (typeof s.pe === 'number' && s.pe > 0) {
+      }
+      if (typeof s.ttmEps === 'number' && s.ttmEps > 0) {
+        const rawPe = fresh.cmp / s.ttmEps;
+        if (rawPe > 0 && rawPe < 2000) {
+          s.pe = Number(rawPe.toFixed(1));
+        }
+      } else {
+        const priceRatio = s.cmp > 0 ? (fresh.cmp / s.cmp) : 1;
+        if (priceRatio > 0.5 && priceRatio < 2.0 && typeof s.pe === 'number' && s.pe > 0) {
           s.pe = Number((s.pe * priceRatio).toFixed(1));
         }
       }
