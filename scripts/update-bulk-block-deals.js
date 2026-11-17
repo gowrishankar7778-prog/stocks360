@@ -136,6 +136,95 @@ function dealKey(d) {
   return `${d.date}|${d.dealType}|${d.symbol}|${d.clientName}|${d.side}|${d.quantity}|${d.price}`;
 }
 
+function computeStockNetSummaries(deals) {
+  const byStock = new Map();
+  for (const d of deals) {
+    const k = `${d.date}|${d.symbol}`;
+    if (!byStock.has(k)) {
+      byStock.set(k, {
+        date: d.date,
+        symbol: d.symbol,
+        companyName: d.companyName,
+        dealTypes: new Set(),
+        buyQty: 0,
+        sellQty: 0,
+        buyAmt: 0,
+        sellAmt: 0,
+        buyDeals: 0,
+        sellDeals: 0,
+        clients: new Map()
+      });
+    }
+    const g = byStock.get(k);
+    g.dealTypes.add(d.dealType || 'BULK');
+    if (!g.clients.has(d.clientName)) {
+      g.clients.set(d.clientName, { clientName: d.clientName, buyQty: 0, sellQty: 0, buyAmt: 0, sellAmt: 0 });
+    }
+    const c = g.clients.get(d.clientName);
+    const amt = (Number(d.quantity) || 0) * (Number(d.price) || 0);
+    if (d.side === 'SELL') {
+      g.sellQty += Number(d.quantity) || 0;
+      g.sellAmt += amt;
+      g.sellDeals++;
+      c.sellQty += Number(d.quantity) || 0;
+      c.sellAmt += amt;
+    } else {
+      g.buyQty += Number(d.quantity) || 0;
+      g.buyAmt += amt;
+      g.buyDeals++;
+      c.buyQty += Number(d.quantity) || 0;
+      c.buyAmt += amt;
+    }
+  }
+
+  return Array.from(byStock.values()).map((g) => {
+    const netQty = g.buyQty - g.sellQty;
+    const buyValueCr = Number((g.buyAmt / 10000000).toFixed(2));
+    const sellValueCr = Number((g.sellAmt / 10000000).toFixed(2));
+    const netValueCr = Number((buyValueCr - sellValueCr).toFixed(2));
+    let pureBuyersCount = 0;
+    let pureSellersCount = 0;
+    let topNetBuyer = null;
+    let topNetSeller = null;
+
+    for (const c of g.clients.values()) {
+      const cNetQty = c.buyQty - c.sellQty;
+      const cNetValCr = Number(((c.buyAmt - c.sellAmt) / 10000000).toFixed(2));
+      if (cNetQty > 0) {
+        pureBuyersCount++;
+        if (!topNetBuyer || cNetQty > topNetBuyer.netQty) {
+          topNetBuyer = { clientName: c.clientName, netQty: cNetQty, netValueCr: cNetValCr };
+        }
+      } else if (cNetQty < 0) {
+        pureSellersCount++;
+        if (!topNetSeller || cNetQty < topNetSeller.netQty) {
+          topNetSeller = { clientName: c.clientName, netQty: cNetQty, netValueCr: cNetValCr };
+        }
+      }
+    }
+
+    return {
+      date: g.date,
+      dealType: Array.from(g.dealTypes).join('+'),
+      symbol: g.symbol,
+      companyName: g.companyName,
+      buyQty: g.buyQty,
+      sellQty: g.sellQty,
+      buyValueCr,
+      sellValueCr,
+      avgBuyPrice: g.buyQty > 0 ? Number((g.buyAmt / g.buyQty).toFixed(2)) : 0,
+      avgSellPrice: g.sellQty > 0 ? Number((g.sellAmt / g.sellQty).toFixed(2)) : 0,
+      netQty,
+      netValueCr,
+      direction: netQty > 0 && netValueCr > 0 ? 'NET_BUYING' : (netQty < 0 && netValueCr < 0 ? 'NET_SELLING' : 'NEUTRAL'),
+      pureBuyersCount,
+      pureSellersCount,
+      topNetBuyer,
+      topNetSeller
+    };
+  });
+}
+
 async function run() {
   console.log('Stocks 360: Starting Official NSE Bulk & Block Deals synchronizer...');
   if (!fs.existsSync(OUT_DIR)) {
@@ -209,6 +298,13 @@ async function run() {
     }
   }
 
+  const stockNetSummaries = computeStockNetSummaries(retainedDeals);
+  const latestNetSummaries = stockNetSummaries.filter((s) => s.date === latestTradeDate);
+  const netBuyingStocks = latestNetSummaries.filter((s) => s.direction === 'NET_BUYING');
+  const netSellingStocks = latestNetSummaries.filter((s) => s.direction === 'NET_SELLING');
+  const netBuyConvictionCr = Number(netBuyingStocks.reduce((acc, s) => acc + s.netValueCr, 0).toFixed(2));
+  const netSellConvictionCr = Number(Math.abs(netSellingStocks.reduce((acc, s) => acc + s.netValueCr, 0)).toFixed(2));
+
   const now = new Date();
   const timeString = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true });
   const dateString = now.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short' });
@@ -226,8 +322,13 @@ async function run() {
       buyDealsCount,
       sellDealsCount,
       buyValueCr: Number(buyValueCr.toFixed(2)),
-      sellValueCr: Number(sellValueCr.toFixed(2))
+      sellValueCr: Number(sellValueCr.toFixed(2)),
+      netBuyingStocksCount: netBuyingStocks.length,
+      netSellingStocksCount: netSellingStocks.length,
+      netBuyConvictionCr,
+      netSellConvictionCr
     },
+    stockNetSummaries,
     deals: retainedDeals
   };
 
