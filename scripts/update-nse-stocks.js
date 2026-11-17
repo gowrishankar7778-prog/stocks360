@@ -163,6 +163,61 @@ function parseBhavcopyMap(csvLines) {
   return map;
 }
 
+async function fetchLatestNseDeliveryMap() {
+  const nowUtc = Date.now();
+  const istNow = new Date(nowUtc + 5.5 * 3600 * 1000);
+
+  for (let daysBack = 0; daysBack <= 7; daysBack++) {
+    const d = new Date(istNow.getTime() - daysBack * 86400000);
+    const yyyy = d.getUTCFullYear();
+    const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(d.getUTCDate()).padStart(2, '0');
+    const url = `https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_${dd}${mm}${yyyy}.csv`;
+
+    const res = await fetchBuffer(url);
+    if (res.status === 200 && res.buffer && res.buffer.length > 500) {
+      const csvText = res.buffer.toString('utf8');
+      const lines = csvText.split(/\r?\n/).filter(Boolean);
+      if (lines.length < 10) continue;
+
+      const headers = parseCsvLine(lines[0]).map((h) => h.toUpperCase());
+      const symIdx = headers.indexOf('SYMBOL');
+      const serIdx = headers.indexOf('SERIES');
+      const delivQtyIdx = headers.indexOf('DELIV_QTY');
+      const delivPctIdx = headers.indexOf('DELIV_PER');
+      if (symIdx === -1 || delivQtyIdx === -1 || delivPctIdx === -1) continue;
+
+      const allowedSeries = new Set(['EQ', 'BE', 'BZ', 'SM', 'ST']);
+      const map = new Map();
+
+      for (let i = 1; i < lines.length; i++) {
+        const cols = parseCsvLine(lines[i]);
+        const symbol = (cols[symIdx] || '').toUpperCase();
+        const series = serIdx !== -1 ? (cols[serIdx] || '').toUpperCase() : 'EQ';
+        if (!symbol || !allowedSeries.has(series)) continue;
+        if (map.has(symbol) && series !== 'EQ') continue;
+
+        const delivQty = Number(cols[delivQtyIdx]);
+        const delivPct = Number(cols[delivPctIdx]);
+        if (!Number.isFinite(delivQty) || delivQty <= 0 || !Number.isFinite(delivPct) || delivPct <= 0 || delivPct > 100) {
+          continue;
+        }
+
+        map.set(symbol, {
+          deliveryVolume: Math.round(delivQty),
+          deliveryPct: Number(delivPct.toFixed(2))
+        });
+      }
+
+      if (map.size > 50) {
+        console.log(`✓ Downloaded official NSE Delivery data for ${dd}-${mm}-${yyyy} (${map.size} symbols)`);
+        return { map, tradeDate: `${dd}-${mm}-${yyyy}` };
+      }
+    }
+  }
+  return null;
+}
+
 async function updateAllStocks() {
   console.log('Stocks 360: Starting 100% Official NSE Bhavcopy stock synchronizer...');
   const now = new Date();
@@ -188,6 +243,9 @@ async function updateAllStocks() {
   const nseMap = parseBhavcopyMap(bhav.csvLines);
   console.log(`Parsed ${nseMap.size} active NSE equity quotes from official Bhavcopy (${bhav.tradeDate}).`);
 
+  const delivRes = await fetchLatestNseDeliveryMap();
+  const delivMap = delivRes ? delivRes.map : new Map();
+
   const updateLimit = process.env.UPDATE_LIMIT ? parseInt(process.env.UPDATE_LIMIT, 10) : stocks.length;
   let updatedCount = 0;
 
@@ -195,6 +253,12 @@ async function updateAllStocks() {
     const s = stocks[i];
     const sym = String(s.symbol || '').toUpperCase();
     const fresh = nseMap.get(sym);
+    const deliv = delivMap.get(sym);
+
+    if (deliv) {
+      s.deliveryVolume = deliv.deliveryVolume;
+      s.deliveryPct = deliv.deliveryPct;
+    }
 
     if (fresh && fresh.cmp > 0) {
       if (typeof s.sharesCr === 'number' && s.sharesCr > 0) {

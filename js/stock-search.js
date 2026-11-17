@@ -1108,6 +1108,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const sectorHeadingLabel = stock.industry && stock.industry !== stock.sector
       ? `${stock.sector} • ${stock.industry}`
       : (stock.sector || "Sector Peers");
+    const delivVolText = typeof stock.deliveryVolume === "number" && stock.deliveryVolume > 0
+      ? stock.deliveryVolume.toLocaleString("en-IN")
+      : "--";
+    const delivPctText = typeof stock.deliveryPct === "number" && stock.deliveryPct > 0
+      ? Number(stock.deliveryPct).toFixed(2) + "%"
+      : "--";
 
     stockResult.innerHTML = `
       <div class="company-detail-card" style="background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); font-family:inherit;">
@@ -1203,6 +1209,14 @@ document.addEventListener("DOMContentLoaded", function () {
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:0.88rem; color:#475569;">52-Week Low</span>
               <strong id="pp-low52" style="font-size:0.92rem; color:#dc2626;">₹ ${fmtPrice(low52)}</strong>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.88rem; color:#475569;">Delivery Volume</span>
+              <strong id="pp-deliv-vol" style="font-size:0.92rem; color:#0f172a;">${delivVolText}</strong>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.88rem; color:#475569;">Delivery %</span>
+              <strong id="pp-deliv-pct" style="font-size:0.92rem; color:#2563eb;">${delivPctText}</strong>
             </div>
           </div>
         </section>
@@ -1409,6 +1423,8 @@ document.addEventListener("DOMContentLoaded", function () {
       high52,
       low52,
       volume: stock.volume,
+      deliveryVolume: stock.deliveryVolume,
+      deliveryPct: stock.deliveryPct,
       lastUpdated: stock.lastUpdated || "Today, 3:30 PM IST"
     };
     let bseQuoteSnapshot = null;
@@ -1512,6 +1528,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const prevEl = document.getElementById("pp-prev-close");
       const h52El = document.getElementById("pp-high52");
       const l52El = document.getElementById("pp-low52");
+      const delivVolEl = document.getElementById("pp-deliv-vol");
+      const delivPctEl = document.getElementById("pp-deliv-pct");
       const fundContainer = document.getElementById("company-fundamentals-container");
       const statusEl = document.getElementById("exchange-switcher-status");
       const btnNse = document.getElementById("btn-exchange-nse");
@@ -1540,6 +1558,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (prevEl) prevEl.textContent = `₹ ${fmtPrice(q.prevClose)}`;
       if (h52El) h52El.textContent = `₹ ${fmtPrice(q.high52 || high52)}`;
       if (l52El) l52El.textContent = `₹ ${fmtPrice(q.low52 || low52)}`;
+      if (delivVolEl) delivVolEl.textContent = typeof q.deliveryVolume === "number" && q.deliveryVolume > 0 ? q.deliveryVolume.toLocaleString("en-IN") : "--";
+      if (delivPctEl) delivPctEl.textContent = typeof q.deliveryPct === "number" && q.deliveryPct > 0 ? Number(q.deliveryPct).toFixed(2) + "%" : "--";
       if (fundContainer) {
         fundContainer.innerHTML = buildFundamentalsGridHtml(stock, Object.assign({ exchangeLabel: exch, high52, low52 }, q));
       }

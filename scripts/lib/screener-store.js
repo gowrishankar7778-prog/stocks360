@@ -110,6 +110,18 @@ const SCREENER_METRIC_DEFINITIONS = {
     unit: 'x',
     category: 'volume',
     description: 'Ratio of latest session volume to 10-day average volume.'
+  },
+  deliveryVolume: {
+    label: 'Delivery Volume',
+    unit: 'shares',
+    category: 'volume',
+    description: 'Total shares delivered into demat accounts in the latest official NSE session.'
+  },
+  deliveryPct: {
+    label: 'Delivery %',
+    unit: '%',
+    category: 'volume',
+    description: 'Percentage of total traded quantity taken for demat delivery (official NSE sec_bhavdata_full).'
   }
 };
 
@@ -411,7 +423,8 @@ function buildCompactIndex(stocks, lastUpdatedLabel) {
     };
     const optionalNums = [
       'sharesCr', 'marketCapCr', 'pe', 'ttmEps', 'ttmSalesCr',
-      'ttmPatCr', 'bookValue', 'roePct', 'rocePct', 'debtToEquity', 'promoterPct'
+      'ttmPatCr', 'bookValue', 'roePct', 'rocePct', 'debtToEquity', 'promoterPct',
+      'deliveryVolume', 'deliveryPct'
     ];
     optionalNums.forEach((k) => {
       if (typeof s[k] === 'number' && Number.isFinite(s[k])) {
