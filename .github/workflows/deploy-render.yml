@@ -1,0 +1,23 @@
+name: Auto-Deploy to Render on Push
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  trigger-render-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Render Deploy Hook
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$RENDER_DEPLOY_HOOK_URL" ]; then
+            curl -fsSL -X POST "$RENDER_DEPLOY_HOOK_URL"
+            echo "✓ Successfully triggered Render auto-deploy for main!"
+          else
+            echo "Notice: Add GitHub repository secret RENDER_DEPLOY_HOOK_URL (Settings -> Secrets and variables -> Actions) to enable 100% automatic Render deployments without GitHub OAuth login in Render."
+          fi

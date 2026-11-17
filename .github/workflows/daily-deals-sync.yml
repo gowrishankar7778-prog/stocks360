@@ -28,14 +28,29 @@ jobs:
           node scripts/update-bulk-block-deals.js
 
       - name: Commit & Push Updated Bulk & Block Deals Dataset
+        id: git_push
         run: |
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
           git add data/market/bulk-block-deals.json
           if git diff --staged --quiet; then
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No new Bulk or Block Deals detected today."
           else
             git commit -m "Auto-update official NSE Bulk & Block Deals [6:45 PM IST]"
             git pull --rebase --autostash origin main
             git push origin main
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger Render Auto-Deploy
+        if: steps.git_push.outputs.pushed == 'true'
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$RENDER_DEPLOY_HOOK_URL" ]; then
+            curl -fsSL -X POST "$RENDER_DEPLOY_HOOK_URL"
+            echo "✓ Triggered Render auto-deploy!"
+          else
+            echo "Notice: Set GitHub repo secret RENDER_DEPLOY_HOOK_URL to enable automatic Render deploys."
           fi
