@@ -27,31 +27,68 @@ if (!fs.existsSync(OUT_DIR)) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
 }
 
-function httpGetJson(url, timeoutMs = 12000) {
+let nseCookies = '';
+
+function httpGetJson(url, timeoutMs = 12000, hops = 0) {
   return new Promise((resolve) => {
-    const req = https.get(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
-        'Accept': 'application/json,text/plain,*/*',
-        'Referer': 'https://www.nseindia.com/'
-      },
+    let settled = false;
+    const done = (val) => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(hardTimer);
+        resolve(val);
+      }
+    };
+    const hardTimer = setTimeout(() => {
+      try { if (req) req.destroy(); } catch (_) {}
+      done(null);
+    }, timeoutMs);
+
+    let u;
+    try { u = new URL(url); } catch (_) { return done(null); }
+
+    const headers = {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      'Accept': 'application/json,text/plain,*/*',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Referer': `${u.protocol}//${u.host}/`
+    };
+    if (nseCookies) headers['Cookie'] = nseCookies;
+
+    const req = https.get({
+      hostname: u.hostname,
+      path: u.pathname + u.search,
+      headers,
       timeout: timeoutMs
     }, (res) => {
+      if (res.headers['set-cookie']) {
+        const map = new Map();
+        nseCookies.split('; ').filter(Boolean).forEach((c) => map.set(c.split('=')[0], c));
+        res.headers['set-cookie'].map((c) => c.split(';')[0]).forEach((c) => map.set(c.split('=')[0], c));
+        nseCookies = Array.from(map.values()).join('; ');
+      }
+      if ([301, 302, 307, 308].includes(res.statusCode) && res.headers.location && hops < 3) {
+        res.resume();
+        clearTimeout(hardTimer);
+        settled = true;
+        return resolve(httpGetJson(new URL(res.headers.location, url).toString(), timeoutMs, hops + 1));
+      }
       let body = '';
       res.on('data', (c) => { body += c; });
       res.on('end', () => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           try {
-            return resolve(JSON.parse(body));
+            return done(JSON.parse(body));
           } catch (_) {
-            return resolve(null);
+            return done(null);
           }
         }
-        resolve(null);
+        done(null);
       });
+      res.on('error', () => done(null));
     });
-    req.on('error', () => resolve(null));
-    req.on('timeout', () => { req.destroy(); resolve(null); });
+    req.on('error', () => done(null));
+    req.on('timeout', () => { req.destroy(); done(null); });
   });
 }
 
@@ -281,6 +318,273 @@ async function fetchNseCorpInfo(symbol) {
   };
 }
 
+function formatShpQuarterLabel(dateStr) {
+  const m = String(dateStr || '').trim().match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})$/);
+  if (!m) return '';
+  const monLabel = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+  return `${monLabel} ${m[3]}`;
+}
+
+function isNamedHolderLabel(name) {
+  if (!name) return false;
+  const clean = String(name).trim().replace(/\s+/g, ' ');
+  if (clean.length < 3) return false;
+  if (/^(OTHER|OTHERS|SUB-TOTAL|TOTAL\s|ANY OTHER|UNCLAIMED|SUSPENSE|ESCROW|CLEARING MEMBER|RESIDENT INDIVIDUAL|NON RESIDENT|FOREIGN PORTFOLIO INVESTOR|FOREIGN DIRECT INVESTMENT|OVERSEAS DEPOSITOR|SHAREHOLDING BY|TRUSTS WHERE|RELATIVES OF|ASSOCIATE COMPAN|DIRECTORS AND|INDEPENDENT DIRECTOR|KEY MANAGERIAL|INVESTOR EDUCATION|CENTRAL GOVERNMENT|STATE GOVERNMENT|GOVERNMENTS|INSTITUTIONS|NON-INSTITUTIONS|MUTUAL FUNDS$|ALTERNATE INVESTMENT|VENTURE CAPITAL|PROVIDENT FUNDS|INSURANCE\s+COMPANIES$|NBFC|SOVEREIGN WEALTH|ASSET RECONSTRUCTION|OTHER FINANCIAL|BANKS$|FOREIGN NATIONAL|FOREIGN COMPANIES|BODIES CORPORATE$|HUF$|NRIS$|TRUSTS$|LLP$|OVERSEAS CORPORATE|INDIVIDUALS|FINANCIAL INSTITUTIONS|ESOP|EMPLOYEES)/i.test(clean)) {
+    return false;
+  }
+  return true;
+}
+
+function parsePublicShareholderRows(rows) {
+  if (!Array.isArray(rows) || rows.length === 0) return null;
+  let section = 0;
+  let subCat = '';
+  let diiPct = 0, fiiPct = 0, govtPct = 0, pubNonInstPct = 0;
+  let mfPct = 0, insPct = 0, pensionPct = 0;
+  const diiHolders = [], fiiHolders = [], govtHolders = [], publicHolders = [];
+
+  for (const r of rows) {
+    const cat = String(r.category || '').trim();
+    const label = String(r.COL_I || '').trim().replace(/\s+/g, ' ');
+    const pct = parseFloat(r.COL_VIII);
+    const valPct = Number.isFinite(pct) ? Number(pct.toFixed(2)) : 0;
+
+    if (cat === '1' || /^Institutions\s*\(Domestic\)/i.test(label)) { section = 1; subCat = ''; continue; }
+    if (cat === '2' || /^Institutions\s*\(Foreign\)/i.test(label)) { section = 2; subCat = ''; continue; }
+    if (cat === '3' || /^Central Government/i.test(label)) { section = 3; subCat = ''; continue; }
+    if (cat === '4' || /^Non-institutions/i.test(label)) { section = 4; subCat = ''; continue; }
+
+    if (/^Sub-Total\s*\(B\)\(1\)/i.test(label)) { diiPct = valPct; continue; }
+    if (/^Sub-Total\s*\(B\)\(2\)/i.test(label)) { fiiPct = valPct; continue; }
+    if (/^Sub-Total\s*\(B\)\(3\)/i.test(label)) { govtPct = valPct; continue; }
+    if (/^Sub-Total\s*\(B\)\(4\)/i.test(label)) { pubNonInstPct = valPct; continue; }
+    if (/^Total Public Shareholding/i.test(label)) continue;
+
+    if (cat && /^[a-z]$/i.test(cat)) {
+      subCat = label;
+      if (section === 1) {
+        if (/Mutual Funds/i.test(label)) mfPct += valPct;
+        else if (/Insurance/i.test(label)) insPct += valPct;
+        else if (/Provident|Pension/i.test(label)) pensionPct += valPct;
+      }
+      continue;
+    }
+
+    if (!cat && valPct >= 0.05 && isNamedHolderLabel(label)) {
+      const cleanSub = subCat
+        .replace(/Foreign Portfolio Investors Category I$/i, 'FPI Category I')
+        .replace(/Foreign Portfolio Investors Category II$/i, 'FPI Category II')
+        .replace(/Provident Funds\/ Pension Funds/i, 'Pension Funds')
+        .replace(/Insurance\s+Companies/i, 'Insurance')
+        .replace(/Resident Individuals holding.*/i, 'Individual Investor')
+        .trim() || 'Institution';
+      const entry = { name: label, pct: valPct, subCategory: cleanSub };
+      if (section === 1) diiHolders.push(entry);
+      else if (section === 2) fiiHolders.push(entry);
+      else if (section === 3) govtHolders.push(entry);
+      else if (section === 4) publicHolders.push(entry);
+    }
+  }
+  diiHolders.sort((a, b) => b.pct - a.pct);
+  fiiHolders.sort((a, b) => b.pct - a.pct);
+  govtHolders.sort((a, b) => b.pct - a.pct);
+  publicHolders.sort((a, b) => b.pct - a.pct);
+  return {
+    diiPct: Number(diiPct.toFixed(2)),
+    fiiPct: Number(fiiPct.toFixed(2)),
+    govtPct: Number(govtPct.toFixed(2)),
+    publicPct: Number(pubNonInstPct.toFixed(2)),
+    mfPct: Number(mfPct.toFixed(2)),
+    insPct: Number(insPct.toFixed(2)),
+    pensionPct: Number(pensionPct.toFixed(2)),
+    diiHolders: diiHolders.slice(0, 12),
+    fiiHolders: fiiHolders.slice(0, 12),
+    publicHolders: govtHolders.concat(publicHolders).slice(0, 10)
+  };
+}
+
+function parsePromoterRows(rows) {
+  if (!Array.isArray(rows) || rows.length === 0) return [];
+  const holders = [];
+  for (const r of rows) {
+    const cat = String(r.category || '').trim();
+    const label = String(r.COL_I || '').trim().replace(/\s+/g, ' ');
+    const entityType = String(r.ENTITY_TYPE || '').trim();
+    const pct = parseFloat(r.COL_VIII);
+    const valPct = Number.isFinite(pct) ? Number(pct.toFixed(2)) : 0;
+    if (!cat && valPct >= 0.01 && (/Promoter/i.test(entityType) || isNamedHolderLabel(label))) {
+      if (!/^(Indian|Foreign|Sub-Total|Total Shareholding|Any Other|Bodies Corporate|Individuals|Central Government|Financial Institutions)/i.test(label)) {
+        holders.push({ name: label, pct: valPct, subCategory: entityType && entityType !== '-' ? entityType : 'Promoter' });
+      }
+    }
+  }
+  holders.sort((a, b) => b.pct - a.pct);
+  return holders.slice(0, 10);
+}
+
+function mergeNewQuarterHolders(existingList, newQuarterList, targetQuartersLen, isNewQuarterAppended, trimOldest) {
+  const normKey = (n) => String(n || '').toUpperCase().replace(/\s+/g, ' ').replace(/[.,]/g, '').replace(/\bLIMITED\b/g, 'LTD').replace(/\bPRIVATE\b/g, 'PVT').trim();
+  const map = new Map();
+  for (const h of (Array.isArray(existingList) ? existingList : [])) {
+    const k = normKey(h.name);
+    if (!k) continue;
+    let hist = Array.isArray(h.history) ? [...h.history] : [];
+    if (isNewQuarterAppended) {
+      if (trimOldest && hist.length >= targetQuartersLen) hist = hist.slice(hist.length - targetQuartersLen + 1);
+      while (hist.length < targetQuartersLen - 1) hist.unshift(null);
+      hist.push(null);
+    } else {
+      while (hist.length < targetQuartersLen) hist.push(null);
+    }
+    map.set(k, { name: h.name, subCategory: h.subCategory || '', pct: h.pct || 0, history: hist });
+  }
+  for (const nh of (Array.isArray(newQuarterList) ? newQuarterList : [])) {
+    const k = normKey(nh.name);
+    if (!k) continue;
+    if (!map.has(k)) {
+      const hist = new Array(targetQuartersLen).fill(null);
+      hist[targetQuartersLen - 1] = nh.pct;
+      map.set(k, { name: nh.name, subCategory: nh.subCategory || '', pct: nh.pct, history: hist });
+    } else {
+      const entry = map.get(k);
+      entry.name = nh.name;
+      if (nh.subCategory) entry.subCategory = nh.subCategory;
+      entry.pct = nh.pct;
+      entry.history[targetQuartersLen - 1] = nh.pct;
+    }
+  }
+  const merged = Array.from(map.values()).filter((h) => h.history.some((v) => v !== null && v > 0));
+  merged.sort((a, b) => {
+    const aL = a.history[targetQuartersLen - 1] ?? 0;
+    const bL = b.history[targetQuartersLen - 1] ?? 0;
+    return bL - aL || (b.pct || 0) - (a.pct || 0);
+  });
+  return merged.slice(0, 12);
+}
+
+async function fetchLatestShareholdingMasterMap() {
+  const rows = await httpGetJson('https://www.nseindia.in/api/corporate-share-holdings-master?index=equities', 20000);
+  const map = new Map();
+  if (!Array.isArray(rows)) return map;
+  for (const r of rows) {
+    const sym = String(r.symbol || '').trim().toUpperCase();
+    if (!sym || map.has(sym)) continue;
+    if (sym === 'JPL' && /Jagran/i.test(r.name || '')) continue;
+    const qLabel = formatShpQuarterLabel(r.date);
+    if (!qLabel || !r.recordId) continue;
+    map.set(sym, {
+      quarterLabel: qLabel,
+      recordId: String(r.recordId),
+      promPct: Number((parseFloat(r.pr_and_prgrp) || 0).toFixed(2)),
+      pubValPct: Number((parseFloat(r.public_val) || 0).toFixed(2)),
+      empPct: Number((parseFloat(r.employeeTrusts) || 0).toFixed(2))
+    });
+  }
+  return map;
+}
+
+async function syncIncrementalShareholding(profile, shpEntry) {
+  if (!shpEntry) return false;
+  const sh = profile.shareholding;
+  const hasQuarters = sh && Array.isArray(sh.quarters) && sh.quarters.length > 0 && sh.series;
+  const latestQ = hasQuarters ? sh.quarters[sh.quarters.length - 1] : null;
+  const alreadySynced = hasQuarters
+    && latestQ === shpEntry.quarterLabel
+    && (profile.lastShpRecordId === shpEntry.recordId || (sh.fii !== undefined && sh.holders));
+
+  if (alreadySynced) {
+    profile.lastShpRecordId = shpEntry.recordId;
+    return false;
+  }
+
+  const [promRows, pubRows] = await Promise.all([
+    httpGetJson(`https://www.nseindia.in/api/corporate-share-holdings-equities?ndsId=${shpEntry.recordId}&index=promoter`, 10000),
+    httpGetJson(`https://www.nseindia.in/api/corporate-share-holdings-equities?ndsId=${shpEntry.recordId}&index=public-shareholder`, 10000)
+  ]);
+  const promParsed = parsePromoterRows(promRows);
+  const pubParsed = parsePublicShareholderRows(pubRows);
+  if (!pubParsed && promParsed.length === 0) return false;
+
+  const MAX_Q = 10;
+  if (!hasQuarters) {
+    profile.shareholding = {
+      promoters: `${shpEntry.promPct.toFixed(2)}%`,
+      fii: pubParsed ? `${pubParsed.fiiPct.toFixed(2)}%` : undefined,
+      dii: pubParsed ? `${pubParsed.diiPct.toFixed(2)}%` : undefined,
+      government: pubParsed && pubParsed.govtPct > 0 ? `${pubParsed.govtPct.toFixed(2)}%` : undefined,
+      public: pubParsed ? `${pubParsed.publicPct.toFixed(2)}%` : `${shpEntry.pubValPct.toFixed(2)}%`,
+      total: '100.00%',
+      quarters: [shpEntry.quarterLabel],
+      series: {
+        promoters: [shpEntry.promPct],
+        fii: [pubParsed ? pubParsed.fiiPct : null],
+        dii: [pubParsed ? pubParsed.diiPct : null],
+        diiMutualFunds: [pubParsed ? pubParsed.mfPct : null],
+        diiInsurance: [pubParsed ? pubParsed.insPct : null],
+        diiPensionFunds: [pubParsed ? pubParsed.pensionPct : null],
+        government: [pubParsed ? pubParsed.govtPct : null],
+        public: [pubParsed ? pubParsed.publicPct : shpEntry.pubValPct],
+        employeeTrusts: [shpEntry.empPct]
+      },
+      holders: {
+        promoters: mergeNewQuarterHolders([], promParsed, 1, false, false),
+        fii: mergeNewQuarterHolders([], pubParsed ? pubParsed.fiiHolders : [], 1, false, false),
+        dii: mergeNewQuarterHolders([], pubParsed ? pubParsed.diiHolders : [], 1, false, false),
+        public: mergeNewQuarterHolders([], pubParsed ? pubParsed.publicHolders : [], 1, false, false)
+      }
+    };
+    profile.lastShpRecordId = shpEntry.recordId;
+    return true;
+  }
+
+  const isNewQ = latestQ !== shpEntry.quarterLabel;
+  const trimOldest = isNewQ && sh.quarters.length >= MAX_Q;
+  if (isNewQ) {
+    sh.quarters.push(shpEntry.quarterLabel);
+    if (trimOldest) sh.quarters.shift();
+  }
+  const nQ = sh.quarters.length;
+  const pushOrReplace = (arr, val) => {
+    const list = Array.isArray(arr) ? [...arr] : new Array(nQ - (isNewQ ? 1 : 0)).fill(null);
+    if (isNewQ) {
+      list.push(val);
+      if (trimOldest && list.length > MAX_Q) list.shift();
+    } else {
+      list[nQ - 1] = val;
+    }
+    return list;
+  };
+
+  sh.series.promoters = pushOrReplace(sh.series.promoters, shpEntry.promPct);
+  sh.series.fii = pushOrReplace(sh.series.fii, pubParsed ? pubParsed.fiiPct : null);
+  sh.series.dii = pushOrReplace(sh.series.dii, pubParsed ? pubParsed.diiPct : null);
+  sh.series.diiMutualFunds = pushOrReplace(sh.series.diiMutualFunds, pubParsed ? pubParsed.mfPct : null);
+  sh.series.diiInsurance = pushOrReplace(sh.series.diiInsurance, pubParsed ? pubParsed.insPct : null);
+  sh.series.diiPensionFunds = pushOrReplace(sh.series.diiPensionFunds, pubParsed ? pubParsed.pensionPct : null);
+  sh.series.government = pushOrReplace(sh.series.government, pubParsed ? pubParsed.govtPct : null);
+  sh.series.public = pushOrReplace(sh.series.public, pubParsed ? pubParsed.publicPct : shpEntry.pubValPct);
+  sh.series.employeeTrusts = pushOrReplace(sh.series.employeeTrusts, shpEntry.empPct);
+
+  sh.promoters = `${shpEntry.promPct.toFixed(2)}%`;
+  if (pubParsed) {
+    sh.fii = `${pubParsed.fiiPct.toFixed(2)}%`;
+    sh.dii = `${pubParsed.diiPct.toFixed(2)}%`;
+    if (pubParsed.govtPct > 0) sh.government = `${pubParsed.govtPct.toFixed(2)}%`;
+    sh.public = `${pubParsed.publicPct.toFixed(2)}%`;
+  }
+  sh.total = '100.00%';
+
+  const prevHolders = sh.holders || {};
+  sh.holders = {
+    promoters: mergeNewQuarterHolders(prevHolders.promoters, promParsed, nQ, isNewQ, trimOldest),
+    fii: mergeNewQuarterHolders(prevHolders.fii, pubParsed ? pubParsed.fiiHolders : [], nQ, isNewQ, trimOldest),
+    dii: mergeNewQuarterHolders(prevHolders.dii, pubParsed ? pubParsed.diiHolders : [], nQ, isNewQ, trimOldest),
+    public: mergeNewQuarterHolders(prevHolders.public, pubParsed ? pubParsed.publicHolders : [], nQ, isNewQ, trimOldest)
+  };
+  profile.lastShpRecordId = shpEntry.recordId;
+  return true;
+}
+
 async function run() {
   console.log('Stocks 360: Initializing 100% Official NSE Corporate Filings & Results synchronizer...');
 
@@ -311,6 +615,8 @@ async function run() {
   }
 
   console.log(`Syncing official NSE filings & results for ${targetStocks.length} equities...`);
+  const latestShpMap = await fetchLatestShareholdingMasterMap();
+  console.log(`Fetched latest NSE Shareholding Pattern master index for ${latestShpMap.size} equities.`);
 
   const shardCache = {};
   const dirtyShards = new Set();
@@ -345,14 +651,15 @@ async function run() {
       }
 
       const nseInfo = await fetchNseCorpInfo(sym);
-      if (!nseInfo) {
+      const shpChanged = await syncIncrementalShareholding(profile, latestShpMap.get(sym));
+      if (!nseInfo && !shpChanged) {
         unchangedCount++;
         return;
       }
 
-      let changed = false;
+      let changed = shpChanged;
 
-      if (nseInfo.promoterPct !== null) {
+      if (nseInfo && nseInfo.promoterPct !== null) {
         const nextProm = `${nseInfo.promoterPct.toFixed(2)}%`;
         const nextPub = `${Math.max(0, Number((100 - nseInfo.promoterPct).toFixed(2))).toFixed(2)}%`;
         const prevProm = profile.shareholding && profile.shareholding.promoters;
@@ -363,7 +670,7 @@ async function run() {
             total: '100.00%'
           };
           changed = true;
-        } else if (prevProm !== nextProm) {
+        } else if (prevProm !== nextProm && (!profile.shareholding.quarters || profile.shareholding.quarters.length === 0)) {
           profile.shareholding.promoters = nextProm;
           if (!profile.shareholding.fii && !profile.shareholding.dii) {
             profile.shareholding.public = nextPub;
@@ -373,7 +680,7 @@ async function run() {
         }
       }
 
-      if (nseInfo.quarterlyResults.length > 0) {
+      if (nseInfo && nseInfo.quarterlyResults.length > 0) {
         const prevLatest = profile.quarterlyResults && profile.quarterlyResults[profile.quarterlyResults.length - 1];
         const newLatest = nseInfo.quarterlyResults[nseInfo.quarterlyResults.length - 1];
         if (!prevLatest || prevLatest.period !== newLatest.period || prevLatest.sales !== newLatest.sales || prevLatest.netProfit !== newLatest.netProfit) {
@@ -383,7 +690,7 @@ async function run() {
       }
 
       // Parse official NSE Ind-AS XBRL XML for Balance Sheet & Cash Flows when a new filing URL is detected
-      if (nseInfo.xbrlUrl && profile.lastXbrlUrl !== nseInfo.xbrlUrl) {
+      if (nseInfo && nseInfo.xbrlUrl && profile.lastXbrlUrl !== nseInfo.xbrlUrl) {
         const xbrlData = await fetchAndParseNseXbrl(nseInfo.xbrlUrl);
         if (xbrlData) {
           if (xbrlData.balanceSheetRow) {
