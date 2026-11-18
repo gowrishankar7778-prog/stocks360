@@ -775,6 +775,7 @@ async function run() {
             const idxCf = profile.cashFlows.findIndex((r) => r.year === xbrlData.cashFlowRow.year);
             if (idxCf >= 0) profile.cashFlows[idxCf] = xbrlData.cashFlowRow;
             else profile.cashFlows.push(xbrlData.cashFlowRow);
+            profile.cashFlows.sort((a, b) => periodSortKey(a.year) - periodSortKey(b.year));
             if (profile.cashFlows.length > 6) profile.cashFlows = profile.cashFlows.slice(-6);
             changed = true;
           }

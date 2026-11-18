@@ -633,39 +633,45 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!Array.isArray(cashFlows) || cashFlows.length === 0) {
       return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE XBRL cash flows..." : "Cash flow statements pending exchange filing."}</div>`;
     }
+    const cols = cashFlows.slice(-6);
     return `
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+        <span style="font-size:0.83rem; color:#475569; font-weight:600;">
+          Official NSE XBRL Cash Flow Statement (Rolling ${cols.length} Filing Period${cols.length > 1 ? "s" : ""} &bull; ₹ Crores)
+        </span>
+      </div>
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
-        <table class="stocks360-data-table" id="company-cashflow-table" style="font-size:0.9rem; width:100%; border-collapse:collapse; min-width:540px;">
+        <table class="stocks360-data-table" id="company-cashflow-table" style="font-size:0.88rem; width:100%; border-collapse:collapse; min-width:620px;">
           <thead>
             <tr style="background:#f8fafc;">
-              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">Activity</th>
-              ${cashFlows.map(c => `<th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">${escapeHtml(String(c.year))}</th>`).join('')}
+              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700; min-width:210px;">Activity</th>
+              ${cols.map(c => `<th style="padding:10px 12px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700; white-space:nowrap;">${escapeHtml(String(c.year))}</th>`).join('')}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; color:#0f172a;">Cash from Operating Activity (CFO)</td>
-              ${cashFlows.map(c => {
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; color:#0f172a; white-space:nowrap;">Cash from Operating Activity (CFO)</td>
+              ${cols.map(c => {
                 const n = parseClientFilingNum(c.cfo);
                 const col = !isNaN(n) && n < 0 ? "#dc2626" : "#16a34a";
-                return `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${col};">₹ ${escapeHtml(String(c.cfo))}</td>`;
+                return `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${col}; white-space:nowrap;">₹ ${escapeHtml(String(c.cfo))}</td>`;
               }).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Cash from Investing Activity (CFI)</td>
-              ${cashFlows.map(c => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b;">₹ ${escapeHtml(String(c.cfi))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Cash from Investing Activity (CFI)</td>
+              ${cols.map(c => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b; white-space:nowrap;">₹ ${escapeHtml(String(c.cfi))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Cash from Financing Activity (CFF)</td>
-              ${cashFlows.map(c => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b;">₹ ${escapeHtml(String(c.cff))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Cash from Financing Activity (CFF)</td>
+              ${cols.map(c => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b; white-space:nowrap;">₹ ${escapeHtml(String(c.cff))}</td>`).join('')}
             </tr>
             <tr style="background:#fafafa;">
-              <td style="padding:10px 14px; font-weight:700;">Net Cash Flow</td>
-              ${cashFlows.map(c => {
+              <td style="padding:10px 14px; font-weight:700; white-space:nowrap;">Net Cash Flow</td>
+              ${cols.map(c => {
                 const val = c.netCash ?? c.netCashFlow ?? '--';
                 const n = parseClientFilingNum(val);
                 const col = !isNaN(n) && n < 0 ? "#dc2626" : "#0f172a";
-                return `<td style="padding:10px 14px; text-align:right; font-weight:700; color:${col};">₹ ${escapeHtml(String(val))}</td>`;
+                return `<td style="padding:10px 12px; text-align:right; font-weight:700; color:${col}; white-space:nowrap;">₹ ${escapeHtml(String(val))}</td>`;
               }).join('')}
             </tr>
           </tbody>
@@ -1338,7 +1344,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=69")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=70")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1350,7 +1356,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=69")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=70")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1370,7 +1376,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=69")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=70")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
