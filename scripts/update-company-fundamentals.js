@@ -302,20 +302,79 @@ async function fetchNseCorpInfo(symbol) {
       netProfit: formatInr(netProfitCr),
       eps: !isNaN(eps) ? `₹${eps}` : '--'
     });
-    if (quarterlyResults.length >= 4) break;
+    if (quarterlyResults.length >= 10) break;
   }
 
   if (promoterPct === null && quarterlyResults.length === 0) {
     return null;
   }
 
-  const latestXbrlRow = finRows.find((r) => r.xbrl_attachment && /^https:\/\/nsearchives\.nseindia\.com\/.+\.xml$/i.test(r.xbrl_attachment));
+  const latestXbrlRow = finRows.find((r) => r.xbrl_attachment && /^https:\/\/nsearchives\.nseindia\.(com|in)\/.+\.xml$/i.test(r.xbrl_attachment));
 
   return {
     promoterPct,
     quarterlyResults: quarterlyResults.reverse(), // oldest -> newest
     xbrlUrl: latestXbrlRow ? latestXbrlRow.xbrl_attachment : ''
   };
+}
+
+function periodSortKey(periodLabel) {
+  const m = String(periodLabel || '').trim().match(/^([A-Za-z]{3})\s+(\d{2})$/);
+  if (!m) return 0;
+  const monMap = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
+  const mon = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+  const yr = 2000 + parseInt(m[2], 10);
+  return yr * 100 + (monMap[mon] || 0);
+}
+
+function mergeRolling10Quarters(...quarterArrays) {
+  const byPeriod = new Map();
+  for (const arr of quarterArrays) {
+    if (!Array.isArray(arr)) continue;
+    for (const q of arr) {
+      if (!q || !q.period) continue;
+      const p = formatNseQuarterPeriod(q.period) || String(q.period).trim();
+      const sk = periodSortKey(p);
+      if (!sk) continue;
+      byPeriod.set(p, { ...q, period: p, _sk: sk });
+    }
+  }
+  return Array.from(byPeriod.values())
+    .sort((a, b) => a._sk - b._sk)
+    .slice(-10)
+    .map(({ _sk, ...rest }) => rest);
+}
+
+async function fetchNseResultsComparision(symbol) {
+  const url = `https://www.nseindia.in/api/results-comparision?index=equities&symbol=${encodeURIComponent(symbol)}`;
+  const cmpData = await httpGetJson(url, 8000);
+  const rows = (cmpData && Array.isArray(cmpData.resCmpData)) ? cmpData.resCmpData : [];
+  const out = [];
+  for (const r of rows) {
+    const m = String(r.re_to_dt || '').trim().match(/(\d{1,2})-([A-Za-z]{3})-\d{2}(\d{2})/);
+    if (!m) continue;
+    const mon = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+    const period = `${mon} ${m[3]}`;
+    const rawInc = parseFloat(r.re_total_inc ?? r.re_tot_inc ?? r.re_net_sale ?? r.re_int_earned);
+    if (!Number.isFinite(rawInc) || rawInc <= 0) continue;
+    const salesCr = Math.round(rawInc / 100);
+    if (salesCr <= 0) continue;
+    const pbtCr = Math.round((parseFloat(r.re_pro_loss_bef_tax) || 0) / 100);
+    const patCr = Math.round((parseFloat(r.re_con_pro_loss ?? r.re_net_profit ?? r.re_proloss_ord_act) || 0) / 100);
+    const expCr = Math.max(0, salesCr - pbtCr);
+    const opm = salesCr > 0 ? `${((pbtCr / salesCr) * 100).toFixed(1)}%` : '0.0%';
+    const eps = parseFloat(r.re_dilut_eps_for_cont_dic_opr ?? r.re_diluted_eps ?? r.re_basic_eps_for_cont_dic_opr ?? r.re_basic_eps);
+    out.push({
+      period,
+      sales: formatInr(salesCr),
+      expenses: formatInr(expCr),
+      operatingProfit: formatInr(pbtCr),
+      opm,
+      netProfit: formatInr(patCr),
+      eps: Number.isFinite(eps) ? `₹${eps}` : '--'
+    });
+  }
+  return out.reverse();
 }
 
 function formatShpQuarterLabel(dateStr) {
@@ -681,10 +740,19 @@ async function run() {
       }
 
       if (nseInfo && nseInfo.quarterlyResults.length > 0) {
-        const prevLatest = profile.quarterlyResults && profile.quarterlyResults[profile.quarterlyResults.length - 1];
-        const newLatest = nseInfo.quarterlyResults[nseInfo.quarterlyResults.length - 1];
-        if (!prevLatest || prevLatest.period !== newLatest.period || prevLatest.sales !== newLatest.sales || prevLatest.netProfit !== newLatest.netProfit) {
-          profile.quarterlyResults = nseInfo.quarterlyResults;
+        const existingQ = Array.isArray(profile.quarterlyResults) ? profile.quarterlyResults : [];
+        const cmpQuarters = existingQ.length < 8 ? await fetchNseResultsComparision(sym) : [];
+        const mergedQ = mergeRolling10Quarters(cmpQuarters, existingQ, nseInfo.quarterlyResults);
+        const prevLatest = existingQ[existingQ.length - 1];
+        const newLatest = mergedQ[mergedQ.length - 1];
+        if (
+          mergedQ.length !== existingQ.length
+          || !prevLatest
+          || prevLatest.period !== newLatest.period
+          || prevLatest.sales !== newLatest.sales
+          || prevLatest.netProfit !== newLatest.netProfit
+        ) {
+          profile.quarterlyResults = mergedQ;
           changed = true;
         }
       }

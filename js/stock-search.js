@@ -513,47 +513,53 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!Array.isArray(quarterlyResults) || quarterlyResults.length === 0) {
       return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE quarterly results..." : "Quarterly results pending exchange filing."}</div>`;
     }
+    const cols = quarterlyResults.slice(-10);
     return `
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+        <span style="font-size:0.83rem; color:#475569; font-weight:600;">
+          Official NSE Quarterly Financial Results (Rolling ${cols.length} Quarters &bull; ₹ Crores)
+        </span>
+      </div>
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
-        <table class="stocks360-data-table" id="company-quarterly-table" style="font-size:0.9rem; width:100%; border-collapse:collapse; min-width:540px;">
+        <table class="stocks360-data-table" id="company-quarterly-table" style="font-size:0.88rem; width:100%; border-collapse:collapse; min-width:720px;">
           <thead>
             <tr style="background:#f8fafc;">
-              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">Metric</th>
-              ${quarterlyResults.map(q => `<th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">${escapeHtml(String(q.period))}</th>`).join('')}
+              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700; min-width:170px;">Metric</th>
+              ${cols.map(q => `<th style="padding:10px 12px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700; white-space:nowrap;">${escapeHtml(String(q.period))}</th>`).join('')}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">Sales / Revenue</td>
-              ${quarterlyResults.map(q => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(q.sales))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; white-space:nowrap;">Sales / Revenue</td>
+              ${cols.map(q => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; white-space:nowrap;">₹ ${escapeHtml(String(q.sales))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Expenses</td>
-              ${quarterlyResults.map(q => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b;">₹ ${escapeHtml(String(q.expenses))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Expenses</td>
+              ${cols.map(q => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b; white-space:nowrap;">₹ ${escapeHtml(String(q.expenses))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">Operating Profit</td>
-              ${quarterlyResults.map(q => {
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; white-space:nowrap;">Operating Profit</td>
+              ${cols.map(q => {
                 const n = parseClientFilingNum(q.operatingProfit);
                 const col = !isNaN(n) && n < 0 ? "#dc2626" : "#0f172a";
-                return `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${col};">₹ ${escapeHtml(String(q.operatingProfit))}</td>`;
+                return `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${col}; white-space:nowrap;">₹ ${escapeHtml(String(q.operatingProfit))}</td>`;
               }).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">OPM %</td>
-              ${quarterlyResults.map(q => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">${escapeHtml(String(q.opm))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">OPM %</td>
+              ${cols.map(q => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; white-space:nowrap;">${escapeHtml(String(q.opm))}</td>`).join('')}
             </tr>
             <tr style="background:#fafafa;">
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a;">Net Profit (PAT)</td>
-              ${quarterlyResults.map(q => {
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a; white-space:nowrap;">Net Profit (PAT)</td>
+              ${cols.map(q => {
                 const n = parseClientFilingNum(q.netProfit);
                 const col = !isNaN(n) && n < 0 ? "#dc2626" : "#16a34a";
-                return `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:700; color:${col};">₹ ${escapeHtml(String(q.netProfit))}</td>`;
+                return `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:700; color:${col}; white-space:nowrap;">₹ ${escapeHtml(String(q.netProfit))}</td>`;
               }).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px;">EPS in Rs</td>
-              ${quarterlyResults.map(q => `<td style="padding:10px 14px; text-align:right;">${escapeHtml(String(q.eps))}</td>`).join('')}
+              <td style="padding:10px 14px; white-space:nowrap;">EPS in Rs</td>
+              ${cols.map(q => `<td style="padding:10px 12px; text-align:right; white-space:nowrap;">${escapeHtml(String(q.eps))}</td>`).join('')}
             </tr>
           </tbody>
         </table>
@@ -1326,7 +1332,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=67")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=68")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1338,7 +1344,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=67")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=68")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1358,7 +1364,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=67")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=68")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }

@@ -5,7 +5,7 @@
  */
 
 const StocksDeals = (function () {
-  const DEALS_URL = "data/market/bulk-block-deals.json?v=67";
+  const DEALS_URL = "data/market/bulk-block-deals.json?v=68";
 
   const DEAL_VIEW_OPTIONS = [
     { value: "ALL", label: "All" },
@@ -183,6 +183,22 @@ const StocksDeals = (function () {
     `;
   }
 
+  function filterPureSideDeals(deals, targetSide) {
+    const sideFlags = new Map();
+    for (const d of deals || []) {
+      const k = `${d.date}|${d.symbol}`;
+      if (!sideFlags.has(k)) sideFlags.set(k, { buy: false, sell: false });
+      const flags = sideFlags.get(k);
+      if (d.side === "SELL") flags.sell = true;
+      else if (d.side === "BUY") flags.buy = true;
+    }
+    return (deals || []).filter((d) => {
+      const flags = sideFlags.get(`${d.date}|${d.symbol}`);
+      if (!flags) return false;
+      return targetSide === "BUY" ? (flags.buy && !flags.sell) : (flags.sell && !flags.buy);
+    });
+  }
+
   function buildDealsRowsHtml(deals, mode, maxRows = 500) {
     const td = "padding:11px 14px; font-size:0.88rem; color:#1e293b;";
     const tdNum = "padding:11px 14px; font-size:0.88rem; color:#0f172a; text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums;";
@@ -227,7 +243,7 @@ const StocksDeals = (function () {
 
     if (mode === "ONLY_BUYING" || mode === "ONLY_SELLING") {
       const targetSide = mode === "ONLY_BUYING" ? "BUY" : "SELL";
-      const rows = (deals || []).filter((d) => d.side === targetSide).slice(0, maxRows);
+      const rows = filterPureSideDeals(deals, targetSide).slice(0, maxRows);
       if (rows.length === 0) {
         return `<tr><td colspan="8" style="padding:28px; text-align:center; color:#64748b;">No deals available for this filter.</td></tr>`;
       }
@@ -612,7 +628,7 @@ const StocksDeals = (function () {
   }
 
   document.addEventListener("DOMContentLoaded", init);
-  return { init, computeNetDealsByStock, renderDealsTableHeaders, renderFullDealsPage, renderScreenerDealsPreview };
+  return { init, computeNetDealsByStock, filterPureSideDeals, renderDealsTableHeaders, renderFullDealsPage, renderScreenerDealsPreview };
 })();
 
 if (typeof window !== "undefined") {
