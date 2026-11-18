@@ -715,12 +715,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const activeVol = Number(quoteOverride && quoteOverride.volume !== undefined ? quoteOverride.volume : stock.volume) || 0;
     const activeHigh52 = Number((quoteOverride && quoteOverride.high52) || stock.high52) || 0;
     const activeLow52 = Number((quoteOverride && quoteOverride.low52) || stock.low52) || 0;
+    const activeDayHigh = Number((quoteOverride && quoteOverride.dayHigh) || stock.dayHigh || activeCmp) || 0;
+    const activeDayLow = Number((quoteOverride && quoteOverride.dayLow) || stock.dayLow || activeCmp) || 0;
+    const activePrevClose = Number((quoteOverride && quoteOverride.prevClose) || stock.prevClose || activeCmp) || 0;
     const activeExch = (quoteOverride && quoteOverride.exchangeLabel) || (stock.exchanges === "BSE" ? "BSE" : "NSE");
+    const isBseOnly = stock.exchanges === "BSE";
 
     const tradedValCr = activeCmp > 0 && activeVol > 0 ? (activeCmp * activeVol) / 10000000 : 0;
     const tradedValText = tradedValCr >= 0.1
       ? `₹ ${tradedValCr.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Cr`
-      : (activeCmp > 0 && activeVol > 0 ? `₹ ${((activeCmp * activeVol) / 100000).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} L` : "--");
+      : (activeCmp > 0 && activeVol > 0 ? `₹ ${((activeCmp * activeVol) / 100000).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} L` : "Not Traded");
 
     let activeMcapCr = null;
     if (typeof stock.sharesCr === "number" && stock.sharesCr > 0 && activeCmp > 0) {
@@ -740,94 +744,146 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const fmtNum = (val, digits = 2) => Number(val).toLocaleString("en-IN", { minimumFractionDigits: digits, maximumFractionDigits: digits });
 
-    const cards = [
+    const bhavcopyCards = [
       {
         id: "metric-current-price",
         label: "Current Price",
-        value: activeCmp > 0 ? `₹ ${fmtNum(activeCmp)}` : "--",
+        btnLabel: "Current Price Information",
+        value: activeCmp > 0 ? `₹ ${fmtNum(activeCmp)}` : "Not Available",
         info: `Latest closing equity price from official ${activeExch} Bhavcopy.`
       },
       {
         id: "metric-high-low-52",
         label: "52W High / Low",
-        value: activeHigh52 > 0 && activeLow52 > 0 ? `₹ ${fmtNum(activeHigh52)} / ₹ ${fmtNum(activeLow52)}` : "--",
+        btnLabel: "52W High / Low Information",
+        value: activeHigh52 > 0 && activeLow52 > 0 ? `₹ ${fmtNum(activeHigh52)} / ₹ ${fmtNum(activeLow52)}` : "Not Available",
         info: "Highest and lowest traded prices tracked over the past 52 weeks."
       },
       {
         id: "metric-traded-value",
         label: "Daily Traded Value",
+        btnLabel: "Daily Traded Value Information",
         value: tradedValText,
-        info: "Session turnover computed directly from Bhavcopy Price x Volume."
+        info: `Session turnover computed directly from official ${activeExch} Bhavcopy Price × Volume.`
       },
       {
         id: "metric-volume",
         label: "Trading Volume",
-        value: activeVol > 0 ? `${activeVol.toLocaleString("en-IN")}` : "--",
+        btnLabel: "Trading Volume Information",
+        value: activeVol > 0 ? `${activeVol.toLocaleString("en-IN")} shares` : "0 shares",
         info: "Total number of equity shares traded in the latest exchange session."
-      },
-      {
-        id: "metric-mcap",
-        label: "Market Cap",
-        value: activeMcapCr ? `₹ ${activeMcapCr.toLocaleString("en-IN")} Cr` : "--",
-        info: "Bhavcopy CMP multiplied by diluted equity shares derived from latest official NSE quarterly filings."
-      },
-      {
-        id: "metric-pe",
-        label: "Stock P/E (TTM)",
-        value: activePe !== null ? `${activePe}` : "--",
-        info: "Bhavcopy CMP divided by Trailing 12-Month (4-quarter) Diluted EPS from official NSE filings."
-      },
-      {
-        id: "metric-ttm-eps",
-        label: "TTM EPS",
-        value: typeof stock.ttmEps === "number" ? `₹ ${fmtNum(stock.ttmEps)}` : "--",
-        info: "Trailing 12-Month Diluted Earnings Per Share summed across the last 4 official NSE quarterly filings."
-      },
-      {
-        id: "metric-book-value",
-        label: "Book Value",
-        value: typeof stock.bookValue === "number" ? `₹ ${fmtNum(stock.bookValue, 1)}` : "--",
-        info: "Net Worth (Equity Capital + Reserves) from official NSE XBRL Balance Sheet divided by diluted shares."
-      },
-      {
-        id: "metric-roe",
-        label: "ROE % (TTM)",
-        value: typeof stock.roePct === "number" ? `${stock.roePct}%` : "--",
-        info: "Trailing 12-Month Net Profit divided by Total Equity (Equity Capital + Reserves) from official NSE filings."
-      },
-      {
-        id: "metric-roce",
-        label: "ROCE % (TTM)",
-        value: typeof stock.rocePct === "number" ? `${stock.rocePct}%` : "--",
-        info: "Trailing 12-Month Operating Profit (PBT) divided by Capital Employed (Total Equity + Borrowings) from official NSE filings."
-      },
-      {
-        id: "metric-de",
-        label: "Debt to Equity",
-        value: typeof stock.debtToEquity === "number" ? `${stock.debtToEquity}` : "--",
-        info: "Total Borrowings divided by Total Equity from latest official NSE Ind-AS XBRL Balance Sheet filing."
-      },
-      {
-        id: "metric-ttm-rev-pat",
-        label: "TTM Sales / Net Profit",
-        value: typeof stock.ttmSalesCr === "number"
-          ? `₹ ${stock.ttmSalesCr.toLocaleString("en-IN")} / ₹ ${(stock.ttmPatCr ?? 0).toLocaleString("en-IN")} Cr`
-          : "--",
-        info: "Cumulative Trailing 12-Month Sales and Net Profit (₹ Crores) summed from the last 4 official NSE quarterly filings."
       }
     ];
 
+    const filingCards = isBseOnly
+      ? [
+          {
+            id: "metric-prev-close",
+            label: "Previous Close",
+            btnLabel: "Previous Close Information",
+            value: activePrevClose > 0 ? `₹ ${fmtNum(activePrevClose)}` : "Not Available",
+            info: `Official previous session closing price from ${activeExch} Bhavcopy.`
+          },
+          {
+            id: "metric-day-range",
+            label: "Day High / Low",
+            btnLabel: "Day High / Low Information",
+            value: activeDayHigh > 0 && activeDayLow > 0 ? `₹ ${fmtNum(activeDayHigh)} / ₹ ${fmtNum(activeDayLow)}` : "Not Available",
+            info: `Intraday highest and lowest traded prices from official ${activeExch} Bhavcopy.`
+          },
+          {
+            id: "metric-avg-vol",
+            label: "10-Day Avg Volume",
+            btnLabel: "10-Day Avg Volume Information",
+            value: Number(stock.avgVolume) > 0 ? `${Math.round(Number(stock.avgVolume)).toLocaleString("en-IN")} shares` : `${activeVol.toLocaleString("en-IN")} shares`,
+            info: "Rolling 10-session average trading volume from daily Bhavcopy records."
+          },
+          {
+            id: "metric-dma-pair",
+            label: "50-DMA / 200-DMA",
+            btnLabel: "50-DMA / 200-DMA Information",
+            value: Number(stock.dma50) > 0 && Number(stock.dma200) > 0 ? `₹ ${fmtNum(stock.dma50)} / ₹ ${fmtNum(stock.dma200)}` : `₹ ${fmtNum(activeCmp)}`,
+            info: "50-Day and 200-Day Moving Averages computed from official exchange closing prices."
+          }
+        ]
+      : [
+          {
+            id: "metric-mcap",
+            label: "Market Cap",
+            btnLabel: "Market Cap Information",
+            value: activeMcapCr ? `₹ ${activeMcapCr.toLocaleString("en-IN")} Cr` : "Pending Filing",
+            info: "Bhavcopy CMP multiplied by diluted equity shares derived from latest official NSE quarterly filings."
+          },
+          {
+            id: "metric-pe",
+            label: "Stock P/E (TTM)",
+            btnLabel: "Stock P/E Information",
+            value: activePe !== null ? `${activePe}x` : (typeof stock.ttmEps === "number" && stock.ttmEps <= 0 ? "N/A (Loss)" : "Pending Filing"),
+            info: "Bhavcopy CMP divided by Trailing 12-Month Diluted EPS from official NSE filings."
+          },
+          {
+            id: "metric-ttm-eps",
+            label: "TTM EPS",
+            btnLabel: "TTM EPS Information",
+            value: typeof stock.ttmEps === "number" ? `₹ ${fmtNum(stock.ttmEps)}` : "Pending Filing",
+            info: "Trailing 12-Month Diluted Earnings Per Share from official NSE quarterly filings."
+          },
+          {
+            id: "metric-book-value",
+            label: "Book Value",
+            btnLabel: "Book Value Information",
+            value: typeof stock.bookValue === "number" ? `₹ ${fmtNum(stock.bookValue, 1)}` : "Pending Filing",
+            info: "Net Worth (Equity Capital + Reserves) from official NSE XBRL Balance Sheet divided by diluted shares."
+          },
+          {
+            id: "metric-roe",
+            label: "ROE % (TTM)",
+            btnLabel: "ROE Information",
+            value: typeof stock.roePct === "number" ? `${stock.roePct}%` : "Pending Filing",
+            info: "Trailing 12-Month Net Profit divided by Total Equity (Equity Capital + Reserves) from official NSE filings."
+          },
+          {
+            id: "metric-roce",
+            label: "ROCE % (TTM)",
+            btnLabel: "ROCE Information",
+            value: typeof stock.rocePct === "number" ? `${stock.rocePct}%` : "Pending Filing",
+            info: "Trailing 12-Month Operating Profit (PBT) divided by Capital Employed (Total Equity + Borrowings) from official NSE filings."
+          },
+          {
+            id: "metric-de",
+            label: "Debt to Equity",
+            btnLabel: "Debt to Equity Information",
+            value: typeof stock.debtToEquity === "number" ? `${stock.debtToEquity}` : "Pending Filing",
+            info: "Total Borrowings divided by Total Equity from latest official NSE XBRL Balance Sheet filing."
+          },
+          {
+            id: "metric-ttm-rev-pat",
+            label: "TTM Sales / Net Profit",
+            btnLabel: "TTM Sales & Profit Information",
+            value: typeof stock.ttmSalesCr === "number"
+              ? `₹ ${stock.ttmSalesCr.toLocaleString("en-IN")} / ₹ ${(stock.ttmPatCr ?? 0).toLocaleString("en-IN")} Cr`
+              : "Pending Filing",
+            info: "Cumulative Trailing 12-Month Sales and Net Profit (₹ Crores) from official NSE quarterly filings."
+          }
+        ];
+
+    const cards = bhavcopyCards.concat(filingCards);
+
     return `
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
         ${cards.map((c) => `
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-              <span style="font-size:0.86rem; color:#475569;">${escapeHtml(c.label)}</span>
-              <strong id="${escapeHtml(c.id)}" style="font-size:0.93rem; color:#0f172a; text-align:right;">${escapeHtml(c.value)}</strong>
+          <div class="fundamental-item-card" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 16px;">
+            <div class="fundamental-line-item" style="display:block; font-size:0.94rem; color:#0f172a; line-height:1.5; padding-bottom:8px; border-bottom:1px solid #e2e8f0;">
+              <span style="color:#475569; font-weight:600;">${escapeHtml(c.label)}:</span>
+              <strong id="${escapeHtml(c.id)}" style="font-size:0.98rem; color:#0f172a; font-weight:700; margin-left:6px;">${escapeHtml(c.value)}</strong>
             </div>
-            <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="margin-top:6px; background:none; border:none; padding:0; font-size:0.74rem; color:#2563eb; cursor:pointer; font-weight:600;">Ratio Information</button>
-            <div class="ratio-info-box" hidden style="margin-top:6px; font-size:0.78rem; color:#334155; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:7px 9px; line-height:1.45;">
-              ${escapeHtml(c.info)}
+            <div style="margin-top:8px; display:block;">
+              <button type="button" class="ratio-info-toggle-btn" aria-expanded="false" style="cursor:pointer; font-size:0.76rem; font-weight:600; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:4px 10px; display:inline-block;">
+                ${escapeHtml(c.btnLabel || (c.label + " Information"))}
+              </button>
+              <div class="ratio-info-box" hidden style="margin-top:6px; font-size:0.8rem; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:8px 10px; line-height:1.45;">
+                ${escapeHtml(c.info)}
+              </div>
             </div>
           </div>
         `).join("")}
@@ -839,6 +895,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataset = getStockDataset();
     const targetInd = String(stock.industry || "").trim().toLowerCase();
     const targetSec = String(stock.sector || "").trim().toLowerCase();
+    const isBseOnly = stock.exchanges === "BSE";
 
     // Match exact industry peers first, then backfill from normalized sector if fewer than 7
     const sameSector = [];
@@ -853,7 +910,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    if (sameSector.length < 7 && targetSec) {
+    if (sameSector.length < 15 && targetSec) {
       for (const s of dataset) {
         if (s && s.symbol && !seenSyms.has(s.symbol) && String(s.sector || "").trim().toLowerCase() === targetSec) {
           seenSyms.add(s.symbol);
@@ -864,11 +921,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function peerRankScore(p) {
       const mcap = Number(p.marketCapCr) || 0;
+      const hasFullRatios = mcap > 0 && typeof p.pe === "number" && typeof p.roePct === "number" && typeof p.debtToEquity === "number";
+      if (hasFullRatios) return mcap * 1000000;
       if (mcap > 0) return mcap * 100000;
       return ((Number(p.cmp) || 0) * (Number(p.volume) || 0)) / 10000000;
     }
 
-    // Rank peers by Market Cap (when filed) and Daily Traded Value (never penny-stock share count)
+    // Rank peers by complete filing fundamentals + Market Cap + Daily Traded Value
     sameSector.sort((a, b) => peerRankScore(b) - peerRankScore(a));
 
     // Take top 7 peers + ensure current stock is always included in the table
@@ -901,9 +960,92 @@ document.addEventListener("DOMContentLoaded", function () {
     const avgPe = avgMetric(topPeers, (p) => (typeof p.pe === "number" && p.pe > 0 ? p.pe : NaN), 1, true);
     const avgRoe = avgMetric(topPeers, (p) => (typeof p.roePct === "number" ? p.roePct : NaN), 1, false);
     const avgDe = avgMetric(topPeers, (p) => (typeof p.debtToEquity === "number" ? p.debtToEquity : NaN), 2, false);
+    const avgH52 = avgMetric(topPeers, (p) => (Number(p.high52) > 0 ? Number(p.high52) : NaN), 2, true);
+    const avgL52 = avgMetric(topPeers, (p) => (Number(p.low52) > 0 ? Number(p.low52) : NaN), 2, true);
     const avgDma50 = avgMetric(topPeers, (p) => (p.dma50 !== undefined && p.dma50 !== null ? Number(p.dma50) : NaN), 2, true);
+    const avgDma200 = avgMetric(topPeers, (p) => (p.dma200 !== undefined && p.dma200 !== null ? Number(p.dma200) : NaN), 2, true);
     const avgRsi = avgMetric(topPeers, (p) => (p.rsi14 !== undefined && p.rsi14 !== null ? Number(p.rsi14) : NaN), 1, true);
+    const avgSurge = avgMetric(topPeers, (p) => (Number(p.volumeSurge) > 0 ? Number(p.volumeSurge) : NaN), 2, true);
     const avgTurnover = avgMetric(topPeers, (p) => (Number(p.cmp) > 0 && Number(p.volume) > 0 ? (Number(p.cmp) * Number(p.volume)) / 10000000 : NaN), 2, true);
+
+    if (isBseOnly) {
+      return `
+        <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
+          <table id="company-peers-table" style="width:100%; border-collapse:collapse; font-size:0.85rem; min-width:960px;">
+            <thead>
+              <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; text-align:left;">
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; width:42px;">S.No.</th>
+                <th style="padding:10px 12px; color:#1e293b; font-weight:700;">Company Name</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700;">Exchange</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">CMP (₹)</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">Day Chg %</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">52W High (₹)</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">52W Low (₹)</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">50-DMA (₹)</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">200-DMA (₹)</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">14D RSI</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">Vol Surge</th>
+                <th style="padding:10px 10px; color:#1e293b; font-weight:700; text-align:right;">Traded Val (₹ Cr)</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${topPeers
+                .map((p, idx) => {
+                  const isCurrent = p.symbol === stock.symbol;
+                  const pCmp = Number(p.cmp) || 0;
+                  const pChg = typeof p.dayChangePct === "number" && !isNaN(p.dayChangePct) ? p.dayChangePct : null;
+                  const pH52 = Number(p.high52) > 0 ? "₹ " + Number(p.high52).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
+                  const pL52 = Number(p.low52) > 0 ? "₹ " + Number(p.low52).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
+                  const pDma50 = Number(p.dma50) > 0 ? "₹ " + Number(p.dma50).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
+                  const pDma200 = Number(p.dma200) > 0 ? "₹ " + Number(p.dma200).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--";
+                  const pRsi = typeof p.rsi14 === "number" && p.rsi14 > 0 ? Number(p.rsi14).toFixed(1) : "--";
+                  const pSurge = Number(p.volumeSurge) > 0 ? Number(p.volumeSurge).toFixed(2) + "x" : "--";
+                  const pTurnoverCr = pCmp > 0 && Number(p.volume) > 0 ? ((pCmp * Number(p.volume)) / 10000000).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "0.00";
+                  const pExch = p.exchanges || (p.bseCode ? "NSE,BSE" : "NSE");
+                  const chgColor = pChg === null ? "#64748b" : (pChg >= 0 ? "#16a34a" : "#dc2626");
+                  const chgText = pChg === null ? "--" : `${pChg >= 0 ? "+" : ""}${pChg.toFixed(2)}%`;
+                  return `
+                    <tr style="background:${isCurrent ? "#eff6ff" : idx % 2 === 0 ? "#ffffff" : "#f8fafc"}; border-bottom:1px solid #f1f5f9;">
+                      <td style="padding:10px 10px; color:#64748b; font-weight:600;">${idx + 1}.</td>
+                      <td style="padding:10px 12px;">
+                        <a href="index.html?symbol=${encodeURIComponent(p.symbol)}" class="stock-peer-link" data-symbol="${escapeHtml(p.symbol)}" style="color:${isCurrent ? "#1d4ed8" : "#2563eb"}; font-weight:${isCurrent ? "800" : "700"}; text-decoration:none;">
+                          ${escapeHtml(p.name)}
+                        </a>
+                        <span style="font-size:0.75rem; color:#64748b; margin-left:6px;">(${escapeHtml(p.symbol)})</span>
+                      </td>
+                      <td style="padding:10px 10px; color:#475569; font-size:0.78rem; font-weight:600;">${escapeHtml(pExch)}</td>
+                      <td style="padding:10px 10px; text-align:right; font-weight:700; color:#0f172a;">₹ ${pCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td style="padding:10px 10px; text-align:right; font-weight:700; color:${chgColor};">${chgText}</td>
+                      <td style="padding:10px 10px; text-align:right; color:#334155;">${pH52}</td>
+                      <td style="padding:10px 10px; text-align:right; color:#334155;">${pL52}</td>
+                      <td style="padding:10px 10px; text-align:right; color:#334155;">${pDma50}</td>
+                      <td style="padding:10px 10px; text-align:right; color:#334155;">${pDma200}</td>
+                      <td style="padding:10px 10px; text-align:right; font-weight:600; color:#0f172a;">${pRsi}</td>
+                      <td style="padding:10px 10px; text-align:right; color:#334155;">${pSurge}</td>
+                      <td style="padding:10px 10px; text-align:right; color:#475569;">${pTurnoverCr}</td>
+                    </tr>
+                  `;
+                })
+                .join("")}
+              <tr style="background:#f8fafc; border-top:2px solid #cbd5e1; font-weight:700;">
+                <td style="padding:10px 10px; color:#64748b;">—</td>
+                <td style="padding:10px 12px; color:#0f172a;">Peer Average (${escapeHtml(stock.industry || stock.sector || "Peers")})</td>
+                <td style="padding:10px 10px; color:#64748b;">—</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgCmp !== null ? "₹ " + avgCmp.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:${avgChg !== null && avgChg >= 0 ? "#16a34a" : "#dc2626"};">${avgChg !== null ? (avgChg >= 0 ? "+" : "") + avgChg.toFixed(2) + "%" : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgH52 !== null ? "₹ " + avgH52.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgL52 !== null ? "₹ " + avgL52.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgDma50 !== null ? "₹ " + avgDma50.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgDma200 !== null ? "₹ " + avgDma200.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgRsi !== null ? avgRsi.toFixed(1) : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgSurge !== null ? avgSurge.toFixed(2) + "x" : "--"}</td>
+                <td style="padding:10px 10px; text-align:right; color:#0f172a;">${avgTurnover !== null ? avgTurnover.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "--"}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
 
     return `
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
@@ -991,7 +1133,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=62")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=64")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1003,7 +1145,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=62")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=64")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1023,7 +1165,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=62")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=64")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }

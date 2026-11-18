@@ -45,14 +45,14 @@
     "balanceSheet": [
       {
         "year": "Sep 26",
-        "equityCapital": "0",
-        "reserves": "0",
-        "borrowings": "0",
-        "otherLiabilities": "4,26,927",
+        "equityCapital": "495",
+        "reserves": "40,727",
+        "borrowings": "24,632",
+        "otherLiabilities": "3,61,073",
         "totalLiabilities": "4,26,927",
-        "fixedAssets": "0",
-        "investments": "0",
-        "otherAssets": "4,26,927",
+        "fixedAssets": "1,470",
+        "investments": "84,045",
+        "otherAssets": "3,41,412",
         "totalAssets": "4,26,927"
       }
     ],
@@ -76,13 +76,18 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740409_16102026072531_WEB.xml",
     "ratios": {
-      "marketCapCr": 89559,
+      "marketCapCr": 89435,
       "pe": 18.4,
       "ttmEps": 19.72,
       "ttmSalesCr": 34010,
       "ttmPatCr": 4863,
+      "bookValue": 166.9,
+      "roePct": 11.8,
+      "rocePct": 9.7,
+      "debtToEquity": 0.6,
       "promoterPct": 0
-    }
+    },
+    "debtToEquity": 0.6
   },
   "FINEORG": {
     "about": "Fine Organic Industries Limited engages in manufacture, processing, supply, distribution, dealing, import, and export of oleochemical-based additives in India and internationally. The company offers food ingredient, such as emulsifiers, antifungal agents, bakery products, starch complexity agents, viscosity modifiers, anti-blooming agents, anti-splattering agents, crystal promoters, and anti-foam agents. It also provides polymer additives, including lubricants, anti-fogging additives, anti-slip agents, anti-static additives, anti-scratch additives, processing aids, slip and anti-blocking, dispersants, mold release agents, and rubber processor additives; personal care ingredients; feed ingredients; and specialty additives. The company's products are used in plastics, foods, rubbers, coatings, cosmetics, feed nutrition, and other specialty applications. Fine Organic Industries Limited was founded in 1970 and is based in Mumbai, India.",
@@ -161,8 +166,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751235_02112026054729_WEB.xml",
     "ratios": {
-      "marketCapCr": 16331,
-      "pe": 38.1,
+      "marketCapCr": 16161,
+      "pe": 37.7,
       "ttmEps": 139.87,
       "ttmSalesCr": 2612,
       "ttmPatCr": 429,
@@ -251,8 +256,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754104_05112026073944_WEB.xml",
     "ratios": {
-      "marketCapCr": 57442,
-      "pe": 248.4,
+      "marketCapCr": 60707,
+      "pe": 262.5,
       "ttmEps": 3.06,
       "ttmSalesCr": 2055,
       "ttmPatCr": 231,
@@ -341,8 +346,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748280_28102026085411_WEB.xml",
     "ratios": {
-      "marketCapCr": 613,
-      "pe": 22.1,
+      "marketCapCr": 592,
+      "pe": 21.4,
       "ttmEps": 6.41,
       "ttmSalesCr": 290,
       "ttmPatCr": 26,
@@ -409,7 +414,7 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:15.289Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 51789,
+      "marketCapCr": 51276,
       "ttmEps": -1.64,
       "ttmSalesCr": 6093,
       "ttmPatCr": -106,
@@ -493,8 +498,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1743979_22102026044325_WEB.xml",
     "ratios": {
-      "marketCapCr": 849,
-      "pe": 36.4,
+      "marketCapCr": 815,
+      "pe": 35,
       "ttmEps": 18.8,
       "ttmSalesCr": 560,
       "ttmPatCr": 24,
@@ -583,8 +588,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752231_03112026082344_WEB.xml",
     "ratios": {
-      "marketCapCr": 1363,
-      "pe": 33.3,
+      "marketCapCr": 1393,
+      "pe": 34,
       "ttmEps": 16.53,
       "ttmSalesCr": 932,
       "ttmPatCr": 40,
@@ -651,8 +656,8 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:15.317Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 6140,
-      "pe": 18.9,
+      "marketCapCr": 5769,
+      "pe": 17.8,
       "ttmEps": 2.78,
       "ttmSalesCr": 426,
       "ttmPatCr": 93,
@@ -736,8 +741,8 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:15.553Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 222,
-      "pe": 148,
+      "marketCapCr": 210,
+      "pe": 140,
       "ttmEps": 0.01,
       "ttmSalesCr": 34,
       "ttmPatCr": 2,
@@ -826,8 +831,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747155_27102026070916_WEB.xml",
     "ratios": {
-      "marketCapCr": 6396,
-      "pe": 20.2,
+      "marketCapCr": 6215,
+      "pe": 19.7,
       "ttmEps": 19.29,
       "ttmSalesCr": 2365,
       "ttmPatCr": 314,
@@ -894,8 +899,8 @@
     "lastFinancialStatementUpdate": "2026-11-06T07:40:07.985Z",
     "financialChangeSummary": "Debt/Equity updated: 0.52 -> 0.09",
     "ratios": {
-      "marketCapCr": 2168,
-      "pe": 33.6,
+      "marketCapCr": 2020,
+      "pe": 31.3,
       "ttmEps": 1.7,
       "ttmSalesCr": 1180,
       "ttmPatCr": 68,
@@ -979,8 +984,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739428_15102026090328_WEB.xml",
     "ratios": {
-      "marketCapCr": 6037,
-      "pe": 14.1,
+      "marketCapCr": 5719,
+      "pe": 13.3,
       "ttmEps": 11.65,
       "ttmSalesCr": 2563,
       "ttmPatCr": 434,
@@ -1069,7 +1074,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_713289_568_15092022141036_WEB.xml",
     "ratios": {
-      "marketCapCr": 14,
+      "marketCapCr": 15,
       "ttmEps": -47.03,
       "ttmSalesCr": 1534,
       "ttmPatCr": -2325,
@@ -1157,7 +1162,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_713327_998_15092022141925_WEB.xml",
     "ratios": {
-      "marketCapCr": 99,
+      "marketCapCr": 94,
       "ttmEps": -47.03,
       "ttmSalesCr": 1534,
       "ttmPatCr": -2325,
@@ -1227,8 +1232,14 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753784_05112026055128_WEB.xml",
     "ratios": {
-      "marketCapCr": 1366,
+      "marketCapCr": 1335,
+      "pe": 23,
+      "ttmEps": 20.18,
+      "ttmSalesCr": 476,
+      "ttmPatCr": 58,
       "bookValue": 154.1,
+      "roePct": 13.1,
+      "rocePct": 14.2,
       "debtToEquity": 0.23,
       "promoterPct": 60.12
     },
@@ -1311,8 +1322,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749135_29102026062100_WEB.xml",
     "ratios": {
-      "marketCapCr": 104,
-      "pe": 20.2,
+      "marketCapCr": 102,
+      "pe": 19.8,
       "ttmEps": 1.36,
       "ttmSalesCr": 77,
       "ttmPatCr": 3,
@@ -1401,8 +1412,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756702_12112026060924_WEB.xml",
     "ratios": {
-      "marketCapCr": 5105,
-      "pe": 18,
+      "marketCapCr": 5682,
+      "pe": 20.1,
       "ttmEps": 107.68,
       "ttmSalesCr": 3170,
       "ttmPatCr": 283,
@@ -1469,8 +1480,8 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:16.481Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 4502,
-      "pe": 19.4,
+      "marketCapCr": 4568,
+      "pe": 19.7,
       "ttmEps": 5.26,
       "ttmSalesCr": 5345,
       "ttmPatCr": 232,
@@ -1606,8 +1617,14 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755504_07112026082832_WEB.xml",
     "ratios": {
-      "marketCapCr": 19139,
+      "marketCapCr": 19172,
+      "pe": 21.5,
+      "ttmEps": 58.31,
+      "ttmSalesCr": 8543,
+      "ttmPatCr": 891,
       "bookValue": 358.9,
+      "roePct": 16.3,
+      "rocePct": 21.1,
       "debtToEquity": 0.01,
       "promoterPct": 35.86
     },
@@ -1681,8 +1698,14 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1754074_05112026072728_WEB.xml",
     "ratios": {
-      "marketCapCr": 966,
+      "marketCapCr": 942,
+      "pe": 20.5,
+      "ttmEps": 3.29,
+      "ttmSalesCr": 415,
+      "ttmPatCr": 45,
       "bookValue": 26.2,
+      "roePct": 12.3,
+      "rocePct": 16.4,
       "debtToEquity": 0,
       "promoterPct": 56.21
     },
@@ -1734,14 +1757,14 @@
     "balanceSheet": [
       {
         "year": "Sep 26",
-        "equityCapital": "0",
-        "reserves": "0",
-        "borrowings": "0",
-        "otherLiabilities": "5,894",
+        "equityCapital": "83",
+        "reserves": "687",
+        "borrowings": "2,225",
+        "otherLiabilities": "2,899",
         "totalLiabilities": "5,894",
-        "fixedAssets": "0",
-        "investments": "0",
-        "otherAssets": "5,894",
+        "fixedAssets": "351",
+        "investments": "3,925",
+        "otherAssets": "1,618",
         "totalAssets": "5,894"
       }
     ],
@@ -1765,12 +1788,17 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1749384_29102026081942_WEB.xml",
     "ratios": {
-      "marketCapCr": 1067,
+      "marketCapCr": 1061,
       "ttmEps": -1.84,
       "ttmSalesCr": 1375,
       "ttmPatCr": -16,
+      "bookValue": 92,
+      "roePct": -2.1,
+      "rocePct": -0.5,
+      "debtToEquity": 2.89,
       "promoterPct": 75
-    }
+    },
+    "debtToEquity": 2.89
   },
   "FINPIPE": {
     "about": "Finolex Industries Limited manufactures and sells polyvinyl chloride (PVC) pipes and fittings, and PVC resins in India. The company operates in two segments, PVC Resin and PVC Pipes and Fittings. It offers agriculture pipes and fittings; column pipes; casing pipes; and solvent cement and lubricants. The company also provides plumbing and sanitation pipes and fitting, such as ASTM pipes and fittings; CPVC pipes and fittings; SWR pipes and fittings; sewerage pipes; and solvent cement, lubricant, and primer. It distributes its products through dealers and retailers. Finolex Industries Limited was founded in 1956 and is headquartered in Pune, India.",
@@ -1849,8 +1877,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750572_30102026103339_WEB.xml",
     "ratios": {
-      "marketCapCr": 9263,
-      "pe": 15.6,
+      "marketCapCr": 9098,
+      "pe": 15.4,
       "ttmEps": 9.61,
       "ttmSalesCr": 4413,
       "ttmPatCr": 593,
@@ -1908,7 +1936,11 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:17.474Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 8766,
+      "marketCapCr": 8510,
+      "pe": 62.7,
+      "ttmEps": 2.53,
+      "ttmSalesCr": 2983,
+      "ttmPatCr": 103,
       "promoterPct": 0
     }
   },
@@ -1967,7 +1999,7 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:17.452Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 2025,
+      "marketCapCr": 1909,
       "ttmEps": -0.09,
       "ttmSalesCr": 18,
       "ttmPatCr": -14,
@@ -2042,8 +2074,14 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1746173_26102026070534_WEB.xml",
     "ratios": {
-      "marketCapCr": 13243,
+      "marketCapCr": 12690,
+      "pe": 11.3,
+      "ttmEps": 37.96,
+      "ttmSalesCr": 3387,
+      "ttmPatCr": 1119,
       "bookValue": 268,
+      "roePct": 14.2,
+      "rocePct": 18.5,
       "debtToEquity": 0,
       "promoterPct": 18.61
     },
@@ -2053,7 +2091,7 @@
     "about": "Flair Writing Industries Limited manufactures and sells writing instruments, stationeries, and other allied products in India and internationally. The company offers ball, fountain, gel, roller, plastic, and metal pens; mechanical pencils, correction pens, and refills; sketch pens, colour pencils, wax crayons, oil pastels, activity kits and school stationery sets; art and hobby products; calculators; stainless steel vacuum-insulated bottles, flasks, and hydration solutions; storage and serving solutions under the Flair, Hauser, Pierre Cardin, Flair Creative, Flair Designer Houseware, HAUSER ARTZ, and Flair Calculator brands. It also provides steel bottles and houseware products; gift sets; wooden pencil; colouring range products; geometry box; crayons and oil pastel; office stationery; colour and writing kits; tumblers; coffee mugs and travel mugs; vacuum-insulated bottles; and kitchenware products. Flair Writing Industries Limited was founded in 1976 and is based in Mumbai, India.",
     "website": "https://www.flairworld.in",
     "industry": "Business Equipment & Supplies",
-    "sector": "Diversified Equities",
+    "sector": "Consumer & FMCG",
     "quarterlyResults": [
       {
         "period": "Dec 25",
@@ -2126,8 +2164,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751587_02112026115333_WEB.xml",
     "ratios": {
-      "marketCapCr": 2648,
-      "pe": 19.8,
+      "marketCapCr": 2567,
+      "pe": 19.2,
       "ttmEps": 12.59,
       "ttmSalesCr": 1340,
       "ttmPatCr": 133,
@@ -2289,8 +2327,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752268_03112026085842_WEB.xml",
     "ratios": {
-      "marketCapCr": 52899,
-      "pe": 65.4,
+      "marketCapCr": 53010,
+      "pe": 65.6,
       "ttmEps": 73.57,
       "ttmSalesCr": 5262,
       "ttmPatCr": 808,
@@ -2370,8 +2408,14 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1757077_12112026104329_WEB.xml",
     "ratios": {
-      "marketCapCr": 2689,
+      "marketCapCr": 2482,
+      "pe": 12.9,
+      "ttmEps": 34.35,
+      "ttmSalesCr": 2157,
+      "ttmPatCr": 191,
       "bookValue": 167.1,
+      "roePct": 20.4,
+      "rocePct": 27.5,
       "debtToEquity": 0,
       "promoterPct": 74.98
     },
@@ -2454,8 +2498,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753736_05112026054054_WEB.xml",
     "ratios": {
-      "marketCapCr": 59,
-      "pe": 7.4,
+      "marketCapCr": 52,
+      "pe": 6.5,
       "ttmEps": 1.06,
       "ttmSalesCr": 89,
       "ttmPatCr": 7,
@@ -2544,8 +2588,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754789_06112026044136_WEB.xml",
     "ratios": {
-      "marketCapCr": 313,
-      "pe": 51.6,
+      "marketCapCr": 317,
+      "pe": 52.3,
       "ttmEps": 1.03,
       "ttmSalesCr": 198,
       "ttmPatCr": 7,
@@ -2634,8 +2678,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754332_05112026100638_WEB.xml",
     "ratios": {
-      "marketCapCr": 328,
-      "pe": 13.2,
+      "marketCapCr": 308,
+      "pe": 12.4,
       "ttmEps": 3.55,
       "ttmSalesCr": 916,
       "ttmPatCr": 26,
@@ -2724,8 +2768,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748311_28102026092235_WEB.xml",
     "ratios": {
-      "marketCapCr": 26098,
-      "pe": 22.1,
+      "marketCapCr": 25510,
+      "pe": 21.6,
       "ttmEps": 895.58,
       "ttmSalesCr": 10184,
       "ttmPatCr": 1180,
@@ -2792,8 +2836,8 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:18.526Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 4686,
-      "pe": 48.9,
+      "marketCapCr": 4535,
+      "pe": 47.3,
       "ttmEps": 128.5,
       "ttmSalesCr": 718,
       "ttmPatCr": 96,
@@ -2877,8 +2921,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752352_03112026110326_WEB.xml",
     "ratios": {
-      "marketCapCr": 14083,
-      "pe": 50.9,
+      "marketCapCr": 13762,
+      "pe": 49.8,
       "ttmEps": 16.13,
       "ttmSalesCr": 2124,
       "ttmPatCr": 270,
@@ -2945,8 +2989,8 @@
     "lastFinancialStatementUpdate": "2026-11-06T07:40:13.166Z",
     "financialChangeSummary": "Debt/Equity updated: 0.08 -> 0.87",
     "ratios": {
-      "marketCapCr": 17182,
-      "pe": 72,
+      "marketCapCr": 16742,
+      "pe": 70.2,
       "ttmEps": 21.2,
       "ttmSalesCr": 2189,
       "ttmPatCr": 230,
@@ -3008,8 +3052,8 @@
     "lastFinancialStatementUpdate": "2026-11-06T07:40:13.108Z",
     "financialChangeSummary": "Debt/Equity updated: 0.45 -> 0.06",
     "ratios": {
-      "marketCapCr": 3113,
-      "pe": 52.1,
+      "marketCapCr": 2874,
+      "pe": 48.1,
       "ttmEps": 29.9,
       "ttmSalesCr": 386,
       "ttmPatCr": 59,
@@ -3093,8 +3137,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749059_29102026054808_WEB.xml",
     "ratios": {
-      "marketCapCr": 19879,
-      "pe": 32.9,
+      "marketCapCr": 19855,
+      "pe": 32.8,
       "ttmEps": 8.75,
       "ttmSalesCr": 3368,
       "ttmPatCr": 605,
@@ -3183,8 +3227,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1751386_02112026071637_WEB.xml",
     "ratios": {
-      "marketCapCr": 2752,
-      "pe": 9.9,
+      "marketCapCr": 2619,
+      "pe": 9.4,
       "ttmEps": 17.32,
       "ttmSalesCr": 1798,
       "ttmPatCr": 276,
@@ -3200,7 +3244,7 @@
     "about": "Fusion CX Limited provides integrated customer experience (CX) services in India, the United States, the United Kingdom, Canada, Europe, and internationally. It offers its services across multiple channels, including voice, email, chat, social media, and message. Its services include customer acquisition, inbound and outbound sales, and cross-selling/upselling strategies; multichannel customer service across voice, chat, email, and social media and complaint handling; and efficient order fulfilment, covering order processing, returns, refunds, and billing support. It also assists with payment collections and debt resolution by managing early-stage collections and first-party omnichannel recovery efforts and support customer retention and loyalty through proactive outreach, feedback management, and loyalty programs; technical support, including L1/L2 troubleshooting, lifecycle management, and warranty services; and high-tech support, specializing in seller assistance, content moderation, and platform optimization for digital and technology-driven businesses. It provides Arya, an AI-powered platform that integrates conversational AI, real-time employee assist, AI-led quality monitoring, predictive analytics, and voice of customer into a unified ecosystem; MindVoice, a conversational AI platform that delivers AI-driven conversational voice bot and chatbot solutions; Mind Workplace that automates end-to-end HR processes from hire-to-retire, enhancing employee lifecycle management and MindSpeech, an AI-powered speech optimization tool that enhances voice communication by harmonizing accents, reducing noise, and improving clarity in real time. It serves telecom and utilities, healthcare and life sciences, high tech growth and travel, banking, financial services and insurance, and retail industries. The company was incorporated in 2004 and is headquartered in Kolkata, India.",
     "website": "https://www.fusioncx.com",
     "industry": "Specialty Business Services",
-    "sector": "Diversified Equities",
+    "sector": "Information Technology",
     "quarterlyResults": [
       {
         "period": "Dec 25",
@@ -3251,8 +3295,8 @@
     "lastFinancialStatementUpdate": "2026-11-13T12:08:19.325Z",
     "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
     "ratios": {
-      "marketCapCr": 1030,
-      "pe": 18.8,
+      "marketCapCr": 994,
+      "pe": 18.1,
       "ttmEps": 16.1,
       "ttmSalesCr": 254,
       "ttmPatCr": 55,

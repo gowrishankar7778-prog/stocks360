@@ -132,89 +132,89 @@ function normalizeSectorName(rawSector, rawIndustry, companyName) {
   const combined = `${ind} ${sec}`;
 
   // 1. Banking & Financial Sub-sectors (check Capital Markets & Banking before generic Finance)
-  if (/CAPITAL MARKET|ASSET MANAGEMENT|STOCK EXCHANGE|DEPOSITORY|BROKER/i.test(combined) || /DEPOSITORY|STOCK EXCHANGE|SECURITIES|BROKING|MUTUAL FUND AMC/i.test(name)) {
+  if (/CAPITAL MARKET|ASSET MANAGEMENT|STOCK EXCHANGE|DEPOSITORY|BROKER/i.test(combined) || /DEPOSITORY|STOCK EXCHANGE|SECURITIES|BROKING|MUTUAL FUND AMC|SHARE BROK|WEALTH/i.test(name)) {
     return 'Capital Markets & Asset Management';
   }
   if (/BANK/i.test(ind) || (/BANK/i.test(sec) && !/NBFC/i.test(sec)) || /\bBANK\b/i.test(name)) {
     return 'Banking & Financial Services';
   }
-  if (/CREDIT SERVICES|INSURANCE|MORTGAGE|FINANCIAL CONGLOMERATE|FINANCIAL SERVICES|NBFC/i.test(combined) || /FINANC|FINSERV|CAPITAL|INVEST|HOUSING FIN|INSURANCE|CREDIT/i.test(name)) {
+  if (/CREDIT SERVICES|INSURANCE|MORTGAGE|FINANCIAL CONGLOMERATE|FINANCIAL SERVICES|NBFC|RENTAL & LEASING/i.test(combined) || /FINANC|FINSERV|FINVEST|FINCAP|FINLEASE|CAPITAL|INVEST|HOUSING FIN|INSURANCE|CREDIT|LEASING|HOLDINGS|VENTURES|MERCANTILE|NIDHI|CHIT/i.test(name)) {
     return 'Financial Services & NBFC';
   }
 
   // 2. Technology & Telecom/Media
-  if (/TELECOM|BROADCAST|MEDIA|ENTERTAINMENT|PUBLISHING|COMMUNICATION|MOTION PICTURE|ADVERTISING/i.test(combined) || /TELECOM|MEDIA|COMMUNICATION|ENTERTAINMENT|NETWORK|TV/i.test(name)) {
+  if (/TELECOM|BROADCAST|MEDIA|ENTERTAINMENT|PUBLISHING|COMMUNICATION|MOTION PICTURE|ADVERTISING/i.test(combined) || /TELECOM|MEDIA|COMMUNICATION|ENTERTAINMENT|NETWORK|TV|FILMS|PICTURES|STUDIOS|PUBLICATION|PRESS/i.test(name)) {
     return 'Media & Telecommunications';
   }
-  if (/INFORMATION TECHNOLOGY|SOFTWARE|COMPUTER|SEMICONDUCTOR|INTERNET CONTENT|IT SERVICES|TECH/i.test(combined) || /\bTECH\b|INFOTECH|SOFTWARE|SOFT\b|SYSTEMS|DIGITAL|CYBER/i.test(name)) {
+  if (/INFORMATION TECHNOLOGY|SOFTWARE|COMPUTER|SEMICONDUCTOR|INTERNET CONTENT|IT SERVICES|TECH|SPECIALTY BUSINESS SERVICES|CONSULTING SERVICES/i.test(combined) || /\bTECH\b|INFOTECH|SOFTWARE|SOFT\b|SYSTEMS|DIGITAL|CYBER|COMPUTERS|SOLUTIONS|E-SERVICES|CONSULT/i.test(name)) {
     return 'Information Technology';
   }
 
   // 3. Healthcare & Pharma
-  if (/DRUG|PHARMA|BIOTECH|HEALTHCARE|DIAGNOSTIC|MEDICAL|HOSPITAL/i.test(combined) || /PHARMA|HEALTH|BIO|LAB|DRUG|MEDIC|HOSPITAL/i.test(name)) {
+  if (/DRUG|PHARMA|BIOTECH|HEALTHCARE|DIAGNOSTIC|MEDICAL|HOSPITAL/i.test(combined) || /PHARMA|HEALTH|BIO|LAB|DRUG|MEDIC|HOSPITAL|CLINIC|SURGICAL|LIFESCIENCE|REMEDIES|FORMULATION/i.test(name)) {
     return 'Pharmaceuticals & Healthcare';
   }
 
   // 4. Agri & Chemicals
-  if (/AGRICULTURAL INPUTS|FERTILIZ|AGRO.?CHEM/i.test(combined) || /FERTIL|AGROCHEM|PESTICID|CROP/i.test(name)) {
+  if (/AGRICULTURAL INPUTS|FERTILIZ|AGRO.?CHEM/i.test(combined) || /FERTIL|AGROCHEM|PESTICID|CROP|SEEDS|FARMS|BIO.?TECH/i.test(name)) {
     return 'Agri & Fertilizers';
   }
-  if (/CHEMICAL|PETROCHEM|PLASTIC|POLYMER|SPECIALITY/i.test(combined) || /CHEM|CARBON|POLY|PETRO|DYES|PIGMENT/i.test(name)) {
+  if (/CHEMICAL|PETROCHEM|PLASTIC|POLYMER|SPECIALITY|PAPER & PAPER|LUMBER & WOOD/i.test(combined) || /CHEM|CARBON|POLY|PETRO|DYES|PIGMENT|PAPER|PLYWOOD|PLY\b|WOOD|TIMBER|GLASS|RUBBER|PLAST|RESIN|COATING|PAINT|ADHESIVE|SOLVENT|ALKALI|ACID|OXIDE/i.test(name)) {
     return 'Chemicals & Materials';
   }
 
   // 5. Automobiles & Auto Ancillaries
-  if (/AUTO|VEHICLE|WHEELER|TYRE|TIRE|RECREATIONAL VEHICLES/i.test(combined) || /AUTO|MOTOR|TYRE|VEHICLE|BRAKE|GEAR|AXLE/i.test(name)) {
+  if (/AUTO|VEHICLE|WHEELER|TYRE|TIRE|RECREATIONAL VEHICLES/i.test(combined) || /AUTO|MOTOR|TYRE|VEHICLE|BRAKE|GEAR|AXLE|LEYLAND|TRACTOR|TILLER|CRANKSHAFT|CLUTCH|PISTON|SPRING/i.test(name)) {
     return 'Automotive & Ancillaries';
   }
 
   // 6. Metals & Mining
-  if (/STEEL|ALUMINUM|COPPER|METAL|GOLD|SILVER|MINING|COAL|ZINC/i.test(combined) || /STEEL|METAL|MINING|IRON|ALUMIN|COPPER|COAL|ALLOY|FORG/i.test(name)) {
+  if (/STEEL|ALUMINUM|COPPER|METAL|GOLD|SILVER|MINING|COAL|ZINC/i.test(combined) || /STEEL|METAL|MINING|IRON|ALUMIN|COPPER|COAL|ALLOY|FORG|CASTING|FOUNDRY|MINERAL|ORES|ZINC|BRASS|FERRO|ISPAT/i.test(name)) {
     return 'Metals & Mining';
   }
 
   // 7. Energy, Oil & Power
-  if (/OIL|GAS|REFIN|UTILITIES|POWER|SOLAR|ELECTRIC|RENEWABLE|ENERGY/i.test(combined) || /POWER|ENERGY|SOLAR|WIND|OIL|PETROLEUM|REFIN|ELECTRIC|HYDRO|GREEN/i.test(name)) {
+  if (/OIL|GAS|REFIN|UTILITIES|POWER|SOLAR|ELECTRIC|RENEWABLE|ENERGY/i.test(combined) || /POWER|ENERGY|SOLAR|WIND|OIL|PETROLEUM|REFIN|ELECTRIC|HYDRO|GREEN|GAS\b|URJA|VIDYUT/i.test(name)) {
     return 'Energy, Oil & Power';
   }
 
   // 8. Capital Goods & Industrial Machinery
-  if (/INDUSTRIAL MACHINERY|ELECTRICAL EQUIPMENT|AEROSPACE|DEFENSE|DEFENCE|TOOLS|INDUSTRIAL DISTRIBUTION|CONGLOMERATE/i.test(combined) || /MACHINERY|BEARING|PUMP|SWITCHGEAR|CABLE|WIRES|DEFENCE|TRANSFORMER/i.test(name)) {
+  if (/MACHINERY|ELECTRICAL EQUIPMENT|AEROSPACE|DEFENSE|DEFENCE|TOOLS|INDUSTRIAL DISTRIBUTION|CONGLOMERATE|POLLUTION & TREATMENT|WASTE MANAGEMENT|STAFFING & EMPLOYMENT|SECURITY & PROTECTION/i.test(combined) || /MACHINERY|BEARING|PUMP|SWITCHGEAR|CABLE|WIRES|DEFENCE|TRANSFORMER|CARBIDE|REFRACTOR|ELECON|EQUIP|ENGINES|VALVES|CONTROLS|RECYCL/i.test(name)) {
     return 'Capital Goods & Industrial Machinery';
   }
 
   // 9. Infrastructure, Cement & Construction
-  if (/ENGINEERING & CONSTRUCTION|BUILDING|CEMENT|INFRASTRUCTURE|PIPES/i.test(combined) || /INFRA|ENGINEER|CONSTRUCT|CEMENT|BUILD|PIPES|PROJECTS/i.test(name)) {
+  if (/ENGINEERING & CONSTRUCTION|BUILDING|CEMENT|INFRASTRUCTURE|PIPES/i.test(combined) || /INFRA|ENGINEER|CONSTRUCT|CEMENT|BUILD|PIPES|PROJECTS|CERAMIC|GRANITE|MARBLE|TILES|STONE/i.test(name)) {
     return 'Infrastructure & Construction';
   }
 
   // 10. Real Estate
-  if (/REAL ESTATE|REIT|HOUSING/i.test(combined) || /REALTY|ESTATE|HOUSING|DEVELOPERS|PROPERT|INFRASTRUCTURE DEVELOP/i.test(name)) {
+  if (/REAL ESTATE|REIT|HOUSING/i.test(combined) || /REALTY|ESTATE|HOUSING|DEVELOPERS|PROPERT|INFRASTRUCTURE DEVELOP|LAND\b|SHELTER|HOMES|HABITAT/i.test(name)) {
     return 'Real Estate & Housing';
   }
 
   // 11. Consumer & FMCG
-  if (/FOOD|BEVERAGE|HOUSEHOLD|PERSONAL PRODUCTS|TOBACCO|CONFECTION|FARM PRODUCTS|CONSUMER DEFENSIVE|PACKAGED|DAIRY|SUGAR|FMCG/i.test(combined) || /FOOD|BEVERAG|SUGAR|TEA|COFFEE|AGRO|CONSUMER|FMCG|DAIRY|BREWER|DISTILL/i.test(name)) {
+  if (/FOOD|BEVERAGE|HOUSEHOLD|PERSONAL PRODUCTS|TOBACCO|CONFECTION|FARM PRODUCTS|CONSUMER DEFENSIVE|PACKAGED|DAIRY|SUGAR|FMCG|BUSINESS EQUIPMENT/i.test(combined) || /FOOD|BEVERAG|SUGAR|SUCROSE|TEA|COFFEE|AGRO|CONSUMER|FMCG|DAIRY|BREWER|DISTILL|SPICE|EDIBLE|FLOUR|SOLVENT|AQUA|FISHER|INGREDIENT|DOMS|FLAIR|CAMLIN|LINC/i.test(name)) {
     return 'Consumer & FMCG';
   }
 
   // 12. Textiles
-  if (/TEXTILE|APPAREL/i.test(combined) || /TEXTILE|COTTON|GARMENT|SPINNING|SILK|APPAREL|WEAV|DENIM|YARN/i.test(name)) {
+  if (/TEXTILE|APPAREL/i.test(combined) || /TEXTILE|COTTON|GARMENT|SPINNING|SPG|WVG|SILK|APPAREL|WEAV|DENIM|YARN|SYNTHETICS|FILAMENT|RAYON|MILLS|FIBRE|FABRICS|KNIT|HOSIERY|WOOL/i.test(name)) {
     return 'Textiles & Apparels';
   }
 
   // 13. Logistics & Transport
-  if (/FREIGHT|LOGISTIC|SHIPPING|RAILROAD|TRUCKING|AIRPORT|AIRLINE|MARINE|PORT/i.test(combined) || /LOGISTIC|SHIPPING|PORTS|TRANSPORT|AIRWAYS|CARGO|EXPRESS/i.test(name)) {
+  if (/FREIGHT|LOGISTIC|SHIPPING|RAILROAD|TRUCKING|AIRPORT|AIRLINE|MARINE|PORT/i.test(combined) || /LOGISTIC|SHIPPING|PORTS|TRANSPORT|AIRWAYS|CARGO|EXPRESS|JET\b|AVIATION|OFFSHORE|MOVERS|CARRIERS|CONTAINER|DREDG/i.test(name)) {
     return 'Logistics & Transport';
   }
 
   // 14. Hospitality & Tourism
-  if (/LODGING|RESORT|RESTAURANT|TRAVEL|LEISURE|HOSPITALITY/i.test(combined) || /HOTEL|RESORT|TOUR|TRAVEL|HOSPITALITY/i.test(name)) {
+  if (/LODGING|RESORT|RESTAURANT|TRAVEL|LEISURE|HOSPITALITY/i.test(combined) || /HOTEL|RESORT|TOUR|TRAVEL|HOSPITALITY|HOLIDAY|INNS\b|CLUB\b/i.test(name)) {
     return 'Hospitality & Tourism';
   }
 
   // 15. Retail & Lifestyle
-  if (/RETAIL|LUXURY|DEPARTMENT STORE|FOOTWEAR|JEWEL|FURNISHING|PACKAGING/i.test(combined) || /RETAIL|FASHION|JEWEL|MART\b|STORE|FOOTWEAR|GOLD/i.test(name)) {
+  if (/RETAIL|LUXURY|DEPARTMENT STORE|FOOTWEAR|JEWEL|FURNISHING|PACKAGING/i.test(combined) || /RETAIL|FASHION|JEWEL|GEMS|DIAMOND|ORNAMENT|WATCH|MART\b|STORE|FOOTWEAR|LEATHER|PACK|TRADING|EXPORTS|COMMERC/i.test(name)) {
     return 'Retail & Lifestyle';
   }
 
@@ -229,7 +229,7 @@ function parseFilingNumber(val) {
   return Number.isFinite(n) ? n : NaN;
 }
 
-function computeFilingFundamentals(cmp, profile) {
+function computeFilingFundamentals(cmp, profile, faceValue) {
   const numCmp = Number(cmp) || 0;
   const qr = (profile && Array.isArray(profile.quarterlyResults)) ? profile.quarterlyResults : [];
   const bsList = (profile && Array.isArray(profile.balanceSheet)) ? profile.balanceSheet : [];
@@ -251,7 +251,7 @@ function computeFilingFundamentals(cmp, profile) {
     for (let i = qr.length - 1; i >= 0; i--) {
       const pat = parseFilingNumber(qr[i].netProfit);
       const eps = parseFilingNumber(qr[i].eps);
-      if (Number.isFinite(pat) && Number.isFinite(eps) && Math.abs(pat) >= 0.5 && Math.abs(eps) >= 0.02 && (pat * eps > 0)) {
+      if (Number.isFinite(pat) && Number.isFinite(eps) && Math.abs(pat) >= 0.2 && Math.abs(eps) >= 0.01 && (pat * eps > 0)) {
         const candidate = pat / eps;
         if (candidate > 0.01 && candidate < 100000) {
           sharesCr = Number(candidate.toFixed(4));
@@ -261,17 +261,33 @@ function computeFilingFundamentals(cmp, profile) {
     }
   }
 
+  // Fallback for sharesCr: Paid-Up Equity Capital (₹ Cr) / Face Value (₹) from official XBRL Balance Sheet
+  if (!sharesCr && bsList.length > 0) {
+    const latestBs = bsList[bsList.length - 1];
+    const eqCap = parseFilingNumber(latestBs.equityCapital);
+    const fv = Number(faceValue) > 0 ? Number(faceValue) : 10;
+    if (Number.isFinite(eqCap) && eqCap > 0.1) {
+      const candidate = eqCap / fv;
+      if (candidate > 0.01 && candidate < 100000) {
+        sharesCr = Number(candidate.toFixed(4));
+      }
+    }
+  }
+
   const marketCapCr = (numCmp > 0 && sharesCr) ? Math.round(numCmp * sharesCr) : null;
 
-  // Trailing 12-Month (TTM) metrics strictly require >= 4 filed quarters
+  // Trailing 12-Month (TTM) metrics from official NSE quarterly / semi-annual filings
   let ttmSalesCr = null;
   let ttmOpProfitCr = null;
   let ttmPatCr = null;
   let ttmEps = null;
   let pe = null;
 
-  if (qr.length >= 4) {
-    const last4 = qr.slice(-4);
+  if (qr.length >= 1) {
+    const recentQuarters = qr.slice(-4);
+    const qCount = recentQuarters.length;
+    const isHalfYearly = qCount === 2 && recentQuarters.every((q) => /^(Mar|Sep)\b/i.test(String(q.period || '').trim()));
+
     let salesSum = 0;
     let opSum = 0;
     let patSum = 0;
@@ -280,7 +296,7 @@ function computeFilingFundamentals(cmp, profile) {
     let validPat = 0;
     let validEps = 0;
 
-    for (const q of last4) {
+    for (const q of recentQuarters) {
       const s = parseFilingNumber(q.sales);
       const op = parseFilingNumber(q.operatingProfit);
       const pat = parseFilingNumber(q.netProfit);
@@ -291,18 +307,26 @@ function computeFilingFundamentals(cmp, profile) {
       if (Number.isFinite(eps)) { epsSum += eps; validEps++; }
     }
 
-    if (validSales === 4) ttmSalesCr = Math.round(salesSum);
-    if (validPat === 4) {
-      ttmPatCr = Math.round(patSum);
-      ttmOpProfitCr = Math.round(opSum);
+    if (validSales > 0) {
+      const scale = isHalfYearly ? 1 : (4 / validSales);
+      ttmSalesCr = Math.round(salesSum * scale);
     }
-    if (validEps === 4) {
-      ttmEps = Number(epsSum.toFixed(2));
-      if (numCmp > 0 && ttmEps > 0) {
-        const rawPe = numCmp / ttmEps;
-        if (rawPe > 0 && rawPe < 2000) {
-          pe = Number(rawPe.toFixed(1));
-        }
+    if (validPat > 0) {
+      const scale = isHalfYearly ? 1 : (4 / validPat);
+      ttmPatCr = Math.round(patSum * scale);
+      ttmOpProfitCr = Math.round(opSum * scale);
+    }
+    if (validEps > 0) {
+      const scale = isHalfYearly ? 1 : (4 / validEps);
+      ttmEps = Number((epsSum * scale).toFixed(2));
+    } else if (ttmPatCr !== null && sharesCr && sharesCr > 0) {
+      ttmEps = Number((ttmPatCr / sharesCr).toFixed(2));
+    }
+
+    if (numCmp > 0 && ttmEps !== null && ttmEps > 0) {
+      const rawPe = numCmp / ttmEps;
+      if (rawPe > 0 && rawPe < 2000) {
+        pe = Number(rawPe.toFixed(1));
       }
     }
   }

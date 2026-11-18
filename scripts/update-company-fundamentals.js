@@ -114,13 +114,16 @@ function toCrFromInr(val) {
   return isNaN(n) ? null : Math.round(n / 10000000);
 }
 
-function extractXbrlFact(xml, tag, ctxIds) {
-  for (const ctx of ctxIds) {
-    const re = new RegExp(`<[a-z0-9-]+:${tag}\\s+contextRef="${ctx}"[^>]*>([^<]+)<`, 'i');
-    const m = xml.match(re);
-    if (m && m[1] !== undefined) {
-      const v = toCrFromInr(m[1].trim());
-      if (v !== null) return v;
+function extractXbrlFact(xml, tags, ctxIds) {
+  const tagList = Array.isArray(tags) ? tags : [tags];
+  for (const tag of tagList) {
+    for (const ctx of ctxIds) {
+      const re = new RegExp(`<[a-z0-9-]+:${tag}\\s+contextRef="${ctx}"[^>]*>([^<]+)<`, 'i');
+      const m = xml.match(re);
+      if (m && m[1] !== undefined) {
+        const v = toCrFromInr(m[1].trim());
+        if (v !== null) return v;
+      }
     }
   }
   return null;
@@ -145,13 +148,36 @@ async function fetchAndParseNseXbrl(xbrlUrl) {
   const bsPeriod = formatXbrlYearLabel(oneIMatch && oneIMatch[1]);
   const cfPeriod = formatXbrlYearLabel((fourDMatch && fourDMatch[1]) || (oneIMatch && oneIMatch[1]));
 
-  const eqCap = extractXbrlFact(xml, 'EquityShareCapital', ['OneI', 'PY_I']);
-  const reserves = extractXbrlFact(xml, 'OtherEquity', ['OneI', 'PY_I']);
-  const ltBorrow = extractXbrlFact(xml, 'BorrowingsNoncurrent', ['OneI', 'PY_I']) || 0;
-  const stBorrow = extractXbrlFact(xml, 'BorrowingsCurrent', ['OneI', 'PY_I']) || 0;
-  const totalAssets = extractXbrlFact(xml, 'Assets', ['OneI', 'PY_I']);
-  const fixedAssets = extractXbrlFact(xml, 'PropertyPlantAndEquipment', ['OneI', 'PY_I']);
-  const investments = extractXbrlFact(xml, 'NoncurrentInvestments', ['OneI', 'PY_I']);
+  const bsCtxs = ['OneI', 'PY_I', 'OneD', 'FourD'];
+  const eqCap = extractXbrlFact(xml, [
+    'EquityShareCapital',
+    'Capital',
+    'ShareCapital',
+    'PaidUpValueOfEquityShareCapital',
+    'PaidUpEquityShareCapital'
+  ], bsCtxs);
+  const reserves = extractXbrlFact(xml, ['OtherEquity', 'ReservesAndSurplus'], bsCtxs);
+  const ltBorrow = extractXbrlFact(xml, ['BorrowingsNoncurrent', 'LongTermBorrowings'], bsCtxs);
+  const stBorrow = extractXbrlFact(xml, ['BorrowingsCurrent', 'ShortTermBorrowings'], bsCtxs);
+  const totalBorrowings = (ltBorrow !== null || stBorrow !== null)
+    ? (ltBorrow || 0) + (stBorrow || 0)
+    : (extractXbrlFact(xml, ['Borrowings'], bsCtxs) || 0);
+  const totalAssets = extractXbrlFact(xml, [
+    'Assets',
+    'CapitalAndLiabilities',
+    'EquityAndLiabilities',
+    'SourcesOfFunds'
+  ], bsCtxs);
+  const fixedAssets = extractXbrlFact(xml, [
+    'PropertyPlantAndEquipment',
+    'FixedAssets',
+    'PropertyPlantAndEquipmentAndIntangibleAssets'
+  ], bsCtxs);
+  const investments = extractXbrlFact(xml, [
+    'NoncurrentInvestments',
+    'Investments',
+    'InvestmentsShareholders'
+  ], bsCtxs);
 
   const cfo = extractXbrlFact(xml, 'CashFlowsFromUsedInOperatingActivities', ['FourD', 'OneD']);
   const cfi = extractXbrlFact(xml, 'CashFlowsFromUsedInInvestingActivities', ['FourD', 'OneD']);

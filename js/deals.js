@@ -5,7 +5,7 @@
  */
 
 const StocksDeals = (function () {
-  const DEALS_URL = "data/market/bulk-block-deals.json?v=62";
+  const DEALS_URL = "data/market/bulk-block-deals.json?v=64";
 
   function escapeHtml(str) {
     if (!str) return "";
