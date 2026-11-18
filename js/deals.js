@@ -5,7 +5,15 @@
  */
 
 const StocksDeals = (function () {
-  const DEALS_URL = "data/market/bulk-block-deals.json?v=64";
+  const DEALS_URL = "data/market/bulk-block-deals.json?v=65";
+
+  const DEAL_VIEW_OPTIONS = [
+    { value: "ALL", label: "All" },
+    { value: "NET_BUYING", label: "Net Buying" },
+    { value: "NET_SELLING", label: "Net Selling" },
+    { value: "ONLY_BUYING", label: "Only Buying" },
+    { value: "ONLY_SELLING", label: "Only Selling" }
+  ];
 
   function escapeHtml(str) {
     if (!str) return "";
@@ -273,14 +281,211 @@ const StocksDeals = (function () {
     }).join("");
   }
 
-  function comboOptionsHtml() {
+  function getOptionLabel(mode) {
+    const found = DEAL_VIEW_OPTIONS.find((opt) => opt.value === mode);
+    return found ? found.label : "All";
+  }
+
+  function buildCollapsibleComboHtml(prefix, currentMode) {
+    const activeLabel = getOptionLabel(currentMode);
+    const labelId = `${prefix}-combo-label`;
+    const btnId = `${prefix}-combo-btn`;
+    const listId = `${prefix}-combo-listbox`;
+
     return `
-      <option value="ALL" selected>All</option>
-      <option value="NET_BUYING">Net Buying</option>
-      <option value="NET_SELLING">Net Selling</option>
-      <option value="ONLY_BUYING">Only Buying</option>
-      <option value="ONLY_SELLING">Only Selling</option>
+      <div class="deals-combo-wrapper" id="${prefix}-combo-wrapper" style="position:relative; display:inline-block;">
+        <button
+          type="button"
+          id="${btnId}"
+          class="deals-combo-btn"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="${listId}"
+          aria-labelledby="${labelId} ${btnId}"
+          style="min-width:190px; padding:9px 14px; border:1px solid #2563eb; border-radius:8px; font-weight:700; background:#ffffff; color:#1e3a8a; font-size:0.94rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:space-between; gap:12px;"
+        >
+          <span id="${prefix}-combo-value-text">${escapeHtml(activeLabel)}</span>
+          <span aria-hidden="true" style="font-size:0.75rem; line-height:1;">&#9662;</span>
+        </button>
+        <div
+          id="${listId}"
+          role="listbox"
+          aria-labelledby="${labelId}"
+          hidden
+          style="position:absolute; top:calc(100% + 4px); left:0; min-width:100%; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 24px rgba(15,23,42,0.14); z-index:200; padding:4px;"
+        >
+          ${DEAL_VIEW_OPTIONS.map((opt) => {
+            const selected = opt.value === currentMode;
+            return `
+              <button
+                type="button"
+                role="option"
+                id="${prefix}-option-${opt.value}"
+                class="deals-combo-option"
+                data-value="${opt.value}"
+                aria-selected="${selected ? "true" : "false"}"
+                style="display:block; width:100%; text-align:left; padding:9px 12px; border:none; border-radius:6px; font-size:0.9rem; font-weight:${selected ? "700" : "600"}; background:${selected ? "#eff6ff" : "#ffffff"}; color:${selected ? "#1d4ed8" : "#1e293b"}; cursor:pointer;"
+              >
+                ${escapeHtml(opt.label)}
+              </button>
+            `;
+          }).join("")}
+        </div>
+      </div>
     `;
+  }
+
+  function bindCollapsibleCombo(prefix, initialMode, onSelectCallback) {
+    let selectedMode = initialMode || "ALL";
+    const btn = document.getElementById(`${prefix}-combo-btn`);
+    const listbox = document.getElementById(`${prefix}-combo-listbox`);
+    const valueTextEl = document.getElementById(`${prefix}-combo-value-text`);
+    const wrapper = document.getElementById(`${prefix}-combo-wrapper`);
+    if (!btn || !listbox) return null;
+
+    // Guarantee initial collapsed state on mount
+    listbox.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+
+    function getOptionEls() {
+      const fromDom = typeof listbox.querySelectorAll === "function"
+        ? Array.from(listbox.querySelectorAll(".deals-combo-option"))
+        : [];
+      if (fromDom.length > 0) return fromDom;
+      return DEAL_VIEW_OPTIONS
+        .map((opt) => document.getElementById(`${prefix}-option-${opt.value}`))
+        .filter(Boolean);
+    }
+
+    function hasHiddenAttr(el) {
+      return Boolean(el.hidden || (typeof el.hasAttribute === "function" && el.hasAttribute("hidden")));
+    }
+
+    function openCombo(focusIndex) {
+      listbox.hidden = false;
+      if (typeof listbox.removeAttribute === "function") listbox.removeAttribute("hidden");
+      btn.setAttribute("aria-expanded", "true");
+      const opts = getOptionEls();
+      const targetIdx = typeof focusIndex === "number"
+        ? focusIndex
+        : Math.max(0, DEAL_VIEW_OPTIONS.findIndex((o) => o.value === selectedMode));
+      const targetOpt = opts[targetIdx] || opts[0];
+      if (targetOpt && typeof targetOpt.focus === "function") {
+        targetOpt.focus();
+      }
+    }
+
+    function collapseCombo(restoreFocus) {
+      listbox.hidden = true;
+      if (typeof listbox.setAttribute === "function") listbox.setAttribute("hidden", "");
+      btn.setAttribute("aria-expanded", "false");
+      if (restoreFocus && typeof btn.focus === "function") {
+        btn.focus();
+      }
+    }
+
+    function syncOptionStyles() {
+      getOptionEls().forEach((optEl, idx) => {
+        const val = optEl.getAttribute("data-value") || (DEAL_VIEW_OPTIONS[idx] && DEAL_VIEW_OPTIONS[idx].value);
+        const isSel = val === selectedMode;
+        optEl.setAttribute("aria-selected", isSel ? "true" : "false");
+        if (optEl.style) {
+          optEl.style.fontWeight = isSel ? "700" : "600";
+          optEl.style.background = isSel ? "#eff6ff" : "#ffffff";
+          optEl.style.color = isSel ? "#1d4ed8" : "#1e293b";
+        }
+      });
+    }
+
+    function selectOption(mode, restoreFocus = true) {
+      const matched = DEAL_VIEW_OPTIONS.find((o) => o.value === mode);
+      if (!matched) return;
+      selectedMode = matched.value;
+      if (valueTextEl) {
+        valueTextEl.textContent = matched.label;
+      }
+      syncOptionStyles();
+      collapseCombo(restoreFocus);
+      if (typeof onSelectCallback === "function") {
+        onSelectCallback(selectedMode);
+      }
+    }
+
+    btn.addEventListener("click", function (e) {
+      if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+      if (hasHiddenAttr(listbox)) {
+        openCombo();
+      } else {
+        collapseCombo(false);
+      }
+    });
+
+    btn.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "Down") {
+        e.preventDefault();
+        openCombo();
+      } else if (e.key === "ArrowUp" || e.key === "Up") {
+        e.preventDefault();
+        openCombo(DEAL_VIEW_OPTIONS.length - 1);
+      } else if ((e.key === "Escape" || e.key === "Esc") && !hasHiddenAttr(listbox)) {
+        e.preventDefault();
+        collapseCombo(true);
+      }
+    });
+
+    const optionEls = getOptionEls();
+    optionEls.forEach((optEl, idx) => {
+      const optVal = optEl.getAttribute("data-value") || (DEAL_VIEW_OPTIONS[idx] && DEAL_VIEW_OPTIONS[idx].value);
+      optEl.addEventListener("click", function (e) {
+        if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+        selectOption(optVal, true);
+      });
+      optEl.addEventListener("mouseenter", function () {
+        if (optEl.style && optVal !== selectedMode) {
+          optEl.style.background = "#f8fafc";
+        }
+      });
+      optEl.addEventListener("mouseleave", function () {
+        if (optEl.style && optVal !== selectedMode) {
+          optEl.style.background = "#ffffff";
+        }
+      });
+      optEl.addEventListener("keydown", function (e) {
+        const opts = getOptionEls();
+        if (e.key === "ArrowDown" || e.key === "Down") {
+          e.preventDefault();
+          const next = opts[(idx + 1) % opts.length];
+          if (next && typeof next.focus === "function") next.focus();
+        } else if (e.key === "ArrowUp" || e.key === "Up") {
+          e.preventDefault();
+          const prev = opts[(idx - 1 + opts.length) % opts.length];
+          if (prev && typeof prev.focus === "function") prev.focus();
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          if (opts[0] && typeof opts[0].focus === "function") opts[0].focus();
+        } else if (e.key === "End") {
+          e.preventDefault();
+          const last = opts[opts.length - 1];
+          if (last && typeof last.focus === "function") last.focus();
+        } else if (e.key === "Escape" || e.key === "Esc") {
+          e.preventDefault();
+          if (typeof e.stopPropagation === "function") e.stopPropagation();
+          collapseCombo(true);
+        } else if (e.key === "Tab") {
+          collapseCombo(false);
+        }
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!hasHiddenAttr(listbox)) {
+        if (!wrapper || (typeof wrapper.contains === "function" && !wrapper.contains(e.target))) {
+          collapseCombo(false);
+        }
+      }
+    });
+
+    return { selectOption, openCombo, collapseCombo };
   }
 
   function renderFullDealsPage(root, payload) {
@@ -294,10 +499,8 @@ const StocksDeals = (function () {
     root.innerHTML = `
       <div style="margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
         <div style="display:flex; align-items:center; gap:10px;">
-          <label for="deals-conviction-select" style="font-size:0.9rem; font-weight:700; color:#334155;">Deal View:</label>
-          <select id="deals-conviction-select" aria-label="Select Bulk and Block Deals View" style="min-width:190px; padding:9px 14px; border:1px solid #2563eb; border-radius:8px; font-weight:700; background:#ffffff; color:#1e3a8a; font-size:0.94rem; cursor:pointer;">
-            ${comboOptionsHtml()}
-          </select>
+          <span id="deals-conviction-combo-label" style="font-size:0.9rem; font-weight:700; color:#334155;">Deal View:</span>
+          ${buildCollapsibleComboHtml("deals-conviction", mode)}
         </div>
         <span id="deals-match-meta" style="font-size:0.84rem; color:#64748b; font-weight:600;"></span>
       </div>
@@ -324,13 +527,10 @@ const StocksDeals = (function () {
       }
     }
 
-    const selectEl = document.getElementById("deals-conviction-select");
-    if (selectEl) {
-      selectEl.addEventListener("change", function () {
-        mode = this.value || "ALL";
-        updateTable();
-      });
-    }
+    bindCollapsibleCombo("deals-conviction", mode, function (nextMode) {
+      mode = nextMode;
+      updateTable();
+    });
 
     updateTable();
   }
@@ -341,13 +541,11 @@ const StocksDeals = (function () {
     let previewMode = "ALL";
 
     root.innerHTML = `
-      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 1px 3px rgba(15,23,42,0.04);">
+      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; box-shadow:0 1px 3px rgba(15,23,42,0.04);">
         <div style="padding:12px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-            <strong style="font-size:1.02rem; color:#0f172a;">Bulk &amp; Block Deals</strong>
-            <select id="screener-deals-conviction-select" aria-label="Deals Conviction View" style="padding:7px 12px; border:1px solid #2563eb; border-radius:8px; font-weight:700; background:#ffffff; color:#1e3a8a; font-size:0.86rem; cursor:pointer;">
-              ${comboOptionsHtml()}
-            </select>
+            <strong id="screener-deals-conviction-combo-label" style="font-size:1.02rem; color:#0f172a;">Bulk &amp; Block Deals</strong>
+            ${buildCollapsibleComboHtml("screener-deals-conviction", previewMode)}
           </div>
           <div style="display:flex; gap:8px; align-items:center;">
             <button type="button" id="btn-toggle-screener-deals" class="btn-secondary" aria-expanded="false" aria-controls="screener-deals-collapse" style="font-size:0.84rem; padding:7px 14px;">
@@ -377,21 +575,19 @@ const StocksDeals = (function () {
 
     const toggleBtn = document.getElementById("btn-toggle-screener-deals");
     const box = document.getElementById("screener-deals-collapse");
-    const convSelect = document.getElementById("screener-deals-conviction-select");
 
-    if (convSelect) {
-      convSelect.addEventListener("change", function () {
-        previewMode = this.value || "ALL";
-        updatePreviewTable();
-        if (box && box.hidden) {
-          box.hidden = false;
-          if (toggleBtn) {
-            toggleBtn.setAttribute("aria-expanded", "true");
-            toggleBtn.textContent = "Hide Deals";
-          }
+    bindCollapsibleCombo("screener-deals-conviction", previewMode, function (nextMode) {
+      previewMode = nextMode;
+      updatePreviewTable();
+      if (box && box.hidden) {
+        box.hidden = false;
+        if (typeof box.removeAttribute === "function") box.removeAttribute("hidden");
+        if (toggleBtn) {
+          toggleBtn.setAttribute("aria-expanded", "true");
+          toggleBtn.textContent = "Hide Deals";
         }
-      });
-    }
+      }
+    });
 
     if (toggleBtn && box) {
       toggleBtn.addEventListener("click", () => {
