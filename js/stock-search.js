@@ -897,28 +897,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const targetSec = String(stock.sector || "").trim().toLowerCase();
     const isBseOnly = stock.exchanges === "BSE";
 
-    // Match exact industry peers first, then backfill from normalized sector if fewer than 7
-    const sameSector = [];
-    const seenSyms = new Set();
-
-    if (targetInd) {
-      for (const s of dataset) {
-        if (s && s.symbol && String(s.industry || "").trim().toLowerCase() === targetInd) {
-          seenSyms.add(s.symbol);
-          sameSector.push(s);
-        }
-      }
-    }
-
-    if (sameSector.length < 15 && targetSec) {
-      for (const s of dataset) {
-        if (s && s.symbol && !seenSyms.has(s.symbol) && String(s.sector || "").trim().toLowerCase() === targetSec) {
-          seenSyms.add(s.symbol);
-          sameSector.push(s);
-        }
-      }
-    }
-
     function peerRankScore(p) {
       const mcap = Number(p.marketCapCr) || 0;
       const hasFullRatios = mcap > 0 && typeof p.pe === "number" && typeof p.roePct === "number" && typeof p.debtToEquity === "number";
@@ -927,13 +905,24 @@ document.addEventListener("DOMContentLoaded", function () {
       return ((Number(p.cmp) || 0) * (Number(p.volume) || 0)) / 10000000;
     }
 
-    // Rank peers by complete filing fundamentals + Market Cap + Daily Traded Value
-    sameSector.sort((a, b) => peerRankScore(b) - peerRankScore(a));
+    // Tier 1: Exact industry peers (never displaced by broad sector backfill)
+    const industryPeers = [];
+    const seenSyms = new Set();
 
-    // Take top 7 peers + ensure current stock is always included in the table
+    if (targetInd) {
+      for (const s of dataset) {
+        if (s && s.symbol && String(s.industry || "").trim().toLowerCase() === targetInd) {
+          seenSyms.add(s.symbol);
+          industryPeers.push(s);
+        }
+      }
+    }
+    industryPeers.sort((a, b) => peerRankScore(b) - peerRankScore(a));
+
+    // Take up to 7 top peers from Tier 1 (exact industry) + ensure current stock is included
     const topPeers = [];
     const included = new Set();
-    for (const p of sameSector) {
+    for (const p of industryPeers) {
       if (topPeers.length >= 7 && p.symbol !== stock.symbol) continue;
       if (!included.has(p.symbol)) {
         included.add(p.symbol);
@@ -943,7 +932,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!included.has(stock.symbol)) {
+      included.add(stock.symbol);
       topPeers.push(stock);
+    }
+
+    // Tier 2: Backfill from normalized sector ONLY when exact industry has fewer than 8 total companies
+    if (topPeers.length < 8 && targetSec) {
+      const sectorBackfill = [];
+      for (const s of dataset) {
+        if (s && s.symbol && !seenSyms.has(s.symbol) && !included.has(s.symbol) && String(s.sector || "").trim().toLowerCase() === targetSec) {
+          sectorBackfill.push(s);
+        }
+      }
+      sectorBackfill.sort((a, b) => peerRankScore(b) - peerRankScore(a));
+      for (const p of sectorBackfill) {
+        if (topPeers.length >= 8) break;
+        included.add(p.symbol);
+        topPeers.push(p);
+      }
     }
 
     topPeers.sort((a, b) => peerRankScore(b) - peerRankScore(a));
@@ -1133,7 +1139,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=64")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=66")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1145,7 +1151,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=64")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=66")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1165,7 +1171,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=64")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=66")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
