@@ -443,7 +443,8 @@
       "debtToEquity": 0.24,
       "promoterPct": 45.04
     },
-    "debtToEquity": 0.24
+    "debtToEquity": 0.24,
+    "lastShpRecordId": "213326"
   },
   "21STCENMGM": {
     "about": "Twentyfirst Century Management Services Limited, together with its subsidiary, engages in the investment business in India. It invests and trades in shares and derivatives, capital, and futures and options markets. The company was incorporated in 1986 and is based in Mumbai, India.",
@@ -451,6 +452,42 @@
     "industry": "Capital Markets",
     "sector": "Capital Markets & Asset Management",
     "quarterlyResults": [
+      {
+        "period": "Dec 23",
+        "sales": "17",
+        "expenses": "1",
+        "operatingProfit": "16",
+        "opm": "94.1%",
+        "netProfit": "16",
+        "eps": "₹15.3"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "18",
+        "expenses": "0",
+        "operatingProfit": "18",
+        "opm": "100.0%",
+        "netProfit": "17",
+        "eps": "₹16.15"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "14",
+        "expenses": "0",
+        "operatingProfit": "14",
+        "opm": "100.0%",
+        "netProfit": "14",
+        "eps": "₹13.24"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "2",
+        "expenses": "1",
+        "operatingProfit": "1",
+        "opm": "50.0%",
+        "netProfit": "0",
+        "eps": "₹0.42"
+      },
       {
         "period": "Jun 26",
         "sales": "10",
@@ -751,22 +788,23 @@
     },
     "updatedAt": 1794038125828,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:34.059Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:21.294Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749022_29102026053329_WEB.xml",
     "ratios": {
-      "marketCapCr": 57,
-      "pe": 1.5,
-      "ttmEps": 33.84,
-      "ttmSalesCr": 42,
-      "ttmPatCr": 36,
+      "marketCapCr": 53,
+      "pe": 1.6,
+      "ttmEps": 30.58,
+      "ttmSalesCr": 37,
+      "ttmPatCr": 32,
       "bookValue": 44.6,
-      "roePct": 73.5,
-      "rocePct": 58.5,
+      "roePct": 65.3,
+      "rocePct": 52.3,
       "debtToEquity": 0.33,
       "promoterPct": 64.43
     },
-    "debtToEquity": 0.33
+    "debtToEquity": 0.33,
+    "lastShpRecordId": "213617"
   },
   "360ONE": {
     "about": "360 One Wam Limited, together with its subsidiaries, provides wealth and asset management services in India. It operates through the Wealth Management and Asset Management segments. The Wealth Management segment engages in the distribution of financial products, advisory, broking and research, discretionary and non-discretionary portfolio management services, corporate treasury solutions, estate planning, and managing financial products in advisory. This segment is also involved in lending and investment activities. The Asset Management segment engages in the management of pooled funds under various products and structures, such as mutual funds, alternative asset funds, portfolio management and related activities, including advisory and offshore spanning public and private equity, fixed income, and real assets. It serves ultra-high net worth individuals, family offices, and institutional clients. The company was formerly known as IIFL Wealth Management Limited and changed its name to 360 One Wam Limited in January 2023. 360 One Wam Limited was incorporated in 2008 and is based in Mumbai, India.",
@@ -821,10 +859,10 @@
       },
       {
         "period": "Sep 26",
-        "sales": "262",
-        "expenses": "91",
+        "sales": "261",
+        "expenses": "90",
         "operatingProfit": "171",
-        "opm": "65.3%",
+        "opm": "65.5%",
         "netProfit": "167",
         "eps": "₹4.1"
       }
@@ -854,7 +892,7 @@
     ],
     "shareholding": {
       "promoters": "6.18%",
-      "public": "93.82%",
+      "public": "16.17%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -891,7 +929,7 @@
           null,
           null,
           null,
-          null
+          53.97
         ],
         "dii": [
           null,
@@ -903,7 +941,7 @@
           null,
           null,
           null,
-          null
+          23.67
         ],
         "diiMutualFunds": [
           null,
@@ -915,7 +953,7 @@
           null,
           null,
           null,
-          null
+          18.41
         ],
         "diiInsurance": [
           null,
@@ -927,7 +965,7 @@
           null,
           null,
           null,
-          null
+          3.26
         ],
         "diiPensionFunds": [
           null,
@@ -939,7 +977,7 @@
           null,
           null,
           null,
-          null
+          0.53
         ],
         "government": [
           null,
@@ -951,7 +989,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           84.21,
@@ -963,7 +1001,7 @@
           93.75,
           93.76,
           93.8,
-          93.82
+          16.17
         ],
         "employeeTrusts": [
           0,
@@ -979,22 +1017,436 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "promoters": [
+          {
+            "name": "Yatin Shah",
+            "subCategory": "Promoter",
+            "pct": 2.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.38
+            ]
+          },
+          {
+            "name": "Kyra Family Private Trust(trustee being 360 ONE Investment Adviser and Trustee Services Ltd)",
+            "subCategory": "Promoter Group",
+            "pct": 1.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.3
+            ]
+          },
+          {
+            "name": "Kush Family Private Trust(trustee being 360 ONE Investment Adviser and Trustee Services Ltd)",
+            "subCategory": "Promoter Group",
+            "pct": 1.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.3
+            ]
+          },
+          {
+            "name": "Kush Bhagat",
+            "subCategory": "Promoter Group",
+            "pct": 0.33,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.33
+            ]
+          },
+          {
+            "name": "Kyra Bhagat",
+            "subCategory": "Promoter Group",
+            "pct": 0.33,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.33
+            ]
+          },
+          {
+            "name": "Naykia Family Private Trust(Trusteebeing 360 ONE Investment Adviser and Trustee Services Ltd)",
+            "subCategory": "Promoter Group",
+            "pct": 0.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.25
+            ]
+          },
+          {
+            "name": "Kiaan Shah",
+            "subCategory": "Promoter Group",
+            "pct": 0.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.13
+            ]
+          },
+          {
+            "name": "Naysa Shah",
+            "subCategory": "Promoter Group",
+            "pct": 0.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.13
+            ]
+          },
+          {
+            "name": "Prakash Shah Family Private Trust (Trusteebeing 360 ONE Investment Adviser and Trustee Services Ltd)",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "Bc Asia Investments X Limited",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 18.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              18.05
+            ]
+          },
+          {
+            "name": "Smallcap World Fund, Inc",
+            "subCategory": "FPI Category I",
+            "pct": 4.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.42
+            ]
+          },
+          {
+            "name": "Government Pension Fund Global",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 2.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.73
+            ]
+          },
+          {
+            "name": "Fidelity Investment Trust : Fidelity Emerging Markets Fund",
+            "subCategory": "FPI Category I",
+            "pct": 2.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.18
+            ]
+          },
+          {
+            "name": "Rimco (Mauritius) Limited",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 1.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.96
+            ]
+          },
+          {
+            "name": "Bank Muscat India Fund",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 1.76,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.76
+            ]
+          },
+          {
+            "name": "Franklin Templeton Investment Funds - Franklin India Fund",
+            "subCategory": "FPI Category I",
+            "pct": 1.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.08
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "ICICI PRUDENTIAL RETIREMENT FUND-HYBRID AGGRESSIVE PLAN",
+            "subCategory": "Mutual Funds",
+            "pct": 4.66,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.66
+            ]
+          },
+          {
+            "name": "SBI NIFTY 500 INDEX FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.78
+            ]
+          },
+          {
+            "name": "FRANKLIN INDIA AGGRESSIVE HYBRID FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.75,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.75
+            ]
+          },
+          {
+            "name": "KOTAK MAHINDRA TRUSTEE CO LTD A/C KOTAK BUSINESS CYCLE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.64
+            ]
+          },
+          {
+            "name": "HDFC LIFE INSURANCE COMPANY LIMITED",
+            "subCategory": "Insurance",
+            "pct": 1.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.14
+            ]
+          },
+          {
+            "name": "HDFC MUTUAL FUND - HDFC BANKING AND FINANCIAL SERVICES FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.08
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "NIRMAL BHANWARLAL JAIN",
+            "subCategory": "Individual Investor",
+            "pct": 3.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.84
+            ]
+          },
+          {
+            "name": "SAAHIL MANOJ MURARKA",
+            "subCategory": "Directors and their relatives (excluding independent directors and nominee directors)",
+            "pct": 1.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.25
+            ]
+          }
+        ]
+      },
+      "fii": "53.97%",
+      "dii": "23.67%"
     },
     "updatedAt": 1794038125828,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:35.110Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:22.024Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739317_15102026070629_WEB.xml",
     "ratios": {
-      "marketCapCr": 48023,
-      "pe": 82.7,
+      "marketCapCr": 49328,
+      "pe": 85,
       "ttmEps": 14.25,
-      "ttmSalesCr": 974,
+      "ttmSalesCr": 973,
       "ttmPatCr": 577,
       "bookValue": 186.1,
       "roePct": 7.6,
@@ -1002,7 +1454,8 @@
       "debtToEquity": 0,
       "promoterPct": 6.18
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215675"
   },
   "3BBLACKBIO": {
     "about": "3B Blackbio Dx Limited manufactures and sells molecular diagnostic kits in India. The company designs, develops, manufactures and commercializes qPCR assays, rapid diagnostic tests, NGS-based diagnostic kits, digital PCR assays, and nucleic acid extraction solutions for reliable testing of patient samples, as well as offers oncology and hematology, antimicrobial resistance, infectious diseases, human genetics, extraction, and rapid antigen kits under the TRUPCR, TRUNGS, and TRURAPID brand names; and technical support and training services. 3B Blackbio Dx Limited was incorporated in 1972 and is headquartered in Bhopal, India.",
@@ -1126,7 +1579,7 @@
     ],
     "shareholding": {
       "promoters": "0.00%",
-      "public": "100.00%",
+      "public": "85.28%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1163,7 +1616,7 @@
           null,
           null,
           null,
-          null
+          0.47
         ],
         "dii": [
           null,
@@ -1175,7 +1628,7 @@
           null,
           null,
           null,
-          null
+          14.25
         ],
         "diiMutualFunds": [
           null,
@@ -1187,7 +1640,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -1199,7 +1652,7 @@
           null,
           null,
           null,
-          null
+          0.02
         ],
         "diiPensionFunds": [
           null,
@@ -1211,7 +1664,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1223,7 +1676,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           100,
@@ -1235,7 +1688,7 @@
           100,
           100,
           100,
-          100
+          85.28
         ],
         "employeeTrusts": [
           0,
@@ -1253,18 +1706,158 @@
       "holders": {
         "promoters": [],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "SREI MULTIPLE ASSET INVESTMENT TRUST - VISION INDIA FUND",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 8.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.51
+            ]
+          },
+          {
+            "name": "CANARA BANK",
+            "subCategory": "Banks",
+            "pct": 2.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.22
+            ]
+          },
+          {
+            "name": "BANK OF INDIA",
+            "subCategory": "Banks",
+            "pct": 1.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.04
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "CAPITAL NXT",
+            "subCategory": "Bodies Corporate",
+            "pct": 5.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.45
+            ]
+          },
+          {
+            "name": "MYTHILI SRINIVASAN",
+            "subCategory": "Individual Investor",
+            "pct": 2.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.18
+            ]
+          },
+          {
+            "name": "VENKATRAMAN SRINIVASAN",
+            "subCategory": "Individual Investor",
+            "pct": 1.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.68
+            ]
+          },
+          {
+            "name": "ENVECON IT SYSTEMS PVT LTD",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.45
+            ]
+          },
+          {
+            "name": "NMS LEASING & INFOTECH PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1
+            ]
+          }
+        ]
+      },
+      "fii": "0.47%",
+      "dii": "14.25%"
     },
     "updatedAt": 1794038125829,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:34.050Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:24.552Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749363_29102026080538_WEB.xml",
     "ratios": {
-      "marketCapCr": 417,
-      "pe": 15.3,
+      "marketCapCr": 395,
+      "pe": 14.5,
       "ttmEps": 1.31,
       "ttmSalesCr": 354,
       "ttmPatCr": 28,
@@ -1274,7 +1867,8 @@
       "debtToEquity": 0.15,
       "promoterPct": 0
     },
-    "debtToEquity": 0.15
+    "debtToEquity": 0.15,
+    "lastShpRecordId": "215695"
   },
   "3MINDIA": {
     "about": "3M India Limited manufactures and trades in various products in India and internationally. It operates in four segments: Safety & Industrial; Transportation & Electronics; Health Care; and Consumer. The company offers vinyl, polyester, foil, and specialty industrial tapes and adhesives, such as masking, filament, and packaging tapes; functional and decorative graphics; abrasion-resistant films; and other specialty materials. In addition, the company offers medical and surgical supplies; medical devices; skin and wound care, as well as infection prevention products and solutions; drug delivery systems; dental and orthodontic products; and food safety products. Further, it provides home and office tapes, and packaging protection platforms; note pads, dispensers, flagging solution, and labels; and stain protection products. Additionally, it offers personal, brand and asset, and passive fire protection; border control, track and trace, cleaning and hygiene, traffic signs, pavement marking and vehicle registration, films, inks and digital signage, wall and glass cladding, architectural interior services and environmental graphics for home and office spaces, projection systems, computer and ATM-screen privacy filters and brightness enhancement films for television, avionics and automotive displays. It sells its products under the Command, Littmann, Nexcare, Post-it, Scotch-Brite, and Scotch brands for the automotive, commercial solutions, consumer markets, design and construction, electronics, energy, health care, manufacturing, safety, and transportation industries. It also exports its products. The company was incorporated in 1987 and is based in Bengaluru, India. 3M India Limited operates as a subsidiary of 3M Company.",
@@ -1704,7 +2298,8 @@
       "debtToEquity": 0,
       "promoterPct": 75
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214369"
   },
   "3PLAND": {
     "about": "3P Land Holdings Limited engages in the real estate leasing business in India. It operates through Leasing, Investment, and Services segments. The company is also involved in the lending of investments for group companies. The company was formerly known as Pudumjee Industries Limited and changed its name to 3P Land Holdings Limited in April 2018. 3P Land Holdings Limited was incorporated in 1965 and is based in Mumbai, India.",
@@ -1712,6 +2307,51 @@
     "industry": "Real Estate Services",
     "sector": "Real Estate & Housing",
     "quarterlyResults": [
+      {
+        "period": "Dec 23",
+        "sales": "1",
+        "expenses": "0",
+        "operatingProfit": "1",
+        "opm": "100.0%",
+        "netProfit": "0",
+        "eps": "₹0.22"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "1",
+        "expenses": "1",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.2"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "1",
+        "expenses": "0",
+        "operatingProfit": "1",
+        "opm": "100.0%",
+        "netProfit": "0",
+        "eps": "₹0.21"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "2",
+        "expenses": "1",
+        "operatingProfit": "1",
+        "opm": "50.0%",
+        "netProfit": "1",
+        "eps": "₹0.53"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "1",
+        "expenses": "0",
+        "operatingProfit": "1",
+        "opm": "100.0%",
+        "netProfit": "0",
+        "eps": "₹0.21"
+      },
       {
         "period": "Dec 25",
         "sales": "1",
@@ -1811,7 +2451,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "dii": [
           null,
@@ -1823,7 +2463,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiMutualFunds": [
           null,
@@ -1835,7 +2475,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -1847,7 +2487,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -1859,7 +2499,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1871,7 +2511,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           26.7,
@@ -2039,17 +2679,54 @@
         ],
         "fii": [],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "MANJU GAGGAR",
+            "subCategory": "Individual Investor",
+            "pct": 4.52,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.52
+            ]
+          },
+          {
+            "name": "SWAVIN BUSINESS CONSULTANTS PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.17
+            ]
+          }
+        ]
+      },
+      "fii": "0.00%",
+      "dii": "0.00%"
     },
     "updatedAt": 1794038125830,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:33.997Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:23.820Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1745257_24102026015226_WEB.xml",
     "ratios": {
-      "marketCapCr": 55,
-      "pe": 24.9,
+      "marketCapCr": 51,
+      "pe": 23.1,
       "ttmEps": 1.3,
       "ttmSalesCr": 5,
       "ttmPatCr": 1,
@@ -2059,7 +2736,8 @@
       "debtToEquity": 0,
       "promoterPct": 73.3
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215429"
   },
   "5PAISA": {
     "about": "5paisa Capital Limited provides an online technology platform for trading in National Stock Exchange of India Limited, BSE Ltd, and MCX in India. The company offers financial services, including depository services; distributes mutual funds, bonds, and debentures; and equity and mutual fund research, and investment advisory services. The company offers 5paisa trading app, an all-in-one app for trading and investing; trader's terminal, an online trading platform; Xstream API, an API platform; margin trading facility; Algospace, an an algorithmic trading platform; 5paisa EXE, a desktop-based platform; Publisher Library, a website with minimal coding; 5paisa MCP, an AI trading companion; T+5; FnO 360, a trading terminal for derivative traders; Scalper terminal, a scalping interface with instant keyboard; and Trade on charts, a trading view chart. The company offers its services through a web-based trading terminal, and mobile application.It serves retail investors, high-net-worth individuals, non-resident Indians, and self-employed professionals. The company was incorporated in 2007 and is based in Thane, India.",
@@ -2183,7 +2861,7 @@
     ],
     "shareholding": {
       "promoters": "36.50%",
-      "public": "63.49%",
+      "public": "48.28%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -2220,7 +2898,7 @@
           null,
           null,
           null,
-          null
+          15.21
         ],
         "dii": [
           null,
@@ -2232,7 +2910,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiMutualFunds": [
           null,
@@ -2244,7 +2922,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -2256,7 +2934,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -2268,7 +2946,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -2280,7 +2958,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           67.21,
@@ -2292,7 +2970,7 @@
           67.21,
           67.22,
           63.49,
-          63.49
+          48.28
         ],
         "employeeTrusts": [
           0.01,
@@ -2308,20 +2986,280 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
+        "promoters": [
+          {
+            "name": "Nirmal Bhanwarlal Jain",
+            "subCategory": "Promoter",
+            "pct": 19.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              19.85
+            ]
+          },
+          {
+            "name": "Madhu N Jain",
+            "subCategory": "Promoter",
+            "pct": 5.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.9
+            ]
+          },
+          {
+            "name": "Venkataraman Rajamani",
+            "subCategory": "Promoter",
+            "pct": 5.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.51
+            ]
+          },
+          {
+            "name": "Aditi Avinash Athavankar",
+            "subCategory": "Promoter",
+            "pct": 3.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.07
+            ]
+          },
+          {
+            "name": "Person Acting in Concert",
+            "subCategory": "Promoter",
+            "pct": 1.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.82
+            ]
+          },
+          {
+            "name": "Ardent Impex Pvt Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 1.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.23
+            ]
+          },
+          {
+            "name": "Orpheus Trading Pvt Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 0.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.59
+            ]
+          },
+          {
+            "name": "Jain Mansukhlal",
+            "subCategory": "Promoter",
+            "pct": 0.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.17
+            ]
+          },
+          {
+            "name": "Harshita Nirmal Jain",
+            "subCategory": "Promoter Group",
+            "pct": 0.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.12
+            ]
+          },
+          {
+            "name": "Aditi Athavankar",
+            "subCategory": "Promoter",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "Hwic Asia Fund Class A Shares",
+            "subCategory": "FPI Category I",
+            "pct": 8.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.22
+            ]
+          },
+          {
+            "name": "Bank Muscat India Fund",
+            "subCategory": "FPI Category II",
+            "pct": 3.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.98
+            ]
+          },
+          {
+            "name": "Rimco India Limited",
+            "subCategory": "FPI Category II",
+            "pct": 2.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.73
+            ]
+          }
+        ],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "FIH Mauritius Investments Ltd",
+            "subCategory": "Foreign Companies",
+            "pct": 24.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              24.54
+            ]
+          },
+          {
+            "name": "Shubhi Consultancy Services LLP",
+            "subCategory": "Any Other (specify)",
+            "pct": 7.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.46
+            ]
+          }
+        ]
+      },
+      "fii": "15.21%",
+      "dii": "0.00%"
     },
     "updatedAt": 1794038125831,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:34.052Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:23.019Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739364_15102026073428_WEB.xml",
     "ratios": {
-      "marketCapCr": 1522,
-      "pe": 29,
+      "marketCapCr": 1560,
+      "pe": 29.7,
       "ttmEps": 11.54,
       "ttmSalesCr": 338,
       "ttmPatCr": 41,
@@ -2331,7 +3269,8 @@
       "debtToEquity": 0,
       "promoterPct": 36.5
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213595"
   },
   "63MOONS": {
     "about": "63 moons technologies limited provides software solutions in India and internationally. It operates through Software Services/Solutions, Trading, and Others segments. The company offers DOME, an online trading software; POWERARMS, an electronic trading, risk management, and clearing and settlement platform; FOVEA for risk management; TRADEDART, a web-based trading platform; MARKETXSTREAM for analytics and quantification; CNS, a clearing and settlement application; DMATS, a depository for multi asset transaction systems; and Risk Management system, as well as Riskalculator to automate data collection; and DataCollector, a web-based electronic data submission and report generating systems. It also provides cyber security solutions, including risk assessments penetration testing and incident response; and QILegal, an AI-powered legal tech solution. In addition, the company offers trading, procurement, process management, risk consultancy, shared business support, IT infrastructure sharing, NBFC, Internet telecommunication, training and certification, and franchise services. It serves the banking, insurance, and capital market sectors. The company was formerly known as Financial Technologies (India) Limited and changed its name to 63 moons technologies limited in May 2016. 63 moons technologies limited was incorporated in 1988 and is based in Mumbai, India.",
@@ -2455,7 +3394,7 @@
     ],
     "shareholding": {
       "promoters": "45.59%",
-      "public": "54.41%",
+      "public": "52.52%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -2492,7 +3431,7 @@
           null,
           null,
           null,
-          null
+          1.66
         ],
         "dii": [
           null,
@@ -2504,7 +3443,7 @@
           null,
           null,
           null,
-          null
+          0.23
         ],
         "diiMutualFunds": [
           null,
@@ -2516,7 +3455,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -2528,7 +3467,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -2540,7 +3479,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -2552,7 +3491,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           54.37,
@@ -2564,7 +3503,7 @@
           54.37,
           54.37,
           54.37,
-          54.41
+          52.52
         ],
         "employeeTrusts": [
           0,
@@ -2580,20 +3519,194 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "LA-FIN FINANCIAL SERVICES PVT LTD",
+            "subCategory": "Promoter",
+            "pct": 26.76,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              26.76
+            ]
+          },
+          {
+            "name": "JIGNESH P SHAH",
+            "subCategory": "Promoter",
+            "pct": 14.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              14.19
+            ]
+          },
+          {
+            "name": "RUPAL JIGNESH SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 4.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.3
+            ]
+          },
+          {
+            "name": "MANJAY PRAKASH SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 0.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.17
+            ]
+          },
+          {
+            "name": "DEWANG SUNDERRAJ NERALLA",
+            "subCategory": "Promoter",
+            "pct": 0.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.13
+            ]
+          },
+          {
+            "name": "PRAKASH B SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "RAVI KANAIYALAL SHETH",
+            "subCategory": "Individual Investor",
+            "pct": 7.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.19
+            ]
+          },
+          {
+            "name": "NIRJA BHARAT SHETH",
+            "subCategory": "Individual Investor",
+            "pct": 2.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.74
+            ]
+          },
+          {
+            "name": "CHANDRIKABEN MAGANLAL PANDYA",
+            "subCategory": "Individual Investor",
+            "pct": 1.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.19
+            ]
+          },
+          {
+            "name": "RAVI K SHETH",
+            "subCategory": "Individual Investor",
+            "pct": 1.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.15
+            ]
+          }
+        ]
+      },
+      "fii": "1.66%",
+      "dii": "0.23%"
     },
     "updatedAt": 1794038125831,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:34.080Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:22.888Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752831_04112026060452_WEB.xml",
     "ratios": {
-      "marketCapCr": 4221,
-      "pe": 24.8,
+      "marketCapCr": 4278,
+      "pe": 25.1,
       "ttmEps": 36.93,
       "ttmSalesCr": 295,
       "ttmPatCr": 170,
@@ -2603,6 +3716,7 @@
       "debtToEquity": 0,
       "promoterPct": 45.59
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214955"
   }
 }

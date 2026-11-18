@@ -88,8 +88,8 @@
       },
       {
         "period": "Sep 26",
-        "sales": "729",
-        "expenses": "557",
+        "sales": "728",
+        "expenses": "556",
         "operatingProfit": "172",
         "opm": "23.6%",
         "netProfit": "130",
@@ -121,7 +121,7 @@
     ],
     "shareholding": {
       "promoters": "38.60%",
-      "public": "60.82%",
+      "public": "28.24%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -158,7 +158,7 @@
           null,
           null,
           null,
-          null
+          9.1
         ],
         "dii": [
           null,
@@ -170,7 +170,7 @@
           null,
           null,
           null,
-          null
+          23.48
         ],
         "diiMutualFunds": [
           null,
@@ -182,7 +182,7 @@
           null,
           null,
           null,
-          null
+          14.51
         ],
         "diiInsurance": [
           null,
@@ -194,7 +194,7 @@
           null,
           null,
           null,
-          null
+          6.76
         ],
         "diiPensionFunds": [
           null,
@@ -206,7 +206,7 @@
           null,
           null,
           null,
-          null
+          0.9
         ],
         "government": [
           null,
@@ -218,7 +218,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           59.51,
@@ -230,7 +230,7 @@
           59.85,
           59.88,
           60.78,
-          60.82
+          28.24
         ],
         "employeeTrusts": [
           1.02,
@@ -246,22 +246,247 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "PROFICIENT FINSTOCK LLP",
+            "subCategory": "Promoter",
+            "pct": 32.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              32.41
+            ]
+          },
+          {
+            "name": "KISHOR PARSHURAM PATIL",
+            "subCategory": "Promoter",
+            "pct": 4.88,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.88
+            ]
+          },
+          {
+            "name": "NIRMALA SHASHISHEKHAR PANDIT",
+            "subCategory": "Promoter",
+            "pct": 0.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.46
+            ]
+          },
+          {
+            "name": "SHRIKRISHNA MANOHAR PATWARDHAN",
+            "subCategory": "Promoter",
+            "pct": 0.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.4
+            ]
+          },
+          {
+            "name": "SACHIN DATTATRAYA TIKEKAR",
+            "subCategory": "Promoter",
+            "pct": 0.27,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.27
+            ]
+          },
+          {
+            "name": "K AND P MANAGEMENT SERVICES PVT LTD",
+            "subCategory": "Promoter",
+            "pct": 0.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.11
+            ]
+          },
+          {
+            "name": "ANUPAMA KISHOR PATIL",
+            "subCategory": "Promoter",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          },
+          {
+            "name": "CHINMAY S PANDIT",
+            "subCategory": "Promoter",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA",
+            "subCategory": "Insurance",
+            "pct": 4.39,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.39
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL TECHNOLOGY FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.64
+            ]
+          },
+          {
+            "name": "DSP MID CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.5
+            ]
+          },
+          {
+            "name": "CANARA ROBECO MUTUAL FUND A/C CANARA ROBECO LARGE",
+            "subCategory": "Mutual Funds",
+            "pct": 1.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.82
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA VAL",
+            "subCategory": "Mutual Funds",
+            "pct": 1.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.79
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "9.10%",
+      "dii": "23.48%"
     },
     "updatedAt": 1794038125772,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:43.782Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:10:58.802Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748349_28102026101814_WEB.xml",
     "ratios": {
-      "marketCapCr": 14555,
-      "pe": 34.4,
+      "marketCapCr": 14160,
+      "pe": 33.5,
       "ttmEps": 15.59,
-      "ttmSalesCr": 2734,
+      "ttmSalesCr": 2733,
       "ttmPatCr": 424,
       "bookValue": 88.3,
       "roePct": 17.7,
@@ -269,7 +494,8 @@
       "debtToEquity": 0,
       "promoterPct": 38.6
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214717"
   },
   "KOTAKBANK": {
     "about": "Kotak Mahindra Bank Limited provides a range of banking and financial services to corporate and individual customers in India. It operates through Corporate/Wholesale Banking; Retail Banking; Treasury, BMU and Corporate Centre; Vehicle Financing; Other Lending Activities; Broking; Advisory and Transactional Services; Asset Management; and Insurance segments. The company offers savings, current, retail institution, corporate, private banking, and salary accounts; NRE and NRO fixed deposits and foreign currency nonresident deposits; home, personal, business, payday, gold, education, two-wheeler, commercial vehicle and equipment, working capital, home improvement, car, business, and crop loans, as well as loans against securities and properties; smart EMI services; bill payment, fund transfer, FASTag, taxes, loan/utility payment, forex, and remittance; and forex, credit, and debit card services. It also provides life, health, vehicle, travel, car, and two-wheeler insurance; domestic and international trade, international export and import, bank guarantee, letter of credit, and export credit; digital banking services; and cash management, trade and supply chain finance, trade services, corporate accounts, and sector based solutions. In addition, the company offers investment products, such as demat accounts, Government schemes, mutual funds, application supported by blocked amount facility, deposits, and portfolio investment schemes; and wire transfer, click2remit, and remittance exchange house services. Kotak Mahindra Bank Limited was incorporated in 1985 and is based in Mumbai, India.",
@@ -972,7 +1198,8 @@
       "debtToEquity": 0.38,
       "promoterPct": 25.87
     },
-    "debtToEquity": 0.38
+    "debtToEquity": 0.38,
+    "lastShpRecordId": "214609"
   },
   "KALYANKJIL": {
     "about": "Kalyan Jewellers India Limited, together with its subsidiaries, engages in the manufacture and retail of various gold and precious stone studded jewelry products in India, the Middle East, the United states of America, and United Kingdom, and internationally. It offers gold, diamond, silver, platinum, gemstone, and white and rose gold jewelry, including wedding, staple regional, aspirational, studded, and other jewelries. The company also provides chains, necklaces, bangles, bracelets, nose studs, choker, jewelry, and moti sets, daily wear, vaddanam, rings, earrings, pendants, anklets, pearls, studs, jhumka, lockets, harams, kadas, payals, and second studs. It offers its products under MUDHRA, NIMAH, ANOKHI, RANG, TEJASVI, ZIAH, LAYA, GLO, CANDERE, VEDHA, APOORVA, HERA, and MUHURAT brand names. Further, it sells its products through an online platform, candere.com. Kalyan Jewellers India Limited was founded in 1993 and is headquartered in Thrissur, India.",
@@ -1657,7 +1884,8 @@
       "debtToEquity": 0,
       "promoterPct": 62.85
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214025"
   },
   "KEI": {
     "about": "KEI Industries Limited manufactures, markets, and sells wires and cables in India and internationally. It operates in three segments: Cable & Wires; Engineering, Procurement and Construction; Stainless Steel Wire; and Other. The company offers extra high voltage cables, high voltage cables, low voltage cables, ESP cables, control cables, house wires, single core and multicore flexible cables, communication cables, instrumentation cables, thermocouple extension/compensating cables, solar cables, rubber cables, fire survival/resistant cables, marine and offshore cables, winding wires, stainless steel wires, medium voltage covered conductors, and EV charging cables and guns. It also provides engineering, procurement, and construction solutions in the areas of gas-insulated GIS, and air-insulated substations AIS; overhead and underground power transmission and distribution systems; and railway electrification/substation on a turnkey basis, as well as project management services. The company exports its products to approximately 60 countries. It serves the power, infrastructure, real estate, refineries, oil & gas, defence, chemicals, metals, information technology, pharmaceuticals, manufacturing, renewable energy, cement, fertilizers, consumer durables, data centres, non-metal industries, and other sectors through dealers and distributors. The company was founded in 1968 and is headquartered in New Delhi, India.",
@@ -2333,7 +2561,8 @@
       "debtToEquity": 0.04,
       "promoterPct": 35
     },
-    "debtToEquity": 0.04
+    "debtToEquity": 0.04,
+    "lastShpRecordId": "214900"
   },
   "KABRAEXTRU": {
     "about": "Kabra Extrusiontechnik Limited manufacturers, sells, and exports plastic extrusion machineries for the manufacture of pipes and films, and lithium-ion battery packs for electric mobility and energy storage application in India. It operates through two segments: Extrusion Machinery and Battery. The company offers pipe extrusion lines, such as twin-screw PVC pipe extrusion and PE pipe extrusion lines; multilayer and CoEX blown film lines, and monolayer film plants; sheet extrusion lines; compounding lines; and auto feeding systems. It also offers computer-related services, including website maintenance, multimedia creation, and IoT solutions. In addition, the company develops and produces green energy systems and solutions. Kabra Extrusiontechnik Limited was founded in 1962 and is headquartered in Mumbai, India.",
@@ -3916,7 +4145,8 @@
       "ttmSalesCr": 580,
       "ttmPatCr": 2,
       "promoterPct": 53.14
-    }
+    },
+    "lastShpRecordId": "213317"
   },
   "KALYANIFRG": {
     "about": "Kalyani Forge Limited, an engineering company, manufactures and sells forged, machined, and assembled products in India. The company offers engine components, including connecting rod, crank and cam shafts, retainer and cross head valves, injector clamp, rocker arm, balance weight, cam lobe, and others; driveline parts, such as tulips, inner and outer race, tripod, spider, yoke shaft, double yoke, and gear blanks; and axle products for chassis systems, including idler and control arms, FS arms, brackets, stub, steering knuckle, front and rear axle parts, wheel hub, and others. It also provides turbo charger parts; transmission components; and industrial cold and hot forged parts for use in power tools, conveyors, compressors, and others. In addition, the company offers hot, cold, and warm forging; precision machining and finishing; heat treatment; die manufacturing; testing and inspection; engineering; and logistic services. It serves various industries, such as automotive; construction, mining, and infrastructure; power generation; marine; railways; agricultural; general industrial goods; and electric mobility. The company also exports its products to Europe, Japan, and the United States. Kalyani Forge Limited was incorporated in 1979 and is based in Pune, India.",
@@ -4774,7 +5004,8 @@
       "debtToEquity": 0.17,
       "promoterPct": 57.78
     },
-    "debtToEquity": 0.17
+    "debtToEquity": 0.17,
+    "lastShpRecordId": "215194"
   },
   "KAMDHENU": {
     "about": "Kamdhenu Limited engages in manufacturing, marketing, branding, and distribution of thermo mechanical treatment (TMT) bars, structural steel, and allied products under the Kamdhenu brand name in India. The company offers steel rebars, structural steel products, and colour coated profile sheets. It also provides a range of shapes and sizes, including angles, channels, beams, flats, and MS pipes. It offers its products through a network of dealers and distributors. The company was formerly known as Kamdhenu Ispat Limited and changed its name to Kamdhenu Limited in January 2016. Kamdhenu Limited was incorporated in 1994 and is based in Gurugram, India.",
@@ -5229,7 +5460,8 @@
       "debtToEquity": 0,
       "promoterPct": 49.03
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213687"
   },
   "KAMOPAINTS": {
     "about": "Kamdhenu Ventures Limited manufactures and supplies paint products in India. The company provides dual paints series, designer finishes, exterior emulsion range, interior emulsion range, acrylic washable distemper, textured paints, premium enamel paint, wood coating products, and water-proofing solutions. It offers its products through dealers, distributors, and painters. Kamdhenu Ventures Limited was founded in 2008 and is based in Gurugram, India.",
@@ -5701,7 +5933,8 @@
       "debtToEquity": 0.02,
       "promoterPct": 33.79
     },
-    "debtToEquity": 0.02
+    "debtToEquity": 0.02,
+    "lastShpRecordId": "214236"
   },
   "KANCHI": {
     "about": "Kanchi Karpooram Limited engages in the manufacture and sale of camphor and allied products in India. The company operates through two segments: Manufacture and Sale of Camphor and allied products and Real Estate. It provides camphor, camphene, dipentene, double distilled turpentine, ester gum, fortified rosin, gum rosin, isoborneol, isobornyl, pine oil, pine pitch, pine tar, and sodium acetate trihydrate. The company is also involved in the trading of raw cashew nuts and other agro products. It serves tyres, paint, paper, rubber, fragrance, and camphor industries. The company was incorporated in 1992 and is based in Chennai, India.",
@@ -6261,7 +6494,8 @@
       "ttmSalesCr": 1281,
       "ttmPatCr": 82,
       "promoterPct": 74.4
-    }
+    },
+    "lastShpRecordId": "214254"
   },
   "KANPRPLA": {
     "about": "Kanpur Plastipack Limited manufactures and trades in industrial packaging solutions in India and internationally. It operates through Plastic Division, Consignmnet Stockiest and Trading; and Solar Power Division segments. The company offers flexible intermediate bulk containers (FIBC) used in chemicals, fertilizers, fiberglass, food products, grains, mining, construction, pigments, plastics, and seed industries. It also provides multifilament yarn (MFY) used in various industries, such as FIBC Stitching, narrow-woven fabric, polypropylene cloth- filter fabrics, PP/HDPE woven sacks, geo textiles, geo-synthetic fabrics, safety belts, sewing thread, skipping ropes, webbing tapes, shoelace, saddler, bag closing yarn, halter webbing, dog rug fabric and leash, outdoor covers, horse rug fabric, rug webbing, and camel rug fabrics. In addition, the company offers fabrics, including PP Woven, PP MFY, circular, Sulzer, ventilated, horse rug, and jute alike fabrics. Further, the company provides UV masterbatch solutions, including food grade UV, non-food grade UV, and white TIO2 UV masterbatches used in greenhouse film, FIBC bags, moulded crates, drums, garbage cans, garden furniture, outdoor articles, tarpaulin, roto moulded water tank, shade net, MFY, and woven sacks applications. Additionally, it offers PP woven sacks, PP/PE liners, filler cords, net baffles, webbings, body bags, retail products, crimp, monofilament, and taslan yarns; all-purpose, garden, and vegetable bags; AC, bike, cycle, and tiffin covers; and CPPs. It also exports its products to Europe, the Americas, Asia-Pacific, Africa, and Australia. Kanpur Plastipack Limited was incorporated in 1971 and is headquartered in Kanpur, India.",
@@ -6759,7 +6993,8 @@
       "debtToEquity": 0.56,
       "promoterPct": 68.03
     },
-    "debtToEquity": 0.56
+    "debtToEquity": 0.56,
+    "lastShpRecordId": "214147"
   },
   "KANSAINER": {
     "about": "Kansai Nerolac Paints Limited engages in the manufacture and supply paints, varnishes, enamels, and lacquers in India. It provides interior and exterior wall paints, wood coatings, metal enamel paints, and ancillary paints, as well as adhesives and waterproofing products; interior textures; general industrial, powder, coil, automotive, auto refinish, and floor coatings; wood finishes, waterproofing solutions, and construction chemicals; and decorative and soldier paints. The company also offers painters, background check, guidance, color consultation, on-site sanitation, quotation, and color selection tools services. It serves residential, commercial, retail, industrial, governmental, and institutional customers, as well as automotive, consumer durables, machinery, equipment, and structural industries. The company was formerly known as Goodlass Nerolac Paints Limited and changed its name to Kansai Nerolac Paints Limited in April 2006. The company was incorporated in 1920 and is headquartered in Mumbai, India. Kansai Nerolac Paints Limited is a subsidiary of Kansai Paint Co., Ltd.",
@@ -7796,7 +8031,8 @@
       "debtToEquity": 0.02,
       "promoterPct": 74.7
     },
-    "debtToEquity": 0.02
+    "debtToEquity": 0.02,
+    "lastShpRecordId": "214013"
   },
   "KARURVYSYA": {
     "about": "The Karur Vysya Bank Limited provides various banking and financial services for personal and corporate customers in India. The company operates through Treasury, Corporate and Wholesale Banking, Retail Banking, and Other Banking Operations segments. The Treasury segment offers investments in Central and State Government securities, debt instruments of banks, FIs, insurance companies, PSUs and corporates, certificates of deposits, equity shares, mutual funds, and security receipts, as well as forward contracts, derivatives and foreign exchange operations on proprietary accounts and for customers, including trading in these instruments, as well as borrowing and lending operations. The Corporate/Wholesale Banking segment includes all advances to trusts, partnership firms, companies, and statutory bodies. The Retail Banking segment comprises the lending of funds and other banking services to any legal person, including small business customers. The Other Banking Operations include bancassurance, third-party product distribution, demat services and other banking transactions, as well as deposits in RIDF and MSME funds. It also provides prepaid instruments, including gift, forex, travel, and re-loadable cards; life, non-life, and health insurance products; savings and current accounts; recurring and tax-saving deposits; personal, home, vehicle, and educational loans, as well as business loans; digital products; locker facilities; social security schemes; and government sponsored schemes. In addition, the company offers investment and payment collection and transaction banking services; FCNR, NRE, and NRO deposits; mortgage and jewel loans and loans against deposits; remittance services; and Internet and mobile banking services, as well as a range of products for the agricultural sector. The Karur Vysya Bank Limited was incorporated in 1916 and is headquartered in Karur, India.",
@@ -8498,7 +8734,8 @@
       "debtToEquity": 0.15,
       "promoterPct": 1.95
     },
-    "debtToEquity": 0.15
+    "debtToEquity": 0.15,
+    "lastShpRecordId": "214516"
   },
   "KAUSHALYA": {
     "about": "Kaushalya Infrastructure Development Corporation Limited engages in executing construction contracts relating to infrastructure and real estate developments in India. It operates through Construction and Hotel segments. The company also develops highways, bridges, industrial infrastructure, mining and others; transmission, generation, and agriculture projects; and residential, commercial, institutional complexes. In addition, it engages in the operation of hotels; acquisition, development, and sale of land business. Further, the company is involved in trading school shoes and bags. Kaushalya Infrastructure Development Corporation Limited was incorporated in 1992 and is headquartered in Kolkata, India.",
@@ -8963,7 +9200,8 @@
       "ttmSalesCr": 4,
       "ttmPatCr": 0,
       "promoterPct": 51.42
-    }
+    },
+    "lastShpRecordId": "214022"
   },
   "KAVDEFENCE": {
     "about": "Kavveri Defence & Wireless Technologies Limited engages in the design, development, and manufacture subsystem products, antennas and RF components, for defence, railroad transport, airports, aerospace and telecommunications applications in India and internationally. The company offers omnidirectional antenna, panel and sector antennas, Yagi antennas, vehicular/manpack antenna, adjustable & multisector, low-profile antenna, in-building/DAS/IBS, point-to-point antenna, parabolic and custom multiband and high-gain solutions; filters, including bandpass, high-pass, low-pass, multiple window filters, broadband duplexers, combiners, and tunable dual-cavity filters; and passive RF components, such as isolators, circulators, power dividers, RF switches, couplers, and splitters. It serves the defense, aerospace, counter-drone, satcom, public safety, industrial, and transport sectors. The company was formerly known as Kavveri Telecom Products Limited and changed its name to Kavveri Defence & Wireless Technologies Limited in October 2024. Kavveri Defence & Wireless Technologies Limited was founded in 1991 and is based in Bengaluru, India.",
@@ -9518,7 +9756,8 @@
       "ttmSalesCr": 7,
       "ttmPatCr": -3,
       "promoterPct": 24.56
-    }
+    },
+    "lastShpRecordId": "214937"
   },
   "KAYA": {
     "about": "Kaya Limited engages in the provision of skin and hair care solutions through scientific dermatological procedures and products in India. The company offers skin care products, such as facewash, cleansers, toners, moisturizers, creams, face serums, sunscreen lotions, kits and regimes, wet wipes, and lip care; hair care products that include shampoos, hair serums, hair lotions, hair oils, and hair masques; bath and body products; and nutraceutical products. It also provides skin services comprising laser hair reduction, thermage, HIFU, dermal fillers, chemical peel, Q-switch laser, and skin brightening and lightening treatments, as well as ageing skin, acne scars, skin IV drips, dark circle, anti-wrinkle, and microneedling; hair services, such as hair loss concern management, PRP GF, hair thread, QR678, hair loss in men, hair loss and thinning for women, and hair IV drips solutions; and body contouring services consisting of CM slim, Venus legacy, CoolSculpting, weight loss IV drips, face fat reduction treatment, and Artiqa. The company sells its products through Kaya clinics, standalone stores, online, and third-party outlets. Kaya Limited was founded in 2002 and is headquartered in Mumbai, India.",
@@ -11508,7 +11747,8 @@
       "debtToEquity": 0.66,
       "promoterPct": 52.23
     },
-    "debtToEquity": 0.66
+    "debtToEquity": 0.66,
+    "lastShpRecordId": "215175"
   },
   "KEEPLEARN": {
     "about": "DSJ Keep Learning Limited provides technical services to educational institution in India. It offers support services to educational institutions and software solutions for managing the administrative tasks related to the onboarding of students to educational institutions. The company also provides keeplearning.live, a learning platform, which offers career-aligned programs for working professionals, as well as kOS, a SaaS product suite that enables institutional and learner success across administrative and planning tools. It serves institutions, universities, and the learner community. The company was formerly known as DSJ Communications Limited and changed its name to DSJ Keep Learning Limited in June 2021. The company was incorporated in 1989 and is based in Mumbai, India.",
@@ -11889,7 +12129,8 @@
       "ttmSalesCr": 7,
       "ttmPatCr": -2,
       "promoterPct": 55.42
-    }
+    },
+    "lastShpRecordId": "214879"
   },
   "KELLTONTEC": {
     "about": "Kellton Tech Solutions Limited engages in the provision of digital transformation, ERP, and other IT services in APAC, Europe, the United States, and internationally. The company offers AI services, including AI development, generative AI, agentic AI & automation traditional AI, AI engineering & platforms, and AI governance and risk data engineering for AI services; data and analytics services comprising data consulting, data migration and modernization, analytics services, and integration and API services; product strategy, consulting, design, and management; and cloud engineering services, such as consulting, migration, and manage services, as well as DevSecOps services. It also provides product engineering services, including digital application development, mobile engineering, IoT and wearables solutions, and quality engineering services; blockchain, web 3.0, and metaverse services; ServiceNow services comprising AI enterprise, implementation, optimization, and consultation services; and SAP services, such as AMS support, automation, security and GRC, value-added solutions, and other SAP implementation services, as well as S/4HANA implementation services. In addition, the company offers Structi.ai, an AI data enrichment and decisioning platform; Phoenix.ai, which re-engineers monolithic legacy estates; Hooper, an autonomous enterprise platform; Audit.io for retail businesses, automating audits, and compliance processes; Tasks.io, an automated management system platform; Kelton4Commerce, which provide tailored e-commerce solutions; Optima, a digital oilfield platform; Kelton4Health, a digital fitness platform; KLGAME, a location-based gamification, analytics, and rich messaging engine; Kelton4NFT for monetization of digital content through NFT creation and sales; and tHRive, an automated HRMS software, as well as data accelerators. Kellton Tech Solutions Limited was incorporated in 1993 and is headquartered in Hyderabad, India.",
@@ -12117,7 +12358,93 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "MATNIC FINVEST LLP",
+            "subCategory": "Promoter",
+            "pct": 32.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              32.98
+            ]
+          },
+          {
+            "name": "KELLTON WEALTH MANAGEMENT LLP",
+            "subCategory": "Promoter",
+            "pct": 1.57,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.57
+            ]
+          },
+          {
+            "name": "SREEVIDYA CHINTAM",
+            "subCategory": "Promoter",
+            "pct": 0.86,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.86
+            ]
+          },
+          {
+            "name": "CHINTAM KRISHNA REDDY",
+            "subCategory": "Promoter",
+            "pct": 0.61,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.61
+            ]
+          },
+          {
+            "name": "LAKSHMI CHINTAM",
+            "subCategory": "Promoter",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -12125,16 +12452,17 @@
     },
     "updatedAt": 1794038126243,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:25.687Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:32.862Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 456,
-      "pe": 49.5,
+      "marketCapCr": 452,
+      "pe": 49.1,
       "ttmEps": 0.23,
       "ttmSalesCr": 222,
       "ttmPatCr": 12,
       "promoterPct": 36.03
-    }
+    },
+    "lastShpRecordId": "213750"
   },
   "KENNAMET": {
     "about": "Kennametal India Limited manufactures and trades in hard metal products and machine tools in the United States, Germany, China, India, Canada, Italy, France, Mexico, South Africa, Spain, the United Kingdom, and internationally. It operates in two segments, Metal Cutting and Infrastructure. The company offers metal cutting tools; metalworking tools, such as milling, hole making, turning, threading, small parts and swiss type, PCD tooling, tool holders and adapters, spare parts, industrial nozzles and abrasive flow products, rods and preforms, and tool kits; underground and surface mining products; road rehabilitation, foundation drilling, trenching, forestry, and recycling products; carbide wear parts, such as fluid handling and flow control, abrasive blast nozzles, tips and compacts, pelletizing dies, particle size reduction wear components, and tungsten for defense applications; carbide rods and blanks; and metal powders, materials, and consumable products. It also provides conforma-clad wear resistant coating; evaporator boats, boron nitride and ceramic components, and ceramic powders, as well as boron nitride suspensions, pastes, and sprays; stellite; and additive manufacturing products; and spare parts and accessories, such as nuts and bolts, pads and shims, screws, pins and retainers, sleeves, clamping tools, keys, cartridges, caps and plugs, chip breakers, canisters, hand tools, lubricants and fluids, counterweights, and gaskets bushings and rings, as well as hose, fittings, and adapters. In addition, the company offers e-business, tool management, carbide recycling, reconditioning, cost per part program, technical support, and machine tool industry services. It serves additive manufacturing, aerospace, automotive, construction, defense, general engineering, medical, mining, oil and gas, power generation, and process industries. The company was incorporated in 1964 and is based in Bengaluru, India. Kennametal India Limited is a subsidiary of Meturit AG.",
@@ -13840,6 +14168,51 @@
     "sector": "Capital Markets & Asset Management",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "2",
+        "expenses": "2",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.18"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "3",
+        "expenses": "3",
+        "operatingProfit": "-0",
+        "opm": "0.0%",
+        "netProfit": "-0",
+        "eps": "₹-0.22"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "3",
+        "expenses": "3",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.31"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "8",
+        "expenses": "8",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.15"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "3",
+        "expenses": "2",
+        "operatingProfit": "1",
+        "opm": "33.3%",
+        "netProfit": "1",
+        "eps": "₹0.35"
+      },
+      {
         "period": "Dec 25",
         "sales": "2",
         "expenses": "2",
@@ -14344,8 +14717,8 @@
     },
     "updatedAt": 1794038126246,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:26.834Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:34.300Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746842_27102026045935_WEB.xml",
     "ratios": {
       "marketCapCr": 44,
@@ -14358,7 +14731,8 @@
       "debtToEquity": 0.14,
       "promoterPct": 48.84
     },
-    "debtToEquity": 0.14
+    "debtToEquity": 0.14,
+    "lastShpRecordId": "214977"
   },
   "KHAZANCHI": {
     "about": "Khazanchi Jewellers Limited engages in the wholesale and retail of jewelry products in India. The company offers a range of gold, silver, diamond, precious stone, and temple jewelry; bridal, contemporary, and occasion-based collections; and designer pieces, bullion products, and coins. It sells its products through its showroom. Khazanchi Jewellers Limited was founded in 1971 and is based in Chennai, India.",
@@ -15126,7 +15500,8 @@
       "debtToEquity": 0.28,
       "promoterPct": 63.77
     },
-    "debtToEquity": 0.28
+    "debtToEquity": 0.28,
+    "lastShpRecordId": "214206"
   },
   "KIMS": {
     "about": "Krishna Institute of Medical Sciences Limited provides medical and health care services under the KIMS Hospitals brand in India. The company offers arthroscopy and shoulder, cardiology, cardiothoracic and cardiovascular, organ transplant, medical and surgical gastroenterology, hepatology, orthopaedic, neurology, neurosurgery, nephrology, urology, oncology, pediatric, neonatology, obstetrics and gynaecology, fertility, dental science, emergency and critical care, vascular, rehabilitation and physiotherapy services. It also provides pulmonology, diagnostic and imaging, ophthalmology, ENT, rheumatology and clinical immunology, internal medicine, interventional radiology, diabetology, endocrinology, general surgery, infectious disease, dermatology, thoracic surgery, psychiatry, plastic and reconstructive surgery, transfusion medicine, clinical psychology, anesthesiology, and tele medicine services. In addition, the company operates clinical immunology allergy, bone marrow transplantation, hair transplant, andrology, fertility, alzheimer, arthroscopy, bone and joint, breast, dialysis, female urology, IUI, IVF, joint replacement, kidney health and transplant, ICU, spine, stroke, TAVR/TAVI, hepatobiliary surgery, and trauma centers, as well as pain and wellness clinics. Further, it provides bariatric, thoracic, oral maxillofacial, and endovascular surgery services. Krishna Institute of Medical Sciences Limited was incorporated in 1973 and is based in Secunderabad, India.",
@@ -15922,7 +16297,8 @@
       "debtToEquity": 0.17,
       "promoterPct": 32.66
     },
-    "debtToEquity": 0.17
+    "debtToEquity": 0.17,
+    "lastShpRecordId": "215889"
   },
   "KINGFA": {
     "about": "Kingfa Science & Technology (India) Limited manufacturing and supply of high-quality reinforced polypropylene compounds, thermoplastics elastomers, and fiber re-enforced composites in India. It also offers engineering plastics including ABS, HIPS, PA, PBT, PC and their alloys; biodegradable nitrile gloves and protective coverall; thermoplastic elastomers under the HYPRENE brand name; POM and LFT products; fiberglass honeycomb composite panels; polypropylene products; PA6/PA66 products; engineering plastics compounds; and high temperature resistant nylon/LCP, as well as personal protective equipment (PPE) like mask and gloves. The company was formerly known as Hydro S&S Industries Limited and changed its name to Kingfa Science & Technology (India) Limited in March 2016. The company was incorporated in 1983 and is based in Pune, India. Kingfa Science & Technology (India) Limited is a subsidiary of M/s Kingfa Science & Technology Co. Ltd China.",
@@ -17108,6 +17484,60 @@
     "sector": "Capital Goods & Industrial Machinery",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "1,141",
+        "expenses": "1,030",
+        "operatingProfit": "111",
+        "opm": "9.7%",
+        "netProfit": "82",
+        "eps": "₹5.65"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "1,400",
+        "expenses": "1,242",
+        "operatingProfit": "158",
+        "opm": "11.3%",
+        "netProfit": "118",
+        "eps": "₹8.09"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "1,354",
+        "expenses": "1,173",
+        "operatingProfit": "181",
+        "opm": "13.4%",
+        "netProfit": "135",
+        "eps": "₹9.27"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "1,206",
+        "expenses": "1,058",
+        "operatingProfit": "148",
+        "opm": "12.3%",
+        "netProfit": "111",
+        "eps": "₹7.63"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "1,170",
+        "expenses": "1,081",
+        "operatingProfit": "89",
+        "opm": "7.6%",
+        "netProfit": "65",
+        "eps": "₹4.47"
+      },
+      {
+        "period": "Sep 25",
+        "sales": "1,616",
+        "expenses": "1,428",
+        "operatingProfit": "188",
+        "opm": "11.6%",
+        "netProfit": "141",
+        "eps": "₹9.69"
+      },
+      {
         "period": "Dec 25",
         "sales": "1,389",
         "expenses": "1,271",
@@ -17294,7 +17724,161 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Kirloskar Industries Limited",
+            "subCategory": "Promoter Group",
+            "pct": 5.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.64
+            ]
+          },
+          {
+            "name": "Alpana Rahul Kirloskar",
+            "subCategory": "Promoter Group",
+            "pct": 5.35,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.35
+            ]
+          },
+          {
+            "name": "Gauri Kirloskar",
+            "subCategory": "Promoter Group",
+            "pct": 3.95,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.95
+            ]
+          },
+          {
+            "name": "Arti Atul Kirloskar",
+            "subCategory": "Promoter Group",
+            "pct": 2.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.22
+            ]
+          },
+          {
+            "name": "Aditi Atul Kirloskar",
+            "subCategory": "Promoter Group",
+            "pct": 1.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.32
+            ]
+          },
+          {
+            "name": "Roopa Jayant Gupta",
+            "subCategory": "Promoter Group",
+            "pct": 0.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.06
+            ]
+          },
+          {
+            "name": "Navsai Opportunities Private limited (earlier known as Navsai Investments Private Limited)",
+            "subCategory": "Promoter Group",
+            "pct": 0.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.06
+            ]
+          },
+          {
+            "name": "Kirloskar Chillers Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.03
+            ]
+          },
+          {
+            "name": "Alpak Investments Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -17302,12 +17886,12 @@
     },
     "updatedAt": 1794038126249,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:27.957Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:35.997Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753265_04112026101823_WEB.xml",
     "ratios": {
-      "marketCapCr": 24286,
-      "pe": 58.9,
+      "marketCapCr": 24124,
+      "pe": 58.5,
       "ttmEps": 28.4,
       "ttmSalesCr": 6164,
       "ttmPatCr": 411,
@@ -17317,7 +17901,8 @@
       "debtToEquity": 0.05,
       "promoterPct": 41.03
     },
-    "debtToEquity": 0.05
+    "debtToEquity": 0.05,
+    "lastShpRecordId": "216243"
   },
   "KIRLOSIND": {
     "about": "Kirloskar Industries Limited engages in the manufacturing and sale of iron castings in India. It operates through Investments (Securities & Properties); Real Estate; Iron Casting; Tube; and Steel segments. The company also manufactures seamless tubes, cylinder tubes, components, and engineering steels. In addition, it is involved in real estate development and leasing; owns real estate properties that include lands and buildings, apartments, and offices; and invests in properties and securities. The company was formerly known as Kirloskar Oil Engines Ltd and changed its name to Kirloskar Industries Limited in March 2010. Kirloskar Industries Limited was founded in 1888 and is headquartered in Pune, India.",
@@ -19645,6 +20230,51 @@
     "sector": "Consumer & FMCG",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "23",
+        "expenses": "23",
+        "operatingProfit": "-0",
+        "opm": "0.0%",
+        "netProfit": "-0",
+        "eps": "₹-0.13"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "25",
+        "expenses": "29",
+        "operatingProfit": "-4",
+        "opm": "-16.0%",
+        "netProfit": "1",
+        "eps": "₹0.11"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "24",
+        "expenses": "26",
+        "operatingProfit": "-2",
+        "opm": "-8.3%",
+        "netProfit": "-2",
+        "eps": "₹-0.67"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "24",
+        "expenses": "24",
+        "operatingProfit": "-0",
+        "opm": "0.0%",
+        "netProfit": "-0",
+        "eps": "₹-0.02"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "20",
+        "expenses": "28",
+        "operatingProfit": "-8",
+        "opm": "-40.0%",
+        "netProfit": "-8",
+        "eps": "₹-2.24"
+      },
+      {
         "period": "Dec 25",
         "sales": "63",
         "expenses": "67",
@@ -19670,6 +20300,15 @@
         "opm": "6.3%",
         "netProfit": "2",
         "eps": "₹0.57"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "86",
+        "expenses": "85",
+        "operatingProfit": "1",
+        "opm": "1.2%",
+        "netProfit": "1",
+        "eps": "₹0.22"
       }
     ],
     "balanceSheet": [],
@@ -19801,7 +20440,127 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "GURNAM ARORA",
+            "subCategory": "Promoter",
+            "pct": 16.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              16.97
+            ]
+          },
+          {
+            "name": "SATNAM ARORA",
+            "subCategory": "Promoter",
+            "pct": 15.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              15.51
+            ]
+          },
+          {
+            "name": "JUGAL KISHORE ARORA",
+            "subCategory": "Promoter",
+            "pct": 2.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.84
+            ]
+          },
+          {
+            "name": "RANI ARORA",
+            "subCategory": "Promoter Group",
+            "pct": 2.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.01
+            ]
+          },
+          {
+            "name": "SATNAM HAEGENS LTD",
+            "subCategory": "Promoter Group",
+            "pct": 0.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.28
+            ]
+          },
+          {
+            "name": "NITIN AROAR",
+            "subCategory": "Promoter Group",
+            "pct": 0.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.06
+            ]
+          },
+          {
+            "name": "MADHU ARORA",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -19809,16 +20568,17 @@
     },
     "updatedAt": 1794038126254,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:31.405Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:37.762Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 97,
-      "pe": 0.9,
-      "ttmEps": 30.75,
-      "ttmSalesCr": 164,
-      "ttmPatCr": 115,
+      "marketCapCr": 95,
+      "pe": 1.2,
+      "ttmEps": 23.28,
+      "ttmSalesCr": 209,
+      "ttmPatCr": 87,
       "promoterPct": 37.67
-    }
+    },
+    "lastShpRecordId": "214140"
   },
   "KOKUYOCMLN": {
     "about": "Kokuyo Camlin Limited engages in the manufacturing, selling, and trading of scholastic, writing instruments, notebooks, marker pens, inks, fine-art colours and accessories, hobby colours, pencils and other stationery products in India. The company provides colour, drawing materials, canvases, kids, painting kits, brushes, hobby, mediums, sketchbooks, markers, and photo colours under the Camel brand name; and pencils and accessories, geometry box, adhesives, office supplies, markers and pens, notebooks, paper, and early learning products under the Camlin brand name. It also exports its products to SAARC countries, the Middle East, the Far East, Mauritius, Ghana, the United States, and Japan. The company was formerly known as Camlin Limited and changed its name to Kokuyo Camlin Limited in January 2012. The company was founded in 1931 and is based in Mumbai, India. Kokuyo Camlin Limited is a subsidiary of Kokuyo Co., Ltd.",
@@ -20161,7 +20921,8 @@
       "debtToEquity": 0,
       "promoterPct": 74.99
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215940"
   },
   "KOLTEPATIL": {
     "about": "Kolte-Patil Developers Limited operates as a real estate development company in India. It constructs and develops residential complexes, commercial spaces, IT parks, and integrated townships; rents immovable properties; and provides project management services for managing and developing real estate projects. It serves retail clients, middle-income groups, and high-net worth individuals. The company markets its projects under the Kolte-Patil and 24K brands. Kolte-Patil Developers Limited was founded in 1970 and is based in Pune, India.",
@@ -21338,7 +22099,8 @@
       "debtToEquity": 0,
       "promoterPct": 72.22
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214952"
   },
   "KOTHARIPRO": {
     "about": "Kothari Products Limited, together with its subsidiaries, engages in international trade and real estate activities in India. It operates through two segments, Trading Items and Real Estate etc. The company involved in the import, export, and trade of various products/commodities, including agro based commodities, minerals, metals, petroleum products and coal, tiles, notebooks, computer storage devices, computer hardware products, electronic components, transformers, copier papers, steel products, scrap and PVC products, etc. It also develops land, malls, hotels, and service apartments; invests in commercial, residential, retail, and hospitality projects, as well as leases commercial buildings; operates a hotel, as well as senior secondary schools; and invests in stocks and mutual funds. It also exports its products. Kothari Products Limited was incorporated in 1983 and is based in Kanpur, India.",
@@ -22295,7 +23057,76 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "FARUKBHAI GULAMBHAI PATEL",
+            "subCategory": "Promoter",
+            "pct": 48.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              48.54
+            ]
+          },
+          {
+            "name": "QUYOSH ENERGIA PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.81,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.81
+            ]
+          },
+          {
+            "name": "GULAMMAHMAD ALIBHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.03
+            ]
+          },
+          {
+            "name": "RASHIDA GULAM PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.03
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -22303,16 +23134,17 @@
     },
     "updatedAt": 1794038126256,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:32.688Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:38.775Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 5846,
-      "pe": 16.6,
+      "marketCapCr": 6394,
+      "pe": 18.2,
       "ttmEps": 17.95,
       "ttmSalesCr": 2169,
       "ttmPatCr": 355,
       "promoterPct": 49.4
-    }
+    },
+    "lastShpRecordId": "215693"
   },
   "KPIL": {
     "about": "Kalpataru Projects International Limited provides engineering, procurement, and construction (EPC) services for power transmission and distribution, buildings and factories, water supply and irrigation, railways, oil and gas, and urban infrastructure sectors in India and internationally. The company operates in Engineering, Procurement and Construction; Developmental Project; and Others segments. It designs, tests, procures, fabricates, erects, installs, and commissions power transmission lines, substations, and underground cable works; executes civil works, design and build composite works, structural works, finishing works, utility installations, and area development for buildings and factories; and designs and builds water intake, pipeline installation, treatment, storage, supply, distribution, and operation and maintenance of water projects. The company also offers services under its railway arm, including overhead electrification, traction substations, station buildings, railway track laying, earthwork, workshops, signaling and telecommunication, power systems, and civil works with railway networks and projects; and EPC services for the design and construction of highways, bridges and flyovers, airports, metro rail corridor stations and transit terminals and hubs, as well as undertakes EPC contracting for cross-country pipelines, terminals, and gas gathering stations for the oil and gas sectors. In addition, it is involved in agri-storage infrastructure with value added services, such as testing and certification, collateral management, pest control activities, preservation, maintenance, and security services, as well as management and operation of warehouses; and operates biomass power generation plants. The company was formerly known as Kalpataru Power Transmission Limited and changed its name to Kalpataru Projects International Limited in May 2023. Kalpataru Projects International Limited was incorporated in 1981 and is based in Mumbai, India.",
@@ -23170,6 +24002,42 @@
     ],
     "quarterlyResults": [
       {
+        "period": "Mar 24",
+        "sales": "12",
+        "expenses": "18",
+        "operatingProfit": "-6",
+        "opm": "-50.0%",
+        "netProfit": "-6",
+        "eps": "₹-2.72"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "13",
+        "expenses": "18",
+        "operatingProfit": "-5",
+        "opm": "-38.5%",
+        "netProfit": "-5",
+        "eps": "₹-2.4"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "13",
+        "expenses": "19",
+        "operatingProfit": "-6",
+        "opm": "-46.2%",
+        "netProfit": "-6",
+        "eps": "₹-2.67"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "12",
+        "expenses": "20",
+        "operatingProfit": "-8",
+        "opm": "-66.7%",
+        "netProfit": "-8",
+        "eps": "₹-3.59"
+      },
+      {
         "period": "Dec 25",
         "sales": "7",
         "expenses": "10",
@@ -23333,7 +24201,110 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Ipca Laboratories Limited",
+            "subCategory": "Promoter",
+            "pct": 49.65,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              49.65
+            ]
+          },
+          {
+            "name": "HEMALATHA RAVI",
+            "subCategory": "Promoter",
+            "pct": 12.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.48
+            ]
+          },
+          {
+            "name": "AVINASH RAVI",
+            "subCategory": "Promoter",
+            "pct": 9.93,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.93
+            ]
+          },
+          {
+            "name": "AJAY RAVI",
+            "subCategory": "Promoter",
+            "pct": 0.52,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.52
+            ]
+          },
+          {
+            "name": "DR R T RAVI",
+            "subCategory": "Promoter",
+            "pct": 0.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.11
+            ]
+          },
+          {
+            "name": "ADITYA RAVI",
+            "subCategory": "Promoter",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -23341,15 +24312,16 @@
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748634_29102026021204_WEB.xml",
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:32.805Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:40.620Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
       "marketCapCr": 118,
       "ttmEps": -6.19,
       "ttmSalesCr": 29,
       "ttmPatCr": -12,
       "promoterPct": 72.74
-    }
+    },
+    "lastShpRecordId": "213301"
   },
   "KRIDHANINF": {
     "about": "Kridhan Infra Limited manufactures and trades in iron and steel and allied materials in India and internationally. The company provides bridge expansion joints for asphalt and concrete connections; and rebar mechanical couplers. In addition, the company offers bored piling, driven piling, micro piling and soil improvement, and soil investigation services. The company was formerly known as Readymade Steel India Limited and changed its name to Kridhan Infra Limited in June 2014. Kridhan Infra Limited was incorporated in 2006 and is based in Mumbai, India.",
@@ -23739,7 +24711,8 @@
       "ttmSalesCr": 5,
       "ttmPatCr": 1,
       "promoterPct": 40.05
-    }
+    },
+    "lastShpRecordId": "216025"
   },
   "KRISHANA": {
     "about": "Krishana Phoschem Limited engages in the manufacturing, Distribution, sales, and marketing of fertilizers and chemicals under the Annadata and Bharat brands in India. It provides single super phosphate (SSP), benefited rock phosphate, di-ammonium phosphate (DAP) / nitrogen, phosphorus, and potassium (NPK), sulphuric acid, phosphoric acid, imported nitrogen, phosphorus, and potassium (NPK). It sells its products to retailers, distributors, and traders. The company was incorporated in 2004 and is based in Bhilwara, India. Krishana Phoschem Limited is a subsidiary of Ostwal Phoschem (India) Limited.",
@@ -24369,7 +25342,8 @@
       "debtToEquity": 0.21,
       "promoterPct": 37.23
     },
-    "debtToEquity": 0.21
+    "debtToEquity": 0.21,
+    "lastShpRecordId": "214281"
   },
   "KRISHNADEF": {
     "about": "Krishna Defence and Allied Industries Limited engages in the designing, developing, and manufacturing range of equipment for defence, security, dairy, and kitchen verticals in India. The company offers ship building steel sections, welding wire, ballast bricks, composite doors, and special profile for armored vehicle; and security equipment, such as space heating devices, improvised explosive device containment vessels, and crowd control and modular vehicle barriers. It also provides dairy equipment, including automatic cleaning-in-place units for BMC, bulk milk coolers with thermal storage system, containerized bulk milk coolers, cow grooming brushes, dairy barn fans, iDATA, fixed type milking machine, heat recovery units, direct expansion type bulk milk coolers, herringbone parlors, IBT based BMC, ice chambers, Kero-Petro milking machines, milk can lids, milk cans, milk meters, milking machines/parlor spares, parallel parlors, RMCUs, rotary parlors, solar BMCs, stainless steel milk buckets and measures, tandem parlors, trolley type milking machines, braising pans, dal cookers, dal storage tanks, digital thaw monitor, distribution vessels, rice cookers, and rice storage chutes. The company was formerly known as Krishna Allied Industries Limited. Krishna Defence and Allied Industries Limited was founded in 1996 and is headquartered in Mumbai, India.",
@@ -25821,7 +26795,8 @@
       "debtToEquity": 0,
       "promoterPct": 64.26
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215818"
   },
   "KROSS": {
     "about": "Kross Limited engages in the manufacture and supply of trailer axles, suspension, and automotive components in India and internationally. It offers trailer axles and suspensions; tractor components, including axle shafts, PTO and hydraulic lift shafts, planetary ring gears, differential bevel gears, control spring assemblies, spindle front axle and hydraulic parts, differential spiders, and pin front axles; truck components for transmission, rear axle assembly, and chassis parts, consisting coupling flanges, reverse forks, housing blocks, levers, and planet carrier housing, real axle shafts, pole wheels, spindles, inter axle assembly, gear joint assembles and steering UJs, bell crank levers, UJ crosses, steering UJs, clutch release yokes, hub dampers, and anti roll bars; and trailer components, such as spindles, SCAM shafts, castle nuts, trailer axles, king pins, and trailer suspensions. The company serves medium and heavy commercial vehicles and tractor original equipment manufacturers, its tier 1 suppliers, and domestic dealers and fabricators, as well as the farm equipment segment. Kross Limited was incorporated in 1991 and is headquartered in Jamshedpur, India.",
@@ -26699,7 +27674,8 @@
       "debtToEquity": 0.24,
       "promoterPct": 69.96
     },
-    "debtToEquity": 0.24
+    "debtToEquity": 0.24,
+    "lastShpRecordId": "214782"
   },
   "KSB": {
     "about": "KSB Limited manufactures and sells power-driven pumps and industrial valves in India and internationally. It operates through Pumps and Valves segments. The Pumps segment manufactures and trades in industrial, submersible, and effluent treatment pumps, etc.; and provides related spares and services. The Valves segment is involved in the manufacture and trading of industrial valves and spares; and services. It offers spare parts kits, mechanical seals, system, valve actuator and automation products, pump automation, mixers, motors, process monitoring, and body pressure relief valves. The company also provides technical services, comprising consultancy and analysis services, such as technical consultancy, energy efficiency consulting, identification of energy-saving potential, system efficiency service, and well pump measurement; installation and commissioning; operation services, including inspection service, maintenance inspection management, total pump management, spare parts inventory management, pump monitoring from specialists, and service for automation products; pump, motor, and valve repair services, as well as retrofit, reverse engineering, 3D printing, service for other rotating equipment, and service for mechanical seals; and conducts seminars and training sessions. Its products are used in wastewater, water, and industry technology; chemicals production; building services; energy technology; mining; dredge; oil and gas technology; and decarbonization applications. The company was formerly known as KSB Pumps Limited and changed its name to KSB Limited in June 2018. KSB Limited was incorporated in 1960 and is headquartered in Pune, India.",
@@ -26882,7 +27858,161 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Canadian Kay Pump Limited",
+            "subCategory": "Promoter Group",
+            "pct": 40.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              40.54
+            ]
+          },
+          {
+            "name": "Industrial and Prudential Investment Company Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 21.55,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              21.55
+            ]
+          },
+          {
+            "name": "Paharpur Cooling Towers Limited",
+            "subCategory": "Promoter Group",
+            "pct": 4.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.17
+            ]
+          },
+          {
+            "name": "Tkil Industries Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 3.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.1
+            ]
+          },
+          {
+            "name": "Vikram Swarup-Trustee of Swarup Family Trust",
+            "subCategory": "Promoter",
+            "pct": 0.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.17
+            ]
+          },
+          {
+            "name": "Vikram Swarup",
+            "subCategory": "Promoter",
+            "pct": 0.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.11
+            ]
+          },
+          {
+            "name": "Gaurav Swarup",
+            "subCategory": "Promoter",
+            "pct": 0.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.1
+            ]
+          },
+          {
+            "name": "Bindu Vikram Swarup",
+            "subCategory": "Promoter",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "Parul Swarup",
+            "subCategory": "Promoter",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -26890,16 +28020,17 @@
     },
     "updatedAt": 1794038126261,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:34.847Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:42.405Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 11626,
-      "pe": 50.3,
+      "marketCapCr": 11309,
+      "pe": 49,
       "ttmEps": 13.33,
       "ttmSalesCr": 2903,
       "ttmPatCr": 232,
       "promoterPct": 69.8
-    }
+    },
+    "lastShpRecordId": "215867"
   },
   "KSCL": {
     "about": "Kaveri Seed Company Limited engages in the research, production, processing, and marketing of hybrid seeds in India. The company operates through three segments: Seeds, Micronutrients, and Vegetables. Its product portfolio includes seeds for various field crops, such as maize, paddy, cotton, sunflower, mustard, sorghum, pulses, bajra, and wheat; and vegetables, including tomatoes, okra, chilies, watermelon, gourds, and brinjal. The company also engages in the sale of micronutrients, as well as exports its products. It serves farmers, retailers, and distributors. The company was founded in 1976 and is headquartered in Secunderabad, India.",
@@ -27646,7 +28777,8 @@
       "debtToEquity": 0.07,
       "promoterPct": 0
     },
-    "debtToEquity": 0.07
+    "debtToEquity": 0.07,
+    "lastShpRecordId": "215930"
   },
   "KSL": {
     "about": "Kalyani Steels Limited manufactures and sells iron and steel products in India and internationally. The company provides rolled bars for various automotive applications, including crankshaft, camshaft, connecting rods, gears, transmission shafts, axle beams, steering knuckles, and others. It also offers rolled bars for engineering applications comprising alloyed steels for use in energy, railways, defense, fasteners, and material handling. In addition, the company provides round cast for seamless tube sector. Further, it offers machined bars for aluminum smelting industry, as well as manufactures forging and engineering quality carbon, alloy steel, pig iron, and foundry coke. The company serves various component manufacturers of commercial vehicles, passenger vehicles, two wheelers, diesel engines, bearings, tractors, wind turbines, oil and gas, and railways. The company was incorporated in 1973 and is based in Pune, India.",
@@ -28832,7 +29964,93 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "KAPEDOME ENTERPRISES LIMITED",
+            "subCategory": "Promoter",
+            "pct": 66.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              66.51
+            ]
+          },
+          {
+            "name": "PAVAN KHAITAN",
+            "subCategory": "Promoter",
+            "pct": 1.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.69
+            ]
+          },
+          {
+            "name": "JAGESH KUMAR KHAITAN",
+            "subCategory": "Promoter",
+            "pct": 1.66,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.66
+            ]
+          },
+          {
+            "name": "APARNA KHAITAN",
+            "subCategory": "Promoter",
+            "pct": 0.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.3
+            ]
+          },
+          {
+            "name": "USHA KHAITAN",
+            "subCategory": "Promoter",
+            "pct": 0.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.15
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -28840,11 +30058,11 @@
     },
     "updatedAt": 1794038126264,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:35.031Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:43.399Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747763_28102026043321_WEB.xml",
     "ratios": {
-      "marketCapCr": 494,
+      "marketCapCr": 495,
       "pe": 17.2,
       "ttmEps": 3.73,
       "ttmSalesCr": 1182,
@@ -28855,7 +30073,8 @@
       "debtToEquity": 0.79,
       "promoterPct": 70.3
     },
-    "debtToEquity": 0.79
+    "debtToEquity": 0.79,
+    "lastShpRecordId": "213351"
   },
   "KUSUMGAR": {
     "about": "Kusumgar Limited manufactures, markets, and supplies a range of technical textile fabrics. It offers fabrics used in aerospace and defence applications, including tactical gear, rucksacks, ponchos, parachute systems, sleeping bags, slides and rafts, etc.; fabrics for wire harness tape systems in automobiles, mechanical rubber goods, and inflatable fabrics, as well as custom fabric solutions; and outdoor and lifestyle fabrics for synthetic performance wear, such as athleisure, winter wear, rainwear, fashion jackets and personal gear such as backpacks, luggage, sleeping bags, and tents. The company also provides aerospace and defence solutions comprising aerial systems such as parachute systems; stealth systems such as camouflage nets; and rapid deployment systems such as decoys and temporary shelters, as well as maintenance and repair services. It operates in India, the United States, Germany, South Africa, Srilanka, Bangladesh, France, Singapore, Turkey, and internationally. The company was formerly known as Kusumgar Private Limited. The company was founded in 1970 and is based in Mumbai, India.",

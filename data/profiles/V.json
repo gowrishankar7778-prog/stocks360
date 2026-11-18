@@ -121,7 +121,7 @@
     ],
     "shareholding": {
       "promoters": "54.72%",
-      "public": "45.12%",
+      "public": "18.58%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -158,7 +158,7 @@
           null,
           null,
           null,
-          null
+          15.78
         ],
         "dii": [
           null,
@@ -170,7 +170,7 @@
           null,
           null,
           null,
-          null
+          10.69
         ],
         "diiMutualFunds": [
           null,
@@ -182,7 +182,7 @@
           null,
           null,
           null,
-          null
+          5.09
         ],
         "diiInsurance": [
           null,
@@ -194,7 +194,7 @@
           null,
           null,
           null,
-          null
+          5
         ],
         "diiPensionFunds": [
           null,
@@ -206,7 +206,7 @@
           null,
           null,
           null,
-          null
+          0.19
         ],
         "government": [
           null,
@@ -218,7 +218,7 @@
           null,
           null,
           null,
-          null
+          0.06
         ],
         "public": [
           40.51,
@@ -230,7 +230,7 @@
           43.56,
           43.47,
           45.12,
-          45.12
+          18.58
         ],
         "employeeTrusts": [
           0.18,
@@ -246,20 +246,162 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "TWIN STAR HOLDINGS LTD",
+            "subCategory": "Promoter Group",
+            "pct": 38.35,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              38.35
+            ]
+          },
+          {
+            "name": "VEDANTA HOLDINGS MAURITIUS II LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 12.6,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.6
+            ]
+          },
+          {
+            "name": "VEDANTA HOLDINGS MAURITIUS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 2.75,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.75
+            ]
+          },
+          {
+            "name": "WELTER TRADING LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.98
+            ]
+          },
+          {
+            "name": "VEDANTA NETHERLANDS INVESTMENTS B.V.",
+            "subCategory": "Promoter Group",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA",
+            "subCategory": "Insurance",
+            "pct": 4.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.03
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.41
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "PTC CABLES PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 2.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.1
+            ]
+          }
+        ]
+      },
+      "fii": "15.78%",
+      "dii": "10.69%",
+      "government": "0.06%"
     },
     "updatedAt": 1794038125814,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:25.328Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:17.202Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747916_28102026054420_WEB.xml",
     "ratios": {
-      "marketCapCr": 100023,
-      "pe": 21.5,
+      "marketCapCr": 97019,
+      "pe": 20.9,
       "ttmEps": 11.76,
       "ttmSalesCr": 34712,
       "ttmPatCr": 14003,
@@ -269,7 +411,8 @@
       "debtToEquity": 0.35,
       "promoterPct": 54.72
     },
-    "debtToEquity": 0.35
+    "debtToEquity": 0.35,
+    "lastShpRecordId": "215030"
   },
   "VOLTAS": {
     "about": "Voltas Limited operates as air conditioning and engineering solutions in India, the Middle East, Africa, and internationally. The company operates through three segments: Unitary Cooling Products; Electro - Mechanical Projects and Services; and Engineering Products and Services. The company manufactures, sells, and services cooling appliances and cold storage products, such as room air conditioners, water dispensers and coolers, visi coolers, chest and convertible freezers, cold rooms, medical refrigeration, air coolers and purifiers, water heaters, ducted AC, variable refrigerant flow, cassette and tower AC, and chillers, as well as refrigerators, washing machines, microwave ovens, dishwashers, dry iron, and mixer grinders. It also offers a comprehensive range of electromechanical services, including HVAC (heating, ventilation, and air conditioning), electrical systems, plumbing, firefighting, extra low voltage, and specialized services. In addition, it provides facilities maintenance services, such as operations and maintenance contracts in various sectors, AMCs, spares, and retrofit jobs, etc. Further, it engages in the provision of water treatment solutions for the industrial and domestic sewage segments, as well as last-mile connectivity of water tabs under various government schemes; sale and service of capital machinery for textile industry; sale of spares and accessories for textile equipment; and sale of mining and construction equipment. Additionally, the company offers operations and maintenance services for the mining and construction industry; it undertakes rural electrification, power augmentation, substations, industrial electrification, and solar projects related to engineering, procurement, and construction. Furthermore, it engages in manufacturing ducts and duct accessories; drilling, irrigation, and landscaping activities; and construction of water treatment plants. Voltas Limited was incorporated in 1954 and is headquartered in Mumbai, India.",

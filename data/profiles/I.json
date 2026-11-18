@@ -751,7 +751,8 @@
       "debtToEquity": 0,
       "promoterPct": 13.9
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215753"
   },
   "ICICIBANK": {
     "about": "ICICI Bank Limited, together with its subsidiaries, engages in the provision of various banking and financial services to corporate and retail customers in India and internationally. The company operates through Retail Banking, Wholesale Banking, Treasury, Other Banking, Life Insurance, General Insurance, and Others segments. The company offers asset management, securities brokerage, private equity, foreign exchange, agricultural and rural banking, equities underwriting, depositary share accounts, consumer durable goods financing, corporate salary and current account, savings and sovereign gold bonds, insurance policies, public offerings, investment, credit and protection, retail inward remittances, certificates of deposits, and payment and transaction banking products and services. It is also involved in the fee and commission-based activities; distribution of financial products; venture capital and real estate fund management business; treasury and rural banking operations; financial solutions; working capital financing; I-Process services, mutual funds, investment banking, and pension funds; and advisory activities. In addition, the company provides savings, salary, capital gains scheme, Hindu undivided family savings, real estate regulatory authority, government e-marketplace, current, trade, escrow, and foreign currency accounts. Further, it offers personal, home, car, education, gold, automobile, and commercial business loans, as well as loans against time deposits, securities, and property; and working capital loans, as well as credit, debit, prepaid, travel, forex, commercial, and corporate cards. Additionally, the company provides fixed income products; investment products; payments; general, accident, life, health, vehicle, and travel insurance products; cash management and merchant services; capital market and securities market services; and forex, derivatives, bullion, and bonds. The company was founded in 1955 and is headquartered in Mumbai, India.",
@@ -806,8 +807,8 @@
       },
       {
         "period": "Sep 25",
-        "sales": "49,334",
-        "expenses": "32,950",
+        "sales": "49,333",
+        "expenses": "32,949",
         "operatingProfit": "16,384",
         "opm": "33.2%",
         "netProfit": "12,359",
@@ -842,8 +843,8 @@
       },
       {
         "period": "Sep 26",
-        "sales": "57,158",
-        "expenses": "37,433",
+        "sales": "57,157",
+        "expenses": "37,432",
         "operatingProfit": "19,725",
         "opm": "34.5%",
         "netProfit": "14,843",
@@ -1354,14 +1355,14 @@
     },
     "updatedAt": 1794038125775,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:50.622Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:00.926Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740886_17102026052751_WEB.xml",
     "ratios": {
-      "marketCapCr": 1137628,
-      "pe": 20.8,
+      "marketCapCr": 1149328,
+      "pe": 21,
       "ttmEps": 76.32,
-      "ttmSalesCr": 211323,
+      "ttmSalesCr": 211322,
       "ttmPatCr": 54668,
       "bookValue": 502.4,
       "roePct": 15.2,
@@ -1369,7 +1370,8 @@
       "debtToEquity": 0.57,
       "promoterPct": 0
     },
-    "debtToEquity": 0.57
+    "debtToEquity": 0.57,
+    "lastShpRecordId": "214250"
   },
   "IDBI": {
     "about": "IDBI Bank Limited provides banking and financial solutions to retail and corporate customers in India. It operates through four segments: Corporate/Wholesale Banking, Retail Banking, Treasury Operations, and Other banking operations. The company offers savings, current, and salary accounts, as well as fixed deposits; home, auto, education, mortgage, and personal loans, as well as loans against properties and securities; debit, credit, and prepaid cards; mobile and internet banking; and investment advisory and capital market services. It also provides fund and non-fund-based assistance; packing credit to exporters; receivable buyout with recourse; channel financing for dealers of corporates; scheme for financing automated teller machines/cash dispense vendors; technology upgrading fund scheme for textile and jute industries; and lending to non-banking finance companies/housing finance companies and commercial real estate sector. In addition, the company offers bank guarantees, letters of credit, documentary collection, and bill discounting services; cash management, trade finance, and remittance services; and tax payment, debt syndication and advisory services. Further, it provides finance to micro, small, and medium enterprises; agriculture finance; products and services for non-resident Indians; treasury services, such as call money/ notice money / term money, commercial papers, certificate of deposit, government securities, treasury bills, corporate bonds, and equities; and foreign currency services comprising remittances, currency forward contracts, LTFX, FX-retail, currency options, swaps, FRA, currency exchange, and exchange traded derivative contracts. The company was formerly known as IDBI Ltd. and changed its name to IDBI Bank Limited in May 2008. IDBI Bank Limited was founded in 1964 and is headquartered in Mumbai, India.",
@@ -1493,7 +1495,7 @@
     ],
     "shareholding": {
       "promoters": "94.71%",
-      "public": "5.29%",
+      "public": "4.61%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1530,7 +1532,7 @@
           null,
           null,
           null,
-          null
+          0.47
         ],
         "dii": [
           null,
@@ -1542,7 +1544,7 @@
           null,
           null,
           null,
-          null
+          0.2
         ],
         "diiMutualFunds": [
           null,
@@ -1554,7 +1556,7 @@
           null,
           null,
           null,
-          null
+          0.13
         ],
         "diiInsurance": [
           null,
@@ -1566,7 +1568,7 @@
           null,
           null,
           null,
-          null
+          0.05
         ],
         "diiPensionFunds": [
           null,
@@ -1578,7 +1580,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1590,7 +1592,7 @@
           null,
           null,
           null,
-          null
+          0.01
         ],
         "public": [
           5.29,
@@ -1602,7 +1604,7 @@
           5.29,
           5.29,
           5.29,
-          5.29
+          4.61
         ],
         "employeeTrusts": [
           0,
@@ -1618,20 +1620,58 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Life Insurance Corporation of India",
+            "subCategory": "Promoter",
+            "pct": 49.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              49.24
+            ]
+          },
+          {
+            "name": "PRESIDENT OF INDIA",
+            "subCategory": "Promoter",
+            "pct": 45.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              45.48
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
-      }
+      },
+      "fii": "0.47%",
+      "dii": "0.20%",
+      "government": "0.01%"
     },
     "updatedAt": 1794038125779,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:51.790Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:02.518Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740932_17102026060327_WEB.xml",
     "ratios": {
-      "marketCapCr": 85705,
-      "pe": 10.4,
+      "marketCapCr": 84780,
+      "pe": 10.3,
       "ttmEps": 7.63,
       "ttmSalesCr": 36130,
       "ttmPatCr": 8198,
@@ -1641,7 +1681,8 @@
       "debtToEquity": 0.45,
       "promoterPct": 94.71
     },
-    "debtToEquity": 0.45
+    "debtToEquity": 0.45,
+    "lastShpRecordId": "214991"
   },
   "IDFCFIRSTB": {
     "about": "IDFC First Bank Limited provides various banking and financial services in India. It operates through the Treasury, Corporate and Wholesale Banking, Retail Banking, and Other Banking Business segments. The company offers treasury and forex solutions, including correspondent banking, FX, cross-border swift, government bonds and strips, liberalized remittance scheme, and external commercial borrowing solutions, as well as treasury solutions comprising forwards, options, and swaps. It also provides retail lending solutions, such as home loans, vehicle loans, consumer loans, education loans, personal loans, used car loans, gold loans, rural finance, and tractor finance; SME lending solutions that consist of loan against property, business banking, working capital loans, commercial vehicle loans, micro enterprise loans, trade advance, and startup banking; CASA and fixed deposits, which include current accounts, savings accounts, fixed deposits, nostro/vostro accounts, overdrafts, corporate salary accounts, accounts for ONDC, and escrow account; and NRI Banking that comprises NRE accounts, NRO accounts, seafarer accounts, FCNR deposits, and NRE/NRO deposits. In addition, the company offers wealth management and distribution solutions, including distribution of life insurance, general insurance, credit shield, health insurance, mutual funds, and AIFs; credit cards; and FASTag, such as tag issuer, toll acquirer, toll, parking, and fuel solutions. Further, it provides trade finance solutions that consist of letters of credit and discounting, bank guarantee, buyer's credit/SBLC, parking credit in foreign currency and INR, remittances, and pre and post shipment finance; supply chain financing; and transaction banking and CMS solutions. The company was formerly known as IDFC Bank Limited and changed its name to IDFC First Bank Limited in January 2019. IDFC First Bank Limited was founded in 1997 and is based in Mumbai, India.",
@@ -2277,7 +2318,8 @@
       "debtToEquity": 1.09,
       "promoterPct": 0
     },
-    "debtToEquity": 1.09
+    "debtToEquity": 1.09,
+    "lastShpRecordId": "215622"
   },
   "INDUSINDBK": {
     "about": "IndusInd Bank Limited provides various banking products and financial services to individuals, corporations, government entities, and public sector undertakings in India. It operates in four segments: Treasury, Corporate/Wholesale Banking, Retail Banking, and Other Banking Operations. The company offers savings, salary, current, and uniformed personnel accounts; fixed, recurring, auto sweep, senior citizen fixed, and term deposits; vehicle, used and new car, two wheeler, home, gold, agri, personal, medical equipment, term, business, and MSME loans; loans against property and securities; loans on credit card; and working capital, supply chain, and trade finance. It also provides debit, credit, prepaid, forex, duo, corporate, and business cards; life, health, and general insurance; foreign exchange services, including inward and outward remittances, and online forex portals; digital and WhatsApp banking; and national pension system, sovereign gold bonds, and government securities. In addition, the company offers mutual funds; bill payment; money transfer; NRI services; merchant solutions comprising POS terminal, payment gateway, digital rupee, and soundbox; transaction banking services, including trade finance, cash management, and tax payment; supply chain finance solutions, including supplier/vendor finance, channel finance, and receivable finance/factoring solutions; investment banking services consisting of debt syndication, debt and private equity fund-raising advisory, and M&A advisory; and inclusive banking. IndusInd Bank Limited was incorporated in 1994 and is headquartered in Mumbai, India.",
@@ -2980,7 +3022,8 @@
       "debtToEquity": 0.8,
       "promoterPct": 15.82
     },
-    "debtToEquity": 0.8
+    "debtToEquity": 0.8,
+    "lastShpRecordId": "214909"
   },
   "IRFC": {
     "about": "Indian Railway Finance Corporation Limited engages in leasing of rolling stock and railway infrastructure assets in India. The company also engages in lending business to other entities under the Ministry of Railways; and borrowing funds from commercial markets, financial markets to finance the acquisition/creation of assets that are leased out to the Indian Railways. Indian Railway Finance Corporation Limited was incorporated in 1986 and is based in New Delhi, India.",
@@ -3062,8 +3105,8 @@
       },
       {
         "period": "Sep 26",
-        "sales": "7,925",
-        "expenses": "5,967",
+        "sales": "7,924",
+        "expenses": "5,966",
         "operatingProfit": "1,958",
         "opm": "24.7%",
         "netProfit": "1,958",
@@ -3095,7 +3138,7 @@
     ],
     "shareholding": {
       "promoters": "82.90%",
-      "public": "17.10%",
+      "public": "11.98%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -3132,7 +3175,7 @@
           null,
           null,
           null,
-          null
+          1.15
         ],
         "dii": [
           null,
@@ -3144,7 +3187,7 @@
           null,
           null,
           null,
-          null
+          3.97
         ],
         "diiMutualFunds": [
           null,
@@ -3156,7 +3199,7 @@
           null,
           null,
           null,
-          null
+          0.34
         ],
         "diiInsurance": [
           null,
@@ -3168,7 +3211,7 @@
           null,
           null,
           null,
-          null
+          3.57
         ],
         "diiPensionFunds": [
           null,
@@ -3180,7 +3223,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -3192,7 +3235,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           13.64,
@@ -3204,7 +3247,7 @@
           13.64,
           15.35,
           17.1,
-          17.1
+          11.98
         ],
         "employeeTrusts": [
           0,
@@ -3220,22 +3263,60 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "PRESIDENT OF INDIA ACTING THROUGH THE MOR",
+            "subCategory": "Promoter",
+            "pct": 82.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              82.9
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA",
+            "subCategory": "Insurance",
+            "pct": 3.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.54
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "1.15%",
+      "dii": "3.97%"
     },
     "updatedAt": 1794038125783,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.074Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:02.437Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739103_15102026052734_WEB.xml",
     "ratios": {
-      "marketCapCr": 107181,
-      "pe": 14.6,
+      "marketCapCr": 105863,
+      "pe": 14.4,
       "ttmEps": 5.64,
-      "ttmSalesCr": 30364,
+      "ttmSalesCr": 30363,
       "ttmPatCr": 7371,
       "bookValue": 46.4,
       "roePct": 12.2,
@@ -3243,7 +3324,8 @@
       "debtToEquity": 0,
       "promoterPct": 82.9
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214232"
   },
   "IREDA": {
     "about": "Indian Renewable Energy Development Agency Limited, a non-banking financial company, provides financial products and services in the renewable energy and energy efficiency sectors in India. The company promotes, develops, and extends financial assistance for setting up projects relating to new and renewable sources of energy and energy efficiency/conservation; and environmental technologies for sustainable development. It also generates solar, wind, hydro, biomass, biofuels, and waste to energy power. The company was incorporated in 1987 and is based in New Delhi, India.",
@@ -3544,7 +3626,8 @@
       "debtToEquity": 0,
       "promoterPct": 71.76
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214794"
   },
   "IOC": {
     "about": "Indian Oil Corporation Limited, together with its subsidiaries, engages in the oil, gas, petrochemicals, and alternative energy source businesses in India and internationally. It operates through Sale of Petroleum Products; Sale of Petrochemicals; Sale of Gas; and Other segments. The company is involved in the refining, pipeline transportation and marketing, exploration and production of crude oil and gas, petrochemicals, gas marketing, alternative energy sources; operates crude oil, petroleum product, and natural gas pipelines; research and development, marketing, and petrochemical businesses; wind mill and solar power generation and downstream operations. It also engages in provision of natural gas; city gas distribution; invests in e and p; bulk explosives and blast-based services for coal, iron ore, and copper mining industries; and design and production of vacuum insulated cryogenic storage and transport vessels, such as aluminum cyrocans, small sized industrial use cryogenic vessels, small and large sized cryogenic vessels, and large and heavy pressure vessels, lube, and aviation equipment. In addition, the company offers XP95, XtraGreen, compressed natural gas, petrol gasoline, high speed diesel, XP100, SERVO lubes and greases, autogas, and XTRAPOWER-fleet card; PNG domestic, indane cooking gas, kerosene, non-fuel product, and LPG services; and indoor solar cooking system, indane LPG, bulk industrial fuels, Fuel@Call, aviation fuel, AVGAS 100 LL, marine oils, bitumen, fuel mgmt consumer pumps, non fuel alliances, natural gas, petrochemicals, special products, non PDS superior kerosene oil, consultancy, and technologies for licensing for motorist, households, businesses, society, suppliers, business partner, investor, overseas, and sports. The company was formerly known as Indian Oil Company Limited and changed its name to Indian Oil Corporation Limited in September 1964. Indian Oil Corporation Limited was incorporated in 1959 and is based in New Delhi, India.",
@@ -3659,7 +3742,7 @@
     ],
     "shareholding": {
       "promoters": "51.50%",
-      "public": "48.50%",
+      "public": "10.37%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -3696,7 +3779,7 @@
           null,
           null,
           null,
-          null
+          8.61
         ],
         "dii": [
           null,
@@ -3708,7 +3791,7 @@
           null,
           null,
           null,
-          null
+          10.05
         ],
         "diiMutualFunds": [
           null,
@@ -3720,7 +3803,7 @@
           null,
           null,
           null,
-          null
+          3.16
         ],
         "diiInsurance": [
           null,
@@ -3732,7 +3815,7 @@
           null,
           null,
           null,
-          null
+          6.74
         ],
         "diiPensionFunds": [
           null,
@@ -3744,7 +3827,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -3756,7 +3839,7 @@
           null,
           null,
           null,
-          null
+          19.48
         ],
         "public": [
           48.5,
@@ -3768,7 +3851,7 @@
           48.5,
           48.5,
           48.5,
-          48.5
+          10.37
         ],
         "employeeTrusts": [
           0,
@@ -3784,19 +3867,127 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "PRESIDENT OF INDIA",
+            "subCategory": "Promoter",
+            "pct": 51.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              51.5
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA",
+            "subCategory": "Insurance",
+            "pct": 5.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.98
+            ]
+          },
+          {
+            "name": "ICICI Mutual Funds",
+            "subCategory": "Mutual Funds",
+            "pct": 1.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.04
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "OIL AND NATURAL GAS CORPORATION LIMITED",
+            "subCategory": "Shareholding by Companies or Bodies Corporate where Central / State Government is a promoter",
+            "pct": 14.2,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              14.2
+            ]
+          },
+          {
+            "name": "OIL INDIA LIMITED",
+            "subCategory": "Shareholding by Companies or Bodies Corporate where Central / State Government is a promoter",
+            "pct": 5.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.16
+            ]
+          },
+          {
+            "name": "SHARES TRUST",
+            "subCategory": "Any Other (specify)",
+            "pct": 2.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.48
+            ]
+          }
+        ]
+      },
+      "fii": "8.61%",
+      "dii": "10.05%",
+      "government": "19.48%"
     },
     "updatedAt": 1794038125797,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:23:00.450Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:10.114Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750292_30102026064915_WEB.xml",
     "ratios": {
-      "marketCapCr": 198305,
+      "marketCapCr": 198016,
       "pe": 4.7,
       "ttmEps": 30.85,
       "ttmSalesCr": 1009470,
@@ -3807,7 +3998,8 @@
       "debtToEquity": 0.59,
       "promoterPct": 51.5
     },
-    "debtToEquity": 0.59
+    "debtToEquity": 0.59,
+    "lastShpRecordId": "214637"
   },
   "ITC": {
     "about": "ITC Limited engages in the fast-moving consumer goods, paperboards, paper and packaging, and agri businesses in India and internationally. The company offers cigarettes and cigars; foods, including staples, spices, biscuits, confectionery and gums, snacks, noodles and pasta, beverages, dairy products, ready-to-eat meals, chocolates, coffee, and frozen foods; personal care products; education and stationery, such as balls, gels and roller pens, mechanical pencils, geometry boxes, erasers, sharpeners and rulers, wax crayons, plastic crayons, and sketch pens and oil pastels; safety matches; and agarbattis and dhoops under various brands, as well as operates a hotel under the ITC Grand Central name in Mumbai. It also provides virgin, recycled, coated barrier, cupstock base, liner, liquid packaging, antifungal, solid, and graphic boards, as well as specialty papers; surfacing, print base, barrier, overlay, and liner papers; plastic substitution products; and packaging products, including cartons, flexible, tobacco, and green packaging products. In addition, the company exports feed ingredients, food grains, marine products, processed fruits, coffee products, leaf tobacco products, and spices; and offers information technology services for the banking and financial services, healthcare, manufacturing, consumer goods, travel, and hospitality industries, as well as produces and commercializes seed potato technology products. Further, it provides property infrastructure maintenance; engineering, procurement and construction management and project management consultancy services; business consulting; and agro-forestry and other related services, as well as engages in the fabrication and assembly of machinery for tube filling, cartoning, wrapping, and conveyor solutions and engineering activities. ITC Limited was incorporated in 1910 and is headquartered in Kolkata, India.",
@@ -4390,7 +4582,8 @@
       "debtToEquity": 0,
       "promoterPct": 0
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214129"
   },
   "IDEA": {
     "about": "Vodafone Idea Limited, together with its subsidiaries, provides telecommunication services to individuals, communities, and businesses in India. The company offers voice services, such as 4G VoLTE and Voice over WIFI calling; broadband data services on 4G and/or 5G technology; and content and digital products and services, including subscription, digital advertising, gaming, digital marketplace, and utility bill payment app, as well as other value-added services (VAS), caller tunes, missed call alert, and voice and short messaging services; and long distance and internet service provider services. It also engages in renting of passive infrastructure to telecommunication service providers; business of prepaid payment instruments (PPI) and business correspondence; outsourcing backend IT support, data centre operations, and hosting; and provision of high-speed broadband internet access through cable network and high bandwidth internet broadband, and manpower services. In addition, the company trades in mobile handsets, data cards, telecommunication hardware, and related accessories and services; provision of outsourcing services for finance and accounts, human resources, supply chain management, credit and collection support, and customer support; and caters to the information technology (IT) needs for data consolidation. Further, it offers technology, software, hardware, value added services (VAS), application software, and contents and related products and services, which facilitate and develop access to IT enabled VAS products and services on single or multiple platforms or operating systems; mobile wallet and money transfer services; and data centre related services and IT solutions, including E-SIMs activation, as well as prepaid and postpaid plans. The company was formerly known as Idea Cellular Limited and changed its name to Vodafone Idea Limited in August 2018. Vodafone Idea Limited was incorporated in 1995 and is based in Mumbai, India.",
@@ -4505,7 +4698,7 @@
     ],
     "shareholding": {
       "promoters": "25.64%",
-      "public": "74.36%",
+      "public": "12.89%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -4542,7 +4735,7 @@
           null,
           null,
           null,
-          null
+          5.82
         ],
         "dii": [
           null,
@@ -4554,7 +4747,7 @@
           null,
           null,
           null,
-          null
+          6.65
         ],
         "diiMutualFunds": [
           null,
@@ -4566,7 +4759,7 @@
           null,
           null,
           null,
-          null
+          6.24
         ],
         "diiInsurance": [
           null,
@@ -4578,7 +4771,7 @@
           null,
           null,
           null,
-          null
+          0.33
         ],
         "diiPensionFunds": [
           null,
@@ -4590,7 +4783,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -4602,7 +4795,7 @@
           null,
           null,
           null,
-          null
+          49
         ],
         "public": [
           61.83,
@@ -4614,7 +4807,7 @@
           74.43,
           74.36,
           74.36,
-          74.36
+          12.89
         ],
         "employeeTrusts": [
           0,
@@ -4630,25 +4823,236 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "EURO PACIFIC SECURITIES LIMITED",
+            "subCategory": "Promoter",
+            "pct": 5.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.16
+            ]
+          },
+          {
+            "name": "ORIANA INVESTMENTS PTE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 4.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.05
+            ]
+          },
+          {
+            "name": "GRASIM INDUSTRIES LIMITED",
+            "subCategory": "Promoter",
+            "pct": 3.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.06
+            ]
+          },
+          {
+            "name": "PRIME METALS LIMITED",
+            "subCategory": "Promoter",
+            "pct": 2.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.54
+            ]
+          },
+          {
+            "name": "MOBILVEST",
+            "subCategory": "Promoter",
+            "pct": 1.55,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.55
+            ]
+          },
+          {
+            "name": "VODAFONE TELECOMMUNICATIONS (INDIA) LIMITED",
+            "subCategory": "Promoter",
+            "pct": 1.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.5
+            ]
+          },
+          {
+            "name": "TRANS CRYSTAL LIMITED",
+            "subCategory": "Promoter",
+            "pct": 1.35,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.35
+            ]
+          },
+          {
+            "name": "OMEGA TELECOM HOLDINGS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 1.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.26
+            ]
+          },
+          {
+            "name": "ASIAN TELECOMMUNICATIONS INVESTMENTS (MAURITIUS) LIMITED",
+            "subCategory": "Promoter",
+            "pct": 0.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.9
+            ]
+          },
+          {
+            "name": "ELAINE INVESTMENTS PTE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.79
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "ICICI PRUDENTIAL S&P BSE 500 ETF",
+            "subCategory": "Mutual Funds",
+            "pct": 1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Department of Investment and Public Asset Management",
+            "subCategory": "Institution",
+            "pct": 49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              49
+            ]
+          }
+        ]
+      },
+      "fii": "5.82%",
+      "dii": "6.65%",
+      "government": "49.00%"
     },
     "updatedAt": 1794038125824,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:31.380Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:20.838Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756888_12112026073337_WEB.xml",
     "ratios": {
-      "marketCapCr": 135438,
-      "pe": 3.7,
+      "marketCapCr": 130790,
+      "pe": 3.5,
       "ttmEps": 3.42,
       "ttmSalesCr": 46550,
       "ttmPatCr": 37041,
       "promoterPct": 25.64
-    }
+    },
+    "lastShpRecordId": "215651"
   },
   "IBULLSLTD": {
     "about": "Indiabulls Limited, together with its subsidiaries, engages in the in financial services and digital platforms business in India. The company engages in real estate development, stock broking, asset reconstruction, digital payments and financial services, and equipment leasing. The company was formerly known as Yaari Digital Integrated Services Limited and changed its name to Indiabulls Limited in October 2025. Indiabulls Limited was incorporated in 2007 and is based in Mumbai, India.",
@@ -5351,7 +5755,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "PATEL RAJENDRABHAI P",
+            "subCategory": "Promoter",
+            "pct": 20.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.41
+            ]
+          },
+          {
+            "name": "VIPULBHAI ISHWARBHAI PATEL",
+            "subCategory": "Promoter",
+            "pct": 20.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.14
+            ]
+          },
+          {
+            "name": "CHANDRAKANT POPATBHAI PATEL",
+            "subCategory": "Promoter",
+            "pct": 19.99,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              19.99
+            ]
+          },
+          {
+            "name": "POPATBHAI LALJIBHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 1.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.31
+            ]
+          },
+          {
+            "name": "ISHWARBHAI LALJIBHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.53
+            ]
+          },
+          {
+            "name": "GAURIBEN POPATBHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.44
+            ]
+          },
+          {
+            "name": "KANTABEN ISHWARLAL PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.44
+            ]
+          },
+          {
+            "name": "KAPILABEN VIPULBHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.41
+            ]
+          },
+          {
+            "name": "JYOTSNABEN RAJENDRABHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.4
+            ]
+          },
+          {
+            "name": "RAMILABEN CHANDRAKANTBHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.34,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.34
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -5359,12 +5934,12 @@
     },
     "updatedAt": 1794038126178,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:55.546Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:12.797Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754073_05112026072657_WEB.xml",
     "ratios": {
-      "marketCapCr": 1182,
-      "pe": 96.1,
+      "marketCapCr": 1164,
+      "pe": 94.7,
       "ttmEps": 7.13,
       "ttmSalesCr": 786,
       "ttmPatCr": 12,
@@ -5374,7 +5949,8 @@
       "debtToEquity": 0.41,
       "promoterPct": 64.52
     },
-    "debtToEquity": 0.41
+    "debtToEquity": 0.41,
+    "lastShpRecordId": "214866"
   },
   "ICICIAMC": {
     "about": "ICICI Prudential Asset Management Company Limited, an asset management company, provides a range of investment solutions. The company manages mutual and alternative funds; and offers portfolio management and advisory services to offshore clients. It provides savings and investment products across various financial asset classes structured to a range of its clients' objectives and risk appetites. The company serves individual investors and institutional investors comprising banks, insurance companies, corporates, and government entities. ICICI Prudential Asset Management Company Limited was incorporated in 1993 and is based in Mumbai, India. ICICI Prudential Asset Management Company Limited operates as a subsidiary of ICICI Bank Limited.",
@@ -6212,7 +6788,8 @@
       "debtToEquity": 0.18,
       "promoterPct": 74.7
     },
-    "debtToEquity": 0.18
+    "debtToEquity": 0.18,
+    "lastShpRecordId": "216256"
   },
   "ICIL": {
     "about": "Indo Count Industries Limited manufactures and sells home textile products in India and internationally. The company offers bed sheets; utility bedding products, including mattress pads, down alt comforters, filled pillows, and protectors; bedding products, such as flat sheets, printed bed sheets, fitted sheets, and bed skirts/valances; and fashion and institutional bedding products comprising matching and complementary sheets, comforters, duvet covers, quilts, pillows, shams, and skirts, as well as euro-shams. It sells its products under the Pure Earth, Boutique Living, Heirlooms of India, The Pure Collection, Atlas, Linen Closet, and Simply-put brands through multi brand outlets, large format stores, and e-commerce platforms, as well as showrooms. The company was incorporated in 1988 and is headquartered in Mumbai, India.",
@@ -7796,7 +8373,8 @@
       "debtToEquity": 0.11,
       "promoterPct": 65
     },
-    "debtToEquity": 0.11
+    "debtToEquity": 0.11,
+    "lastShpRecordId": "214598"
   },
   "IFBIND": {
     "about": "IFB Industries Limited, together with its subsidiaries, manufactures and trades in home appliances in India and internationally. It operates through the Engineering, Home Appliances, Motor, and Steel segments. Its products include laundry solution, such as front and top load washing machine, washer dryer refresher, and clothes dryer; kitchen solutions, including refrigerators, microwave, dishwasher, and chimney, as well as built in hob, oven, and appliances; air conditioners; stabilizer; accessories; modular kitchens; tumble dryers and dryers; ironers; and industrial laundry and dish care. The company also offers press tools and dies, fine blanked components, motors, and cold rolled steel strips. The company was formerly known as Indian Fine Blanks Limited. IFB Industries Limited was incorporated in 1974 and is based in Kolkata, India.",
@@ -8929,7 +9507,8 @@
       "debtToEquity": 0.3,
       "promoterPct": 75
     },
-    "debtToEquity": 0.3
+    "debtToEquity": 0.3,
+    "lastShpRecordId": "214492"
   },
   "IGCL": {
     "about": "Indogulf Cropsciences Limited manufactures and sells crop protection products, plant nutrients, and biological products to retail and institutional customers in India and internationally. It offers crop protection products, including insecticides, herbicides, fungicides, and plant growth regulators; biostimulants; and plant supplements. The company also manufactures water dispersible granules, suspension concentrate, capsule suspension, ultra-low volume, emulsion in water, soluble granule, and flowable suspension in powder, granule, and liquid forms. It also exports its products. The company was formerly known as Jai Shree Rasayan Udyog Limited and changed its name to Indogulf Cropsciences Limited in April 2015. Indogulf Cropsciences Limited was incorporated in 1993 and is headquartered in New Delhi, India.",
@@ -9831,6 +10410,15 @@
     "sector": "Financial Services & NBFC",
     "quarterlyResults": [
       {
+        "period": "Sep 25",
+        "sales": "1,767",
+        "expenses": "1,483",
+        "operatingProfit": "284",
+        "opm": "16.1%",
+        "netProfit": "211",
+        "eps": "₹4.96"
+      },
+      {
         "period": "Dec 25",
         "sales": "1,957",
         "expenses": "1,554",
@@ -10541,12 +11129,12 @@
     },
     "updatedAt": 1794038126185,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:58.525Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:14.101Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739416_15102026083643_WEB.xml",
     "ratios": {
-      "marketCapCr": 27784,
-      "pe": 15.2,
+      "marketCapCr": 28193,
+      "pe": 15.4,
       "ttmEps": 42.92,
       "ttmSalesCr": 9203,
       "ttmPatCr": 1826,
@@ -10556,7 +11144,8 @@
       "debtToEquity": 0,
       "promoterPct": 24.76
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214145"
   },
   "IIFLCAPS": {
     "about": "IIFL Capital Services Limited provides capital market services in the primary and secondary markets in India. The company offers an investment and trading platform for equities, commodities, currency, and margin trade funding; investment solutions, including equity, debt, alternative investment funds, insurance, and others; and equity, debt, commodities, and currency broking, as well as corporate access, research, depository participant services, and merchant banking. It also provides investment banking services consisting of initial public offerings, qualified institutional placement, right issues, preferential placement, follow-on public offer; and private equity advisory services, and mergers and acquisitions. In addition, the company distributes third-party financial products, such as mutual funds, insurance, portfolio management services, alternate investment funds, fixed income, and healthcare and wellness products. Further, it operates a mobile trading application under the IIFL Markets brand name. It also engages in business support services and management consultancy services; and non-banking financial company (NBFC) business activities. It serves institutional and non-institutional investors, foreign portfolio investors, private equity funds, mutual funds, insurance companies, pension funds, corporates, alternative investment funds, trusts, high net-worth and ultra-high net-worth individuals, and affluent investors. The company was formerly known as IIFL Securities Limited and changed its name to IIFL Capital Services Limited in November 2024. IIFL Capital Services Limited was incorporated in 1996 and is based in Mumbai, India.",
@@ -11982,7 +12571,8 @@
       "debtToEquity": 0.02,
       "promoterPct": 63.72
     },
-    "debtToEquity": 0.02
+    "debtToEquity": 0.02,
+    "lastShpRecordId": "214850"
   },
   "IL&FSENGG": {
     "about": "IL&FS Engineering and Construction Company Limited, together with its subsidiaries, engages in the construction and infrastructure development, and project management businesses in India. The company develops and constructs roads and bridges, railways, expressways, and highways; residential buildings, commercial buildings, industrial structures, and hospital buildings; irrigation canals and dams; and thermal and hydel power projects. It also develops ports involving construction of berths, breakwaters, jetties, marine structures, and cargo handling facilities, as well as land for setting up port-based industries; and constructs terminal buildings, runways, aprons, parking bays, hangers, and other structures for the airport sector. In addition, the company constructs rail and rail-based systems; seaports; oil and gas pipelines and storage tank terminals; refineries and petro chemicals; water and water treatment plants; power generation, transmission, and distribution projects; and industrial construction projects. It serves power, oil and gas, roads, railways and metros, water and irrigations, ports, and buildings and structures sectors. The company was formerly known as Maytas Infra Limited and changed its name to IL&FS Engineering and Construction Company Limited in January 2011. IL&FS Engineering and Construction Company Limited was incorporated in 1988 and is based in Hyderabad, India.",
@@ -12485,7 +13075,8 @@
       "ttmSalesCr": 4969,
       "ttmPatCr": -108,
       "promoterPct": 73.22
-    }
+    },
+    "lastShpRecordId": "214787"
   },
   "IMAGICAA": {
     "about": "Imagicaaworld Entertainment Limited develops and operates theme-based entertainment destinations in India. It operates through Parks and Hotel Divisions. The company operates theme, water, and snow parks under the Imagicaa brand; and operates a hotel under the Novotel Imagicaa Khopoli brand. It also provides food and beverage, merchandise, and other services; parking, lockers, sponsorships, revenue sharing agreements, lease rentals, etc.; hotel accommodation; and operates devotional park, and park and hotel restaurants. It serves individuals, schools, corporate groups, event organizers, and weddings. The company was formerly known as Adlabs Entertainment Limited and changed its name to Imagicaaworld Entertainment Limited in April 2020. Imagicaaworld Entertainment Limited was incorporated in 2010 and is based in Mumbai, India.",
@@ -13293,10 +13884,10 @@
       },
       {
         "period": "Sep 26",
-        "sales": "6.2",
+        "sales": "6",
         "expenses": "7",
         "operatingProfit": "-1",
-        "opm": "-16.1%",
+        "opm": "-16.7%",
         "netProfit": "-2",
         "eps": "₹-0.09"
       }
@@ -13360,7 +13951,58 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "MANISH GUPTA",
+            "subCategory": "Promoter",
+            "pct": 33.05,
+            "history": [
+              null,
+              null,
+              33.05
+            ]
+          },
+          {
+            "name": "VIKAS JAIN",
+            "subCategory": "Promoter",
+            "pct": 32.9,
+            "history": [
+              null,
+              null,
+              32.9
+            ]
+          },
+          {
+            "name": "MAHENDRA KUMAR JAIN",
+            "subCategory": "Promoter Group",
+            "pct": 0.07,
+            "history": [
+              null,
+              null,
+              0.07
+            ]
+          },
+          {
+            "name": "VIKAS JAIN HUF",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "MANISH GUPTA HUF",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -13368,15 +14010,16 @@
     },
     "updatedAt": 1794038126188,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:00.786Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:15.820Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1556,
+      "marketCapCr": 1524,
       "ttmEps": -0.4,
       "ttmSalesCr": 55,
       "ttmPatCr": -9,
       "promoterPct": 66.09
-    }
+    },
+    "lastShpRecordId": "215629"
   },
   "INCREDIBLE": {
     "about": "Incredible Industries Limited manufactures and sells iron and steel products in India. The company offers steel related rolled products, such as TMT bars, wire rods, H.B. wires, etc., as well as related services. It also offers billets, linkedge, annaling, torkari, and wire nail products. In addition, the company engages in the generation of electricity through wind power. It also exports its products. The company was formerly known as Adhunik Industries Limited and changed its name to Incredible Industries Limited in May 2021. Incredible Industries Limited was incorporated in 1979 and is based in Kolkata, India.",
@@ -15929,7 +16572,161 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "IHP Finvest Limited",
+            "subCategory": "Promoter Group",
+            "pct": 67.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              67.58
+            ]
+          },
+          {
+            "name": "Ratanchand Investment Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 1.66,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.66
+            ]
+          },
+          {
+            "name": "Rajas R Doshi",
+            "subCategory": "Promoter",
+            "pct": 1.34,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.34
+            ]
+          },
+          {
+            "name": "Jyoti R Doshi",
+            "subCategory": "Promoter",
+            "pct": 0.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.73
+            ]
+          },
+          {
+            "name": "Mayur Rajas Doshi",
+            "subCategory": "Promoter",
+            "pct": 0.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.53
+            ]
+          },
+          {
+            "name": "Aditya R Doshi",
+            "subCategory": "Promoter",
+            "pct": 0.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.46
+            ]
+          },
+          {
+            "name": "Anushree Mayur Doshi",
+            "subCategory": "Promoter",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          },
+          {
+            "name": "Riya Mayur Doshi",
+            "subCategory": "Promoter",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          },
+          {
+            "name": "Anushka Mayur Doshi",
+            "subCategory": "Promoter",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -15937,12 +16734,12 @@
     },
     "updatedAt": 1794038126191,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:02.876Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:16.796Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753684_05112026053040_WEB.xml",
     "ratios": {
-      "marketCapCr": 1568,
-      "pe": 11.9,
+      "marketCapCr": 1554,
+      "pe": 11.8,
       "ttmEps": 24.83,
       "ttmSalesCr": 1274,
       "ttmPatCr": 132,
@@ -15952,7 +16749,8 @@
       "debtToEquity": 0.31,
       "promoterPct": 72.34
     },
-    "debtToEquity": 0.31
+    "debtToEquity": 0.31,
+    "lastShpRecordId": "213753"
   },
   "INDIASHLTR": {
     "about": "India Shelter Finance Corporation Limited operates as a housing finance company in India. The company offers home, purchase and construction, and home renovation loans, as well as loans against property. It also provides secured retail home and home equity loans. The company was formerly known as Satyaprakash Housing Finance India Limited and changed its name to India Shelter Finance Corporation Limited in March 2010. India Shelter Finance Corporation Limited was incorporated in 1998 and is based in Gurugram, India.",
@@ -16762,7 +17560,8 @@
       "debtToEquity": 0.44,
       "promoterPct": 41.57
     },
-    "debtToEquity": 0.44
+    "debtToEquity": 0.44,
+    "lastShpRecordId": "215597"
   },
   "INDIGOPNTS": {
     "about": "Indigo Paints Limited manufactures and sells decorative paints in India and internationally. The company offers interior and exterior emulsions, enamels, putties and primers, and sleek wood coatings, as well as waterproofing solutions and construction chemicals; aluminium paints, stone and tiles paints, roof paints, stainers, interior lustre finish under the Indigo brand. The company was incorporated in 2000 and is headquartered in Pune, India.",
@@ -17969,7 +18768,8 @@
       "debtToEquity": 0.84,
       "promoterPct": 58.42
     },
-    "debtToEquity": 0.84
+    "debtToEquity": 0.84,
+    "lastShpRecordId": "216328"
   },
   "INDOBORAX": {
     "about": "Indo Borax & Chemicals Limited manufactures and sells boron-based products in India. It offers borax products, such as decahydrate crystals and granular; boric acid products that include boric acid Indian pharmacopoeia grade, and technical grade granular, and powders; boron oxide; and disodium octaborate tetrahydrate. It also manufactures and sells fine chemicals, inorganic chemicals, phosphates, and metallic chemicals. The company was incorporated in 1980 and is based in Mumbai, India.",
@@ -18218,7 +19018,25 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "ZENROCK CHEMICALS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 38.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              38.41
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -18226,12 +19044,12 @@
     },
     "updatedAt": 1794038126193,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:03.426Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:18.077Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755128_06112026075921_WEB.xml",
     "ratios": {
-      "marketCapCr": 1166,
-      "pe": 23.7,
+      "marketCapCr": 1149,
+      "pe": 23.3,
       "ttmEps": 16,
       "ttmSalesCr": 249,
       "ttmPatCr": 51,
@@ -18241,7 +19059,8 @@
       "debtToEquity": 0.99,
       "promoterPct": 38.41
     },
-    "debtToEquity": 0.99
+    "debtToEquity": 0.99,
+    "lastShpRecordId": "216009"
   },
   "INDOCO": {
     "about": "Indoco Remedies Limited manufactures and markets formulations and active pharmaceutical ingredients in India and internationally. It offers products for gastrointestinal, anti-infectives, respiratory, stomatological, vitamins/minerals/nutrients, urological, ophthal/ontological, dermatology, pain/analgesic, cardiac, anti-diabetic, and gynaecological therapeutic areas. The company also provides branded generics comprising analgesic tablets and topical preparations; anti-hypertensive; protein supplements; multivitamin tablets and syrups; antibiotic tablets, syrups, and injectables; oral rehydration powders; antacids; and antihistaminic, anti-inflammatory drugs, etc. In addition, it provides analytical services, such as impurity profile, particle size analysis, polymorphism and compatibility studies, extractables and leachables studies, and chromatographic method development and validation services. Further, the company offers architectural design, lighting, mechanical and utility engineering, project and construction management, electrical, control system, piping, structural design, data transfer system, and process engineering. Additionally, it provides contract research services, such as custom chemical synthesis of molecules and intermediates; process chemistry research and development; non-infringing process designing and scale up; and analytical method development, validation, impurity characterization, and polymorphic studies, solutions, as well as intellectual property management. Indoco Remedies Limited was founded in 1945 and is based in Mumbai, India.",
@@ -19746,12 +20565,12 @@
       },
       {
         "period": "Sep 26",
-        "sales": "7.6",
-        "expenses": "51",
-        "operatingProfit": "-43",
-        "opm": "-565.8%",
-        "netProfit": "-36",
-        "eps": "₹-2.68"
+        "sales": "14",
+        "expenses": "42",
+        "operatingProfit": "-28",
+        "opm": "-200.0%",
+        "netProfit": "-28",
+        "eps": "₹-1.87"
       }
     ],
     "balanceSheet": [
@@ -19904,7 +20723,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "VARSHA DOSHI",
+            "subCategory": "Promoter Group",
+            "pct": 11.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.12
+            ]
+          },
+          {
+            "name": "DHANPAL DOSHI",
+            "subCategory": "Promoter",
+            "pct": 9.61,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.61
+            ]
+          },
+          {
+            "name": "PARASMAL DOSHI",
+            "subCategory": "Promoter",
+            "pct": 8.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.78
+            ]
+          },
+          {
+            "name": "SADHANA DOSHI",
+            "subCategory": "Promoter Group",
+            "pct": 7.87,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.87
+            ]
+          },
+          {
+            "name": "NISHIT DOSHI",
+            "subCategory": "Promoter Group",
+            "pct": 4.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.49
+            ]
+          },
+          {
+            "name": "SARTHAK DOSHI",
+            "subCategory": "Promoter Group",
+            "pct": 4.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.44
+            ]
+          },
+          {
+            "name": "CITADEL REAL ESTATES PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 2.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.04
+            ]
+          },
+          {
+            "name": "DHANPAL DOSHI HUF",
+            "subCategory": "Promoter",
+            "pct": 1.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.97
+            ]
+          },
+          {
+            "name": "PARAS DOSHI HUF",
+            "subCategory": "Promoter",
+            "pct": 1.2,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.2
+            ]
+          },
+          {
+            "name": "INDO THAI WEALTH MANAGEMENT PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 1.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.02
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -19912,22 +20902,23 @@
     },
     "updatedAt": 1794038126195,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:04.492Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:19.079Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1744262_22102026083155_WEB.xml",
     "ratios": {
-      "marketCapCr": 411,
-      "pe": 19.5,
-      "ttmEps": 1.57,
-      "ttmSalesCr": 72,
-      "ttmPatCr": 3,
-      "bookValue": 20.3,
-      "roePct": 1.1,
-      "rocePct": 2.2,
+      "marketCapCr": 433,
+      "pe": 12.1,
+      "ttmEps": 2.38,
+      "ttmSalesCr": 79,
+      "ttmPatCr": 11,
+      "bookValue": 18.2,
+      "roePct": 4,
+      "rocePct": 7.7,
       "debtToEquity": 0,
       "promoterPct": 54.77
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215401"
   },
   "INDOUS": {
     "about": "Indo Us Bio-Tech Limited engages in the production, processing, packing, and marketing of seeds in India. The company offers vegetable seeds, such as tomato, okra, bottle gourd, brinjal, carrot, cluster bean, bitter gourd, ridge gourd, cucumber, cabbage, radish, sponge gourd, pepper, chilly, sweet pepper, beet root, cow pea, corriander, onion, watermelon, musk melon, and flower seeds; cotton seeds; and oil seeds, including castor, groundnut, sesamum, mustard, and soyabean seeds. It also provides cumin and isabgul spices seeds; pulses seeds comprising val, gram, black gram, and green gram seeds; and cereals seeds consisting of wheat, maize, bajra, and pegeon pea seeds. It also exports its products. The company was incorporated in 2004 and is based in Ahmedabad, India.",
@@ -22303,7 +23294,42 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Ingersoll-Rand Industrial U S Inc",
+            "subCategory": "Promoter",
+            "pct": 74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              74
+            ]
+          },
+          {
+            "name": "Ingersoll Rand Inc.",
+            "subCategory": "Promoter Group",
+            "pct": 1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -22311,12 +23337,12 @@
     },
     "updatedAt": 1794038126198,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:05.486Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:20.004Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755049_06112026070432_WEB.xml",
     "ratios": {
-      "marketCapCr": 12544,
-      "pe": 45.8,
+      "marketCapCr": 12348,
+      "pe": 45.1,
       "ttmEps": 86.48,
       "ttmSalesCr": 1571,
       "ttmPatCr": 273,
@@ -22326,7 +23352,8 @@
       "debtToEquity": 0,
       "promoterPct": 75
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215340"
   },
   "INNOVACAP": {
     "about": "Innova Captab Limited, an integrated pharmaceutical company, engages in the research and development, manufacture, distribution, and marketing of drugs and pharmaceutical products in India and internationally. The company provides contract development and manufacturing organization services to Indian pharmaceutical companies. It is also offers various generic formulation products, including cephalosporins, proton pump inhibitor, anticholinergic and heparin NSAIDs, analgesics and antipyretic, anticold and antiallergic, antiemetic, antidiabetic, antispasmodic, antifibrinolytic, cardiovascular, antioxidant and vitamins, antihyperuricemia and antigout, fluoroquinolone and macrolide, nootropics and neurotonics/neurotrophics, antiulcerative, antimalarial anxiolytic, anticonvulsant and antipsychotic, bladder and prostate disorder, antifungal, anthelmintic and antiviral, anticholinergic, anti-asthmatic, and bronchodilator products in the form of tablets, capsules, dry syrups, dry powder injection, ointments, and liquid orals. The company sells its branded generic products through a network of distributors, stockists, and pharmacies, as well as online channels in various e-commerce pharmacy sites. Innova Captab Limited was incorporated in 2005 and is based in Panchkula, India.",
@@ -22883,7 +23910,8 @@
       "ttmSalesCr": 1192,
       "ttmPatCr": 15,
       "promoterPct": 74.17
-    }
+    },
+    "lastShpRecordId": "215301"
   },
   "INOXGREEN": {
     "about": "Inox Green Energy Services Limited provides renewable energy operation and maintenance services in India. The company operates through Operation & Maintenance; Power Generation; Power Evacuation; and Consultancy Income segments. It offers operational services, including remote monitoring and control through supervisory control and data acquisition system; daily generation reports to the customers; and wind farm maintenance services, as well as infrastructure facilities for wind turbine generators. The company was formerly known as Inox Wind Infrastructure Services Limited and changed its name to Inox Green Energy Services Limited in October 2021. The company was incorporated in 2012 and is based in Noida, India. Inox Green Energy Services Limited operates as a subsidiary of Inox Wind Limited.",
@@ -24348,7 +25376,59 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "POLARIS BANYAN HOLDING PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 22.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              22.68
+            ]
+          },
+          {
+            "name": "ARUN JAIN",
+            "subCategory": "Promoter",
+            "pct": 5.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.38
+            ]
+          },
+          {
+            "name": "ARUN JAIN HUF",
+            "subCategory": "Promoter",
+            "pct": 1.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.49
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -24356,12 +25436,12 @@
     },
     "updatedAt": 1794038126201,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:07.922Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:20.908Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749933_30102026043352_WEB.xml",
     "ratios": {
-      "marketCapCr": 7439,
-      "pe": 35.7,
+      "marketCapCr": 7339,
+      "pe": 35.2,
       "ttmEps": 15.04,
       "ttmSalesCr": 1892,
       "ttmPatCr": 208,
@@ -24371,7 +25451,8 @@
       "debtToEquity": 0,
       "promoterPct": 29.56
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214357"
   },
   "INTENTECH": {
     "about": "Intense Technologies Limited provides enterprise platform and IP-enabled service organization services in India. The company offers data services, including data management, data quality, golden record creation, de-duplication, data governance, and process automation; and talent as a service, workforce optimization, and build-operate-transfer, managed services, solution engineering, testing services, product engineering, infra services, and government managed services. It also provides UniServe 360, a template designer; centralised communications governance hub; UniServe Reach, a marketing automation and digital customer engagement platform;, DPDP-compliant communications; AI-enabled data management platform; low-code application development platform; and connect transmission services, and consent management and data discovery and classification. It serves banking and financial services, insurance, government, communications and media, and education industries. Intense Technologies Limited was incorporated in 1990 and is headquartered in Hyderabad, India.",
@@ -26788,6 +27869,51 @@
     "sector": "Infrastructure & Construction",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "1,544",
+        "expenses": "1,345",
+        "operatingProfit": "199",
+        "opm": "12.9%",
+        "netProfit": "209",
+        "eps": "₹0.35"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "1,943",
+        "expenses": "1,542",
+        "operatingProfit": "401",
+        "opm": "20.6%",
+        "netProfit": "314",
+        "eps": "₹0.52"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "1,460",
+        "expenses": "1,299",
+        "operatingProfit": "161",
+        "opm": "11.0%",
+        "netProfit": "142",
+        "eps": "₹0.23"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "1,250",
+        "expenses": "1,050",
+        "operatingProfit": "200",
+        "opm": "16.0%",
+        "netProfit": "160",
+        "eps": "₹0.27"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "1,490",
+        "expenses": "0",
+        "operatingProfit": "5,095",
+        "opm": "341.9%",
+        "netProfit": "5,034",
+        "eps": "₹8.34"
+      },
+      {
         "period": "Sep 25",
         "sales": "1,172",
         "expenses": "876",
@@ -26983,7 +28109,76 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "IRB HOLDING PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 30.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              30.31
+            ]
+          },
+          {
+            "name": "VIRENDRA D MHAISKAR",
+            "subCategory": "Promoter",
+            "pct": 0.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.84
+            ]
+          },
+          {
+            "name": "DEEPALI VIRENDRA MHAISKAR",
+            "subCategory": "Promoter",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          },
+          {
+            "name": "SUDHA DATTATRAY MHAISKAR",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -26991,12 +28186,12 @@
     },
     "updatedAt": 1794038126205,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:08.935Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:22.666Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753432_05112026020416_WEB.xml",
     "ratios": {
-      "marketCapCr": 22221,
-      "pe": 15.1,
+      "marketCapCr": 21620,
+      "pe": 14.7,
       "ttmEps": 1.2,
       "ttmSalesCr": 4954,
       "ttmPatCr": 1172,
@@ -27006,7 +28201,8 @@
       "debtToEquity": 0.72,
       "promoterPct": 31.18
     },
-    "debtToEquity": 0.72
+    "debtToEquity": 0.72,
+    "lastShpRecordId": "215434"
   },
   "IRCON": {
     "about": "Ircon International Limited, together with its subsidiaries, engages in providing engineering and construction services. It undertakes construction of new railway lines; rehabilitation/conversion of existing lines, station buildings and facilities, and bridges; construction of railway bridges, tunnels, and signaling and telecommunication networks; railway electrification works; wet leasing of locomotives; and setting up of production units for manufacture rolling stock, maintenance depots/workshops, concrete sleepers, and track components on turn-key basis. The company is also involved in the construction of roads and highways; bridges and flyovers; and commercial, institutional, industrial, and residential and multifunctional complexes, as well as airport hangars and runways, airport terminal buildings, station buildings and facilities, hospitals, business centers, and workshops/warehouses; and provision of HVAC, electrification, plumbing, firefighting, and hanger maintenance services. In addition, it engages in the railway, industrial, workshop, and power supply electrification works; renewable solar energy works; and distribution network works, as well as offers turnkey project management services. Further, it provides turnkey solutions for signaling and communication projects. The company operates in India, Algeria, Afghanistan, Bangladesh, Bhutan, Brazil, Indonesia, Iran, Iraq, Liberia, Malaysia, Mozambique, Myanmar, Nepal, Nigeria, Saudi Arabia, South Africa, Sri Lanka, Turkey, the United Kingdom, and Zambia. The company was formerly known as Indian Railway Construction Company Limited. Ircon International Limited was incorporated in 1976 and is headquartered in New Delhi, India.",
@@ -27622,7 +28818,8 @@
       "debtToEquity": 0,
       "promoterPct": 62.4
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213606"
   },
   "IRIS": {
     "about": "IRIS RegTech Solutions Limited, together with its subsidiaries, provides regulatory technology solutions in India and internationally. It operates through SupTech, RegTech, TaxTech, DataTech segments. The company offers IRIS iDEAL, a regulatory reporting solution for banks, credit institutions, and investment firms; IRIS CARBON, a SaaS platform to create comprehensive financial and non-financial reports in XBRL/iXBRL formats; IRIS GST Software, a filing solution with an ERP connector, reconciliation module, vendor management, and informative MIS and reports; and IRIS IRP, a connection solution for taxpayers. It also provides IRIS iFILE, an end-to-end electronic filing platform to collect, validate, and analyze any type of data from entities; IRIS E-Invoicing, an e-invoicing solution with integrated GST compliance and reconciliation; IRIS Zircon, that are APIs for GST, Eway bill, and e-invoicing for enterprises and partners; and IRI LMS, a DT and IDT litigation management tool to simplify GST audits and litigations for enterprises. In addition, the company offers IRIS iConnect, an XBRL analytics tool to evaluate and compare XBRL and iXBRL data using the familiar Microsoft Excel format; IRIS Credixo for banks and fintech to make credit analysis models; and IRIS Peridot, an app for GST counterparty verification. Further, it provides workflow-based e-filing software; tax technology solutions; taxonomy development and testing; and consulting and training services, as well as software licensing, subscription of software as a service, and application maintenance services. It serves regulators, including central banks, business registries, capital market regulators, and stock exchanges, corporates, banks, and mutual funds. The company was formerly known as IRIS Business Services Limited and changed its name to IRIS RegTech Solutions Limited in November 2025. The company was incorporated in 2000 and is headquartered in Navi Mumbai, India.",
@@ -28442,7 +29639,8 @@
       "debtToEquity": 0.23,
       "promoterPct": 58.79
     },
-    "debtToEquity": 0.23
+    "debtToEquity": 0.23,
+    "lastShpRecordId": "215838"
   },
   "IRMENERGY": {
     "about": "IRM Energy Limited, a city gas distribution company, engages in the laying, building, operating, and expanding of city and local natural gas distribution networks in India. It supplies piped natural gas to domestic, commercial, and industrial customers; and compressed natural gas to automobile customers through retail stations. The company was incorporated in 2015 and is based in Ahmedabad, India.",
@@ -28804,7 +30002,8 @@
       "debtToEquity": 0.04,
       "promoterPct": 50.74
     },
-    "debtToEquity": 0.04
+    "debtToEquity": 0.04,
+    "lastShpRecordId": "214491"
   },
   "ISFT": {
     "about": "IntraSoft Technologies Limited, through its subsidiaries, multichannel online retail platform, engages in the development and delivery of e-commerce and e-cards through internet platforms in India and internationally. The company owns and operates 123stores.com, an e-commerce retail portal that provides sports and outdoor, home and kitchen, garden and outdoor, and tool and home. It also sells its products through online marketplaces. IntraSoft Technologies Limited was incorporated in 1996 and is based in Kolkata, India.",
@@ -29876,7 +31075,8 @@
       "debtToEquity": 0,
       "promoterPct": 39.85
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215767"
   },
   "ITDC": {
     "about": "India Tourism Development Corporation Limited, together with its subsidiaries, operates in the travel, tourism, and hospitality industry in India. The company produces, distributes, and sells tourist publicity literature; and manages catering services. It also offers entertainment services, engineering related consultancy services, duty free shopping facilities to tourists, and tourism and hospitality management related training and education services. In addition, the company is involved in the event management agency activities, such as conferences, exhibitions, workshops/seminars and other national and international events; consultancy and execution of tourism and engineering projects; and mounting of sound and light shows, as well as offers banquets for events. It operates Ashok Group of Hotels, joint venture hotel, restaurant, catering establishments, and duty-free shops at sea ports, as well as ATT units, including air ticketing, transport, customized packages, pre and post conference tours, off season discount packages, and city sightseeing tours services. India Tourism Development Corporation Limited was incorporated in 1965 and is based in New Delhi, India.",
@@ -31660,6 +32860,7 @@
       "ttmSalesCr": 47,
       "ttmPatCr": 0,
       "promoterPct": 34.75
-    }
+    },
+    "lastShpRecordId": "213520"
   }
 }

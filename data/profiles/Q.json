@@ -170,7 +170,56 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "MAHESH PAHALRAJ MAKHIJA",
+            "subCategory": "Promoter",
+            "pct": 66.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              66.45
+            ]
+          },
+          {
+            "name": "DITI MAHESH MAKHIJA",
+            "subCategory": "Promoter Group",
+            "pct": 0.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.84
+            ]
+          },
+          {
+            "name": "GUDDI MAHESH MAKHIJA",
+            "subCategory": "Promoter Group",
+            "pct": 0.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.83
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -178,16 +227,17 @@
     },
     "updatedAt": 1794038126442,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:48.930Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:16:09.246Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 325,
-      "pe": 50,
+      "marketCapCr": 321,
+      "pe": 49.4,
       "ttmEps": 3.44,
       "ttmSalesCr": 203,
       "ttmPatCr": 7,
       "promoterPct": 68.11
-    }
+    },
+    "lastShpRecordId": "215713"
   },
   "QPOWER": {
     "about": "Quality Power Electrical Equipments Limited provides power products and solutions for power generation, transmission, distribution, and automation sectors in India and internationally. It offers metal enclosed capacitor banks; reactors, including series, shunt, FACTS/HVDC, and iron core reactors; transformers comprising special purpose, earthing, converter duty, dry type, and arc furnace transformers; PLCC components that include wave traps and LMU/LMDU; instrument transformers, such as current, potential, and discharge coil/PT's transformers; and Edison composites, as well as switchgears and circuit breakers. The company was incorporated in 2001 and is based in Sangli, India.",
@@ -275,7 +325,7 @@
     ],
     "shareholding": {
       "promoters": "73.91%",
-      "public": "26.09%",
+      "public": "17.57%",
       "total": "100.00%",
       "quarters": [
         "Mar 2025",
@@ -303,7 +353,7 @@
           null,
           null,
           null,
-          null
+          2.95
         ],
         "dii": [
           null,
@@ -312,7 +362,7 @@
           null,
           null,
           null,
-          null
+          5.57
         ],
         "diiMutualFunds": [
           null,
@@ -321,7 +371,7 @@
           null,
           null,
           null,
-          null
+          4
         ],
         "diiInsurance": [
           null,
@@ -330,7 +380,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -339,7 +389,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -348,7 +398,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           26.09,
@@ -357,7 +407,7 @@
           26.09,
           26.09,
           26.09,
-          26.09
+          17.57
         ],
         "employeeTrusts": [
           0,
@@ -370,20 +420,80 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Bharanidharan Pandyan",
+            "subCategory": "Promoter",
+            "pct": 36.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              36.96
+            ]
+          },
+          {
+            "name": "Pandyan Family Trust",
+            "subCategory": "Promoter",
+            "pct": 24.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              24.22
+            ]
+          },
+          {
+            "name": "Thalavaidurai Pandyan",
+            "subCategory": "Promoter",
+            "pct": 12.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.73
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "BANK OF INDIA MID CAP TAX FUND SERIES 1",
+            "subCategory": "Mutual Funds",
+            "pct": 3.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.19
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "2.95%",
+      "dii": "5.57%"
     },
     "updatedAt": 1794038126442,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:48.928Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:16:09.227Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750809_31102026075234_WEB.xml",
     "ratios": {
-      "marketCapCr": 11616,
-      "pe": 151.5,
+      "marketCapCr": 11770,
+      "pe": 153.5,
       "ttmEps": 10.07,
       "ttmSalesCr": 277,
       "ttmPatCr": 78,
@@ -393,7 +503,8 @@
       "debtToEquity": 0,
       "promoterPct": 73.91
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214023"
   },
   "QUADFUTURE": {
     "about": "Quadrant Future Tek Limited, a research-oriented company, develops and sells train control and signaling systems in India. The company offers train control systems, such as train collision avoidance and electronic interlocking systems; and interconnect products, including electrical connectors and wiring harness products. It also provides specialty cables comprising railway rolling stock and naval defense industries, and solar installations and electric vehicles; and renewable energy, automotive, and railway signalling cables. The company was incorporated in 2015 and is based in Mohali, India.",
@@ -464,7 +575,7 @@
     ],
     "shareholding": {
       "promoters": "70.00%",
-      "public": "30.00%",
+      "public": "25.52%",
       "total": "100.00%",
       "quarters": [
         "Mar 2025",
@@ -492,7 +603,7 @@
           null,
           null,
           null,
-          null
+          0.81
         ],
         "dii": [
           null,
@@ -501,7 +612,7 @@
           null,
           null,
           null,
-          null
+          3.68
         ],
         "diiMutualFunds": [
           null,
@@ -510,7 +621,7 @@
           null,
           null,
           null,
-          null
+          3.5
         ],
         "diiInsurance": [
           null,
@@ -519,7 +630,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -528,7 +639,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -537,7 +648,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           30,
@@ -546,7 +657,7 @@
           30,
           30,
           30,
-          30
+          25.52
         ],
         "employeeTrusts": [
           0,
@@ -559,18 +670,205 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "RUPINDER SINGH",
+            "subCategory": "Promoter",
+            "pct": 13.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.5
+            ]
+          },
+          {
+            "name": "AMRIT SINGH RANDHAWA",
+            "subCategory": "Promoter",
+            "pct": 9.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.84
+            ]
+          },
+          {
+            "name": "AMIT DHAWAN",
+            "subCategory": "Promoter",
+            "pct": 8.75,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.75
+            ]
+          },
+          {
+            "name": "MOHIT VOHRA",
+            "subCategory": "Promoter",
+            "pct": 8.75,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.75
+            ]
+          },
+          {
+            "name": "VIVEK ABROL",
+            "subCategory": "Promoter",
+            "pct": 6.36,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.36
+            ]
+          },
+          {
+            "name": "VISHESH ABROL",
+            "subCategory": "Promoter",
+            "pct": 5.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.43
+            ]
+          },
+          {
+            "name": "MOHAN KRISHAN ABROL",
+            "subCategory": "Promoter Group",
+            "pct": 5.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.02
+            ]
+          },
+          {
+            "name": "RAJBIR SINGH RANDHAWA",
+            "subCategory": "Promoter",
+            "pct": 4.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.1
+            ]
+          },
+          {
+            "name": "AIKJOT SINGH SANDHU",
+            "subCategory": "Promoter",
+            "pct": 3.75,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.75
+            ]
+          },
+          {
+            "name": "SWINDER KAUR",
+            "subCategory": "Promoter Group",
+            "pct": 2.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.23
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "Kotak Mahindra Trustee Co Ltd A/C Kotak Special Opportunities Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 3.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.5
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Suryavanshi Commotrade Private Limited",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.91,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.91
+            ]
+          },
+          {
+            "name": "Bengal Finance And Investment Pvt Ltd",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.55,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.55
+            ]
+          }
+        ]
+      },
+      "fii": "0.81%",
+      "dii": "3.68%"
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755866_10112026054323_WEB.xml",
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:49.281Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:16:09.215Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1763,
+      "marketCapCr": 1786,
       "ttmEps": -6.7,
       "ttmSalesCr": 162,
       "ttmPatCr": -24,
@@ -580,7 +878,8 @@
       "debtToEquity": 0.09,
       "promoterPct": 70
     },
-    "debtToEquity": 0.09
+    "debtToEquity": 0.09,
+    "lastShpRecordId": "215031"
   },
   "QUESS": {
     "about": "Quess Corp Limited, together with its subsidiaries, provides staffing and workforce solutions in India and internationally. It operates through four segments: General Staffing, Professional Staffing, Overseas Staffing, and Digital Platforms. The company offers general staffing, such as sourcing and recruitment, apprenticeship program, and center of experience; and flexi staffing, payroll and compliance management, apprenticeship solutions, gig workforce management, and workforce lifecycle services. It also provides professional staffing, including digital technology skills, GCC services, recruitment services, and mobility solutions; and niche talent acquisition, project staffing, contractual hiring, and specialist recruitment across technology domains, including AI, cloud, analytics, cybersecurity, and digital engineering. In addition, the company offers international staffing and workforce mobility solutions in APAC markets in engineering, healthcare, infrastructure, construction, hospitality, and services sectors through sourcing, deployment, and workforce management solutions. Further, it provides blue-collar job and HRMS platforms; and on-demand gig workforce platforms. Additionally, the company offers IT solutions comprising digital engineering, r and d solutions, managed services, managed capacity, staff augmentation, managed solutions provider, and hire-train-deploy and hire-deploy-train solutions; and RPO, executive search, and permanent recruitment services. The company was formerly known as Ikya Human Capital Solutions Limited and changed its name to Quess Corp Limited in January 2015. Quess Corp Limited was incorporated in 2007 and is headquartered in Bengaluru, India.",
@@ -695,7 +994,7 @@
     ],
     "shareholding": {
       "promoters": "56.81%",
-      "public": "41.99%",
+      "public": "19.75%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -732,7 +1031,7 @@
           null,
           null,
           null,
-          null
+          10.26
         ],
         "dii": [
           null,
@@ -744,7 +1043,7 @@
           null,
           null,
           null,
-          null
+          11.98
         ],
         "diiMutualFunds": [
           null,
@@ -756,7 +1055,7 @@
           null,
           null,
           null,
-          null
+          10.5
         ],
         "diiInsurance": [
           null,
@@ -768,7 +1067,7 @@
           null,
           null,
           null,
-          null
+          0.09
         ],
         "diiPensionFunds": [
           null,
@@ -780,7 +1079,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -792,7 +1091,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           43.36,
@@ -804,7 +1103,7 @@
           43.12,
           43.17,
           42.19,
-          41.99
+          19.75
         ],
         "employeeTrusts": [
           0,
@@ -820,20 +1119,162 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "promoters": [
+          {
+            "name": "Fairbridge Capital Mauritius Limited",
+            "subCategory": "Promoter",
+            "pct": 34.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              34.04
+            ]
+          },
+          {
+            "name": "Ajit Isaac",
+            "subCategory": "Promoter",
+            "pct": 11.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.98
+            ]
+          },
+          {
+            "name": "Isaac Enterprises LLP",
+            "subCategory": "Promoter Group",
+            "pct": 10.29,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.29
+            ]
+          },
+          {
+            "name": "Hwic Asia Fund Class A Shares",
+            "subCategory": "Promoter Group",
+            "pct": 0.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.5
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "Ellipsis Partners LLC",
+            "subCategory": "FPI Category I",
+            "pct": 3.91,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.91
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "Tata Mutual Fund - Tata Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 7.76,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.76
+            ]
+          },
+          {
+            "name": "Bandhan NIFTY Total Market Index Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.79
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Ashish Dhawan",
+            "subCategory": "Individual Investor",
+            "pct": 4.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.89
+            ]
+          }
+        ]
+      },
+      "fii": "10.26%",
+      "dii": "11.98%"
     },
     "updatedAt": 1794038126442,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:49.284Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:16:08.440Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750536_30102026093254_WEB.xml",
     "ratios": {
-      "marketCapCr": 5018,
-      "pe": 19.2,
+      "marketCapCr": 4803,
+      "pe": 18.4,
       "ttmEps": 17.79,
       "ttmSalesCr": 15203,
       "ttmPatCr": 265,
@@ -843,7 +1284,8 @@
       "debtToEquity": 0,
       "promoterPct": 56.81
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214354"
   },
   "QUICKHEAL": {
     "about": "Quick Heal Technologies Limited engages in the provision of security software products and solutions to consumers, small businesses, government establishments, and corporate houses in India and internationally. It offers antivirus solutions, including total security, internet security, antivirus pro, security for mac, total security for android, mobile security, total security multi-device, and internet security essentials under the Quick Heal brand, as well as consumer fraud prevention products comprising the Quick Heal AntiFraud.AI. The company also provides endpoint protection, endpoint detection and response, extended detection and response, mobile device management, BYOD, zero trust network access, and data privacy, as well as malware analysis platform and threat intel under the Seqrite brand. In addition, it offers enterprise services, including DPDP compliance and managed detection and response. Quick Heal Technologies Limited was incorporated in 1995 and is headquartered in Pune, India.",
@@ -1193,7 +1635,8 @@
       "debtToEquity": 0,
       "promoterPct": 71.46
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "216104"
   },
   "QUINT": {
     "about": "Quint Digital Limited operates as a digital and media-tech/AI focused company in India and internationally. The company operates through Media and technology operations; and Operated Market (Times Out) segments. It provides Quintype, a digital newsroom platform that enables publishers to create, distribute, monetize their content; The Quint, a platform for news and views; Quint Hindi, a cutting-edge journalism in hindi; The News Minute, an independent news platform focus on five southern states; and Youth Ki Awaaz, a crowdsourced platform for young people to write and share stories. In addition, the company engages in the operation of websites through web, digital or mobile media, which include information related to current affairs, lifestyle, entertainment, etc. The company was formerly known as Quint Digital Media Limited and changed its name to Quint Digital Limited in October 2023. Quint Digital Limited was incorporated in 1985 and is headquartered in New Delhi, India.",
@@ -1309,7 +1752,7 @@
     ],
     "shareholding": {
       "promoters": "2.48%",
-      "public": "97.52%",
+      "public": "90.06%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1346,7 +1789,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "dii": [
           null,
@@ -1358,7 +1801,7 @@
           null,
           null,
           null,
-          null
+          7.46
         ],
         "diiMutualFunds": [
           null,
@@ -1370,7 +1813,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -1382,7 +1825,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -1394,7 +1837,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1406,7 +1849,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           97.52,
@@ -1418,7 +1861,7 @@
           97.52,
           97.52,
           97.52,
-          97.52
+          90.06
         ],
         "employeeTrusts": [
           0,
@@ -1434,23 +1877,267 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "VAIDYANATHAN SANKARARAMAN",
+            "subCategory": "Promoter",
+            "pct": 2.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.08
+            ]
+          },
+          {
+            "name": "V Mangalam",
+            "subCategory": "Promoter Group",
+            "pct": 0.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.21
+            ]
+          },
+          {
+            "name": "V Sri Raman",
+            "subCategory": "Promoter Group",
+            "pct": 0.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.19
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "STATE BANK OF INDIA",
+            "subCategory": "Banks",
+            "pct": 7.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.46
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "TECKNOPOINT MERCANTILE CO PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 7.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.74
+            ]
+          },
+          {
+            "name": "CNI INFOXCHANGE",
+            "subCategory": "Bodies Corporate",
+            "pct": 5.71,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.71
+            ]
+          },
+          {
+            "name": "PRAKASH GILLA",
+            "subCategory": "Individual Investor",
+            "pct": 3.81,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.81
+            ]
+          },
+          {
+            "name": "RAMAIYER VENKATARAMANI",
+            "subCategory": "Non Resident Indians (NRIs)",
+            "pct": 3.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.74
+            ]
+          },
+          {
+            "name": "DEEPAK MEHRA",
+            "subCategory": "Individual Investor",
+            "pct": 3.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.43
+            ]
+          },
+          {
+            "name": "RAJESH NIKAM",
+            "subCategory": "Individual Investor",
+            "pct": 1.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.9
+            ]
+          },
+          {
+            "name": "NARAYANAN SRIRAM",
+            "subCategory": "Non Resident Indians (NRIs)",
+            "pct": 1.87,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.87
+            ]
+          },
+          {
+            "name": "MAHINDER RAM GIDWANI",
+            "subCategory": "Individual Investor",
+            "pct": 1.86,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.86
+            ]
+          },
+          {
+            "name": "SANJAY KUMAR",
+            "subCategory": "Individual Investor",
+            "pct": 1.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.31
+            ]
+          },
+          {
+            "name": "MAHESWARI PLAZA RESORTS LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.29,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.29
+            ]
+          }
+        ]
+      },
+      "fii": "0.00%",
+      "dii": "7.46%"
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752490_04112026021437_WEB.xml",
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:49.477Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:16:09.110Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 290,
-      "pe": 4.8,
+      "marketCapCr": 301,
+      "pe": 5,
       "ttmEps": 0.8,
       "ttmSalesCr": 399,
       "ttmPatCr": 57,
       "promoterPct": 2.48
-    }
+    },
+    "lastShpRecordId": "213608"
   }
 }

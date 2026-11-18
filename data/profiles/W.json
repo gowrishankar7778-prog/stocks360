@@ -121,7 +121,7 @@
     ],
     "shareholding": {
       "promoters": "72.58%",
-      "public": "27.30%",
+      "public": "10.08%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -158,7 +158,7 @@
           null,
           null,
           null,
-          null
+          12.09
         ],
         "dii": [
           null,
@@ -170,7 +170,7 @@
           null,
           null,
           null,
-          null
+          5.13
         ],
         "diiMutualFunds": [
           null,
@@ -182,7 +182,7 @@
           null,
           null,
           null,
-          null
+          1.66
         ],
         "diiInsurance": [
           null,
@@ -194,7 +194,7 @@
           null,
           null,
           null,
-          null
+          2.97
         ],
         "diiPensionFunds": [
           null,
@@ -206,7 +206,7 @@
           null,
           null,
           null,
-          null
+          0.45
         ],
         "government": [
           null,
@@ -218,7 +218,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           27.07,
@@ -230,7 +230,7 @@
           27.25,
           27.27,
           27.29,
-          27.3
+          10.08
         ],
         "employeeTrusts": [
           0.11,
@@ -246,20 +246,229 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
+        "promoters": [
+          {
+            "name": "Partnership Firms",
+            "subCategory": "Promoter",
+            "pct": 59.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              59.54
+            ]
+          },
+          {
+            "name": "MR AZIM HASHAM PREMJI PARTNER REPRESENTING ZASH TRADERS",
+            "subCategory": "Promoter",
+            "pct": 20.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.98
+            ]
+          },
+          {
+            "name": "MR AZIM HASHAM PREMJI PARTNER REPRESENTING PRAZIM TRADERS",
+            "subCategory": "Promoter",
+            "pct": 20.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.58
+            ]
+          },
+          {
+            "name": "MR AZIM HASHAM PREMJI PARTNER REPRESENTING HASHAM TRADERS",
+            "subCategory": "Promoter",
+            "pct": 17.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              17.98
+            ]
+          },
+          {
+            "name": "AZIM PREMJI TRUST",
+            "subCategory": "Promoter",
+            "pct": 6.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.48
+            ]
+          },
+          {
+            "name": "AZIM H PREMJI",
+            "subCategory": "Promoter",
+            "pct": 4.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.12
+            ]
+          },
+          {
+            "name": "PRAZIM TRADING AND INVESTMENT COMPANY PVT LTD",
+            "subCategory": "Promoter Group",
+            "pct": 1.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.85
+            ]
+          },
+          {
+            "name": "AZIM PREMJI PHILANTHROPIC INITIATIVES PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 0.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.26
+            ]
+          },
+          {
+            "name": "TARIQ AZIM PREMJI",
+            "subCategory": "Promoter Group",
+            "pct": 0.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.13
+            ]
+          },
+          {
+            "name": "RISHAD AZIM PREMJI",
+            "subCategory": "Promoter",
+            "pct": 0.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.13
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "JP MORGAN CHASE BANK, NA",
+            "subCategory": "Overseas Depositories (holding DRs) (balancing figure)",
+            "pct": 2.63,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.63
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA - ULIF00320091",
+            "subCategory": "Insurance",
+            "pct": 2.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.82
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "12.09%",
+      "dii": "5.13%"
     },
     "updatedAt": 1794038125769,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:45.693Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:10:59.294Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1738910_15102026040914_WEB.xml",
     "ratios": {
-      "marketCapCr": 191732,
-      "pe": 17.3,
+      "marketCapCr": 183410,
+      "pe": 16.5,
       "ttmEps": 11.19,
       "ttmSalesCr": 77092,
       "ttmPatCr": 11548,
@@ -269,7 +478,8 @@
       "debtToEquity": 0.13,
       "promoterPct": 72.58
     },
-    "debtToEquity": 0.13
+    "debtToEquity": 0.13,
+    "lastShpRecordId": "213650"
   },
   "WAAREEENER": {
     "about": "Waaree Energies Limited manufactures and trades in solar photovoltaic modules in India and internationally. It operates through Solar Photovoltaic Modules; Generation of Power; and Engineering, Procurement and Construction Contract segments. The company offers PV modules, such as HJT, N Type, mono PERC, flexible, and special modules; single and three phase on-grid inverter; solar kits; battery energy storage system; electrolyzer stacks; smart meter; transformer; and Waaree lights. It also provides engineering, procurement, and construction services; asset management; and solar systems for emerging, hybrid, and niche formats, including tracker-integrated systems, agrovoltaics, BIPV, and repowering legacy plants. The company serves engineering, procurement and construction companies; power production companies; power generation utilities; and individual consumers. The company was founded in 1989 and is based in Mumbai, India.",

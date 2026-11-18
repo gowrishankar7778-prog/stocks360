@@ -392,7 +392,8 @@
       "debtToEquity": 0,
       "promoterPct": 71.77
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215653"
   },
   "TECHM": {
     "about": "Tech Mahindra Limited provides information technology services and solutions in India, the Americas, Europe, and internationally. The company offers TechM AppGinieZ, a software development lifecycle acceleration platform; Swifter.io, a software engineering platform; ADMSNXT Reforge, an application modernization platform; Autonomous Operations Center, an AI-powered operations platform; and New Age Delivery Platform for DevSecOps and engineering. It also provides LitmusT, a quality engineering and intelligent testing platform; TechM Orion, an agentic AI platform; Ops amplifAler 4.0 for IT operations; Email amplifAler for visualization and automation; SDLC amplifAler solutions; Zone insights solutions for monitoring of object movement; synthetic data generation, freightwatch solutions, cognitive process monitoring, and guardrails framework for AI; VerifAI for scaling AI; and MobiLytix for marketers. In addition, the company offers netOps.ai, an automated cloud platform; AftEAZE solution for warranty and aftermarket problems; AI maturity assessment, generative AI studio, and generative AI performance monitoring; Vision amplifAler, a vision-based solution; Document amplifAler, a digital assistant; and AI-led care, forecasting workbench, AI store, AI adoption, AIOps solution suite, intelligent asset inspection platform, and legal artificial assistant. Further, the company provides business process services, such as consulting CoE and business-process-as-services; Navixus, a digital transformation suite; Cloud and infrastructure services, including enterprise mainframe, FLEX digital workplace, data center services, and CLOUDNXT.NOW, a cloud service; and digital enterprise applications comprising SAP, Oracle, Salesforce, ServiceNow, enterprise digital solutions, digital process solutions, and Emerging Apps. Additionally, it offers engineering, experience, network, and testing services. The company was incorporated in 1986 and is based in Pune, India.",
@@ -516,7 +517,7 @@
     ],
     "shareholding": {
       "promoters": "34.96%",
-      "public": "65.04%",
+      "public": "8.42%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -553,7 +554,7 @@
           null,
           null,
           null,
-          null
+          20.77
         ],
         "dii": [
           null,
@@ -565,7 +566,7 @@
           null,
           null,
           null,
-          null
+          35.68
         ],
         "diiMutualFunds": [
           null,
@@ -577,7 +578,7 @@
           null,
           null,
           null,
-          null
+          19.35
         ],
         "diiInsurance": [
           null,
@@ -589,7 +590,7 @@
           null,
           null,
           null,
-          null
+          13.25
         ],
         "diiPensionFunds": [
           null,
@@ -601,7 +602,7 @@
           null,
           null,
           null,
-          null
+          2.15
         ],
         "government": [
           null,
@@ -613,7 +614,7 @@
           null,
           null,
           null,
-          null
+          0.17
         ],
         "public": [
           64.95,
@@ -625,7 +626,7 @@
           65.02,
           65.03,
           65.03,
-          65.04
+          8.42
         ],
         "employeeTrusts": [
           0,
@@ -641,20 +642,229 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Mahindra & Mahindra Limited",
+            "subCategory": "Promoter",
+            "pct": 25.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              25.3
+            ]
+          },
+          {
+            "name": "TML Benefit Trust through Puneet Renjhen",
+            "subCategory": "Promoter Group",
+            "pct": 9.61,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.61
+            ]
+          },
+          {
+            "name": "Mahindra Holdings Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          },
+          {
+            "name": "Mahindra-Bt Investment Company (Mauritius) Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "Life Insurance Corporation Of India",
+            "subCategory": "Insurance",
+            "pct": 9.86,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.86
+            ]
+          },
+          {
+            "name": "Sbi Nifty 50 Etf",
+            "subCategory": "Mutual Funds",
+            "pct": 5.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.03
+            ]
+          },
+          {
+            "name": "Icici Prudential Technology Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 2.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.5
+            ]
+          },
+          {
+            "name": "Nps Trust- A/C Sbi Pension Fund Scheme - State Govt",
+            "subCategory": "Pension Funds",
+            "pct": 2.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.15
+            ]
+          },
+          {
+            "name": "Kotak Flexicap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.77,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.77
+            ]
+          },
+          {
+            "name": "Aditya Birla Sun Life Mutual Fund - Aditya Birla Sun Life Flexi Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.59
+            ]
+          },
+          {
+            "name": "Uti Nifty 50 Etf",
+            "subCategory": "Mutual Funds",
+            "pct": 1.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.43
+            ]
+          },
+          {
+            "name": "Nippon Life India Trustee Ltd-A/C Nippon India Etf Nifty 50 Bees",
+            "subCategory": "Mutual Funds",
+            "pct": 1.39,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.39
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "20.77%",
+      "dii": "35.68%",
+      "government": "0.17%"
     },
     "updatedAt": 1794038125770,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:44.308Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:10:59.588Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1739118_15102026053405_WEB.xml",
     "ratios": {
-      "marketCapCr": 174292,
-      "pe": 40.9,
+      "marketCapCr": 171702,
+      "pe": 40.3,
       "ttmEps": 43.4,
       "ttmSalesCr": 52565,
       "ttmPatCr": 4257,
@@ -664,7 +874,8 @@
       "debtToEquity": 0.08,
       "promoterPct": 34.96
     },
-    "debtToEquity": 0.08
+    "debtToEquity": 0.08,
+    "lastShpRecordId": "216223"
   },
   "TATAELXSI": {
     "about": "Tata Elxsi Limited provides product design and engineering, systems integration, and support services in India, the United States, Europe, and Internationally. The company operates through two segments, Systems Integration and Support, and Software Development and Services. It offers iCX, a SaaS-based solution for automating, monitoring, and managing CPEs; and AIVA, an AI-based video analytics platform that automates video tagging, object detection, content indexing, and metadata generation. It also provides QoEtient, a platform for video streaming services; TEPlay, an OTT/IPTV platform; Neuron, an autonomous network platform for telco operators; and uLike, a platform for AI-powered content recommendation engine. In addition, it offers TETHER, a cloud-based platform for vehicle connectivity; eMobility HILS, a scalable solution for validating electric vehicle systems; Robo-Taxi, a platform for autonomous ride-hailing; AVENIR, a platform for real-time data processing, validation, and integration for software defined vehicles; AutonomAI, an AI-driven platform for self-driving capabilities; and MOBIUS+, a blockchain-powered solution. Further, it provides TEDREG, a regulatory intelligence platform for compliance management; Digital Health Platform, a customizable platform for remote patient monitoring, virtual consultations, and personalized health insights; TEngage, a digital health platform for patient engagement tools with customizable workflows, interactive communication channels, and performance tracking dashboards; TEDAX Big Data, an AI-driven analytics platform; and TEcare, a care management platform for multi-channel support and care plan customization. It serves automotive, broadcast and media, communications, off-highway equipment, healthcare and life sciences, appliances and consumer electronics, rail, semiconductor, and aerospace industries. The company was incorporated in 1989 and is headquartered in Bengaluru, India.",
@@ -672,6 +883,51 @@
     "industry": "Software - Application",
     "sector": "Information Technology",
     "quarterlyResults": [
+      {
+        "period": "Dec 23",
+        "sales": "949",
+        "expenses": "675",
+        "operatingProfit": "274",
+        "opm": "28.9%",
+        "netProfit": "206",
+        "eps": "₹33.14"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "940",
+        "expenses": "678",
+        "operatingProfit": "262",
+        "opm": "27.9%",
+        "netProfit": "197",
+        "eps": "₹31.61"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "959",
+        "expenses": "707",
+        "operatingProfit": "252",
+        "opm": "26.3%",
+        "netProfit": "184",
+        "eps": "₹29.55"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "1,019",
+        "expenses": "720",
+        "operatingProfit": "299",
+        "opm": "29.3%",
+        "netProfit": "229",
+        "eps": "₹36.83"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "979",
+        "expenses": "723",
+        "operatingProfit": "256",
+        "opm": "26.1%",
+        "netProfit": "199",
+        "eps": "₹31.94"
+      },
       {
         "period": "Dec 25",
         "sales": "1,000",
@@ -939,12 +1195,12 @@
     },
     "updatedAt": 1794038125773,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:47.499Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:00.337Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1737319_13102026094213_WEB.xml",
     "ratios": {
-      "marketCapCr": 23318,
-      "pe": 34.9,
+      "marketCapCr": 22820,
+      "pe": 34.1,
       "ttmEps": 107.57,
       "ttmSalesCr": 4198,
       "ttmPatCr": 670,
@@ -954,7 +1210,8 @@
       "debtToEquity": 0,
       "promoterPct": 43.89
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214976"
   },
   "TATATECH": {
     "about": "Tata Technologies Limited provides product engineering and digital services in India, the United Kingdom, North America, rest of Europe, and internationally. The company offers software-defined vehicles, end to end electric vehicle engineering, and turnkey full vehicle development, end to end engineering and electrification, product benchmarking, and embedded engineering solutions; HIL testing and validation solutions; and model-based systems engineering, digital transformation, smart manufacturing, and digital customer experience solutions. It also provides enterprise transformation SAP S/4 HANA, aerospace engineering, and aerospace MRO solutions, as well as upskilling competency centers. In addition, it offers i GET IT, an online training platform for self-paced training courses; modular EV platform for product launches and reduces time to market; Pulse, an agile product data and management tool; Factorymagix, a manufacturing execution system tool; and AMP.IoT, a suite of modular applications designed to cater to the Industrial IOT requirements of the manufacturing industry. Further, it provides centralized hybrid integration platform, an enterprise hybrid integration ecosystem that connects and maps applications, data, and devices in the cloud; Power of 8, a digital application to enable OEMs to attract customers; TRACE, a connected vehicle platform that helps OEMs to develop and deliver end-to-end connected services; RightWeighting 5R, a solution that enables manufacturing companies to optimize weight and engineer products; and Visimatic, a suite of machine learning solutions. The company was formerly known as Tata Technologies (India) Limited and changed its name to Tata Technologies Limited in February 2001. Tata Technologies Limited was incorporated in 1994 and is based in Pune, India. The company operates as a subsidiary of Tata Motors Limited.",
@@ -1392,7 +1649,8 @@
       "debtToEquity": 0,
       "promoterPct": 55.17
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214886"
   },
   "TATACHEM": {
     "about": "Tata Chemicals Limited, together with its subsidiaries, manufactures, markets, sells, and distributes basic chemistry and specialty products in India, Asia, Africa, Europe, the United Kingdom, the Americas, and internationally. It operates through two segments, Basic Chemistry Products and Specialty Products. The company offers dense, heavy, high purity, industrial grade, and light soda ash; allied chemicals, such as caustic soda, chlorine and bromine-based products, and gypsum; sodium bicarbonate; sodium chloride; calcium chloride; crushed refined soda; standard ash Magadi; natural and synthetic light soda ash; crex; energy; ordinary Portland and masonry cement under the Tata Shudh brand name; and livestock and dry industrial salt. It also provides nano zinc oxide and silica; prebiotics and dietary fibers; herbicides, insecticides, fungicides, bio-fertilizers, bio-stimulants, micronutrients, organic fertilizers, water-soluble fertilizers, bio-pesticides, and seeds; and energy storage solutions. The company's products are used in various applications, such as agriculture; animal nutrition; chemicals; construction; food and nutrition; glass; high performance rubber; metals; oral care and cosmetics; paints, inks, and adhesives; pharmaceuticals; safety and environment; soaps and detergents; textiles and leather; lithium-ion, dry cell, and other batteries; and others. Tata Chemicals Limited was founded in 1927 and is headquartered in Mumbai, India.",
@@ -1516,7 +1774,7 @@
     ],
     "shareholding": {
       "promoters": "37.98%",
-      "public": "62.02%",
+      "public": "30.64%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1553,7 +1811,7 @@
           null,
           null,
           null,
-          null
+          11.7
         ],
         "dii": [
           null,
@@ -1565,7 +1823,7 @@
           null,
           null,
           null,
-          null
+          19.65
         ],
         "diiMutualFunds": [
           null,
@@ -1577,7 +1835,7 @@
           null,
           null,
           null,
-          null
+          8.19
         ],
         "diiInsurance": [
           null,
@@ -1589,7 +1847,7 @@
           null,
           null,
           null,
-          null
+          11.42
         ],
         "diiPensionFunds": [
           null,
@@ -1601,7 +1859,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1613,7 +1871,7 @@
           null,
           null,
           null,
-          null
+          0.03
         ],
         "public": [
           62.02,
@@ -1625,7 +1883,7 @@
           62.02,
           62.02,
           62.02,
-          62.02
+          30.64
         ],
         "employeeTrusts": [
           0,
@@ -1641,20 +1899,162 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
+        "promoters": [
+          {
+            "name": "Tata Sons Private Limited",
+            "subCategory": "Promoter",
+            "pct": 31.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              31.9
+            ]
+          },
+          {
+            "name": "Tata Investment Corporation Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 5.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.97
+            ]
+          },
+          {
+            "name": "Voltas Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.08
+            ]
+          },
+          {
+            "name": "Tata Industries Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.03
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "ACACIA PARTNERS, LP",
+            "subCategory": "FPI Category I",
+            "pct": 1.36,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.36
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "Life Insurance Corporation of India - P & Gs Fundn",
+            "subCategory": "Insurance",
+            "pct": 9.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.24
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL VALUE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.37
+            ]
+          },
+          {
+            "name": "KOTAK FLEXICAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.71,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.71
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "11.70%",
+      "dii": "19.65%",
+      "government": "0.03%"
     },
     "updatedAt": 1794038125792,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.933Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:06.393Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755498_07112026075211_WEB.xml",
     "ratios": {
-      "marketCapCr": 15590,
-      "pe": 26.6,
+      "marketCapCr": 16163,
+      "pe": 27.6,
       "ttmEps": 23,
       "ttmSalesCr": 5356,
       "ttmPatCr": 586,
@@ -1664,7 +2064,8 @@
       "debtToEquity": 0.17,
       "promoterPct": 37.98
     },
-    "debtToEquity": 0.17
+    "debtToEquity": 0.17,
+    "lastShpRecordId": "214768"
   },
   "TATAPOWER": {
     "about": "The Tata Power Company Limited engages in the generation, transmission, distribution, and trading of electricity in India and internationally. It operates through four segments: Thermal & Hydro, Transmission & Distribution, Renewables, and Others. The company generates power from hydroelectric and thermal sources, such as coal, gas, and oil; and provides related ancillary services. It also engages in the operation of transmission and distribution networks; and sale of power to retail customers through distribution networks. In addition, the company offers project management contracts and infrastructure management, and property development services, as well as rents oil tanks. Further, it is involved in the generation of power from renewable energy sources, such as wind and solar; rooftop solar projects; electric vehicle charging stations; manufactures solar cells and modules; engineering, procurement, and construction; home automation solutions; and maintenance services. Additionally, the company trades in power and coal; generates and distributes power; hydro pump storage, coal mining, trading, shipping, and related infra business; and provides smart meter, consultancy, networking solution, shipping and coal handling, logistics, and equipment business and related services, as well as infrastructure for electric vehicles. As of March 31, 2026, the company had an installed generation capacity of 16,716 megawatt. The Tata Power Company Limited was founded in 1915 and is based in Mumbai, India.",
@@ -1788,7 +2189,7 @@
     ],
     "shareholding": {
       "promoters": "46.86%",
-      "public": "53.14%",
+      "public": "24.52%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1825,7 +2226,7 @@
           null,
           null,
           null,
-          null
+          10.13
         ],
         "dii": [
           null,
@@ -1837,7 +2238,7 @@
           null,
           null,
           null,
-          null
+          18.48
         ],
         "diiMutualFunds": [
           null,
@@ -1849,7 +2250,7 @@
           null,
           null,
           null,
-          null
+          8.75
         ],
         "diiInsurance": [
           null,
@@ -1861,7 +2262,7 @@
           null,
           null,
           null,
-          null
+          8.05
         ],
         "diiPensionFunds": [
           null,
@@ -1873,7 +2274,7 @@
           null,
           null,
           null,
-          null
+          1.56
         ],
         "government": [
           null,
@@ -1885,7 +2286,7 @@
           null,
           null,
           null,
-          null
+          0.01
         ],
         "public": [
           53.14,
@@ -1897,7 +2298,7 @@
           53.14,
           53.14,
           53.14,
-          53.14
+          24.52
         ],
         "employeeTrusts": [
           0,
@@ -1913,20 +2314,195 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Tata Sons Private Limited",
+            "subCategory": "Promoter",
+            "pct": 45.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              45.21
+            ]
+          },
+          {
+            "name": "Tata Steel Limited",
+            "subCategory": "Promoter Group",
+            "pct": 1.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.22
+            ]
+          },
+          {
+            "name": "Tata Investment Corporation Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 0.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.21
+            ]
+          },
+          {
+            "name": "Tata Industries Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.14
+            ]
+          },
+          {
+            "name": "Ewart Investments Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.07
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "Life Insurance Corpn Of India",
+            "subCategory": "Insurance",
+            "pct": 5.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.72
+            ]
+          },
+          {
+            "name": "Nippon Life India Trustee Ltd-A/C Nippon India Large Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.98
+            ]
+          },
+          {
+            "name": "Nps Trust- A/C Lic Pension Fund Scheme - State Govt",
+            "subCategory": "Pension Funds",
+            "pct": 1.56,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.56
+            ]
+          },
+          {
+            "name": "Franklin India Flexi Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.11
+            ]
+          },
+          {
+            "name": "Mirae Asset Large & Midcap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.09
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "10.13%",
+      "dii": "18.48%",
+      "government": "0.01%"
     },
     "updatedAt": 1794038125795,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:57.255Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:08.621Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756232_11112026070241_WEB.xml",
     "ratios": {
-      "marketCapCr": 110560,
-      "pe": 95.7,
+      "marketCapCr": 108160,
+      "pe": 93.6,
       "ttmEps": 3.61,
       "ttmSalesCr": 18859,
       "ttmPatCr": 1155,
@@ -1936,7 +2512,8 @@
       "debtToEquity": 1.22,
       "promoterPct": 46.86
     },
-    "debtToEquity": 1.22
+    "debtToEquity": 1.22,
+    "lastShpRecordId": "215971"
   },
   "TVSMOTOR": {
     "about": "TVS Motor Company Limited, together with its subsidiaries, engages in the manufacture and sale of automotive vehicles and components, spare parts, and accessories in India and internationally. The company operates through Automotive Vehicles & Parts and Related Investments; and Investment Held in Financial Services segments. The company offers motorcycles under the Apache RTR, Apache RR, Ronin, Raider, Radeon, StaR City+, HLX, and Sport brand names; scooters under the Jupiter, Neo, Ntorq, and Zest brands; electric vehicles under the TVS X, Orbiter, and iQUBE brands; mopeds under the XL 100 brand name; and three wheelers under the TVS King brand name. It also provides e-bikes under the Cilo, Simpel, Zenith, and Allegro brands; e-cargo bikes and accessories; and electric mobility, predictive analytics, and industrial IoT solutions. In addition, the company is involved in procurement, refurbishment, and retailing of the pre-owned multi-brand two-wheeler motorcycles and scooters; and development, design, manufacture, sale and distribution of high-tech products and components in the field of personal e-mobility. Further, it offers financing services for two and three wheelers, used and new tractors and commercial vehicles, consumer durables, personal loan, gold loan, and mid corporate loans. The company was incorporated in 1992 and is headquartered in Chennai, India. TVS Motor Company Limited operates as a subsidiary of TVS Holdings Limited.",
@@ -2027,8 +2604,8 @@
       },
       {
         "period": "Sep 26",
-        "sales": "17,149",
-        "expenses": "15,284",
+        "sales": "17,148",
+        "expenses": "15,283",
         "operatingProfit": "1,865",
         "opm": "10.9%",
         "netProfit": "1,377",
@@ -2060,7 +2637,7 @@
     ],
     "shareholding": {
       "promoters": "50.27%",
-      "public": "49.71%",
+      "public": "8.03%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -2097,7 +2674,7 @@
           23.09,
           22.57,
           20.45,
-          null
+          21.39
         ],
         "dii": [
           20.14,
@@ -2109,7 +2686,7 @@
           18.29,
           18.83,
           21.13,
-          null
+          20.29
         ],
         "diiMutualFunds": [
           16.37,
@@ -2121,7 +2698,7 @@
           14.15,
           14.45,
           16.29,
-          null
+          15.58
         ],
         "diiInsurance": [
           2.81,
@@ -2133,7 +2710,7 @@
           2.3,
           2.44,
           2.79,
-          null
+          2.66
         ],
         "diiPensionFunds": [
           0.64,
@@ -2145,7 +2722,7 @@
           1.47,
           1.59,
           1.66,
-          null
+          1.69
         ],
         "government": [
           0,
@@ -2157,7 +2734,7 @@
           0,
           0,
           0,
-          null
+          0
         ],
         "public": [
           8.55,
@@ -2169,7 +2746,7 @@
           8.33,
           8.3,
           8.12,
-          49.71
+          8.03
         ],
         "employeeTrusts": [
           0,
@@ -2185,7 +2762,42 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "TVS HOLDINGS LIMITED (Formerly known as Sundaram Clayton Limited)",
+            "subCategory": "Promoter",
+            "pct": 50.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              50.26
+            ]
+          },
+          {
+            "name": "MALLIKA SRINIVASAN",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [
           {
             "name": "EUROPACIFIC GROWTH FUND",
@@ -2260,7 +2872,7 @@
           {
             "name": "ICICI Mutual Fund",
             "subCategory": "Mutual Funds",
-            "pct": 6.81,
+            "pct": 6.35,
             "history": [
               null,
               null,
@@ -2271,7 +2883,41 @@
               null,
               null,
               6.81,
-              null
+              6.35
+            ]
+          },
+          {
+            "name": "NPS Trust",
+            "subCategory": "Pension Funds",
+            "pct": 1.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.09,
+              1.29,
+              1.47,
+              1.59,
+              1.66,
+              1.69
+            ]
+          },
+          {
+            "name": "Axis Mutual Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.31,
+            "history": [
+              1.05,
+              1.69,
+              1.48,
+              null,
+              1.47,
+              1.46,
+              1.26,
+              1.05,
+              1.43,
+              1.31
             ]
           },
           {
@@ -2305,40 +2951,6 @@
               null,
               null,
               null,
-              null
-            ]
-          },
-          {
-            "name": "NPS Trust",
-            "subCategory": "Pension Funds",
-            "pct": 1.66,
-            "history": [
-              null,
-              null,
-              null,
-              null,
-              1.09,
-              1.29,
-              1.47,
-              1.59,
-              1.66,
-              null
-            ]
-          },
-          {
-            "name": "Axis Mutual Fund",
-            "subCategory": "Mutual Funds",
-            "pct": 1.43,
-            "history": [
-              1.05,
-              1.69,
-              1.48,
-              null,
-              1.47,
-              1.46,
-              1.26,
-              1.05,
-              1.43,
               null
             ]
           },
@@ -2378,18 +2990,20 @@
           }
         ],
         "public": []
-      }
+      },
+      "fii": "21.39%",
+      "dii": "20.29%"
     },
     "updatedAt": 1794038125801,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.779Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:10.358Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748255_28102026082531_WEB.xml",
     "ratios": {
-      "marketCapCr": 211513,
-      "pe": 47.1,
+      "marketCapCr": 207524,
+      "pe": 46.2,
       "ttmEps": 94.49,
-      "ttmSalesCr": 56435,
+      "ttmSalesCr": 56434,
       "ttmPatCr": 4489,
       "bookValue": 290.7,
       "roePct": 32.5,
@@ -2397,7 +3011,8 @@
       "debtToEquity": 0.4,
       "promoterPct": 50.27
     },
-    "debtToEquity": 0.4
+    "debtToEquity": 0.4,
+    "lastShpRecordId": "214946"
   },
   "TORNTPHARM": {
     "about": "Torrent Pharmaceuticals Limited engages in the research, development, manufacturing, marketing, and distribution of branded and generic pharmaceutical formulations in India, the United States, Brazil, Germany, Malta, and internationally. The company offers products in various therapeutic areas, including anti-diabetic, anti-microbial, cardiovascular, CNS, urology, gynecology, oncology, gastro-intestinal, nephrology, neuro-psychiatric, dermatology, pulmonology, pediatric treatments, nutritional, pain management, anti-infective, and miscellaneous, as well as vitamins, minerals, and nutrients. It also provides contract manufacturing services. The company offers its products under Tedibar, Shelcal, Unienzyme, ProZuca, and Ahaglow brands. The company was formerly known as Trinity Laboratories and changed its name to Torrent Pharmaceuticals Limited in 1971. The company was founded in 1959 and is based in Ahmedabad, India. Torrent Pharmaceuticals Limited is a subsidiary of Torrent Investments Private Limited.",
@@ -2512,7 +3127,7 @@
     ],
     "shareholding": {
       "promoters": "60.78%",
-      "public": "39.22%",
+      "public": "8.54%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -2549,7 +3164,7 @@
           null,
           null,
           null,
-          null
+          17.22
         ],
         "dii": [
           null,
@@ -2561,7 +3176,7 @@
           null,
           null,
           null,
-          null
+          13.46
         ],
         "diiMutualFunds": [
           null,
@@ -2573,7 +3188,7 @@
           null,
           null,
           null,
-          null
+          8.82
         ],
         "diiInsurance": [
           null,
@@ -2585,7 +3200,7 @@
           null,
           null,
           null,
-          null
+          1.96
         ],
         "diiPensionFunds": [
           null,
@@ -2597,7 +3212,7 @@
           null,
           null,
           null,
-          null
+          2.32
         ],
         "government": [
           null,
@@ -2609,7 +3224,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           28.75,
@@ -2621,7 +3236,7 @@
           31.69,
           31.69,
           31.69,
-          39.22
+          8.54
         ],
         "employeeTrusts": [
           0,
@@ -2637,20 +3252,109 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "TORRENT INVESTMENTS LIMITED (FORMERLY KNOWN AS TORRENT INVESTMENTS PRIVATE LIMITED)",
+            "subCategory": "Promoter",
+            "pct": 60.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              60.78
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "NPS TRUST",
+            "subCategory": "Pension Funds",
+            "pct": 2.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.32
+            ]
+          },
+          {
+            "name": "HDFC MUTUAL FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.14
+            ]
+          },
+          {
+            "name": "AXIS MUTUAL FUND TRUSTEE LIMITED A/C AXIS MUTUAL FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.12
+            ]
+          },
+          {
+            "name": "KOTAK DEBT HYBRID",
+            "subCategory": "Mutual Funds",
+            "pct": 1.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.05
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "17.22%",
+      "dii": "13.46%"
     },
     "updatedAt": 1794038125806,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:23.278Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:13.635Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1745083_23102026082508_WEB.xml",
     "ratios": {
-      "marketCapCr": 178473,
-      "pe": 82.5,
+      "marketCapCr": 175411,
+      "pe": 81.1,
       "ttmEps": 56.87,
       "ttmSalesCr": 13655,
       "ttmPatCr": 2034,
@@ -2660,7 +3364,8 @@
       "debtToEquity": 0.72,
       "promoterPct": 60.78
     },
-    "debtToEquity": 0.72
+    "debtToEquity": 0.72,
+    "lastShpRecordId": "214747"
   },
   "TATACONSUM": {
     "about": "Tata Consumer Products Limited, together with its subsidiaries, manufactures, distributes, and trades in food products in India, the United States, the United Kingdom, and internationally. It operates through Branded Business and Non Branded Business segments. The company provides tea, coffee, water, salt, pulses, spices, snacks, ready-to-eat packaged and processed food products, ready to cook, ready to drink beverages, breakfast cereals, sauces, instant masala noodles, meal solutions, staples, mini-meals, breakfast, chilli ginger garlic paste, cooking aids and condiments, dry fruits, floor and millets, honey, chutneys, and cold-pressed oils. It also offers health supplements; glucose and jelly drinks; juices; food; and out-of-home consumptions products. The company provides its products primarily under the Tata Tea, Tata Tea Premium, Tetley, 1868 by Tata Tea, Organic India, Tata Coffee Grand, Tata Coffee Gold, Tata Coffee Quick Filter, Sonnets by Tata Coffee, Tata Salt, Tata Sampann, Smith & Jones, Tata Soulfull, Himalayan honey and preserves, Ching's Secret, Tata Simply Better, Himalayan water, Tata Copper+, Tata Gluco+, Tata Coffee Grand Cold Coffee, Zip Zap, Tetley Ready-To-Drink Green Tea, Tata Starbucks, Tata Consumer Specialist Solutions, Tata MyBistro, Good Earth, Teapigs, Eight O'Clock, Vitax, Himalayan, Laager, Tea4Kidz, Tea time, Society Coffee, Phendula, Teeco, Southalls, Tata Tea Gold, Kanan Devan, Chakra Gold, Tata Tea Agni, Joekels, Tata Coffee Cold Coffee, Tata Fruski, Tata GoFit, Himalayan Honey & Preserves, Himalayan Saffron, and Tata MyBistro Vending brands. The company was formerly known as Tata Global Beverages Limited and changed its name to Tata Consumer Products Limited in February 2020. Tata Consumer Products Limited was incorporated in 1962 and is based in Mumbai, India.",
@@ -2784,7 +3489,7 @@
     ],
     "shareholding": {
       "promoters": "33.83%",
-      "public": "66.17%",
+      "public": "21.05%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -2821,7 +3526,7 @@
           null,
           null,
           null,
-          null
+          19.76
         ],
         "dii": [
           null,
@@ -2833,7 +3538,7 @@
           null,
           null,
           null,
-          null
+          25.34
         ],
         "diiMutualFunds": [
           null,
@@ -2845,7 +3550,7 @@
           null,
           null,
           null,
-          null
+          10.93
         ],
         "diiInsurance": [
           null,
@@ -2857,7 +3562,7 @@
           null,
           null,
           null,
-          null
+          11.36
         ],
         "diiPensionFunds": [
           null,
@@ -2869,7 +3574,7 @@
           null,
           null,
           null,
-          null
+          2.59
         ],
         "government": [
           null,
@@ -2881,7 +3586,7 @@
           null,
           null,
           null,
-          null
+          0.01
         ],
         "public": [
           66.45,
@@ -2893,7 +3598,7 @@
           66.16,
           66.17,
           66.17,
-          66.17
+          21.05
         ],
         "employeeTrusts": [
           0,
@@ -2909,20 +3614,212 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Tata Sons Private Limited",
+            "subCategory": "Promoter",
+            "pct": 28.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              28.68
+            ]
+          },
+          {
+            "name": "Tata Investment Corporation Limited",
+            "subCategory": "Promoter Group",
+            "pct": 4.65,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.65
+            ]
+          },
+          {
+            "name": "Ewart Investments Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.39,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.39
+            ]
+          },
+          {
+            "name": "Tata Industries Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.09
+            ]
+          },
+          {
+            "name": "VOLTAS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "Life Insurance Corporation Of India",
+            "subCategory": "Insurance",
+            "pct": 7.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.21
+            ]
+          },
+          {
+            "name": "Nps Trust A/C Uti Pension Fund Limited-Scheme State Govt",
+            "subCategory": "Pension Funds",
+            "pct": 2.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.59
+            ]
+          },
+          {
+            "name": "Nippon Life India Trustee Ltd-A/C Nippon India Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.76,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.76
+            ]
+          },
+          {
+            "name": "Sbi-Nifty 50 ETF",
+            "subCategory": "Mutual Funds",
+            "pct": 1.7,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.7
+            ]
+          },
+          {
+            "name": "Sbi Life Insurance Co. Ltd",
+            "subCategory": "Insurance",
+            "pct": 1.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.48
+            ]
+          },
+          {
+            "name": "Uti Nifty 50 Etf",
+            "subCategory": "Mutual Funds",
+            "pct": 1.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.11
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "19.76%",
+      "dii": "25.34%",
+      "government": "0.01%"
     },
     "updatedAt": 1794038125809,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:23:09.844Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:16.166Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746147_26102026064810_WEB.xml",
     "ratios": {
-      "marketCapCr": 110838,
-      "pe": 69.5,
+      "marketCapCr": 112167,
+      "pe": 70.3,
       "ttmEps": 16.09,
       "ttmSalesCr": 16305,
       "ttmPatCr": 1593,
@@ -2932,7 +3829,8 @@
       "debtToEquity": 0.02,
       "promoterPct": 33.83
     },
-    "debtToEquity": 0.02
+    "debtToEquity": 0.02,
+    "lastShpRecordId": "215355"
   },
   "TITAN": {
     "about": "Titan Company Limited, together with its subsidiaries, manufactures and sells watches, jewelry, eyewear, fragrances, women's bags, and other accessories and products in India and internationally. The company operates through four segments: Watches and Wearables, Jewellery, Eyecare, and Others. The company designs, manufactures, and retails watches and wearables under the Nebula, Titan, Titan Clock, Zoop, Titan Octane, Titan Raga, Xylys, Edge, Fastrack, Sonata, Titan Smart, Fastrack smart, SF, Titan World, and Helios brands; jewellery products under the Mia, CaratLane, Tanishq, and Zoya brands; and eyecare products under the Titan Glares, Titan Eye+ and Fastrack Eyecare brands. It also offers sarees, dress materials, and ready-to-wear kurtas under the Taneira brand; perfumes under the SKINN brand; belts and wallets under the TITAN brand; and bags under the Fastrack and IRTH brands. In addition, the company provides manufacturing services and automation solutions for the aerospace, defense, transportation, electrical and electronics, and medical sectors. Further, it provides automation and precision engineering solutions. It offers its products through owned and franchised retail stores, as well as online. The company was formerly known as Titan Industries Limited and changed its name to Titan Company Limited in August 2013. Titan Company Limited was incorporated in 1984 and is based in Bengaluru, India.",
@@ -3482,7 +4380,8 @@
       "debtToEquity": 0.9,
       "promoterPct": 52.9
     },
-    "debtToEquity": 0.9
+    "debtToEquity": 0.9,
+    "lastShpRecordId": "214611"
   },
   "TRENT": {
     "about": "Trent Limited engages in the retailing and trading of apparels, footwear, accessories, food, grocery, and non-food products in India. The company provides apparel, footwear, and accessories for men, women, and children, as well as furnishings, decor, and a range of home accessories under the Westside brand; apparels and footwear for men, women, and children under the Zudio brand; apparel, footwear, innerwear, beauty, and accessories for women under the Utsa brand; and luxurious, differentiated, and elevated occasion wear for men and women under the Samoh brand. It also operates Star Hypermarket, a convenience store chain that offers a range of products, including staple foods, beverages, health and beauty products, apparel, home furnishings, vegetables, fruits, dairy, and non-vegetarian products; and Booker Wholesale, a cash and carry chain of stores, which provides various products, such as staple foods, beverages, health and beauty products, dairy, non-vegetarian products, and non-food products to caterers, retailers, and other businesses. In addition, the company engages in the operation of StarQuik for online grocery retailing. Further, it operates a youth-focused fashion brand under the Burnt Toast brand name. Additionally, the company engages in the provision of business support and outsourcing services relating to accounting, merchandising, human resources, payroll, sourcing, warehousing, distribution, etc.; franchisee business; invest and deploy funds related to acquisition, purchase, development, construction, leasing, sale, or otherwise dealing in real estate properties; and investment activities. It offers its products online through Westside.com, Tata CliQ, and Tata Neu, as well as My Star App. Trent Limited was incorporated in 1952 and is based in Mumbai, India.",
@@ -3606,7 +4505,7 @@
     ],
     "shareholding": {
       "promoters": "37.01%",
-      "public": "62.99%",
+      "public": "24.38%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -3643,7 +4542,7 @@
           null,
           null,
           null,
-          null
+          15.28
         ],
         "dii": [
           null,
@@ -3655,7 +4554,7 @@
           null,
           null,
           null,
-          null
+          23.33
         ],
         "diiMutualFunds": [
           null,
@@ -3667,7 +4566,7 @@
           null,
           null,
           null,
-          null
+          14.57
         ],
         "diiInsurance": [
           null,
@@ -3679,7 +4578,7 @@
           null,
           null,
           null,
-          null
+          6.47
         ],
         "diiPensionFunds": [
           null,
@@ -3691,7 +4590,7 @@
           null,
           null,
           null,
-          null
+          1.67
         ],
         "government": [
           null,
@@ -3703,7 +4602,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           62.99,
@@ -3715,7 +4614,7 @@
           62.99,
           62.99,
           62.99,
-          62.99
+          24.38
         ],
         "employeeTrusts": [
           0,
@@ -3731,20 +4630,229 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "TATA SONS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 32.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              32.45
+            ]
+          },
+          {
+            "name": "TATA INVESTMENT CORPORATION LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 4.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.28
+            ]
+          },
+          {
+            "name": "EWART INVESTMENTS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.28
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "LICI INDEX PLUS FLEXI GROWTH FUND",
+            "subCategory": "Insurance",
+            "pct": 3.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.53
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL NIFTY ETF",
+            "subCategory": "Mutual Funds",
+            "pct": 2.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.67
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA NIFTY 500 EQUAL WEIGHT INDEX FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.59
+            ]
+          },
+          {
+            "name": "SBI ARBITRAGE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.19
+            ]
+          },
+          {
+            "name": "NPS TRUST A/C - UTI PF DYNAMIC ASSET ALLOCATOR NPS SCHEME TIER II",
+            "subCategory": "Pension Funds",
+            "pct": 1.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.67
+            ]
+          },
+          {
+            "name": "SBI LIFE INSURANCE CO. LTD",
+            "subCategory": "Insurance",
+            "pct": 1.56,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.56
+            ]
+          },
+          {
+            "name": "UTI NIFTY 50 ETF",
+            "subCategory": "Mutual Funds",
+            "pct": 1.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.48
+            ]
+          },
+          {
+            "name": "ADITYA BIRLA SUN LIFE MUTUAL FUND - ADITYA BIRLA SUN LIFE MULTI-CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.21
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "SIDDHARTHA YOG",
+            "subCategory": "Non Resident Indians (NRIs)",
+            "pct": 4.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.53
+            ]
+          }
+        ]
+      },
+      "fii": "15.28%",
+      "dii": "23.33%"
     },
     "updatedAt": 1794038125811,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:25.256Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:16.063Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749314_29102026074441_WEB.xml",
     "ratios": {
-      "marketCapCr": 171004,
-      "pe": 64.2,
+      "marketCapCr": 170272,
+      "pe": 63.9,
       "ttmEps": 49.94,
       "ttmSalesCr": 21930,
       "ttmPatCr": 2117,
@@ -3754,7 +4862,8 @@
       "debtToEquity": 0.06,
       "promoterPct": 37.01
     },
-    "debtToEquity": 0.06
+    "debtToEquity": 0.06,
+    "lastShpRecordId": "214072"
   },
   "TATASTEEL": {
     "about": "Tata Steel Limited engages in the manufacture and distribution of steel products in India and internationally. It offers reinforcement bars (rebars) and wire rods, cut-and-bend reinforcement bars, welded wire mesh, prefabricated cages (pre-cages), steel couplers and carpet reinforcement; hot-rolled, cold rolled, coated coil, tubes, rebar, wire rods; and metallic coated, pre-finished steels, alloy steels, and profiles and construction systems. The company also provides solutions in building envelopes, structural, fit-out, foundations, and highway engineering products, as well as operates steel service centers. It serves agricultural, automotive steels, construction, consumer goods, energy and power, engineering, and material handling industries. It has a strategic collaboration with Hindustan Zinc Limited to scale low-carbon zinc solutions. The company was incorporated in 1907 and is based in Mumbai, India.",
@@ -3878,7 +4987,7 @@
     ],
     "shareholding": {
       "promoters": "32.94%",
-      "public": "67.06%",
+      "public": "21.33%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -3915,7 +5024,7 @@
           17.96,
           19.05,
           19.37,
-          null
+          18.19
         ],
         "dii": [
           23.52,
@@ -3927,7 +5036,7 @@
           27.16,
           26.85,
           26.62,
-          null
+          27.52
         ],
         "diiMutualFunds": [
           10.32,
@@ -3939,7 +5048,7 @@
           14.64,
           14.47,
           14.71,
-          null
+          16.12
         ],
         "diiInsurance": [
           10.88,
@@ -3951,7 +5060,7 @@
           10.23,
           10.07,
           9.47,
-          null
+          8.95
         ],
         "diiPensionFunds": [
           1.31,
@@ -3963,7 +5072,7 @@
           1.76,
           1.77,
           1.89,
-          null
+          2.09
         ],
         "government": [
           0.01,
@@ -3975,7 +5084,7 @@
           0.01,
           0.01,
           0.01,
-          null
+          0.01
         ],
         "public": [
           22.96,
@@ -3987,7 +5096,7 @@
           21.68,
           20.9,
           21.05,
-          67.06
+          21.33
         ],
         "employeeTrusts": [
           0,
@@ -4003,7 +5112,127 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Tata Sons Private Limited",
+            "subCategory": "Promoter",
+            "pct": 31.76,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              31.76
+            ]
+          },
+          {
+            "name": "Tata Motors Passenger Vehicles Limited (formerly known as Tata Motors Limited)",
+            "subCategory": "Promoter Group",
+            "pct": 0.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.44
+            ]
+          },
+          {
+            "name": "Tata Investment Corporation Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 0.34,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.34
+            ]
+          },
+          {
+            "name": "Ewart Investments Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.18
+            ]
+          },
+          {
+            "name": "Rujuvalika Investments Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.09
+            ]
+          },
+          {
+            "name": "Tata Industries Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.08
+            ]
+          },
+          {
+            "name": "Tata Capital Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          }
+        ],
         "fii": [
           {
             "name": "Government Of Singapore",
@@ -4044,7 +5273,7 @@
           {
             "name": "Life Insurance Corporation Of India",
             "subCategory": "Insurance",
-            "pct": 6.37,
+            "pct": 5.91,
             "history": [
               7.63,
               7.63,
@@ -4055,7 +5284,109 @@
               7.22,
               6.92,
               6.37,
-              null
+              5.91
+            ]
+          },
+          {
+            "name": "Sbi Nifty 50 Etf",
+            "subCategory": "Mutual Funds",
+            "pct": 3.88,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.61,
+              4.88,
+              4.72,
+              3.98,
+              3.88
+            ]
+          },
+          {
+            "name": "Icici Prudential Large Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 3.35,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.35
+            ]
+          },
+          {
+            "name": "Nps Trust- A/C Lic Pension Fund Scheme - State Govt",
+            "subCategory": "Pension Funds",
+            "pct": 2.09,
+            "history": [
+              1.31,
+              1.19,
+              null,
+              null,
+              1.13,
+              null,
+              null,
+              1.77,
+              1.89,
+              2.09
+            ]
+          },
+          {
+            "name": "Hdfc Trustee Company Limited-Hdfc Flexi Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.26,
+              2.19,
+              2.15,
+              null,
+              1.97
+            ]
+          },
+          {
+            "name": "Uti Nifty 50 Etf",
+            "subCategory": "Mutual Funds",
+            "pct": 1.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.38
+            ]
+          },
+          {
+            "name": "Nippon Life India Trustee Ltd-A/C Nippon India Etf Nifty 50 Bees",
+            "subCategory": "Mutual Funds",
+            "pct": 1.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.08
             ]
           },
           {
@@ -4072,23 +5403,6 @@
               null,
               null,
               null,
-              null
-            ]
-          },
-          {
-            "name": "Sbi Nifty 50 Etf",
-            "subCategory": "Mutual Funds",
-            "pct": 3.98,
-            "history": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              4.61,
-              4.88,
-              4.72,
-              3.98,
               null
             ]
           },
@@ -4159,104 +5473,22 @@
               null,
               null
             ]
-          },
-          {
-            "name": "Hdfc- Various Mutual Funds",
-            "subCategory": "Mutual Funds",
-            "pct": 2.19,
-            "history": [
-              null,
-              null,
-              null,
-              2.19,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null
-            ]
-          },
-          {
-            "name": "Hdfc Trustee Company Limited-Hdfc Flexi Cap Fund",
-            "subCategory": "Mutual Funds",
-            "pct": 2.15,
-            "history": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              2.26,
-              2.19,
-              2.15,
-              null,
-              null
-            ]
-          },
-          {
-            "name": "Hdfc Trustee Company Limited n-Hdfc Flexi Cap Fund",
-            "subCategory": "Mutual Funds",
-            "pct": 2.12,
-            "history": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              2.12,
-              null
-            ]
-          },
-          {
-            "name": "Nps Trust- A/C Lic Pension Fund Scheme - State Govt",
-            "subCategory": "Pension Funds",
-            "pct": 1.89,
-            "history": [
-              1.31,
-              1.19,
-              null,
-              null,
-              1.13,
-              null,
-              null,
-              1.77,
-              1.89,
-              null
-            ]
-          },
-          {
-            "name": "ICICI - Various Mutual Funds",
-            "subCategory": "Mutual Funds",
-            "pct": 1.81,
-            "history": [
-              null,
-              1.43,
-              null,
-              null,
-              1.81,
-              null,
-              null,
-              null,
-              null,
-              null
-            ]
           }
         ],
         "public": []
-      }
+      },
+      "fii": "18.19%",
+      "dii": "27.52%",
+      "government": "0.01%"
     },
     "updatedAt": 1794038125813,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:25.053Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:17.206Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755526_08112026034044_WEB.xml",
     "ratios": {
-      "marketCapCr": 227442,
-      "pe": 12.6,
+      "marketCapCr": 223374,
+      "pe": 12.4,
       "ttmEps": 14.48,
       "ttmSalesCr": 155519,
       "ttmPatCr": 18072,
@@ -4266,7 +5498,8 @@
       "debtToEquity": 0.6,
       "promoterPct": 32.94
     },
-    "debtToEquity": 0.6
+    "debtToEquity": 0.6,
+    "lastShpRecordId": "215365"
   },
   "TAALTECH": {
     "about": "TAAL Tech Limited provides engineering design services in India and internationally. The company offers BIM services, engineering design and analysis, manufacturing engineering services, integrated project delivery, integrated asset management, center of excellence, technical publication, and digital twin services, as well as digital support services. It serves the architecture, engineering, and construction; plant engineering; aerospace engineering; industrial machinery; industrial automation; automotive; off highway; trailers and trucks; and rail industries. The company was formerly known as TAAL Enterprises Limited and changed its name to TAAL Tech Limited in November 2025. The company was founded in 2007 and is headquartered in Bengaluru, India. TAAL Tech Limited operates as a subsidiary of Vishkul Enterprises Private Ltd.",

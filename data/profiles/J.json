@@ -112,7 +112,7 @@
     ],
     "shareholding": {
       "promoters": "49.13%",
-      "public": "50.87%",
+      "public": "26.75%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -149,7 +149,7 @@
           null,
           null,
           null,
-          null
+          10.65
         ],
         "dii": [
           null,
@@ -161,7 +161,7 @@
           null,
           null,
           null,
-          null
+          13.39
         ],
         "diiMutualFunds": [
           null,
@@ -173,7 +173,7 @@
           null,
           null,
           null,
-          null
+          5.08
         ],
         "diiInsurance": [
           null,
@@ -185,7 +185,7 @@
           null,
           null,
           null,
-          null
+          7.46
         ],
         "diiPensionFunds": [
           null,
@@ -197,7 +197,7 @@
           null,
           null,
           null,
-          null
+          0.66
         ],
         "government": [
           null,
@@ -209,7 +209,7 @@
           null,
           null,
           null,
-          null
+          0.08
         ],
         "public": [
           52.88,
@@ -221,7 +221,7 @@
           52.88,
           52.88,
           50.87,
-          50.87
+          26.75
         ],
         "employeeTrusts": [
           0,
@@ -237,20 +237,229 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Srichakra Commercials LLP",
+            "subCategory": "Promoter Group",
+            "pct": 11.2,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.2
+            ]
+          },
+          {
+            "name": "Devarshi Commercials LLP",
+            "subCategory": "Promoter Group",
+            "pct": 8.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.26
+            ]
+          },
+          {
+            "name": "Karuna Commercials LLP",
+            "subCategory": "Promoter Group",
+            "pct": 8.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.26
+            ]
+          },
+          {
+            "name": "Tattvam Enterprises LLP",
+            "subCategory": "Promoter Group",
+            "pct": 8.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.26
+            ]
+          },
+          {
+            "name": "Jamnagar Utilities and Power Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 3.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.84
+            ]
+          },
+          {
+            "name": "Sikka Ports & Terminals Limited",
+            "subCategory": "Promoter Group",
+            "pct": 2.93,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.93
+            ]
+          },
+          {
+            "name": "Reliance Industries Holding Private Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 2.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.89
+            ]
+          },
+          {
+            "name": "Samarjit Enterprises LLP",
+            "subCategory": "Promoter Group",
+            "pct": 1.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.89
+            ]
+          },
+          {
+            "name": "K D Ambani",
+            "subCategory": "Promoter Group",
+            "pct": 0.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.24
+            ]
+          },
+          {
+            "name": "Shreeji Comtrade LLP",
+            "subCategory": "Promoter Group",
+            "pct": 0.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.22
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "Life Insurance Corporation of India",
+            "subCategory": "Insurance",
+            "pct": 6.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.83
+            ]
+          },
+          {
+            "name": "SBI Mutual Funds",
+            "subCategory": "Mutual Funds",
+            "pct": 1.29,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.29
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "10.65%",
+      "dii": "13.39%",
+      "government": "0.08%"
     },
     "updatedAt": 1794038125784,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:53.446Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:04.503Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739418_15102026084754_WEB.xml",
     "ratios": {
-      "marketCapCr": 149368,
-      "pe": 176.6,
+      "marketCapCr": 148376,
+      "pe": 175.4,
       "ttmEps": 1.28,
       "ttmSalesCr": 1191,
       "ttmPatCr": 833,
@@ -260,7 +469,8 @@
       "debtToEquity": 0,
       "promoterPct": 49.13
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215941"
   },
   "JSWSTEEL": {
     "about": "JSW Steel Limited manufactures and sells iron and steel products in India and internationally. The company offers hot and cold rolled steel products, colour coated sheets, galvanized and galvalume steel, electrical steel, steel doors, zinc-magnesium-aluminium products, aluminium-zinc roofing products, tin plate, TMT bars, wire rods, special alloy steel, grinding media, prepainted colour coated steel, low-carbon steel, hot-rolled sheets, structural steel, and low relaxation pre-stressed concrete steel strands under the JSW Neosteel, JSW Neostrands, JSW Neosteel Fastbuild, JSW Trusteel, JSW Colouron+, JSW Everglow, JSW Vishwas, JSW Platina, JSW Magsure, JSW Galveco, JSW Silveron+, JSW Pragati+, JSW Vishwas+, JSW Galvos, JSW Avante, JSW ColourFrame, JSW Endura+, JSW Radiance brands. It also engages in acquisition and investment in steel related and allied businesses, and trading in steel products; real estate; production and distribution of special long steel products; management of logistic infrastructure of Piombino's port area; produces forged steel balls; manufactures plates, pipes and double jointing, slabs, and hot rolled coils; produces gaseous and liquid form of oxygen, nitrogen, argon, and other products recoverable from separation of air; mining; and construction and development of residential township. In addition, the company trades in iron ore, steel, and allied activities; and provides steel plant, coke oven and pellet plant, power plant, and scrap shredding facilities. Its products are used in automotive, general engineering, machinery, and infrastructure and construction sectors. The company was formerly known as Jindal Vijayanagar Steel Limited and changed its name to JSW Steel Limited in June 2005. JSW Steel Limited was founded in 1982 and is based in Mumbai, India.",
@@ -981,7 +1191,8 @@
       "debtToEquity": 0.57,
       "promoterPct": 44.3
     },
-    "debtToEquity": 0.57
+    "debtToEquity": 0.57,
+    "lastShpRecordId": "216175"
   },
   "JINDALSTEL": {
     "about": "Jindal Steel Limited manufactures steel in India and internationally. It offers TMT rebars under the Jindal Panther brand; structural sections, rails, wire rods, round bars, and cut and bend rebars; and flat products, such as hot rolled coils, cast rounds, cold rolled and coated products, plates and coils, rockhard plates, and hollow sections. The company also provides semi-finished and specialized products, including cathode bars, fabricated sections, track shoes, sheet piles, sin beams, and value-added billets and blooms. In addition, it is involved in design and manufacturing of EOT and gantry cranes for steel plants, ports, infrastructure, and heavy engineering applications; manufactures pressure-retaining equipment for high-pressure and high-temperature industrial applications; and manufactures ferrous cast components for metallurgical and thermal processing industries. Further, the company engages in the operation of iron ore mines in Kasia, Roida, and Tensa in India; coal assets; pellet plants; and captive power facilities. It serves infrastructure, distribution, automotive, defense, building and construction, and engineering and packing. The company was formerly known as Jindal Steel & Power Limited and changed its name to Jindal Steel Limited in July 2025. Jindal Steel Limited was incorporated in 1979 and is based in New Delhi, India.",
@@ -1105,7 +1316,7 @@
     ],
     "shareholding": {
       "promoters": "62.69%",
-      "public": "37.10%",
+      "public": "8.65%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1142,7 +1353,7 @@
           null,
           null,
           null,
-          null
+          8.75
         ],
         "dii": [
           null,
@@ -1154,7 +1365,7 @@
           null,
           null,
           null,
-          null
+          19.7
         ],
         "diiMutualFunds": [
           null,
@@ -1166,7 +1377,7 @@
           null,
           null,
           null,
-          null
+          15.57
         ],
         "diiInsurance": [
           null,
@@ -1178,7 +1389,7 @@
           null,
           null,
           null,
-          null
+          2.24
         ],
         "diiPensionFunds": [
           null,
@@ -1190,7 +1401,7 @@
           null,
           null,
           null,
-          null
+          1.32
         ],
         "government": [
           null,
@@ -1202,7 +1413,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           37.99,
@@ -1214,7 +1425,7 @@
           37.05,
           37.05,
           37.09,
-          37.1
+          8.65
         ],
         "employeeTrusts": [
           0.81,
@@ -1230,20 +1441,296 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "OPJ TRADING PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 18.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              18.47
+            ]
+          },
+          {
+            "name": "OPELINA SUSTAINABLE SERVICES PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 14.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              14.42
+            ]
+          },
+          {
+            "name": "SIDDESHWARI TRADEX PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 7.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.69
+            ]
+          },
+          {
+            "name": "VIRTUOUS TRADECORP PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 6.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.31
+            ]
+          },
+          {
+            "name": "SKYHIGH SUSTAINABLE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 4.87,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.87
+            ]
+          },
+          {
+            "name": "JINDAL POWER LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 1.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.18
+            ]
+          },
+          {
+            "name": "Naveen Jindal (as a trustee of Global Vision Trust)",
+            "subCategory": "Promoter Group",
+            "pct": 1.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.1
+            ]
+          },
+          {
+            "name": "NAVEEN JINDAL",
+            "subCategory": "Promoter",
+            "pct": 0.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.8
+            ]
+          },
+          {
+            "name": "JARGO INVESTMENTS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.73
+            ]
+          },
+          {
+            "name": "TEMPLAR INVESTMENTS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.73
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "KOTAK FLEXICAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.49
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL LARGE & MID CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.83
+            ]
+          },
+          {
+            "name": "HDFC MUTUAL FUND - HDFC MID-CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.24
+            ]
+          },
+          {
+            "name": "SBI AGGRESSIVE HYBRID FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.35,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.35
+            ]
+          },
+          {
+            "name": "NPS TRUST- A/C SBI PENSION FUND SCHEME - STATE GOVT",
+            "subCategory": "Pension Funds",
+            "pct": 1.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.32
+            ]
+          },
+          {
+            "name": "ADITYA BIRLA SUN LIFE MUTUAL FUND - ADITYA BIRLA SUN LIFE FLEXI CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.31
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "8.75%",
+      "dii": "19.70%"
     },
     "updatedAt": 1794038125815,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:24.987Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:17.097Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1744755_23102026051910_WEB.xml",
     "ratios": {
-      "marketCapCr": 115919,
-      "pe": 46.8,
+      "marketCapCr": 112256,
+      "pe": 45.3,
       "ttmEps": 24.33,
       "ttmSalesCr": 60346,
       "ttmPatCr": 2477,
@@ -1253,7 +1740,8 @@
       "debtToEquity": 0.12,
       "promoterPct": 62.69
     },
-    "debtToEquity": 0.12
+    "debtToEquity": 0.12,
+    "lastShpRecordId": "216010"
   },
   "J&KBANK": {
     "about": "Jammu and Kashmir Bank Limited provide various banking products and services. The company operates through Treasury Operations, Corporate/Wholesale Banking, Retail Banking, and Other Banking Business segments. It offers savings, current, salary, pension, and NRE and NRO accounts; and term deposits. The company also provides housing, consumer, education, term, car, coaching fee, personal consumption, and skill loans; festival advances; and laptop/PC, smartphone, school education, modular kitchen, Sahafat, solar equipment, and two-wheeler finance services, as well as cash credit schemes, and loans against gold ornaments and jewellery. In addition, it offers commercial vehicle, school bus, passenger bus/mini bus, dastkar, craftsmen, commercial premises, contractor, mini sheep farm establishment, construction equipment, and tourism financing services; Saral financing services to small businessmen; mortgage loans for trade and service sector, loans against property, fair price shop schemes, and start-ups financing services; Karobar cards; guaranteed emergency credit lines; credit guarantee schemes for subordinate debt; asset based agri loans, fruit advances schemes, and Giri finance schemes; and mortgage loan schemes for agricultural produce traders. Further, the company provides government sponsored schemes; life, lodge, and non-life insurance products; debit and credit cards; NRI products; and merchant acquiring services. Jammu and Kashmir Bank Limited was incorporated in 1938 and is headquartered in Srinagar, India.",
@@ -2533,7 +3021,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "HARSH JAIN",
+            "subCategory": "Promoter",
+            "pct": 13.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.05
+            ]
+          },
+          {
+            "name": "RUCHI JAIN HANASOGE",
+            "subCategory": "Promoter",
+            "pct": 12.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.32
+            ]
+          },
+          {
+            "name": "ANKIT JAIN",
+            "subCategory": "Promoter",
+            "pct": 12.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.21
+            ]
+          },
+          {
+            "name": "GAURAV JAIN",
+            "subCategory": "Promoter",
+            "pct": 10.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.22
+            ]
+          },
+          {
+            "name": "SUSHMA JAIN",
+            "subCategory": "Promoter",
+            "pct": 9.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.05
+            ]
+          },
+          {
+            "name": "NK TRUST",
+            "subCategory": "Promoter",
+            "pct": 6.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.11
+            ]
+          },
+          {
+            "name": "MEGA TRUST",
+            "subCategory": "Promoter",
+            "pct": 4.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.45
+            ]
+          },
+          {
+            "name": "LJNK TRUST",
+            "subCategory": "Promoter",
+            "pct": 3.75,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.75
+            ]
+          },
+          {
+            "name": "ANAND JAIN",
+            "subCategory": "Promoter",
+            "pct": 2.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.03
+            ]
+          },
+          {
+            "name": "HIDE N CHIC FURNITURE PVT. LTD.",
+            "subCategory": "Promoter",
+            "pct": 0.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.11
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -2541,16 +3200,17 @@
     },
     "updatedAt": 1794038126212,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:12.814Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:24.043Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1586,
-      "pe": 14.3,
+      "marketCapCr": 1541,
+      "pe": 13.9,
       "ttmEps": 6.33,
       "ttmSalesCr": 785,
       "ttmPatCr": 118,
       "promoterPct": 73.92
-    }
+    },
+    "lastShpRecordId": "214255"
   },
   "JAINREC": {
     "about": "Jain Resource Recycling Limited engages in the recycling scraps of non-ferrous metals, and non-metallic materials in India and internationally. The company offers lead and lead alloy ingots, copper and copper alloys and ingots, and aluminum and aluminum alloys. It also engages in the non-ferrous metals and other commodities; processing of precious metals, such as gold and silver; and manufactures zinc products. In addition, the company offers copper products that include refined copper billet, copper alloy billets/ingots, and finished copper scrap; lead products that include refined lead ingots, antimony lead ingots, and remelted lead ingots; aluminum products that include aluminum alloy ingots and molten aluminum alloys; tin and plastic recycling products; solder tin alloy and ingots; and aluminum scrap. It serves lead-acid batteries, electrical and electronics, pigments, automotive, and other industries. Jain Resource Recycling Limited was founded in 1950 and is based in Chennai, India.",
@@ -3429,7 +4089,8 @@
       "debtToEquity": 0,
       "promoterPct": 61.92
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215928"
   },
   "JASH": {
     "about": "Jash Engineering Limited manufactures, trades in, and sells various engineering products for general engineering, water and wastewater, power plant, and bulk solids handling industries in India and internationally. The company offers water control gates, such as slide/penstock, open channel, weir, and flap gates, as well as stop logs; heavy fabricated gates, including bulkhead, rollers, crest, butterfly, radial/tainter, bonneted, tilting weir, swing, and mitre gates; and screening equipment comprising manual bar, trash rack with flat bars, trash rack with wire mesh, J-type trash rack, suspended grab trash rake, multi-rake bar, step, pre-scalators, travelling band, drum, and static screens. It also provides jet breaker washer compactors, screw conveyor wash compactors, and flat belt conveyors; unidirectional values and bidirectional valves, as well as screw conveyors; water hammer control devices, such as zero velocity, vacuum breaker air cushion, and energy dissipating valves, as well as air vessels/surge vessels compressor type and bladder type; archimedean crew pumps; and hydro power equipment. In addition, the company offers agitators, clarifiers, clariflocculators, detritors, surface aerotors, and thickeners; disc filters; and bulk solids handling valves, including slide gate, swing gate, double flap, casted square port, and fabricated valves. Its products are used in raw water and sea water intake systems, water and waste water pumping stations and treatment plants, storm water pumping stations, flood prevention and mitigation schemes, water transmission lines and also for power, steel, cement, paper and pulp, petrochemicals, chemical, and fertilizers and other process plants. The company was founded in 1948 and is headquartered in Indore, India.",
@@ -4240,7 +4901,8 @@
       "debtToEquity": 0.25,
       "promoterPct": 67.21
     },
-    "debtToEquity": 0.25
+    "debtToEquity": 0.25,
+    "lastShpRecordId": "215614"
   },
   "JAYBARMARU": {
     "about": "Jay Bharat Maruti Limited engages in the manufacture and sale of auto components and assembly systems in India. The company offers sheet metal components and assemblies, welded and muffler assemblies, tools and dies, exhaust systems, fuel fillers, front and rear axle, chassis and suspension systems, tubular components, engine mounting, cross-car beam, frame assemblies, progressive tooling, and hot stamping components and assembly. It also offers fuel neck, and tools and dies for motor vehicles; and components and spare parts. Jay Bharat Maruti Limited was founded in 1983 and is based in Gurugram, India.",
@@ -4924,6 +5586,51 @@
     "sector": "Agri & Fertilizers",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "234",
+        "expenses": "232",
+        "operatingProfit": "2",
+        "opm": "0.9%",
+        "netProfit": "2",
+        "eps": "₹0.6"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "152",
+        "expenses": "179",
+        "operatingProfit": "-27",
+        "opm": "-17.8%",
+        "netProfit": "-15",
+        "eps": "₹-5.05"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "164",
+        "expenses": "173",
+        "operatingProfit": "-9",
+        "opm": "-5.5%",
+        "netProfit": "-9",
+        "eps": "₹-3.13"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "300",
+        "expenses": "263",
+        "operatingProfit": "37",
+        "opm": "12.3%",
+        "netProfit": "31",
+        "eps": "₹10.66"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "259",
+        "expenses": "240",
+        "operatingProfit": "19",
+        "opm": "7.3%",
+        "netProfit": "74",
+        "eps": "₹25.74"
+      },
+      {
         "period": "Dec 25",
         "sales": "296",
         "expenses": "297",
@@ -5110,7 +5817,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "JAYASHREE FINVEST PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 23.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              23.09
+            ]
+          },
+          {
+            "name": "JPM MERCHANDISE AGENCIES LIMITED",
+            "subCategory": "Promoter",
+            "pct": 21.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              21.17
+            ]
+          },
+          {
+            "name": "MRS.JAYASHREE MOHTA",
+            "subCategory": "Promoter",
+            "pct": 8.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.21
+            ]
+          },
+          {
+            "name": "BIRLA EDUCATION TRUST",
+            "subCategory": "Promoter",
+            "pct": 1.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.09
+            ]
+          },
+          {
+            "name": "ADITYA BIRLA REAL ESTATE LIMITED (FORMERLY CENTURY TEXTILES AND INDUSTRIES LIMITED)",
+            "subCategory": "Promoter",
+            "pct": 1.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.04
+            ]
+          },
+          {
+            "name": "BIRLA GROUP HOLDINGS PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.24
+            ]
+          },
+          {
+            "name": "BHARAT AROGYA AND GYAN MANDIR",
+            "subCategory": "Promoter",
+            "pct": 0.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.13
+            ]
+          },
+          {
+            "name": "MRS.VASAVADATTA BAJAJ",
+            "subCategory": "Promoter",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "MR.KUMARMANGALAM BIRLA",
+            "subCategory": "Promoter",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          },
+          {
+            "name": "PILANI INVESTMENT AND INDUSTRIES CORPORATION LIMITED",
+            "subCategory": "Promoter",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -5118,11 +5996,11 @@
     },
     "updatedAt": 1794038126215,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:14.526Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:25.785Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1757247_13112026024957_WEB.xml",
     "ratios": {
-      "marketCapCr": 245,
+      "marketCapCr": 240,
       "ttmEps": -7.73,
       "ttmSalesCr": 954,
       "ttmPatCr": -21,
@@ -5132,7 +6010,8 @@
       "debtToEquity": 1.09,
       "promoterPct": 55.06
     },
-    "debtToEquity": 1.09
+    "debtToEquity": 1.09,
+    "lastShpRecordId": "214527"
   },
   "JBMA": {
     "about": "JBM Auto Limited engages in the manufacture and sale sheet metal components, tools, dies and moulds, and buses in India and internationally. It operates through three segments: Sheet Metal Components, Assemblies & Sub-assemblies (Component Division); Tool, Dies & Moulds (Tool Room Division); and OEM Division. The company offers auto components and systems, such as BIW, chassis and suspension systems, pedal boxes, tubular products, safety-critical components, and various auto assemblies for two-wheelers, three-wheelers, passenger vehicles, commercial vehicles, and farm and construction equipment. It also provides electric buses; lithium ion batteries solutions for HV- LV battery operated vehicle, energy storage systems, and solar; and operates electric vehicles charging infrastructure. In addition, it is involved in the provision of utility scale solar power projects, battery energy storage, and power infrastructure solutions; and environment management, as well as spare parts, accessories, and maintenance contracts. It serves original equipment manufacturers in the passenger vehicles, commercial vehicles, farm equipment, and auto component manufacturers, etc., as well as state transport undertakings, aviation sector, ground handling companies, multiple aggregator and operator, defense sector, and Fortune 500 Companies. JBM Auto Limited was incorporated in 1996 and is headquartered in Gurugram, India.",
@@ -7384,7 +8263,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "AMIT YAMUNADUTT AGARWAL",
+            "subCategory": "Promoter",
+            "pct": 19.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              19.4
+            ]
+          },
+          {
+            "name": "YAMUNADUTT AMILAL AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 13.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.68
+            ]
+          },
+          {
+            "name": "MADHULIKA JITENDRA AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 13.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.46
+            ]
+          },
+          {
+            "name": "KAUSHAL YAMUNADUTT AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 9.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.97
+            ]
+          },
+          {
+            "name": "JITENDRA TARACHAND AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 3.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.64
+            ]
+          },
+          {
+            "name": "HARSH JITENDRA AGARWAL",
+            "subCategory": "Promoter",
+            "pct": 0.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.47
+            ]
+          },
+          {
+            "name": "YASH JITENDRA AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 0.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.45
+            ]
+          },
+          {
+            "name": "SHACHEE HARSH AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 0.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.25
+            ]
+          },
+          {
+            "name": "SHIKHA AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 0.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.25
+            ]
+          },
+          {
+            "name": "SARBATIDEVI AGRAWAL",
+            "subCategory": "Promoter",
+            "pct": 0.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.1
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -7392,12 +8442,12 @@
     },
     "updatedAt": 1794038126221,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:16.645Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:26.644Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754058_05112026072038_WEB.xml",
     "ratios": {
-      "marketCapCr": 3922,
-      "pe": 46.1,
+      "marketCapCr": 3966,
+      "pe": 46.7,
       "ttmEps": 0.85,
       "ttmSalesCr": 2956,
       "ttmPatCr": 85,
@@ -7407,7 +8457,8 @@
       "debtToEquity": 0.73,
       "promoterPct": 61.76
     },
-    "debtToEquity": 0.73
+    "debtToEquity": 0.73,
+    "lastShpRecordId": "215626"
   },
   "JISLDVREQS": {
     "about": "Jain Irrigation Systems Limited manufactures and sells precision-irrigation systems in India, Europe, North America, and internationally. The company operates through Hi-Tech Agri Input Products; Plastic Division; and Agro Processing Division segments. It provides drip irrigation; micro and mini sprinklers; sprinkler irrigation systems; filters, dosing pumps, and injectors; PVC and PE pipes and fittings; plastic sheets; hi-tech planting material; green energy products; environment-controlled agriculture; polypropylene piping products; and plumbing systems. The company also offers solar agri pump, integrated irrigation projects, and tissue culture plants; fruits, onion products, beverages, bio gas; and solar thermal, solar photovoltaic grid, and off grid products, as well as invests in solar power generation. In addition, it is involved in the fruit and spice processing activities; provision of dehydrated onion and vegetable products, aseptic fruit pulps and purees, fruit concentrates, clarified juices, individually quick frozen fruits and vegetables, herbs, spices, seasonings and private label food products under the Jain Farm Fresh brand; and blending, repacking, trading and distribution of food ingredients. The company was founded in 1963 and is headquartered in Jalgaon, India.",
@@ -8240,7 +9291,8 @@
       "debtToEquity": 0,
       "promoterPct": 63.03
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215016"
   },
   "JKCEMENT": {
     "about": "J.K. Cement Limited manufactures and sells cement and its related products in India and internationally. The company offers grey cement products; JKMaxx paints, including interior and exterior emulsions, distemper, enamel, and primers; wall putty; and white cement. It also provides tile adhesives and grouts; and wood finishes, as well as construction chemicals solutions. The company was founded in 1975 and is headquartered in Kanpur, India.",
@@ -9600,7 +10652,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "BENGAL & ASSAM COMPANY LTD",
+            "subCategory": "Promoter",
+            "pct": 43.92,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              43.92
+            ]
+          },
+          {
+            "name": "J.K. CREDIT & FINANCE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 5.63,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.63
+            ]
+          },
+          {
+            "name": "ACCURATE FINMAN SERVICES LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 1.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.15
+            ]
+          },
+          {
+            "name": "RAGHUPATI SINGHANIA",
+            "subCategory": "Promoter Group",
+            "pct": 0.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.47
+            ]
+          },
+          {
+            "name": "VINITA SINGHANIA",
+            "subCategory": "Promoter Group",
+            "pct": 0.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.4
+            ]
+          },
+          {
+            "name": "VIKRAM PATI SINGHANIA",
+            "subCategory": "Promoter Group",
+            "pct": 0.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.25
+            ]
+          },
+          {
+            "name": "HARSH PATI SINGHANIA",
+            "subCategory": "Promoter Group",
+            "pct": 0.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.25
+            ]
+          },
+          {
+            "name": "BHARAT HARI SINGHANIA",
+            "subCategory": "Promoter Group",
+            "pct": 0.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.14
+            ]
+          },
+          {
+            "name": "NAV BHARAT VANIJYA LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.14
+            ]
+          },
+          {
+            "name": "SUNANDA SINGHANIA",
+            "subCategory": "Promoter Group",
+            "pct": 0.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.11
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -9608,12 +10831,12 @@
     },
     "updatedAt": 1794038126223,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:18.000Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:27.528Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751231_02112026054506_WEB.xml",
     "ratios": {
-      "marketCapCr": 6641,
-      "pe": 22.7,
+      "marketCapCr": 6468,
+      "pe": 22.1,
       "ttmEps": 16.18,
       "ttmSalesCr": 6647,
       "ttmPatCr": 293,
@@ -9623,7 +10846,8 @@
       "debtToEquity": 0.4,
       "promoterPct": 52.94
     },
-    "debtToEquity": 0.4
+    "debtToEquity": 0.4,
+    "lastShpRecordId": "215603"
   },
   "JKTYRE": {
     "about": "JK Tyre & Industries Limited develops, manufactures, markets and distributes automotive tyres, tubes, flaps, and retreads in India, and internationally. The company offers tyres for truck/bus radial and bias, light and small commercial vehicle bias, two/three-wheeler, farm radial and bias, off-the-road and industrial, racing, light and small commercial vehicle radical, passenger/SUV/MUV radial, specialty, and military/defence. It also operates tyre care centers; and provides fleet management and mobility solutions. The company markets its products and services through a network of Steel Wheels, Xpress Wheels, and Truck Wheels, as well as brand shops. JK Tyre & Industries Limited was incorporated in 1951 and is headquartered in New Delhi, India.",
@@ -11085,6 +12309,15 @@
         "eps": "₹-2.96"
       },
       {
+        "period": "Sep 25",
+        "sales": "246",
+        "expenses": "243",
+        "operatingProfit": "3",
+        "opm": "1.2%",
+        "netProfit": "2",
+        "eps": "₹2.11"
+      },
+      {
         "period": "Dec 25",
         "sales": "263",
         "expenses": "261",
@@ -11271,7 +12504,25 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "The Andhra Sugars Limited",
+            "subCategory": "Promoter",
+            "pct": 55.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              55.02
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -11279,12 +12530,12 @@
     },
     "updatedAt": 1794038126225,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:17.917Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:28.494Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751688_03112026015422_WEB.xml",
     "ratios": {
-      "marketCapCr": 112,
-      "pe": 27.5,
+      "marketCapCr": 111,
+      "pe": 27.4,
       "ttmEps": 4.81,
       "ttmSalesCr": 1020,
       "ttmPatCr": 5,
@@ -11294,7 +12545,8 @@
       "debtToEquity": 0,
       "promoterPct": 55.02
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213542"
   },
   "JPL": {
     "about": "Jio Platforms Limited provides mobile and fixed broadband connectivity along with digital products, services, platforms, and applications across entertainment, gaming, cloud computing, cloud storage, and artificial intelligence in India. The company offers 4G and 5G mobile broadband connectivity, international roaming, eSIM, Wi-Fi calling, JioTunes, and VIP mobile numbers; and broadband services, including JioFiber, an optic fibre-based service, and JioAirFiber, a fixed wireless access service. The company also offers consumer entertainment services, including JioTV+ and JioTV for live TV, JioSaavn for music streaming, JioGames for cloud gaming, JioNews, and JioCinema, JioAICloud for cloud storage, JioPC for cloud-native virtual desktops, and JioPhotos for photo organization, along with devices such as Jio Bharat feature phones, the Jio Set-top-box, 5G radios, and JioFi hotspots. In addition, it develops JioFrames, an AI-powered wearable smart-glasses product; and Jio Set-top-box; and consumer applications, including MyJio, JioMart, JioFinance, JioGate, JioMeet, JioAirFiber, JioCDN, and JioChat, along with the HelloJio voice assistant and JioAds advertising platform. Further, it develops proprietary operating systems, including JioBharat OS, JioTele OS, and JioBrain. Additionalli, it offers JioBusiness services, JioPC, JioCloud infrastructure, JioCX communications platform, JioRaksha cybersecurity services, and the JioThings IoT platform, along with JioAttendance, Jio Hospitality solution (JHES), and JioRooms. It also provides satellite-based communication and international connectivity services. The company serves consumers, government, MSMEs, large enterprises, and startups. Jio Platforms Limited was founded in 2016 and is based in Navi Mumbai, India. Jio Platforms Limited operates as a subsidiary of Reliance Industries Limited.",
@@ -11857,7 +13109,8 @@
       "debtToEquity": 0,
       "promoterPct": 74.63
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215302"
   },
   "JPPOWER": {
     "about": "Jaiprakash Power Ventures Limited engages in the power generation and cement grinding businesses in India. It generates electricity through thermal and hydro energy sources. The company owns and operates a 400 megawatts (MW) Jaypee Vishnuprayag hydro-electric power plant at District Chamoli, Uttarakhand; 1320 MW Jaypee Nigrie thermal power plant at village Nigrie, district Singrauli, Madhya Pradesh; and 500 MW Jaypee Bina thermal power plant at village Sirchopi, district Sagar, Madhya Pradesh. In addition, it operates coal mine located in Amelia and Bandha Madhya Pradesh, as well as Jaypee Nigrie cement grinding unit at Nigrie. The company was formerly known as Jaiprakash Hydro-Power Limited and changed its name to Jaiprakash Power Ventures Limited in December 2009. Jaiprakash Power Ventures Limited was incorporated in 1994 and is based in New Delhi, India.",
@@ -13836,7 +15089,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "JSW INVESTMENTS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 16.99,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              16.99
+            ]
+          },
+          {
+            "name": "INDUSGLOBE MULTIVENTURES PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 13.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.96
+            ]
+          },
+          {
+            "name": "SIDDESHWARI TRADEX PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 12.6,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.6
+            ]
+          },
+          {
+            "name": "JSL LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 7.93,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.93
+            ]
+          },
+          {
+            "name": "VIRTUOUS TRADECORP PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 4.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.67
+            ]
+          },
+          {
+            "name": "JSW STEEL LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 4.66,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.66
+            ]
+          },
+          {
+            "name": "TANVI SHETE",
+            "subCategory": "Promoter Group",
+            "pct": 1.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.37
+            ]
+          },
+          {
+            "name": "TARINI JINDAL HANDA",
+            "subCategory": "Promoter Group",
+            "pct": 1.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.37
+            ]
+          },
+          {
+            "name": "PARTH JINDAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.84
+            ]
+          },
+          {
+            "name": "JTPM METAL TRADERS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.78
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -13844,16 +15268,17 @@
     },
     "updatedAt": 1794038126228,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:19.239Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:29.327Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 93677,
-      "pe": 95.6,
+      "marketCapCr": 93422,
+      "pe": 95.3,
       "ttmEps": 5.37,
       "ttmSalesCr": 4415,
       "ttmPatCr": 956,
       "promoterPct": 66.53
-    }
+    },
+    "lastShpRecordId": "216248"
   },
   "JSWHL": {
     "about": "JSW Holdings Limited engages in investing and financing activities in India. The company grants loans; and provides securities, as well as invests in securities. JSW Holdings Limited was incorporated in 2001 and is based in Mumbai, India.",
@@ -14572,7 +15997,8 @@
       "debtToEquity": 0.41,
       "promoterPct": 73.93
     },
-    "debtToEquity": 0.41
+    "debtToEquity": 0.41,
+    "lastShpRecordId": "215339"
   },
   "JTEKTINDIA": {
     "about": "JTEKT India Limited engages in the manufacture and sale of steering systems and auto components for the passenger car and utility vehicle manufacturers in the automobile sector in India. It offers steering systems, including column and gear; driveline, such as driveshaft and HUB unit; bearing solutions, including SBB (single ball bearings) and TRB (tapered roller bearings); and machine tools, such as grinders, machining centers, and mechatronics. The company exports its precision products to West Asia, Africa, the United States, Europe, and Japan. It serves original equipment manufacturers. JTEKT India Limited was formerly known as Sona Koyo Steering Systems Limited and changed its name to JTEKT India Limited in April 2018. The company was incorporated in 1984 and is headquartered in Gurugram, India. JTEKT India Limited is a subsidiary of JTEKT Corporation.",
@@ -15746,7 +17172,8 @@
       "debtToEquity": 0.16,
       "promoterPct": 40.27
     },
-    "debtToEquity": 0.16
+    "debtToEquity": 0.16,
+    "lastShpRecordId": "214465"
   },
   "JUBLINGREA": {
     "about": "Jubilant Ingrevia Limited engages in life science products and solutions in India, the United States, Europe, China and internationally. It operates in three segments, Specialty Chemicals, Nutrition & Health Solutions, and Chemical Intermediates. The Specialty Chemicals segment offers bio-pyridine and -picolines, fine chemicals, agro chemicals, custom development and manufacturing services, and microbial control solutions. The Nutrition & Health Solutions segment provides nutrition and health ingredients; and animal and human nutrition health solutions. The Chemical intermediates segment offers acetyls and specialty ethanol, such as acetic anhydride, bio acetic acid, bio-acetaldehyde, ethyl acetate, propionic anhydride, and formaldehyde. The company also provides vitamins, mineral premixes, stress regulator, amino acid, herbal choline, herbal non-antibiotic growth promoter and egg quality enhancer, toxin binder, acidifiers, and enzymes and emulsifiers. It serves pharmaceutical, nutrition, agrochemical, personal care, semiconductor, and industrial sectors. The company was formerly known as Jubilant LSI Limited and changed its name to Jubilant Ingrevia Limited in October 2020. Jubilant Ingrevia Limited was incorporated in 2019 and is headquartered in Noida, India.",
@@ -16784,7 +18211,76 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "RELIANCE RETAIL VENTURES LIMITED",
+            "subCategory": "Promoter",
+            "pct": 63.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              63.83
+            ]
+          },
+          {
+            "name": "VENKATACHALAM STHANU SUBRAMANI",
+            "subCategory": "Promoter Group",
+            "pct": 7.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.89
+            ]
+          },
+          {
+            "name": "ANITA MANI",
+            "subCategory": "Promoter Group",
+            "pct": 2.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.26
+            ]
+          },
+          {
+            "name": "MANASI IYER",
+            "subCategory": "Promoter Group",
+            "pct": 0.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.16
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -16792,12 +18288,12 @@
     },
     "updatedAt": 1794038126231,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:09:20.295Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:30.213Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1742130_19102026103758_WEB.xml",
     "ratios": {
-      "marketCapCr": 5742,
-      "pe": 11.2,
+      "marketCapCr": 5682,
+      "pe": 11.1,
       "ttmEps": 60.33,
       "ttmSalesCr": 1602,
       "ttmPatCr": 492,
@@ -16807,7 +18303,8 @@
       "debtToEquity": 0,
       "promoterPct": 74.14
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215110"
   },
   "JWL": {
     "about": "Jupiter Wagons Limited manufactures and sells railway wagons, wagon components, and railway transportation equipment in India and internationally. It provides open, covered, flat, hopper, container, and special purpose wagons; and wagon accessories, such as alloy steel cast bogies, high tensile center buffer couplers, and high-capacity draft gears. The company also offers train sets, passenger, and metro coaches; and passenger coach accessories, including fabricated bogies, couplers and draft gears for passenger trains, axle mounted disc brake systems, brake discs and split brake discs, and brake pads. In addition, it offers track solutions, such as CMS crossings and weldable CMS crossings on PSC slipper; commercial vehicles; commercial electric vehicles; and containers, such as marine, refrigerated, and truck mounted containers, as well as cold chain transport solution. Further, the company engages in letting out of property; and manufacturing of electrical equipment, as well as provides drone delivery services. It serves railways, private wagon aggregators, commercial vehicles OEMs, and defense and logistics companies. The company was formerly known as Commercial Engineers & Body Builders Co Limited and changed its name to Jupiter Wagons Limited in May 2022. The company was incorporated in 1979 and is based in Kolkata, India.",

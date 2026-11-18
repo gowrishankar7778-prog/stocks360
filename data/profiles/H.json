@@ -503,7 +503,8 @@
       "debtToEquity": 0.03,
       "promoterPct": 60.88
     },
-    "debtToEquity": 0.03
+    "debtToEquity": 0.03,
+    "lastShpRecordId": "215759"
   },
   "HAPPSTMNDS": {
     "about": "Happiest Minds Technologies Limited, together with its subsidiaries, provides information technology (IT) solutions and services in India, the Americas, Australia, Europe, Asia, the Middle East, and Africa. It operates in three segments: Infrastructure Management and Security Services (IMSS); Product and Digital Engineering Services (PDES); and Generative AI Business Services (GBS). The IMSS segment provides end-to-end infrastructure and security solutions comprising advisory, transformation, managed and hosted services, and secure intelligence solutions with specialization in cloud, virtualization and mobility across a multitude of industry verticals and geographies. Its PDES segment provides platform development, device engineering, quality assurance, experience engineering, and technology acceleration for enterprises and digital natives. The GBS Services segment offers process automation services, workflow optimization services, and predictive analysis services to integrate Generative AI into business processes. Happiest Minds Technologies Limited was incorporated in 2011 and is headquartered in Bengaluru, India.",
@@ -627,7 +628,7 @@
     ],
     "shareholding": {
       "promoters": "44.21%",
-      "public": "54.57%",
+      "public": "44.84%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -664,7 +665,7 @@
           null,
           null,
           null,
-          null
+          6.51
         ],
         "dii": [
           null,
@@ -676,7 +677,7 @@
           null,
           null,
           null,
-          null
+          3.22
         ],
         "diiMutualFunds": [
           null,
@@ -688,7 +689,7 @@
           null,
           null,
           null,
-          null
+          1.56
         ],
         "diiInsurance": [
           null,
@@ -700,7 +701,7 @@
           null,
           null,
           null,
-          null
+          1.24
         ],
         "diiPensionFunds": [
           null,
@@ -712,7 +713,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -724,7 +725,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           53.99,
@@ -736,7 +737,7 @@
           54.45,
           54.47,
           54.55,
-          54.57
+          44.84
         ],
         "employeeTrusts": [
           1.79,
@@ -752,20 +753,125 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "ASHOK SOOTA",
+            "subCategory": "Promoter",
+            "pct": 32.34,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              32.34
+            ]
+          },
+          {
+            "name": "ASHOK SOOTA MEDICAL RESEARCH LLP",
+            "subCategory": "Promoter Group",
+            "pct": 11.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.79
+            ]
+          },
+          {
+            "name": "USHA SAMUEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "DEEPAK SOOTA",
+            "subCategory": "Promoter Group",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          },
+          {
+            "name": "KUNKU SOOTA",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          },
+          {
+            "name": "VEENA SOOTA",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
-      }
+      },
+      "fii": "6.51%",
+      "dii": "3.22%"
     },
     "updatedAt": 1794038125774,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:47.311Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:01.453Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751572_02112026111809_WEB.xml",
     "ratios": {
-      "marketCapCr": 4684,
-      "pe": 19.2,
+      "marketCapCr": 4597,
+      "pe": 18.9,
       "ttmEps": 16.06,
       "ttmSalesCr": 2191,
       "ttmPatCr": 242,
@@ -775,7 +881,8 @@
       "debtToEquity": 0.83,
       "promoterPct": 44.21
     },
-    "debtToEquity": 0.83
+    "debtToEquity": 0.83,
+    "lastShpRecordId": "214639"
   },
   "HDFCBANK": {
     "about": "HDFC Bank Limited provides banking and financial products and services to individuals and businesses in India, Bahrain, Hong Kong, Singapore, and Dubai. The company operates through Treasury, Retail Banking, Wholesale Banking, Other Banking Business, Insurance Business, and Other segments. It offers savings, salary, current, rural, public provident fund, pension, and demat accounts; fixed and recurring deposits; and safe deposit lockers, as well as offshore accounts and deposits, and overdrafts against fixed deposits. The company also provides personal, home, car and pre owned car, marriage, two-wheeler, business, doctor, educational, gold, consumer, and rural loans; loans against properties, securities, mutual funds, and car; loans for professionals; government sponsored programs; and loans on credit card, as well as working capital, term loans, supply chain management, project finance, export finance, commercial vehicle / equipment finance, tractor finance, infrastructure, and agriculture finance. In addition, it offers credit, debit, prepaid, forex, and kisan gold cards; payment and collection, export, import, remittance, bank guarantee, letter of credit, trade, hedging, and merchant and cash management services; and insurance and investment products. Further, the company provides short term finance, bill discounting, structured finance, export credit, loan repayment, custodial, and documents collection services; online, mobile, and phone banking services; unified payment interface, immediate payment, national electronic funds transfer, and real time gross settlement services; channel financing, vendor financing, money market, derivatives, employee trusts, cash surplus corporates, tax payment, and bankers to rights/public issue services; and financial solutions for supply chain partners and agricultural customers. It operates branches and automated teller machines in various cities/towns. The company was incorporated in 1994 and is headquartered in Mumbai, India.",
@@ -1323,7 +1430,8 @@
       "debtToEquity": 0.84,
       "promoterPct": 0
     },
-    "debtToEquity": 0.84
+    "debtToEquity": 0.84,
+    "lastShpRecordId": "213324"
   },
   "HSCL": {
     "about": "Himadri Speciality Chemical Limited manufactures and sells carbon materials and chemicals in India and internationally. The company operates through Carbon Materials and Chemicals and Power segments. It offers anode materials, LFP cathodes, and recycling materials. The company also provides SDS, TDS, ASTM, lithium mining and refining, and carbon black; tyre, MRG, plastics, ink, and coatings; refined naphthalene, coal tar pitch, specialty oils, clean energy, and anti-corrosion products. It serves lithium-ion batteries, paints, plastics, tyres, technical rubber goods, aluminium, graphite electrodes, agrochemicals, defence, and construction chemicals industries. It also engages in industrial chemicals trading and petrochemicals trading. Himadri Speciality Chemical Limited was formerly known as Himadri Chemicals & Industries Limited and changed its name to Himadri Speciality Chemical Limited in July 2016. The company was incorporated in 1987 and is based in Kolkata, India.",
@@ -1332,11 +1440,56 @@
     "sector": "Chemicals & Materials",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "1,063",
+        "expenses": "914",
+        "operatingProfit": "149",
+        "opm": "14.0%",
+        "netProfit": "108",
+        "eps": "₹2.45"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "1,189",
+        "expenses": "1,025",
+        "operatingProfit": "164",
+        "opm": "13.8%",
+        "netProfit": "115",
+        "eps": "₹2.39"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "1,212",
+        "expenses": "1,033",
+        "operatingProfit": "179",
+        "opm": "14.8%",
+        "netProfit": "123",
+        "eps": "₹2.5"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "1,149",
+        "expenses": "953",
+        "operatingProfit": "196",
+        "opm": "17.1%",
+        "netProfit": "134",
+        "eps": "₹2.7"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "1,143",
+        "expenses": "937",
+        "operatingProfit": "206",
+        "opm": "18.0%",
+        "netProfit": "142",
+        "eps": "₹2.84"
+      },
+      {
         "period": "Dec 25",
-        "sales": "1,182",
-        "expenses": "925",
+        "sales": "1,181",
+        "expenses": "924",
         "operatingProfit": "257",
-        "opm": "21.7%",
+        "opm": "21.8%",
         "netProfit": "195",
         "eps": "₹3.89"
       },
@@ -1803,14 +1956,14 @@
     },
     "updatedAt": 1794038125788,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:22:54.631Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:07.175Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1740408_16102026072443_WEB.xml",
     "ratios": {
-      "marketCapCr": 27671,
-      "pe": 32.7,
+      "marketCapCr": 28105,
+      "pe": 33.2,
       "ttmEps": 16.75,
-      "ttmSalesCr": 5265,
+      "ttmSalesCr": 5264,
       "ttmPatCr": 844,
       "bookValue": 99.9,
       "roePct": 16.7,
@@ -1818,7 +1971,8 @@
       "debtToEquity": 0.22,
       "promoterPct": 52.49
     },
-    "debtToEquity": 0.22
+    "debtToEquity": 0.22,
+    "lastShpRecordId": "214057"
   },
   "HEROMOTOCO": {
     "about": "Hero MotoCorp Limited primarily engages in the manufacture and sale of motorised two wheelers, spare parts and related services in India, Germany, Asia, Central and Latin America, Africa, and the Middle East. The company offers motorcycles and scooters, as well as electric scooters. It provides engines and accessories, as well as non-banking financial and other related services. The company is also involved in merchandise business. The company was formerly known as Hero Honda Motors Ltd. and changed its name to Hero MotoCorp Limited in July 2011. Hero MotoCorp Limited was incorporated in 1984 and is based in New Delhi, India.",
@@ -1942,7 +2096,7 @@
     ],
     "shareholding": {
       "promoters": "34.72%",
-      "public": "65.28%",
+      "public": "9.12%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1979,7 +2133,7 @@
           null,
           null,
           null,
-          null
+          32.22
         ],
         "dii": [
           null,
@@ -1991,7 +2145,7 @@
           null,
           null,
           null,
-          null
+          23.94
         ],
         "diiMutualFunds": [
           null,
@@ -2003,7 +2157,7 @@
           null,
           null,
           null,
-          null
+          12.27
         ],
         "diiInsurance": [
           null,
@@ -2015,7 +2169,7 @@
           null,
           null,
           null,
-          null
+          1.85
         ],
         "diiPensionFunds": [
           null,
@@ -2027,7 +2181,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -2039,7 +2193,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           65.24,
@@ -2051,7 +2205,7 @@
           65.27,
           65.27,
           65.27,
-          65.28
+          9.12
         ],
         "employeeTrusts": [
           0,
@@ -2067,20 +2221,280 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
+        "promoters": [
+          {
+            "name": "BAHADUR CHAND INVESTMENTS PVT LTD",
+            "subCategory": "Promoter",
+            "pct": 20,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20
+            ]
+          },
+          {
+            "name": "PAWAN MUNJAL, RENU MUNJAL AND SUMAN KANT MUNJAL (ON BEHALF OF BMOP, PARTNERSHIP FIRM)",
+            "subCategory": "Promoter",
+            "pct": 13.95,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.95
+            ]
+          },
+          {
+            "name": "HERO INVESTCORP PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 0.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.44
+            ]
+          },
+          {
+            "name": "PAWAN MUNJAL FAMILY TRUST (PAWAN MUNJAL & ANIESHA MUNJAL)",
+            "subCategory": "Promoter",
+            "pct": 0.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.1
+            ]
+          },
+          {
+            "name": "RENU MUNJAL",
+            "subCategory": "Promoter",
+            "pct": 0.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.06
+            ]
+          },
+          {
+            "name": "SUMAN KANT MUNJAL",
+            "subCategory": "Promoter",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "PAWAN MUNJAL",
+            "subCategory": "Promoter",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          },
+          {
+            "name": "PAWAN MUNJAL (AS A KARTA OF HUF)",
+            "subCategory": "Promoter",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          },
+          {
+            "name": "RENUKA MUNJAL",
+            "subCategory": "Promoter",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          },
+          {
+            "name": "ANIESHA MUNJAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "GOVERNMENT PENSION FUND GLOBAL",
+            "subCategory": "FPI Category I",
+            "pct": 2.2,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.2
+            ]
+          },
+          {
+            "name": "WGI EMERGING MARKETS FUND, LLC",
+            "subCategory": "FPI Category II",
+            "pct": 1.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.82
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "KOTAK FLEXICAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.84
+            ]
+          },
+          {
+            "name": "MIRAE ASSET LARGE & MIDCAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.91,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.91
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL LARGE CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.49
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "32.22%",
+      "dii": "23.94%"
     },
     "updatedAt": 1794038125801,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:23:03.792Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:11.982Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748299_28102026090747_WEB.xml",
     "ratios": {
-      "marketCapCr": 107263,
-      "pe": 18.9,
+      "marketCapCr": 105132,
+      "pe": 18.6,
       "ttmEps": 282.88,
       "ttmSalesCr": 53950,
       "ttmPatCr": 5660,
@@ -2090,7 +2504,8 @@
       "debtToEquity": 0,
       "promoterPct": 34.72
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215527"
   },
   "HINDUNILVR": {
     "about": "Hindustan Unilever Limited, a fast-moving consumer goods company, manufactures and sells food, home care, and personal care products in India and internationally. It operates through Home Care, Beauty & Wellbeing, Personal Care, Foods, and Others segments. The company offers detergent bars, detergent powders, detergent liquids, and scourers; skin care and hair care products; skin cleansing, oral care, bodywash, and deodorants; and culinary products, such as tomato based products, fruit based products, soups, etc., as well as tea, coffee, functional nutrition drinks, and lifestyle nutrition products. It is also involved in beauty salons, job work, real estate, and discharge trust business. Hindustan Unilever Limited was founded in 1888 and is headquartered in Mumbai, India.",
@@ -2689,7 +3104,8 @@
       "debtToEquity": 0,
       "promoterPct": 61.9
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215725"
   },
   "HINDALCO": {
     "about": "Hindalco Industries Limited, together with its subsidiaries, manufactures and distributes aluminum and copper products in India and internationally. It operates through four segments: Novelis, Aluminium Upstream, Aluminium Downstream, and Copper. The company offers primary aluminum, such as ingots, wirerods, primary foundry alloys, and billets; flat rolled products, including building and pattern sheets, PCB entry and cold-rolled sheets, closure and fin stocks, cable wrap and lamp cap stocks, foil and litho stocks, spiral fin stocks, circles, hot-rolled plates, cold-rolled coils, and flooring sheets/tread plates; extrusions; and foils, as well as aluminium sheet and light gauge products. It also engages in bauxite and coal mining, refineries, and metal and power; and specialty alumina solutions, including refractory, ceramic, polishing, flame retardant, battery, and water treatment solutions. In addition, the company provides copper wire and recycled rods, alloy rods, IGT tubes, and cathodes; precious metals, such as gold and silver bars, selenium, and platinum group metals; and di-ammonium phosphate, as well as internally grooved copper tube and copper scrap recycling operations. Further, it provides mining, investment, cargo, management, import and export aluminum, sales office, captive insurance cell, and welfare services. The company exports its products. It offers its products under the PrizTec, EcoEdge G, EcoEdge C, Everlast, Eternia, Freshwrapp, FUSALOX, and Totalis brands. The company serves the building and construction, batteries and renewable energy, commercial transport, consumer durables, circularity and home solutions, defence and aerospace, electrical and power, industrial machinery, packaging, and personal mobility industries. Hindalco Industries Limited was incorporated in 1958 and is headquartered in Mumbai, India.",
@@ -2813,7 +3229,7 @@
     ],
     "shareholding": {
       "promoters": "34.66%",
-      "public": "64.85%",
+      "public": "9.22%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -2850,7 +3266,7 @@
           null,
           null,
           null,
-          null
+          34.43
         ],
         "dii": [
           null,
@@ -2862,7 +3278,7 @@
           null,
           null,
           null,
-          null
+          20.97
         ],
         "diiMutualFunds": [
           null,
@@ -2874,7 +3290,7 @@
           null,
           null,
           null,
-          null
+          10.94
         ],
         "diiInsurance": [
           null,
@@ -2886,7 +3302,7 @@
           null,
           null,
           null,
-          null
+          6.68
         ],
         "diiPensionFunds": [
           null,
@@ -2898,7 +3314,7 @@
           null,
           null,
           null,
-          null
+          2.8
         ],
         "government": [
           null,
@@ -2910,7 +3326,7 @@
           null,
           null,
           null,
-          null
+          0.23
         ],
         "public": [
           64.92,
@@ -2922,7 +3338,7 @@
           64.85,
           64.87,
           64.87,
-          64.85
+          9.22
         ],
         "employeeTrusts": [
           0.44,
@@ -2938,20 +3354,315 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
+        "promoters": [
+          {
+            "name": "Igh Holdings Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 15.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              15.58
+            ]
+          },
+          {
+            "name": "Birla Group Holdings Private Limited",
+            "subCategory": "Promoter",
+            "pct": 11.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.38
+            ]
+          },
+          {
+            "name": "Grasim Industries Ltd",
+            "subCategory": "Promoter Group",
+            "pct": 3.92,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.92
+            ]
+          },
+          {
+            "name": "Pilani Investment And Industries",
+            "subCategory": "Promoter Group",
+            "pct": 1.33,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.33
+            ]
+          },
+          {
+            "name": "Birla Institute Of Technology And Science",
+            "subCategory": "Promoter Group",
+            "pct": 0.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.96
+            ]
+          },
+          {
+            "name": "TRUSTEE HOLDING SHARES UNDER THE SCHEME OF MERGER OF HIL/IGCL/IGFL ON BEHALF OF HINDALCO",
+            "subCategory": "Promoter Group",
+            "pct": 0.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.73
+            ]
+          },
+          {
+            "name": "PT Indo Bharat Rayon",
+            "subCategory": "Promoter Group",
+            "pct": 0.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.43
+            ]
+          },
+          {
+            "name": "P T Sunrise Bumi Textiles",
+            "subCategory": "Promoter Group",
+            "pct": 0.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.13
+            ]
+          },
+          {
+            "name": "PT Elegant Textile Industry",
+            "subCategory": "Promoter Group",
+            "pct": 0.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.08
+            ]
+          },
+          {
+            "name": "Kumar Mangalam Birla",
+            "subCategory": "Promoter",
+            "pct": 0.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.06
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "MORGAN GUARANTY TRUST COMPANY OF NEW YORK, ASDEPOSITARY",
+            "subCategory": "Overseas Depositories (holding DRs) (balancing figure)",
+            "pct": 4.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.25
+            ]
+          },
+          {
+            "name": "GOVERNMENT OF SINGAPORE",
+            "subCategory": "FPI Category I",
+            "pct": 2.56,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.56
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "LICI INDEX PLUS FLEXI GROWTH FUND",
+            "subCategory": "Insurance",
+            "pct": 4.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.24
+            ]
+          },
+          {
+            "name": "NPS TRUST - A/C LIC PENSION FUND SCHEME - NPS TIER-II COMPOSITE SCHEME",
+            "subCategory": "Pension Funds",
+            "pct": 2.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.8
+            ]
+          },
+          {
+            "name": "SBI BALANCED ADVANTAGE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.01
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL EQUITY SAVINGS FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.8
+            ]
+          },
+          {
+            "name": "ADITYA BIRLA SUN LIFE MUTUAL FUND - ADITYA BIRLA SUN LIFE AGGRESSIVE HYBRID FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.19
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "34.43%",
+      "dii": "20.97%",
+      "government": "0.23%"
     },
     "updatedAt": 1794038125814,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:25.473Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:17.061Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754802_06112026044842_WEB.xml",
     "ratios": {
-      "marketCapCr": 204947,
-      "pe": 12.9,
+      "marketCapCr": 199775,
+      "pe": 12.6,
       "ttmEps": 71.47,
       "ttmSalesCr": 130639,
       "ttmPatCr": 15867,
@@ -2961,7 +3672,8 @@
       "debtToEquity": 0.17,
       "promoterPct": 34.66
     },
-    "debtToEquity": 0.17
+    "debtToEquity": 0.17,
+    "lastShpRecordId": "215606"
   },
   "HAL": {
     "about": "Hindustan Aeronautics Limited engages in the design, development, manufacture, repair, overhaul, upgrade, and servicing of aircraft, helicopters, aero-engines, avionics, accessories, and aerospace structures in India and internationally. It serves national and international defense customers, as well as civil customers. Hindustan Aeronautics Limited was incorporated in 1963 and is based in Bengaluru, India.",
@@ -3339,7 +4051,8 @@
       "debtToEquity": 0,
       "promoterPct": 71.64
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214550"
   },
   "HAVELLS": {
     "about": "Havells India Limited, a fast-moving electrical and electronic durables company, manufactures, trades in, and sells various consumer electrical and electronic products in India and internationally. The company operates through six segments: Switchgears, Cables, Lighting and Fixtures, Electrical Consumer Durables, Lloyd Consumer, and Others. It offers switches; switchgears, such as circuit breakers, energy savers, human safety equipment, distribution boards, surge protection devices, and control and monitoring devices, as well as magnetic contractor, thermal overload relays, switchgear, circuit breakers, and starters; lighting products; and home appliances, including air conditioners, LED televisions, washing machines, refrigerators, air coolers and purifiers, appliances, personal grooming products, water heaters and purifiers, and geysers. The company also provides flexible, power, control, and fire survival cables; fans comprising ceiling, table, pedestal, wall, ceiling mounting, personal, and domestic exhaust fans; centrifugal, mono block, submersible, borewell and sewage submersible, pressure, and shallow well jet pumps; dishwashers; air circulators; and heavy-duty exhaust fans. In addition, it offers crane duty, smoke, brake, inverter duty, and energy motors; solar rooftop on grid, solar off grid, and solar on grid inverter solutions; power solutions, including power capacitors, IOT enabled IPFC relays, HD harmonic detuned reactors, IOT enabled APFC panels, and high PIV thyristor switches; and smart home automation solutions that connects lights, curtains, air conditioners, and other devices to control them through smart phone, tablet or wall panel, as well as smart modular switches and accessories. The company offers its products under the Havells, Lloyd, Havells Crabtree, REO, and Havells Studio brands. Havells India Limited was founded in 1958 and is based in Noida, India.",
@@ -3896,7 +4609,8 @@
       "debtToEquity": 0,
       "promoterPct": 59.35
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213513"
   },
   "HALDER": {
     "about": "Halder Venture Limited, together with its subsidiaries, manufactures and sells edible oil products in India and internationally. It operates through Rice and Edible Oil segments. The company offers rice products, including parboiled, white, Vietnamese, puffed, broken, and rejection rice; edible oils consisting of crude rice bran, refined rice bran, mustard, refined soyabean, refined sunflower, palmolein, and acid oils; and value-added products, such as rice bran, de-oiled rice bran, rice bran fatty acid, rice bran wax, rice husks, rice husk ashes, gums, spent earth, fatty acid, stearin, and rice lecithin. It sells its products under the Moti, Diva, Bhoj, Uma, Hira, Tumi, Bhojmoti, Odaana, and Omaana brands. The company exports its products to approximately 7 destinations across Asia and Africa. It serves the consumer, institutional, and industrial markets. Halder Venture Limited was founded in 1924 and is headquartered in Kolkata, India.",
@@ -4347,7 +5061,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "ANNAPURNA TALLURI",
+            "subCategory": "Promoter Group",
+            "pct": 24.56,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              24.56
+            ]
+          },
+          {
+            "name": "TVVSN MURTHY",
+            "subCategory": "Promoter",
+            "pct": 15.88,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              15.88
+            ]
+          },
+          {
+            "name": "VENKATA PRAVEEN TALLURI",
+            "subCategory": "Promoter Group",
+            "pct": 9.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.06
+            ]
+          },
+          {
+            "name": "RAMESH BABU POTLURI",
+            "subCategory": "Promoter",
+            "pct": 7.94,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.94
+            ]
+          },
+          {
+            "name": "SUDEEPTHI GOPINEEDI",
+            "subCategory": "Promoter Group",
+            "pct": 6.6,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.6
+            ]
+          },
+          {
+            "name": "HIMA BINDU POTLURI",
+            "subCategory": "Promoter Group",
+            "pct": 2.76,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.76
+            ]
+          },
+          {
+            "name": "TRILOK POTLURI",
+            "subCategory": "Promoter Group",
+            "pct": 2.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.58
+            ]
+          },
+          {
+            "name": "VAMSI KRISHNA POTLURI",
+            "subCategory": "Promoter Group",
+            "pct": 2.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.42
+            ]
+          },
+          {
+            "name": "POTLURI INFRA PROJECTS LLP",
+            "subCategory": "Promoter Group",
+            "pct": 0.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.26
+            ]
+          },
+          {
+            "name": "SUKUMARI KONERU",
+            "subCategory": "Promoter Group",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -4355,12 +5240,12 @@
     },
     "updatedAt": 1794038126149,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:40.268Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:02.394Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756256_11112026072640_WEB.xml",
     "ratios": {
-      "marketCapCr": 454,
-      "pe": 32.2,
+      "marketCapCr": 458,
+      "pe": 32.5,
       "ttmEps": 50.24,
       "ttmSalesCr": 301,
       "ttmPatCr": 14,
@@ -4370,7 +5255,8 @@
       "debtToEquity": 0.51,
       "promoterPct": 72.11
     },
-    "debtToEquity": 0.51
+    "debtToEquity": 0.51,
+    "lastShpRecordId": "214742"
   },
   "HAMPTON": {
     "about": "Hampton Sky Realty Limited engages in the real estate business, including the development of commercial, industrial, housing, retail, hospitality, and medical projects. It is also involved in the textile and investment businesses in India. In addition, the company trades in shares and derivatives, and mobile. The company was formerly known as Ritesh Properties and Industries Limited and changed its name to Hampton Sky Realty Limited in October 2023. Hampton Sky Realty Limited was incorporated in 1987 and is headquartered in Ludhiana, India.",
@@ -6520,7 +7406,8 @@
       "debtToEquity": 0.71,
       "promoterPct": 33.99
     },
-    "debtToEquity": 0.71
+    "debtToEquity": 0.71,
+    "lastShpRecordId": "213605"
   },
   "HAWKINCOOK": {
     "about": "Hawkins Cookers Limited manufactures, trades, and sells kitchenware in India and internationally. The company offers pressure cookers; and cookware, including tavas, frying pans, deep-fry pans, saucepans, cook-n-serve bowls, handis, stewpots, sauté pans, Uttapam pan, Tpan, casserole and mini casserole, appe pan, grill pan, dutch ovens, shallow kadhai, pizza makers and cake bakers, spatula, and cookware sets, as well as offers kitchen electricals and accessories; and parts and repair services for its products. It also provides cook-n-serve frying pan; handi; metro patila; tasla; tadka pan; multi snack pan; pasta pans; and CNS bowl products, as well as kitchen gift sets. The company also exports its products. Hawkins Cookers Limited was incorporated in 1959 and is based in Mumbai, India.",
@@ -7339,7 +8226,8 @@
       "debtToEquity": 0,
       "promoterPct": 53.22
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213285"
   },
   "HCC": {
     "about": "Hindustan Construction Company Limited provides engineering and construction services in India and internationally. The company constructs roads, highways, expressways, bridges, elevated corridors, railways, metro rails, ports, and marine structures; dams, barrages, tunnels, powerhouses, shafts, and various underground works; and reactors, auxiliary buildings, spent fuel buildings, safety pump houses, and control buildings. It also constructs integrated water supply systems, bulk water transmission and irrigation projects, water treatment and sewage treatment plants, and aqueducts; hydrocarbon, and metals and process plants and factories; and residential and commercial buildings, institutional buildings, and station buildings. In addition, the company provides toll management, real estate development, and information technology consulting services. It serves state and central government departments, ministries, and municipal bodies. Hindustan Construction Company Limited was incorporated in 1926 and is based in Mumbai, India.",
@@ -8502,7 +9390,25 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "HDFC BANK LIMITED",
+            "subCategory": "Promoter",
+            "pct": 52.29,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              52.29
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -8510,11 +9416,11 @@
     },
     "updatedAt": 1794038126157,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:42.993Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:03.883Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1739196_15102026060240_WEB.xml",
     "ratios": {
-      "marketCapCr": 113636,
+      "marketCapCr": 113598,
       "pe": 38.1,
       "ttmEps": 69.58,
       "ttmSalesCr": 4896,
@@ -8525,7 +9431,8 @@
       "debtToEquity": 0,
       "promoterPct": 52.29
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214034"
   },
   "HDFCLIFE": {
     "about": "HDFC Life Insurance Company Limited engages in the provision of individual and group insurance solutions in India. It offers insurance and investment products, such as protection, pension, savings, investment, annuity, and health, as well as term, investment, life insurance, and NRI plans. The company was formerly known as HDFC Standard Life Insurance Company Limited changed its name to HDFC Life Insurance Company Limited in January 2019. HDFC Life Insurance Company Limited was incorporated in 2000 and is headquartered in Mumbai, India. HDFC Life Insurance Company Limited operates as a subsidiary of HDFC Bank Limited.",
@@ -10445,7 +11352,8 @@
       "debtToEquity": 0,
       "promoterPct": 60.72
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214513"
   },
   "HEIDELBERG": {
     "about": "HeidelbergCement India Limited manufactures and sells cement in India. The company offers Portland pozzolana cement under the mycem, mycem Primo, mycem Power, and mycem Power Shield brand names. It also manufactures and sells clinkers; and sells scrap products. In addition, the company provides mobile technical lab services. The company was formerly known as Mysore Cements Limited and changed its name to HeidelbergCement India Limited in April 2009. The company was incorporated in 1958 and is based in Gurugram, India. HeidelbergCement India Limited is a subsidiary of Heidelberg Materials South Asia B.V.",
@@ -11846,7 +12754,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Rajiv Dinesh Gandhi",
+            "subCategory": "Promoter",
+            "pct": 10.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.48
+            ]
+          },
+          {
+            "name": "Sanjiv Dinesh Gandhi",
+            "subCategory": "Promoter",
+            "pct": 8.2,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.2
+            ]
+          },
+          {
+            "name": "Nina Rajiv Gandhi",
+            "subCategory": "Promoter",
+            "pct": 8.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.19
+            ]
+          },
+          {
+            "name": "Shaila Bhupendra Gandhi",
+            "subCategory": "Promoter",
+            "pct": 5.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.78
+            ]
+          },
+          {
+            "name": "Bhupendra Vithaldas Gandhi",
+            "subCategory": "Promoter",
+            "pct": 4.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.68
+            ]
+          },
+          {
+            "name": "Biolink Healthcare Limited",
+            "subCategory": "Promoter Group",
+            "pct": 2.93,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.93
+            ]
+          },
+          {
+            "name": "Anup Chandravadan Kapadia",
+            "subCategory": "Promoter",
+            "pct": 2.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.68
+            ]
+          },
+          {
+            "name": "Hester Coatings LLP",
+            "subCategory": "Promoter Group",
+            "pct": 0.75,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.75
+            ]
+          },
+          {
+            "name": "Hester Diagnostics Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.28
+            ]
+          },
+          {
+            "name": "Hetal Sanjiv Gandhi",
+            "subCategory": "Promoter",
+            "pct": 0.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.23
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -11854,12 +12933,12 @@
     },
     "updatedAt": 1794038126161,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:44.464Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:06.181Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753370_05112026120347_WEB.xml",
     "ratios": {
-      "marketCapCr": 2001,
-      "pe": 28.7,
+      "marketCapCr": 2038,
+      "pe": 29.2,
       "ttmEps": 80.43,
       "ttmSalesCr": 328,
       "ttmPatCr": 69,
@@ -11869,7 +12948,8 @@
       "debtToEquity": 0.15,
       "promoterPct": 44.28
     },
-    "debtToEquity": 0.15
+    "debtToEquity": 0.15,
+    "lastShpRecordId": "214207"
   },
   "HEXAGON": {
     "about": "Hexagon Nutrition Limited operates as a nutraceutical business focused on the development and supply of micronutrient premixes, clinical nutrition, and therapeutic food in India and internationally. The company provides ready-to-use supplementary food (RUSF), ready-to-use therapeutic food (RUTF), health and wellness products, and home fortification solutions. It also develops functional foods, dietary supplements, plant-based nutritional alternatives, maternal and geriatric nutrition products, and condition-specific formulations aimed at managing lifestyle disorders, such as cardiovascular health, and obesity. It serves food companies and nutraceutical industry. The company exports its products to Southeast Asia, the Middle East, Africa, Latin America, and Pacific. Hexagon Nutrition Limited was founded in 1991 and is headquartered in Mumbai, India.",
@@ -12066,7 +13146,8 @@
       "ttmSalesCr": 423,
       "ttmPatCr": 45,
       "promoterPct": 64.36
-    }
+    },
+    "lastShpRecordId": "215278"
   },
   "HEXATRADEX": {
     "about": "Hexa Tradex Limited operates as a dealer, trader, import and export agent, representative, contractor, buyer, seller, and broker in India. The company operates through two segments: Trading and Other Activities; and Investment and Finance. The company is involved in the trading of chemicals, iron and steel products, machinery parts and accessories, minerals, motor vehicle components, non-ferrous metals and related products, obsolete and discarded materials, paints, varnishes and adhesives, and other items. It also engages in buying and selling, as well as in trading of products. Hexa Tradex Limited was incorporated in 2010 and is based in New Delhi, India.",
@@ -12476,7 +13557,8 @@
       "debtToEquity": 0,
       "promoterPct": 92.13
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "216088"
   },
   "HEXT": {
     "about": "Hexaware Technologies Limited provides information technology consulting, software development, and business process services worldwide. The company operates through Travel and Transportation, Financial Services, Banking, Healthcare and Insurance, Hi-Tech Professional Services, and Manufacturing and Consumer segments. It offers AI-native contact center, application services, cybersecurity, digital workplace, enterprise automation, generative AI, sustainability services, testing, vibe coding, and zero license services. The company also offers platforms, including Amaze, a platform that automates the cloud journey to support efficient digital transformation and modernization solutions; Tensai, uses AI and machine learning to drive intelligent automation for decisions and business processes; RapidX, an agentic AI platform that redefines software engineering by acting as an AI catalyst, enhancing human expertise with advanced intelligence; and Agentverse, an enterprise AI agent platform with ready-to-use agents. In addition, it offers business process, cloud, data and AI, digital IT operation, digital and software, and enterprise platform services. It serves banking, education and institutions, financial services, hi-tech, products and platforms, insurance, life sciences and healthcare, manufacturing, professional services, retail and consumer, telecom and utilities, transportation and logistics, and travel and hospitality industries. It has a strategic partnership with SmartRent, Inc. to transform to AI-native customer operations. It has a strategic partnership with Anthropic to provide Claude LLM integrations in its Zerovity and Agentverse platforms. The company was formerly known as Aptech Limited and changed its name to Hexaware Technologies Limited in January 2001. The company was founded in 1990 and is based in Navi Mumbai, India. As of November 12, 2021, Hexaware Technologies Limited operates as a subsidiary of CA Magnum Holdings.",
@@ -12838,7 +13920,8 @@
       "ttmSalesCr": 8001,
       "ttmPatCr": 716,
       "promoterPct": 74.3
-    }
+    },
+    "lastShpRecordId": "214810"
   },
   "HFCL": {
     "about": "HFCL Limited manufactures and sells telecom products in India and internationally. The company offers optical fiber cables, such as underground, aerial, microduct, FTTH, and micromodule cables; access solutions, including Wi-Fi access points, network switches, unlicensed band radios, IO canvas unified network management platform, and accessories; IP/MPLS routers; 5G product portfolio comprising access routers/cell site routers and pre-aggregation and aggregation routers; fiber optic cable and copper cable assemblies, high-density cabinets, fiber splice joint closures, ethernet cabling products, and active optical components; and defence solutions, including electro optics, electronic fuzes, ground surveillance radar, high-capacity radio relay, and software defined radios. It also provides network solutions for public telecommunications, defence and railway communications, and system integration services. The company was formerly known as Himachal Futuristic Communications Limited and changed its name to HFCL Limited in October 2019. HFCL Limited was incorporated in 1987 and is based in New Delhi, India.",
@@ -13456,7 +14539,8 @@
       "debtToEquity": 0.32,
       "promoterPct": 28.29
     },
-    "debtToEquity": 0.32
+    "debtToEquity": 0.32,
+    "lastShpRecordId": "214780"
   },
   "HGINFRA": {
     "about": "H.G. Infra Engineering Limited, together with its subsidiaries, engages in the provision of engineering, procurement, and construction (EPC) services in India. It operates through two segments, Construction and Renewable segments. The company provides EPC services on a turnkey basis and hybrid annuity model for civil construction and related infrastructure projects. It also undertakes projects under the hybrid annuity model, including transportation, renewable energy, and emerging areas, such as battery energy storage systems and power transmission. In addition, the company operates, constructs and maintains roads, highways, bridges, flyovers, railway lines, other infrastructure contract, and related works, as well as railways, metro, solar powered plant, water infrastructure projects, and transmission and distribution projects. Further, it generates and sells electricity. The company serves central and state government agencies, statutory authorities, and private sector enterprises. H.G. Infra Engineering Limited was incorporated in 2003 and is based in Jaipur, India.",
@@ -15327,7 +16411,8 @@
       "ttmSalesCr": 2018,
       "ttmPatCr": 50,
       "promoterPct": 37.48
-    }
+    },
+    "lastShpRecordId": "215615"
   },
   "HINDADH": {
     "about": "Hindustan Adhesives Limited, a specialty adhesive coating company, manufactures and sells self-adhesive tapes in India and internationally. It offers packaging tapes, which includes BOPP acrylic, BOPP hot melt, BOPP solvent, semi-crepe paper, water activated paper, recycled PET tapes, water activated, kraft paper, cellophane, and flexo printable tapes; industrial tapes, including double sided, filament, duct, aluminium foil, and masking tapes; tear tapes, such as carton, FMCG, and sustainable tear tapes, as well as string and tag tape for tea bags; and POF shrink films, comprising non-cross linked, cross-linked, and sustainable POF shrink films. The company also exports its products. Hindustan Adhesives Limited was incorporated in 1988 and is based in New Delhi, India.",
@@ -17364,7 +18449,8 @@
       "debtToEquity": 0.21,
       "promoterPct": 60.71
     },
-    "debtToEquity": 0.21
+    "debtToEquity": 0.21,
+    "lastShpRecordId": "214415"
   },
   "HIRECT": {
     "about": "Hirect Limited designs, develops, manufactures, and markets power semiconductors, power electronic equipment, and railway transportation equipment in India and internationally. The company provides traction and AUX transformers for railways, IGBT propulsion systems manufacturers and suppliers, auxillary converters and battery chargers, on-board AC to DC rectifiers systems, traction motor, electrical switch boards and railway equipments, electronic safety protection device for railways, rolling stock HVAC systems for railway, industrial electrostatic precipitator system manufacturer, high current rectifiers manufacturers, power quality improvement, and special rectifiers. It also provides servicing, AMC and erectioning, and commissioning services. Its products are used in electro static precipitator, electro chemicals, and other applications. The company was formerly know as Hind Rectifiers Limited and change its name to Hirect Limited in July 2026. Hirect Limited was incorporated in 1958 and is based in Mumbai, India.",
@@ -18598,7 +19684,8 @@
       "ttmSalesCr": 694,
       "ttmPatCr": 13,
       "promoterPct": 74.43
-    }
+    },
+    "lastShpRecordId": "215899"
   },
   "HITECHGEAR": {
     "about": "The Hi-Tech Gears Limited manufactures and sells auto components for automobile manufacturers in India, the United States, and internationally. It offers transmission gears and shafts, driveline components, steering linkage, and power take-off components for two-wheelers, light vehicles, commercial vehicles, and off-highway vehicles; and engine gear. In addition, the company produces gears, shafts, and related transmission components for original equipment manufacturers. The Hi-Tech Gears Limited was incorporated in 1986 and is based in Gurugram, India.",
@@ -19079,7 +20166,8 @@
       "debtToEquity": 0.14,
       "promoterPct": 56.1
     },
-    "debtToEquity": 0.14
+    "debtToEquity": 0.14,
+    "lastShpRecordId": "214989"
   },
   "HLEGLAS": {
     "about": "HLE Glascoat Limited manufactures and sells carbon steel glass lined equipment in India and internationally. It operates through Filtration, Drying and Other Equipment; Glass Lined Equipment; and Heat Transfer Equipment segments. The Filtration, Drying and Other Equipment segment offers agitated nutsche filter-dryers, rotary vacuum paddle dryers, kilo-lab filter dryers, rapid disc dryer-coolers, orbicular dryers, and other chemical process equipment, as well as related spares and accessories. Its Glass Lined Equipment segment produces reactors, heat exchangers, storage vessels and receivers, storage tanks, columns, agitators, valves, pipes and fittings, and other similar equipment, as well as related spares and accessories. The Heat Transfer Equipment segment manufactures shell and tube, corrugated, spiral, plate heat, and box type heat exchangers; and condensing systems. It also offers exotic metal and cGMP pharma model products. The company serves the pharmaceutical, agrochemicals; specialty and fine chemicals; dyes, pigments, and intermediates; paints and coatings; bulk chemicals; active pharmaceutical ingredients; nutraceutical; food and food flavours; oil and gas; mineral processing; aerospace; marine; petrochemicals; fertilizers; steel; paper; and textile industries. The company was formerly known as Swiss Glascoat Equipments Limited and changed its name to HLE Glascoat Limited in December 2019. HLE Glascoat Limited was founded in 1981 and is based in Anand, India.",
@@ -19854,7 +20942,110 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "ZULFIQAR AHMAD QURASHI",
+            "subCategory": "Promoter",
+            "pct": 17.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              17.01
+            ]
+          },
+          {
+            "name": "MOHAMMAD ASHRAF QURESHI",
+            "subCategory": "Promoter",
+            "pct": 17.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              17.01
+            ]
+          },
+          {
+            "name": "MOHAMMAD MEHMOOD QURESHI",
+            "subCategory": "Promoter",
+            "pct": 17.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              17.01
+            ]
+          },
+          {
+            "name": "GULZAR AHMAD",
+            "subCategory": "Promoter",
+            "pct": 12.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.16
+            ]
+          },
+          {
+            "name": "MOHD KAMIL QURESHI",
+            "subCategory": "Promoter",
+            "pct": 8.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.5
+            ]
+          },
+          {
+            "name": "PARVEZ ALAM",
+            "subCategory": "Promoter Group",
+            "pct": 3.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.31
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -19862,12 +21053,12 @@
     },
     "updatedAt": 1794038126169,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:50.046Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:07.934Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751999_03112026060930_WEB.xml",
     "ratios": {
-      "marketCapCr": 1305,
-      "pe": 7.1,
+      "marketCapCr": 1344,
+      "pe": 7.3,
       "ttmEps": 3.69,
       "ttmSalesCr": 8524,
       "ttmPatCr": 184,
@@ -19877,7 +21068,8 @@
       "debtToEquity": 1.02,
       "promoterPct": 75
     },
-    "debtToEquity": 1.02
+    "debtToEquity": 1.02,
+    "lastShpRecordId": "213514"
   },
   "HMT": {
     "about": "HMT Limited engages in the manufacture and sale of food processing machines in India and internationally. It offers dairy machines, including pasteurizers/chiller, cream separators, homogenizers, butter-making machine, centrifugal pumps, plate heat exchangers, non-dairy applications, and watches. The company was incorporated in 1953 and is based in Bengaluru, India.",
@@ -20476,7 +21668,8 @@
       "debtToEquity": 0.04,
       "promoterPct": 74.4
     },
-    "debtToEquity": 0.04
+    "debtToEquity": 0.04,
+    "lastShpRecordId": "215765"
   },
   "HNDFDS": {
     "about": "Hindustan Foods Limited engages in the business of contract manufacturing of fast-moving consumer goods in India and internationally. The company offers breakfast cereals, instant porridges, rice crispies, instant mixes, soups and soup powders, spices and masala, sauces, dips, pastes, jams, jellies, preserves, gravies, cookies, protein and granola bars, chikkis, and muesli; and hot and cold beverages, and energy drink concentrates comprising carbonated soft drinks, ice cream, dessert, tea, coffee, malt-based food, glucose powder, and dry mix powder. It also provides hair oil, food, gel, cream, and shampoo; talc, shaving cream, hand wash liquid and powder, Eau De Toilette, and after shave lotion; baby care products; body lotion, moisturizer, creams, petroleum jelly, shower gel, face wash and scrub, body scrub and wipes, and dusting powder; and beauty and make-up products, including lipstick, lip colour, lip crayon, lip paint, chap stick, pressed/compact powders, and eye make-up products. In addition, the company offers leather and sports footwear and accessories that consists of men's, women's, and juniors' footwear, sports shoes, slippers and flip-flops, uppers, and accessories; fabric care products, including liquid and powder detergent, and fabric conditioners; home care products, such as surface, glass, and toilet cleaners, as well as liquid dish wash; pet food and hygiene products; and liquid vaporizers, aerosols, coils, mosquito mats, and activ cards. Further, it provides vitamins, minerals, and nutraceuticals; nutrition products; allopathic, herbal, and ayurvedic cosmeceutical and skin care products; foot care products, such as medicated and non-medicated plaster; medicated lozenges; digestive remedies; gels and ointments; oral liquids; allopathic tablets; diabetic and high protein nutrition products; and dusting and cosmetic powder. The company was incorporated in 1984 and is headquartered in Mumbai, India.",
@@ -21502,7 +22695,8 @@
       "debtToEquity": 0,
       "promoterPct": 75
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213554"
   },
   "HONDAPOWER": {
     "about": "Honda India Power Products Limited engages in the manufacture, marketing, and sale of portable generators, water pumps, general purpose engines, lawn mowers, brush cutters, hand tools, portable gensets, tillers, and marine engines in India and internationally. It also markets fishery products comprising long tail outboard motors. In addition, it provides agriculture products, including reapers, HTP sprayers, backpack sprayer, and crop harvester; and ploughs, manure spreaders, seeders, and harrows, as well as other machineries for soil preparation, planting, and fertilizing, harvesting, and threshing; and power weeder. In addition, the company offers light construction products, such as concrete cutter and vibrator, plate and reversible plate compactor, power trowel, and welder. Further, it provides generator synchronization and AMF panel, power generators, motor generator sets, engines, turbines, pumps, compressors, taps, valves, and chargeover and remote switches. The company was formerly known as Honda Siel Power Products Limited and changed its name to Honda India Power Products Limited in July 2020. Honda India Power Products Limited was incorporated in 1985 and is headquartered in Gautam Buddha Nagar, India. Honda India Power Products Limited is a subsidiary of Honda Motor Co., Ltd.",
@@ -22569,7 +23763,144 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "HPL INDIA LIMITED",
+            "subCategory": "Promoter",
+            "pct": 27.33,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              27.33
+            ]
+          },
+          {
+            "name": "HPL ELECTRONICS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 18.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              18.12
+            ]
+          },
+          {
+            "name": "LALIT SETH",
+            "subCategory": "Promoter",
+            "pct": 12.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.49
+            ]
+          },
+          {
+            "name": "HPL HOLDINGS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 4.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.42
+            ]
+          },
+          {
+            "name": "GAUTAM SETH",
+            "subCategory": "Promoter Group",
+            "pct": 3.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.47
+            ]
+          },
+          {
+            "name": "RISHI SETH",
+            "subCategory": "Promoter Group",
+            "pct": 3.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.47
+            ]
+          },
+          {
+            "name": "PRAVEEN SETH",
+            "subCategory": "Promoter Group",
+            "pct": 3.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.32
+            ]
+          },
+          {
+            "name": "JESONS IMPEX PVT LTD",
+            "subCategory": "Promoter Group",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -22577,12 +23908,12 @@
     },
     "updatedAt": 1794038126173,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:53.142Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:08.812Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753707_05112026053745_WEB.xml",
     "ratios": {
-      "marketCapCr": 1619,
-      "pe": 18.8,
+      "marketCapCr": 1587,
+      "pe": 18.4,
       "ttmEps": 13.53,
       "ttmSalesCr": 2102,
       "ttmPatCr": 87,
@@ -22592,7 +23923,8 @@
       "debtToEquity": 0.76,
       "promoterPct": 72.66
     },
-    "debtToEquity": 0.76
+    "debtToEquity": 0.76,
+    "lastShpRecordId": "213861"
   },
   "HRYNSHP": {
     "about": "Hariyana Ship Breakers Limited, together with its subsidiary, engages in the ship breaking business in India and internationally. The company is involved in ship recycling activities; industrial gases; and real estate developments. It also engages in trading in metal scrap, steel, graphite electrodes, and other industrial inouts. The company was incorporated in 1981 and is based in Mumbai, India.",
@@ -22816,7 +24148,8 @@
       "debtToEquity": 0.03,
       "promoterPct": 71.36
     },
-    "debtToEquity": 0.03
+    "debtToEquity": 0.03,
+    "lastShpRecordId": "213895"
   },
   "HTMEDIA": {
     "about": "HT Media Limited, together with its subsidiaries, engages in the printing and publication of newspapers and periodicals in India. The company operates through three segments: Printing and Publication of Newspapers & Periodicals, Radio Broadcast & Entertainment, and Digital. It publishes Hindustan Times, an English daily newspaper; Mint, a business daily newspaper; and Hindustan, a Hindi daily newspaper. The company is also involved in the FM radio broadcast and other related activities through its radio stations operating under the Fever 104, Fever, Punjabi Fever, Radio One, and Radio Nasha brands. In addition, it operates Shine.com, a job portal; Shine Learning, a platform for upskilling; Hindustantimes.com, an English news website; Livemint.com, a business news website; Livehindustan.com, a Hindi news website; Desimartini.com, a movie reviews and ratings website; HT Smartcast, a podcast platform; Health Shots, a health and wellness platform for millennial women; VCCircle and TechCircle news platforms; VCCEdge, a market intelligence platform; Mint Lounge, a weekend magazine of Mint to guide on intelligent lifestyle; Slurrp, a food and drinks discovery platform; and OTTplay, a content aggregation and discovery platform. Further, the company rents and invests in properties; engages in sale of third-party newspaper and internet radio, trading and management consultancy services, and investment activities; undertakes commercial printing jobs; and provides solutions under the HT One Audience, HT AdVentures, HT Classifieds, HT Brand Studio, and HT Syndication. Additionally, it provides music, entertainment, and branded content across the metro, as well as organizes live events and experiential activations. The company was founded in 1924 and is based in New Delhi, India. HT Media Limited operates as a subsidiary of The Hindustan Times Limited.",
@@ -23336,7 +24669,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "RUSHANK V SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 4.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.05
+            ]
+          },
+          {
+            "name": "KHILEN V SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 4.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.03
+            ]
+          },
+          {
+            "name": "VYOMESH MAHIPATRAY SHAH",
+            "subCategory": "Promoter",
+            "pct": 3.65,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.65
+            ]
+          },
+          {
+            "name": "KUNJAL HEMANT SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 3.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.03
+            ]
+          },
+          {
+            "name": "HEMANT MAHIPATRAY SHAH",
+            "subCategory": "Promoter",
+            "pct": 2.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.72
+            ]
+          },
+          {
+            "name": "FALGUNI VYOMESH SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 2.71,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.71
+            ]
+          },
+          {
+            "name": "HEMANT MAHIPATRAY SHAH HUF",
+            "subCategory": "Promoter Group",
+            "pct": 2.6,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.6
+            ]
+          },
+          {
+            "name": "PRATITI MAYANK SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 2.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.53
+            ]
+          },
+          {
+            "name": "MEHA RUSHANK SHAH",
+            "subCategory": "Promoter Group",
+            "pct": 2.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.53
+            ]
+          },
+          {
+            "name": "VYOMESH MAHIPATRAY SHAH HUF",
+            "subCategory": "Promoter Group",
+            "pct": 1.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.89
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -23344,12 +24848,12 @@
     },
     "updatedAt": 1794038126175,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:54.125Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:09.668Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749362_29102026080505_WEB.xml",
     "ratios": {
-      "marketCapCr": 2455,
-      "pe": 29.9,
+      "marketCapCr": 2447,
+      "pe": 29.8,
       "ttmEps": 5.68,
       "ttmSalesCr": 309,
       "ttmPatCr": 81,
@@ -23359,7 +24863,8 @@
       "debtToEquity": 0.14,
       "promoterPct": 33.17
     },
-    "debtToEquity": 0.14
+    "debtToEquity": 0.14,
+    "lastShpRecordId": "214484"
   },
   "HUDCO": {
     "about": "Housing and Urban Development Corporation Limited provides financing and credit for housing and infrastructure development projects in India. The company offers housing finance loans for social housing, residential real estate, and HUDCO Niwas; urban infrastructure finance loans for water supply, roads and transport, power, emerging sector, commercial infrastructure and others, social infrastructure and area development, and sewerage and drainage; and take-out finance loans. It also provides consultancy services, including government program services; and advisory on urban and regional planning, design and development, environmental engineering, and social development. The company was incorporated in 1970 and is headquartered in New Delhi, India.",
@@ -23694,7 +25199,8 @@
       "debtToEquity": 0,
       "promoterPct": 75
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214382"
   },
   "HUHTAMAKI": {
     "about": "Huhtamaki India Limited engages in the manufacture and sale of packaging materials in India. The company offers packaging solutions for beverages; dry and wet culinary packaging solutions; home and personal care packaging, such as beauty, cleaning and laundry, and family care; and pet food packaging. It also provides pharmaceutical packaging; functional labels, anti-counterfeit labels, extended text labels, value-added aesthetic labels, and other labeling solutions; PE products under the blueloop brand; products for PET and PE platforms under the blueLite brand; PO and PP Retort products under the blueloop brand; and laser engraved cylinders. The company was formerly known as Huhtamaki PPL Limited and changed its name to Huhtamaki India Limited in November 2020. The company was founded in 1935 and is based in Thane, India. Huhtamaki India Limited operates as a subsidiary of Huhtavefa BV.",
@@ -24236,7 +25742,8 @@
       "debtToEquity": 0.02,
       "promoterPct": 64.02
     },
-    "debtToEquity": 0.02
+    "debtToEquity": 0.02,
+    "lastShpRecordId": "213754"
   },
   "HYUNDAI": {
     "about": "Hyundai Motor India Limited engages in the manufacture and sale of passenger vehicles and parts in India and internationally. The company offers passenger vehicle models across sedans, hatchbacks, sports-utility vehicles (SUVs) and electric vehicles (EVs). The company provides motor vehicles, engine, and transmission and other parts, as well as provides related after-sales activities, and engineering services. It also exports its products to Latin America, Africa, the Middle East, and Europe. The company was incorporated in 1996 and is based in Gurugram, India. Hyundai Motor India Limited is a subsidiary of Hyundai Motor Company.",

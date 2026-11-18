@@ -103,7 +103,7 @@
     ],
     "shareholding": {
       "promoters": "51.85%",
-      "public": "48.15%",
+      "public": "6.07%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -140,7 +140,7 @@
           null,
           null,
           null,
-          null
+          16.59
         ],
         "dii": [
           null,
@@ -152,7 +152,7 @@
           null,
           null,
           null,
-          null
+          17.98
         ],
         "diiMutualFunds": [
           null,
@@ -164,7 +164,7 @@
           null,
           null,
           null,
-          null
+          7.1
         ],
         "diiInsurance": [
           null,
@@ -176,7 +176,7 @@
           null,
           null,
           null,
-          null
+          9.25
         ],
         "diiPensionFunds": [
           null,
@@ -188,7 +188,7 @@
           null,
           null,
           null,
-          null
+          1.52
         ],
         "government": [
           null,
@@ -200,7 +200,7 @@
           null,
           null,
           null,
-          null
+          7.51
         ],
         "public": [
           48.08,
@@ -212,7 +212,7 @@
           48.12,
           48.12,
           48.21,
-          48.15
+          6.07
         ],
         "employeeTrusts": [
           0,
@@ -228,20 +228,146 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "promoters": [
+          {
+            "name": "PRESIDENT OF INDIA",
+            "subCategory": "Promoter",
+            "pct": 51.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              51.85
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "T. ROWE PRICE EMERGING MARKETS DISCOVERY STOCK TRUST",
+            "subCategory": "FPI Category I",
+            "pct": 1.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.3
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "LICI ANNUITY NON-PAR",
+            "subCategory": "Insurance",
+            "pct": 8.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.58
+            ]
+          },
+          {
+            "name": "SBI ARBITRAGE OPPORTUNITIES FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.57,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.57
+            ]
+          },
+          {
+            "name": "NPS TR AC ICICI PENSION FUND SCHEME E - TIER I",
+            "subCategory": "Pension Funds",
+            "pct": 1.52,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.52
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "OIL AND NATURAL GAS CORPORATION LIMITED",
+            "subCategory": "Shareholding by Companies or Bodies Corporate where Central / State Government is a promoter",
+            "pct": 5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5
+            ]
+          },
+          {
+            "name": "INDIAN OIL CORPORATION LIMITED",
+            "subCategory": "Shareholding by Companies or Bodies Corporate where Central / State Government is a promoter",
+            "pct": 2.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.5
+            ]
+          }
+        ]
+      },
+      "fii": "16.59%",
+      "dii": "17.98%",
+      "government": "7.51%"
     },
     "updatedAt": 1794038125797,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:23:00.175Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:10.125Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749866_30102026040256_WEB.xml",
     "ratios": {
-      "marketCapCr": 122992,
-      "pe": 10.4,
+      "marketCapCr": 124965,
+      "pe": 10.6,
       "ttmEps": 17.96,
       "ttmSalesCr": 156692,
       "ttmPatCr": 11807,
@@ -251,7 +377,8 @@
       "debtToEquity": 0.16,
       "promoterPct": 51.85
     },
-    "debtToEquity": 0.16
+    "debtToEquity": 0.16,
+    "lastShpRecordId": "214348"
   },
   "GODREJCP": {
     "about": "Godrej Consumer Products Limited, a fast-moving consumer goods company, manufactures and sells personal care and home care products in India, Africa, Indonesia, the Middle East, the United States, and internationally. The company offers household insecticides, home hygiene, and air and fabric care products; and personal wash and hygiene, hair color, beauty and professional products, and deodorants and fragrances. It provides its products under the Godrej Aer-O, Goodknight Agarbatti, Godrej Ninja, Godrej Good knight, Godrej aer, Godrej Expert, Darling, HIT, Godrej Ezee, Godrej No.1, CINTHOL, Ilicit, ISSUE, INECTO, Godrej magic, Godrej nupur, Godrej Professional, tcb, ROBY, Villeneuve, Millefiori, African Pride, Stella, Godrej spic, Godrej bloq, Mitu baby, NYU, Godrej Genteel, Park Avenune, Profectiy Mega Growth,and KamaSutra brands names. Godrej Consumer Products Limited was founded in 1897 and is headquartered in Mumbai, India.",
@@ -375,7 +502,7 @@
     ],
     "shareholding": {
       "promoters": "53.05%",
-      "public": "46.95%",
+      "public": "15.23%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -412,7 +539,7 @@
           null,
           null,
           null,
-          null
+          10.99
         ],
         "dii": [
           null,
@@ -424,7 +551,7 @@
           null,
           null,
           null,
-          null
+          20.72
         ],
         "diiMutualFunds": [
           null,
@@ -436,7 +563,7 @@
           null,
           null,
           null,
-          null
+          11.77
         ],
         "diiInsurance": [
           null,
@@ -448,7 +575,7 @@
           null,
           null,
           null,
-          null
+          5.36
         ],
         "diiPensionFunds": [
           null,
@@ -460,7 +587,7 @@
           null,
           null,
           null,
-          null
+          3.46
         ],
         "government": [
           null,
@@ -472,7 +599,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           36.99,
@@ -484,7 +611,7 @@
           46.95,
           46.95,
           46.95,
-          46.95
+          15.23
         ],
         "employeeTrusts": [
           0,
@@ -500,20 +627,331 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Godrej Seeds & Genetics Limited",
+            "subCategory": "Promoter Group",
+            "pct": 27.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              27.21
+            ]
+          },
+          {
+            "name": "Godrej Industries Limited",
+            "subCategory": "Promoter Group",
+            "pct": 23.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              23.23
+            ]
+          },
+          {
+            "name": "Nadir Barjorji Godrej",
+            "subCategory": "Promoter",
+            "pct": 0.52,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.52
+            ]
+          },
+          {
+            "name": "NISABA GODREJ AND PIROJSHA GODREJ (TRUSTEES OF NG FAMILY TRUST)",
+            "subCategory": "Promoter Group",
+            "pct": 0.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.28
+            ]
+          },
+          {
+            "name": "TANYA DUBASH AND PIROJSHA GODREJ (TRUSTEES OF TAD FAMILY TRUST)",
+            "subCategory": "Promoter Group",
+            "pct": 0.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.28
+            ]
+          },
+          {
+            "name": "PIROJSHA GODREJ AND NISABA GODREJ (TRUSTEES OF PG FAMILY TRUST)",
+            "subCategory": "Promoter Group",
+            "pct": 0.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.26
+            ]
+          },
+          {
+            "name": "Pirojsha Adi Godrej",
+            "subCategory": "Promoter Group",
+            "pct": 0.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.22
+            ]
+          },
+          {
+            "name": "Nisaba Godrej",
+            "subCategory": "Promoter Group",
+            "pct": 0.2,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.2
+            ]
+          },
+          {
+            "name": "Burjis Nadir Godrej",
+            "subCategory": "Promoter Group",
+            "pct": 0.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.19
+            ]
+          },
+          {
+            "name": "Sohrab Nadir Godrej",
+            "subCategory": "Promoter Group",
+            "pct": 0.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.19
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "NPS Trust through various schemes",
+            "subCategory": "Pension Funds",
+            "pct": 3.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.46
+            ]
+          },
+          {
+            "name": "Life Insurance Corporation of India through various schemes",
+            "subCategory": "Insurance",
+            "pct": 3.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.41
+            ]
+          },
+          {
+            "name": "HDFC Mutual Fund through various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 2.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.8
+            ]
+          },
+          {
+            "name": "ICICI Prudential Mutual Fund through various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 2.6,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.6
+            ]
+          },
+          {
+            "name": "Mirae Asset Mutual Fund through various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 1.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.42
+            ]
+          },
+          {
+            "name": "Aditya Birla Mutual Fund through various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 1.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.41
+            ]
+          },
+          {
+            "name": "Nippon Mutual Fund through various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 1.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.1
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Godrej & Boyce Manufacturing Co Ltd",
+            "subCategory": "Bodies Corporate",
+            "pct": 7.33,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.33
+            ]
+          }
+        ]
+      },
+      "fii": "10.99%",
+      "dii": "20.72%"
     },
     "updatedAt": 1794038125810,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T09:23:10.356Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:14.751Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748863_29102026042559_WEB.xml",
     "ratios": {
-      "marketCapCr": 91164,
-      "pe": 60.7,
+      "marketCapCr": 91547,
+      "pe": 61,
       "ttmEps": 14.7,
       "ttmSalesCr": 10224,
       "ttmPatCr": 1505,
@@ -523,7 +961,8 @@
       "debtToEquity": 0.44,
       "promoterPct": 53.05
     },
-    "debtToEquity": 0.44
+    "debtToEquity": 0.44,
+    "lastShpRecordId": "216119"
   },
   "GODREJPROP": {
     "about": "Godrej Properties Limited, together with its subsidiaries, engages primarily in the business of real estate construction, development, hospitality, and other related activities in India. It develops residential and commercial projects. Godrej Properties Limited was incorporated in 1985 and is headquartered in Mumbai, India.",
@@ -647,7 +1086,7 @@
     ],
     "shareholding": {
       "promoters": "51.66%",
-      "public": "48.34%",
+      "public": "14.26%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -684,7 +1123,7 @@
           null,
           null,
           null,
-          null
+          24.37
         ],
         "dii": [
           null,
@@ -696,7 +1135,7 @@
           null,
           null,
           null,
-          null
+          9.71
         ],
         "diiMutualFunds": [
           null,
@@ -708,7 +1147,7 @@
           null,
           null,
           null,
-          null
+          6.99
         ],
         "diiInsurance": [
           null,
@@ -720,7 +1159,7 @@
           null,
           null,
           null,
-          null
+          1.86
         ],
         "diiPensionFunds": [
           null,
@@ -732,7 +1171,7 @@
           null,
           null,
           null,
-          null
+          0.73
         ],
         "government": [
           null,
@@ -744,7 +1183,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           41.52,
@@ -756,7 +1195,7 @@
           52.83,
           48.34,
           48.34,
-          48.34
+          14.26
         ],
         "employeeTrusts": [
           0,
@@ -772,20 +1211,298 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "promoters": [
+          {
+            "name": "Godrej Industries Limited",
+            "subCategory": "Promoter",
+            "pct": 44.77,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              44.77
+            ]
+          },
+          {
+            "name": "Anamudi Real Estates LLP",
+            "subCategory": "Promoter Group",
+            "pct": 4.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.5
+            ]
+          },
+          {
+            "name": "Innovia Multiventures LLP (Formerly known as Innovia Multiventures Private Limited)",
+            "subCategory": "Promoter Group",
+            "pct": 1.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.4
+            ]
+          },
+          {
+            "name": "Godrej Seeds & Genetics Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.69
+            ]
+          },
+          {
+            "name": "Nadir Godrej, Hormazd Godrej and Rati Godrej (Trustees of HNG Family Trust)",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "Nisaba Godrej and Pirojsha Godrej (Trustees of NG Family Trust)",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "Nadir Godrej, Hormazd Godrej and Rati Godrej (Trustees of BNG Family Trust)",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "Pirojsha Godrej and Nisaba Godrej (Trustees of PG Family Trust)",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "Tanya Dubash and Pirojsha Godrej (Trustees of TAD Family Trust)",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "Nadir Godrej, Hormazd Godrej and Rati Godrej (Trustees of SNG Family Trust)",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "GAMNAT PTE. LTD.",
+            "subCategory": "FPI Category I",
+            "pct": 2.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.38
+            ]
+          },
+          {
+            "name": "GOVERNMENT OF SINGAPORE",
+            "subCategory": "FPI Category I",
+            "pct": 1.91,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.91
+            ]
+          },
+          {
+            "name": "MONETARY AUTHORITY OF SINGAPORE",
+            "subCategory": "FPI Category I",
+            "pct": 1.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.44
+            ]
+          },
+          {
+            "name": "GOVERNMENT PENSION FUND GLOBAL",
+            "subCategory": "FPI Category I",
+            "pct": 1.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.13
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "TATA NIFTY MIDCAP 150 INDEX FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.37
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "GODREJ & BOYCE MFG CO LTD",
+            "subCategory": "Bodies Corporate",
+            "pct": 3.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.54
+            ]
+          }
+        ]
+      },
+      "fii": "24.37%",
+      "dii": "9.71%"
     },
     "updatedAt": 1794038125821,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:06:28.789Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:11:19.704Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1745081_23102026082456_WEB.xml",
     "ratios": {
-      "marketCapCr": 55663,
-      "pe": 131.8,
+      "marketCapCr": 56748,
+      "pe": 134.4,
       "ttmEps": 13.97,
       "ttmSalesCr": 3462,
       "ttmPatCr": 421,
@@ -795,7 +1512,8 @@
       "debtToEquity": 1.09,
       "promoterPct": 51.66
     },
-    "debtToEquity": 1.09
+    "debtToEquity": 1.09,
+    "lastShpRecordId": "214337"
   },
   "GABRIEL": {
     "about": "Gabriel India Limited manufactures and sells of ride control products to the automotive industry in India, the Netherlands, and internationally. The company offers canister shock absorbers, telescopic front forks, inverted front forks, mono shox, floating piston shock absorbers, semi-active front forks, and semi-active shock absorbers; rear shock absorbers, strut assemblies, FSD suspension, semi-active suspension systems, and gas springs; axle dampers, cabin dampers, and seat dampers. It also provides double-acting hydraulic shock absorbers for conventional coaches, shock absorbers for EMU/MEMU coaches, dampers for diesel and electric locomotives, dampers for rajdhani and shatabdi coaches, and dampers for vande bharat coaches. In addition, the company offers macpherson struts, gas springs, brake pads, drive shafts, suspension parts, suspension and strut bush kits, OC springs, coolants, brake fluids, front fork components, oil seals, front fork oil, wheel rims, alloy wheels, spokes, cone sets, and trailing arms. Further, it provides e-bikes, solar dampers, and hydraulic and electronic products. The company also exports its products. The company was incorporated in 1961 and is based in Pune, India. Gabriel India Limited operates as a subsidiary of Asia Investments Private Limited.",
@@ -1170,7 +1888,8 @@
       "debtToEquity": 0.33,
       "promoterPct": 66.29
     },
-    "debtToEquity": 0.33
+    "debtToEquity": 0.33,
+    "lastShpRecordId": "215803"
   },
   "GAEL": {
     "about": "Gujarat Ambuja Exports Limited engages in the agro processing business in India and internationally. It operates through the Agro, Spinning, Maize, and Power segments. The company offers starch derivatives, including maize starch, liquid glucose, dextrose monohydrate powder, maltodextrin, sorbitol 70% solution, dextrose anhydrous powder, pregelatinized starch, maltitol syrup, glucose syrup solids, high maltose corn syrup, and dextrose syrup; and soya derivatives, including defatted soya flour/flakes/grits, full fat soya flour/flakes/grits, liquid soya lecithin, and soya granules and soya nuggets. It also provides feed ingredients comprising corn gluten meal, cattle feed, rapeseed extraction meal, soybean meal, maize germ, corn steep liquor, maize fiber, and CSL fiber; edible oils, including filtered groundnut, filtered mustard, refined corn, refined cotton seed, refined palm, refined soybean, and refined sunflower oils; and agro based products, such as bakery shortening, Vanaspati ghee, and wheat flour. In addition, the company produces animal feeds and sorbitol; and cotton and polyester yarn. Further, it is involved in power generation through wind mills, bio gas, thermal power, and solar plants. The company sells its products to multinational companies, large corporations, wholesalers, manufacturers, dealers, micro, small, and medium enterprises, and small vendors. It serves pharmaceuticals, cosmetics, paints, paper, bakery, confectionery, toothpaste, baby food, edible oils, animal feed, and construction. Gujarat Ambuja Exports Limited was incorporated in 1991 and is based in Ahmedabad, India.",
@@ -3098,7 +3817,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "GPL FINANCE LTD",
+            "subCategory": "Promoter Group",
+            "pct": 13.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.67
+            ]
+          },
+          {
+            "name": "SHYAM SUNDER SHARMMA",
+            "subCategory": "Promoter",
+            "pct": 6.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.69
+            ]
+          },
+          {
+            "name": "RAJESH SHARMA",
+            "subCategory": "Promoter",
+            "pct": 4.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.09
+            ]
+          },
+          {
+            "name": "SHARAD SHARMA",
+            "subCategory": "Promoter",
+            "pct": 3.27,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.27
+            ]
+          },
+          {
+            "name": "VISHNU DUTT KHANDELWAL",
+            "subCategory": "Promoter",
+            "pct": 2.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.69
+            ]
+          },
+          {
+            "name": "VIMAL SHARMA",
+            "subCategory": "Promoter Group",
+            "pct": 1.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.84
+            ]
+          },
+          {
+            "name": "SANDEEP YARNS PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 1.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.67
+            ]
+          },
+          {
+            "name": "SEEMA SHARMA",
+            "subCategory": "Promoter",
+            "pct": 1.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.13
+            ]
+          },
+          {
+            "name": "RATNA SHARMA",
+            "subCategory": "Promoter Group",
+            "pct": 1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1
+            ]
+          },
+          {
+            "name": "SANDEEP KHANDELWAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.76,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.76
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -3106,12 +3996,12 @@
     },
     "updatedAt": 1794038126106,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:20.992Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:43.892Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750818_31102026081324_WEB.xml",
     "ratios": {
-      "marketCapCr": 2245,
-      "pe": 35.6,
+      "marketCapCr": 2259,
+      "pe": 35.8,
       "ttmEps": 24.38,
       "ttmSalesCr": 1133,
       "ttmPatCr": 64,
@@ -3121,7 +4011,8 @@
       "debtToEquity": 0.08,
       "promoterPct": 39.33
     },
-    "debtToEquity": 0.08
+    "debtToEquity": 0.08,
+    "lastShpRecordId": "215299"
   },
   "GANESHBE": {
     "about": "Ganesh Benzoplast Limited engages in the manufactures and sells specialty chemicals, food preservatives, and industrial lubricants in India and internationally. It operates through two segments, Liquid Storage Tanks and Chemical. The company provides liquid storage tanks; engineering procurement and construction services; rail logistic services; storage and handling solutions; and transportation facilities. It offers lubricant additives that includes engine, driveline, and industrial lubricant additives; detergent/dispersant, antiwear/anti-oxidant, and other components; sodium, calcium, barium, and magnesium petroleum sulphonate chemicals; and other lube specialty chemicals, such as brake fluid. In addition, the company offers chemicals comprising sodium benzoate, benzoic acid, methyl benzoate, and benzoate plasticisers. Further, it provides bunkering, blending, and drum filling services. The company serves food and beverage, paints, automobile, pharmaceutical, and lubricants industries. Ganesh Benzoplast Limited was incorporated in 1986 and is headquartered in Mumbai, India.",
@@ -3635,7 +4526,8 @@
       "debtToEquity": 0.01,
       "promoterPct": 39.02
     },
-    "debtToEquity": 0.01
+    "debtToEquity": 0.01,
+    "lastShpRecordId": "215314"
   },
   "GANESHCP": {
     "about": "Ganesh Consumer Products Limited operates as a fast-moving consumer goods company in India. The company offers gold sharbati, multigrain, and diabetes control atta; maida; sooji; wheat, multigrain, and bajra dalia; besan; rajgira, bajri, kuttu, ragi, and jowari atta; and whole, powder, and blended spices. It also provides chana sattu, chana shakti sattu, gold multigrain sattu, and gold shakti sattu jar, as well as wheat bran and chana chunni. In addition, the company offers packaged staples, other packaged food, packaged dairy, packaged beverages, and packaged meat products; and ready-to-eat products. It offers its products under the Ganesh brand name. The company was formerly known as Ganesh Grains Limited and changed its name to Ganesh Consumer Products Limited in August 2024. Ganesh Consumer Products Limited was founded in 1936 and is based in Kolkata, India. Ganesh Consumer Products Limited operates as a subsidiary of Srivaru Agro Limited.",
@@ -3949,7 +4841,8 @@
       "debtToEquity": 0.01,
       "promoterPct": 65.85
     },
-    "debtToEquity": 0.01
+    "debtToEquity": 0.01,
+    "lastShpRecordId": "213975"
   },
   "GANESHHOU": {
     "about": "Ganesh Housing Limited operates as a real estate company in India. It is involved in the development of infrastructure, landmark residential, commercial, and mixed-use spaces. The company was founded in 1960 and is based in Ahmedabad, India.",
@@ -4541,7 +5434,8 @@
       "ttmSalesCr": 35,
       "ttmPatCr": -2,
       "promoterPct": 35.51
-    }
+    },
+    "lastShpRecordId": "214305"
   },
   "GANGESSECU": {
     "about": "Ganges Securities Limited, through its subsidiaries, engages in the manufacture and sale of tea and other related agricultural produce in India. It also invests and deals in securities and in immovable properties. The company was incorporated in 2015 and is based in Kolkata, India.",
@@ -5259,47 +6153,92 @@
     "cashFlows": [],
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "1",
+        "expenses": "1",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.01"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "2",
+        "expenses": "2",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.01"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "2",
+        "expenses": "2",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.01"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "3",
+        "expenses": "3",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.01"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "3",
+        "expenses": "2",
+        "operatingProfit": "1",
+        "opm": "33.3%",
+        "netProfit": "1",
+        "eps": "₹0.03"
+      },
+      {
         "period": "Sep 25",
-        "sales": "4.8",
+        "sales": "5",
         "expenses": "3",
         "operatingProfit": "2",
-        "opm": "41.7%",
+        "opm": "40.0%",
         "netProfit": "2",
         "eps": "₹0.02"
       },
       {
         "period": "Dec 25",
-        "sales": "3.7",
+        "sales": "4",
         "expenses": "3",
         "operatingProfit": "1",
-        "opm": "27.0%",
+        "opm": "25.0%",
         "netProfit": "1",
         "eps": "₹0.01"
       },
       {
         "period": "Mar 26",
-        "sales": "5.1",
+        "sales": "5",
         "expenses": "3",
         "operatingProfit": "2",
-        "opm": "39.2%",
+        "opm": "40.0%",
         "netProfit": "2",
         "eps": "₹0.01"
       },
       {
         "period": "Jun 26",
-        "sales": "4.3",
+        "sales": "4",
         "expenses": "2",
         "operatingProfit": "2",
-        "opm": "46.5%",
+        "opm": "50.0%",
         "netProfit": "2",
         "eps": "₹0.01"
       },
       {
         "period": "Sep 26",
-        "sales": "6.4",
+        "sales": "6",
         "expenses": "4",
         "operatingProfit": "2",
-        "opm": "31.3%",
+        "opm": "33.3%",
         "netProfit": "2",
         "eps": "₹0.01"
       }
@@ -5431,23 +6370,42 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "GAYI ADI HOLDINGS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 0.63,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.63
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
       }
     },
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:21.393Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:45.658Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 108,
-      "pe": 13.5,
+      "marketCapCr": 104,
+      "pe": 13,
       "ttmEps": 0.04,
-      "ttmSalesCr": 20,
+      "ttmSalesCr": 19,
       "ttmPatCr": 7,
       "promoterPct": 0.63
-    }
+    },
+    "lastShpRecordId": "213647"
   },
   "GATECHDVR": {
     "about": "GACM Technologies Limited engaged in the software and financial consultancy related services in India. The company offers software development consultancy and it services, which includes designing, developing, customizing, and maintaining software tools and platforms across industries such as finance, insurance, pharma, education, food and beverages, and legal transcription; and provides IT-enabled services including data processing, database management, and offshore software projects. It also provides trading and financial technology solutions such as commodities trading platforms, order and risk management systems, and infrastructure support for digital trading environments; and enterprise software and cloud applications, deliver end-to-end enterprise solutions for ERP, e-commerce, intranet/internet-based applications, and hosted software. In addition, the company offers hardware and network services; and business process outsourcing, manage outsourced processes such as payroll, CRM, inventory management, accounting and customer support. The company was formerly known as Stampede Capital Limited and changed its name to GACM Technologies Limited in May 2023. GACM Technologies Limited was incorporated in 1995 and is based in Hyderabad, India.",
@@ -6152,7 +7110,8 @@
       "debtToEquity": 0,
       "promoterPct": 71.29
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215049"
   },
   "GAYAHWS": {
     "about": "Gayatri Highways Limited operates as a construction and investment company India. It is involved in the business of construction, operations and maintenance of carriageways on toll, roads, highways, vehicle bridges and tunnels, and toll roads. The company was incorporated in 2006 and is based in Hyderabad, India.",
@@ -6184,6 +7143,60 @@
       }
     ],
     "quarterlyResults": [
+      {
+        "period": "Dec 23",
+        "sales": "1",
+        "expenses": "7",
+        "operatingProfit": "-6",
+        "opm": "-600.0%",
+        "netProfit": "-6",
+        "eps": "₹-0.24"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "21",
+        "expenses": "7",
+        "operatingProfit": "14",
+        "opm": "66.7%",
+        "netProfit": "14",
+        "eps": "₹0.59"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "2",
+        "expenses": "4",
+        "operatingProfit": "-2",
+        "opm": "-100.0%",
+        "netProfit": "-2",
+        "eps": "₹-0.09"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "16",
+        "expenses": "5",
+        "operatingProfit": "11",
+        "opm": "68.8%",
+        "netProfit": "11",
+        "eps": "₹0.48"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "5",
+        "expenses": "9",
+        "operatingProfit": "-4",
+        "opm": "-80.0%",
+        "netProfit": "-4",
+        "eps": "₹-0.16"
+      },
+      {
+        "period": "Sep 25",
+        "sales": "1",
+        "expenses": "6",
+        "operatingProfit": "-5",
+        "opm": "-500.0%",
+        "netProfit": "-5",
+        "eps": "₹-0.21"
+      },
       {
         "period": "Dec 25",
         "sales": "1",
@@ -6446,16 +7459,17 @@
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756775_12112026063759_WEB.xml",
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:22.069Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:47.167Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 46,
+      "marketCapCr": 44,
       "pe": 0.5,
       "ttmEps": 4.01,
       "ttmSalesCr": 66,
       "ttmPatCr": 96,
       "promoterPct": 61.15
-    }
+    },
+    "lastShpRecordId": "214627"
   },
   "GAYAPROJ": {
     "about": "Gayatri Projects Limited engages in the construction business in India. The company is involved in engineering, procurement and construction of roads, irrigation, rail, airports development, power, and industrial works, as well as transportation, water works, land development, and mining projects. It also engages in the ownership of infrastructure assets; and vehicle bridges and tunnels and toll roads. Gayatri Projects Limited was founded in 1963 and is based in Hyderabad, India.",
@@ -7313,7 +8327,8 @@
       "debtToEquity": 0,
       "promoterPct": 67.71
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215556"
   },
   "GEEKAYWIRE": {
     "about": "Geekay Wires Limited manufactures and sells galvanized steel wires, collated and bulk nails, stainless steel fasteners, and other specialty products in India and internationally. The company offers galvanized steel wire products, such as barbed wires, chain link fences, and welded wire meshes for fencing; cable armour wire rounds and flats, steel tapes, and earth and stay wires for the power industry; hot dipped galvanized, binding, ACSR core, and bright and black annealed wires for the infrastructure industry; and fasteners, such as nuts, bolts, and rivets, as well as mild steel drawn, high carbon drawn, and welding electrode wires for general engineering applications. It also provides coil, D-head, full head plastic strip, and wire-collated-nails. In addition, the company offers stainless steel nuts and bolts consisting of hexagon head bolts and screws, round head square neck bolts, and hexagon and square nuts; collated fasteners; box, common, duplex, joist hanger, siding, PC cup head drywall, sinkers, polebarn, drywall, tile, roofing, casing, and deck nails; hexagon wood screws, hexagon socket button head screws, hexagon socket counter sunk head cap screws, hexagon socket button flange screws, and hexagon flange bolts; square and hexagon weld, hexagon flange, and thick nyloc fastener nuts; spring and CA steel wires; high tensile fasterns; and specialty products, including tie and hanger wires, masonry nails, flooring cut nails, and machine quality pallet nails. Its products are used in industrial, power transmission, cable and conductor, general engineering, commercial construction, automotive industries, marine and mine industries, wind and solar power energy, and agriculture applications. The company exports its products. Geekay Wires Limited was incorporated in 1989 and is headquartered in Hyderabad, India.",
@@ -7788,7 +8803,8 @@
       "debtToEquity": 0.3,
       "promoterPct": 57.45
     },
-    "debtToEquity": 0.3
+    "debtToEquity": 0.3,
+    "lastShpRecordId": "214695"
   },
   "GENCON": {
     "about": "Generic Engineering Construction and Projects Limited engages in the construction of commercial, residential, industrial, health and leisure, and institutional buildings in India. It focuses on general contracting, design-build, engineering, and procurement and construction work for data centers, hospitals, schools, cold storages, and other types of industrial and residential buildings. The company provides designing and engineering services for architecture, structural, electrical, mechanical, HVAC, plumbing and sewerage, fire protection, building management, and infrastructure works, as well as project management consultancy services. Generic Engineering Construction and Projects Limited was founded in 1967 and is headquartered in Mumbai, India.",
@@ -8409,7 +9425,8 @@
       "ttmSalesCr": 318,
       "ttmPatCr": 13,
       "promoterPct": 32.73
-    }
+    },
+    "lastShpRecordId": "214971"
   },
   "GENSOL": {
     "about": "Gensol Engineering Limited engages in the provision of renewable energy solutions in India, the Middle East, and internationally. It operates through EPC, Lease, EV Manufacturing, and Others segments. The company offers architecture, engineering, and technical testing and consultancy activities. The company also provides solar EPC services, such as floating solar, rooftop solar, and ground mounted; engineering advisory services; solar operation and maintenance services; rents and leases motor vehicles, machinery, equipment, etc; offers energy storage solutions; end-to-end single-axis solar tracking solutions; generates and distributes solar power; and engages in the manufacture and leasing of electric vehicles. Gensol Engineering Limited was founded in 2007 and is headquartered in Ahmedabad, India.",
@@ -10152,7 +11169,8 @@
       "ttmSalesCr": 4,
       "ttmPatCr": 0,
       "promoterPct": 68.72
-    }
+    },
+    "lastShpRecordId": "213618"
   },
   "GHCL": {
     "about": "GHCL Limited, together with its subsidiaries, manufactures and trades inorganic chemicals in India and internationally. The company offers light soda ash, a basic industrial alkali chemical used in powdered, paste, soap and detergents, pulp and paperand chemical products; dense soda ash for use in glass manufacturing, silicate, ultramarine, and other chemical industries; and refined sodium bicarbonate for use in food, food dyes, poultry and animal feed, leather tanning, fire extinguishers, vegetable cleaning applications, blasting of metals, manufacture of chemicals, pharma, oral care products, and deodorizers. It also provides edible and industrial grade salt products. In addition, the company trades in various chemicals, such as sodium tripolyphosphate, sodium lignosulfonate, PVC resin, titanium dioxide, citric acid, EVA, zircon flour and sand, kaolin clay, and borax pentahydrate. It sells its products under the i-FLO, and Sapan brands. The company was incorporated in 1983 and is based in Noida, India.",
@@ -10629,7 +11647,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Hindustan Commercial Company Limited",
+            "subCategory": "Promoter",
+            "pct": 3.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.12
+            ]
+          },
+          {
+            "name": "Gems Commercial Company Limited",
+            "subCategory": "Promoter",
+            "pct": 3.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.08
+            ]
+          },
+          {
+            "name": "Banjax Limited",
+            "subCategory": "Promoter",
+            "pct": 2.92,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.92
+            ]
+          },
+          {
+            "name": "Hexabond Limited",
+            "subCategory": "Promoter",
+            "pct": 2.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.84
+            ]
+          },
+          {
+            "name": "Oval Investment Private Limited",
+            "subCategory": "Promoter",
+            "pct": 2.71,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.71
+            ]
+          },
+          {
+            "name": "Lhonak Enternational Private Limited",
+            "subCategory": "Promoter",
+            "pct": 1.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.43
+            ]
+          },
+          {
+            "name": "Anurag Dalmia Huf",
+            "subCategory": "Promoter",
+            "pct": 0.63,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.63
+            ]
+          },
+          {
+            "name": "Carissa Investment Private Limited",
+            "subCategory": "Promoter",
+            "pct": 0.5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.5
+            ]
+          },
+          {
+            "name": "Harvatex Engineering And Processing Company limited",
+            "subCategory": "Promoter",
+            "pct": 0.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.43
+            ]
+          },
+          {
+            "name": "Wgf Financial Services Ltd",
+            "subCategory": "Promoter",
+            "pct": 0.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.4
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -10637,11 +11826,11 @@
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754250_05112026084801_WEB.xml",
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:23.763Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:48.799Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1243,
-      "pe": 10.7,
+      "marketCapCr": 1314,
+      "pe": 11.3,
       "ttmEps": 12.14,
       "ttmSalesCr": 1582,
       "ttmPatCr": 116,
@@ -10651,7 +11840,8 @@
       "debtToEquity": 0.04,
       "promoterPct": 19.21
     },
-    "debtToEquity": 0.04
+    "debtToEquity": 0.04,
+    "lastShpRecordId": "213464"
   },
   "GICHSGFIN": {
     "about": "GIC Housing Finance Limited provides housing finance services for salaried and self-employed individuals in India. The company offers long-term finance to individuals, cooperative societies, associations of persons, companies, and corporations for the purchase of plots, houses, flats, and apartments, as well as for the construction, repair, renovation, and upgradation of houses, flats, and apartments for residential purposes. It also provides home loans, including individual housing, composite, repair and renovation, and home extension loans, as well as balance transfer services; and non-housing loans, such as loans against housing property and commercial loans. The company was formerly known as GIC Grih Vitta Limited and changed its name to GIC Housing Finance Limited in November 1993. GIC Housing Finance Limited was incorporated in 1989 and is based in Mumbai, India.",
@@ -11081,7 +12271,8 @@
       "debtToEquity": 0,
       "promoterPct": 42.41
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "213976"
   },
   "GICL": {
     "about": "Globe International Carriers Limited provides logistics solutions in India and Nepal. It offers a various logistics services, including transportation of various types of industries goods, bulk transportation, and other related services through open/closed body vehicles and two/three/four wheeler vehicles, as well as full truck load services from door to door and packing and unpacking of goods. The company also provides surface cargo transportation; warehousing and inventory; supply chain; logistics management services; clearing and forwarding operation; and custom clearance services. In addition, it is involved in the sale and purchase of solar panels and solar power systems. It serves various industries, such as metal and metal products, textile, apparel, furniture, appliance, pharmaceutical products, rubber, plastic, wood, food products, glass, telecom products, automotive parts, mining, and machinery. Globe International Carriers Limited was incorporated in 2010 and is based in Jaipur, India.",
@@ -12686,7 +13877,56 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Gopal Rajaram Kabra",
+            "subCategory": "Promoter",
+            "pct": 76.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              76.17
+            ]
+          },
+          {
+            "name": "Mehul Ajit Shah",
+            "subCategory": "Promoter",
+            "pct": 3.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              3.01
+            ]
+          },
+          {
+            "name": "Ajit Babulal Shaha",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          },
+          {
+            "name": "Prachi Mehul Shah",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -12694,12 +13934,12 @@
     },
     "updatedAt": 1794038126116,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:24.942Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:51.293Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749368_29102026080742_WEB.xml",
     "ratios": {
-      "marketCapCr": 1955,
-      "pe": 8.4,
+      "marketCapCr": 1972,
+      "pe": 8.5,
       "ttmEps": 11.51,
       "ttmSalesCr": 1799,
       "ttmPatCr": 227,
@@ -12709,7 +13949,8 @@
       "debtToEquity": 0.35,
       "promoterPct": 79.2
     },
-    "debtToEquity": 0.35
+    "debtToEquity": 0.35,
+    "lastShpRecordId": "215011"
   },
   "GKSL": {
     "about": "Gujarat Kidney and Super Speciality Limited operates multi-specialty and super-specialty hospitals in India. It provides treatment for Oncology, Neurology, Gastroenterology, Urology, Nephrology, and Physiotherapy. It also offers Renal Surgery, Vascular Surgery, Gynecology and obstetrics, Robotic Surgery, Bariatric Surgery, Laparoscopic Surgery, Endocrine Surgery, Neurosurgery, and Joint Replacement services. Its facilities include intensive care unit, rooms, patient counselling, operation theatres, and dialysis center. Gujarat Kidney And Super Speciality Limited was founded in 2014 and is headquartered in Vadodara, India.",
@@ -13237,7 +14478,8 @@
       "debtToEquity": 0,
       "promoterPct": 75
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214555"
   },
   "GLAND": {
     "about": "Gland Pharma Limited engages in manufacturing and sale of injectable formulations in India, the United States, Europe, Canada, Australia, New Zealand, and internationally. It engages in research and development of active pharmaceutical ingredient products, including synthesis of complex drug molecules, such as low molecular weight heparins, corticosteroids, peptides, and cytotoxic molecules. The company also offers its products for various therapeutic categories, such as anti- diabetic, anti-malarial, anti-infectives, anti-neoplastic, and neurological and central nervous system; blood related, ophthalmics and otologicals, cardiac, gastro-intestinal, and hormonal products; pain, neuromuscular blocking agents, and analgesics; respiratory and pulmonology; and vitamins, minerals, and nutrients. In addition, it provides contract development, dossier preparation, and technology transfer services. The company was incorporated in 1978 and is based in Hyderabad, India. Gland Pharma Limited operates as a subsidiary of Fosun Pharma Industrial Pte. Ltd.",
@@ -13735,7 +14977,8 @@
       "debtToEquity": 0,
       "promoterPct": 45.75
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "214799"
   },
   "GLASSWALL": {
     "about": "GLASS WALL SYSTEMS (INDIA) Limited engages in designing, manufacturing, and installation of building facades. The company offers glazing systems and architectural facade solutions designed for residential, commercial and industrial projects. It also utilizes advanced design and production software, dedicated production lines for unitized systems, doors, and windows, and operates manufacturing plants with in-house powder coating and sheet fabrication units. In addition, the company conducts skill training programs and workshops for designers and engineers. It operates in the United States, Australia, Qatar, Ireland, Sri Lanka, and Israel. The company was founded in 2010 and is based in Mumbai, India.",
@@ -14778,7 +16021,8 @@
       "debtToEquity": 0,
       "promoterPct": 46.65
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215382"
   },
   "GLFL": {
     "about": "Gujarat Lease Financing Limited does not have significant operations. Previously, it was engaged in the provision of non-banking finance services. The company was incorporated in 1983 and is based in Ahmedabad, India.",
@@ -15372,7 +16616,8 @@
       "debtToEquity": 0,
       "promoterPct": 72.73
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215065"
   },
   "GLOBALE": {
     "about": "Globale Tessile Limited manufactures and trades in traditional textiles in India and internationally. It offers shirting, suiting, and fabrics for apparel and home textiles. The company was founded in 1970 and is based in Ahmedabad, India.",
@@ -15807,7 +17052,8 @@
       "debtToEquity": 0.5,
       "promoterPct": 65.43
     },
-    "debtToEquity": 0.5
+    "debtToEquity": 0.5,
+    "lastShpRecordId": "213938"
   },
   "GLOBALVECT": {
     "about": "Global Vectra Helicorp Limited provides helicopter services for the oil and gas sector in India. The company engages in maintenance, repair and overhaul services. It also offers heli-pilgrimage, airborne geophysical surveys, LIDAR mapping, offshore crew change, oil and gas logistics support, geophysical missions, VIP/VVIP transportation, election flying, corporate travel, defence support, RBI operations, anti-Naxal operations, utility and infrastructure support, emergency response, charter services, underslung cargo operations, remote logistics missions, and government support services. It operates a fleet of approximately 25 helicopters. The company was incorporated in 1998 and is based in Mumbai, India.",
@@ -16466,7 +17712,47 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "VIPUL KHURANA",
+            "subCategory": "Promoter",
+            "pct": 26.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              26.9
+            ]
+          },
+          {
+            "name": "NIPUN KHURANA",
+            "subCategory": "Promoter",
+            "pct": 26.87,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              26.87
+            ]
+          },
+          {
+            "name": "VED PRAKASH KHURANA",
+            "subCategory": "Promoter",
+            "pct": 9.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.67
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -16474,8 +17760,8 @@
     },
     "updatedAt": 1794038126119,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:27.092Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:52.971Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
       "marketCapCr": 237,
       "pe": 9.7,
@@ -16483,7 +17769,8 @@
       "ttmSalesCr": 434,
       "ttmPatCr": 24,
       "promoterPct": 63.44
-    }
+    },
+    "lastShpRecordId": "213836"
   },
   "GLOBUSSPR": {
     "about": "Globus Spirits Limited manufactures and sells bulk alcohol and alcoholic products in India and internationally. It operates through two segments: Manufacturing and Consumer. The company offers Indian-made Indian liquor and Indian-made foreign liquor products; and produces and sells ethanol, extra neutral alcohol, rectified spirit, and premium spirits. It also provides distillery products, including grain-neutral alcohol, bioethanol, special denatured spirit, technical alcohol, and fusel oil, as well as other industrial spirits and by-products, etc.; and alcoholic beverages, including prestige and value spirits. In addition, the company is involved in franchise bottling business. Globus Spirits Limited was founded in 1992 and is headquartered in New Delhi, India.",
@@ -18975,7 +20262,42 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "GUJARAT STATE INVESTMENTS LIMITED",
+            "subCategory": "Promoter",
+            "pct": 21.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              21.44
+            ]
+          },
+          {
+            "name": "GUJARAT STATE FERTILIZERS & CHEMICALS LIMITED",
+            "subCategory": "Promoter",
+            "pct": 19.86,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              19.86
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -18983,12 +20305,12 @@
     },
     "updatedAt": 1794038126122,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:28.501Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:53.846Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751186_02112026052036_WEB.xml",
     "ratios": {
-      "marketCapCr": 6914,
-      "pe": 6.7,
+      "marketCapCr": 6870,
+      "pe": 6.6,
       "ttmEps": 70.55,
       "ttmSalesCr": 9666,
       "ttmPatCr": 1037,
@@ -18998,7 +20320,8 @@
       "debtToEquity": 0.01,
       "promoterPct": 41.3
     },
-    "debtToEquity": 0.01
+    "debtToEquity": 0.01,
+    "lastShpRecordId": "213928"
   },
   "GNRL": {
     "about": "Gujarat Natural Resources Limited, together with its subsidiaries, engages in the exploration and production of oil and natural gas in India. The company holds interests in producing 6 blocks, including five operated blocks in the Cambay basin. It also provides well engineering, technical advisory, and drilling project management services. In addition, the company engages in the trading of goods; and other activities. The company was formerly known as Lesha Energy Resources Limited and changed its name to Gujarat Natural Resources Limited in March 2010. Gujarat Natural Resources Limited was incorporated in 1991 and is based in Ahmedabad, India.",
@@ -20189,7 +21512,8 @@
       "debtToEquity": 0.73,
       "promoterPct": 63.31
     },
-    "debtToEquity": 0.73
+    "debtToEquity": 0.73,
+    "lastShpRecordId": "215994"
   },
   "GODFRYPHLP": {
     "about": "Godfrey Phillips India Limited, together with its subsidiaries, manufactures and trades cigarettes, tobacco products, and related products in India and internationally. It operates through Cigarette, Tobacco and Related Products; and Others segments. The company provides cigarette products under the Marlboro, Four Square, Red & White, Stellar, Cavanders, Originals, North Pole & Tipper, Focus, Jaisalmer, Ultima, Black Jack, Force 10, and Bulls & Bears, Sahara; leaf and cut tobacco products under the Philip Morris, ITG, JTI, Eastern Company, European Tobacco, Libyan Tobacco Company, and RNTA brand names. It also offers confectionary products, such as candies and chewing gums under the Funda and Naturalz Imli brand names. In addition, the company engages in the acquisition of securities and real estate development. It exports its products. Godfrey Phillips India Limited was incorporated in 1936 and is based in New Delhi, India.",
@@ -20764,7 +22088,8 @@
       "debtToEquity": 0.01,
       "promoterPct": 72.58
     },
-    "debtToEquity": 0.01
+    "debtToEquity": 0.01,
+    "lastShpRecordId": "214268"
   },
   "GODIGIT": {
     "about": "Go Digit General Insurance Limited provides various insurance products and services in India. It offers car, bike, and commercial vehicle insurance; health and property insurance; fire, marine cargo and hull, travel, miscellaneous, and business insurance; and workmen's compensation, public/product liability, engineering, aviation, personal accident, crop, and other insurance. The company was formerly known as Oben General Insurance Limited and changed its name to Go Digit General Insurance Limited in June 2017. The company was incorporated in 2016 and is based in Bengaluru, India. Go Digit General Insurance Limited operates as a subsidiary of Go Digit Infoworks Services Private Limited.",
@@ -21791,7 +23116,8 @@
       "ttmSalesCr": 6177,
       "ttmPatCr": 657,
       "promoterPct": 74.63
-    }
+    },
+    "lastShpRecordId": "215491"
   },
   "GOKEX": {
     "about": "Gokaldas Exports Limited designs, manufactures, and sells a range of garments in India, the United States, Netherlands, Canada, the United Kingdom, Germany, India, and internationally. The company offers fashion wear, outerwear, bottom wear, casualwear, and sportswear, such as jackets, pants, tops/shirts, and other products for men, women, and children. It serves international fashion brands and retailers. Gokaldas Exports Limited was incorporated in 1979 and is based in Bengaluru, India.",
@@ -22557,7 +23883,144 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Kanubhai Jivatram Thakkar",
+            "subCategory": "Promoter",
+            "pct": 30.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              30.1
+            ]
+          },
+          {
+            "name": "Manjulaben Kanubhai Thakker",
+            "subCategory": "Promoter Group",
+            "pct": 14.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              14.43
+            ]
+          },
+          {
+            "name": "Jashodaben Commodities Llp",
+            "subCategory": "Promoter Group",
+            "pct": 12.57,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.57
+            ]
+          },
+          {
+            "name": "Jayeshkumar K Thakkar",
+            "subCategory": "Promoter Group",
+            "pct": 9.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.84
+            ]
+          },
+          {
+            "name": "Dipakkumar Kanubhai Thakkar",
+            "subCategory": "Promoter Group",
+            "pct": 2.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.37
+            ]
+          },
+          {
+            "name": "Nilesh Kanubhai Thakkar",
+            "subCategory": "Promoter Group",
+            "pct": 2.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.37
+            ]
+          },
+          {
+            "name": "Ritika Infracon Private",
+            "subCategory": "Promoter Group",
+            "pct": 1.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.68
+            ]
+          },
+          {
+            "name": "Bhavna Dipakkumar Harwani",
+            "subCategory": "Promoter Group",
+            "pct": 0.88,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.88
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -22565,12 +24028,12 @@
     },
     "updatedAt": 1794038126125,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:29.536Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:54.760Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747946_28102026055344_WEB.xml",
     "ratios": {
-      "marketCapCr": 6620,
-      "pe": 16.6,
+      "marketCapCr": 6434,
+      "pe": 16.2,
       "ttmEps": 13.51,
       "ttmSalesCr": 23386,
       "ttmPatCr": 398,
@@ -22580,7 +24043,8 @@
       "debtToEquity": 0.34,
       "promoterPct": 74.24
     },
-    "debtToEquity": 0.34
+    "debtToEquity": 0.34,
+    "lastShpRecordId": "213772"
   },
   "GOLDENTOBC": {
     "about": "Golden Tobacco Limited engages in the manufacturing, purchasing, processing, selling, and marketing tobacco and tobacco related products in India. The company offers cigarettes, slim/super slim cigarettes, cigars, cigarillos products, tobacco, and packed type cigarettes. It sells its products under the Panama, Chancellor, Golden's Gold Flake, Taj Chhap, Style, Esquire, Flair, June, and Just Black brand names. The company also exports its products to the United States, Europe, Russia, Singapore, Cambodia, Japan, the Middle East, and internationally. Golden Tobacco Limited was formerly known as GTC Industries Ltd. and changed its name to Golden Tobacco Limited in July 2008. Golden Tobacco Limited was founded in 1930 and is based in Vadodara, India.",
@@ -25021,7 +26485,25 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "GPT Sons Private Limited",
+            "subCategory": "Promoter",
+            "pct": 65.57,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              65.57
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -25029,12 +26511,12 @@
     },
     "updatedAt": 1794038126127,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:30.638Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:56.256Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753915_05112026063437_WEB.xml",
     "ratios": {
-      "marketCapCr": 1119,
-      "pe": 22.1,
+      "marketCapCr": 1073,
+      "pe": 21.2,
       "ttmEps": 6.35,
       "ttmSalesCr": 517,
       "ttmPatCr": 52,
@@ -25044,7 +26526,8 @@
       "debtToEquity": 0.05,
       "promoterPct": 65.57
     },
-    "debtToEquity": 0.05
+    "debtToEquity": 0.05,
+    "lastShpRecordId": "215738"
   },
   "GPTINFRA": {
     "about": "GPT Infraprojects Limited, together with its subsidiaries, carries out civil and infrastructure projects in India and internationally. The company operates through Infrastructure and Concrete Sleepers segments. It engages in construction and repair of railways bridges, steel superstructures, structured steel fabrication, large-span steel superstructure, road construction, and railway tracks installation. The company is also involved in turnkey construction riverine bridges, deep-pile, pile foundations, heavy duty concrete pavements for airports, metro, and light rail systems; and railway sidings, merry-go-round railways, and roads. In addition, it manufactures and sells concrete sleepers for mainlines, curves, bridges, level crossings, and points, and crossing. GPT Infraprojects Limited was incorporated in 1980 and is headquartered in Kolkata, India.",
@@ -26559,7 +28042,8 @@
       "debtToEquity": 0.23,
       "promoterPct": 45.2
     },
-    "debtToEquity": 0.23
+    "debtToEquity": 0.23,
+    "lastShpRecordId": "214789"
   },
   "GRAUWEIL": {
     "about": "Grauer & Weil (India) Limited engages in the manufacturing and selling of surface finishing chemicals in India and internationally. The company operates through Surface Finishing, Engineering, and Shoppertainment segments. The company offers electroplating and specialty chemicals, zinc flake coatings, phosphating and anodizing chemicals, strippers for paint and powder coating, blackening, protective post-treatment, precious metals and lacquers, electronic and PCB solutions; and paint products, including protective, pipe, automotive and general industrial, marine, and architectural coatings. It also supplies customized turnkey plants and components for surface finishing, waste-water and effluent treatment, and other engineering solutions; and lubricants, such as rust preventives, cutting oils, wire-drawing lubricants, heat treatment fluid, forming fluid  non wire, industrial cleaner, and other industrial oil. The company serves its products to automotive and auto ancillary, fasteners, bearings and precision components, sanitaryware, bath fittings and architectural hardware, general hardware, locks and furniture fittings, electrical, electronics, PCB and connectors, appliances, white goods and consumer durables, defence and space, railway and mass transit, general engineering, heavy machinery and fabrication, wire, tube, radiators and heat exchangers, renewable energy and power infrastructure, jewellery, fashion accessories, handicrafts and homeware, oil and gas, marine, drinking water, OEM, power, chemical and fertiliser, steel plants, machining and fabrication, wire, cable, tube and pipe, steel and metal processing, glass manufacturing and processing, general manufacturing and capital goods, industrial maintenance and utilities industries. Grauer & Weil (India) Limited was incorporated in 1957 and is headquartered in Mumbai, India.",
@@ -28845,8 +30329,8 @@
       },
       {
         "period": "Sep 26",
-        "sales": "354",
-        "expenses": "335",
+        "sales": "353",
+        "expenses": "334",
         "operatingProfit": "19",
         "opm": "5.4%",
         "netProfit": "14",
@@ -28982,7 +30466,59 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "HUKAM CHAND GARG",
+            "subCategory": "Promoter",
+            "pct": 21.88,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              21.88
+            ]
+          },
+          {
+            "name": "ATUL GARG",
+            "subCategory": "Promoter",
+            "pct": 20.91,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.91
+            ]
+          },
+          {
+            "name": "MAMTA GARG",
+            "subCategory": "Promoter",
+            "pct": 20.27,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.27
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -28990,16 +30526,17 @@
     },
     "updatedAt": 1794038126132,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:32.241Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:58.033Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1776,
-      "pe": 29.3,
+      "marketCapCr": 1702,
+      "pe": 28.1,
       "ttmEps": 3.03,
-      "ttmSalesCr": 1323,
+      "ttmSalesCr": 1322,
       "ttmPatCr": 61,
       "promoterPct": 63.06
-    }
+    },
+    "lastShpRecordId": "215751"
   },
   "GROBTEA": {
     "about": "The Grob Tea Company Limited engages in the cultivation, manufacture and sale of tea in India. The company was incorporated in 1895 and is based in Kolkata, India.",
@@ -29845,7 +31382,8 @@
       "debtToEquity": 1.05,
       "promoterPct": 40.05
     },
-    "debtToEquity": 1.05
+    "debtToEquity": 1.05,
+    "lastShpRecordId": "215888"
   },
   "GRSE": {
     "about": "Garden Reach Shipbuilders & Engineers Limited engages in the design and construction of war ships in India. The company offers frigates, anti-submarine warfare corvette, missile corvette, landing ship tank, landing craft utility, survey vessel, fleet replenishment tanker, fast patrol vessel, offshore patrol vessel, inshore patrol vessel, fast attack craft, anti-submarine warfare shallow water craft, electric ferries, ocean going passenger and cargo ferry vessel, hovercraft, and fast interceptor boat products to the Indian Navy, Indian Coast Guard, and other government. It also provides unmanned surface vessels, autonomous underwater vessels, ship-based drones, and green platforms and naval surface guns. In addition, the company offers portable bridges; and deck machinery equipment, such as anchor capstans and windlass, mooring and dock capstans, general-purpose and ammunition davits, electric boats and electro-hydraulic drive deck machinery products, survey vessels, hydrographic and oceanographic surveys, helicopter traversing systems, and dock capstans and winches. Further, it engages in the assembling, overhauling, and testing of marine diesel engines, as well as provides dry docking and afloat maintenance, refit, and repair services for defense and commercial ships. The company was founded in 1884 and is based in Kolkata, India.",
@@ -31025,7 +32563,24 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "GOVERNOR OF GUJARAT",
+            "subCategory": "Promoter",
+            "pct": 38.8,
+            "history": [
+              38.8
+            ]
+          },
+          {
+            "name": "GUJARAT STATE ENERGY GENERATION LIMITED",
+            "subCategory": "Promoter",
+            "pct": 0.14,
+            "history": [
+              0.14
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -31033,11 +32588,11 @@
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752047_03112026063304_WEB.xml",
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:35.402Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:13:59.742Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 3080,
-      "pe": 6.4,
+      "marketCapCr": 3203,
+      "pe": 6.7,
       "ttmEps": 15.4,
       "ttmSalesCr": 1356,
       "ttmPatCr": 480,
@@ -31047,7 +32602,8 @@
       "debtToEquity": 0,
       "promoterPct": 38.94
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "lastShpRecordId": "215696"
   },
   "GSS": {
     "about": "GSS Infotech Limited, together with its subsidiaries, provides information technology (IT) services in India, Bangladesh, and the United States. The company provides consulting services comprising professional services; digital transformation services consisting of agile and DevOps, API platform, enterprise platform management, and big data; application services, including application development, transformation, and maintenance services, and quality engineering solutions; and managed services, including network operations center, security operations center, data center, and storage infrastructure services. It also offers applied intelligence solutions, such as artificial intelligence, data science and machine learning, Internet of Things, and automation; enterprise security solutions, including digital identity governance, application security, and cyber security services; and enterprise cloud solutions, such as cloud infrastructure, cloud migration, and hybrid cloud management services. In addition, the company provides an asset management software; TruVu, a data visualization and analytics platform; UniDesk, a cloud-based service desk platform; ibStream, a mobile marketing solution; and IT service support management tool that offers tighter integration of functions that correlates with the activities of the broader IT support organization, as well as involved in vegetable and fruits business. It serves government entities, educational institutions, healthcare organizations, and other businesses. The company was formerly known as GSS America Infotech Limited and changed its name to GSS Infotech Limited in March 2011. GSS Infotech Limited was founded in 1999 and is based in Hyderabad, India.",
@@ -31705,7 +33261,8 @@
       "ttmSalesCr": 6,
       "ttmPatCr": 0,
       "promoterPct": 61.26
-    }
+    },
+    "lastShpRecordId": "213586"
   },
   "GTL": {
     "about": "GTL Limited provides network services in India. The company offers services and solutions to address the network life cycle requirements of telecom operators, technology providers, and tower companies. It also provides network operation and maintenance services, such as corrective and preventive maintenance of the network, capex sizing and planning services, remote monitoring and trouble ticketing, and technical support and process management services. In addition, the company offers energy management solutions, including technical audit for optimum power consumption, monitoring utilization of sources of energy and plugging leakage, driving modernization with energy efficient equipment, and integrating non-traditional or alternate sources of energy with reduced carbon dioxide footprint. The company was formerly known as Global Telesystems Ltd. and changed its name to GTL Limited in October 2001. GTL Limited was incorporated in 1987 and is based in Mumbai, India.",
@@ -33811,7 +35368,8 @@
       "debtToEquity": 0.04,
       "promoterPct": 39.6
     },
-    "debtToEquity": 0.04
+    "debtToEquity": 0.04,
+    "lastShpRecordId": "216251"
   },
   "GUJTHEM": {
     "about": "Gujarat Themis Biosyn Limited engages in the manufacture of pharmaceuticals, medicinal chemicals, and active pharmaceutical ingredients in India and internationally. The company offers bulk drugs on job work basis in India. Its products include Rifamycin-S, an intermediate for the treatment of tuberculosis, Mycobacterium avium complex, leprosy, and Legionnaires' disease; Rifamycin-O, an antibiotic for the treatment of traveller's diarrhea, irritable bowel syndrome, and hepatic encephalopathy; and Lovastatin. The company was incorporated in 1981 and is based in Mumbai, India.",
@@ -34253,6 +35811,60 @@
     "sector": "Energy, Oil & Power",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "155",
+        "expenses": "146",
+        "operatingProfit": "9",
+        "opm": "5.8%",
+        "netProfit": "6",
+        "eps": "₹0"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "162",
+        "expenses": "153",
+        "operatingProfit": "9",
+        "opm": "5.6%",
+        "netProfit": "7",
+        "eps": "₹0"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "166",
+        "expenses": "158",
+        "operatingProfit": "8",
+        "opm": "4.8%",
+        "netProfit": "6",
+        "eps": "₹0"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "126",
+        "expenses": "119",
+        "operatingProfit": "7",
+        "opm": "5.6%",
+        "netProfit": "5",
+        "eps": "₹0"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "137",
+        "expenses": "128",
+        "operatingProfit": "9",
+        "opm": "6.6%",
+        "netProfit": "7",
+        "eps": "₹0"
+      },
+      {
+        "period": "Sep 25",
+        "sales": "153",
+        "expenses": "146",
+        "operatingProfit": "7",
+        "opm": "4.6%",
+        "netProfit": "5",
+        "eps": "₹1.07"
+      },
+      {
         "period": "Dec 25",
         "sales": "171",
         "expenses": "164",
@@ -34439,7 +36051,42 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "GP GLOBAL APAC PTE LTD",
+            "subCategory": "Promoter",
+            "pct": 36.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              36.84
+            ]
+          },
+          {
+            "name": "PRACHI GOEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.21
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
@@ -34447,11 +36094,11 @@
     },
     "updatedAt": 1794038126138,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:38.430Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-18T12:14:01.527Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747052_27102026062915_WEB.xml",
     "ratios": {
-      "marketCapCr": 311,
+      "marketCapCr": 310,
       "pe": 6.2,
       "ttmEps": 10.02,
       "ttmSalesCr": 910,
@@ -34462,7 +36109,8 @@
       "debtToEquity": 0.1,
       "promoterPct": 37.05
     },
-    "debtToEquity": 0.1
+    "debtToEquity": 0.1,
+    "lastShpRecordId": "214417"
   },
   "GULPOLY": {
     "about": "Gulshan Polyols Limited engages in the mineral and grain processing, and ethanol distillery businesses in India. The company provides starch sugar products, such as sorbitol 70% solution, dextrose monohydrate, malto dextrine powder, liquid glucose, brown rice syrups, and rice syrup solids; organic sweeteners; native starches; and animal nutrition products comprising dried distillers grain solids, corn/maize gluten feed, corn germ, cattle feed/enriched fiber, rice protein/gluten, and corn steep liquor products. It also offers activated, precipitated, and ground calcium carbonate products. In addition, the company provides grain based extra neutral alcohol, ethanol from damaged food grain, and country liquor, as well as alcoholic beverages under the Tiger Gold and Golden Deer brands. It serves pharmaceutical, personal care, footwear, tyres, rubber and plastic, paint, alcohol, ethanol, paper, agrochemical, printing, automobiles, animal feed, oil marketing, and food and agro industries. The company also exports its products. Gulshan Polyols Limited was founded in 1981 and is based in Delhi, India.",
@@ -34899,7 +36547,8 @@
       "debtToEquity": 0.29,
       "promoterPct": 66.8
     },
-    "debtToEquity": 0.29
+    "debtToEquity": 0.29,
+    "lastShpRecordId": "214118"
   },
   "GVKPIL": {
     "about": "GVK Power & Infrastructure Limited, together with its subsidiaries, engages in the operation and maintenance, manpower and consultancy, and incidental services to owners of power plants, airports, and infrastructure companies in India and Indonesia. It operates through Power, Roads, and Other segments. The company is involved in transportation, hospitality, and life sciences businesses. It also constructs and operates gas/naphtha, thermal, and hydro independent power plants, as well as highway projects; engages in exploration of oil and gas; and invests in SEZ and other assets. The company was formerly known as Jegurupadu Operation & Maintenance Company and changed its name to GVK Power & Infrastructure Limited in July 2005. GVK Power & Infrastructure Limited was founded in 1992 and is based in Secunderabad, India.",
