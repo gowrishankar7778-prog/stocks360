@@ -67,8 +67,482 @@
     ],
     "shareholding": {
       "promoters": "70.83%",
-      "public": "29.17%",
-      "total": "100.00%"
+      "public": "5.38%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          70.83,
+          70.83,
+          70.83,
+          70.83,
+          70.83,
+          70.83,
+          70.83,
+          70.83,
+          70.83,
+          70.83
+        ],
+        "fii": [
+          6.43,
+          6.26,
+          6.43,
+          6.91,
+          6.73,
+          6.26,
+          5.5,
+          4.94,
+          4.88,
+          5.36
+        ],
+        "dii": [
+          16.38,
+          16.61,
+          16.52,
+          16.17,
+          16.37,
+          16.68,
+          17.45,
+          18.08,
+          17.78,
+          17.28
+        ],
+        "diiMutualFunds": [
+          15.12,
+          15.47,
+          15.54,
+          15,
+          15.04,
+          15.51,
+          16.37,
+          16.94,
+          17.01,
+          16.33
+        ],
+        "diiInsurance": [
+          0.89,
+          0.83,
+          0.66,
+          0.65,
+          0.63,
+          0.46,
+          0.43,
+          0.49,
+          0.46,
+          0.61
+        ],
+        "diiPensionFunds": [
+          0.34,
+          0.29,
+          0.29,
+          0.31,
+          0.31,
+          0.32,
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "government": [
+          1.16,
+          1.16,
+          1.16,
+          1.16,
+          1.16,
+          1.16,
+          1.16,
+          1.16,
+          1.16,
+          1.16
+        ],
+        "public": [
+          5.21,
+          5.14,
+          5.06,
+          4.93,
+          4.91,
+          5.07,
+          5.07,
+          4.99,
+          5.36,
+          5.38
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "SCOTTISH AND NEWCASTLE INDIA LIMITED",
+            "subCategory": "Promoter",
+            "pct": 34.04,
+            "history": [
+              34.04,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              34.04
+            ]
+          },
+          {
+            "name": "HEINEKEN INTERNATIONAL B.V",
+            "subCategory": "Promoter",
+            "pct": 24.27,
+            "history": [
+              24.27,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              24.27
+            ]
+          },
+          {
+            "name": "VIJAY MALLYA",
+            "subCategory": "Promoter",
+            "pct": 8.08,
+            "history": [
+              8.08,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.08
+            ]
+          },
+          {
+            "name": "HEINEKEN UK LIMITED",
+            "subCategory": "Promoter",
+            "pct": 3.21,
+            "history": [
+              3.21,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.21
+            ]
+          },
+          {
+            "name": "KAMSCO INDUSTRIES PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 1.24,
+            "history": [
+              1.24,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.24
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [
+          {
+            "name": "SBI EQUITY HYBRID FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 5.92,
+            "history": [
+              3.71,
+              null,
+              null,
+              null,
+              4.42,
+              4.51,
+              4.88,
+              4.65,
+              4.94,
+              5.92
+            ]
+          },
+          {
+            "name": "SBI EQUITY HYBRID FUND(VARIOUS SCHEMES)",
+            "subCategory": "Mutual Funds",
+            "pct": 4.45,
+            "history": [
+              null,
+              4.42,
+              4.42,
+              4.45,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA GROWTH FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.72,
+            "history": [
+              1.69,
+              null,
+              null,
+              null,
+              2.09,
+              2.32,
+              2.53,
+              2.76,
+              3.46,
+              3.72
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL BLUECHIP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.01,
+            "history": [
+              3.1,
+              null,
+              null,
+              null,
+              2.67,
+              2.76,
+              4.03,
+              4.46,
+              4.74,
+              3.01
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL BLUECHIP FUND(VARIOUS SCHEMES)",
+            "subCategory": "Mutual Funds",
+            "pct": 2.69,
+            "history": [
+              null,
+              3.32,
+              3.32,
+              2.69,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA GROWTH FUND(VARIOUS SCHEMES)",
+            "subCategory": "Mutual Funds",
+            "pct": 2.04,
+            "history": [
+              null,
+              2,
+              2,
+              2.04,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "UTI LARGE CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.33,
+            "history": [
+              1.33,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "UTI-MID CAP FUND(VARIOUS SCHEMES)",
+            "subCategory": "Mutual Funds",
+            "pct": 1.2,
+            "history": [
+              null,
+              1.2,
+              1.2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "ADITYA BIRLA SUN LIFE TRUSTEE PRIVATE LIMITED A/C ADITYA BIRLA SUN LIFE MNC FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.13,
+              1.19,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "KOTAK FLEXICAP FUND (VARIOUS SCHEMES)",
+            "subCategory": "Mutual Funds",
+            "pct": 1.16,
+            "history": [
+              null,
+              1.16,
+              1.16,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "KOTAK",
+            "subCategory": "Mutual Funds",
+            "pct": 1.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.16,
+              1.16,
+              1.16
+            ]
+          },
+          {
+            "name": "ADITYA BIRLA SUNLIFE TRUSTEE(VARIOUS SCHEMES)",
+            "subCategory": "Mutual Funds",
+            "pct": 1.15,
+            "history": [
+              null,
+              null,
+              null,
+              1.15,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "DERIVE TRADING AND RESORTS PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.23,
+            "history": [
+              null,
+              1.2,
+              1.2,
+              1.23,
+              1.23,
+              1.23,
+              1.23,
+              1.23,
+              1.23,
+              1.23
+            ]
+          },
+          {
+            "name": "DERIVE TRADING AND RESORTS PRIVATE LIMITED-1301240000121878",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.2,
+            "history": [
+              1.2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "RECOVERY OFFICER DRT 1 CHENNAI",
+            "subCategory": "Institution",
+            "pct": 1.16,
+            "history": [
+              1.16,
+              1.16,
+              1.16,
+              1.16,
+              1.16,
+              1.16,
+              1.16,
+              1.16,
+              1.16,
+              1.16
+            ]
+          }
+        ]
+      },
+      "fii": "5.36%",
+      "dii": "17.28%",
+      "government": "1.16%"
     },
     "updatedAt": 1794038126806,
     "hasFinancialUpdate": true,
@@ -158,7 +632,135 @@
     "shareholding": {
       "promoters": "70.28%",
       "public": "29.72%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          70.28,
+          70.28,
+          70.28,
+          70.28,
+          70.28,
+          70.28,
+          70.28,
+          70.28,
+          70.28,
+          70.28
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          29.72,
+          29.72,
+          29.72,
+          29.72,
+          29.72,
+          29.72,
+          29.72,
+          29.72,
+          29.72,
+          29.72
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126807,
     "hasFinancialUpdate": true,
@@ -246,8 +848,191 @@
     ],
     "shareholding": {
       "promoters": "90.95%",
-      "public": "9.05%",
-      "total": "100.00%"
+      "public": "4.85%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          95.39,
+          95.39,
+          95.39,
+          90.95,
+          90.95,
+          90.95,
+          90.95,
+          90.95,
+          90.95,
+          90.95
+        ],
+        "fii": [
+          0.03,
+          0.02,
+          0.02,
+          0.44,
+          0.14,
+          0.13,
+          0.13,
+          0.08,
+          0.06,
+          0.06
+        ],
+        "dii": [
+          1.33,
+          1.33,
+          1.33,
+          5.36,
+          4.74,
+          4.53,
+          4.43,
+          4.4,
+          4.31,
+          4.14
+        ],
+        "diiMutualFunds": [
+          0.08,
+          0.08,
+          0.09,
+          0.09,
+          0.2,
+          0.21,
+          0.25,
+          0.28,
+          0.3,
+          0.3
+        ],
+        "diiInsurance": [
+          1.24,
+          1.24,
+          1.24,
+          3.44,
+          3.23,
+          3.15,
+          3.12,
+          3.1,
+          3.09,
+          3.07
+        ],
+        "diiPensionFunds": [
+          0,
+          0,
+          0,
+          0.58,
+          0.36,
+          0.23,
+          0.11,
+          0.11,
+          0.11,
+          0
+        ],
+        "government": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "public": [
+          3.25,
+          3.26,
+          3.25,
+          3.25,
+          4.17,
+          4.39,
+          4.49,
+          4.57,
+          4.69,
+          4.85
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "PRESIDENT OF INDIA",
+            "subCategory": "Promoter",
+            "pct": 90.95,
+            "history": [
+              95.39,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              90.95
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [
+          {
+            "name": "Life Insurance Corporation of India",
+            "subCategory": "Insurance",
+            "pct": 2.31,
+            "history": [
+              1.24,
+              1.24,
+              1.24,
+              2.31,
+              2.31,
+              2.31,
+              2.31,
+              2.31,
+              null,
+              2.31
+            ]
+          },
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA LIMITED",
+            "subCategory": "Insurance",
+            "pct": 2.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.31,
+              null
+            ]
+          }
+        ],
+        "public": []
+      },
+      "fii": "0.06%",
+      "dii": "4.14%"
     },
     "updatedAt": 1794038126807,
     "hasFinancialUpdate": true,
@@ -316,7 +1101,45 @@
     "shareholding": {
       "promoters": "74.38%",
       "public": "25.62%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          74.38
+        ],
+        "fii": [
+          null
+        ],
+        "dii": [
+          null
+        ],
+        "diiMutualFunds": [
+          null
+        ],
+        "diiInsurance": [
+          null
+        ],
+        "diiPensionFunds": [
+          null
+        ],
+        "government": [
+          null
+        ],
+        "public": [
+          25.62
+        ],
+        "employeeTrusts": [
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126810,
     "hasFinancialUpdate": true,
@@ -400,7 +1223,135 @@
     "shareholding": {
       "promoters": "59.13%",
       "public": "40.87%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          58.89,
+          58.89,
+          58.89,
+          58.88,
+          58.88,
+          58.91,
+          59.09,
+          59.09,
+          59.09,
+          59.13
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          41.11,
+          41.11,
+          41.11,
+          41.12,
+          41.12,
+          41.09,
+          40.91,
+          40.91,
+          40.91,
+          40.87
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126810,
     "hasFinancialUpdate": true,
@@ -481,7 +1432,135 @@
     "shareholding": {
       "promoters": "74.96%",
       "public": "25.04%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          94.97,
+          93.79,
+          93.79,
+          93.79,
+          89.98,
+          89.98,
+          74.96,
+          74.96,
+          74.96,
+          74.96
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          5.03,
+          6.21,
+          6.21,
+          6.21,
+          10.02,
+          10.02,
+          25.04,
+          25.04,
+          25.04,
+          25.04
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126811,
     "hasFinancialUpdate": true,
@@ -571,7 +1650,135 @@
     "shareholding": {
       "promoters": "34.59%",
       "public": "65.41%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          33.71,
+          33.55,
+          33.55,
+          33.72,
+          33.74,
+          33.73,
+          34.56,
+          34.59,
+          34.61,
+          34.59
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          66.29,
+          66.45,
+          66.45,
+          66.28,
+          66.26,
+          66.27,
+          65.44,
+          65.41,
+          65.39,
+          65.41
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126811,
     "hasFinancialUpdate": true,
@@ -660,7 +1867,135 @@
     "shareholding": {
       "promoters": "44.58%",
       "public": "55.42%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          44.58,
+          44.58,
+          44.58,
+          44.58,
+          44.58,
+          44.58,
+          44.58,
+          44.58,
+          44.58,
+          44.58
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          55.42,
+          55.42,
+          55.42,
+          55.42,
+          55.42,
+          55.42,
+          55.42,
+          55.42,
+          55.42,
+          55.42
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126812,
     "hasFinancialUpdate": true,
@@ -750,7 +2085,135 @@
     "shareholding": {
       "promoters": "16.46%",
       "public": "83.54%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          22.46,
+          22.45,
+          22.38,
+          22.33,
+          22.33,
+          22.33,
+          22.33,
+          22.33,
+          16.46,
+          16.46
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          77.54,
+          77.55,
+          77.62,
+          77.67,
+          77.67,
+          77.67,
+          77.67,
+          77.67,
+          83.54,
+          83.54
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126812,
     "hasFinancialUpdate": true,
@@ -840,7 +2303,135 @@
     "shareholding": {
       "promoters": "44.54%",
       "public": "55.46%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          44.45,
+          44.41,
+          44.82,
+          46.57,
+          46.73,
+          47.03,
+          46.91,
+          44.54,
+          44.54,
+          44.54
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          55.55,
+          55.59,
+          55.18,
+          53.43,
+          53.27,
+          52.97,
+          53.09,
+          55.46,
+          55.46,
+          55.46
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126812,
     "hasFinancialUpdate": true,
@@ -929,8 +2520,362 @@
     ],
     "shareholding": {
       "promoters": "2.88%",
-      "public": "97.12%",
-      "total": "100.00%"
+      "public": "86.47%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          2.23,
+          2.23,
+          2.23,
+          2.23,
+          2.25,
+          2.24,
+          1.7,
+          1.99,
+          2.88,
+          2.88
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          7.09
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1.96
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.92
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "public": [
+          96.43,
+          96.44,
+          96.45,
+          96.45,
+          95.63,
+          95.64,
+          96.71,
+          96.41,
+          95.52,
+          86.47
+        ],
+        "employeeTrusts": [
+          1.33,
+          1.33,
+          1.33,
+          1.33,
+          2.12,
+          2.12,
+          1.6,
+          1.59,
+          1.59,
+          1.59
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Poshika Financial Ecosystem Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 1.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.54
+            ]
+          },
+          {
+            "name": "Poshika Advisory Services LLP",
+            "subCategory": "Promoter",
+            "pct": 1.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.31
+            ]
+          },
+          {
+            "name": "Person Acting in Concert",
+            "subCategory": "Promoter",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          },
+          {
+            "name": "Shachindra Nath",
+            "subCategory": "Promoter Group",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "Samena Special Situations Mauritius III",
+            "subCategory": "FPI Category I",
+            "pct": 4.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.49
+            ]
+          },
+          {
+            "name": "ACM Master Fund",
+            "subCategory": "FPI Category I",
+            "pct": 1.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.8
+            ]
+          }
+        ],
+        "dii": [],
+        "public": [
+          {
+            "name": "DANISH SUSTAINABLE DEVELOPMENT GOALS INVESTMENT FUND K S",
+            "subCategory": "Foreign Companies",
+            "pct": 15.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              15.78
+            ]
+          },
+          {
+            "name": "ClearSky Investment Holdings Pte Limited",
+            "subCategory": "Foreign Companies",
+            "pct": 9.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.73
+            ]
+          },
+          {
+            "name": "SAMENA GREEN LTD",
+            "subCategory": "Foreign Companies",
+            "pct": 8.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.4
+            ]
+          },
+          {
+            "name": "NEWQUEST ASIA INVESTMENTS III LIMITED",
+            "subCategory": "Foreign Companies",
+            "pct": 7.92,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.92
+            ]
+          },
+          {
+            "name": "ACM GLOBAL FUND VCC",
+            "subCategory": "Foreign Companies",
+            "pct": 3.99,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.99
+            ]
+          },
+          {
+            "name": "RISHIKESH PARTHASARATHI",
+            "subCategory": "Non Resident Indians (NRIs)",
+            "pct": 1.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.68
+            ]
+          },
+          {
+            "name": "ZODIAC BUSINESS VENTURES LLP",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.52,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.52
+            ]
+          }
+        ]
+      },
+      "fii": "7.09%",
+      "dii": "1.96%"
     },
     "updatedAt": 1794038126813,
     "hasFinancialUpdate": true,
@@ -1018,9 +2963,137 @@
       }
     ],
     "shareholding": {
-      "promoters": "0%",
-      "public": "100%",
-      "total": "100.00%"
+      "promoters": "0.00%",
+      "public": "100.00%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126813,
     "hasFinancialUpdate": true,
@@ -1109,8 +3182,533 @@
     ],
     "shareholding": {
       "promoters": "58.48%",
-      "public": "41.52%",
-      "total": "100.00%"
+      "public": "7.71%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          59.99,
+          59.99,
+          60,
+          59.23,
+          59.23,
+          59.23,
+          59.29,
+          59.33,
+          59.33,
+          58.48
+        ],
+        "fii": [
+          18.65,
+          18.47,
+          17.48,
+          15.71,
+          15.72,
+          15.82,
+          14.93,
+          14.11,
+          12.86,
+          12.69
+        ],
+        "dii": [
+          13.93,
+          14.19,
+          15.16,
+          16.8,
+          16.85,
+          16.65,
+          17.45,
+          18.42,
+          19.69,
+          20.86
+        ],
+        "diiMutualFunds": [
+          11.81,
+          11.64,
+          12.26,
+          13.78,
+          13.9,
+          14.06,
+          14.67,
+          15.24,
+          15.98,
+          16.4
+        ],
+        "diiInsurance": [
+          1.98,
+          2.33,
+          2.65,
+          2.74,
+          2.74,
+          2.34,
+          2.51,
+          2.88,
+          3.34,
+          4.05
+        ],
+        "diiPensionFunds": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "government": [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        "public": [
+          7.21,
+          7.12,
+          7.12,
+          8.03,
+          7.97,
+          8.05,
+          8.1,
+          7.91,
+          7.91,
+          7.71
+        ],
+        "employeeTrusts": [
+          0.17,
+          0.17,
+          0.19,
+          0.18,
+          0.18,
+          0.2,
+          0.18,
+          0.17,
+          0.17,
+          0.21
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Grasim Industries Limited",
+            "subCategory": "Promoter",
+            "pct": 56.11,
+            "history": [
+              57.27,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              56.11
+            ]
+          },
+          {
+            "name": "PT. Indo Bharat Rayon",
+            "subCategory": "Promoter Group",
+            "pct": 0.78,
+            "history": [
+              0.79,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.78
+            ]
+          },
+          {
+            "name": "Pilani Investment and Industries Corporation Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.65,
+            "history": [
+              1.21,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.65
+            ]
+          },
+          {
+            "name": "Hindalco Industries Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.43,
+            "history": [
+              0.44,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.43
+            ]
+          },
+          {
+            "name": "Shri Kumar Mangalam Birla",
+            "subCategory": "Promoter",
+            "pct": 0.21,
+            "history": [
+              0.1,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.21
+            ]
+          },
+          {
+            "name": "Thai Rayon Public Co. Ltd.",
+            "subCategory": "Promoter Group",
+            "pct": 0.07,
+            "history": [
+              0.08,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.07
+            ]
+          },
+          {
+            "name": "PT. Sunrise Bumi Textiles",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              0.05,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "Aditya Birla Real Estate Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.05
+            ]
+          },
+          {
+            "name": "PT. Elegant Textile Industry",
+            "subCategory": "Promoter Group",
+            "pct": 0.03,
+            "history": [
+              0.03,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "Government of Singapore",
+            "subCategory": "FPI Category I",
+            "pct": 1.45,
+            "history": [
+              1.33,
+              1.44,
+              1.45,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "Government of Singapore - E",
+            "subCategory": "FPI Category I",
+            "pct": 1.18,
+            "history": [
+              null,
+              null,
+              null,
+              1.48,
+              1.34,
+              1.34,
+              1.18,
+              null,
+              null,
+              null
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "LICI NEW ENDOWMENT PLUS-SECURED FUND",
+            "subCategory": "Insurance",
+            "pct": 3.72,
+            "history": [
+              null,
+              1.98,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.01,
+              3.72
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL NIFTY 50 INDEX FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.9
+            ]
+          },
+          {
+            "name": "NPS TR AC ICICI PENSION FUND SCHEME E - TIER I",
+            "subCategory": "Mutual Funds",
+            "pct": 2.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.69
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL SENSEX ETF",
+            "subCategory": "Mutual Funds",
+            "pct": 2.58,
+            "history": [
+              1.84,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.26,
+              2.25,
+              2.58,
+              null
+            ]
+          },
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA",
+            "subCategory": "Insurance",
+            "pct": 2.57,
+            "history": [
+              1.62,
+              null,
+              2.32,
+              2.45,
+              2.46,
+              2.07,
+              2.19,
+              2.57,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "NPS TRUST A/C UTI PENSION FUND LIMITED-SCHEME CENT",
+            "subCategory": "Mutual Funds",
+            "pct": 2.57,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.57,
+              null
+            ]
+          },
+          {
+            "name": "NPS TRUST A/C UTI PENSION FUND LIMITED-SCHEME CENTRAL GOVT",
+            "subCategory": "Mutual Funds",
+            "pct": 2.36,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.36,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL SMALLCAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.29,
+            "history": [
+              null,
+              null,
+              null,
+              2.45,
+              2.29,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "NPS TRUST A/C - SBI PENSION FUND - UPS - CG SCHEM",
+            "subCategory": "Mutual Funds",
+            "pct": 2.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.69,
+              null,
+              2.18,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL NIFTY INFRASTRUCTURE ETF",
+            "subCategory": "Mutual Funds",
+            "pct": 2.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.05,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL MIDCAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.03,
+            "history": [
+              null,
+              null,
+              2.03,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "NPS TRUST-A/C TATA PENSION FUND MANAGEMENT PRIVATE",
+            "subCategory": "Mutual Funds",
+            "pct": 1.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.96,
+              null,
+              null,
+              null,
+              null
+            ]
+          }
+        ],
+        "public": []
+      },
+      "fii": "12.69%",
+      "dii": "20.86%",
+      "government": "0.05%"
     },
     "updatedAt": 1794038126813,
     "hasFinancialUpdate": true,
@@ -1239,9 +3837,137 @@
     "balanceSheet": [],
     "cashFlows": [],
     "shareholding": {
-      "promoters": "70.9%",
-      "public": "29.1%",
-      "total": "100.00%"
+      "promoters": "70.90%",
+      "public": "29.10%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          72.51,
+          72.51,
+          72.51,
+          72.51,
+          72.51,
+          72.51,
+          72.51,
+          72.51,
+          70.9,
+          70.9
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          27.49,
+          27.49,
+          27.49,
+          27.49,
+          27.49,
+          27.49,
+          27.49,
+          27.49,
+          29.1,
+          29.1
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126814,
     "hasFinancialUpdate": true,
@@ -1325,7 +4051,135 @@
     "shareholding": {
       "promoters": "39.82%",
       "public": "60.18%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          39.82,
+          39.82,
+          39.82,
+          39.82,
+          39.82,
+          39.82,
+          39.82,
+          39.82,
+          39.82,
+          39.82
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          60.18,
+          60.18,
+          60.18,
+          60.18,
+          60.18,
+          60.18,
+          60.18,
+          60.18,
+          60.18,
+          60.18
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126814,
     "hasFinancialUpdate": true,
@@ -1413,7 +4267,135 @@
     "shareholding": {
       "promoters": "65.74%",
       "public": "34.26%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          55.04,
+          60.03,
+          60.03,
+          60.03,
+          60.94,
+          64.18,
+          64.43,
+          65.02,
+          65.44,
+          65.74
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          44.96,
+          39.97,
+          39.97,
+          39.97,
+          39.06,
+          35.82,
+          35.57,
+          34.98,
+          34.56,
+          34.26
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126815,
     "hasFinancialUpdate": true,
@@ -1503,7 +4485,135 @@
     "shareholding": {
       "promoters": "70.22%",
       "public": "29.78%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          70.22,
+          70.22,
+          70.22,
+          70.22,
+          70.22,
+          70.22,
+          70.22,
+          70.22,
+          70.22,
+          70.22
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          29.78,
+          29.78,
+          29.78,
+          29.78,
+          29.78,
+          29.78,
+          29.78,
+          29.78,
+          29.78,
+          29.78
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126815,
     "hasFinancialUpdate": true,
@@ -1572,7 +4682,135 @@
     "shareholding": {
       "promoters": "74.65%",
       "public": "25.35%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          74.65,
+          74.65,
+          74.65,
+          74.65,
+          74.65,
+          74.65,
+          74.65,
+          74.65,
+          74.65,
+          74.65
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          25.35,
+          25.35,
+          25.35,
+          25.35,
+          25.35,
+          25.35,
+          25.35,
+          25.35,
+          25.35,
+          25.35
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126815,
     "hasFinancialUpdate": true,
@@ -1634,8 +4872,355 @@
     "cashFlows": [],
     "shareholding": {
       "promoters": "36.02%",
-      "public": "63.98%",
-      "total": "100.00%"
+      "public": "60.77%",
+      "total": "100.00%",
+      "quarters": [
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          39.42,
+          39.42,
+          39.19,
+          39.19,
+          36.34,
+          36.02,
+          36.02,
+          36.02,
+          36.02
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.02
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          3.2
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1.79
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "public": [
+          60.58,
+          60.58,
+          60.81,
+          60.81,
+          63.66,
+          63.98,
+          63.98,
+          63.98,
+          60.77
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Acevector Limited",
+            "subCategory": "Promoter",
+            "pct": 25.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              25.9
+            ]
+          },
+          {
+            "name": "Partnership Firms",
+            "subCategory": "Promoter",
+            "pct": 9.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.8
+            ]
+          },
+          {
+            "name": "B2 Capital Partners (Kunal Bahl & Rohit Kumar Bansal holding on behalf of B2 Capital partners",
+            "subCategory": "Promoter Group",
+            "pct": 9.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.8
+            ]
+          },
+          {
+            "name": "Bharat Venishetti (Nominee Shareholder of AceVector Limited)",
+            "subCategory": "Promoter Group",
+            "pct": 0.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.23
+            ]
+          },
+          {
+            "name": "Kunal Bahl",
+            "subCategory": "Promoter",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          },
+          {
+            "name": "Rohit Kumar Bansal",
+            "subCategory": "Promoter",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [
+          {
+            "name": "Trustline Deep Alpha Aif-Ii",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 1.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.38
+            ]
+          },
+          {
+            "name": "Nippon Life India Trustee Ltd- A/C Nippon India Aggressive Hybrid Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.15
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Sb Investment Holdings Uk Limited",
+            "subCategory": "Foreign Companies",
+            "pct": 14.39,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              14.39
+            ]
+          },
+          {
+            "name": "Dilip Ramachandran Vellodi",
+            "subCategory": "Non Resident Indians (NRIs)",
+            "pct": 3.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.04
+            ]
+          },
+          {
+            "name": "Vikas Garg",
+            "subCategory": "Individual Investor",
+            "pct": 2.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.18
+            ]
+          },
+          {
+            "name": "Gaurav Gupta",
+            "subCategory": "Individual Investor",
+            "pct": 1.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.8
+            ]
+          },
+          {
+            "name": "Madhuri Madhusudan Kela",
+            "subCategory": "Individual Investor",
+            "pct": 1.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.48
+            ]
+          },
+          {
+            "name": "Ajay Kumar Aggarwal",
+            "subCategory": "Individual Investor",
+            "pct": 1.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.22
+            ]
+          }
+        ]
+      },
+      "fii": "0.02%",
+      "dii": "3.20%"
     },
     "updatedAt": 1794038126816,
     "hasFinancialUpdate": true,
@@ -1710,8 +5295,328 @@
     ],
     "shareholding": {
       "promoters": "73.79%",
-      "public": "26.21%",
-      "total": "100.00%"
+      "public": "10.39%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          73.79,
+          73.79,
+          73.79,
+          73.79,
+          73.79,
+          73.79,
+          73.79,
+          73.79,
+          73.79,
+          73.79
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          15.82
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "public": [
+          26.21,
+          26.21,
+          26.21,
+          26.21,
+          26.21,
+          26.21,
+          26.21,
+          26.21,
+          26.21,
+          10.39
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Demuric Holdings Private Limited",
+            "subCategory": "Promoter",
+            "pct": 73.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              73.28
+            ]
+          },
+          {
+            "name": "Shilpa P Sagar",
+            "subCategory": "Promoter Group",
+            "pct": 0.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.47
+            ]
+          },
+          {
+            "name": "Sandra Rajnikant Shroff",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          },
+          {
+            "name": "R Shroff Consultants Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "ARES DIVERSIFIED",
+            "subCategory": "FPI Category I",
+            "pct": 4.56,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.56
+            ]
+          },
+          {
+            "name": "RESONANCE OPPORTUNITIES FUND",
+            "subCategory": "FPI Category I",
+            "pct": 3.65,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.65
+            ]
+          },
+          {
+            "name": "ARIAL HOLDINGS 1",
+            "subCategory": "FPI Category I",
+            "pct": 2.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.69
+            ]
+          },
+          {
+            "name": "ACACIA PARTNERS, LP",
+            "subCategory": "FPI Category I",
+            "pct": 1.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.31
+            ]
+          },
+          {
+            "name": "ACACIA INSTITUTIONAL PARTNERS, LP",
+            "subCategory": "FPI Category I",
+            "pct": 1.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.04
+            ]
+          },
+          {
+            "name": "GYMKHANA PARTNERS L.P.",
+            "subCategory": "FPI Category I",
+            "pct": 1.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.03
+            ]
+          }
+        ],
+        "dii": [],
+        "public": [
+          {
+            "name": "GAURAV N LODHA",
+            "subCategory": "Individual Investor",
+            "pct": 1.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.82
+            ]
+          }
+        ]
+      },
+      "fii": "15.82%",
+      "dii": "0.00%"
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755138_06112026081132_WEB.xml",
     "hasFinancialUpdate": true,
@@ -1778,8 +5683,294 @@
     "cashFlows": [],
     "shareholding": {
       "promoters": "50.91%",
-      "public": "49.09%",
-      "total": "100.00%"
+      "public": "49.08%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          50.91,
+          50.91,
+          50.91,
+          50.91,
+          50.91,
+          50.91,
+          50.91,
+          50.91,
+          50.91,
+          50.91
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.01
+        ],
+        "public": [
+          49.09,
+          49.09,
+          49.09,
+          49.09,
+          49.09,
+          49.09,
+          49.09,
+          49.09,
+          49.09,
+          49.08
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Kishore Kumar Bhuradia",
+            "subCategory": "Promoter",
+            "pct": 43.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              43.17
+            ]
+          },
+          {
+            "name": "Pranay Kumar Parwal",
+            "subCategory": "Promoter",
+            "pct": 6.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.02
+            ]
+          },
+          {
+            "name": "Anil Kumar Jain",
+            "subCategory": "Promoter",
+            "pct": 1.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.72
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [],
+        "public": [
+          {
+            "name": "Pramod Maheshwari",
+            "subCategory": "Individual Investor",
+            "pct": 4.62,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.62
+            ]
+          },
+          {
+            "name": "Krishna Garg",
+            "subCategory": "Individual Investor",
+            "pct": 2.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.68
+            ]
+          },
+          {
+            "name": "Supreme Stocks Private Limited",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.52,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.52
+            ]
+          },
+          {
+            "name": "Suman Chepuri",
+            "subCategory": "Individual Investor",
+            "pct": 1.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.42
+            ]
+          },
+          {
+            "name": "Satyanarayan Sarda",
+            "subCategory": "Individual Investor",
+            "pct": 1.29,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.29
+            ]
+          },
+          {
+            "name": "Nano Securities Private Limited",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.03
+            ]
+          }
+        ]
+      },
+      "fii": "0.00%",
+      "dii": "0.00%",
+      "government": "0.01%"
     },
     "updatedAt": 1794038126816,
     "hasFinancialUpdate": true,
@@ -1862,7 +6053,115 @@
     "shareholding": {
       "promoters": "79.75%",
       "public": "20.25%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          79.82,
+          79.82,
+          79.82,
+          79.82,
+          79.82,
+          79.82,
+          79.82,
+          79.75
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          20.18,
+          20.18,
+          20.18,
+          20.18,
+          20.18,
+          20.18,
+          20.18,
+          20.25
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126817,
     "hasFinancialUpdate": true,
@@ -1952,7 +6251,135 @@
     "shareholding": {
       "promoters": "74.76%",
       "public": "25.24%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          74.76,
+          74.76,
+          74.76,
+          74.76,
+          74.76,
+          74.76,
+          74.76,
+          74.76,
+          74.76,
+          74.76
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          25.24,
+          25.24,
+          25.24,
+          25.24,
+          25.24,
+          25.24,
+          25.24,
+          25.24,
+          25.24,
+          25.24
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126817,
     "hasFinancialUpdate": true,
@@ -2041,8 +6468,136 @@
     ],
     "shareholding": {
       "promoters": "65.85%",
-      "public": "34.15%",
-      "total": "100.00%"
+      "public": "34.08%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          65.66,
+          65.66,
+          65.66,
+          65.66,
+          65.66,
+          65.89,
+          65.89,
+          65.88,
+          65.88,
+          65.85
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          33.51,
+          34,
+          34.08,
+          34.21,
+          34.22,
+          33.99,
+          34.01,
+          34.03,
+          34.04,
+          34.08
+        ],
+        "employeeTrusts": [
+          0.83,
+          0.34,
+          0.26,
+          0.13,
+          0.12,
+          0.12,
+          0.1,
+          0.09,
+          0.08,
+          0.07
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126817,
     "hasFinancialUpdate": true,
@@ -2132,7 +6687,135 @@
     "shareholding": {
       "promoters": "56.67%",
       "public": "43.33%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          56.67,
+          56.67,
+          56.67,
+          56.67,
+          56.67,
+          56.67,
+          56.67,
+          56.67,
+          56.67,
+          56.67
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          43.33,
+          43.33,
+          43.33,
+          43.33,
+          43.33,
+          43.33,
+          43.33,
+          43.33,
+          43.33,
+          43.33
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126818,
     "hasFinancialUpdate": true,
@@ -2221,8 +6904,361 @@
     ],
     "shareholding": {
       "promoters": "5.13%",
-      "public": "94.87%",
-      "total": "100.00%"
+      "public": "93.73%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.48
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.66
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.01
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0.57
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "public": [
+          94.87,
+          94.87,
+          94.87,
+          94.87,
+          94.87,
+          94.87,
+          94.87,
+          94.87,
+          94.87,
+          93.73
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "R V Techno Investments Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 3.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.03
+            ]
+          },
+          {
+            "name": "Mayfair Capital Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.85
+            ]
+          },
+          {
+            "name": "Rahul Bahri",
+            "subCategory": "Promoter Group",
+            "pct": 0.33,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.33
+            ]
+          },
+          {
+            "name": "Minoti Bahri",
+            "subCategory": "Promoter",
+            "pct": 0.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.32
+            ]
+          },
+          {
+            "name": "Unibild Engineering and Construction Co. Pvt. Ltd.",
+            "subCategory": "Promoter Group",
+            "pct": 0.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.24
+            ]
+          },
+          {
+            "name": "Praveen Gurnani",
+            "subCategory": "Promoter Group",
+            "pct": 0.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.16
+            ]
+          },
+          {
+            "name": "Citilink Holdings Limited",
+            "subCategory": "Promoter Group",
+            "pct": 0.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.15
+            ]
+          },
+          {
+            "name": "Sanjay Chandra",
+            "subCategory": "Promoter",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [],
+        "public": [
+          {
+            "name": "DILIPKUMAR LAKHI",
+            "subCategory": "Individual Investor",
+            "pct": 4.44,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.44
+            ]
+          },
+          {
+            "name": "MANISH LAKHI",
+            "subCategory": "Individual Investor",
+            "pct": 2.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.03
+            ]
+          },
+          {
+            "name": "DEVENDRA KUMAR PATHAK",
+            "subCategory": "Non Resident Indians (NRIs)",
+            "pct": 1.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.82
+            ]
+          },
+          {
+            "name": "GRISH MOHAN GUPTA",
+            "subCategory": "Individual Investor",
+            "pct": 1.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.48
+            ]
+          },
+          {
+            "name": "MORDE FOODS PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.3
+            ]
+          }
+        ]
+      },
+      "fii": "0.48%",
+      "dii": "0.66%"
     },
     "updatedAt": 1794038126818,
     "hasFinancialUpdate": true,
@@ -2289,7 +7325,135 @@
     "shareholding": {
       "promoters": "51.51%",
       "public": "48.49%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          50.29,
+          50.29,
+          51.51,
+          51.51,
+          51.51,
+          51.51,
+          51.51,
+          51.51,
+          51.51,
+          51.51
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          49.71,
+          49.71,
+          48.49,
+          48.49,
+          48.49,
+          48.49,
+          48.49,
+          48.49,
+          48.49,
+          48.49
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126819,
     "hasFinancialUpdate": true,
@@ -2380,7 +7544,135 @@
     "shareholding": {
       "promoters": "49.86%",
       "public": "50.14%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          49.79,
+          49.79,
+          49.79,
+          49.79,
+          49.79,
+          49.79,
+          49.79,
+          49.86,
+          49.86,
+          49.86
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          50.21,
+          50.21,
+          50.21,
+          50.21,
+          50.21,
+          50.21,
+          50.21,
+          50.14,
+          50.14,
+          50.14
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755873_10112026062711_WEB.xml",
     "hasFinancialUpdate": true,
@@ -2469,7 +7761,135 @@
     "shareholding": {
       "promoters": "67.46%",
       "public": "32.54%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          71.2,
+          71.2,
+          71.2,
+          67.46,
+          67.46,
+          67.46,
+          67.46,
+          67.46,
+          67.46,
+          67.46
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          28.8,
+          28.8,
+          28.8,
+          32.54,
+          32.54,
+          32.54,
+          32.54,
+          32.54,
+          32.54,
+          32.54
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126819,
     "hasFinancialUpdate": true,
@@ -2559,7 +7979,135 @@
     "shareholding": {
       "promoters": "61.89%",
       "public": "38.11%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          61.89,
+          61.89,
+          61.89,
+          61.89,
+          61.89,
+          61.89,
+          61.89,
+          61.89,
+          61.89,
+          61.89
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          38.11,
+          38.11,
+          38.11,
+          38.11,
+          38.11,
+          38.11,
+          38.11,
+          38.11,
+          38.11,
+          38.11
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126820,
     "hasFinancialUpdate": true,
@@ -2629,7 +8177,135 @@
     "shareholding": {
       "promoters": "74.55%",
       "public": "25.45%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          74.55,
+          74.55,
+          74.55,
+          74.55,
+          74.55,
+          74.55,
+          74.55,
+          74.55,
+          74.55,
+          74.55
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          25.45,
+          25.45,
+          25.45,
+          25.45,
+          25.45,
+          25.45,
+          25.45,
+          25.45,
+          25.45,
+          25.45
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-13T12:12:00.455Z",
@@ -2711,8 +8387,498 @@
     ],
     "shareholding": {
       "promoters": "68.36%",
-      "public": "31.64%",
-      "total": "100.00%"
+      "public": "5.75%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          68.75,
+          68.75,
+          68.75,
+          68.75,
+          68.71,
+          68.45,
+          68.41,
+          68.37,
+          68.36,
+          68.36
+        ],
+        "fii": [
+          8.65,
+          9.7,
+          9.88,
+          10.09,
+          9.59,
+          9.97,
+          9.82,
+          8.96,
+          8.15,
+          8.78
+        ],
+        "dii": [
+          16.66,
+          15.51,
+          15.45,
+          15.2,
+          15.85,
+          15.8,
+          15.98,
+          16.89,
+          17.53,
+          17.11
+        ],
+        "diiMutualFunds": [
+          14.11,
+          13.08,
+          13.07,
+          12.86,
+          13.43,
+          12.82,
+          12.31,
+          12.01,
+          11.74,
+          10.95
+        ],
+        "diiInsurance": [
+          2.09,
+          1.97,
+          1.91,
+          2.09,
+          2.19,
+          2.25,
+          2.18,
+          2.44,
+          2.54,
+          2.89
+        ],
+        "diiPensionFunds": [
+          0.08,
+          0.11,
+          0.14,
+          0.12,
+          0.13,
+          0.48,
+          1.27,
+          2.24,
+          3.07,
+          3.12
+        ],
+        "government": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "public": [
+          5.94,
+          6.04,
+          5.91,
+          5.95,
+          5.85,
+          5.78,
+          5.79,
+          5.79,
+          5.96,
+          5.75
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Minda Investments Limited",
+            "subCategory": "Promoter Group",
+            "pct": 23.76,
+            "history": [
+              23.65,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              23.76
+            ]
+          },
+          {
+            "name": "Nirmal Kr Minda",
+            "subCategory": "Promoter",
+            "pct": 21.2,
+            "history": [
+              21.2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "Nirmal Kumar Minda",
+            "subCategory": "Promoter",
+            "pct": 20.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.83
+            ]
+          },
+          {
+            "name": "Suman Minda",
+            "subCategory": "Promoter Group",
+            "pct": 13.85,
+            "history": [
+              13.93,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.85
+            ]
+          },
+          {
+            "name": "Singhal Fincap Limited",
+            "subCategory": "Promoter Group",
+            "pct": 2.87,
+            "history": [
+              2.88,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.87
+            ]
+          },
+          {
+            "name": "Minda International Limited",
+            "subCategory": "Promoter Group",
+            "pct": 2.77,
+            "history": [
+              2.79,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.77
+            ]
+          },
+          {
+            "name": "Minda Finance Limited",
+            "subCategory": "Promoter Group",
+            "pct": 1.32,
+            "history": [
+              1.33,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.32
+            ]
+          },
+          {
+            "name": "Pallak Minda",
+            "subCategory": "Promoter Group",
+            "pct": 1.17,
+            "history": [
+              1.18,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.17
+            ]
+          },
+          {
+            "name": "Paridhi Minda",
+            "subCategory": "Promoter Group",
+            "pct": 1.17,
+            "history": [
+              1.18,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.17
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "GOVERNMENT PENSION FUND GLOBAL",
+            "subCategory": "FPI Category I",
+            "pct": 1.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.03
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "CANARA ROBECO MUTUAL FUND A/C CANARA ROBECO EMERGING EQUITIES",
+            "subCategory": "Mutual Funds",
+            "pct": 3.15,
+            "history": [
+              2.9,
+              2.8,
+              2.89,
+              3.15,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "NPS TRUST- A/C SBI PENSION FUND SCHEME - CENTRAL GOVT",
+            "subCategory": "Pension Funds",
+            "pct": 3.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.27,
+              2.24,
+              3.07,
+              3.12
+            ]
+          },
+          {
+            "name": "KOTAK EMERGING EQUITY SCHEME",
+            "subCategory": "Mutual Funds",
+            "pct": 1.83,
+            "history": [
+              null,
+              null,
+              1.44,
+              1.58,
+              1.83,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "CANARA ROBECO MUTUAL FUND A/C CANARA ROBECO LARGE AND MID CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              2.82,
+              2.45,
+              2.21,
+              1.98,
+              1.88,
+              1.53
+            ]
+          },
+          {
+            "name": "DSP LARGE & MID CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.46,
+              1.51
+            ]
+          },
+          {
+            "name": "KOTAK MIDCAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.6,
+              1.6,
+              1.42,
+              1.56,
+              1.45
+            ]
+          },
+          {
+            "name": "Axis Mutul Fund Trustee Limited A/C Axis Mutul Fund A/C Axis Midcap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.42,
+            "history": [
+              null,
+              1.82,
+              1.42,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "Axis Mutual Fund Trustee Limited A/C Axis Mutual Fund A/C Axis Midcap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.3,
+            "history": [
+              2.32,
+              null,
+              null,
+              1.33,
+              1.78,
+              2.09,
+              1.64,
+              1.3,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "SBI Large & Midcap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.3,
+            "history": [
+              1.22,
+              1.27,
+              1.3,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "DSP Midcap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.25,
+            "history": [
+              1.72,
+              1.51,
+              1.42,
+              1.24,
+              1.26,
+              1.16,
+              1.12,
+              1.25,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "Axis Mutual Fund Trustee Limited A/Cn Axis Mutual Fund A/Cn Axis Midcap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.03,
+              null
+            ]
+          }
+        ],
+        "public": []
+      },
+      "fii": "8.78%",
+      "dii": "17.11%"
     },
     "updatedAt": 1794038126821,
     "hasFinancialUpdate": true,
@@ -2844,7 +9010,135 @@
     "shareholding": {
       "promoters": "33.51%",
       "public": "66.49%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          32.52,
+          32.52,
+          33.51,
+          33.5,
+          33.5,
+          33.5,
+          33.5,
+          33.51,
+          33.51,
+          33.51
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          67.48,
+          67.48,
+          66.49,
+          66.5,
+          66.5,
+          66.5,
+          66.5,
+          66.49,
+          66.49,
+          66.49
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126821,
     "hasFinancialUpdate": true,
@@ -2906,8 +9200,515 @@
     "cashFlows": [],
     "shareholding": {
       "promoters": "40.05%",
-      "public": "59.95%",
-      "total": "100.00%"
+      "public": "53.22%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          72.73,
+          72.73,
+          72.73,
+          70.93,
+          70.3,
+          58.39,
+          54.19,
+          58.04,
+          45.01,
+          40.05
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          6.74
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "public": [
+          27.27,
+          27.27,
+          27.27,
+          29.07,
+          29.7,
+          41.61,
+          45.81,
+          41.96,
+          54.99,
+          53.22
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Director or Director's Relatives",
+            "subCategory": "Promoter",
+            "pct": 18.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              18.07
+            ]
+          },
+          {
+            "name": "NIRAJ DAMJI GADA",
+            "subCategory": "Promoter",
+            "pct": 16.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              16.28
+            ]
+          },
+          {
+            "name": "DAMJI MANEK GADA",
+            "subCategory": "Promoter Group",
+            "pct": 6.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.32
+            ]
+          },
+          {
+            "name": "PRIYANKA AGGARWAL",
+            "subCategory": "Promoter Group",
+            "pct": 3.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.9
+            ]
+          },
+          {
+            "name": "RACHANA NIRAJ GADA",
+            "subCategory": "Promoter Group",
+            "pct": 3.86,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.86
+            ]
+          },
+          {
+            "name": "DINA DAMJI GADA",
+            "subCategory": "Promoter Group",
+            "pct": 2.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.98
+            ]
+          },
+          {
+            "name": "HARSHA KAUSHIK GADA",
+            "subCategory": "Promoter Group",
+            "pct": 2.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.28
+            ]
+          },
+          {
+            "name": "KAUSHIK DAMJI GADA HUF",
+            "subCategory": "Promoter Group",
+            "pct": 1.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.23
+            ]
+          },
+          {
+            "name": "BRIJESH AGGARWAL",
+            "subCategory": "Promoter",
+            "pct": 0.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.96
+            ]
+          },
+          {
+            "name": "KAUSHIK DAMJI GADA",
+            "subCategory": "Promoter",
+            "pct": 0.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.74
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "MINERVA VENTURES FUND",
+            "subCategory": "FPI Category I",
+            "pct": 3.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.24
+            ]
+          },
+          {
+            "name": "RESONANCE OPPORTUNITIES FUND",
+            "subCategory": "FPI Category I",
+            "pct": 1.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.73
+            ]
+          }
+        ],
+        "dii": [],
+        "public": [
+          {
+            "name": "SAPAN ANIL SHAH (HUF) .",
+            "subCategory": "Any Other (specify)",
+            "pct": 4.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.59
+            ]
+          },
+          {
+            "name": "BADRIKEDAR COMMERCIALS PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 3.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.51
+            ]
+          },
+          {
+            "name": "SHALIN SHAH",
+            "subCategory": "Individual Investor",
+            "pct": 2.63,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.63
+            ]
+          },
+          {
+            "name": "SHITALBEN SHAILESHKUMAR THAKKAR",
+            "subCategory": "Individual Investor",
+            "pct": 2.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.12
+            ]
+          },
+          {
+            "name": "NUPUR ANIL SHAH",
+            "subCategory": "Individual Investor",
+            "pct": 1.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.85
+            ]
+          },
+          {
+            "name": "GANESH HIRE PURCHASE AND LEASING FINANCE PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.74
+            ]
+          },
+          {
+            "name": "PADMA BAHETY",
+            "subCategory": "Individual Investor",
+            "pct": 1.63,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.63
+            ]
+          },
+          {
+            "name": "SUSHIL BAHETY",
+            "subCategory": "Individual Investor",
+            "pct": 1.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.58
+            ]
+          },
+          {
+            "name": "SAROJDEVI S KABRA",
+            "subCategory": "Individual Investor",
+            "pct": 1.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.49
+            ]
+          },
+          {
+            "name": "ANKIT BAHETY & SONS HUF .",
+            "subCategory": "Any Other (specify)",
+            "pct": 1.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.49
+            ]
+          }
+        ]
+      },
+      "fii": "6.74%",
+      "dii": "0.00%"
     },
     "updatedAt": 1794038126821,
     "hasFinancialUpdate": true,
@@ -2989,8 +9790,258 @@
     ],
     "shareholding": {
       "promoters": "19.02%",
-      "public": "80.98%",
-      "total": "100.00%"
+      "public": "9.44%",
+      "total": "100.00%",
+      "quarters": [
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          20.43,
+          20.29,
+          19.02,
+          19.02,
+          19.02
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          52.51
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          15.17
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          12.46
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          0.89
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "public": [
+          79.57,
+          79.71,
+          75.79,
+          76.46,
+          9.44
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          5.19,
+          4.52,
+          3.85
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [
+          {
+            "name": "ELEVATION CAPITAL V LIMITED",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 8.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              8.13
+            ]
+          },
+          {
+            "name": "NASPERS VENTURES BV",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 7.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              7.01
+            ]
+          },
+          {
+            "name": "VYC11 LIMITED",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 6.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              6.72
+            ]
+          },
+          {
+            "name": "STEADVIEW CAPITAL MAURITIUS LIMITED",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 6.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              6.46
+            ]
+          },
+          {
+            "name": "ACCEL INDIA IV (MAURITIUS) LIMITED",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 4.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              4.84
+            ]
+          },
+          {
+            "name": "BESSEMER INDIA CAPITAL HOLDINGS II LTD.",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 3.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              3.42
+            ]
+          },
+          {
+            "name": "THINK INVESTMENTS PCC",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 2.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              2.84
+            ]
+          },
+          {
+            "name": "DHARANA UC LIMITED",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 2.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              2.01
+            ]
+          },
+          {
+            "name": "VYC23 LIMITED",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 1.99,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.99
+            ]
+          },
+          {
+            "name": "DHARANA FUND L.P.",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 1.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.53
+            ]
+          },
+          {
+            "name": "AROHI SEED SPC-AROHI SEED SP-1",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 1.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.47
+            ]
+          },
+          {
+            "name": "DF INTERNATIONAL PARTNERS V LLC",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 1.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.32
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "SBI Mutual Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 9.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              9.13
+            ]
+          },
+          {
+            "name": "ACROBAT CAPITAL FUND I",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 1.29,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.29
+            ]
+          }
+        ],
+        "public": []
+      },
+      "fii": "52.51%",
+      "dii": "15.17%"
     },
     "updatedAt": 1794038126822,
     "hasFinancialUpdate": true,
@@ -3070,7 +10121,135 @@
     "shareholding": {
       "promoters": "17.21%",
       "public": "82.79%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          19.43,
+          19.43,
+          19.43,
+          19.43,
+          18.65,
+          18.65,
+          18.35,
+          18.35,
+          17.37,
+          17.21
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          80.57,
+          80.57,
+          80.57,
+          80.57,
+          81.35,
+          81.35,
+          81.65,
+          81.65,
+          82.63,
+          82.79
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126822,
     "hasFinancialUpdate": true,
@@ -3138,8 +10317,136 @@
     "cashFlows": [],
     "shareholding": {
       "promoters": "40.09%",
-      "public": "59.91%",
-      "total": "100.00%"
+      "public": "59.80%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          45.11,
+          43.54,
+          43.48,
+          43.89,
+          42.45,
+          41.76,
+          40.52,
+          40.52,
+          40.28,
+          40.09
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          54.89,
+          56.46,
+          56.52,
+          56.04,
+          57.49,
+          58.18,
+          59.37,
+          59.37,
+          59.6,
+          59.8
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0.06,
+          0.06,
+          0.06,
+          0.11,
+          0.11,
+          0.11,
+          0.11
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126822,
     "hasFinancialUpdate": true,
@@ -3202,7 +10509,135 @@
     "shareholding": {
       "promoters": "67.36%",
       "public": "32.64%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          65.94,
+          65.95,
+          65.95,
+          65.95,
+          65.95,
+          65.95,
+          65.95,
+          67.35,
+          67.35,
+          67.36
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          34.06,
+          34.05,
+          34.05,
+          34.05,
+          34.05,
+          34.05,
+          34.05,
+          32.65,
+          32.65,
+          32.64
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126822,
     "hasFinancialUpdate": true,
@@ -3284,9 +10719,137 @@
       }
     ],
     "shareholding": {
-      "promoters": "0%",
-      "public": "100%",
-      "total": "100.00%"
+      "promoters": "0.00%",
+      "public": "100.00%",
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126823,
     "hasFinancialUpdate": true,
@@ -3376,7 +10939,135 @@
     "shareholding": {
       "promoters": "42.67%",
       "public": "57.33%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          69.02,
+          68.94,
+          68.93,
+          68.92,
+          68.92,
+          68.92,
+          42.67,
+          42.67,
+          42.67,
+          42.67
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          30.98,
+          31.06,
+          31.07,
+          31.08,
+          31.08,
+          31.08,
+          57.33,
+          57.33,
+          57.33,
+          57.33
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126823,
     "hasFinancialUpdate": true,
@@ -3465,7 +11156,75 @@
     "shareholding": {
       "promoters": "86.63%",
       "public": "13.37%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          86.77,
+          86.77,
+          86.63,
+          86.63
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          13.23,
+          13.23,
+          13.37,
+          13.37
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126823,
     "hasFinancialUpdate": true,
@@ -3555,7 +11314,135 @@
     "shareholding": {
       "promoters": "74.71%",
       "public": "25.29%",
-      "total": "100.00%"
+      "total": "100.00%",
+      "quarters": [
+        "Jun 2024",
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          74.39,
+          74.39,
+          74.39,
+          74.39,
+          74.39,
+          74.39,
+          74.39,
+          74.71,
+          74.71,
+          74.71
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          25.61,
+          25.61,
+          25.61,
+          25.61,
+          25.61,
+          25.61,
+          25.61,
+          25.29,
+          25.29,
+          25.29
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126824,
     "hasFinancialUpdate": true,
@@ -3643,9 +11530,127 @@
       }
     ],
     "shareholding": {
-      "promoters": "71.5%",
-      "public": "28.5%",
-      "total": "100.00%"
+      "promoters": "71.50%",
+      "public": "28.50%",
+      "total": "100.00%",
+      "quarters": [
+        "Sep 2024",
+        "Dec 2024",
+        "Mar 2025",
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          71.38,
+          71.38,
+          71.38,
+          71.38,
+          71.38,
+          71.38,
+          71.38,
+          71.38,
+          71.5
+        ],
+        "fii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dii": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiMutualFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiInsurance": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "diiPensionFunds": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "government": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "public": [
+          28.62,
+          28.62,
+          28.62,
+          28.62,
+          28.62,
+          28.62,
+          28.62,
+          28.62,
+          28.5
+        ],
+        "employeeTrusts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
     },
     "updatedAt": 1794038126826,
     "hasFinancialUpdate": true,

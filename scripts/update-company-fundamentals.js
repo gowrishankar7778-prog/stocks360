@@ -187,7 +187,6 @@ async function fetchAndParseNseXbrl(xbrlUrl) {
   const cfValid = cfPeriod && (cfo !== null || cfi !== null || cff !== null);
   if (!bsValid && !cfValid) return null;
 
-  const totalBorrowings = ltBorrow + stBorrow;
   const totalEquity = (eqCap || 0) + (reserves || 0);
   const debtToEquity = totalEquity > 0 ? Number((totalBorrowings / totalEquity).toFixed(2)) : null;
 
@@ -354,17 +353,22 @@ async function run() {
       let changed = false;
 
       if (nseInfo.promoterPct !== null) {
-        const nextProm = `${nseInfo.promoterPct}%`;
-        const nextPub = `${Math.max(0, Number((100 - nseInfo.promoterPct).toFixed(2)))}%`;
+        const nextProm = `${nseInfo.promoterPct.toFixed(2)}%`;
+        const nextPub = `${Math.max(0, Number((100 - nseInfo.promoterPct).toFixed(2))).toFixed(2)}%`;
         const prevProm = profile.shareholding && profile.shareholding.promoters;
-        const prevPub = profile.shareholding && profile.shareholding.public;
-        const hasSyntheticSh = profile.shareholding && (profile.shareholding.fii !== undefined || profile.shareholding.dii !== undefined || profile.shareholding.quarters !== undefined);
-        if (!profile.shareholding || prevProm !== nextProm || prevPub !== nextPub || hasSyntheticSh) {
+        if (!profile.shareholding) {
           profile.shareholding = {
             promoters: nextProm,
             public: nextPub,
             total: '100.00%'
           };
+          changed = true;
+        } else if (prevProm !== nextProm) {
+          profile.shareholding.promoters = nextProm;
+          if (!profile.shareholding.fii && !profile.shareholding.dii) {
+            profile.shareholding.public = nextPub;
+          }
+          profile.shareholding.total = '100.00%';
           changed = true;
         }
       }

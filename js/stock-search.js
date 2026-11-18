@@ -666,6 +666,193 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!shareholding || typeof shareholding !== "object" || !shareholding.promoters) {
       return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE shareholding pattern..." : "Shareholding pattern pending official exchange filing."}</div>`;
     }
+
+    const fmtPctCell = (val) => {
+      if (val === null || val === undefined || val === "" || isNaN(Number(val))) return '<span style="color:#94a3b8;">--</span>';
+      return `${Number(val).toFixed(2)}%`;
+    };
+
+    if (Array.isArray(shareholding.quarters) && shareholding.quarters.length > 0 && shareholding.series) {
+      const qs = shareholding.quarters;
+      const nQ = qs.length;
+      const s = shareholding.series;
+      const holders = shareholding.holders || {};
+      const promHolders = Array.isArray(holders.promoters) ? holders.promoters : [];
+      const fiiHolders = Array.isArray(holders.fii) ? holders.fii : [];
+      const diiHolders = Array.isArray(holders.dii) ? holders.dii : [];
+      const pubHolders = Array.isArray(holders.public) ? holders.public : [];
+
+      const hasAnyNumeric = (arr) => Array.isArray(arr) && arr.some((v) => typeof v === "number" && v > 0);
+      const hasFiiOrDii = Array.isArray(s.fii) && s.fii.some((v) => v !== null && v !== undefined);
+      const hasDiiSub = hasAnyNumeric(s.diiMutualFunds) || hasAnyNumeric(s.diiInsurance) || hasAnyNumeric(s.diiPensionFunds);
+      const hasGovt = hasAnyNumeric(s.government);
+      const hasEmpTrust = hasAnyNumeric(s.employeeTrusts);
+      const hasAnyNamedHolders = promHolders.length > 0 || fiiHolders.length > 0 || diiHolders.length > 0 || pubHolders.length > 0 || hasDiiSub;
+
+      const buildSeriesCells = (arr, isBold = false, color = "#0f172a") => {
+        return qs.map((_, qi) => {
+          const val = Array.isArray(arr) ? arr[qi] : null;
+          return `<td style="padding:9px 12px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:${isBold ? "700" : "600"}; color:${color}; white-space:nowrap;">${fmtPctCell(val)}</td>`;
+        }).join("");
+      };
+
+      const buildHolderRows = (groupKey, list, badgeBg, badgeColor) => {
+        if (!Array.isArray(list) || list.length === 0) return "";
+        return list.map((h) => {
+          const hist = Array.isArray(h.history) && h.history.length === nQ
+            ? h.history
+            : qs.map((_, qi) => (qi === nQ - 1 ? h.pct : null));
+          const subBadge = h.subCategory
+            ? `<span style="font-size:0.68rem; font-weight:600; padding:1px 6px; border-radius:4px; background:${badgeBg}; color:${badgeColor}; margin-left:6px; white-space:nowrap;">${escapeHtml(h.subCategory)}</span>`
+            : "";
+          return `
+            <tr class="shp-holder-subrow" data-shp-parent="${escapeHtml(groupKey)}" style="background:#fcfdff;">
+              <td style="padding:7px 12px 7px 32px; border-bottom:1px solid #f1f5f9; font-size:0.82rem; color:#334155; font-weight:500;">
+                <span style="color:#94a3b8; margin-right:6px;">&#8627;</span>${escapeHtml(h.name)}${subBadge}
+              </td>
+              ${hist.map((val) => `<td style="padding:7px 12px; text-align:right; border-bottom:1px solid #f1f5f9; font-size:0.82rem; color:#475569; white-space:nowrap;">${fmtPctCell(val)}</td>`).join("")}
+            </tr>
+          `;
+        }).join("");
+      };
+
+      const buildDiiCategorySubRows = () => {
+        if (!hasDiiSub) return "";
+        const subRows = [
+          { label: "Mutual Funds (Category Total)", arr: s.diiMutualFunds },
+          { label: "Insurance Companies (Category Total)", arr: s.diiInsurance },
+          { label: "Provident & Pension Funds (Category Total)", arr: s.diiPensionFunds }
+        ].filter((r) => hasAnyNumeric(r.arr));
+        return subRows.map((r) => `
+          <tr class="shp-holder-subrow" data-shp-parent="dii" style="background:#f8fafc;">
+            <td style="padding:7px 12px 7px 26px; border-bottom:1px solid #f1f5f9; font-size:0.82rem; color:#0f172a; font-weight:600;">
+              <span style="color:#059669; margin-right:6px;">&bull;</span>${escapeHtml(r.label)}
+            </td>
+            ${qs.map((_, qi) => `<td style="padding:7px 12px; text-align:right; border-bottom:1px solid #f1f5f9; font-size:0.82rem; font-weight:600; color:#0f172a; white-space:nowrap;">${fmtPctCell(r.arr[qi])}</td>`).join("")}
+          </tr>
+        `).join("");
+      };
+
+      const renderCatToggleBtn = (groupKey, countLabel) => `
+        <button type="button" class="shp-cat-toggle-btn" data-shp-group="${escapeHtml(groupKey)}" aria-expanded="true" title="Expand or collapse named ${escapeHtml(groupKey)} shareholders" style="margin-left:8px; padding:1px 7px; font-size:0.75rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:4px; cursor:pointer;">
+          <span class="shp-toggle-icon">&minus;</span> ${escapeHtml(countLabel)}
+        </button>
+      `;
+
+      const latestIdx = nQ - 1;
+      const latestProm = Number(s.promoters && s.promoters[latestIdx]) || 0;
+      const latestFii = Number(s.fii && s.fii[latestIdx]) || 0;
+      const latestDii = Number(s.dii && s.dii[latestIdx]) || 0;
+      const latestGovt = Number(s.government && s.government[latestIdx]) || 0;
+      const latestPub = Number(s.public && s.public[latestIdx]) || Math.max(0, Number((100 - latestProm - latestFii - latestDii - latestGovt).toFixed(2)));
+
+      return `
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+          <span style="font-size:0.83rem; color:#475569; font-weight:600;">
+            Official NSE Quarterly Shareholding Pattern (${nQ} Quarters &bull; SEBI Reg. 31 Filings, Named Holders &ge; 1%)
+          </span>
+          ${hasAnyNamedHolders ? `
+            <button type="button" id="btn-toggle-all-shp-holders" data-expanded="true" style="padding:5px 12px; font-size:0.78rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; cursor:pointer;">
+              Collapse Named Institutions (&minus;)
+            </button>
+          ` : ""}
+        </div>
+        <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
+          <table class="stocks360-data-table" id="company-shareholding-table" style="font-size:0.86rem; width:100%; border-collapse:collapse; min-width:720px;">
+            <thead>
+              <tr style="background:#f8fafc;">
+                <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700; min-width:260px;">Shareholder Category / Named Institution</th>
+                ${qs.map((q) => `<th style="padding:10px 12px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700; white-space:nowrap;">${escapeHtml(q)}</th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a;">
+                  <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#2563eb; margin-right:8px;"></span>Promoters &amp; Promoter Group
+                  ${promHolders.length > 0 ? renderCatToggleBtn("promoters", `${promHolders.length} named`) : ""}
+                </td>
+                ${buildSeriesCells(s.promoters, true, "#0f172a")}
+              </tr>
+              ${buildHolderRows("promoters", promHolders, "#dbeafe", "#1e40af")}
+
+              ${hasFiiOrDii ? `
+                <tr>
+                  <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a;">
+                    <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#7c3aed; margin-right:8px;"></span>FIIs / Foreign Institutions (FPI)
+                    ${fiiHolders.length > 0 ? renderCatToggleBtn("fii", `${fiiHolders.length} institutions`) : ""}
+                  </td>
+                  ${buildSeriesCells(s.fii, true, "#0f172a")}
+                </tr>
+                ${buildHolderRows("fii", fiiHolders, "#f3e8ff", "#6b21a8")}
+
+                <tr>
+                  <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a;">
+                    <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#059669; margin-right:8px;"></span>DIIs / Domestic Institutions (MF, Insurance, NPS)
+                    ${(diiHolders.length > 0 || hasDiiSub) ? renderCatToggleBtn("dii", diiHolders.length > 0 ? `${diiHolders.length} institutions` : "breakdown") : ""}
+                  </td>
+                  ${buildSeriesCells(s.dii, true, "#0f172a")}
+                </tr>
+                ${buildDiiCategorySubRows()}
+                ${buildHolderRows("dii", diiHolders, "#d1fae5", "#065f46")}
+              ` : ""}
+
+              ${hasGovt ? `
+                <tr>
+                  <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; color:#0f172a;">
+                    <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#d97706; margin-right:8px;"></span>Government (Central / State)
+                  </td>
+                  ${buildSeriesCells(s.government, false, "#334155")}
+                </tr>
+              ` : ""}
+
+              <tr>
+                <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:700; color:#0f172a;">
+                  <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#64748b; margin-right:8px;"></span>Public &amp; Retail Shareholders
+                  ${pubHolders.length > 0 ? renderCatToggleBtn("public", `${pubHolders.length} major`) : ""}
+                </td>
+                ${buildSeriesCells(s.public, false, "#334155")}
+              </tr>
+              ${buildHolderRows("public", pubHolders, "#f1f5f9", "#334155")}
+
+              ${hasEmpTrust ? `
+                <tr>
+                  <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; color:#475569;">
+                    <span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#0ea5e9; margin-right:8px;"></span>Employee Benefit Trusts
+                  </td>
+                  ${buildSeriesCells(s.employeeTrusts, false, "#475569")}
+                </tr>
+              ` : ""}
+
+              <tr style="background:#fafafa;">
+                <td style="padding:10px 14px; font-weight:700; color:#0f172a;">Total Shareholding</td>
+                ${qs.map(() => `<td style="padding:10px 12px; text-align:right; font-weight:700; color:#0f172a;">100.00%</td>`).join("")}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:8px; font-size:0.8rem; color:#334155; font-weight:600;">
+            <span>Latest Filing Split (${escapeHtml(qs[latestIdx])}):</span>
+            <div style="display:flex; flex-wrap:wrap; gap:14px;">
+              <span><i style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#2563eb; margin-right:5px;"></i>Promoters: ${latestProm.toFixed(2)}%</span>
+              ${hasFiiOrDii ? `
+                <span><i style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#7c3aed; margin-right:5px;"></i>FIIs: ${latestFii.toFixed(2)}%</span>
+                <span><i style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#059669; margin-right:5px;"></i>DIIs: ${latestDii.toFixed(2)}%</span>
+              ` : ""}
+              ${latestGovt > 0 ? `<span><i style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#d97706; margin-right:5px;"></i>Govt: ${latestGovt.toFixed(2)}%</span>` : ""}
+              <span><i style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#64748b; margin-right:5px;"></i>Public: ${latestPub.toFixed(2)}%</span>
+            </div>
+          </div>
+          <div style="height:12px; border-radius:6px; overflow:hidden; display:flex; background:#94a3b8;">
+            <div style="width:${Math.max(0, Math.min(100, latestProm))}%; background:#2563eb;" title="Promoters: ${latestProm.toFixed(2)}%"></div>
+            <div style="width:${Math.max(0, Math.min(100, latestFii))}%; background:#7c3aed;" title="FIIs: ${latestFii.toFixed(2)}%"></div>
+            <div style="width:${Math.max(0, Math.min(100, latestDii))}%; background:#059669;" title="DIIs: ${latestDii.toFixed(2)}%"></div>
+            <div style="width:${Math.max(0, Math.min(100, latestGovt))}%; background:#d97706;" title="Government: ${latestGovt.toFixed(2)}%"></div>
+          </div>
+        </div>
+      `;
+    }
+
     const promStr = String(shareholding.promoters).trim();
     const promNum = parseFloat(promStr);
     const pubStr = shareholding.public && shareholding.public !== "--"
@@ -1139,7 +1326,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=66")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=67")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1151,7 +1338,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=66")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=67")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1171,7 +1358,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=66")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=67")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1503,6 +1690,40 @@ document.addEventListener("DOMContentLoaded", function () {
             if (searchInput) searchInput.value = sym;
             performSearch(sym, true);
           }
+          return;
+        }
+
+        const shpCatBtn = e.target.closest(".shp-cat-toggle-btn");
+        if (shpCatBtn) {
+          e.preventDefault();
+          const group = shpCatBtn.getAttribute("data-shp-group");
+          const isExp = shpCatBtn.getAttribute("aria-expanded") !== "false";
+          const nextExp = !isExp;
+          shpCatBtn.setAttribute("aria-expanded", nextExp ? "true" : "false");
+          const iconEl = shpCatBtn.querySelector(".shp-toggle-icon");
+          if (iconEl) iconEl.innerHTML = nextExp ? "&minus;" : "+";
+          const rows = stockResult.querySelectorAll(`tr.shp-holder-subrow[data-shp-parent="${group}"]`);
+          rows.forEach((r) => {
+            r.style.display = nextExp ? "" : "none";
+          });
+          return;
+        }
+
+        const shpAllBtn = e.target.closest("#btn-toggle-all-shp-holders");
+        if (shpAllBtn) {
+          e.preventDefault();
+          const isExp = shpAllBtn.getAttribute("data-expanded") !== "false";
+          const nextExp = !isExp;
+          shpAllBtn.setAttribute("data-expanded", nextExp ? "true" : "false");
+          shpAllBtn.innerHTML = nextExp ? "Collapse Named Institutions (&minus;)" : "Expand Named Institutions (+)";
+          stockResult.querySelectorAll(".shp-cat-toggle-btn").forEach((b) => {
+            b.setAttribute("aria-expanded", nextExp ? "true" : "false");
+            const ic = b.querySelector(".shp-toggle-icon");
+            if (ic) ic.innerHTML = nextExp ? "&minus;" : "+";
+          });
+          stockResult.querySelectorAll("tr.shp-holder-subrow").forEach((r) => {
+            r.style.display = nextExp ? "" : "none";
+          });
           return;
         }
 
