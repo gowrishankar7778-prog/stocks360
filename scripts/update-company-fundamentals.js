@@ -766,6 +766,7 @@ async function run() {
             const idxBs = profile.balanceSheet.findIndex((r) => r.year === xbrlData.balanceSheetRow.year);
             if (idxBs >= 0) profile.balanceSheet[idxBs] = xbrlData.balanceSheetRow;
             else profile.balanceSheet.push(xbrlData.balanceSheetRow);
+            profile.balanceSheet.sort((a, b) => periodSortKey(a.year) - periodSortKey(b.year));
             if (profile.balanceSheet.length > 6) profile.balanceSheet = profile.balanceSheet.slice(-6);
             changed = true;
           }

@@ -571,51 +571,57 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!Array.isArray(balanceSheet) || balanceSheet.length === 0) {
       return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE XBRL balance sheet..." : "Balance sheet statements pending exchange filing."}</div>`;
     }
+    const cols = balanceSheet.slice(-6);
     return `
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+        <span style="font-size:0.83rem; color:#475569; font-weight:600;">
+          Official NSE XBRL Balance Sheet (Rolling ${cols.length} Filing Period${cols.length > 1 ? "s" : ""} &bull; ₹ Crores)
+        </span>
+      </div>
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
-        <table class="stocks360-data-table" id="company-balancesheet-table" style="font-size:0.9rem; width:100%; border-collapse:collapse; min-width:540px;">
+        <table class="stocks360-data-table" id="company-balancesheet-table" style="font-size:0.88rem; width:100%; border-collapse:collapse; min-width:620px;">
           <thead>
             <tr style="background:#f8fafc;">
-              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700;">Line Item</th>
-              ${balanceSheet.map(b => `<th style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">${escapeHtml(String(b.year))}</th>`).join('')}
+              <th style="padding:10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-weight:700; min-width:170px;">Line Item</th>
+              ${cols.map(b => `<th style="padding:10px 12px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700; white-space:nowrap;">${escapeHtml(String(b.year))}</th>`).join('')}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Equity Capital</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(b.equityCapital))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Equity Capital</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; white-space:nowrap;">₹ ${escapeHtml(String(b.equityCapital))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Reserves &amp; Surplus</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(b.reserves))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Reserves &amp; Surplus</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; white-space:nowrap;">₹ ${escapeHtml(String(b.reserves))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600;">Borrowings (Debt)</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${b.borrowings === 'Nil' || b.borrowings === '0' ? '#16a34a' : '#0f172a'};">${b.borrowings === 'Nil' ? 'Nil' : '₹ ' + escapeHtml(String(b.borrowings))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; font-weight:600; white-space:nowrap;">Borrowings (Debt)</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; font-weight:600; color:${b.borrowings === 'Nil' || b.borrowings === '0' ? '#16a34a' : '#0f172a'}; white-space:nowrap;">${b.borrowings === 'Nil' ? 'Nil' : '₹ ' + escapeHtml(String(b.borrowings))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Other Liabilities</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b;">₹ ${escapeHtml(String(b.otherLiabilities))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Other Liabilities</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b; white-space:nowrap;">₹ ${escapeHtml(String(b.otherLiabilities))}</td>`).join('')}
             </tr>
             <tr style="background:#fafafa;">
-              <td style="padding:10px 14px; border-bottom:1px solid #e2e8f0; font-weight:700;">Total Liabilities</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;">₹ ${escapeHtml(String(b.totalLiabilities))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #e2e8f0; font-weight:700; white-space:nowrap;">Total Liabilities</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700; white-space:nowrap;">₹ ${escapeHtml(String(b.totalLiabilities))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Fixed Assets</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(b.fixedAssets))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Fixed Assets</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; white-space:nowrap;">₹ ${escapeHtml(String(b.fixedAssets))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Investments</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9;">₹ ${escapeHtml(String(b.investments))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Investments</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; white-space:nowrap;">₹ ${escapeHtml(String(b.investments))}</td>`).join('')}
             </tr>
             <tr>
-              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9;">Other Assets</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b;">₹ ${escapeHtml(String(b.otherAssets))}</td>`).join('')}
+              <td style="padding:10px 14px; border-bottom:1px solid #f1f5f9; white-space:nowrap;">Other Assets</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; border-bottom:1px solid #f1f5f9; color:#64748b; white-space:nowrap;">₹ ${escapeHtml(String(b.otherAssets))}</td>`).join('')}
             </tr>
             <tr style="background:#fafafa;">
-              <td style="padding:10px 14px; font-weight:700;">Total Assets</td>
-              ${balanceSheet.map(b => `<td style="padding:10px 14px; text-align:right; font-weight:700;">₹ ${escapeHtml(String(b.totalAssets))}</td>`).join('')}
+              <td style="padding:10px 14px; font-weight:700; white-space:nowrap;">Total Assets</td>
+              ${cols.map(b => `<td style="padding:10px 12px; text-align:right; font-weight:700; white-space:nowrap;">₹ ${escapeHtml(String(b.totalAssets))}</td>`).join('')}
             </tr>
           </tbody>
         </table>
@@ -1332,7 +1338,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=68")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=69")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1344,7 +1350,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=68")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=69")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1364,7 +1370,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=68")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=69")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
