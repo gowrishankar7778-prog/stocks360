@@ -1496,6 +1496,27 @@
     ],
     "cashFlows": [
       {
+        "year": "Sep 23",
+        "cfo": "993",
+        "cfi": "-1,429",
+        "cff": "222",
+        "netCash": "-214"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "2,094",
+        "cfi": "-2,227",
+        "cff": "-72",
+        "netCash": "-205"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "607",
+        "cfi": "-667",
+        "cff": "-204",
+        "netCash": "-264"
+      },
+      {
         "year": "Sep 26",
         "cfo": "402",
         "cfi": "-653",
@@ -2117,6 +2138,42 @@
       }
     ],
     "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "2,719",
+        "reserves": "690",
+        "borrowings": "121",
+        "otherLiabilities": "2,401",
+        "totalLiabilities": "5,931",
+        "fixedAssets": "734",
+        "investments": "0",
+        "otherAssets": "5,197",
+        "totalAssets": "5,931"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "2,722",
+        "reserves": "1,199",
+        "borrowings": "110",
+        "otherLiabilities": "3,148",
+        "totalLiabilities": "7,179",
+        "fixedAssets": "810",
+        "investments": "0",
+        "otherAssets": "6,369",
+        "totalAssets": "7,179"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "2,731",
+        "reserves": "1,764",
+        "borrowings": "232",
+        "otherLiabilities": "4,922",
+        "totalLiabilities": "9,649",
+        "fixedAssets": "856",
+        "investments": "0",
+        "otherAssets": "8,793",
+        "totalAssets": "9,649"
+      },
       {
         "year": "Sep 26",
         "equityCapital": "2,751",
@@ -3896,6 +3953,27 @@
     ],
     "cashFlows": [
       {
+        "year": "Sep 23",
+        "cfo": "3,440",
+        "cfi": "-1,583",
+        "cff": "-1,815",
+        "netCash": "42"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "2,911",
+        "cfi": "-4,261",
+        "cff": "1,362",
+        "netCash": "12"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-1,144",
+        "cfi": "-2,307",
+        "cff": "3,450",
+        "netCash": "-1"
+      },
+      {
         "year": "Sep 26",
         "cfo": "7,477",
         "cfi": "-5,109",
@@ -4317,6 +4395,18 @@
         "investments": "0",
         "otherAssets": "21,971",
         "totalAssets": "23,182"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "71",
+        "reserves": "15,286",
+        "borrowings": "0",
+        "otherLiabilities": "10,051",
+        "totalLiabilities": "25,408",
+        "fixedAssets": "1,339",
+        "investments": "1",
+        "otherAssets": "24,068",
+        "totalAssets": "25,408"
       },
       {
         "year": "Sep 26",
@@ -11935,8 +12025,67 @@
         "eps": "₹4.53"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "32",
+        "reserves": "385",
+        "borrowings": "344",
+        "otherLiabilities": "266",
+        "totalLiabilities": "1,027",
+        "fixedAssets": "214",
+        "investments": "0",
+        "otherAssets": "813",
+        "totalAssets": "1,027"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "158",
+        "reserves": "292",
+        "borrowings": "348",
+        "otherLiabilities": "353",
+        "totalLiabilities": "1,151",
+        "fixedAssets": "226",
+        "investments": "0",
+        "otherAssets": "925",
+        "totalAssets": "1,151"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "173",
+        "reserves": "531",
+        "borrowings": "369",
+        "otherLiabilities": "364",
+        "totalLiabilities": "1,437",
+        "fixedAssets": "205",
+        "investments": "180",
+        "otherAssets": "1,052",
+        "totalAssets": "1,437"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "19",
+        "cfi": "-68",
+        "cff": "51",
+        "netCash": "2"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "52",
+        "cfi": "-80",
+        "cff": "30",
+        "netCash": "2"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-67",
+        "cfi": "-163",
+        "cff": "229",
+        "netCash": "-1"
+      }
+    ],
     "shareholding": {
       "promoters": "43.91%",
       "public": "50.49%",
@@ -12862,6 +13011,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "85",
+        "reserves": "-43",
+        "borrowings": "125",
+        "otherLiabilities": "137",
+        "totalLiabilities": "304",
+        "fixedAssets": "134",
+        "investments": "0",
+        "otherAssets": "170",
+        "totalAssets": "304"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "88",
+        "reserves": "-43",
+        "borrowings": "125",
+        "otherLiabilities": "142",
+        "totalLiabilities": "312",
+        "fixedAssets": "146",
+        "investments": "0",
+        "otherAssets": "166",
+        "totalAssets": "312"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "145",
         "reserves": "15",
@@ -12875,6 +13048,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "6",
+        "cfi": "0",
+        "cff": "-6",
+        "netCash": "0"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "12",
+        "cfi": "-8",
+        "cff": "-3",
+        "netCash": "1"
+      },
       {
         "year": "Sep 26",
         "cfo": "-56",
@@ -13161,6 +13348,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "17",
+        "reserves": "416",
+        "borrowings": "295",
+        "otherLiabilities": "203",
+        "totalLiabilities": "931",
+        "fixedAssets": "241",
+        "investments": "1",
+        "otherAssets": "689",
+        "totalAssets": "931"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "17",
+        "reserves": "456",
+        "borrowings": "308",
+        "otherLiabilities": "212",
+        "totalLiabilities": "993",
+        "fixedAssets": "258",
+        "investments": "0",
+        "otherAssets": "735",
+        "totalAssets": "993"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "18",
+        "reserves": "500",
+        "borrowings": "348",
+        "otherLiabilities": "243",
+        "totalLiabilities": "1,109",
+        "fixedAssets": "271",
+        "investments": "1",
+        "otherAssets": "837",
+        "totalAssets": "1,109"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "18",
         "reserves": "578",
@@ -13174,6 +13397,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "1",
+        "cfi": "-17",
+        "cff": "7",
+        "netCash": "-9"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "24",
+        "cfi": "-45",
+        "cff": "16",
+        "netCash": "-5"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-7",
+        "cfi": "-13",
+        "cff": "20",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "-12",
@@ -16121,6 +16365,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "8",
+        "reserves": "1,106",
+        "borrowings": "0",
+        "otherLiabilities": "62",
+        "totalLiabilities": "1,176",
+        "fixedAssets": "62",
+        "investments": "287",
+        "otherAssets": "827",
+        "totalAssets": "1,176"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "8",
+        "reserves": "1,254",
+        "borrowings": "0",
+        "otherLiabilities": "87",
+        "totalLiabilities": "1,349",
+        "fixedAssets": "61",
+        "investments": "307",
+        "otherAssets": "981",
+        "totalAssets": "1,349"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "8",
+        "reserves": "1,343",
+        "borrowings": "0",
+        "otherLiabilities": "110",
+        "totalLiabilities": "1,461",
+        "fixedAssets": "59",
+        "investments": "308",
+        "otherAssets": "1,094",
+        "totalAssets": "1,461"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "8",
         "reserves": "1,512",
@@ -16134,6 +16414,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "54",
+        "cfi": "-52",
+        "cff": "0",
+        "netCash": "2"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "154",
+        "cfi": "-130",
+        "cff": "-4",
+        "netCash": "20"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "67",
+        "cfi": "-98",
+        "cff": "0",
+        "netCash": "-31"
+      },
       {
         "year": "Sep 26",
         "cfo": "355",
@@ -20369,8 +20670,67 @@
         "eps": "₹0.2"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "74",
+        "reserves": "-663",
+        "borrowings": "900",
+        "otherLiabilities": "32",
+        "totalLiabilities": "343",
+        "fixedAssets": "73",
+        "investments": "0",
+        "otherAssets": "270",
+        "totalAssets": "343"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "74",
+        "reserves": "-666",
+        "borrowings": "900",
+        "otherLiabilities": "32",
+        "totalLiabilities": "340",
+        "fixedAssets": "70",
+        "investments": "0",
+        "otherAssets": "270",
+        "totalAssets": "340"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "74",
+        "reserves": "-668",
+        "borrowings": "900",
+        "otherLiabilities": "31",
+        "totalLiabilities": "337",
+        "fixedAssets": "68",
+        "investments": "0",
+        "otherAssets": "269",
+        "totalAssets": "337"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-2",
+        "cfi": "1",
+        "cff": "0",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-1",
+        "cfi": "1",
+        "cff": "-1",
+        "netCash": "-1"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "12.42%",
       "public": "87.58%",
@@ -23687,6 +24047,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "10",
+        "reserves": "843",
+        "borrowings": "409",
+        "otherLiabilities": "179",
+        "totalLiabilities": "1,441",
+        "fixedAssets": "757",
+        "investments": "0",
+        "otherAssets": "684",
+        "totalAssets": "1,441"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "10",
+        "reserves": "922",
+        "borrowings": "306",
+        "otherLiabilities": "166",
+        "totalLiabilities": "1,404",
+        "fixedAssets": "837",
+        "investments": "0",
+        "otherAssets": "567",
+        "totalAssets": "1,404"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "1,028",
@@ -23700,6 +24084,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "159",
+        "cfi": "-104",
+        "cff": "-54",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "362",
+        "cfi": "-171",
+        "cff": "-192",
+        "netCash": "-1"
+      },
       {
         "year": "Sep 26",
         "cfo": "71",
@@ -24474,6 +24872,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "111",
+        "reserves": "817",
+        "borrowings": "84",
+        "otherLiabilities": "559",
+        "totalLiabilities": "1,571",
+        "fixedAssets": "844",
+        "investments": "0",
+        "otherAssets": "727",
+        "totalAssets": "1,571"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "111",
+        "reserves": "784",
+        "borrowings": "158",
+        "otherLiabilities": "448",
+        "totalLiabilities": "1,501",
+        "fixedAssets": "852",
+        "investments": "0",
+        "otherAssets": "649",
+        "totalAssets": "1,501"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "111",
         "reserves": "851",
@@ -24487,6 +24909,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "155",
+        "cfi": "-157",
+        "cff": "3",
+        "netCash": "1"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-122",
+        "cfi": "59",
+        "cff": "57",
+        "netCash": "-6"
+      },
       {
         "year": "Sep 26",
         "cfo": "-27",
@@ -26213,6 +26649,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "17",
+        "reserves": "18",
+        "borrowings": "39",
+        "otherLiabilities": "53",
+        "totalLiabilities": "127",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "126",
+        "totalAssets": "127"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "17",
+        "reserves": "41",
+        "borrowings": "37",
+        "otherLiabilities": "32",
+        "totalLiabilities": "127",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "126",
+        "totalAssets": "127"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "17",
+        "reserves": "45",
+        "borrowings": "21",
+        "otherLiabilities": "48",
+        "totalLiabilities": "131",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "129",
+        "totalAssets": "131"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "17",
         "reserves": "92",
@@ -26226,6 +26698,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-2",
+        "cfi": "-5",
+        "cff": "8",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "0",
+        "cfi": "-2",
+        "cff": "6",
+        "netCash": "4"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "13",
+        "cfi": "0",
+        "cff": "-17",
+        "netCash": "-4"
+      },
       {
         "year": "Sep 26",
         "cfo": "11",
@@ -26656,6 +27149,42 @@
       }
     ],
     "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "947",
+        "reserves": "10,112",
+        "borrowings": "26,212",
+        "otherLiabilities": "13,117",
+        "totalLiabilities": "50,388",
+        "fixedAssets": "402",
+        "investments": "2,536",
+        "otherAssets": "47,450",
+        "totalAssets": "50,388"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "951",
+        "reserves": "11,133",
+        "borrowings": "31,993",
+        "otherLiabilities": "14,094",
+        "totalLiabilities": "58,171",
+        "fixedAssets": "438",
+        "investments": "3,519",
+        "otherAssets": "54,214",
+        "totalAssets": "58,171"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "951",
+        "reserves": "12,138",
+        "borrowings": "35,280",
+        "otherLiabilities": "13,503",
+        "totalLiabilities": "61,872",
+        "fixedAssets": "408",
+        "investments": "3,658",
+        "otherAssets": "57,806",
+        "totalAssets": "61,872"
+      },
       {
         "year": "Sep 26",
         "equityCapital": "952",
@@ -27718,7 +28247,44 @@
         "eps": "₹23.7"
       }
     ],
-    "balanceSheet": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "31",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "31",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "31",
+        "reserves": "0",
+        "borrowings": "0",
+        "otherLiabilities": "0",
+        "totalLiabilities": "0",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "0"
+      }
+    ],
     "cashFlows": [],
     "shareholding": {
       "promoters": "74.13%",
@@ -28123,6 +28689,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "18",
+        "reserves": "830",
+        "borrowings": "118",
+        "otherLiabilities": "167",
+        "totalLiabilities": "1,133",
+        "fixedAssets": "80",
+        "investments": "18",
+        "otherAssets": "1,035",
+        "totalAssets": "1,133"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "18",
+        "reserves": "923",
+        "borrowings": "108",
+        "otherLiabilities": "224",
+        "totalLiabilities": "1,273",
+        "fixedAssets": "80",
+        "investments": "22",
+        "otherAssets": "1,171",
+        "totalAssets": "1,273"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "18",
+        "reserves": "859",
+        "borrowings": "72",
+        "otherLiabilities": "136",
+        "totalLiabilities": "1,085",
+        "fixedAssets": "78",
+        "investments": "22",
+        "otherAssets": "985",
+        "totalAssets": "1,085"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "18",
         "reserves": "800",
@@ -28136,6 +28738,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "23",
+        "cfi": "-18",
+        "cff": "-20",
+        "netCash": "-15"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "121",
+        "cfi": "-24",
+        "cff": "-53",
+        "netCash": "44"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-42",
+        "cfi": "3",
+        "cff": "-47",
+        "netCash": "-86"
+      },
       {
         "year": "Sep 26",
         "cfo": "-10",
@@ -31301,6 +31924,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "17",
+        "reserves": "-6",
+        "borrowings": "119",
+        "otherLiabilities": "132",
+        "totalLiabilities": "262",
+        "fixedAssets": "3",
+        "investments": "0",
+        "otherAssets": "259",
+        "totalAssets": "262"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "17",
+        "reserves": "-23",
+        "borrowings": "118",
+        "otherLiabilities": "84",
+        "totalLiabilities": "196",
+        "fixedAssets": "4",
+        "investments": "0",
+        "otherAssets": "192",
+        "totalAssets": "196"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "17",
+        "reserves": "-26",
+        "borrowings": "112",
+        "otherLiabilities": "82",
+        "totalLiabilities": "185",
+        "fixedAssets": "3",
+        "investments": "0",
+        "otherAssets": "182",
+        "totalAssets": "185"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "17",
         "reserves": "-72",
@@ -31314,6 +31973,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "5",
+        "cfi": "0",
+        "cff": "-8",
+        "netCash": "-3"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "5",
+        "cfi": "0",
+        "cff": "-9",
+        "netCash": "-4"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "2",
+        "netCash": "2"
+      },
       {
         "year": "Sep 26",
         "cfo": "-2",
@@ -33301,6 +33981,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "1,371",
+        "reserves": "-224",
+        "borrowings": "419",
+        "otherLiabilities": "542",
+        "totalLiabilities": "2,108",
+        "fixedAssets": "30",
+        "investments": "1",
+        "otherAssets": "2,077",
+        "totalAssets": "2,108"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "1,410",
+        "reserves": "-200",
+        "borrowings": "452",
+        "otherLiabilities": "547",
+        "totalLiabilities": "2,209",
+        "fixedAssets": "28",
+        "investments": "1",
+        "otherAssets": "2,180",
+        "totalAssets": "2,209"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "1,564",
+        "reserves": "-143",
+        "borrowings": "379",
+        "otherLiabilities": "632",
+        "totalLiabilities": "2,432",
+        "fixedAssets": "26",
+        "investments": "1",
+        "otherAssets": "2,405",
+        "totalAssets": "2,432"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "1,946",
         "reserves": "-31",
@@ -33314,6 +34030,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-54",
+        "cfi": "-4",
+        "cff": "42",
+        "netCash": "-16"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-121",
+        "cfi": "-24",
+        "cff": "130",
+        "netCash": "-15"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-107",
+        "cfi": "-3",
+        "cff": "101",
+        "netCash": "-9"
+      },
       {
         "year": "Sep 26",
         "cfo": "-76",
@@ -34177,6 +34914,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "12",
+        "reserves": "1,759",
+        "borrowings": "0",
+        "otherLiabilities": "431",
+        "totalLiabilities": "2,202",
+        "fixedAssets": "782",
+        "investments": "233",
+        "otherAssets": "1,187",
+        "totalAssets": "2,202"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "12",
+        "reserves": "1,899",
+        "borrowings": "21",
+        "otherLiabilities": "459",
+        "totalLiabilities": "2,391",
+        "fixedAssets": "774",
+        "investments": "248",
+        "otherAssets": "1,369",
+        "totalAssets": "2,391"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "12",
+        "reserves": "1,953",
+        "borrowings": "82",
+        "otherLiabilities": "402",
+        "totalLiabilities": "2,449",
+        "fixedAssets": "762",
+        "investments": "292",
+        "otherAssets": "1,395",
+        "totalAssets": "2,449"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "12",
         "reserves": "2,002",
@@ -34190,6 +34963,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "76",
+        "cfi": "-42",
+        "cff": "-39",
+        "netCash": "-5"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "202",
+        "cfi": "-225",
+        "cff": "-19",
+        "netCash": "-42"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-34",
+        "cfi": "13",
+        "cff": "27",
+        "netCash": "6"
+      },
       {
         "year": "Sep 26",
         "cfo": "39",
@@ -35064,6 +35858,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "13",
+        "reserves": "-73",
+        "borrowings": "160",
+        "otherLiabilities": "68",
+        "totalLiabilities": "168",
+        "fixedAssets": "28",
+        "investments": "0",
+        "otherAssets": "140",
+        "totalAssets": "168"
+      },
+      {
         "year": "Mar 25",
         "equityCapital": "13",
         "reserves": "33",
@@ -35077,6 +35883,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
       {
         "year": "Mar 25",
         "cfo": "3",
@@ -35434,8 +36247,67 @@
         "eps": "₹-0.28"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "27",
+        "reserves": "803",
+        "borrowings": "770",
+        "otherLiabilities": "15",
+        "totalLiabilities": "1,615",
+        "fixedAssets": "679",
+        "investments": "0",
+        "otherAssets": "936",
+        "totalAssets": "1,615"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "27",
+        "reserves": "801",
+        "borrowings": "771",
+        "otherLiabilities": "13",
+        "totalLiabilities": "1,612",
+        "fixedAssets": "670",
+        "investments": "20",
+        "otherAssets": "922",
+        "totalAssets": "1,612"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "27",
+        "reserves": "801",
+        "borrowings": "772",
+        "otherLiabilities": "13",
+        "totalLiabilities": "1,613",
+        "fixedAssets": "661",
+        "investments": "0",
+        "otherAssets": "952",
+        "totalAssets": "1,613"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "5",
+        "cfi": "-6",
+        "cff": "1",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-10",
+        "cfi": "9",
+        "cff": "1",
+        "netCash": "0"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-7",
+        "cfi": "6",
+        "cff": "1",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "64.50%",
       "public": "34.53%",
@@ -36404,6 +37276,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "14",
+        "reserves": "27",
+        "borrowings": "77",
+        "otherLiabilities": "72",
+        "totalLiabilities": "190",
+        "fixedAssets": "72",
+        "investments": "0",
+        "otherAssets": "118",
+        "totalAssets": "190"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "14",
+        "reserves": "33",
+        "borrowings": "80",
+        "otherLiabilities": "71",
+        "totalLiabilities": "198",
+        "fixedAssets": "78",
+        "investments": "0",
+        "otherAssets": "120",
+        "totalAssets": "198"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "14",
+        "reserves": "40",
+        "borrowings": "106",
+        "otherLiabilities": "78",
+        "totalLiabilities": "238",
+        "fixedAssets": "83",
+        "investments": "0",
+        "otherAssets": "155",
+        "totalAssets": "238"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "16",
         "reserves": "80",
@@ -36417,6 +37325,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "17",
+        "cfi": "-4",
+        "cff": "-13",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "38",
+        "cfi": "-19",
+        "cff": "-15",
+        "netCash": "4"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "5",
+        "cfi": "-22",
+        "cff": "15",
+        "netCash": "-2"
+      },
       {
         "year": "Sep 26",
         "cfo": "27",
@@ -36812,8 +37741,67 @@
         "eps": "₹-0.46"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "27",
+        "reserves": "1",
+        "borrowings": "17",
+        "otherLiabilities": "20",
+        "totalLiabilities": "65",
+        "fixedAssets": "18",
+        "investments": "4",
+        "otherAssets": "43",
+        "totalAssets": "65"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "27",
+        "reserves": "0",
+        "borrowings": "19",
+        "otherLiabilities": "23",
+        "totalLiabilities": "69",
+        "fixedAssets": "18",
+        "investments": "4",
+        "otherAssets": "47",
+        "totalAssets": "69"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "27",
+        "reserves": "-1",
+        "borrowings": "16",
+        "otherLiabilities": "23",
+        "totalLiabilities": "65",
+        "fixedAssets": "18",
+        "investments": "4",
+        "otherAssets": "43",
+        "totalAssets": "65"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-3",
+        "cfi": "0",
+        "cff": "4",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-5",
+        "cfi": "0",
+        "cff": "5",
+        "netCash": "0"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "4",
+        "cfi": "0",
+        "cff": "-4",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "65.76%",
       "public": "34.24%",
@@ -38660,6 +39648,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "107",
+        "reserves": "857",
+        "borrowings": "161",
+        "otherLiabilities": "191",
+        "totalLiabilities": "1,316",
+        "fixedAssets": "663",
+        "investments": "0",
+        "otherAssets": "653",
+        "totalAssets": "1,316"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "107",
+        "reserves": "893",
+        "borrowings": "314",
+        "otherLiabilities": "294",
+        "totalLiabilities": "1,608",
+        "fixedAssets": "840",
+        "investments": "0",
+        "otherAssets": "768",
+        "totalAssets": "1,608"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "107",
+        "reserves": "899",
+        "borrowings": "406",
+        "otherLiabilities": "305",
+        "totalLiabilities": "1,717",
+        "fixedAssets": "844",
+        "investments": "0",
+        "otherAssets": "873",
+        "totalAssets": "1,717"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "108",
         "reserves": "1,189",
@@ -38673,6 +39697,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "31",
+        "cfi": "6",
+        "cff": "-39",
+        "netCash": "-2"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "20",
+        "cfi": "38",
+        "cff": "-151",
+        "netCash": "-93"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "11",
+        "cfi": "-57",
+        "cff": "55",
+        "netCash": "9"
+      },
       {
         "year": "Sep 26",
         "cfo": "49",
@@ -38932,6 +39977,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "14",
+        "reserves": "303",
+        "borrowings": "127",
+        "otherLiabilities": "127",
+        "totalLiabilities": "571",
+        "fixedAssets": "270",
+        "investments": "0",
+        "otherAssets": "301",
+        "totalAssets": "571"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "17",
+        "reserves": "376",
+        "borrowings": "103",
+        "otherLiabilities": "174",
+        "totalLiabilities": "670",
+        "fixedAssets": "272",
+        "investments": "0",
+        "otherAssets": "398",
+        "totalAssets": "670"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "17",
+        "reserves": "330",
+        "borrowings": "160",
+        "otherLiabilities": "182",
+        "totalLiabilities": "689",
+        "fixedAssets": "266",
+        "investments": "0",
+        "otherAssets": "423",
+        "totalAssets": "689"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "17",
         "reserves": "170",
@@ -38945,6 +40026,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-24",
+        "cfi": "24",
+        "cff": "-20",
+        "netCash": "-20"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "18",
+        "cfi": "-51",
+        "cff": "63",
+        "netCash": "30"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-75",
+        "cfi": "-4",
+        "cff": "49",
+        "netCash": "-30"
+      },
       {
         "year": "Sep 26",
         "cfo": "-4",
@@ -39652,8 +40754,67 @@
         "eps": "₹-8.46"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "11",
+        "reserves": "3",
+        "borrowings": "0",
+        "otherLiabilities": "2",
+        "totalLiabilities": "16",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "15",
+        "totalAssets": "16"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "11",
+        "reserves": "3",
+        "borrowings": "1",
+        "otherLiabilities": "5",
+        "totalLiabilities": "20",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "20",
+        "totalAssets": "20"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "11",
+        "reserves": "2",
+        "borrowings": "0",
+        "otherLiabilities": "7",
+        "totalLiabilities": "20",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "20",
+        "totalAssets": "20"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "2",
+        "cfi": "0",
+        "cff": "-1",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-1",
+        "cfi": "1",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "0.00%",
       "public": "100.00%",
@@ -42555,8 +43716,67 @@
         "eps": "₹0.8"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "8",
+        "reserves": "362",
+        "borrowings": "62",
+        "otherLiabilities": "245",
+        "totalLiabilities": "677",
+        "fixedAssets": "216",
+        "investments": "0",
+        "otherAssets": "461",
+        "totalAssets": "677"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "8",
+        "reserves": "500",
+        "borrowings": "76",
+        "otherLiabilities": "108",
+        "totalLiabilities": "692",
+        "fixedAssets": "213",
+        "investments": "0",
+        "otherAssets": "479",
+        "totalAssets": "692"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "8",
+        "reserves": "499",
+        "borrowings": "96",
+        "otherLiabilities": "112",
+        "totalLiabilities": "715",
+        "fixedAssets": "312",
+        "investments": "0",
+        "otherAssets": "403",
+        "totalAssets": "715"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-12",
+        "cfi": "-27",
+        "cff": "75",
+        "netCash": "36"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-6",
+        "cfi": "-86",
+        "cff": "99",
+        "netCash": "7"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-18",
+        "cfi": "11",
+        "cff": "7",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "46.54%",
       "public": "53.46%",
@@ -44883,6 +46103,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "147",
+        "reserves": "168",
+        "borrowings": "32",
+        "otherLiabilities": "149",
+        "totalLiabilities": "496",
+        "fixedAssets": "164",
+        "investments": "2",
+        "otherAssets": "330",
+        "totalAssets": "496"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "147",
+        "reserves": "234",
+        "borrowings": "0",
+        "otherLiabilities": "154",
+        "totalLiabilities": "535",
+        "fixedAssets": "159",
+        "investments": "2",
+        "otherAssets": "374",
+        "totalAssets": "535"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "147",
+        "reserves": "203",
+        "borrowings": "75",
+        "otherLiabilities": "168",
+        "totalLiabilities": "593",
+        "fixedAssets": "146",
+        "investments": "2",
+        "otherAssets": "445",
+        "totalAssets": "593"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "148",
         "reserves": "193",
@@ -44896,6 +46152,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "2",
+        "cfi": "-10",
+        "cff": "-2",
+        "netCash": "-10"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "96",
+        "cfi": "-61",
+        "cff": "-34",
+        "netCash": "1"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-25",
+        "cfi": "-16",
+        "cff": "30",
+        "netCash": "-11"
+      },
       {
         "year": "Sep 26",
         "cfo": "80",
@@ -45299,6 +46576,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "1,838",
+        "cfi": "-730",
+        "cff": "-1,057",
+        "netCash": "51"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "3,347",
+        "cfi": "-1,418",
+        "cff": "-1,710",
+        "netCash": "219"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "1,475",
+        "cfi": "-1,250",
+        "cff": "-412",
+        "netCash": "-187"
+      },
       {
         "year": "Sep 26",
         "cfo": "626",
@@ -46241,6 +47539,42 @@
     "updatedAt": 1794038126559,
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "61",
+        "reserves": "-2",
+        "borrowings": "143",
+        "otherLiabilities": "57",
+        "totalLiabilities": "259",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "257",
+        "totalAssets": "259"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "61",
+        "reserves": "-237",
+        "borrowings": "124",
+        "otherLiabilities": "55",
+        "totalLiabilities": "3",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "3",
+        "totalAssets": "3"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "61",
+        "reserves": "-237",
+        "borrowings": "123",
+        "otherLiabilities": "55",
+        "totalLiabilities": "2",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "2",
+        "totalAssets": "2"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "61",
         "reserves": "-238",
@@ -46254,6 +47588,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-11",
+        "cfi": "1",
+        "cff": "10",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "125",
+        "cfi": "-125",
+        "cff": "-1",
+        "netCash": "-1"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "-1",
+        "netCash": "-1"
+      },
       {
         "year": "Sep 26",
         "cfo": "-1",
@@ -47353,8 +48708,67 @@
         "eps": "₹-1.83"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "1,700",
+        "reserves": "10,756",
+        "borrowings": "6,527",
+        "otherLiabilities": "21,339",
+        "totalLiabilities": "40,322",
+        "fixedAssets": "692",
+        "investments": "1,147",
+        "otherAssets": "38,483",
+        "totalAssets": "40,322"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "170",
+        "reserves": "1,107",
+        "borrowings": "645",
+        "otherLiabilities": "1,849",
+        "totalLiabilities": "3,771",
+        "fixedAssets": "73",
+        "investments": "108",
+        "otherAssets": "3,590",
+        "totalAssets": "3,771"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "170",
+        "reserves": "1,124",
+        "borrowings": "536",
+        "otherLiabilities": "2,022",
+        "totalLiabilities": "3,852",
+        "fixedAssets": "69",
+        "investments": "43",
+        "otherAssets": "3,740",
+        "totalAssets": "3,852"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "1,934",
+        "cfi": "150",
+        "cff": "-2,171",
+        "netCash": "-87"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "223",
+        "cfi": "-28",
+        "cff": "-115",
+        "netCash": "80"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "111",
+        "cfi": "-4",
+        "cff": "-184",
+        "netCash": "-77"
+      }
+    ],
     "shareholding": {
       "promoters": "27.89%",
       "public": "72.11%",
@@ -47953,6 +49367,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "278",
+        "reserves": "9,369",
+        "borrowings": "588",
+        "otherLiabilities": "4,189",
+        "totalLiabilities": "14,424",
+        "fixedAssets": "3,826",
+        "investments": "1,009",
+        "otherAssets": "9,589",
+        "totalAssets": "14,424"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "278",
+        "reserves": "9,919",
+        "borrowings": "1,076",
+        "otherLiabilities": "4,710",
+        "totalLiabilities": "15,983",
+        "fixedAssets": "4,012",
+        "investments": "1,279",
+        "otherAssets": "10,692",
+        "totalAssets": "15,983"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "278",
         "reserves": "6,452",
@@ -47966,6 +49404,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "1,794",
+        "cfi": "-2,762",
+        "cff": "916",
+        "netCash": "-52"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "657",
+        "cfi": "-1,080",
+        "cff": "397",
+        "netCash": "-26"
+      },
       {
         "year": "Sep 26",
         "cfo": "-270",
@@ -48897,6 +50349,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "65",
+        "reserves": "-34",
+        "borrowings": "477",
+        "otherLiabilities": "262",
+        "totalLiabilities": "770",
+        "fixedAssets": "562",
+        "investments": "1",
+        "otherAssets": "207",
+        "totalAssets": "770"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "65",
+        "reserves": "-37",
+        "borrowings": "497",
+        "otherLiabilities": "241",
+        "totalLiabilities": "766",
+        "fixedAssets": "547",
+        "investments": "1",
+        "otherAssets": "218",
+        "totalAssets": "766"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "65",
+        "reserves": "-61",
+        "borrowings": "524",
+        "otherLiabilities": "268",
+        "totalLiabilities": "796",
+        "fixedAssets": "526",
+        "investments": "1",
+        "otherAssets": "269",
+        "totalAssets": "796"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "80",
         "reserves": "83",
@@ -48910,6 +50398,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-8",
+        "cfi": "10",
+        "cff": "2",
+        "netCash": "4"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "8",
+        "cfi": "-7",
+        "cff": "25",
+        "netCash": "26"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "2",
+        "cfi": "-29",
+        "cff": "22",
+        "netCash": "-5"
+      },
       {
         "year": "Sep 26",
         "cfo": "-16",
@@ -49269,6 +50778,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "31",
+        "reserves": "353",
+        "borrowings": "70",
+        "otherLiabilities": "184",
+        "totalLiabilities": "638",
+        "fixedAssets": "194",
+        "investments": "0",
+        "otherAssets": "444",
+        "totalAssets": "638"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "33",
+        "reserves": "397",
+        "borrowings": "143",
+        "otherLiabilities": "121",
+        "totalLiabilities": "694",
+        "fixedAssets": "171",
+        "investments": "0",
+        "otherAssets": "523",
+        "totalAssets": "694"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "33",
+        "reserves": "438",
+        "borrowings": "135",
+        "otherLiabilities": "147",
+        "totalLiabilities": "753",
+        "fixedAssets": "277",
+        "investments": "0",
+        "otherAssets": "476",
+        "totalAssets": "753"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "38",
         "reserves": "453",
@@ -49282,6 +50827,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "9",
+        "cfi": "-39",
+        "cff": "109",
+        "netCash": "79"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "13",
+        "cfi": "-161",
+        "cff": "172",
+        "netCash": "24"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-3",
+        "cfi": "-24",
+        "cff": "18",
+        "netCash": "-9"
+      },
       {
         "year": "Sep 26",
         "cfo": "1",
@@ -49968,6 +51534,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "10",
+        "reserves": "32",
+        "borrowings": "5",
+        "otherLiabilities": "28",
+        "totalLiabilities": "75",
+        "fixedAssets": "8",
+        "investments": "0",
+        "otherAssets": "67",
+        "totalAssets": "75"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "10",
+        "reserves": "20",
+        "borrowings": "5",
+        "otherLiabilities": "5",
+        "totalLiabilities": "40",
+        "fixedAssets": "8",
+        "investments": "6",
+        "otherAssets": "26",
+        "totalAssets": "40"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "10",
+        "reserves": "28",
+        "borrowings": "4",
+        "otherLiabilities": "6",
+        "totalLiabilities": "48",
+        "fixedAssets": "7",
+        "investments": "0",
+        "otherAssets": "41",
+        "totalAssets": "48"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "16",
@@ -49981,6 +51583,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "0",
+        "cfi": "-3",
+        "cff": "2",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "7",
+        "cfi": "37",
+        "cff": "-41",
+        "netCash": "3"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "7",
+        "cfi": "-9",
+        "cff": "-2",
+        "netCash": "-4"
+      },
       {
         "year": "Sep 26",
         "cfo": "-4",
@@ -50684,6 +52307,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "11",
+        "reserves": "179",
+        "borrowings": "155",
+        "otherLiabilities": "131",
+        "totalLiabilities": "476",
+        "fixedAssets": "163",
+        "investments": "20",
+        "otherAssets": "293",
+        "totalAssets": "476"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "11",
+        "reserves": "205",
+        "borrowings": "132",
+        "otherLiabilities": "175",
+        "totalLiabilities": "523",
+        "fixedAssets": "179",
+        "investments": "1",
+        "otherAssets": "343",
+        "totalAssets": "523"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "11",
         "reserves": "310",
@@ -50697,6 +52344,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "64",
+        "cfi": "-101",
+        "cff": "45",
+        "netCash": "8"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "16",
+        "cfi": "4",
+        "cff": "-26",
+        "netCash": "-6"
+      },
       {
         "year": "Sep 26",
         "cfo": "58",
@@ -51655,6 +53316,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "11",
+        "reserves": "1,949",
+        "borrowings": "0",
+        "otherLiabilities": "189",
+        "totalLiabilities": "2,149",
+        "fixedAssets": "80",
+        "investments": "1,972",
+        "otherAssets": "97",
+        "totalAssets": "2,149"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "11",
+        "reserves": "2,187",
+        "borrowings": "0",
+        "otherLiabilities": "225",
+        "totalLiabilities": "2,423",
+        "fixedAssets": "97",
+        "investments": "2,245",
+        "otherAssets": "81",
+        "totalAssets": "2,423"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "11",
+        "reserves": "2,968",
+        "borrowings": "0",
+        "otherLiabilities": "377",
+        "totalLiabilities": "3,356",
+        "fixedAssets": "97",
+        "investments": "3,176",
+        "otherAssets": "83",
+        "totalAssets": "3,356"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "11",
         "reserves": "2,052",
@@ -51668,6 +53365,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "23",
+        "cfi": "32",
+        "cff": "-48",
+        "netCash": "7"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "16",
+        "cfi": "14",
+        "cff": "-48",
+        "netCash": "-18"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "15",
+        "cfi": "-16",
+        "cff": "-3",
+        "netCash": "-4"
+      },
       {
         "year": "Sep 26",
         "cfo": "9",
@@ -52106,8 +53824,67 @@
     "industry": "Confectioners",
     "sector": "Consumer & FMCG",
     "updatedAt": 1794038126566,
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "41",
+        "reserves": "-211",
+        "borrowings": "1,028",
+        "otherLiabilities": "871",
+        "totalLiabilities": "1,729",
+        "fixedAssets": "1,436",
+        "investments": "0",
+        "otherAssets": "293",
+        "totalAssets": "1,729"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "41",
+        "reserves": "-173",
+        "borrowings": "1,028",
+        "otherLiabilities": "1,214",
+        "totalLiabilities": "2,110",
+        "fixedAssets": "1,429",
+        "investments": "0",
+        "otherAssets": "681",
+        "totalAssets": "2,110"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "41",
+        "reserves": "-197",
+        "borrowings": "1,028",
+        "otherLiabilities": "893",
+        "totalLiabilities": "1,765",
+        "fixedAssets": "1,416",
+        "investments": "0",
+        "otherAssets": "349",
+        "totalAssets": "1,765"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "12",
+        "cfi": "1",
+        "cff": "-16",
+        "netCash": "-3"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "25",
+        "cfi": "-2",
+        "cff": "-18",
+        "netCash": "5"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "31",
+        "cfi": "-27",
+        "cff": "8",
+        "netCash": "12"
+      }
+    ],
     "quarterlyResults": [
       {
         "period": "Sep 25",
@@ -52837,6 +54614,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "10",
+        "reserves": "97",
+        "borrowings": "0",
+        "otherLiabilities": "22",
+        "totalLiabilities": "129",
+        "fixedAssets": "51",
+        "investments": "14",
+        "otherAssets": "64",
+        "totalAssets": "129"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "10",
+        "reserves": "101",
+        "borrowings": "0",
+        "otherLiabilities": "36",
+        "totalLiabilities": "147",
+        "fixedAssets": "63",
+        "investments": "9",
+        "otherAssets": "75",
+        "totalAssets": "147"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "114",
@@ -52850,6 +54651,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "15",
+        "cfi": "29",
+        "cff": "-44",
+        "netCash": "0"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "6",
+        "cfi": "-1",
+        "cff": "-6",
+        "netCash": "-1"
+      },
       {
         "year": "Sep 26",
         "cfo": "7",
@@ -54287,6 +56102,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "87",
+        "reserves": "-1,029",
+        "borrowings": "784",
+        "otherLiabilities": "1,505",
+        "totalLiabilities": "1,347",
+        "fixedAssets": "460",
+        "investments": "0",
+        "otherAssets": "887",
+        "totalAssets": "1,347"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "87",
+        "reserves": "-1,047",
+        "borrowings": "772",
+        "otherLiabilities": "1,514",
+        "totalLiabilities": "1,326",
+        "fixedAssets": "385",
+        "investments": "0",
+        "otherAssets": "941",
+        "totalAssets": "1,326"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "87",
+        "reserves": "-1,144",
+        "borrowings": "771",
+        "otherLiabilities": "1,624",
+        "totalLiabilities": "1,338",
+        "fixedAssets": "341",
+        "investments": "0",
+        "otherAssets": "997",
+        "totalAssets": "1,338"
+      },
+      {
         "year": "Sep 25",
         "equityCapital": "87",
         "reserves": "-1,456",
@@ -54300,6 +56151,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "157",
+        "cfi": "-11",
+        "cff": "-136",
+        "netCash": "10"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "410",
+        "cfi": "-214",
+        "cff": "-227",
+        "netCash": "-31"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "1",
+        "cfi": "-49",
+        "cff": "0",
+        "netCash": "-48"
+      },
       {
         "year": "Sep 25",
         "cfo": "5",
@@ -55889,6 +57761,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "26",
+        "reserves": "225",
+        "borrowings": "141",
+        "otherLiabilities": "59",
+        "totalLiabilities": "451",
+        "fixedAssets": "85",
+        "investments": "2",
+        "otherAssets": "364",
+        "totalAssets": "451"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "26",
+        "reserves": "251",
+        "borrowings": "146",
+        "otherLiabilities": "46",
+        "totalLiabilities": "469",
+        "fixedAssets": "114",
+        "investments": "2",
+        "otherAssets": "353",
+        "totalAssets": "469"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "26",
+        "reserves": "267",
+        "borrowings": "146",
+        "otherLiabilities": "54",
+        "totalLiabilities": "493",
+        "fixedAssets": "112",
+        "investments": "1",
+        "otherAssets": "380",
+        "totalAssets": "493"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "26",
         "reserves": "411",
@@ -55902,6 +57810,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "67",
+        "cfi": "-32",
+        "cff": "10",
+        "netCash": "45"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "109",
+        "cfi": "-54",
+        "cff": "13",
+        "netCash": "68"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "27",
+        "cfi": "-20",
+        "cff": "-13",
+        "netCash": "-6"
+      },
       {
         "year": "Sep 26",
         "cfo": "14",
@@ -58248,6 +60177,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "167",
+        "reserves": "244",
+        "borrowings": "112",
+        "otherLiabilities": "212",
+        "totalLiabilities": "735",
+        "fixedAssets": "393",
+        "investments": "0",
+        "otherAssets": "342",
+        "totalAssets": "735"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "167",
+        "reserves": "236",
+        "borrowings": "115",
+        "otherLiabilities": "250",
+        "totalLiabilities": "768",
+        "fixedAssets": "362",
+        "investments": "0",
+        "otherAssets": "406",
+        "totalAssets": "768"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "167",
         "reserves": "241",
@@ -58261,6 +60214,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "26",
+        "cfi": "0",
+        "cff": "-26",
+        "netCash": "0"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "22",
+        "cfi": "-11",
+        "cff": "-16",
+        "netCash": "-5"
+      },
       {
         "year": "Sep 26",
         "cfo": "44",
@@ -58549,6 +60516,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "13",
+        "reserves": "112",
+        "borrowings": "31",
+        "otherLiabilities": "39",
+        "totalLiabilities": "195",
+        "fixedAssets": "3",
+        "investments": "6",
+        "otherAssets": "186",
+        "totalAssets": "195"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "14",
         "reserves": "179",
@@ -58562,6 +60541,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "19",
+        "cfi": "-22",
+        "cff": "4",
+        "netCash": "1"
+      },
       {
         "year": "Sep 26",
         "cfo": "17",
@@ -61203,6 +63189,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "585",
+        "reserves": "1,907",
+        "borrowings": "386",
+        "otherLiabilities": "634",
+        "totalLiabilities": "3,512",
+        "fixedAssets": "1,019",
+        "investments": "5",
+        "otherAssets": "2,488",
+        "totalAssets": "3,512"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "586",
+        "reserves": "2,064",
+        "borrowings": "233",
+        "otherLiabilities": "982",
+        "totalLiabilities": "3,865",
+        "fixedAssets": "1,152",
+        "investments": "10",
+        "otherAssets": "2,703",
+        "totalAssets": "3,865"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "621",
+        "reserves": "4,609",
+        "borrowings": "9",
+        "otherLiabilities": "1,051",
+        "totalLiabilities": "6,290",
+        "fixedAssets": "1,179",
+        "investments": "11",
+        "otherAssets": "5,100",
+        "totalAssets": "6,290"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "624",
         "reserves": "5,665",
@@ -62604,6 +64626,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "28",
+        "reserves": "87",
+        "borrowings": "93",
+        "otherLiabilities": "21",
+        "totalLiabilities": "229",
+        "fixedAssets": "53",
+        "investments": "3",
+        "otherAssets": "173",
+        "totalAssets": "229"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "28",
+        "reserves": "94",
+        "borrowings": "91",
+        "otherLiabilities": "22",
+        "totalLiabilities": "235",
+        "fixedAssets": "73",
+        "investments": "4",
+        "otherAssets": "158",
+        "totalAssets": "235"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "33",
         "reserves": "215",
@@ -62617,6 +64663,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "5",
+        "cfi": "-31",
+        "cff": "27",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "19",
+        "cfi": "-38",
+        "cff": "19",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "15",
@@ -64814,6 +66874,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "204",
+        "reserves": "864",
+        "borrowings": "537",
+        "otherLiabilities": "258",
+        "totalLiabilities": "1,863",
+        "fixedAssets": "636",
+        "investments": "4",
+        "otherAssets": "1,223",
+        "totalAssets": "1,863"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "204",
+        "reserves": "872",
+        "borrowings": "464",
+        "otherLiabilities": "223",
+        "totalLiabilities": "1,763",
+        "fixedAssets": "645",
+        "investments": "5",
+        "otherAssets": "1,113",
+        "totalAssets": "1,763"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "204",
+        "reserves": "945",
+        "borrowings": "559",
+        "otherLiabilities": "402",
+        "totalLiabilities": "2,110",
+        "fixedAssets": "629",
+        "investments": "7",
+        "otherAssets": "1,474",
+        "totalAssets": "2,110"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "204",
         "reserves": "1,034",
@@ -64827,6 +66923,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "60",
+        "cfi": "-132",
+        "cff": "121",
+        "netCash": "49"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "227",
+        "cfi": "-175",
+        "cff": "0",
+        "netCash": "52"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-58",
+        "cfi": "7",
+        "cff": "73",
+        "netCash": "22"
+      },
       {
         "year": "Sep 26",
         "cfo": "238",
@@ -65558,6 +67675,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "11",
+        "reserves": "329",
+        "borrowings": "1,755",
+        "otherLiabilities": "712",
+        "totalLiabilities": "2,807",
+        "fixedAssets": "92",
+        "investments": "99",
+        "otherAssets": "2,616",
+        "totalAssets": "2,807"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "11",
+        "reserves": "450",
+        "borrowings": "549",
+        "otherLiabilities": "882",
+        "totalLiabilities": "1,892",
+        "fixedAssets": "6",
+        "investments": "38",
+        "otherAssets": "1,848",
+        "totalAssets": "1,892"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "13",
+        "reserves": "561",
+        "borrowings": "400",
+        "otherLiabilities": "839",
+        "totalLiabilities": "1,813",
+        "fixedAssets": "3",
+        "investments": "38",
+        "otherAssets": "1,772",
+        "totalAssets": "1,813"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "18",
         "reserves": "1,167",
@@ -65571,6 +67724,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-4",
+        "cfi": "7",
+        "cff": "-6",
+        "netCash": "-3"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "624",
+        "cfi": "-7",
+        "cff": "-410",
+        "netCash": "207"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-42",
+        "cfi": "-71",
+        "cff": "-66",
+        "netCash": "-179"
+      },
       {
         "year": "Sep 26",
         "cfo": "82",
@@ -66954,8 +69128,67 @@
         "eps": "₹19.3"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "17",
+        "reserves": "805",
+        "borrowings": "9",
+        "otherLiabilities": "69",
+        "totalLiabilities": "900",
+        "fixedAssets": "98",
+        "investments": "246",
+        "otherAssets": "556",
+        "totalAssets": "900"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "17",
+        "reserves": "783",
+        "borrowings": "8",
+        "otherLiabilities": "101",
+        "totalLiabilities": "909",
+        "fixedAssets": "119",
+        "investments": "253",
+        "otherAssets": "537",
+        "totalAssets": "909"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "17",
+        "reserves": "857",
+        "borrowings": "0",
+        "otherLiabilities": "147",
+        "totalLiabilities": "1,021",
+        "fixedAssets": "126",
+        "investments": "329",
+        "otherAssets": "566",
+        "totalAssets": "1,021"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "113",
+        "cfi": "-122",
+        "cff": "-5",
+        "netCash": "-14"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "139",
+        "cfi": "-133",
+        "cff": "-17",
+        "netCash": "-11"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "61",
+        "cfi": "-10",
+        "cff": "-9",
+        "netCash": "42"
+      }
+    ],
     "shareholding": {
       "promoters": "62.19%",
       "public": "37.47%",
@@ -67629,8 +69862,48 @@
         "eps": "₹10.06"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 24",
+        "equityCapital": "17",
+        "reserves": "113",
+        "borrowings": "48",
+        "otherLiabilities": "57",
+        "totalLiabilities": "235",
+        "fixedAssets": "40",
+        "investments": "0",
+        "otherAssets": "195",
+        "totalAssets": "235"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "23",
+        "reserves": "213",
+        "borrowings": "37",
+        "otherLiabilities": "71",
+        "totalLiabilities": "344",
+        "fixedAssets": "52",
+        "investments": "0",
+        "otherAssets": "292",
+        "totalAssets": "344"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "14",
+        "cfi": "-14",
+        "cff": "39",
+        "netCash": "39"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "20",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "20"
+      }
+    ],
     "shareholding": {
       "promoters": "72.59%",
       "public": "26.97%",
@@ -68892,6 +71165,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 24",
+        "equityCapital": "11",
+        "reserves": "432",
+        "borrowings": "1",
+        "otherLiabilities": "296",
+        "totalLiabilities": "740",
+        "fixedAssets": "90",
+        "investments": "0",
+        "otherAssets": "650",
+        "totalAssets": "740"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "11",
         "reserves": "414",
@@ -68904,7 +71189,15 @@
         "totalAssets": "551"
       }
     ],
-    "cashFlows": [],
+    "cashFlows": [
+      {
+        "year": "Sep 24",
+        "cfo": "55",
+        "cfi": "-181",
+        "cff": "136",
+        "netCash": "10"
+      }
+    ],
     "shareholding": {
       "promoters": "57.07%",
       "public": "34.77%",
@@ -71859,6 +74152,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "119",
+        "reserves": "482",
+        "borrowings": "284",
+        "otherLiabilities": "297",
+        "totalLiabilities": "1,182",
+        "fixedAssets": "569",
+        "investments": "0",
+        "otherAssets": "613",
+        "totalAssets": "1,182"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "120",
+        "reserves": "542",
+        "borrowings": "383",
+        "otherLiabilities": "223",
+        "totalLiabilities": "1,268",
+        "fixedAssets": "570",
+        "investments": "0",
+        "otherAssets": "698",
+        "totalAssets": "1,268"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "120",
+        "reserves": "553",
+        "borrowings": "381",
+        "otherLiabilities": "243",
+        "totalLiabilities": "1,297",
+        "fixedAssets": "557",
+        "investments": "0",
+        "otherAssets": "740",
+        "totalAssets": "1,297"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "128",
         "reserves": "844",
@@ -71872,6 +74201,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "8",
+        "cfi": "-3",
+        "cff": "-2",
+        "netCash": "3"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-48",
+        "cfi": "-49",
+        "cff": "98",
+        "netCash": "1"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "58",
+        "cfi": "-35",
+        "cff": "-34",
+        "netCash": "-11"
+      },
       {
         "year": "Sep 26",
         "cfo": "-119",
@@ -72040,6 +74390,42 @@
     "updatedAt": 1794038126596,
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "18",
+        "reserves": "1,119",
+        "borrowings": "0",
+        "otherLiabilities": "30",
+        "totalLiabilities": "1,167",
+        "fixedAssets": "1",
+        "investments": "1,147",
+        "otherAssets": "19",
+        "totalAssets": "1,167"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "18",
+        "reserves": "1,485",
+        "borrowings": "0",
+        "otherLiabilities": "97",
+        "totalLiabilities": "1,600",
+        "fixedAssets": "1",
+        "investments": "1,566",
+        "otherAssets": "33",
+        "totalAssets": "1,600"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "18",
+        "reserves": "2,085",
+        "borrowings": "0",
+        "otherLiabilities": "220",
+        "totalLiabilities": "2,323",
+        "fixedAssets": "1",
+        "investments": "2,299",
+        "otherAssets": "23",
+        "totalAssets": "2,323"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "18",
         "reserves": "1,621",
@@ -72053,6 +74439,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "4",
+        "cfi": "-20",
+        "cff": "0",
+        "netCash": "-16"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "17",
+        "cfi": "-17",
+        "cff": "-4",
+        "netCash": "-4"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "34",
+        "cfi": "-34",
+        "cff": "0",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "21",
@@ -73036,6 +75443,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "80",
+        "reserves": "1,943",
+        "borrowings": "3,225",
+        "otherLiabilities": "3,083",
+        "totalLiabilities": "8,331",
+        "fixedAssets": "2,839",
+        "investments": "88",
+        "otherAssets": "5,404",
+        "totalAssets": "8,331"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "98",
+        "reserves": "2,840",
+        "borrowings": "2,650",
+        "otherLiabilities": "3,250",
+        "totalLiabilities": "8,838",
+        "fixedAssets": "2,794",
+        "investments": "88",
+        "otherAssets": "5,956",
+        "totalAssets": "8,838"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "103",
         "reserves": "3,405",
@@ -73049,6 +75480,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "791",
+        "cfi": "-209",
+        "cff": "-691",
+        "netCash": "-109"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-117",
+        "cfi": "3",
+        "cff": "184",
+        "netCash": "70"
+      },
       {
         "year": "Sep 26",
         "cfo": "220",
@@ -75189,6 +77634,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "281",
+        "reserves": "213",
+        "borrowings": "0",
+        "otherLiabilities": "193",
+        "totalLiabilities": "687",
+        "fixedAssets": "37",
+        "investments": "2",
+        "otherAssets": "648",
+        "totalAssets": "687"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "281",
+        "reserves": "53",
+        "borrowings": "0",
+        "otherLiabilities": "196",
+        "totalLiabilities": "530",
+        "fixedAssets": "32",
+        "investments": "2",
+        "otherAssets": "496",
+        "totalAssets": "530"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "281",
+        "reserves": "43",
+        "borrowings": "0",
+        "otherLiabilities": "193",
+        "totalLiabilities": "517",
+        "fixedAssets": "27",
+        "investments": "7",
+        "otherAssets": "483",
+        "totalAssets": "517"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "281",
         "reserves": "-85",
@@ -75202,6 +77683,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-16",
+        "cfi": "8",
+        "cff": "-4",
+        "netCash": "-12"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-8",
+        "cfi": "33",
+        "cff": "-9",
+        "netCash": "16"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-2",
+        "cfi": "-1",
+        "cff": "-6",
+        "netCash": "-9"
+      },
       {
         "year": "Sep 26",
         "cfo": "28",
@@ -75717,6 +78219,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "23",
+        "reserves": "449",
+        "borrowings": "0",
+        "otherLiabilities": "254",
+        "totalLiabilities": "726",
+        "fixedAssets": "137",
+        "investments": "4",
+        "otherAssets": "585",
+        "totalAssets": "726"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "23",
+        "reserves": "472",
+        "borrowings": "0",
+        "otherLiabilities": "257",
+        "totalLiabilities": "752",
+        "fixedAssets": "155",
+        "investments": "4",
+        "otherAssets": "593",
+        "totalAssets": "752"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "23",
         "reserves": "591",
@@ -75730,6 +78256,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "95",
+        "cfi": "-17",
+        "cff": "-3",
+        "netCash": "75"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "24",
+        "cfi": "-99",
+        "cff": "-2",
+        "netCash": "-77"
+      },
       {
         "year": "Sep 26",
         "cfo": "-24",
@@ -76542,6 +79082,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "16",
+        "reserves": "472",
+        "borrowings": "358",
+        "otherLiabilities": "181",
+        "totalLiabilities": "1,027",
+        "fixedAssets": "522",
+        "investments": "0",
+        "otherAssets": "505",
+        "totalAssets": "1,027"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "16",
+        "reserves": "487",
+        "borrowings": "325",
+        "otherLiabilities": "194",
+        "totalLiabilities": "1,022",
+        "fixedAssets": "530",
+        "investments": "0",
+        "otherAssets": "492",
+        "totalAssets": "1,022"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "16",
         "reserves": "602",
@@ -76555,6 +79119,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-21",
+        "cfi": "0",
+        "cff": "24",
+        "netCash": "3"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "78",
+        "cfi": "-39",
+        "cff": "-36",
+        "netCash": "3"
+      },
       {
         "year": "Sep 26",
         "cfo": "88",
@@ -76805,6 +79383,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "17",
+        "reserves": "509",
+        "borrowings": "259",
+        "otherLiabilities": "114",
+        "totalLiabilities": "899",
+        "fixedAssets": "418",
+        "investments": "0",
+        "otherAssets": "481",
+        "totalAssets": "899"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "17",
+        "reserves": "533",
+        "borrowings": "300",
+        "otherLiabilities": "176",
+        "totalLiabilities": "1,026",
+        "fixedAssets": "448",
+        "investments": "0",
+        "otherAssets": "578",
+        "totalAssets": "1,026"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "17",
+        "reserves": "526",
+        "borrowings": "330",
+        "otherLiabilities": "137",
+        "totalLiabilities": "1,010",
+        "fixedAssets": "455",
+        "investments": "0",
+        "otherAssets": "555",
+        "totalAssets": "1,010"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "17",
         "reserves": "531",
@@ -76818,6 +79432,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "1",
+        "cfi": "-24",
+        "cff": "12",
+        "netCash": "-11"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "121",
+        "cfi": "-43",
+        "cff": "2",
+        "netCash": "80"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-15",
+        "cfi": "-49",
+        "cff": "-24",
+        "netCash": "-88"
+      },
       {
         "year": "Sep 26",
         "cfo": "1",
@@ -78434,6 +81069,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "47",
+        "reserves": "45",
+        "borrowings": "31",
+        "otherLiabilities": "12",
+        "totalLiabilities": "135",
+        "fixedAssets": "64",
+        "investments": "0",
+        "otherAssets": "71",
+        "totalAssets": "135"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "47",
+        "reserves": "44",
+        "borrowings": "39",
+        "otherLiabilities": "8",
+        "totalLiabilities": "138",
+        "fixedAssets": "65",
+        "investments": "0",
+        "otherAssets": "73",
+        "totalAssets": "138"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "47",
         "reserves": "43",
@@ -78447,6 +81106,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "5",
+        "cfi": "-2",
+        "cff": "-1",
+        "netCash": "2"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "7",
+        "cfi": "0",
+        "cff": "6",
+        "netCash": "13"
+      },
       {
         "year": "Sep 26",
         "cfo": "7",
@@ -78879,6 +81552,42 @@
       }
     ],
     "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "110",
+        "reserves": "10,464",
+        "borrowings": "20,626",
+        "otherLiabilities": "32,097",
+        "totalLiabilities": "63,297",
+        "fixedAssets": "472",
+        "investments": "9,380",
+        "otherAssets": "53,445",
+        "totalAssets": "63,297"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "110",
+        "reserves": "10,968",
+        "borrowings": "24,390",
+        "otherLiabilities": "28,808",
+        "totalLiabilities": "64,276",
+        "fixedAssets": "535",
+        "investments": "5,732",
+        "otherAssets": "58,009",
+        "totalAssets": "64,276"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "110",
+        "reserves": "12,400",
+        "borrowings": "26,551",
+        "otherLiabilities": "30,598",
+        "totalLiabilities": "69,659",
+        "fixedAssets": "575",
+        "investments": "6,423",
+        "otherAssets": "62,661",
+        "totalAssets": "69,659"
+      },
       {
         "year": "Sep 26",
         "equityCapital": "111",
@@ -82129,6 +84838,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 24",
+        "equityCapital": "25",
+        "reserves": "5,083",
+        "borrowings": "0",
+        "otherLiabilities": "1,448",
+        "totalLiabilities": "6,556",
+        "fixedAssets": "2,180",
+        "investments": "638",
+        "otherAssets": "3,738",
+        "totalAssets": "6,556"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "25",
         "reserves": "5,596",
@@ -83397,6 +86118,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "16",
+        "reserves": "87",
+        "borrowings": "554",
+        "otherLiabilities": "339",
+        "totalLiabilities": "996",
+        "fixedAssets": "4",
+        "investments": "0",
+        "otherAssets": "992",
+        "totalAssets": "996"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "21",
+        "reserves": "495",
+        "borrowings": "425",
+        "otherLiabilities": "349",
+        "totalLiabilities": "1,290",
+        "fixedAssets": "23",
+        "investments": "0",
+        "otherAssets": "1,267",
+        "totalAssets": "1,290"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "21",
+        "reserves": "549",
+        "borrowings": "448",
+        "otherLiabilities": "381",
+        "totalLiabilities": "1,399",
+        "fixedAssets": "23",
+        "investments": "0",
+        "otherAssets": "1,376",
+        "totalAssets": "1,399"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "24",
         "reserves": "1,000",
@@ -83410,6 +86167,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "32",
+        "cfi": "25",
+        "cff": "-74",
+        "netCash": "-17"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "9",
+        "cfi": "-90",
+        "cff": "70",
+        "netCash": "-11"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-9",
+        "cfi": "64",
+        "cff": "-50",
+        "netCash": "5"
+      },
       {
         "year": "Sep 26",
         "cfo": "-24",
@@ -83774,6 +86552,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 24",
+        "equityCapital": "18",
+        "reserves": "116",
+        "borrowings": "51",
+        "otherLiabilities": "33",
+        "totalLiabilities": "218",
+        "fixedAssets": "87",
+        "investments": "17",
+        "otherAssets": "114",
+        "totalAssets": "218"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "18",
         "reserves": "123",
@@ -83787,6 +86577,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 24",
+        "cfo": "9",
+        "cfi": "-7",
+        "cff": "16",
+        "netCash": "18"
+      },
       {
         "year": "Sep 26",
         "cfo": "3",
@@ -85598,8 +88395,48 @@
         "eps": "₹0.41"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 24",
+        "equityCapital": "16",
+        "reserves": "945",
+        "borrowings": "844",
+        "otherLiabilities": "304",
+        "totalLiabilities": "2,109",
+        "fixedAssets": "1,049",
+        "investments": "0",
+        "otherAssets": "1,060",
+        "totalAssets": "2,109"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "16",
+        "reserves": "916",
+        "borrowings": "823",
+        "otherLiabilities": "298",
+        "totalLiabilities": "2,053",
+        "fixedAssets": "1,015",
+        "investments": "0",
+        "otherAssets": "1,038",
+        "totalAssets": "2,053"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 24",
+        "cfo": "222",
+        "cfi": "-38",
+        "cff": "-190",
+        "netCash": "-6"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "98",
+        "cfi": "-18",
+        "cff": "-52",
+        "netCash": "28"
+      }
+    ],
     "shareholding": {
       "promoters": "63.96%",
       "public": "35.20%",
@@ -86376,6 +89213,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "21",
+        "reserves": "42",
+        "borrowings": "0",
+        "otherLiabilities": "44",
+        "totalLiabilities": "107",
+        "fixedAssets": "6",
+        "investments": "29",
+        "otherAssets": "72",
+        "totalAssets": "107"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "21",
+        "reserves": "34",
+        "borrowings": "0",
+        "otherLiabilities": "39",
+        "totalLiabilities": "94",
+        "fixedAssets": "4",
+        "investments": "29",
+        "otherAssets": "61",
+        "totalAssets": "94"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "21",
+        "reserves": "26",
+        "borrowings": "4",
+        "otherLiabilities": "35",
+        "totalLiabilities": "86",
+        "fixedAssets": "3",
+        "investments": "29",
+        "otherAssets": "54",
+        "totalAssets": "86"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "21",
         "reserves": "86",
@@ -86389,6 +89262,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-6",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "-6"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "-10",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "-10"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-3",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "-3"
+      },
       {
         "year": "Sep 26",
         "cfo": "-1",
@@ -86956,6 +89850,42 @@
     ],
     "balanceSheet": [
       {
+        "year": "Sep 23",
+        "equityCapital": "11",
+        "reserves": "19",
+        "borrowings": "48",
+        "otherLiabilities": "71",
+        "totalLiabilities": "149",
+        "fixedAssets": "40",
+        "investments": "0",
+        "otherAssets": "109",
+        "totalAssets": "149"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "11",
+        "reserves": "20",
+        "borrowings": "47",
+        "otherLiabilities": "66",
+        "totalLiabilities": "144",
+        "fixedAssets": "49",
+        "investments": "3",
+        "otherAssets": "92",
+        "totalAssets": "144"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "11",
+        "reserves": "21",
+        "borrowings": "51",
+        "otherLiabilities": "78",
+        "totalLiabilities": "161",
+        "fixedAssets": "56",
+        "investments": "0",
+        "otherAssets": "105",
+        "totalAssets": "161"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "11",
         "reserves": "37",
@@ -86969,6 +89899,27 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "11",
+        "cfi": "-7",
+        "cff": "-4",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "30",
+        "cfi": "-12",
+        "cff": "15",
+        "netCash": "33"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "15",
+        "cfi": "-8",
+        "cff": "-7",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "30",
@@ -89109,8 +92060,67 @@
         "eps": "₹5.62"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Sep 23",
+        "equityCapital": "15",
+        "reserves": "794",
+        "borrowings": "619",
+        "otherLiabilities": "129",
+        "totalLiabilities": "1,557",
+        "fixedAssets": "539",
+        "investments": "5",
+        "otherAssets": "1,013",
+        "totalAssets": "1,557"
+      },
+      {
+        "year": "Mar 24",
+        "equityCapital": "15",
+        "reserves": "824",
+        "borrowings": "569",
+        "otherLiabilities": "254",
+        "totalLiabilities": "1,662",
+        "fixedAssets": "563",
+        "investments": "0",
+        "otherAssets": "1,099",
+        "totalAssets": "1,662"
+      },
+      {
+        "year": "Sep 24",
+        "equityCapital": "15",
+        "reserves": "840",
+        "borrowings": "636",
+        "otherLiabilities": "157",
+        "totalLiabilities": "1,648",
+        "fixedAssets": "558",
+        "investments": "0",
+        "otherAssets": "1,090",
+        "totalAssets": "1,648"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Sep 23",
+        "cfo": "-15",
+        "cfi": "-36",
+        "cff": "43",
+        "netCash": "-8"
+      },
+      {
+        "year": "Mar 24",
+        "cfo": "90",
+        "cfi": "-82",
+        "cff": "32",
+        "netCash": "40"
+      },
+      {
+        "year": "Sep 24",
+        "cfo": "-60",
+        "cfi": "17",
+        "cff": "-9",
+        "netCash": "-52"
+      }
+    ],
     "shareholding": {
       "promoters": "56.37%",
       "public": "43.57%",
@@ -89553,6 +92563,18 @@
       }
     ],
     "balanceSheet": [
+      {
+        "year": "Sep 24",
+        "equityCapital": "13,440",
+        "reserves": "-6,359",
+        "borrowings": "225",
+        "otherLiabilities": "3,124",
+        "totalLiabilities": "10,430",
+        "fixedAssets": "491",
+        "investments": "1,637",
+        "otherAssets": "8,302",
+        "totalAssets": "10,430"
+      },
       {
         "year": "Sep 26",
         "equityCapital": "262",
