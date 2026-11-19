@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T12:41:48.741Z",
+  "updatedAt": "2026-11-19T14:24:54.468Z",
   "source": "Official NSE FII/DII Cash Activity & Exchange Bhavcopy",
   "fiiDiiLatest": {
     "date": "2026-11-19",
@@ -49,74 +49,74 @@
     }
   ],
   "breadth": {
-    "totalStocks": 5361,
-    "advances": 1988,
-    "declines": 3097,
-    "unchanged": 276,
-    "adRatio": 0.64,
-    "nearHigh52": 1707,
-    "nearLow52": 1718,
-    "goldenCrossCount": 598,
-    "aboveDma200": 1150,
-    "sessionLabel": "Today (17 Nov), 4:29 pm IST",
+    "totalStocks": 5761,
+    "advances": 2822,
+    "declines": 2581,
+    "unchanged": 358,
+    "adRatio": 1.09,
+    "nearHigh52": 989,
+    "nearLow52": 1519,
+    "goldenCrossCount": 1251,
+    "aboveDma200": 1922,
+    "sessionLabel": "Today (19 Nov), 5:40 pm IST",
     "topSectors": [
       {
         "sector": "Banking & Financial Services",
         "count": 49,
-        "avgChangePct": 0.29,
-        "advances": 30,
-        "declines": 19
+        "avgChangePct": 1.22,
+        "advances": 39,
+        "declines": 10
       },
       {
-        "sector": "Diversified Equities",
-        "count": 1481,
-        "avgChangePct": 0.12,
-        "advances": 686,
-        "declines": 646
+        "sector": "Automotive & Ancillaries",
+        "count": 148,
+        "avgChangePct": 0.9,
+        "advances": 92,
+        "declines": 53
       },
       {
-        "sector": "Financial Services & NBFC",
-        "count": 348,
-        "avgChangePct": 0.08,
-        "advances": 151,
-        "declines": 170
+        "sector": "Consumer & FMCG",
+        "count": 240,
+        "avgChangePct": 0.67,
+        "advances": 142,
+        "declines": 92
       },
       {
-        "sector": "Textiles & Apparels",
-        "count": 211,
-        "avgChangePct": -0.28,
-        "advances": 85,
-        "declines": 116
+        "sector": "Energy, Oil & Power",
+        "count": 147,
+        "avgChangePct": 0.55,
+        "advances": 87,
+        "declines": 57
       }
     ],
     "laggingSectors": [
       {
+        "sector": "Retail & Lifestyle",
+        "count": 233,
+        "avgChangePct": -0.29,
+        "advances": 85,
+        "declines": 139
+      },
+      {
+        "sector": "Financial Services & NBFC",
+        "count": 368,
+        "avgChangePct": -0.11,
+        "advances": 163,
+        "declines": 175
+      },
+      {
+        "sector": "Chemicals & Materials",
+        "count": 354,
+        "avgChangePct": -0.04,
+        "advances": 159,
+        "declines": 179
+      },
+      {
         "sector": "Agri & Fertilizers",
         "count": 89,
-        "avgChangePct": -1.85,
-        "advances": 16,
-        "declines": 70
-      },
-      {
-        "sector": "Capital Goods & Industrial Machinery",
-        "count": 286,
-        "avgChangePct": -1.4,
-        "advances": 69,
-        "declines": 212
-      },
-      {
-        "sector": "Automotive & Ancillaries",
-        "count": 147,
-        "avgChangePct": -1.13,
-        "advances": 40,
-        "declines": 104
-      },
-      {
-        "sector": "Energy, Oil & Power",
-        "count": 144,
-        "avgChangePct": -1.08,
-        "advances": 40,
-        "declines": 103
+        "avgChangePct": 0.04,
+        "advances": 45,
+        "declines": 43
       }
     ]
   }
