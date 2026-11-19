@@ -666,44 +666,52 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  let cachedAmcList = null;
+
   function buildSuggestions(query) {
     const q = String(query || "").trim().toLowerCase();
     if (!q) return [];
 
     const results = [];
-    const amcs = getAmcList();
+    if (!cachedAmcList) {
+      cachedAmcList = getAmcList().map((a) => ({
+        ...a,
+        _lcHouse: a.fundHouse.toLowerCase(),
+        _lcShort: a.amcShort.toLowerCase()
+      }));
+    }
 
-    amcs.forEach((a) => {
-      if (a.fundHouse.toLowerCase().includes(q) || a.amcShort.toLowerCase().includes(q)) {
+    for (let i = 0; i < cachedAmcList.length; i++) {
+      const a = cachedAmcList[i];
+      if (a._lcHouse.includes(q) || a._lcShort.includes(q)) {
         results.push({
           type: "amc",
           title: `${a.fundHouse}`,
           subtitle: `View all ${a.schemes.length} schemes maintained by ${a.amcShort}`,
           amcName: a.fundHouse
         });
+        if (results.length >= 12) return results;
       }
-    });
+    }
 
-    allFunds.forEach((f) => {
-      const planMatch = Array.isArray(f.plans) && f.plans.some((pl) => String(pl.code).includes(q));
-      if (
-        f.name.toLowerCase().includes(q) ||
-        f.shortName.toLowerCase().includes(q) ||
-        f.category.toLowerCase().includes(q) ||
-        f.fundHouse.toLowerCase().includes(q) ||
-        String(f.schemeCode).includes(q) ||
-        planMatch
-      ) {
+    for (let i = 0; i < allFunds.length; i++) {
+      const f = allFunds[i];
+      if (!f._lcBlob) {
+        const planCodes = Array.isArray(f.plans) ? f.plans.map((pl) => pl.code).join(" ") : "";
+        f._lcBlob = `${f.name || ""} ${f.shortName || ""} ${f.category || ""} ${f.fundHouse || ""} ${f.schemeCode || ""} ${planCodes}`.toLowerCase();
+      }
+      if (f._lcBlob.includes(q)) {
         results.push({
           type: "scheme",
           title: f.name,
           subtitle: `${f.fundHouse} • ${f.category} • NAV: ₹${Number(f.nav).toFixed(2)}`,
           schemeCode: f.schemeCode
         });
+        if (results.length >= 12) break;
       }
-    });
+    }
 
-    return results.slice(0, 12);
+    return results;
   }
 
   function renderSuggestionsDropdown() {
@@ -753,28 +761,47 @@
     }
   }
 
+  function scrollToElementHeading(el) {
+    if (!el || typeof el.scrollIntoView !== "function") return;
+    const fn = () => el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (typeof requestAnimationFrame === "function") {
+      requestAnimationFrame(fn);
+    } else {
+      fn();
+    }
+  }
+
   function selectSuggestion(item) {
     const listEl = document.getElementById("mf-search-suggestions");
     const inputEl = document.getElementById("mf-search");
     if (listEl) listEl.hidden = true;
     if (inputEl) inputEl.setAttribute("aria-expanded", "false");
+    currentSuggestions = [];
+    activeSuggestionIndex = -1;
 
     if (!item) return;
 
     if (item.type === "amc") {
-      if (inputEl) inputEl.value = item.amcName;
+      if (inputEl) {
+        inputEl.value = "";
+        if (typeof inputEl.blur === "function") inputEl.blur();
+      }
       renderAmcSchemesView(item.amcName);
       const amcSec = document.getElementById("mf-amc-results-section");
-      if (amcSec) amcSec.scrollIntoView({ behavior: "smooth", block: "start" });
+      const amcHeading = amcSec ? (amcSec.querySelector("h2") || amcSec) : null;
+      scrollToElementHeading(amcHeading);
     } else if (item.type === "scheme") {
       const found = allFunds.find((f) => f.schemeCode === item.schemeCode);
       if (found) {
-        if (inputEl) inputEl.value = found.shortName || found.name;
+        if (inputEl) {
+          inputEl.value = "";
+          if (typeof inputEl.blur === "function") inputEl.blur();
+        }
         const amcSec = document.getElementById("mf-amc-results-section");
         if (amcSec) amcSec.hidden = true;
         renderSchemeOverview(found);
-        const overviewEl = document.getElementById("mf-scheme-overview-section");
-        if (overviewEl) overviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        const headingEl = document.getElementById("mf-live-scheme-title") || document.getElementById("mf-scheme-overview-section");
+        scrollToElementHeading(headingEl);
       }
     }
   }
@@ -988,7 +1015,7 @@
   function init() {
     bindEvents();
 
-    fetch("data/mutual-funds/top-mutual-funds.json?v=78")
+    fetch("data/mutual-funds/top-mutual-funds.json?v=79")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         allFunds = data.funds || [];

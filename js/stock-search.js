@@ -133,11 +133,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return matrix[b.length][a.length];
   }
 
-  function scoreStock(s, rawQuery) {
+  function prepareQueryContext(rawQuery) {
     let raw = String(rawQuery || "").trim().toUpperCase();
-    if (!raw) return 0;
+    if (!raw) return null;
 
-    // Apply alias substitutions (exact or token boundary so prefixes do not corrupt other names)
     for (const [k, v] of Object.entries(COMMON_ALIASES)) {
       if (raw === k) {
         raw = v;
@@ -149,54 +148,71 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const cleanQ = cleanAlphanumeric(raw);
+    const qTokens = getQueryTokens(raw);
+    const qStems = qTokens.map((tk) => (tk.length > 5 ? tk.slice(0, 5) : tk));
+    return { raw, cleanQ, qTokens, qStems };
+  }
+
+  function getStockSearchCache(s) {
+    if (s._sc) return s._sc;
     const symClean = cleanAlphanumeric(s.symbol);
     const nameUpper = String(s.name || "").toUpperCase();
     const cleanName = cleanAlphanumeric(nameUpper);
     const sectorUpper = String(s.sector || "").toUpperCase();
+    const bseUpper = s.bseCode ? String(s.bseCode).toUpperCase() : "";
+    const combinedTarget = (s.symbol + " " + nameUpper + " " + sectorUpper).toUpperCase();
+    const nameWords = nameUpper.split(/\s+/);
+    const targetWords = combinedTarget.split(/\s+/);
+    s._sc = { symClean, nameUpper, cleanName, sectorUpper, bseUpper, combinedTarget, nameWords, targetWords };
+    return s._sc;
+  }
+
+  function scoreStockWithContext(s, qCtx) {
+    const { raw, cleanQ, qTokens, qStems } = qCtx;
+    const sc = getStockSearchCache(s);
 
     // 1. Exact Symbol or BSE Scrip Code match -> top priority
-    if (symClean === cleanQ) return 1000;
-    if (s.bseCode && String(s.bseCode).toUpperCase() === cleanQ) return 950;
+    if (sc.symClean === cleanQ) return 1000;
+    if (sc.bseUpper && sc.bseUpper === cleanQ) return 950;
 
     // 2. Symbol starts with clean query (e.g. HS -> HSCL, AEGIS -> AEGISLOG)
-    if (symClean.startsWith(cleanQ)) return 850;
+    if (sc.symClean.startsWith(cleanQ)) return 850;
 
     // 3. Exact clean Name match
-    if (cleanName === cleanQ) return 800;
+    if (sc.cleanName === cleanQ) return 800;
 
     // 4. Name starts with raw query
-    if (nameUpper.startsWith(raw)) return 700;
+    if (sc.nameUpper.startsWith(raw)) return 700;
 
     // 5. Symbol includes clean query (e.g. EGIS in AEGISLOG)
-    if (symClean.includes(cleanQ)) return 600;
+    if (sc.symClean.includes(cleanQ)) return 600;
 
     // 6. Name contains raw query
-    if (nameUpper.includes(raw)) return 500;
+    if (sc.nameUpper.includes(raw)) return 500;
 
     // 7. Multi-token match
-    const qTokens = getQueryTokens(raw);
     if (qTokens.length > 0) {
       let matchedCount = 0;
-      const combinedTarget = (s.symbol + " " + nameUpper + " " + sectorUpper).toUpperCase();
-      const targetWords = combinedTarget.split(/\s+/);
 
-      qTokens.forEach((tk) => {
-        const stem = tk.length > 5 ? tk.slice(0, 5) : tk;
-        if (combinedTarget.includes(tk) || combinedTarget.includes(stem)) {
+      for (let i = 0; i < qTokens.length; i++) {
+        const tk = qTokens[i];
+        const stem = qStems[i];
+        if (sc.combinedTarget.includes(tk) || sc.combinedTarget.includes(stem)) {
           matchedCount++;
-          return;
+          continue;
         }
-        // Fuzzy token match against target words
-        for (const tw of targetWords) {
-          if (tw.length >= 4 && tk.length >= 4) {
-            const dist = levenshteinDistance(tk, tw);
-            if (dist <= 1 || (dist <= 2 && tk.length >= 6)) {
-              matchedCount++;
-              return;
+        if (tk.length >= 4) {
+          for (const tw of sc.targetWords) {
+            if (tw.length >= 4) {
+              const dist = levenshteinDistance(tk, tw);
+              if (dist <= 1 || (dist <= 2 && tk.length >= 6)) {
+                matchedCount++;
+                break;
+              }
             }
           }
         }
-      });
+      }
 
       const ratio = matchedCount / qTokens.length;
       if (ratio === 1.0) return 450;
@@ -206,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 8. Fuzzy match for whole query against name words
     if (raw.length >= 4) {
-      for (const w of nameUpper.split(/\s+/)) {
+      for (const w of sc.nameWords) {
         if (w.length >= 4 && levenshteinDistance(raw, w) <= 1) {
           return 350;
         }
@@ -214,24 +230,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 9. Sector contains query
-    if (sectorUpper.includes(raw)) return 100;
+    if (sc.sectorUpper.includes(raw)) return 100;
 
     return 0;
   }
 
   function findStock(query) {
-    const raw = String(query || "").trim();
-    if (!raw) return null;
+    const qCtx = prepareQueryContext(query);
+    if (!qCtx) return null;
     const dataset = getStockDataset();
 
     let bestStock = null;
     let highestScore = 0;
 
     for (const s of dataset) {
-      const score = scoreStock(s, raw);
+      const score = scoreStockWithContext(s, qCtx);
       if (score > highestScore) {
         highestScore = score;
         bestStock = s;
+        if (highestScore === 1000) break;
       }
     }
 
@@ -242,13 +259,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getMatchingSuggestions(query, limit = 6) {
-    const raw = String(query || "").trim();
-    if (!raw || raw.length < 1) return [];
+    const qCtx = prepareQueryContext(query);
+    if (!qCtx) return [];
     const dataset = getStockDataset();
 
     const scored = [];
     for (const s of dataset) {
-      const score = scoreStock(s, raw);
+      const score = scoreStockWithContext(s, qCtx);
       if (score >= 80) {
         scored.push({ stock: s, score: score });
       }
@@ -353,12 +370,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function selectSuggestion(symbol) {
     if (!symbol) return;
-    if (searchInput) searchInput.value = symbol;
+    if (searchInput) {
+      searchInput.value = "";
+      if (typeof searchInput.blur === "function") searchInput.blur();
+    }
     if (suggestionBox) {
       suggestionBox.style.display = "none";
       activeSuggestionIndex = -1;
+      currentSuggestions = [];
     }
-    performSearch(symbol);
+    performSearch(symbol, true);
   }
 
   if (searchInput) {
@@ -472,6 +493,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     activeCompanyData = stock;
+    if (searchInput) {
+      searchInput.value = "";
+      if (typeof searchInput.blur === "function") searchInput.blur();
+    }
     try {
       history.pushState({ symbol: stock.symbol }, "", `index.html?symbol=${encodeURIComponent(stock.symbol)}`);
     } catch (_) {}
@@ -1609,7 +1634,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=78")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=79")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1621,7 +1646,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=78")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=79")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1641,7 +1666,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=78")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=79")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -2355,7 +2380,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (shouldScroll) {
-      stockResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const headingEl = document.getElementById("company-view-title") || stockResult;
+      const scrollFn = () => {
+        if (headingEl && typeof headingEl.scrollIntoView === "function") {
+          headingEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+      if (typeof requestAnimationFrame === "function") {
+        requestAnimationFrame(scrollFn);
+      } else {
+        scrollFn();
+      }
     }
   }
 
