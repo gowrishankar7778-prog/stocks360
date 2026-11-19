@@ -1135,90 +1135,72 @@ document.addEventListener("DOMContentLoaded", function () {
     const isBankOrNbfc = /^(BANKS|CREDIT SERVICES|MORTGAGE FINANCE|FINANCIAL CONGLOMERATES|INSURANCE)/i.test(String(stock.industry || ""))
       || /BANKING & FINANCIAL|FINANCIAL SERVICES & NBFC/i.test(String(stock.sector || ""));
 
-    // 1. QUALITY (0 - 100)
-    const qBreakdown = [];
-    let qScore = 0;
+    // 1. QUALITY (strictly normalized over available audited metrics — zero neutral fallbacks)
+    let qEarned = 0;
+    let qAvail = 0;
 
-    // 1A. Return Quality (25 pts)
     const roe = typeof stock.roePct === "number" ? stock.roePct : null;
     const roce = typeof stock.rocePct === "number" ? stock.rocePct : null;
-    let retPts = 0;
-    if (isBankOrNbfc) {
-      if (roe !== null) retPts = roe >= 16 ? 25 : roe >= 12 ? 20 : roe >= 8 ? 14 : roe > 0 ? 8 : 0;
-      qBreakdown.push(`ROE ${roe !== null ? roe.toFixed(1) + "%" : "N/A"} -> ${retPts}/25 pts (Banking/NBFC scale)`);
-    } else {
-      const roePts = roe !== null ? (roe >= 20 ? 15 : roe >= 15 ? 12 : roe >= 10 ? 8 : roe > 0 ? 4 : 0) : 0;
-      const rocePts = roce !== null ? (roce >= 20 ? 10 : roce >= 15 ? 8 : roce >= 10 ? 5 : roce > 0 ? 2 : 0) : 0;
-      retPts = roePts + rocePts;
-      qBreakdown.push(`ROE (${roe !== null ? roe.toFixed(1) + "%" : "N/A"}) + ROCE (${roce !== null ? roce.toFixed(1) + "%" : "N/A"}) -> ${retPts}/25 pts`);
+    if (isBankOrNbfc && roe !== null) {
+      qEarned += roe >= 16 ? 25 : roe >= 12 ? 20 : roe >= 8 ? 14 : roe > 0 ? 8 : 0;
+      qAvail += 25;
+    } else if (!isBankOrNbfc && (roe !== null || roce !== null)) {
+      if (roe !== null) {
+        qEarned += roe >= 20 ? 15 : roe >= 15 ? 12 : roe >= 10 ? 8 : roe > 0 ? 4 : 0;
+        qAvail += 15;
+      }
+      if (roce !== null) {
+        qEarned += roce >= 20 ? 10 : roce >= 15 ? 8 : roce >= 10 ? 5 : roce > 0 ? 2 : 0;
+        qAvail += 10;
+      }
     }
-    qScore += retPts;
 
-    // 1B. Multi-Year Growth Consistency (25 pts)
     let salesGrowthPct = null;
     let patGrowthPct = null;
     const ap = Array.isArray(stock.annualPnl) ? stock.annualPnl.filter((r) => r && r.year !== "TTM") : [];
     if (ap.length >= 2) {
-      const first = ap[0];
-      const last = ap[ap.length - 1];
-      const s0 = parseClientFilingNum(first.sales);
-      const s1 = parseClientFilingNum(last.sales);
-      const p0 = parseClientFilingNum(first.netProfit);
-      const p1 = parseClientFilingNum(last.netProfit);
+      const first = ap[0], last = ap[ap.length - 1];
+      const s0 = parseClientFilingNum(first.sales), s1 = parseClientFilingNum(last.sales);
+      const p0 = parseClientFilingNum(first.netProfit), p1 = parseClientFilingNum(last.netProfit);
       const yrs = Math.max(1, ap.length - 1);
       if (s0 > 0 && s1 > 0) salesGrowthPct = (Math.pow(s1 / s0, 1 / yrs) - 1) * 100;
       if (p0 > 0 && p1 > 0) patGrowthPct = (Math.pow(p1 / p0, 1 / yrs) - 1) * 100;
       else if (p0 < 0 && p1 > 0) patGrowthPct = 20;
     } else if (Array.isArray(stock.quarterlyResults) && stock.quarterlyResults.length >= 5) {
       const qr = stock.quarterlyResults;
-      const cur = qr[qr.length - 1];
-      const prev = qr[qr.length - 5];
-      const s0 = parseClientFilingNum(prev.sales);
-      const s1 = parseClientFilingNum(cur.sales);
-      const p0 = parseClientFilingNum(prev.netProfit);
-      const p1 = parseClientFilingNum(cur.netProfit);
+      const cur = qr[qr.length - 1], prev = qr[qr.length - 5];
+      const s0 = parseClientFilingNum(prev.sales), s1 = parseClientFilingNum(cur.sales);
+      const p0 = parseClientFilingNum(prev.netProfit), p1 = parseClientFilingNum(cur.netProfit);
       if (s0 > 0 && s1 > 0) salesGrowthPct = ((s1 - s0) / s0) * 100;
       if (p0 > 0 && p1 > 0) patGrowthPct = ((p1 - p0) / p0) * 100;
     }
-    const sgPts = salesGrowthPct !== null ? (salesGrowthPct >= 15 ? 12 : salesGrowthPct >= 8 ? 9 : salesGrowthPct > 0 ? 6 : 2) : 6;
-    const pgPts = patGrowthPct !== null ? (patGrowthPct >= 15 ? 13 : patGrowthPct >= 8 ? 10 : patGrowthPct > 0 ? 6 : 1) : 6;
-    const growthPts = sgPts + pgPts;
-    qScore += growthPts;
-    qBreakdown.push(`3Y Revenue (${salesGrowthPct !== null ? salesGrowthPct.toFixed(1) + "%" : "Pending"}) & Profit (${patGrowthPct !== null ? patGrowthPct.toFixed(1) + "%" : "Pending"}) Growth -> ${growthPts}/25 pts`);
+    if (salesGrowthPct !== null) {
+      qEarned += salesGrowthPct >= 15 ? 12 : salesGrowthPct >= 8 ? 9 : salesGrowthPct > 0 ? 6 : 2;
+      qAvail += 12;
+    }
+    if (patGrowthPct !== null) {
+      qEarned += patGrowthPct >= 15 ? 13 : patGrowthPct >= 8 ? 10 : patGrowthPct > 0 ? 6 : 1;
+      qAvail += 13;
+    }
 
-    // 1C. Operating Cash Flow Strength (20 pts)
-    let cfPts = 10;
     const cfs = Array.isArray(stock.cashFlows) ? stock.cashFlows : [];
     if (cfs.length > 0) {
-      const posCfo = cfs.filter((c) => {
-        const v = parseClientFilingNum(c.cfo);
-        return !isNaN(v) && v > 0;
-      }).length;
-      cfPts = Math.round((posCfo / cfs.length) * 20);
-      qBreakdown.push(`Positive Operating Cash Flow (${posCfo}/${cfs.length} periods) -> ${cfPts}/20 pts`);
-    } else {
-      qBreakdown.push(`Operating Cash Flow (Pending XBRL) -> ${cfPts}/20 pts`);
+      const posCfo = cfs.filter((c) => { const v = parseClientFilingNum(c.cfo); return !isNaN(v) && v > 0; }).length;
+      qEarned += Math.round((posCfo / cfs.length) * 20);
+      qAvail += 20;
     }
-    qScore += cfPts;
 
-    // 1D. Balance Sheet & Leverage Safety (15 pts)
-    let levPts = 8;
-    if (isBankOrNbfc) {
-      levPts = typeof stock.bookValue === "number" && stock.bookValue > 0 ? 15 : 8;
-      qBreakdown.push(`Capital & Book Value Adequacy -> ${levPts}/15 pts (Banking/NBFC scale)`);
-    } else if (typeof stock.debtToEquity === "number") {
+    if (isBankOrNbfc && typeof stock.bookValue === "number" && stock.bookValue > 0) {
+      qEarned += 15;
+      qAvail += 15;
+    } else if (!isBankOrNbfc && typeof stock.debtToEquity === "number") {
       const de = stock.debtToEquity;
-      levPts = de <= 0.25 ? 15 : de <= 0.50 ? 12 : de <= 1.0 ? 8 : de <= 1.5 ? 4 : 1;
-      qBreakdown.push(`Debt/Equity (${de.toFixed(2)}) -> ${levPts}/15 pts`);
-    } else {
-      qBreakdown.push(`Debt/Equity (Pending XBRL) -> ${levPts}/15 pts`);
+      qEarned += de <= 0.25 ? 15 : de <= 0.50 ? 12 : de <= 1.0 ? 8 : de <= 1.5 ? 4 : 1;
+      qAvail += 15;
     }
-    qScore += levPts;
 
-    // 1E. Ownership Stability (15 pts)
-    let ownPts = 8;
     const sh = stock.shareholding;
-    if (sh && typeof sh === "object") {
+    if (sh && typeof sh === "object" && sh.promoters !== undefined) {
       const prom = parseFloat(sh.promoters) || 0;
       const fii = parseFloat(sh.fii) || 0;
       const dii = parseFloat(sh.dii) || 0;
@@ -1229,16 +1211,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const lastP = Number(sh.series.promoters[sh.series.promoters.length - 1]) || 0;
         if (firstP - lastP > 3) stabPts = 3;
       }
-      ownPts = basePts + stabPts;
-      qBreakdown.push(`Promoter (${prom.toFixed(1)}%) & Institutional (${(fii + dii).toFixed(1)}%) Stability -> ${ownPts}/15 pts`);
-    } else {
-      qBreakdown.push(`Ownership Stability (Default) -> ${ownPts}/15 pts`);
+      qEarned += basePts + stabPts;
+      qAvail += 15;
     }
-    qScore += ownPts;
 
-    // 2. VALUE (0 - 100)
-    const vBreakdown = [];
-    let vScore = 0;
+    const q = qAvail >= 40 ? Math.max(0, Math.min(100, Math.round((qEarned / qAvail) * 100))) : null;
+
+    // 2. VALUE (strictly normalized over available valuation metrics; null if loss/missing P/E)
+    let vEarned = 0;
+    let vAvail = 0;
     const dataset = getStockDataset();
     const targetInd = String(stock.industry || "").trim().toLowerCase();
     const peerPes = dataset
@@ -1247,96 +1228,61 @@ document.addEventListener("DOMContentLoaded", function () {
     const peerAvgPe = peerPes.length > 0 ? peerPes.reduce((a, b) => a + b, 0) / peerPes.length : null;
     const pe = typeof stock.pe === "number" && stock.pe > 0 ? stock.pe : null;
 
-    // 2A. Relative P/E vs Industry Peer Average (40 pts)
-    let relPePts = 0;
-    if (pe !== null && peerAvgPe !== null && peerAvgPe > 0) {
-      const ratio = pe / peerAvgPe;
-      relPePts = ratio <= 0.70 ? 40 : ratio <= 0.90 ? 34 : ratio <= 1.10 ? 26 : ratio <= 1.35 ? 18 : ratio <= 1.75 ? 10 : 4;
-      vBreakdown.push(`P/E (${pe.toFixed(1)}x) vs Peer Avg (${peerAvgPe.toFixed(1)}x) -> ${relPePts}/40 pts`);
-    } else if (pe !== null) {
-      relPePts = pe <= 15 ? 34 : pe <= 25 ? 24 : 12;
-      vBreakdown.push(`P/E (${pe.toFixed(1)}x) -> ${relPePts}/40 pts`);
-    } else {
-      vBreakdown.push(`P/E (N/A or Loss) -> 0/40 pts`);
-    }
-    vScore += relPePts;
-
-    // 2B. Absolute Earnings Yield / P/E Multiple (30 pts)
-    let eyPts = 0;
     if (pe !== null) {
-      eyPts = pe <= 12 ? 30 : pe <= 18 ? 25 : pe <= 25 ? 19 : pe <= 35 ? 13 : pe <= 50 ? 7 : 3;
-      const eyPct = (100 / pe).toFixed(2);
-      vBreakdown.push(`Earnings Yield (${eyPct}% at ${pe.toFixed(1)}x P/E) -> ${eyPts}/30 pts`);
-    } else {
-      vBreakdown.push(`Earnings Yield (N/A) -> 0/30 pts`);
+      if (peerAvgPe !== null && peerAvgPe > 0) {
+        const ratio = pe / peerAvgPe;
+        vEarned += ratio <= 0.70 ? 40 : ratio <= 0.90 ? 34 : ratio <= 1.10 ? 26 : ratio <= 1.35 ? 18 : ratio <= 1.75 ? 10 : 4;
+        vAvail += 40;
+      }
+      vEarned += pe <= 12 ? 30 : pe <= 18 ? 25 : pe <= 25 ? 19 : pe <= 35 ? 13 : pe <= 50 ? 7 : 3;
+      vAvail += 30;
     }
-    vScore += eyPts;
-
-    // 2C. Price-to-Book Ratio (30 pts)
-    let pbPts = 0;
     const pb = (Number(stock.cmp) > 0 && typeof stock.bookValue === "number" && stock.bookValue > 0)
       ? (Number(stock.cmp) / stock.bookValue)
       : null;
     if (pb !== null) {
-      pbPts = pb <= 1.5 ? 30 : pb <= 2.5 ? 25 : pb <= 4.0 ? 19 : pb <= 6.5 ? 13 : pb <= 10.0 ? 7 : 3;
-      vBreakdown.push(`Price-to-Book (${pb.toFixed(2)}x) -> ${pbPts}/30 pts`);
-    } else {
-      vBreakdown.push(`Price-to-Book (N/A) -> 0/30 pts`);
+      vEarned += pb <= 1.5 ? 30 : pb <= 2.5 ? 25 : pb <= 4.0 ? 19 : pb <= 6.5 ? 13 : pb <= 10.0 ? 7 : 3;
+      vAvail += 30;
     }
-    vScore += pbPts;
+    const v = (pe !== null && vAvail >= 30) ? Math.max(0, Math.min(100, Math.round((vEarned / vAvail) * 100))) : null;
 
-    // 3. TECHNICAL MOMENTUM (0 - 100)
-    const tBreakdown = [];
-    let tScore = 0;
+    // 3. TECHNICAL MOMENTUM (strictly normalized over available Bhavcopy technicals)
+    let tEarned = 0;
+    let tAvail = 0;
     const cmp = Number(stock.cmp) || 0;
     const dma50 = Number(stock.dma50) || 0;
     const dma200 = Number(stock.dma200) || 0;
     const h52 = Number(stock.high52) || 0;
     const l52 = Number(stock.low52) || 0;
-    const rsi = typeof stock.rsi14 === "number" ? stock.rsi14 : null;
+    const rsi = typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? stock.rsi14 : null;
     const volSurge = Number(stock.volumeSurge) || 0;
     const delivPct = Number(stock.deliveryPct) || 0;
 
-    // 3A. Moving Average Trend (35 pts)
-    const ma200Pts = (cmp > 0 && dma200 > 0 && cmp > dma200) ? 15 : 0;
-    const ma50Pts = (cmp > 0 && dma50 > 0 && cmp > dma50) ? 10 : 0;
-    const gcPts = (stock.goldenCross || (dma50 > 0 && dma200 > 0 && dma50 > dma200)) ? 10 : 0;
-    const maPts = ma200Pts + ma50Pts + gcPts;
-    tScore += maPts;
-    tBreakdown.push(`DMA Alignment (CMP vs 50/200-DMA & Golden Cross) -> ${maPts}/35 pts`);
-
-    // 3B. 52-Week Range Strength (25 pts)
-    let rangePts = 12;
+    if (cmp > 0 && dma200 > 0 && dma50 > 0) {
+      tEarned += (cmp > dma200 ? 15 : 0) + (cmp > dma50 ? 10 : 0) + ((stock.goldenCross || dma50 > dma200) ? 10 : 0);
+      tAvail += 35;
+    }
     if (cmp > 0 && h52 > l52 && l52 > 0) {
       const pos = Math.max(0, Math.min(1, (cmp - l52) / (h52 - l52)));
-      rangePts = Math.round(pos * 25);
-      tBreakdown.push(`52-Week Range Position (${Math.round(pos * 100)}%) -> ${rangePts}/25 pts`);
-    } else {
-      tBreakdown.push(`52-Week Range Position -> ${rangePts}/25 pts`);
+      tEarned += Math.round(pos * 25);
+      tAvail += 25;
     }
-    tScore += rangePts;
-
-    // 3C. 14-Day RSI Momentum Zone (20 pts)
-    let rsiPts = 10;
-    if (rsi !== null && rsi > 0) {
-      rsiPts = (rsi >= 50 && rsi <= 70) ? 20 : ((rsi >= 40 && rsi < 50) || (rsi > 70 && rsi <= 80)) ? 14 : rsi > 80 ? 10 : rsi >= 30 ? 8 : 5;
-      tBreakdown.push(`14-Day RSI (${rsi.toFixed(1)}) -> ${rsiPts}/20 pts`);
-    } else {
-      tBreakdown.push(`14-Day RSI (Pending) -> ${rsiPts}/20 pts`);
+    if (rsi !== null) {
+      tEarned += (rsi >= 50 && rsi <= 70) ? 20 : ((rsi >= 40 && rsi < 50) || (rsi > 70 && rsi <= 80)) ? 14 : rsi > 80 ? 10 : rsi >= 30 ? 8 : 5;
+      tAvail += 20;
     }
-    tScore += rsiPts;
+    if (volSurge > 0) {
+      tEarned += volSurge >= 1.25 ? 10 : volSurge >= 1.0 ? 6 : 3;
+      tAvail += 10;
+    }
+    if (delivPct > 0) {
+      tEarned += delivPct >= 50 ? 10 : delivPct >= 35 ? 7 : 4;
+      tAvail += 10;
+    }
+    const t = tAvail >= 40 ? Math.max(0, Math.min(100, Math.round((tEarned / tAvail) * 100))) : null;
 
-    // 3D. Volume & Delivery Conviction (20 pts)
-    const vsPts = volSurge >= 1.25 ? 10 : volSurge >= 1.0 ? 6 : 3;
-    const delPts = delivPct >= 50 ? 10 : delivPct >= 35 ? 7 : delivPct > 0 ? 4 : 3;
-    const convPts = vsPts + delPts;
-    tScore += convPts;
-    tBreakdown.push(`Volume Surge (${volSurge > 0 ? volSurge.toFixed(2) + "x" : "--"}) & Delivery (${delivPct > 0 ? delivPct.toFixed(1) + "%" : "--"}) -> ${convPts}/20 pts`);
-
-    const q = Math.max(0, Math.min(100, Math.round(qScore)));
-    const v = Math.max(0, Math.min(100, Math.round(vScore)));
-    const t = Math.max(0, Math.min(100, Math.round(tScore)));
-    const overall = Math.round((q + v + t) / 3);
+    const pillars = [q, v, t].filter((x) => typeof x === "number");
+    const overall = pillars.length >= 2 ? Math.round(pillars.reduce((a, b) => a + b, 0) / pillars.length) : null;
 
     return { q, v, t, overall, isBankOrNbfc };
   }
@@ -1344,9 +1290,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function buildQvtScoreSectionHtml(stock) {
     if (!stock || stock.exchanges === "BSE") return "";
     const qvt = computeStocks360QvtScore(stock);
-    const getBand = (score, labels) => score >= 70 ? { text: labels[0], color: "#15803d", bg: "#f0fdf4", border: "#bbf7d0" }
-      : score >= 45 ? { text: labels[1], color: "#b45309", bg: "#fffbeb", border: "#fde68a" }
-      : { text: labels[2], color: "#b91c1c", bg: "#fef2f2", border: "#fecaca" };
+    const getBand = (score, labels) => {
+      if (score === null || score === undefined) return { text: "N/A", color: "#64748b", bg: "#f1f5f9", border: "#cbd5e1" };
+      return score >= 70 ? { text: labels[0], color: "#15803d", bg: "#f0fdf4", border: "#bbf7d0" }
+        : score >= 45 ? { text: labels[1], color: "#b45309", bg: "#fffbeb", border: "#fde68a" }
+        : { text: labels[2], color: "#b91c1c", bg: "#fef2f2", border: "#fecaca" };
+    };
 
     const qBand = getBand(qvt.q, ["Strong", "Moderate", "Weak"]);
     const vBand = getBand(qvt.v, ["Attractive", "Fair", "Expensive"]);
@@ -1384,7 +1333,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
           <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Stocks 360 QVT Score</h3>
           <span id="qvt-overall-pill" style="font-size:0.84rem; font-weight:700; padding:4px 10px; border-radius:999px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">
-            Overall QVT: ${qvt.overall} / 100
+            Overall QVT: ${typeof qvt.overall === "number" ? `${qvt.overall} / 100` : "N/A"}
           </span>
         </div>
       </div>
@@ -1395,7 +1344,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid #e2e8f0;">
               <span style="font-size:0.96rem; color:#334155; font-weight:700;">${escapeHtml(c.label)}:</span>
               <div style="display:flex; align-items:center; gap:8px;">
-                <strong id="${escapeHtml(c.id)}" style="font-size:1.05rem; color:#0f172a; font-weight:800;">${c.score} / 100</strong>
+                <strong id="${escapeHtml(c.id)}" style="font-size:1.05rem; color:#0f172a; font-weight:800;">${typeof c.score === "number" ? `${c.score} / 100` : "N/A"}</strong>
                 <span style="font-size:0.74rem; font-weight:700; padding:2px 8px; border-radius:999px; background:${c.band.bg}; color:${c.band.color}; border:1px solid ${c.band.border};">${escapeHtml(c.band.text)}</span>
               </div>
             </div>
@@ -1665,7 +1614,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=76")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=77")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1677,7 +1626,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=76")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=77")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1697,7 +1646,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=76")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=77")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }

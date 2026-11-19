@@ -134,6 +134,30 @@
         "totalAssets": "502"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "111",
+        "reserves": "247",
+        "borrowings": "85",
+        "otherLiabilities": "61",
+        "totalLiabilities": "504",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "504",
+        "totalAssets": "504"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "111",
+        "reserves": "285",
+        "borrowings": "71",
+        "otherLiabilities": "56",
+        "totalLiabilities": "523",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "523",
+        "totalAssets": "523"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "111",
         "reserves": "179",
@@ -167,6 +191,20 @@
         "cfi": "8",
         "cff": "-47",
         "netCash": "-13"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "47",
+        "cfi": "14",
+        "cff": "-70",
+        "netCash": "-9"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "41",
+        "cfi": "13",
+        "cff": "-50",
+        "netCash": "4"
       },
       {
         "year": "Sep 26",
@@ -329,6 +367,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "185",
+        "expenses": "122",
+        "operatingProfit": "63",
+        "opm": "34.1%",
+        "netProfit": "50",
+        "eps": "₹4.45"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "203",
+        "expenses": "126",
+        "operatingProfit": "77",
+        "opm": "37.9%",
+        "netProfit": "59",
+        "eps": "₹5.34"
+      },
+      {
         "year": "TTM",
         "sales": "51",
         "expenses": "28",
@@ -427,8 +483,48 @@
         "eps": "₹-1.48"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "15",
+        "reserves": "49",
+        "borrowings": "0",
+        "otherLiabilities": "8",
+        "totalLiabilities": "72",
+        "fixedAssets": "1",
+        "investments": "63",
+        "otherAssets": "8",
+        "totalAssets": "72"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "15",
+        "reserves": "60",
+        "borrowings": "0",
+        "otherLiabilities": "11",
+        "totalLiabilities": "86",
+        "fixedAssets": "0",
+        "investments": "73",
+        "otherAssets": "13",
+        "totalAssets": "86"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-5",
+        "cfi": "6",
+        "cff": "-2",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-6",
+        "cfi": "6",
+        "cff": "0",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "48.71%",
       "public": "51.29%",
@@ -571,9 +667,31 @@
       "ttmEps": -5.3,
       "ttmSalesCr": 4,
       "ttmPatCr": -8,
+      "bookValue": 55.5,
+      "roePct": -10.7,
+      "rocePct": -10.7,
+      "debtToEquity": 0,
       "promoterPct": 48.71
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "4",
+        "expenses": "12",
+        "operatingProfit": "-8",
+        "opm": "-200.0%",
+        "netProfit": "-8",
+        "eps": "₹-5.43"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "4",
+        "expenses": "12",
+        "operatingProfit": "-8",
+        "opm": "-200.0%",
+        "netProfit": "-8",
+        "eps": "₹-5.05"
+      },
       {
         "year": "TTM",
         "sales": "4",
@@ -583,7 +701,8 @@
         "netProfit": "-8",
         "eps": "₹-5.3"
       }
-    ]
+    ],
+    "debtToEquity": 0
   },
   "XPROINDIA": {
     "about": "Xpro India Limited processes and sells polymers primarily in India. The company offers dielectric films for applications comprising power transmission and distribution, motor run, power film/electronic, magnetic lighting ballast, microwave oven, low voltage industrial power factor correction, AC and pulse film, interference suppression, and hybrid cars capacitors, as well as for energy storage applications. It also provides specialty cast coextruded films, including hygiene films for use as diaper backing films, in sanitary napkins, in surgical drapes; release films for use in rubber, tire and tread, and conveyor belting industries; soft blister films for medical disposals packaging; and stretch wrap films for use in pallet stretch wrap and food bundle overwraps. In addition, the company offers mono-layer and coextruded plastic sheets for use in refrigerator door and cabinet liners; luggage shells; automotive floorings, trims, and panels; disposable cups, as well as stationary containers for files and folders; and industrial thermoforming applications, such as furniture, packaging, and bathroom cabinets. Further, it provides thermoformed liners for use in refrigerator inner and door liners; automotive interior and exterior trims, dash boards, door panels, floor panels; furniture; luggage shells; sanitary products, bath-tubs, cabinets; electrical/electronic housings, tubelight panels, streetlamps and other light fittings; and industrial trays for material handling. The company was formerly known as Biax Films Limited and changed its name to Xpro India Limited in September 1998. Xpro India Limited was incorporated in 1997 and is based in New Delhi, India.",
@@ -684,6 +803,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "22",
+        "reserves": "588",
+        "borrowings": "237",
+        "otherLiabilities": "146",
+        "totalLiabilities": "993",
+        "fixedAssets": "179",
+        "investments": "0",
+        "otherAssets": "814",
+        "totalAssets": "993"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "23",
+        "reserves": "736",
+        "borrowings": "289",
+        "otherLiabilities": "170",
+        "totalLiabilities": "1,218",
+        "fixedAssets": "389",
+        "investments": "0",
+        "otherAssets": "829",
+        "totalAssets": "1,218"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "23",
         "reserves": "706",
@@ -697,6 +840,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "13",
+        "cfi": "-113",
+        "cff": "203",
+        "netCash": "103"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "20",
+        "cfi": "-161",
+        "cff": "151",
+        "netCash": "10"
+      },
       {
         "year": "Sep 26",
         "cfo": "11",
@@ -858,6 +1015,24 @@
     "debtToEquity": 0.16,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "535",
+        "expenses": "483",
+        "operatingProfit": "52",
+        "opm": "9.7%",
+        "netProfit": "38",
+        "eps": "₹17.01"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "505",
+        "expenses": "475",
+        "operatingProfit": "30",
+        "opm": "5.9%",
+        "netProfit": "20",
+        "eps": "₹8.45"
+      },
+      {
         "year": "TTM",
         "sales": "613",
         "expenses": "558",
@@ -874,8 +1049,48 @@
     "industry": "Software - Application",
     "sector": "Information Technology",
     "updatedAt": 1794038126873,
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "13",
+        "reserves": "169",
+        "borrowings": "33",
+        "otherLiabilities": "34",
+        "totalLiabilities": "249",
+        "fixedAssets": "79",
+        "investments": "0",
+        "otherAssets": "170",
+        "totalAssets": "249"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "13",
+        "reserves": "190",
+        "borrowings": "49",
+        "otherLiabilities": "36",
+        "totalLiabilities": "288",
+        "fixedAssets": "83",
+        "investments": "0",
+        "otherAssets": "205",
+        "totalAssets": "288"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "17",
+        "cfi": "0",
+        "cff": "-9",
+        "netCash": "8"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "6",
+        "cfi": "-7",
+        "cff": "6",
+        "netCash": "5"
+      }
+    ],
     "quarterlyResults": [
       {
         "period": "Sep 24",
@@ -1073,9 +1288,31 @@
       "ttmEps": 0.56,
       "ttmSalesCr": 79,
       "ttmPatCr": 8,
+      "bookValue": 17.3,
+      "roePct": 3.9,
+      "rocePct": 4,
+      "debtToEquity": 0.24,
       "promoterPct": 62.54
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "234",
+        "expenses": "221",
+        "operatingProfit": "13",
+        "opm": "5.6%",
+        "netProfit": "10",
+        "eps": "₹0.66"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "369",
+        "expenses": "352",
+        "operatingProfit": "17",
+        "opm": "4.6%",
+        "netProfit": "15",
+        "eps": "₹0.84"
+      },
       {
         "year": "TTM",
         "sales": "79",
@@ -1085,7 +1322,8 @@
         "netProfit": "8",
         "eps": "₹0.56"
       }
-    ]
+    ],
+    "debtToEquity": 0.24
   },
   "XTRANET": {
     "about": "Xtranet Technologies Limited provides integrated information technology solutions. It offers enterprise applications, digital services, managed services, proprietary platforms, and technology partnerships for clients across industries and geographies. The company's IT system integration services include network and security solutions, virtualization and cloud integration, infrastructure management services, testing, commissioning, and training, data centre, and application development and maintenance; managed services include infrastructure management; and digital services include digital transformation, AI, IoT, cloud, and blockchain; and proprietary platform comprise synergy low-code digital transformation. Xtranet Technologies Limited was incorporated in 2002 and is headquartered in Bhopal, India.",

@@ -512,7 +512,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753920_05112026063545_WEB.xml",
     "ratios": {
-      "marketCapCr": 283105,
+      "marketCapCr": 285609,
       "pe": 6,
       "ttmEps": 37.79,
       "ttmSalesCr": 169859,
@@ -1312,6 +1312,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "17",
+        "reserves": "646",
+        "borrowings": "352",
+        "otherLiabilities": "130",
+        "totalLiabilities": "1,145",
+        "fixedAssets": "429",
+        "investments": "0",
+        "otherAssets": "716",
+        "totalAssets": "1,145"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "17",
+        "reserves": "648",
+        "borrowings": "402",
+        "otherLiabilities": "127",
+        "totalLiabilities": "1,194",
+        "fixedAssets": "395",
+        "investments": "0",
+        "otherAssets": "799",
+        "totalAssets": "1,194"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "17",
         "reserves": "702",
@@ -1325,6 +1349,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-34",
+        "cfi": "-87",
+        "cff": "121",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "2",
+        "cfi": "-12",
+        "cff": "12",
+        "netCash": "2"
+      },
       {
         "year": "Sep 26",
         "cfo": "-2",
@@ -1509,8 +1547,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752916_04112026063612_WEB.xml",
     "ratios": {
-      "marketCapCr": 1427,
-      "pe": 46.8,
+      "marketCapCr": 1509,
+      "pe": 49.5,
       "ttmEps": 9.27,
       "ttmSalesCr": 1109,
       "ttmPatCr": 31,
@@ -1523,6 +1561,24 @@
     "debtToEquity": 0.52,
     "lastShpRecordId": "215946",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "928",
+        "expenses": "880",
+        "operatingProfit": "48",
+        "opm": "5.2%",
+        "netProfit": "34",
+        "eps": "₹0"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,031",
+        "expenses": "1,020",
+        "operatingProfit": "11",
+        "opm": "1.1%",
+        "netProfit": "3",
+        "eps": "₹0"
+      },
       {
         "year": "TTM",
         "sales": "1,109",
@@ -1633,6 +1689,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "21",
+        "reserves": "71",
+        "borrowings": "59",
+        "otherLiabilities": "12",
+        "totalLiabilities": "163",
+        "fixedAssets": "29",
+        "investments": "10",
+        "otherAssets": "124",
+        "totalAssets": "163"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "21",
+        "reserves": "63",
+        "borrowings": "72",
+        "otherLiabilities": "16",
+        "totalLiabilities": "172",
+        "fixedAssets": "41",
+        "investments": "11",
+        "otherAssets": "120",
+        "totalAssets": "172"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "21",
         "reserves": "64",
@@ -1646,6 +1726,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-15",
+        "cfi": "-25",
+        "cff": "41",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "13",
+        "cfi": "-18",
+        "cff": "8",
+        "netCash": "3"
+      },
       {
         "year": "Sep 26",
         "cfo": "11",
@@ -2001,7 +2095,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748210_28102026075141_WEB.xml",
     "ratios": {
-      "marketCapCr": 140,
+      "marketCapCr": 141,
       "ttmEps": -1.38,
       "ttmSalesCr": 345,
       "ttmPatCr": -2,
@@ -2014,6 +2108,24 @@
     "debtToEquity": 0.91,
     "lastShpRecordId": "213766",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "339",
+        "expenses": "335",
+        "operatingProfit": "4",
+        "opm": "1.2%",
+        "netProfit": "2",
+        "eps": "₹1.1"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "347",
+        "expenses": "354",
+        "operatingProfit": "-7",
+        "opm": "-2.0%",
+        "netProfit": "-8",
+        "eps": "₹-3.71"
+      },
       {
         "year": "TTM",
         "sales": "345",
@@ -2079,6 +2191,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "10",
+        "reserves": "386",
+        "borrowings": "56",
+        "otherLiabilities": "82",
+        "totalLiabilities": "534",
+        "fixedAssets": "378",
+        "investments": "1",
+        "otherAssets": "155",
+        "totalAssets": "534"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "10",
+        "reserves": "421",
+        "borrowings": "84",
+        "otherLiabilities": "87",
+        "totalLiabilities": "602",
+        "fixedAssets": "363",
+        "investments": "1",
+        "otherAssets": "238",
+        "totalAssets": "602"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "480",
@@ -2092,6 +2228,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "70",
+        "cfi": "-26",
+        "cff": "-44",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "11",
+        "cfi": "-17",
+        "cff": "10",
+        "netCash": "4"
+      },
       {
         "year": "Sep 26",
         "cfo": "-41",
@@ -2404,6 +2554,24 @@
     "lastShpRecordId": "213757",
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "307",
+        "expenses": "278",
+        "operatingProfit": "29",
+        "opm": "9.4%",
+        "netProfit": "21",
+        "eps": "₹4.29"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "506",
+        "expenses": "451",
+        "operatingProfit": "55",
+        "opm": "10.9%",
+        "netProfit": "48",
+        "eps": "₹9.55"
+      },
+      {
         "year": "TTM",
         "sales": "744",
         "expenses": "627",
@@ -2468,6 +2636,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "3",
+        "reserves": "56",
+        "borrowings": "0",
+        "otherLiabilities": "9",
+        "totalLiabilities": "68",
+        "fixedAssets": "0",
+        "investments": "15",
+        "otherAssets": "53",
+        "totalAssets": "68"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "3",
+        "reserves": "50",
+        "borrowings": "0",
+        "otherLiabilities": "10",
+        "totalLiabilities": "63",
+        "fixedAssets": "0",
+        "investments": "9",
+        "otherAssets": "54",
+        "totalAssets": "63"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "3",
         "reserves": "51",
@@ -2481,6 +2673,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "15",
+        "cfi": "2",
+        "cff": "-2",
+        "netCash": "15"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-7",
+        "cfi": "-19",
+        "cff": "0",
+        "netCash": "-26"
+      },
       {
         "year": "Sep 26",
         "cfo": "3",
@@ -2865,6 +3071,24 @@
     "debtToEquity": 0,
     "lastShpRecordId": "213728",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "47",
+        "expenses": "46",
+        "operatingProfit": "1",
+        "opm": "2.1%",
+        "netProfit": "0",
+        "eps": "₹0.12"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "42",
+        "expenses": "43",
+        "operatingProfit": "-1",
+        "opm": "-2.4%",
+        "netProfit": "-1",
+        "eps": "₹-0.34"
+      },
       {
         "year": "TTM",
         "sales": "48",
@@ -3299,8 +3523,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1745117_23102026090308_WEB.xml",
     "ratios": {
-      "marketCapCr": 84488,
-      "pe": 22.7,
+      "marketCapCr": 86828,
+      "pe": 23.3,
       "ttmEps": 426.92,
       "ttmSalesCr": 7692,
       "ttmPatCr": 3717,
@@ -4120,6 +4344,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "48",
+        "reserves": "184",
+        "borrowings": "45",
+        "otherLiabilities": "105",
+        "totalLiabilities": "382",
+        "fixedAssets": "307",
+        "investments": "0",
+        "otherAssets": "75",
+        "totalAssets": "382"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "52",
+        "reserves": "145",
+        "borrowings": "25",
+        "otherLiabilities": "92",
+        "totalLiabilities": "314",
+        "fixedAssets": "242",
+        "investments": "0",
+        "otherAssets": "72",
+        "totalAssets": "314"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "56",
         "reserves": "134",
@@ -4133,6 +4381,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "30",
+        "cfi": "0",
+        "cff": "-19",
+        "netCash": "11"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-4",
+        "cfi": "-5",
+        "cff": "4",
+        "netCash": "-5"
+      },
       {
         "year": "Sep 26",
         "cfo": "-12",
@@ -4539,7 +4801,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753475_05112026030519_WEB.xml",
     "ratios": {
-      "marketCapCr": 329,
+      "marketCapCr": 325,
       "ttmEps": -11.21,
       "ttmSalesCr": 79,
       "ttmPatCr": -56,
@@ -4552,6 +4814,24 @@
     "debtToEquity": 0.1,
     "lastShpRecordId": "215410",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "123",
+        "expenses": "152",
+        "operatingProfit": "-29",
+        "opm": "-23.6%",
+        "netProfit": "-32",
+        "eps": "₹-6.67"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "70",
+        "expenses": "134",
+        "operatingProfit": "-64",
+        "opm": "-91.4%",
+        "netProfit": "-61",
+        "eps": "₹-10.58"
+      },
       {
         "year": "TTM",
         "sales": "79",
@@ -4807,7 +5087,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756929_12112026075151_WEB.xml",
     "ratios": {
-      "marketCapCr": 14034,
+      "marketCapCr": 14530,
       "ttmEps": -0.21,
       "ttmSalesCr": 53,
       "ttmPatCr": -94,
@@ -5022,6 +5302,20 @@
     ],
     "cashFlows": [
       {
+        "year": "Mar 25",
+        "cfo": "141",
+        "cfi": "-225",
+        "cff": "83",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "104",
+        "cfi": "-167",
+        "cff": "67",
+        "netCash": "4"
+      },
+      {
         "year": "Sep 26",
         "cfo": "182",
         "cfi": "-37",
@@ -5188,8 +5482,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755714_09112026085932_WEB.xml",
     "ratios": {
-      "marketCapCr": 8140,
-      "pe": 47.3,
+      "marketCapCr": 8340,
+      "pe": 48.4,
       "ttmEps": 20.93,
       "ttmSalesCr": 2555,
       "ttmPatCr": 172,
@@ -5210,6 +5504,24 @@
         "opm": "9.2%",
         "netProfit": "87",
         "eps": "₹9.36"
+      },
+      {
+        "year": "Mar 25",
+        "sales": "1,802",
+        "expenses": "1,614",
+        "operatingProfit": "188",
+        "opm": "10.4%",
+        "netProfit": "139",
+        "eps": "₹16.92"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "2,312",
+        "expenses": "2,066",
+        "operatingProfit": "246",
+        "opm": "10.6%",
+        "netProfit": "180",
+        "eps": "₹21.62"
       },
       {
         "year": "TTM",
@@ -5348,6 +5660,30 @@
         "totalAssets": "518"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "21",
+        "reserves": "294",
+        "borrowings": "70",
+        "otherLiabilities": "99",
+        "totalLiabilities": "484",
+        "fixedAssets": "185",
+        "investments": "0",
+        "otherAssets": "299",
+        "totalAssets": "484"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "21",
+        "reserves": "325",
+        "borrowings": "47",
+        "otherLiabilities": "110",
+        "totalLiabilities": "503",
+        "fixedAssets": "199",
+        "investments": "0",
+        "otherAssets": "304",
+        "totalAssets": "503"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "21",
         "reserves": "337",
@@ -5381,6 +5717,20 @@
         "cfi": "-28",
         "cff": "-10",
         "netCash": "-22"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "34",
+        "cfi": "-13",
+        "cff": "-45",
+        "netCash": "-24"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "67",
+        "cfi": "-15",
+        "cff": "-38",
+        "netCash": "14"
       },
       {
         "year": "Sep 26",
@@ -5822,8 +6172,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748827_29102026041536_WEB.xml",
     "ratios": {
-      "marketCapCr": 439,
-      "pe": 8.3,
+      "marketCapCr": 427,
+      "pe": 8,
       "ttmEps": 24.25,
       "ttmSalesCr": 618,
       "ttmPatCr": 52,
@@ -5836,6 +6186,24 @@
     "debtToEquity": 0.1,
     "lastShpRecordId": "213933",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "369",
+        "expenses": "334",
+        "operatingProfit": "35",
+        "opm": "9.5%",
+        "netProfit": "22",
+        "eps": "₹10.07"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "484",
+        "expenses": "435",
+        "operatingProfit": "49",
+        "opm": "10.1%",
+        "netProfit": "37",
+        "eps": "₹17.32"
+      },
       {
         "year": "TTM",
         "sales": "618",
@@ -5855,6 +6223,30 @@
     "updatedAt": 1794038126384,
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "183",
+        "reserves": "-388",
+        "borrowings": "744",
+        "otherLiabilities": "14,338",
+        "totalLiabilities": "14,877",
+        "fixedAssets": "481",
+        "investments": "21",
+        "otherAssets": "14,375",
+        "totalAssets": "14,877"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "183",
+        "reserves": "-1,084",
+        "borrowings": "1,425",
+        "otherLiabilities": "15,998",
+        "totalLiabilities": "16,522",
+        "fixedAssets": "60",
+        "investments": "18",
+        "otherAssets": "16,444",
+        "totalAssets": "16,522"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "183",
         "reserves": "297",
@@ -5868,6 +6260,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "1,007",
+        "cfi": "-126",
+        "cff": "-770",
+        "netCash": "111"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "212",
+        "cfi": "60",
+        "cff": "-82",
+        "netCash": "190"
+      },
       {
         "year": "Sep 26",
         "cfo": "57",
@@ -6315,7 +6721,7 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:35.359Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1786,
+      "marketCapCr": 1764,
       "ttmEps": -4.95,
       "ttmSalesCr": 716,
       "ttmPatCr": -91,
@@ -6328,6 +6734,24 @@
     "debtToEquity": 0.68,
     "lastShpRecordId": "215601",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "1,561",
+        "expenses": "2,325",
+        "operatingProfit": "-764",
+        "opm": "-48.9%",
+        "netProfit": "-685",
+        "eps": "₹-37.51"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,253",
+        "expenses": "2,152",
+        "operatingProfit": "-899",
+        "opm": "-71.7%",
+        "netProfit": "-697",
+        "eps": "₹-38.1"
+      },
       {
         "year": "TTM",
         "sales": "716",
@@ -6391,8 +6815,29 @@
         "eps": "₹2.54"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 26",
+        "equityCapital": "34",
+        "reserves": "174",
+        "borrowings": "49",
+        "otherLiabilities": "127",
+        "totalLiabilities": "384",
+        "fixedAssets": "100",
+        "investments": "16",
+        "otherAssets": "268",
+        "totalAssets": "384"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "-7",
+        "cfi": "-11",
+        "cff": "36",
+        "netCash": "18"
+      }
+    ],
     "shareholding": {
       "promoters": "74.86%",
       "public": "24.52%",
@@ -6585,15 +7030,28 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:36.132Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 380,
-      "pe": 14.9,
+      "marketCapCr": 402,
+      "pe": 15.8,
       "ttmEps": 7.17,
       "ttmSalesCr": 671,
       "ttmPatCr": 24,
+      "bookValue": 58.7,
+      "roePct": 11.5,
+      "rocePct": 12.5,
+      "debtToEquity": 0.24,
       "promoterPct": 74.86
     },
     "lastShpRecordId": "216190",
     "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "477",
+        "expenses": "456",
+        "operatingProfit": "21",
+        "opm": "4.4%",
+        "netProfit": "16",
+        "eps": "₹4.9"
+      },
       {
         "year": "TTM",
         "sales": "671",
@@ -6603,7 +7061,8 @@
         "netProfit": "24",
         "eps": "₹7.17"
       }
-    ]
+    ],
+    "debtToEquity": 0.24
   },
   "OMINFRAL": {
     "about": "Om Infra Limited, together with its subsidiaries, engages in the design, detail engineering, manufacture, supply, installation, testing, and commissioning of hydro mechanical equipment for hydroelectric power and irrigation projects in India and internationally. It operates through Engineering, Real Estate, and Road segments. The company offers heavy radial gates, penstocks, and hydraulic hoists. It is also involved in designing, manufacturing, supplying, installation, and commissioning of critical hydro-mechanical equipment such as gates, hoists, cranes, and spillways; construction and rehabilitation of dams, canals, lift irrigation systems, and pumping stations; and construction of pipelines, pumping stations, overhead reservoirs, and water treatment plants, as well as develops residential and commercial units. In addition, the company engages in providing civil and hydro-mechanical irrigation solutions; and hotel business activities. The company was formerly known as Om Metals Infraprojects Limited and changed its name to Om Infra Limited in January 2021. Om Infra Limited was founded in 1969 and is based in New Delhi, India.",
@@ -6726,6 +7185,30 @@
         "investments": "28",
         "otherAssets": "1,423",
         "totalAssets": "1,528"
+      },
+      {
+        "year": "Mar 25",
+        "equityCapital": "10",
+        "reserves": "736",
+        "borrowings": "71",
+        "otherLiabilities": "606",
+        "totalLiabilities": "1,423",
+        "fixedAssets": "72",
+        "investments": "27",
+        "otherAssets": "1,324",
+        "totalAssets": "1,423"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "10",
+        "reserves": "753",
+        "borrowings": "86",
+        "otherLiabilities": "615",
+        "totalLiabilities": "1,464",
+        "fixedAssets": "72",
+        "investments": "44",
+        "otherAssets": "1,348",
+        "totalAssets": "1,464"
       }
     ],
     "cashFlows": [
@@ -6742,6 +7225,20 @@
         "cfi": "6",
         "cff": "-4",
         "netCash": "-6"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "6",
+        "cfi": "43",
+        "cff": "-44",
+        "netCash": "5"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-4",
+        "cfi": "-19",
+        "cff": "13",
+        "netCash": "-10"
       }
     ],
     "shareholding": {
@@ -7147,10 +7644,32 @@
       "ttmEps": 4.16,
       "ttmSalesCr": 642,
       "ttmPatCr": 40,
+      "bookValue": 78.5,
+      "roePct": 5.2,
+      "rocePct": 5.2,
+      "debtToEquity": 0.11,
       "promoterPct": 67.05
     },
     "lastShpRecordId": "213330",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "713",
+        "expenses": "685",
+        "operatingProfit": "28",
+        "opm": "3.9%",
+        "netProfit": "36",
+        "eps": "₹3.54"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "500",
+        "expenses": "478",
+        "operatingProfit": "22",
+        "opm": "4.4%",
+        "netProfit": "21",
+        "eps": "₹2.14"
+      },
       {
         "year": "TTM",
         "sales": "642",
@@ -7160,7 +7679,8 @@
         "netProfit": "40",
         "eps": "₹4.16"
       }
-    ]
+    ],
+    "debtToEquity": 0.11
   },
   "OMNI": {
     "about": "Omnitech Engineering Limited engages in the manufacturing and supply of engineered components and assemblies worldwide. The company offers drilling, exploration, and refining products for upstream, midstream, and downstream applications, as well as braking systems, drive systems, and pumping units for renewable energy, electricity generation, and power production. It also provides actuator systems, motion control and drive technologies, robotic systems, and conveying and handling systems; crushing and screening systems, conveying solutions, drilling and blasting equipment, surface and underground rig components, and core drilling equipment for mining and earth moving equipment; and valve components for gas and stream equipment. In addition, the company offers hydraulic and pneumatic systems for airport ground support operations and heavy-duty industrial equipment. Omnitech Engineering Limited was founded in 2006 and is based in Rajkot, India.",
@@ -7207,6 +7727,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "62",
+        "reserves": "618",
+        "borrowings": "398",
+        "otherLiabilities": "177",
+        "totalLiabilities": "1,255",
+        "fixedAssets": "286",
+        "investments": "0",
+        "otherAssets": "969",
+        "totalAssets": "1,255"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "62",
         "reserves": "682",
@@ -7220,6 +7752,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "-2",
+        "cfi": "-255",
+        "cff": "416",
+        "netCash": "159"
+      },
       {
         "year": "Sep 26",
         "cfo": "96",
@@ -7351,8 +7890,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753213_04112026090538_WEB.xml",
     "ratios": {
-      "marketCapCr": 6631,
-      "pe": 57.7,
+      "marketCapCr": 7133,
+      "pe": 62.1,
       "ttmEps": 9.38,
       "ttmSalesCr": 653,
       "ttmPatCr": 108,
@@ -7365,6 +7904,15 @@
     "debtToEquity": 0.67,
     "lastShpRecordId": "213781",
     "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "511",
+        "expenses": "403",
+        "operatingProfit": "108",
+        "opm": "21.1%",
+        "netProfit": "79",
+        "eps": "₹7.45"
+      },
       {
         "year": "TTM",
         "sales": "653",
@@ -7412,6 +7960,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "27",
+        "reserves": "110",
+        "borrowings": "48",
+        "otherLiabilities": "157",
+        "totalLiabilities": "342",
+        "fixedAssets": "10",
+        "investments": "0",
+        "otherAssets": "332",
+        "totalAssets": "342"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "34",
         "reserves": "249",
@@ -7425,6 +7985,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "-26",
+        "cfi": "-18",
+        "cff": "46",
+        "netCash": "2"
+      },
       {
         "year": "Sep 26",
         "cfo": "-38",
@@ -7566,8 +8133,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750798_31102026072833_WEB.xml",
     "ratios": {
-      "marketCapCr": 529,
-      "pe": 8.4,
+      "marketCapCr": 435,
+      "pe": 6.9,
       "ttmEps": 18.24,
       "ttmSalesCr": 568,
       "ttmPatCr": 56,
@@ -7578,7 +8145,18 @@
       "promoterPct": 69.05
     },
     "debtToEquity": 0.08,
-    "lastShpRecordId": "216070"
+    "lastShpRecordId": "216070",
+    "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "449",
+        "expenses": "397",
+        "operatingProfit": "52",
+        "opm": "11.6%",
+        "netProfit": "40",
+        "eps": "₹15.53"
+      }
+    ]
   },
   "ONEGLOBAL": {
     "about": "One Global Service Provider Limited engages in the provision of healthcare services worldwide. The company offers diagnostic services, including anemia, antenatal, diabetes, diabetes monitoring, hypertension, kidney, and lipid profiles, as well as liver function tests; and healthcare services, such as end-to-end solutions in industrial occupational check-ups, population screening for non-communicable diseases, disease surveillance programs, electronic medical records and health registry, health analytics for predictive and preventive actions, and wellness programs for lifestyle diseases. It also provides laboratory services, such as biochemistry, microbiology, hematology and coagulation, histopathology and cytopathology, clinical pathology, molecular diagnostics, and serology. In addition, the company offers healthcare products, such as medical devices, equipment, medical consumables, and reagents through an online platform; and healthcare solutions comprising home-based health screening, public health data analytics, and home-based remote care services. Further, it involves in consultancy and development, requirements, designs, develops, tests, integrates, deploys, and maintains software/IT products; and purchases, sells, distributes licenses, resells, imports, exports IT and/or software products. The company was formerly known as Overseas Synthetics Limited. One Global Service Provider Limited was incorporated in 1992 and is based in Mumbai, India.",
@@ -7704,8 +8282,48 @@
         "eps": "₹0.35"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "13",
+        "reserves": "21",
+        "borrowings": "23",
+        "otherLiabilities": "115",
+        "totalLiabilities": "172",
+        "fixedAssets": "30",
+        "investments": "7",
+        "otherAssets": "135",
+        "totalAssets": "172"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "37",
+        "reserves": "36",
+        "borrowings": "31",
+        "otherLiabilities": "72",
+        "totalLiabilities": "176",
+        "fixedAssets": "32",
+        "investments": "11",
+        "otherAssets": "133",
+        "totalAssets": "176"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "58",
+        "cfi": "-27",
+        "cff": "-5",
+        "netCash": "26"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-45",
+        "cfi": "-7",
+        "cff": "41",
+        "netCash": "-11"
+      }
+    ],
     "shareholding": {
       "promoters": "26.03%",
       "public": "73.97%",
@@ -8052,15 +8670,37 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:37.918Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 284,
-      "pe": 26,
+      "marketCapCr": 283,
+      "pe": 25.9,
       "ttmEps": 2.57,
       "ttmSalesCr": 13,
       "ttmPatCr": 7,
+      "bookValue": 17.2,
+      "roePct": 9.6,
+      "rocePct": 7.7,
+      "debtToEquity": 0.42,
       "promoterPct": 26.03
     },
     "lastShpRecordId": "215538",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "11",
+        "expenses": "14",
+        "operatingProfit": "-3",
+        "opm": "-27.3%",
+        "netProfit": "-5",
+        "eps": "₹-3.65"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "9",
+        "expenses": "3",
+        "operatingProfit": "6",
+        "opm": "66.7%",
+        "netProfit": "5",
+        "eps": "₹1.47"
+      },
       {
         "year": "TTM",
         "sales": "13",
@@ -8070,7 +8710,8 @@
         "netProfit": "7",
         "eps": "₹2.57"
       }
-    ]
+    ],
+    "debtToEquity": 0.42
   },
   "ONEPOINT": {
     "about": "One Point One Solutions Limited engages in the customer life cycle management, business process management, and technology servicing activities in India. The company provides customer experience management services, including omnichannel, multilingual customer support across email, chat, voice and digital platforms; digital transformation and automation services; finance and accounting outsourcing services comprising payroll management, budgeting, bookkeeping, forecasting, and compliance services; trust and safety services that include fraud detection, user-generated content, moderation, and brand review content moderation and review; supply chain and operations management; creator economy support services, such as brand partnerships, content production, audience growth, and IP management; and medical records and litigation support services. It serves banking and financial, telecom, insurance, airlines, consumer durables, FMCG, retail, e-commerce, travel, and hospitality industries. The company was incorporated in 2008 and is headquartered in Navi Mumbai, India.",
@@ -8079,6 +8720,30 @@
     "sector": "Information Technology",
     "updatedAt": 1794038126387,
     "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "52",
+        "reserves": "352",
+        "borrowings": "7",
+        "otherLiabilities": "90",
+        "totalLiabilities": "501",
+        "fixedAssets": "37",
+        "investments": "199",
+        "otherAssets": "265",
+        "totalAssets": "501"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "53",
+        "reserves": "394",
+        "borrowings": "160",
+        "otherLiabilities": "230",
+        "totalLiabilities": "837",
+        "fixedAssets": "53",
+        "investments": "59",
+        "otherAssets": "725",
+        "totalAssets": "837"
+      },
       {
         "year": "Sep 26",
         "equityCapital": "53",
@@ -8093,6 +8758,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "28",
+        "cfi": "-224",
+        "cff": "192",
+        "netCash": "-4"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "121",
+        "cfi": "-196",
+        "cff": "123",
+        "netCash": "48"
+      },
       {
         "year": "Sep 26",
         "cfo": "-19",
@@ -8447,8 +9126,8 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:37.033Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1990,
-      "pe": 59.8,
+      "marketCapCr": 2035,
+      "pe": 61.1,
       "ttmEps": 1.22,
       "ttmSalesCr": 258,
       "ttmPatCr": 32,
@@ -8461,6 +9140,24 @@
     "debtToEquity": 0.12,
     "lastShpRecordId": "214124",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "256",
+        "expenses": "213",
+        "operatingProfit": "43",
+        "opm": "16.8%",
+        "netProfit": "33",
+        "eps": "₹1.35"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "313",
+        "expenses": "261",
+        "operatingProfit": "52",
+        "opm": "16.6%",
+        "netProfit": "38",
+        "eps": "₹1.45"
+      },
       {
         "year": "TTM",
         "sales": "258",
@@ -9017,8 +9714,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746464_27102026122201_WEB.xml",
     "ratios": {
-      "marketCapCr": 18139,
-      "pe": 123.1,
+      "marketCapCr": 18442,
+      "pe": 125.1,
       "ttmEps": 12.89,
       "ttmSalesCr": 2132,
       "ttmPatCr": 147,
@@ -9195,6 +9892,30 @@
         "totalAssets": "553"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "23",
+        "reserves": "103",
+        "borrowings": "101",
+        "otherLiabilities": "301",
+        "totalLiabilities": "528",
+        "fixedAssets": "72",
+        "investments": "2",
+        "otherAssets": "454",
+        "totalAssets": "528"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "37",
+        "reserves": "201",
+        "borrowings": "74",
+        "otherLiabilities": "212",
+        "totalLiabilities": "524",
+        "fixedAssets": "68",
+        "investments": "0",
+        "otherAssets": "456",
+        "totalAssets": "524"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "37",
         "reserves": "160",
@@ -9228,6 +9949,20 @@
         "cfi": "4",
         "cff": "-3",
         "netCash": "-1"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "31",
+        "cfi": "-8",
+        "cff": "-24",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-107",
+        "cfi": "-26",
+        "cff": "143",
+        "netCash": "10"
       },
       {
         "year": "Sep 26",
@@ -9584,7 +10319,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752348_03112026105327_WEB.xml",
     "ratios": {
-      "marketCapCr": 959,
+      "marketCapCr": 968,
       "ttmEps": -3.07,
       "ttmSalesCr": 749,
       "ttmPatCr": -114,
@@ -9597,6 +10332,24 @@
     "debtToEquity": 0.34,
     "lastShpRecordId": "216108",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "747",
+        "expenses": "749",
+        "operatingProfit": "-2",
+        "opm": "-0.3%",
+        "netProfit": "-2",
+        "eps": "₹-0.1"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "660",
+        "expenses": "735",
+        "operatingProfit": "-75",
+        "opm": "-11.4%",
+        "netProfit": "-75",
+        "eps": "₹-2.45"
+      },
       {
         "year": "TTM",
         "sales": "749",
@@ -9785,6 +10538,30 @@
         "totalAssets": "885"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "106",
+        "reserves": "516",
+        "borrowings": "41",
+        "otherLiabilities": "207",
+        "totalLiabilities": "870",
+        "fixedAssets": "12",
+        "investments": "68",
+        "otherAssets": "790",
+        "totalAssets": "870"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "106",
+        "reserves": "518",
+        "borrowings": "67",
+        "otherLiabilities": "290",
+        "totalLiabilities": "981",
+        "fixedAssets": "10",
+        "investments": "67",
+        "otherAssets": "904",
+        "totalAssets": "981"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "106",
         "reserves": "599",
@@ -9811,6 +10588,20 @@
         "cfi": "-57",
         "cff": "-1",
         "netCash": "-20"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-24",
+        "cfi": "-32",
+        "cff": "22",
+        "netCash": "-34"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "87",
+        "cfi": "-57",
+        "cff": "16",
+        "netCash": "46"
       },
       {
         "year": "Sep 26",
@@ -9997,7 +10788,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748379_28102026105603_WEB.xml",
     "ratios": {
-      "marketCapCr": 602,
+      "marketCapCr": 614,
       "ttmEps": -4.62,
       "ttmSalesCr": 192,
       "ttmPatCr": -49,
@@ -10010,6 +10801,24 @@
     "debtToEquity": 0.09,
     "lastShpRecordId": "213775",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "573",
+        "expenses": "608",
+        "operatingProfit": "-35",
+        "opm": "-6.1%",
+        "netProfit": "-41",
+        "eps": "₹-3.78"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "517",
+        "expenses": "526",
+        "operatingProfit": "-9",
+        "opm": "-1.7%",
+        "netProfit": "-11",
+        "eps": "₹-1.07"
+      },
       {
         "year": "TTM",
         "sales": "192",
@@ -10120,6 +10929,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "23",
+        "reserves": "202",
+        "borrowings": "0",
+        "otherLiabilities": "89",
+        "totalLiabilities": "314",
+        "fixedAssets": "63",
+        "investments": "0",
+        "otherAssets": "251",
+        "totalAssets": "314"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "22",
+        "reserves": "231",
+        "borrowings": "0",
+        "otherLiabilities": "118",
+        "totalLiabilities": "371",
+        "fixedAssets": "85",
+        "investments": "0",
+        "otherAssets": "286",
+        "totalAssets": "371"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "22",
         "reserves": "181",
@@ -10133,6 +10966,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "32",
+        "cfi": "-17",
+        "cff": "-21",
+        "netCash": "-6"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "65",
+        "cfi": "-22",
+        "cff": "-31",
+        "netCash": "12"
+      },
       {
         "year": "Sep 26",
         "cfo": "17",
@@ -10471,6 +11318,24 @@
     "lastShpRecordId": "213818",
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "491",
+        "expenses": "455",
+        "operatingProfit": "36",
+        "opm": "7.3%",
+        "netProfit": "27",
+        "eps": "₹11.81"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "544",
+        "expenses": "487",
+        "operatingProfit": "57",
+        "opm": "10.5%",
+        "netProfit": "44",
+        "eps": "₹19.52"
+      },
+      {
         "year": "TTM",
         "sales": "456",
         "expenses": "407",
@@ -10488,6 +11353,18 @@
     "sector": "Information Technology",
     "updatedAt": 1794038126390,
     "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "87",
+        "reserves": "578",
+        "borrowings": "129",
+        "otherLiabilities": "757",
+        "totalLiabilities": "1,551",
+        "fixedAssets": "142",
+        "investments": "65",
+        "otherAssets": "1,344",
+        "totalAssets": "1,551"
+      },
       {
         "year": "Mar 26",
         "equityCapital": "89",
@@ -10514,6 +11391,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-13",
+        "cfi": "-51",
+        "cff": "178",
+        "netCash": "114"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-12",
+        "cfi": "-295",
+        "cff": "195",
+        "netCash": "-112"
+      },
       {
         "year": "Sep 26",
         "cfo": "45",
@@ -10927,8 +11818,8 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:38.899Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 7447,
-      "pe": 515.4,
+      "marketCapCr": 7324,
+      "pe": 506.9,
       "ttmEps": 1.61,
       "ttmSalesCr": 445,
       "ttmPatCr": 14,
@@ -10949,6 +11840,24 @@
         "opm": "4.7%",
         "netProfit": "57",
         "eps": "₹6.62"
+      },
+      {
+        "year": "Mar 25",
+        "sales": "1,890",
+        "expenses": "1,817",
+        "operatingProfit": "73",
+        "opm": "3.9%",
+        "netProfit": "63",
+        "eps": "₹7.33"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,769",
+        "expenses": "1,693",
+        "operatingProfit": "76",
+        "opm": "4.3%",
+        "netProfit": "66",
+        "eps": "₹7.39"
       },
       {
         "year": "TTM",
@@ -11126,6 +12035,30 @@
         "totalAssets": "296"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "26",
+        "reserves": "247",
+        "borrowings": "11",
+        "otherLiabilities": "47",
+        "totalLiabilities": "331",
+        "fixedAssets": "134",
+        "investments": "72",
+        "otherAssets": "125",
+        "totalAssets": "331"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "27",
+        "reserves": "281",
+        "borrowings": "5",
+        "otherLiabilities": "60",
+        "totalLiabilities": "373",
+        "fixedAssets": "145",
+        "investments": "112",
+        "otherAssets": "116",
+        "totalAssets": "373"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "26",
         "reserves": "277",
@@ -11144,6 +12077,20 @@
         "cfo": "42",
         "cfi": "-9",
         "cff": "-31",
+        "netCash": "2"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "33",
+        "cfi": "-26",
+        "cff": "-10",
+        "netCash": "-3"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "57",
+        "cfi": "-46",
+        "cff": "-9",
         "netCash": "2"
       },
       {
@@ -11499,6 +12446,24 @@
     "lastShpRecordId": "216255",
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "214",
+        "expenses": "163",
+        "operatingProfit": "51",
+        "opm": "23.8%",
+        "netProfit": "39",
+        "eps": "₹14.71"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "231",
+        "expenses": "189",
+        "operatingProfit": "42",
+        "opm": "18.2%",
+        "netProfit": "33",
+        "eps": "₹12.29"
+      },
+      {
         "year": "TTM",
         "sales": "276",
         "expenses": "209",
@@ -11563,6 +12528,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "64",
+        "reserves": "48",
+        "borrowings": "0",
+        "otherLiabilities": "89",
+        "totalLiabilities": "201",
+        "fixedAssets": "0",
+        "investments": "68",
+        "otherAssets": "133",
+        "totalAssets": "201"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "69",
+        "reserves": "53",
+        "borrowings": "0",
+        "otherLiabilities": "110",
+        "totalLiabilities": "232",
+        "fixedAssets": "0",
+        "investments": "68",
+        "otherAssets": "164",
+        "totalAssets": "232"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "69",
         "reserves": "53",
@@ -11576,6 +12565,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-16",
+        "cfi": "0",
+        "cff": "15",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-4",
+        "cfi": "4",
+        "cff": "0",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "-2",
@@ -11695,8 +12698,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756316_11112026103322_WEB.xml",
     "ratios": {
-      "marketCapCr": 118,
-      "pe": 39.3,
+      "marketCapCr": 123,
+      "pe": 41,
       "ttmEps": 0.03,
       "ttmSalesCr": 15,
       "ttmPatCr": 0,
@@ -11709,6 +12712,24 @@
     "debtToEquity": 0,
     "lastShpRecordId": "214561",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "21",
+        "expenses": "32",
+        "operatingProfit": "-11",
+        "opm": "-52.4%",
+        "netProfit": "-11",
+        "eps": "₹-0.42"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "21",
+        "expenses": "20",
+        "operatingProfit": "1",
+        "opm": "4.8%",
+        "netProfit": "1",
+        "eps": "₹0.03"
+      },
       {
         "year": "TTM",
         "sales": "15",
@@ -11873,7 +12894,22 @@
         "totalAssets": "2,652"
       }
     ],
-    "cashFlows": [],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "19",
+        "cfi": "-27",
+        "cff": "25",
+        "netCash": "17"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "126",
+        "cfi": "-277",
+        "cff": "137",
+        "netCash": "-14"
+      }
+    ],
     "shareholding": {
       "promoters": "74.45%",
       "public": "7.18%",
@@ -12271,15 +13307,37 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:38.887Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 5761,
-      "pe": 52.3,
+      "marketCapCr": 5570,
+      "pe": 50.5,
       "ttmEps": 18.29,
       "ttmSalesCr": 1293,
       "ttmPatCr": 106,
+      "bookValue": 270.8,
+      "roePct": 6.5,
+      "rocePct": 4.9,
+      "debtToEquity": 0.33,
       "promoterPct": 74.45
     },
     "lastShpRecordId": "215160",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "922",
+        "expenses": "826",
+        "operatingProfit": "96",
+        "opm": "10.4%",
+        "netProfit": "100",
+        "eps": "₹19.65"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,233",
+        "expenses": "1,223",
+        "operatingProfit": "10",
+        "opm": "0.8%",
+        "netProfit": "10",
+        "eps": "₹1.66"
+      },
       {
         "year": "TTM",
         "sales": "1,293",
@@ -12289,7 +13347,8 @@
         "netProfit": "106",
         "eps": "₹18.29"
       }
-    ]
+    ],
+    "debtToEquity": 0.33
   },
   "ORICONENT": {
     "about": "Oricon Enterprises Limited engages in trading and real estate businesses in India and internationally. It is also involved in trading, real estate, warehousing, and shipping and related logistics businesses. The company was formerly known as Oriental Containers Ltd. Oricon Enterprises Limited was incorporated in 1968 and is based in Mumbai, India.",
@@ -12426,6 +13485,30 @@
         "totalAssets": "1,471"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "31",
+        "reserves": "1,221",
+        "borrowings": "9",
+        "otherLiabilities": "77",
+        "totalLiabilities": "1,338",
+        "fixedAssets": "254",
+        "investments": "527",
+        "otherAssets": "557",
+        "totalAssets": "1,338"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "31",
+        "reserves": "1,120",
+        "borrowings": "3",
+        "otherLiabilities": "79",
+        "totalLiabilities": "1,233",
+        "fixedAssets": "167",
+        "investments": "471",
+        "otherAssets": "595",
+        "totalAssets": "1,233"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "31",
         "reserves": "1,041",
@@ -12459,6 +13542,20 @@
         "cfi": "152",
         "cff": "-104",
         "netCash": "18"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-40",
+        "cfi": "164",
+        "cff": "-106",
+        "netCash": "18"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-2",
+        "cfi": "17",
+        "cff": "-15",
+        "netCash": "0"
       },
       {
         "year": "Sep 26",
@@ -12932,6 +14029,24 @@
     "lastShpRecordId": "213571",
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "173",
+        "expenses": "171",
+        "operatingProfit": "2",
+        "opm": "1.2%",
+        "netProfit": "139",
+        "eps": "₹8.87"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "42",
+        "expenses": "12",
+        "operatingProfit": "30",
+        "opm": "71.4%",
+        "netProfit": "26",
+        "eps": "₹1.64"
+      },
+      {
         "year": "TTM",
         "sales": "93",
         "expenses": "75",
@@ -13059,6 +14174,30 @@
         "totalAssets": "83"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "74",
+        "reserves": "24",
+        "borrowings": "0",
+        "otherLiabilities": "28",
+        "totalLiabilities": "126",
+        "fixedAssets": "14",
+        "investments": "0",
+        "otherAssets": "112",
+        "totalAssets": "126"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "74",
+        "reserves": "26",
+        "borrowings": "3",
+        "otherLiabilities": "35",
+        "totalLiabilities": "138",
+        "fixedAssets": "18",
+        "investments": "0",
+        "otherAssets": "120",
+        "totalAssets": "138"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "74",
         "reserves": "27",
@@ -13092,6 +14231,20 @@
         "cfi": "16",
         "cff": "-1",
         "netCash": "1"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-73",
+        "cfi": "31",
+        "cff": "43",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "1",
+        "cfi": "-2",
+        "cff": "0",
+        "netCash": "-1"
       },
       {
         "year": "Sep 26",
@@ -13449,7 +14602,7 @@
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753767_05112026054629_WEB.xml",
     "ratios": {
       "marketCapCr": 28,
-      "pe": 9.3,
+      "pe": 9.5,
       "ttmEps": 0.53,
       "ttmSalesCr": 29,
       "ttmPatCr": 2,
@@ -13462,6 +14615,24 @@
     "debtToEquity": 0.03,
     "lastShpRecordId": "216017",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "21",
+        "expenses": "10",
+        "operatingProfit": "11",
+        "opm": "52.4%",
+        "netProfit": "9",
+        "eps": "₹1.52"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "21",
+        "expenses": "18",
+        "operatingProfit": "3",
+        "opm": "14.3%",
+        "netProfit": "2",
+        "eps": "₹0.38"
+      },
       {
         "year": "TTM",
         "sales": "29",
@@ -13596,6 +14767,30 @@
         "totalAssets": "504"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "15",
+        "reserves": "301",
+        "borrowings": "44",
+        "otherLiabilities": "169",
+        "totalLiabilities": "529",
+        "fixedAssets": "277",
+        "investments": "13",
+        "otherAssets": "239",
+        "totalAssets": "529"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "15",
+        "reserves": "314",
+        "borrowings": "30",
+        "otherLiabilities": "165",
+        "totalLiabilities": "524",
+        "fixedAssets": "260",
+        "investments": "2",
+        "otherAssets": "262",
+        "totalAssets": "524"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "15",
         "reserves": "327",
@@ -13622,6 +14817,20 @@
         "cfi": "-4",
         "cff": "-5",
         "netCash": "-8"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "33",
+        "cfi": "-8",
+        "cff": "-5",
+        "netCash": "20"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "48",
+        "cfi": "-52",
+        "cff": "-20",
+        "netCash": "-24"
       },
       {
         "year": "Sep 26",
@@ -13995,8 +15204,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1757305_13112026034551_WEB.xml",
     "ratios": {
-      "marketCapCr": 561,
-      "pe": 18.9,
+      "marketCapCr": 587,
+      "pe": 19.7,
       "ttmEps": 20.03,
       "ttmSalesCr": 809,
       "ttmPatCr": 29,
@@ -14009,6 +15218,24 @@
     "debtToEquity": 0.07,
     "lastShpRecordId": "215596",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "667",
+        "expenses": "664",
+        "operatingProfit": "3",
+        "opm": "0.4%",
+        "netProfit": "3",
+        "eps": "₹1.93"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "691",
+        "expenses": "676",
+        "operatingProfit": "15",
+        "opm": "2.2%",
+        "netProfit": "12",
+        "eps": "₹8.42"
+      },
       {
         "year": "TTM",
         "sales": "809",
@@ -14108,8 +15335,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756972_12112026082225_WEB.xml",
     "ratios": {
-      "marketCapCr": 3975,
-      "pe": 24.8,
+      "marketCapCr": 4123,
+      "pe": 25.8,
       "ttmEps": 15.68,
       "ttmSalesCr": 2120,
       "ttmPatCr": 160,
@@ -14220,6 +15447,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "21",
+        "reserves": "1,787",
+        "borrowings": "33",
+        "otherLiabilities": "962",
+        "totalLiabilities": "2,803",
+        "fixedAssets": "1,925",
+        "investments": "13",
+        "otherAssets": "865",
+        "totalAssets": "2,803"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "21",
+        "reserves": "2,125",
+        "borrowings": "38",
+        "otherLiabilities": "949",
+        "totalLiabilities": "3,133",
+        "fixedAssets": "1,720",
+        "investments": "13",
+        "otherAssets": "1,400",
+        "totalAssets": "3,133"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "21",
         "reserves": "2,226",
@@ -14233,6 +15484,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "205",
+        "cfi": "-97",
+        "cff": "-136",
+        "netCash": "-28"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-39",
+        "cfi": "9",
+        "cff": "-2",
+        "netCash": "-32"
+      },
       {
         "year": "Sep 26",
         "cfo": "533",
@@ -14435,8 +15700,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1744203_22102026070846_WEB.xml",
     "ratios": {
-      "marketCapCr": 2556,
-      "pe": 13.3,
+      "marketCapCr": 2544,
+      "pe": 13.2,
       "ttmEps": 9.37,
       "ttmSalesCr": 2479,
       "ttmPatCr": 192,
@@ -14449,6 +15714,24 @@
     "debtToEquity": 0.02,
     "lastShpRecordId": "213706",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "2,709",
+        "expenses": "2,564",
+        "operatingProfit": "145",
+        "opm": "5.4%",
+        "netProfit": "91",
+        "eps": "₹4.45"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "2,793",
+        "expenses": "2,475",
+        "operatingProfit": "318",
+        "opm": "11.4%",
+        "netProfit": "338",
+        "eps": "₹16.44"
+      },
       {
         "year": "TTM",
         "sales": "2,479",
@@ -14541,6 +15824,30 @@
         "totalAssets": "397"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "12",
+        "reserves": "271",
+        "borrowings": "72",
+        "otherLiabilities": "63",
+        "totalLiabilities": "418",
+        "fixedAssets": "149",
+        "investments": "0",
+        "otherAssets": "269",
+        "totalAssets": "418"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "12",
+        "reserves": "290",
+        "borrowings": "40",
+        "otherLiabilities": "74",
+        "totalLiabilities": "416",
+        "fixedAssets": "152",
+        "investments": "0",
+        "otherAssets": "264",
+        "totalAssets": "416"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "12",
         "reserves": "289",
@@ -14574,6 +15881,20 @@
         "cfi": "-9",
         "cff": "-6",
         "netCash": "-1"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "21",
+        "cfi": "-24",
+        "cff": "4",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "51",
+        "cfi": "-8",
+        "cff": "-40",
+        "netCash": "3"
       },
       {
         "year": "Sep 26",
@@ -14896,8 +16217,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753059_04112026072927_WEB.xml",
     "ratios": {
-      "marketCapCr": 431,
-      "pe": 21.5,
+      "marketCapCr": 429,
+      "pe": 21.3,
       "ttmEps": 1.81,
       "ttmSalesCr": 433,
       "ttmPatCr": 19,
@@ -14910,6 +16231,24 @@
     "debtToEquity": 0.16,
     "lastShpRecordId": "215443",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "327",
+        "expenses": "314",
+        "operatingProfit": "13",
+        "opm": "4.0%",
+        "netProfit": "10",
+        "eps": "₹0.83"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "404",
+        "expenses": "376",
+        "operatingProfit": "28",
+        "opm": "6.9%",
+        "netProfit": "22",
+        "eps": "₹1.83"
+      },
       {
         "year": "TTM",
         "sales": "433",
@@ -15093,6 +16432,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "88",
+        "cfi": "-29",
+        "cff": "-72",
+        "netCash": "-13"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "110",
+        "cfi": "-73",
+        "cff": "-57",
+        "netCash": "-20"
+      },
       {
         "year": "Sep 26",
         "cfo": "8",
@@ -15670,8 +17023,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1739172_15102026055229_WEB.xml",
     "ratios": {
-      "marketCapCr": 4220,
-      "pe": 33.9,
+      "marketCapCr": 4252,
+      "pe": 34.1,
       "ttmEps": 5.86,
       "ttmSalesCr": 3697,
       "ttmPatCr": 124,
@@ -15684,6 +17037,24 @@
     "debtToEquity": 0.05,
     "lastShpRecordId": "214881",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "3,094",
+        "expenses": "2,982",
+        "operatingProfit": "112",
+        "opm": "3.6%",
+        "netProfit": "83",
+        "eps": "₹3.9"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "3,326",
+        "expenses": "3,197",
+        "operatingProfit": "129",
+        "opm": "3.9%",
+        "netProfit": "96",
+        "eps": "₹4.49"
+      },
       {
         "year": "TTM",
         "sales": "3,697",
@@ -15785,6 +17156,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "18",
+        "reserves": "664",
+        "borrowings": "149",
+        "otherLiabilities": "119",
+        "totalLiabilities": "950",
+        "fixedAssets": "480",
+        "investments": "366",
+        "otherAssets": "104",
+        "totalAssets": "950"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "18",
+        "reserves": "744",
+        "borrowings": "97",
+        "otherLiabilities": "122",
+        "totalLiabilities": "981",
+        "fixedAssets": "478",
+        "investments": "287",
+        "otherAssets": "216",
+        "totalAssets": "981"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "18",
         "reserves": "486",
@@ -15798,6 +17193,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "100",
+        "cfi": "-56",
+        "cff": "-46",
+        "netCash": "-2"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "128",
+        "cfi": "-47",
+        "cff": "-75",
+        "netCash": "6"
+      },
       {
         "year": "Sep 26",
         "cfo": "40",
@@ -16136,8 +17545,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1739177_15102026055439_WEB.xml",
     "ratios": {
-      "marketCapCr": 3212,
-      "pe": 43,
+      "marketCapCr": 3234,
+      "pe": 43.2,
       "ttmEps": 4.05,
       "ttmSalesCr": 511,
       "ttmPatCr": 72,
@@ -16150,6 +17559,24 @@
     "debtToEquity": 0.16,
     "lastShpRecordId": "214954",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "440",
+        "expenses": "377",
+        "operatingProfit": "63",
+        "opm": "14.3%",
+        "netProfit": "39",
+        "eps": "₹2.2"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "494",
+        "expenses": "402",
+        "operatingProfit": "92",
+        "opm": "18.6%",
+        "netProfit": "68",
+        "eps": "₹3.8"
+      },
       {
         "year": "TTM",
         "sales": "511",
@@ -16242,6 +17669,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "10",
+        "reserves": "55",
+        "borrowings": "62",
+        "otherLiabilities": "38",
+        "totalLiabilities": "165",
+        "fixedAssets": "39",
+        "investments": "2",
+        "otherAssets": "124",
+        "totalAssets": "165"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "10",
+        "reserves": "55",
+        "borrowings": "56",
+        "otherLiabilities": "39",
+        "totalLiabilities": "160",
+        "fixedAssets": "37",
+        "investments": "2",
+        "otherAssets": "121",
+        "totalAssets": "160"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "53",
@@ -16255,6 +17706,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "8",
+        "cfi": "2",
+        "cff": "-10",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "9",
+        "cfi": "3",
+        "cff": "-12",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "-1",
@@ -16573,7 +18038,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753907_05112026063324_WEB.xml",
     "ratios": {
-      "marketCapCr": 106,
+      "marketCapCr": 108,
       "ttmEps": -2.34,
       "ttmSalesCr": 122,
       "ttmPatCr": -3,
@@ -16586,6 +18051,24 @@
     "debtToEquity": 0.94,
     "lastShpRecordId": "214828",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "143",
+        "expenses": "147",
+        "operatingProfit": "-4",
+        "opm": "-2.8%",
+        "netProfit": "-3",
+        "eps": "₹-2.78"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "128",
+        "expenses": "130",
+        "operatingProfit": "-2",
+        "opm": "-1.6%",
+        "netProfit": "-1",
+        "eps": "₹-1.17"
+      },
       {
         "year": "TTM",
         "sales": "122",
@@ -16696,6 +18179,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "21",
+        "reserves": "1,514",
+        "borrowings": "397",
+        "otherLiabilities": "476",
+        "totalLiabilities": "2,408",
+        "fixedAssets": "1,611",
+        "investments": "284",
+        "otherAssets": "513",
+        "totalAssets": "2,408"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "21",
+        "reserves": "1,447",
+        "borrowings": "287",
+        "otherLiabilities": "424",
+        "totalLiabilities": "2,179",
+        "fixedAssets": "1,587",
+        "investments": "209",
+        "otherAssets": "383",
+        "totalAssets": "2,179"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "21",
         "reserves": "1,413",
@@ -16709,6 +18216,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-12",
+        "cfi": "-28",
+        "cff": "39",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-27",
+        "cfi": "164",
+        "cff": "-138",
+        "netCash": "-1"
+      },
       {
         "year": "Sep 26",
         "cfo": "-2",
@@ -17027,7 +18548,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753829_05112026060637_WEB.xml",
     "ratios": {
-      "marketCapCr": 323,
+      "marketCapCr": 331,
       "ttmEps": -3.26,
       "ttmSalesCr": 893,
       "ttmPatCr": -69,
@@ -17040,6 +18561,24 @@
     "debtToEquity": 0.24,
     "lastShpRecordId": "213863",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "896",
+        "expenses": "985",
+        "operatingProfit": "-89",
+        "opm": "-9.9%",
+        "netProfit": "-55",
+        "eps": "₹-2.58"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "906",
+        "expenses": "1,009",
+        "operatingProfit": "-103",
+        "opm": "-11.4%",
+        "netProfit": "-29",
+        "eps": "₹-1.36"
+      },
       {
         "year": "TTM",
         "sales": "893",
@@ -17144,6 +18683,30 @@
         "totalAssets": "480"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "42",
+        "reserves": "288",
+        "borrowings": "1",
+        "otherLiabilities": "194",
+        "totalLiabilities": "525",
+        "fixedAssets": "21",
+        "investments": "0",
+        "otherAssets": "504",
+        "totalAssets": "525"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "46",
+        "reserves": "291",
+        "borrowings": "59",
+        "otherLiabilities": "174",
+        "totalLiabilities": "570",
+        "fixedAssets": "77",
+        "investments": "3",
+        "otherAssets": "490",
+        "totalAssets": "570"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "46",
         "reserves": "303",
@@ -17163,6 +18726,20 @@
         "cfi": "-14",
         "cff": "110",
         "netCash": "90"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-11",
+        "cfi": "12",
+        "cff": "94",
+        "netCash": "95"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-19",
+        "cfi": "-84",
+        "cff": "52",
+        "netCash": "-51"
       },
       {
         "year": "Sep 26",
@@ -17463,6 +19040,24 @@
     "lastShpRecordId": "215920",
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "840",
+        "expenses": "772",
+        "operatingProfit": "68",
+        "opm": "8.1%",
+        "netProfit": "50",
+        "eps": "₹12.85"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "870",
+        "expenses": "864",
+        "operatingProfit": "6",
+        "opm": "0.7%",
+        "netProfit": "5",
+        "eps": "₹1"
+      },
+      {
         "year": "TTM",
         "sales": "801",
         "expenses": "810",
@@ -17533,8 +19128,48 @@
     "industry": "Steel",
     "sector": "Metals & Mining",
     "updatedAt": 1794038126397,
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "1",
+        "reserves": "-52",
+        "borrowings": "185",
+        "otherLiabilities": "404",
+        "totalLiabilities": "538",
+        "fixedAssets": "13",
+        "investments": "0",
+        "otherAssets": "525",
+        "totalAssets": "538"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "1",
+        "reserves": "-55",
+        "borrowings": "141",
+        "otherLiabilities": "493",
+        "totalLiabilities": "580",
+        "fixedAssets": "13",
+        "investments": "0",
+        "otherAssets": "567",
+        "totalAssets": "580"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "170",
+        "cfi": "-90",
+        "cff": "-22",
+        "netCash": "58"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "35",
+        "cfi": "-72",
+        "cff": "-19",
+        "netCash": "-56"
+      }
+    ],
     "quarterlyResults": [
       {
         "period": "Dec 23",
@@ -17827,7 +19462,7 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:40.410Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1745,
+      "marketCapCr": 1777,
       "ttmEps": 0.9,
       "ttmSalesCr": 128,
       "ttmPatCr": -1,
@@ -17835,6 +19470,24 @@
     },
     "lastShpRecordId": "216005",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "65",
+        "expenses": "113",
+        "operatingProfit": "-48",
+        "opm": "-73.8%",
+        "netProfit": "-40",
+        "eps": "₹-67.04"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "94",
+        "expenses": "99",
+        "operatingProfit": "-5",
+        "opm": "-5.3%",
+        "netProfit": "-3",
+        "eps": "₹0"
+      },
       {
         "year": "TTM",
         "sales": "128",
@@ -17937,6 +19590,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "261",
+        "cfi": "-308",
+        "cff": "-13",
+        "netCash": "-60"
+      },
       {
         "year": "Sep 26",
         "cfo": "111",
@@ -18073,8 +19733,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752799_04112026055241_WEB.xml",
     "ratios": {
-      "marketCapCr": 7636,
-      "pe": 25,
+      "marketCapCr": 7717,
+      "pe": 25.2,
       "ttmEps": 22.23,
       "ttmSalesCr": 2691,
       "ttmPatCr": 304,
@@ -18087,6 +19747,15 @@
     "debtToEquity": 0,
     "lastShpRecordId": "215414",
     "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "2,509",
+        "expenses": "2,126",
+        "operatingProfit": "383",
+        "opm": "15.3%",
+        "netProfit": "286",
+        "eps": "₹20.85"
+      },
       {
         "year": "TTM",
         "sales": "2,691",
@@ -18233,6 +19902,30 @@
         "totalAssets": "4"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "8",
+        "reserves": "-6",
+        "borrowings": "0",
+        "otherLiabilities": "2",
+        "totalLiabilities": "4",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "4",
+        "totalAssets": "4"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "8",
+        "reserves": "-7",
+        "borrowings": "1",
+        "otherLiabilities": "3",
+        "totalLiabilities": "5",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "5",
+        "totalAssets": "5"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "8",
         "reserves": "-8",
@@ -18265,6 +19958,20 @@
         "cfo": "0",
         "cfi": "0",
         "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-1",
+        "cfi": "0",
+        "cff": "1",
         "netCash": "0"
       },
       {
@@ -18697,6 +20404,18 @@
         "investments": "0",
         "otherAssets": "541",
         "totalAssets": "612"
+      },
+      {
+        "year": "Mar 25",
+        "equityCapital": "16",
+        "reserves": "376",
+        "borrowings": "182",
+        "otherLiabilities": "265",
+        "totalLiabilities": "839",
+        "fixedAssets": "68",
+        "investments": "0",
+        "otherAssets": "771",
+        "totalAssets": "839"
       }
     ],
     "cashFlows": [
@@ -18720,6 +20439,13 @@
         "cfi": "-4",
         "cff": "42",
         "netCash": "-26"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-230",
+        "cfi": "-7",
+        "cff": "201",
+        "netCash": "-36"
       }
     ],
     "shareholding": {
@@ -19158,6 +20884,10 @@
       "ttmEps": 1.03,
       "ttmSalesCr": 1428,
       "ttmPatCr": 18,
+      "bookValue": 23.5,
+      "roePct": 4.6,
+      "rocePct": 4.2,
+      "debtToEquity": 0.46,
       "promoterPct": 33.86
     },
     "annualPnl": [
@@ -19179,7 +20909,8 @@
         "netProfit": "18",
         "eps": "₹1.03"
       }
-    ]
+    ],
+    "debtToEquity": 0.46
   },
   "OSWALAGRO": {
     "about": "Oswal Agro Mills Limited engages in the development and trading of real estate properties in India. It operates through Trading, Real Estate, and Investment segments. It also trades in goods and commodities. In addition, the company invests in equity instruments and other securities; and surplus funds in inter-corporate deposits, and other miscellaneous incomes. Oswal Agro Mills Limited was incorporated in 1979 and is headquartered in New Delhi, India.",
@@ -19213,6 +20944,30 @@
         "totalAssets": "843"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "134",
+        "reserves": "817",
+        "borrowings": "0",
+        "otherLiabilities": "11",
+        "totalLiabilities": "962",
+        "fixedAssets": "4",
+        "investments": "13",
+        "otherAssets": "945",
+        "totalAssets": "962"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "134",
+        "reserves": "763",
+        "borrowings": "0",
+        "otherLiabilities": "5",
+        "totalLiabilities": "902",
+        "fixedAssets": "4",
+        "investments": "7",
+        "otherAssets": "891",
+        "totalAssets": "902"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "134",
         "reserves": "591",
@@ -19239,6 +20994,20 @@
         "cfi": "51",
         "cff": "0",
         "netCash": "-31"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "56",
+        "cfi": "-40",
+        "cff": "0",
+        "netCash": "16"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "51",
+        "cfi": "-2",
+        "cff": "0",
+        "netCash": "49"
       },
       {
         "year": "Sep 26",
@@ -19618,8 +21387,8 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:42.242Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 498,
-      "pe": 165.9,
+      "marketCapCr": 516,
+      "pe": 172,
       "ttmEps": 0.21,
       "ttmSalesCr": 28,
       "ttmPatCr": 3,
@@ -19632,6 +21401,24 @@
     "debtToEquity": 0,
     "lastShpRecordId": "213363",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "162",
+        "expenses": "16",
+        "operatingProfit": "146",
+        "opm": "90.1%",
+        "netProfit": "113",
+        "eps": "₹8.41"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "19",
+        "expenses": "6",
+        "operatingProfit": "13",
+        "opm": "68.4%",
+        "netProfit": "-22",
+        "eps": "₹-3.28"
+      },
       {
         "year": "TTM",
         "sales": "28",
@@ -19778,6 +21565,30 @@
         "totalAssets": "2,551"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "257",
+        "reserves": "2,243",
+        "borrowings": "5",
+        "otherLiabilities": "52",
+        "totalLiabilities": "2,557",
+        "fixedAssets": "117",
+        "investments": "109",
+        "otherAssets": "2,331",
+        "totalAssets": "2,557"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "257",
+        "reserves": "2,128",
+        "borrowings": "0",
+        "otherLiabilities": "37",
+        "totalLiabilities": "2,422",
+        "fixedAssets": "115",
+        "investments": "107",
+        "otherAssets": "2,200",
+        "totalAssets": "2,422"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "257",
         "reserves": "2,145",
@@ -19811,6 +21622,20 @@
         "cfi": "-452",
         "cff": "-1",
         "netCash": "4"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "110",
+        "cfi": "-110",
+        "cff": "-2",
+        "netCash": "-2"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "388",
+        "cfi": "-384",
+        "cff": "-2",
+        "netCash": "2"
       },
       {
         "year": "Sep 26",
@@ -20048,7 +21873,7 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752986_04112026070430_WEB.xml",
     "ratios": {
-      "marketCapCr": 512,
+      "marketCapCr": 520,
       "ttmEps": -2.25,
       "ttmSalesCr": 101,
       "ttmPatCr": -57,
@@ -20061,6 +21886,24 @@
     "debtToEquity": 0,
     "lastShpRecordId": "213353",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "66",
+        "expenses": "56",
+        "operatingProfit": "10",
+        "opm": "15.2%",
+        "netProfit": "9",
+        "eps": "₹0.66"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "37",
+        "expenses": "96",
+        "operatingProfit": "-59",
+        "opm": "-159.5%",
+        "netProfit": "-62",
+        "eps": "₹-4.86"
+      },
       {
         "year": "TTM",
         "sales": "101",
@@ -20126,6 +21969,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "10",
+        "reserves": "452",
+        "borrowings": "332",
+        "otherLiabilities": "277",
+        "totalLiabilities": "1,071",
+        "fixedAssets": "126",
+        "investments": "0",
+        "otherAssets": "945",
+        "totalAssets": "1,071"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "11",
+        "reserves": "1,672",
+        "borrowings": "237",
+        "otherLiabilities": "226",
+        "totalLiabilities": "2,146",
+        "fixedAssets": "149",
+        "investments": "0",
+        "otherAssets": "1,997",
+        "totalAssets": "2,146"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "11",
         "reserves": "1,562",
@@ -20139,6 +22006,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-151",
+        "cfi": "-55",
+        "cff": "206",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-58",
+        "cfi": "-399",
+        "cff": "574",
+        "netCash": "117"
+      },
       {
         "year": "Sep 26",
         "cfo": "-109",
@@ -20353,8 +22234,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756945_12112026075947_WEB.xml",
     "ratios": {
-      "marketCapCr": 2658,
-      "pe": 14.1,
+      "marketCapCr": 2730,
+      "pe": 14.5,
       "ttmEps": 15.66,
       "ttmSalesCr": 1573,
       "ttmPatCr": 175,
@@ -20367,6 +22248,24 @@
     "debtToEquity": 0.19,
     "lastShpRecordId": "215159",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "1,430",
+        "expenses": "1,062",
+        "operatingProfit": "368",
+        "opm": "25.7%",
+        "netProfit": "281",
+        "eps": "₹28.18"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "2,064",
+        "expenses": "1,581",
+        "operatingProfit": "483",
+        "opm": "23.4%",
+        "netProfit": "376",
+        "eps": "₹34.73"
+      },
       {
         "year": "TTM",
         "sales": "1,573",
@@ -20475,8 +22374,48 @@
         "eps": "₹-0.19"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "18",
+        "reserves": "25",
+        "borrowings": "42",
+        "otherLiabilities": "20",
+        "totalLiabilities": "105",
+        "fixedAssets": "6",
+        "investments": "0",
+        "otherAssets": "99",
+        "totalAssets": "105"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "18",
+        "reserves": "33",
+        "borrowings": "62",
+        "otherLiabilities": "28",
+        "totalLiabilities": "141",
+        "fixedAssets": "8",
+        "investments": "0",
+        "otherAssets": "133",
+        "totalAssets": "141"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "24",
+        "cfi": "-1",
+        "cff": "-26",
+        "netCash": "-3"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-14",
+        "cfi": "-1",
+        "cff": "15",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "66.63%",
       "public": "33.37%",
@@ -20738,15 +22677,37 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:15:43.134Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 118,
-      "pe": 13.6,
+      "marketCapCr": 121,
+      "pe": 14,
       "ttmEps": 0.82,
       "ttmSalesCr": 127,
       "ttmPatCr": 7,
+      "bookValue": 4.8,
+      "roePct": 13.7,
+      "rocePct": 9.7,
+      "debtToEquity": 1.22,
       "promoterPct": 66.63
     },
     "lastShpRecordId": "213599",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "246",
+        "expenses": "241",
+        "operatingProfit": "5",
+        "opm": "2.0%",
+        "netProfit": "4",
+        "eps": "₹0.39"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "248",
+        "expenses": "238",
+        "operatingProfit": "10",
+        "opm": "4.0%",
+        "netProfit": "7",
+        "eps": "₹0.79"
+      },
       {
         "year": "TTM",
         "sales": "127",
@@ -20756,6 +22717,7 @@
         "netProfit": "7",
         "eps": "₹0.82"
       }
-    ]
+    ],
+    "debtToEquity": 1.22
   }
 }

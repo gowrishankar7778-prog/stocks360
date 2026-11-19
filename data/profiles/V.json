@@ -481,8 +481,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747916_28102026054420_WEB.xml",
     "ratios": {
-      "marketCapCr": 97019,
-      "pe": 20.9,
+      "marketCapCr": 100023,
+      "pe": 21.5,
       "ttmEps": 11.76,
       "ttmSalesCr": 34712,
       "ttmPatCr": 14003,
@@ -1372,6 +1372,20 @@
     ],
     "cashFlows": [
       {
+        "year": "Mar 25",
+        "cfo": "223",
+        "cfi": "-131",
+        "cff": "-93",
+        "netCash": "-1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-103",
+        "cfi": "-219",
+        "cff": "319",
+        "netCash": "-3"
+      },
+      {
         "year": "Sep 26",
         "cfo": "20",
         "cfi": "-151",
@@ -1531,6 +1545,24 @@
     },
     "debtToEquity": 0.55,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "1,884",
+        "expenses": "1,786",
+        "operatingProfit": "98",
+        "opm": "5.2%",
+        "netProfit": "72",
+        "eps": "₹20.83"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "3,067",
+        "expenses": "2,852",
+        "operatingProfit": "215",
+        "opm": "7.0%",
+        "netProfit": "162",
+        "eps": "₹4.58"
+      },
       {
         "year": "TTM",
         "sales": "3,639",
@@ -1697,6 +1729,20 @@
     ],
     "cashFlows": [
       {
+        "year": "Mar 25",
+        "cfo": "130",
+        "cfi": "-77",
+        "cff": "-61",
+        "netCash": "-8"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "143",
+        "cfi": "-108",
+        "cff": "-38",
+        "netCash": "-3"
+      },
+      {
         "year": "Sep 26",
         "cfo": "264",
         "cfi": "-258",
@@ -1856,6 +1902,24 @@
     },
     "debtToEquity": 0.18,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "1,238",
+        "expenses": "1,038",
+        "operatingProfit": "200",
+        "opm": "16.2%",
+        "netProfit": "150",
+        "eps": "₹209.15"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,503",
+        "expenses": "1,298",
+        "operatingProfit": "205",
+        "opm": "13.6%",
+        "netProfit": "155",
+        "eps": "₹215.78"
+      },
       {
         "year": "TTM",
         "sales": "1,410",
@@ -2020,6 +2084,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "33",
+        "reserves": "1,317",
+        "borrowings": "114",
+        "otherLiabilities": "576",
+        "totalLiabilities": "2,040",
+        "fixedAssets": "210",
+        "investments": "0",
+        "otherAssets": "1,830",
+        "totalAssets": "2,040"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "33",
+        "reserves": "1,615",
+        "borrowings": "112",
+        "otherLiabilities": "787",
+        "totalLiabilities": "2,547",
+        "fixedAssets": "206",
+        "investments": "0",
+        "otherAssets": "2,341",
+        "totalAssets": "2,547"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "34",
         "reserves": "885",
@@ -2033,6 +2121,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "165",
+        "cfi": "-7",
+        "cff": "-130",
+        "netCash": "28"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "310",
+        "cfi": "78",
+        "cff": "-149",
+        "netCash": "239"
+      },
       {
         "year": "Sep 26",
         "cfo": "-16",
@@ -2194,6 +2296,24 @@
     "debtToEquity": 0.14,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "3,380",
+        "expenses": "3,180",
+        "operatingProfit": "200",
+        "opm": "5.9%",
+        "netProfit": "153",
+        "eps": "₹9.1"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "3,692",
+        "expenses": "3,410",
+        "operatingProfit": "282",
+        "opm": "7.6%",
+        "netProfit": "266",
+        "eps": "₹15.75"
+      },
+      {
         "year": "TTM",
         "sales": "759",
         "expenses": "531",
@@ -2247,8 +2367,48 @@
         "eps": "₹0.11"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "26",
+        "reserves": "39",
+        "borrowings": "12",
+        "otherLiabilities": "33",
+        "totalLiabilities": "110",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "109",
+        "totalAssets": "110"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "26",
+        "reserves": "43",
+        "borrowings": "19",
+        "otherLiabilities": "35",
+        "totalLiabilities": "123",
+        "fixedAssets": "1",
+        "investments": "6",
+        "otherAssets": "116",
+        "totalAssets": "123"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-18",
+        "cfi": "0",
+        "cff": "18",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "0",
+        "cfi": "-5",
+        "cff": "5",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "31.61%",
       "public": "68.39%",
@@ -2391,9 +2551,31 @@
       "ttmEps": -0.26,
       "ttmSalesCr": 111,
       "ttmPatCr": 3,
+      "bookValue": 7.6,
+      "roePct": 4.3,
+      "rocePct": 6.8,
+      "debtToEquity": 0.28,
       "promoterPct": 31.61
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "99",
+        "expenses": "98",
+        "operatingProfit": "1",
+        "opm": "1.0%",
+        "netProfit": "1",
+        "eps": "₹0.31"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "109",
+        "expenses": "104",
+        "operatingProfit": "5",
+        "opm": "4.6%",
+        "netProfit": "4",
+        "eps": "₹0.32"
+      },
       {
         "year": "TTM",
         "sales": "111",
@@ -2403,7 +2585,8 @@
         "netProfit": "3",
         "eps": "₹-0.26"
       }
-    ]
+    ],
+    "debtToEquity": 0.28
   },
   "VAKRANGEE": {
     "about": "Vakrangee Limited, a technology company, provides e-commerce, white label ATM, financial, and logistics services in India. It operates through two segments, Vakrangee Kendra and Sale of Automated Teller Machines (ATM') Products/Services. The company offers bank account opening, cash deposits, withdrawals, money transfer, fixed and recurring deposits, balance enquiry, statement of accounts, money disbursement, home and business loans, DEMAT account opening, PAN card, CIBIL score, and domestic money transfer services. It also offers life insurance, motor insurance, health insurance, and social security and micro insurance schemes, as well as owns and manages white label ATMs. In addition, the company provides e-governance, assisted e-commerce, such as online shopping, bill payments, utility payments, ticket booking, mobile and DTH recharge, PAN card services, Demat account opening; and healthcare, such as tele/video consultations, home diagnostics, medicine delivery, travel, agriculture products, and logistics. Vakrangee Limited was incorporated in 1990 and is based in Mumbai, India.",
@@ -2528,6 +2711,30 @@
         "totalAssets": "351"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "108",
+        "reserves": "94",
+        "borrowings": "0",
+        "otherLiabilities": "107",
+        "totalLiabilities": "309",
+        "fixedAssets": "74",
+        "investments": "4",
+        "otherAssets": "231",
+        "totalAssets": "309"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "108",
+        "reserves": "105",
+        "borrowings": "4",
+        "otherLiabilities": "95",
+        "totalLiabilities": "312",
+        "fixedAssets": "79",
+        "investments": "52",
+        "otherAssets": "181",
+        "totalAssets": "312"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "108",
         "reserves": "76",
@@ -2554,6 +2761,20 @@
         "cfi": "-4",
         "cff": "38",
         "netCash": "-17"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-21",
+        "cfi": "-12",
+        "cff": "30",
+        "netCash": "-3"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "61",
+        "cfi": "-57",
+        "cff": "-1",
+        "netCash": "3"
       },
       {
         "year": "Sep 26",
@@ -2716,6 +2937,24 @@
     "debtToEquity": 0.25,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "255",
+        "expenses": "245",
+        "operatingProfit": "10",
+        "opm": "3.9%",
+        "netProfit": "6",
+        "eps": "₹0.06"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "255",
+        "expenses": "240",
+        "operatingProfit": "15",
+        "opm": "5.9%",
+        "netProfit": "11",
+        "eps": "₹0.1"
+      },
+      {
         "year": "TTM",
         "sales": "184",
         "expenses": "166",
@@ -2861,6 +3100,30 @@
         "totalAssets": "361"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "43",
+        "reserves": "191",
+        "borrowings": "121",
+        "otherLiabilities": "46",
+        "totalLiabilities": "401",
+        "fixedAssets": "48",
+        "investments": "0",
+        "otherAssets": "353",
+        "totalAssets": "401"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "54",
+        "reserves": "257",
+        "borrowings": "45",
+        "otherLiabilities": "108",
+        "totalLiabilities": "464",
+        "fixedAssets": "227",
+        "investments": "0",
+        "otherAssets": "237",
+        "totalAssets": "464"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "54",
         "reserves": "276",
@@ -2894,6 +3157,20 @@
         "cfi": "-59",
         "cff": "39",
         "netCash": "-10"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "1",
+        "cfi": "-53",
+        "cff": "45",
+        "netCash": "-7"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-10",
+        "cfi": "7",
+        "cff": "2",
+        "netCash": "-1"
       },
       {
         "year": "Sep 26",
@@ -3056,6 +3333,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "133",
+        "expenses": "135",
+        "operatingProfit": "-2",
+        "opm": "-1.5%",
+        "netProfit": "-2",
+        "eps": "₹-0.51"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "237",
+        "expenses": "236",
+        "operatingProfit": "1",
+        "opm": "0.4%",
+        "netProfit": "-3",
+        "eps": "₹-0.51"
+      },
+      {
         "year": "TTM",
         "sales": "268",
         "expenses": "248",
@@ -3192,6 +3487,30 @@
         "totalAssets": "1,173"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "28",
+        "reserves": "697",
+        "borrowings": "248",
+        "otherLiabilities": "210",
+        "totalLiabilities": "1,183",
+        "fixedAssets": "644",
+        "investments": "94",
+        "otherAssets": "445",
+        "totalAssets": "1,183"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "28",
+        "reserves": "731",
+        "borrowings": "253",
+        "otherLiabilities": "219",
+        "totalLiabilities": "1,231",
+        "fixedAssets": "682",
+        "investments": "151",
+        "otherAssets": "398",
+        "totalAssets": "1,231"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "28",
         "reserves": "708",
@@ -3225,6 +3544,20 @@
         "cfi": "-9",
         "cff": "-68",
         "netCash": "5"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "56",
+        "cfi": "-21",
+        "cff": "-32",
+        "netCash": "3"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "92",
+        "cfi": "-86",
+        "cff": "-11",
+        "netCash": "-5"
       },
       {
         "year": "Sep 26",
@@ -3731,6 +4064,24 @@
     "debtToEquity": 0.33,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "719",
+        "expenses": "716",
+        "operatingProfit": "3",
+        "opm": "0.4%",
+        "netProfit": "-3",
+        "eps": "₹-1.24"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "739",
+        "expenses": "696",
+        "operatingProfit": "43",
+        "opm": "5.8%",
+        "netProfit": "33",
+        "eps": "₹11.86"
+      },
+      {
         "year": "TTM",
         "sales": "922",
         "expenses": "843",
@@ -3913,6 +4264,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "80",
+        "reserves": "158",
+        "borrowings": "0",
+        "otherLiabilities": "111",
+        "totalLiabilities": "349",
+        "fixedAssets": "58",
+        "investments": "64",
+        "otherAssets": "227",
+        "totalAssets": "349"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "80",
+        "reserves": "174",
+        "borrowings": "0",
+        "otherLiabilities": "89",
+        "totalLiabilities": "343",
+        "fixedAssets": "60",
+        "investments": "3",
+        "otherAssets": "280",
+        "totalAssets": "343"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "80",
         "reserves": "184",
@@ -3926,6 +4301,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "26",
+        "cfi": "-9",
+        "cff": "-17",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "7",
+        "cfi": "8",
+        "cff": "-12",
+        "netCash": "3"
+      },
       {
         "year": "Sep 26",
         "cfo": "-16",
@@ -4087,6 +4476,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "282",
+        "expenses": "266",
+        "operatingProfit": "16",
+        "opm": "5.7%",
+        "netProfit": "12",
+        "eps": "₹1.47"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "319",
+        "expenses": "290",
+        "operatingProfit": "29",
+        "opm": "9.1%",
+        "netProfit": "27",
+        "eps": "₹3.39"
+      },
+      {
         "year": "TTM",
         "sales": "366",
         "expenses": "313",
@@ -4105,6 +4512,30 @@
     "updatedAt": 1794038126830,
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "46",
+        "reserves": "-273",
+        "borrowings": "50",
+        "otherLiabilities": "453",
+        "totalLiabilities": "276",
+        "fixedAssets": "113",
+        "investments": "0",
+        "otherAssets": "163",
+        "totalAssets": "276"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "48",
+        "reserves": "-245",
+        "borrowings": "55",
+        "otherLiabilities": "425",
+        "totalLiabilities": "283",
+        "fixedAssets": "95",
+        "investments": "0",
+        "otherAssets": "188",
+        "totalAssets": "283"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "51",
         "reserves": "88",
@@ -4118,6 +4549,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-98",
+        "cfi": "31",
+        "cff": "67",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-30",
+        "cfi": "20",
+        "cff": "10",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "-42",
@@ -4315,6 +4760,24 @@
     },
     "debtToEquity": 0.62,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "285",
+        "expenses": "270",
+        "operatingProfit": "15",
+        "opm": "5.3%",
+        "netProfit": "15",
+        "eps": "₹0.45"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "237",
+        "expenses": "229",
+        "operatingProfit": "8",
+        "opm": "3.4%",
+        "netProfit": "8",
+        "eps": "₹0.17"
+      },
       {
         "year": "TTM",
         "sales": "272",
@@ -4836,6 +5299,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "226",
+        "reserves": "867",
+        "borrowings": "205",
+        "otherLiabilities": "830",
+        "totalLiabilities": "2,128",
+        "fixedAssets": "50",
+        "investments": "79",
+        "otherAssets": "1,999",
+        "totalAssets": "2,128"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "232",
+        "reserves": "917",
+        "borrowings": "299",
+        "otherLiabilities": "913",
+        "totalLiabilities": "2,361",
+        "fixedAssets": "42",
+        "investments": "52",
+        "otherAssets": "2,267",
+        "totalAssets": "2,361"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "232",
         "reserves": "952",
@@ -4849,6 +5336,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "5",
+        "cfi": "68",
+        "cff": "27",
+        "netCash": "100"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-122",
+        "cfi": "-17",
+        "cff": "74",
+        "netCash": "-65"
+      },
       {
         "year": "Sep 26",
         "cfo": "-110",
@@ -5269,6 +5770,24 @@
     "debtToEquity": 0.3,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "1,078",
+        "expenses": "928",
+        "operatingProfit": "150",
+        "opm": "13.9%",
+        "netProfit": "130",
+        "eps": "₹5.81"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "949",
+        "expenses": "883",
+        "operatingProfit": "66",
+        "opm": "7.0%",
+        "netProfit": "49",
+        "eps": "₹2.15"
+      },
+      {
         "year": "TTM",
         "sales": "926",
         "expenses": "884",
@@ -5430,8 +5949,48 @@
         "eps": "₹2.01"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "31",
+        "reserves": "106",
+        "borrowings": "156",
+        "otherLiabilities": "69",
+        "totalLiabilities": "362",
+        "fixedAssets": "112",
+        "investments": "2",
+        "otherAssets": "248",
+        "totalAssets": "362"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "33",
+        "reserves": "117",
+        "borrowings": "277",
+        "otherLiabilities": "81",
+        "totalLiabilities": "508",
+        "fixedAssets": "335",
+        "investments": "3",
+        "otherAssets": "170",
+        "totalAssets": "508"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "34",
+        "cfi": "-134",
+        "cff": "122",
+        "netCash": "22"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "18",
+        "cfi": "-158",
+        "cff": "111",
+        "netCash": "-29"
+      }
+    ],
     "shareholding": {
       "promoters": "62.06%",
       "public": "37.94%",
@@ -5575,9 +6134,31 @@
       "ttmEps": 1.55,
       "ttmSalesCr": 523,
       "ttmPatCr": 5,
+      "bookValue": 43.1,
+      "roePct": 3.3,
+      "rocePct": 3.5,
+      "debtToEquity": 1.85,
       "promoterPct": 62.06
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "412",
+        "expenses": "399",
+        "operatingProfit": "13",
+        "opm": "3.2%",
+        "netProfit": "9",
+        "eps": "₹2.81"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "467",
+        "expenses": "453",
+        "operatingProfit": "14",
+        "opm": "3.0%",
+        "netProfit": "4",
+        "eps": "₹1.31"
+      },
       {
         "year": "TTM",
         "sales": "523",
@@ -5587,7 +6168,8 @@
         "netProfit": "5",
         "eps": "₹1.55"
       }
-    ]
+    ],
+    "debtToEquity": 1.85
   },
   "VBL": {
     "about": "Varun Beverages Limited, together with its subsidiaries, manufactures, bottles, sells, and distributes beverages under the PepsiCo brands in India, Sri Lanka, Nepal, Zambia, Morocco, Zimbabwe, the Democratic Republic of Congo, Mozambique, South Africa, Lesotho, Eswatini, Namibia, and Botswana. The company offers carbonated soft drinks under the Pepsi, Pepsi Zero, Mountain Dew, Mirinda, and Seven-Up brands, as well as the Refreshhh, Coo-ee, and Jive brands; fruit pulp and juice-based drinks under the Slice, Tropicana, Tropicana Delight, and Seven-Up Nimbooz brands; club sodas under the Evervess and Duke's brands; and energy drinks under the Sting, Adrenaline Rush, and Rockstar brands. It also provides sports drinks under the Gatorade brand; carbonated juice-based drinks under the Seven-Up Nimbooz Masala Soda brand; ice-tea under the Lipton brand; packaged drinking water under the Aquafina and Aquavess brands, as well as the Refreshhh and Aquaclear brands; and snacks under the FritoLay, Cheetos, Doritos, Simba, and Kurkure brands. In addition, the company offers energy drinks under the Reboost Energy brand; and value-added dairy-based beverages under the Cream Bell brand. Varun Beverages Limited was incorporated in 1995 and is based in Gurugram, India.",
@@ -5880,6 +6462,8 @@
       "ttmEps": 8.97,
       "ttmSalesCr": 16992,
       "ttmPatCr": 3032,
+      "bookValue": 2,
+      "debtToEquity": 0,
       "promoterPct": 59.43
     },
     "annualPnl": [
@@ -5910,7 +6494,8 @@
         "netProfit": "3,032",
         "eps": "₹8.97"
       }
-    ]
+    ],
+    "debtToEquity": 0
   },
   "VCL": {
     "about": "Vaxtex Cotfab Limited manufactures and sells textile products in India. The company processes and trades in suiting, shirting, and denim fabrics made from cotton and polyester blends, as well as fabrics with specialized finishes, including pigment and reactive dyeing. It also provides denim fabrics, home textiles, jeans, men's casual shirts, printed fabrics, and yarns. The company serves international brands, export houses, corporate buyers, domestic traders, wholesalers, and distributors. Vaxtex Cotfab Limited was incorporated in 2005 and is based in Ahmedabad, India.",
@@ -5973,6 +6558,30 @@
         "investments": "6",
         "otherAssets": "42",
         "totalAssets": "49"
+      },
+      {
+        "year": "Mar 25",
+        "equityCapital": "18",
+        "reserves": "0",
+        "borrowings": "11",
+        "otherLiabilities": "19",
+        "totalLiabilities": "48",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "47",
+        "totalAssets": "48"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "18",
+        "reserves": "4",
+        "borrowings": "5",
+        "otherLiabilities": "10",
+        "totalLiabilities": "37",
+        "fixedAssets": "0",
+        "investments": "0",
+        "otherAssets": "37",
+        "totalAssets": "37"
       }
     ],
     "cashFlows": [
@@ -5995,6 +6604,20 @@
         "cfo": "0",
         "cfi": "0",
         "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "1",
+        "cfi": "-1",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-2",
+        "cfi": "6",
+        "cff": "-4",
         "netCash": "0"
       }
     ],
@@ -6333,8 +6956,33 @@
       "ttmEps": 0.5,
       "ttmSalesCr": 26,
       "ttmPatCr": 10,
+      "bookValue": 1.2,
+      "roePct": 45.5,
+      "rocePct": 37,
+      "debtToEquity": 0.23,
       "promoterPct": 0.5
-    }
+    },
+    "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "5",
+        "expenses": "5",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "1",
+        "eps": "₹0.05"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "11",
+        "expenses": "6",
+        "operatingProfit": "5",
+        "opm": "45.5%",
+        "netProfit": "6",
+        "eps": "₹0.3"
+      }
+    ],
+    "debtToEquity": 0.23
   },
   "VEDAVAAG": {
     "about": "Vedavaag Systems Limited, together with its subsidiaries, provides information technology (IT) sales and services in India. It acts as a business correspondent for implementation of KIOSK business. The company is also involved in the deployment of UNITE ERP for primary agricultural cooperative society; provision of life and general insurance; and system integration/IOT projects. In addition, it is involved in the deployment of UNITE ERP for primary agricultural cooperative society; provision of life and general insurance; and system integration/IOT projects. Additionally, the company offers software-defined wide area network (SD-WAN) services, which provides cloud-based WAN infrastructure and cloud connectivity to enterprises in a multi-cloud environment; V-DAMS, an AI and ML based driver activity monitoring solution to assist in reducing road accidents; ABHAYAM, an IoT+ Cloud based solution for the safety of women and child; and V-PAMS, an AI and ML based patient activity monitoring system for remote monitoring and virtual rounding of wards. Further, it provides online education services under the VedaEdutech brand; permanent account number (PAN) services; and courier services under the VARIOR brand. The company was formerly known as SARK Systems India Limited and changed its name to Vedavaag Systems Limited in July 2011. Vedavaag Systems Limited was incorporated in 1998 and is headquartered in Hyderabad, India.",
@@ -6374,6 +7022,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "3,207",
+        "reserves": "-1,269",
+        "borrowings": "5,831",
+        "otherLiabilities": "1,473",
+        "totalLiabilities": "9,242",
+        "fixedAssets": "6,742",
+        "investments": "0",
+        "otherAssets": "2,500",
+        "totalAssets": "9,242"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "3,911",
         "reserves": "4,718",
@@ -6387,6 +7047,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "556",
+        "cfi": "-37",
+        "cff": "-506",
+        "netCash": "13"
+      },
       {
         "year": "Sep 26",
         "cfo": "616",
@@ -6576,6 +7243,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "3",
+        "reserves": "911",
+        "borrowings": "0",
+        "otherLiabilities": "339",
+        "totalLiabilities": "1,253",
+        "fixedAssets": "207",
+        "investments": "0",
+        "otherAssets": "1,046",
+        "totalAssets": "1,253"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "3",
+        "reserves": "1,032",
+        "borrowings": "0",
+        "otherLiabilities": "371",
+        "totalLiabilities": "1,406",
+        "fixedAssets": "221",
+        "investments": "0",
+        "otherAssets": "1,185",
+        "totalAssets": "1,406"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "3",
         "reserves": "815",
@@ -6589,6 +7280,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "30",
+        "cfi": "72",
+        "cff": "-99",
+        "netCash": "3"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "194",
+        "cfi": "47",
+        "cff": "-122",
+        "netCash": "119"
+      },
       {
         "year": "Sep 26",
         "cfo": "-124",
@@ -6749,6 +7454,24 @@
     },
     "debtToEquity": 0.04,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "1,970",
+        "expenses": "1,796",
+        "operatingProfit": "174",
+        "opm": "8.8%",
+        "netProfit": "169",
+        "eps": "₹99.29"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "2,169",
+        "expenses": "1,961",
+        "operatingProfit": "208",
+        "opm": "9.6%",
+        "netProfit": "192",
+        "eps": "₹112.75"
+      },
       {
         "year": "TTM",
         "sales": "1,788",
@@ -7014,6 +7737,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "14",
+        "reserves": "1,582",
+        "borrowings": "163",
+        "otherLiabilities": "550",
+        "totalLiabilities": "2,309",
+        "fixedAssets": "633",
+        "investments": "0",
+        "otherAssets": "1,676",
+        "totalAssets": "2,309"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "14",
         "reserves": "1,633",
@@ -7027,6 +7762,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "191",
+        "cfi": "-108",
+        "cff": "-36",
+        "netCash": "47"
+      },
       {
         "year": "Sep 26",
         "cfo": "-111",
@@ -7187,6 +7929,24 @@
     },
     "debtToEquity": 0.1,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "866",
+        "expenses": "844",
+        "operatingProfit": "22",
+        "opm": "2.5%",
+        "netProfit": "16",
+        "eps": "₹11.24"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "3,727",
+        "expenses": "3,541",
+        "operatingProfit": "186",
+        "opm": "5.0%",
+        "netProfit": "135",
+        "eps": "₹98.85"
+      },
       {
         "year": "TTM",
         "sales": "5,428",
@@ -7542,6 +8302,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "20",
+        "reserves": "511",
+        "borrowings": "192",
+        "otherLiabilities": "285",
+        "totalLiabilities": "1,008",
+        "fixedAssets": "309",
+        "investments": "0",
+        "otherAssets": "699",
+        "totalAssets": "1,008"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "21",
+        "reserves": "648",
+        "borrowings": "286",
+        "otherLiabilities": "345",
+        "totalLiabilities": "1,300",
+        "fixedAssets": "396",
+        "investments": "0",
+        "otherAssets": "904",
+        "totalAssets": "1,300"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "21",
         "reserves": "700",
@@ -7555,6 +8339,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "69",
+        "cfi": "-114",
+        "cff": "47",
+        "netCash": "2"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "112",
+        "cfi": "-203",
+        "cff": "94",
+        "netCash": "3"
+      },
       {
         "year": "Sep 26",
         "cfo": "44",
@@ -7716,6 +8514,24 @@
     "debtToEquity": 0.53,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "959",
+        "expenses": "834",
+        "operatingProfit": "125",
+        "opm": "13.0%",
+        "netProfit": "125",
+        "eps": "₹45.45"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,167",
+        "expenses": "1,030",
+        "operatingProfit": "137",
+        "opm": "11.7%",
+        "netProfit": "102",
+        "eps": "₹49.43"
+      },
+      {
         "year": "TTM",
         "sales": "1,293",
         "expenses": "1,153",
@@ -7825,6 +8641,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "13",
+        "reserves": "548",
+        "borrowings": "2",
+        "otherLiabilities": "153",
+        "totalLiabilities": "716",
+        "fixedAssets": "125",
+        "investments": "0",
+        "otherAssets": "591",
+        "totalAssets": "716"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "13",
+        "reserves": "650",
+        "borrowings": "0",
+        "otherLiabilities": "191",
+        "totalLiabilities": "854",
+        "fixedAssets": "125",
+        "investments": "164",
+        "otherAssets": "565",
+        "totalAssets": "854"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "13",
         "reserves": "723",
@@ -7838,6 +8678,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "86",
+        "cfi": "-76",
+        "cff": "-1",
+        "netCash": "9"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "156",
+        "cfi": "-182",
+        "cff": "-3",
+        "netCash": "-29"
+      },
       {
         "year": "Sep 26",
         "cfo": "27",
@@ -7999,6 +8853,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "648",
+        "expenses": "576",
+        "operatingProfit": "72",
+        "opm": "11.1%",
+        "netProfit": "45",
+        "eps": "₹33.9"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "770",
+        "expenses": "636",
+        "operatingProfit": "134",
+        "opm": "17.4%",
+        "netProfit": "103",
+        "eps": "₹76.89"
+      },
+      {
         "year": "TTM",
         "sales": "846",
         "expenses": "685",
@@ -8052,8 +8924,48 @@
         "eps": "₹-0.01"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "74",
+        "reserves": "183",
+        "borrowings": "513",
+        "otherLiabilities": "1,110",
+        "totalLiabilities": "1,880",
+        "fixedAssets": "153",
+        "investments": "4",
+        "otherAssets": "1,723",
+        "totalAssets": "1,880"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "96",
+        "reserves": "862",
+        "borrowings": "301",
+        "otherLiabilities": "573",
+        "totalLiabilities": "1,832",
+        "fixedAssets": "96",
+        "investments": "5",
+        "otherAssets": "1,731",
+        "totalAssets": "1,832"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "32",
+        "cfi": "-49",
+        "cff": "51",
+        "netCash": "34"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "105",
+        "cfi": "-102",
+        "cff": "-26",
+        "netCash": "-23"
+      }
+    ],
     "shareholding": {
       "promoters": "32.65%",
       "public": "67.35%",
@@ -8196,9 +9108,31 @@
       "ttmEps": -0.11,
       "ttmSalesCr": 79,
       "ttmPatCr": -1,
+      "bookValue": 108.6,
+      "roePct": -0.1,
+      "rocePct": 0.2,
+      "debtToEquity": 0.31,
       "promoterPct": 32.65
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "471",
+        "expenses": "726",
+        "operatingProfit": "-255",
+        "opm": "-54.1%",
+        "netProfit": "-252",
+        "eps": "₹-34.73"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "482",
+        "expenses": "328",
+        "operatingProfit": "154",
+        "opm": "32.0%",
+        "netProfit": "130",
+        "eps": "₹11.73"
+      },
       {
         "year": "TTM",
         "sales": "79",
@@ -8208,7 +9142,8 @@
         "netProfit": "-1",
         "eps": "₹-0.11"
       }
-    ]
+    ],
+    "debtToEquity": 0.31
   },
   "VERTOZ": {
     "about": "Vertoz Limited operates as a digital advertising and media technology company that provides digital advertising, marketing, media, and monetization solutions in India. The company offers Ingenious Plex, a marketing and advertising technology cloud platform that uses advanced AI technology, machine learning, and programmatic advertising for data-driven decisions, automate workflows, and real-time optimize campaigns; IncrementX, a media representation platform; Webimax that operates as digital advertising and performance services provider; Qualispace, a cloud infrastructure platform that delivers web-presence solutions comprising cloud servers, web hosting, advanced enterprise email solutions, security certificates, etc.; and ConnectReseller, which offers domain registration services for resellers, and SSL certificates. It serves BFSI, education, real estate, e-commerce, and automobile sectors. The company was formerly known as Vertoz Advertising Limited and changed its name to Vertoz Limited in July 2024. Vertoz Limited was incorporated in 2012 and is based in Mumbai, India.",
@@ -8216,8 +9151,48 @@
     "industry": "Software - Infrastructure",
     "sector": "Information Technology",
     "updatedAt": 1794038126835,
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "85",
+        "reserves": "105",
+        "borrowings": "18",
+        "otherLiabilities": "46",
+        "totalLiabilities": "254",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "252",
+        "totalAssets": "254"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "85",
+        "reserves": "148",
+        "borrowings": "81",
+        "otherLiabilities": "107",
+        "totalLiabilities": "421",
+        "fixedAssets": "3",
+        "investments": "0",
+        "otherAssets": "418",
+        "totalAssets": "421"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "8",
+        "cfi": "9",
+        "cff": "-15",
+        "netCash": "2"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "60",
+        "cfi": "-71",
+        "cff": "7",
+        "netCash": "-4"
+      }
+    ],
     "quarterlyResults": [
       {
         "period": "Sep 25",
@@ -8398,9 +9373,31 @@
       "ttmEps": 0.7,
       "ttmSalesCr": 94,
       "ttmPatCr": 7,
+      "bookValue": 23.3,
+      "roePct": 3,
+      "rocePct": 2.5,
+      "debtToEquity": 0.35,
       "promoterPct": 64.8
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "255",
+        "expenses": "227",
+        "operatingProfit": "28",
+        "opm": "11.0%",
+        "netProfit": "26",
+        "eps": "₹0.3"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "292",
+        "expenses": "260",
+        "operatingProfit": "32",
+        "opm": "11.0%",
+        "netProfit": "26",
+        "eps": "₹0.31"
+      },
       {
         "year": "TTM",
         "sales": "94",
@@ -8410,7 +9407,8 @@
         "netProfit": "7",
         "eps": "₹0.7"
       }
-    ]
+    ],
+    "debtToEquity": 0.35
   },
   "VESUVIUS": {
     "about": "Vesuvius India Limited manufactures and sells refractory products and services in India. The company offers engineered consumable ceramic products, systems, and robotics; molten metal handling solution; and foundry, aimed at improving casting quality and operation. It serves steel, cement, refineries, hydrocarbon processing, and aluminum industries. It also exports its products. Vesuvius India Limited was incorporated in 1991 and is headquartered in Kolkata, India. Vesuvius India Limited operates as a subsidiary of Vesuvius Group Limited, United Kingdom.",
@@ -8658,6 +9656,24 @@
     },
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "482",
+        "expenses": "402",
+        "operatingProfit": "80",
+        "opm": "16.6%",
+        "netProfit": "59",
+        "eps": "₹29.22"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "500",
+        "expenses": "425",
+        "operatingProfit": "75",
+        "opm": "15.0%",
+        "netProfit": "56",
+        "eps": "₹2.75"
+      },
+      {
         "year": "TTM",
         "sales": "2,214",
         "expenses": "1,874",
@@ -8713,6 +9729,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "19",
+        "reserves": "247",
+        "borrowings": "23",
+        "otherLiabilities": "43",
+        "totalLiabilities": "332",
+        "fixedAssets": "38",
+        "investments": "0",
+        "otherAssets": "294",
+        "totalAssets": "332"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "19",
+        "reserves": "271",
+        "borrowings": "21",
+        "otherLiabilities": "87",
+        "totalLiabilities": "398",
+        "fixedAssets": "36",
+        "investments": "0",
+        "otherAssets": "362",
+        "totalAssets": "398"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "19",
         "reserves": "275",
@@ -8726,6 +9766,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "15",
+        "cfi": "-18",
+        "cff": "-3",
+        "netCash": "-6"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "10",
+        "cfi": "-4",
+        "cff": "-5",
+        "netCash": "1"
+      },
       {
         "year": "Sep 26",
         "cfo": "19",
@@ -8887,6 +9941,24 @@
     "debtToEquity": 0.05,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "300",
+        "expenses": "270",
+        "operatingProfit": "30",
+        "opm": "10.0%",
+        "netProfit": "22",
+        "eps": "₹11.41"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "387",
+        "expenses": "354",
+        "operatingProfit": "33",
+        "opm": "8.5%",
+        "netProfit": "25",
+        "eps": "₹13.15"
+      },
+      {
         "year": "TTM",
         "sales": "289",
         "expenses": "250",
@@ -8996,6 +10068,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "23",
+        "reserves": "12",
+        "borrowings": "94",
+        "otherLiabilities": "75",
+        "totalLiabilities": "204",
+        "fixedAssets": "68",
+        "investments": "0",
+        "otherAssets": "136",
+        "totalAssets": "204"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "26",
+        "reserves": "51",
+        "borrowings": "3",
+        "otherLiabilities": "104",
+        "totalLiabilities": "184",
+        "fixedAssets": "43",
+        "investments": "10",
+        "otherAssets": "131",
+        "totalAssets": "184"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "26",
         "reserves": "53",
@@ -9009,6 +10105,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "27",
+        "cfi": "182",
+        "cff": "-196",
+        "netCash": "13"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "5",
+        "cfi": "28",
+        "cff": "-43",
+        "netCash": "-10"
+      },
       {
         "year": "Sep 26",
         "cfo": "-18",
@@ -9168,6 +10278,24 @@
     },
     "debtToEquity": 0.05,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "42",
+        "expenses": "9",
+        "operatingProfit": "33",
+        "opm": "78.6%",
+        "netProfit": "19",
+        "eps": "₹7.9"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "63",
+        "expenses": "45",
+        "operatingProfit": "18",
+        "opm": "28.6%",
+        "netProfit": "12",
+        "eps": "₹-16.64"
+      },
       {
         "year": "TTM",
         "sales": "79",
@@ -9615,6 +10743,30 @@
         "totalAssets": "3,520"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "3",
+        "reserves": "3,537",
+        "borrowings": "0",
+        "otherLiabilities": "1",
+        "totalLiabilities": "3,541",
+        "fixedAssets": "3",
+        "investments": "3,528",
+        "otherAssets": "10",
+        "totalAssets": "3,541"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "3",
+        "reserves": "3,762",
+        "borrowings": "0",
+        "otherLiabilities": "4",
+        "totalLiabilities": "3,769",
+        "fixedAssets": "3",
+        "investments": "3,758",
+        "otherAssets": "8",
+        "totalAssets": "3,769"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "3",
         "reserves": "1,213",
@@ -9648,6 +10800,20 @@
         "cfi": "2",
         "cff": "-2",
         "netCash": "-3"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-6",
+        "cfi": "5",
+        "cff": "-2",
+        "netCash": "-3"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-6",
+        "cfi": "7",
+        "cff": "-2",
+        "netCash": "-1"
       },
       {
         "year": "Sep 26",
@@ -9810,6 +10976,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "23",
+        "expenses": "5",
+        "operatingProfit": "18",
+        "opm": "78.3%",
+        "netProfit": "258",
+        "eps": "₹808.4"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "12",
+        "expenses": "0",
+        "operatingProfit": "12",
+        "opm": "100.0%",
+        "netProfit": "216",
+        "eps": "₹676.83"
+      },
+      {
         "year": "TTM",
         "sales": "83",
         "expenses": "4",
@@ -9925,6 +11109,30 @@
         "totalAssets": "263"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "68",
+        "reserves": "177",
+        "borrowings": "52",
+        "otherLiabilities": "15",
+        "totalLiabilities": "312",
+        "fixedAssets": "178",
+        "investments": "20",
+        "otherAssets": "114",
+        "totalAssets": "312"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "68",
+        "reserves": "199",
+        "borrowings": "264",
+        "otherLiabilities": "26",
+        "totalLiabilities": "557",
+        "fixedAssets": "346",
+        "investments": "1",
+        "otherAssets": "210",
+        "totalAssets": "557"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "77",
         "reserves": "294",
@@ -9951,6 +11159,20 @@
         "cfi": "53",
         "cff": "-115",
         "netCash": "-3"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "32",
+        "cfi": "-77",
+        "cff": "-83",
+        "netCash": "-128"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "58",
+        "cfi": "-210",
+        "cff": "165",
+        "netCash": "13"
       },
       {
         "year": "Sep 26",
@@ -10168,6 +11390,24 @@
     "debtToEquity": 0.6,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "137",
+        "expenses": "116",
+        "operatingProfit": "21",
+        "opm": "15.3%",
+        "netProfit": "78",
+        "eps": "₹12.21"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "143",
+        "expenses": "122",
+        "operatingProfit": "21",
+        "opm": "14.7%",
+        "netProfit": "18",
+        "eps": "₹2.91"
+      },
+      {
         "year": "TTM",
         "sales": "156",
         "expenses": "139",
@@ -10277,6 +11517,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "5",
+        "reserves": "296",
+        "borrowings": "66",
+        "otherLiabilities": "29",
+        "totalLiabilities": "396",
+        "fixedAssets": "126",
+        "investments": "0",
+        "otherAssets": "270",
+        "totalAssets": "396"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "5",
+        "reserves": "323",
+        "borrowings": "58",
+        "otherLiabilities": "33",
+        "totalLiabilities": "419",
+        "fixedAssets": "133",
+        "investments": "0",
+        "otherAssets": "286",
+        "totalAssets": "419"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "5",
         "reserves": "359",
@@ -10290,6 +11554,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-5",
+        "cfi": "-7",
+        "cff": "19",
+        "netCash": "7"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "42",
+        "cfi": "-15",
+        "cff": "-35",
+        "netCash": "-8"
+      },
       {
         "year": "Sep 26",
         "cfo": "27",
@@ -10451,6 +11729,24 @@
     "debtToEquity": 0.15,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "382",
+        "expenses": "322",
+        "operatingProfit": "60",
+        "opm": "15.7%",
+        "netProfit": "43",
+        "eps": "₹8.68"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "380",
+        "expenses": "314",
+        "operatingProfit": "66",
+        "opm": "17.4%",
+        "netProfit": "49",
+        "eps": "₹9.8"
+      },
+      {
         "year": "TTM",
         "sales": "502",
         "expenses": "421",
@@ -10515,6 +11811,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "21",
+        "reserves": "459",
+        "borrowings": "85",
+        "otherLiabilities": "41",
+        "totalLiabilities": "606",
+        "fixedAssets": "71",
+        "investments": "0",
+        "otherAssets": "535",
+        "totalAssets": "606"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "21",
         "reserves": "495",
@@ -10528,6 +11836,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "-9",
+        "cfi": "-148",
+        "cff": "182",
+        "netCash": "25"
+      },
       {
         "year": "Sep 26",
         "cfo": "-16",
@@ -10628,6 +11943,15 @@
     },
     "debtToEquity": 0.11,
     "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "1,840",
+        "expenses": "1,762",
+        "operatingProfit": "78",
+        "opm": "4.2%",
+        "netProfit": "58",
+        "eps": "₹2.71"
+      },
       {
         "year": "TTM",
         "sales": "2,026",
@@ -11057,6 +12381,30 @@
         "totalAssets": "35"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "14",
+        "reserves": "7",
+        "borrowings": "13",
+        "otherLiabilities": "1",
+        "totalLiabilities": "35",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "33",
+        "totalAssets": "35"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "14",
+        "reserves": "9",
+        "borrowings": "7",
+        "otherLiabilities": "4",
+        "totalLiabilities": "34",
+        "fixedAssets": "1",
+        "investments": "2",
+        "otherAssets": "31",
+        "totalAssets": "34"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "23",
         "reserves": "28",
@@ -11090,6 +12438,20 @@
         "cfi": "0",
         "cff": "9",
         "netCash": "6"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-3",
+        "cfi": "0",
+        "cff": "8",
+        "netCash": "5"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "2",
+        "cfi": "-2",
+        "cff": "-5",
+        "netCash": "-5"
       },
       {
         "year": "Sep 26",
@@ -11252,6 +12614,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "2",
+        "expenses": "2",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.01"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "5",
+        "expenses": "2",
+        "operatingProfit": "3",
+        "opm": "60.0%",
+        "netProfit": "2",
+        "eps": "₹0.14"
+      },
+      {
         "year": "TTM",
         "sales": "8",
         "expenses": "2",
@@ -11359,8 +12739,48 @@
         "eps": "₹0"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "139",
+        "reserves": "254",
+        "borrowings": "28",
+        "otherLiabilities": "92",
+        "totalLiabilities": "513",
+        "fixedAssets": "35",
+        "investments": "141",
+        "otherAssets": "337",
+        "totalAssets": "513"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "139",
+        "reserves": "256",
+        "borrowings": "29",
+        "otherLiabilities": "89",
+        "totalLiabilities": "513",
+        "fixedAssets": "33",
+        "investments": "64",
+        "otherAssets": "416",
+        "totalAssets": "513"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-60",
+        "cfi": "46",
+        "cff": "15",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-113",
+        "cfi": "96",
+        "cff": "17",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "10.65%",
       "public": "89.35%",
@@ -11503,9 +12923,31 @@
       "ttmEps": -0.02,
       "ttmSalesCr": 285,
       "ttmPatCr": -1,
+      "bookValue": 4,
+      "roePct": -0.3,
+      "rocePct": 0,
+      "debtToEquity": 0.07,
       "promoterPct": 10.65
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "378",
+        "expenses": "356",
+        "operatingProfit": "22",
+        "opm": "5.8%",
+        "netProfit": "17",
+        "eps": "₹0.1"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "353",
+        "expenses": "347",
+        "operatingProfit": "6",
+        "opm": "1.7%",
+        "netProfit": "3",
+        "eps": "₹0.02"
+      },
       {
         "year": "TTM",
         "sales": "285",
@@ -11515,7 +12957,8 @@
         "netProfit": "-1",
         "eps": "₹-0.02"
       }
-    ]
+    ],
+    "debtToEquity": 0.07
   },
   "VIKASLIFE": {
     "about": "Vikas Lifecare Limited engages in manufacturing and trading of polymers, chemicals, iron and steel, and plastic products in India and Ghana. The company operates through Real Estate Division; Trading & Manufacturing Division -Agro; Trading & Manufacturing Division -Polymers; and Trading Division -Infrastructure segments. It offers various polymer compounds, including PE compounds, PVC compounds, V blend SOE compounds, polypropylene compounds, and thermo plastic rubber (TPR) compounds. The company is involved in developing smart products comprising smart gas and water meters, and power distribution solutions; supplying of food grade piping systems for drinking water; infrastructure products consisting of drinking water pipes, fittings, and bars; trading of agro products, including rice and pulses; dealing in raw and finished cashew nuts, dry fruits, and other premium consumer products. In addition, it engages in research and development of horticultural, cultivation, and preservation and storage of agro products; aluminium foils; and processed food products. Further, the company is involved in the real estate activities. It also exports its products. The company was formerly known as Vikas Multicorp Limited and changed its name to Vikas Lifecare Limited in April 2021. Vikas Lifecare Limited was incorporated in 1995 and is based in Delhi, India.",
@@ -11607,6 +13050,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "186",
+        "reserves": "346",
+        "borrowings": "76",
+        "otherLiabilities": "121",
+        "totalLiabilities": "729",
+        "fixedAssets": "36",
+        "investments": "54",
+        "otherAssets": "639",
+        "totalAssets": "729"
+      },
+      {
         "year": "Mar 26",
         "equityCapital": "186",
         "reserves": "445",
@@ -11620,6 +13075,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-222",
+        "cfi": "106",
+        "cff": "108",
+        "netCash": "-8"
+      },
       {
         "year": "Mar 26",
         "cfo": "283",
@@ -11790,6 +13252,15 @@
         "eps": "₹-0.01"
       },
       {
+        "year": "Mar 26",
+        "sales": "499",
+        "expenses": "424",
+        "operatingProfit": "75",
+        "opm": "15.0%",
+        "netProfit": "18",
+        "eps": "₹0.1"
+      },
+      {
         "year": "TTM",
         "sales": "555",
         "expenses": "609",
@@ -11890,7 +13361,15 @@
         "totalAssets": "6,292"
       }
     ],
-    "cashFlows": [],
+    "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "630",
+        "cfi": "-1,748",
+        "cff": "1,115",
+        "netCash": "-3"
+      }
+    ],
     "shareholding": {
       "promoters": "63.01%",
       "public": "36.99%",
@@ -11984,9 +13463,22 @@
       "ttmEps": 6.32,
       "ttmSalesCr": 5233,
       "ttmPatCr": 229,
+      "bookValue": 80,
+      "roePct": 7.2,
+      "rocePct": 8.1,
+      "debtToEquity": 0.2,
       "promoterPct": 63.01
     },
     "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "4,802",
+        "expenses": "4,155",
+        "operatingProfit": "647",
+        "opm": "13.5%",
+        "netProfit": "470",
+        "eps": "₹13.6"
+      },
       {
         "year": "TTM",
         "sales": "5,233",
@@ -11996,7 +13488,8 @@
         "netProfit": "229",
         "eps": "₹6.32"
       }
-    ]
+    ],
+    "debtToEquity": 0.2
   },
   "VIKRAN": {
     "about": "Vikran Engineering Limited operates as an engineering, procurement, and construction company in India. It is involved in the design, engineering, procurement, construction, testing, and commissioning of high-voltage transmission lines, air-insulated and gas-insulated substations, underground EHV cables, high-voltage switching and distribution substations, as well as feeder bay augmentations, rural/remote electrification, and smart metering solutions. The company was incorporated in 2008 and is headquartered in Thane, India.",
@@ -12034,6 +13527,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "26",
+        "reserves": "1,212",
+        "borrowings": "292",
+        "otherLiabilities": "974",
+        "totalLiabilities": "2,504",
+        "fixedAssets": "11",
+        "investments": "0",
+        "otherAssets": "2,493",
+        "totalAssets": "2,504"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "26",
         "reserves": "1,231",
@@ -12047,6 +13552,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "-437",
+        "cfi": "-156",
+        "cff": "624",
+        "netCash": "31"
+      },
       {
         "year": "Sep 26",
         "cfo": "259",
@@ -12155,7 +13667,18 @@
       "debtToEquity": 0.43,
       "promoterPct": 56.27
     },
-    "debtToEquity": 0.43
+    "debtToEquity": 0.43,
+    "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "1,249",
+        "expenses": "1,128",
+        "operatingProfit": "121",
+        "opm": "9.7%",
+        "netProfit": "92",
+        "eps": "₹4.05"
+      }
+    ]
   },
   "VIMTALABS": {
     "about": "Vimta Labs Limited provides contract research and testing services in India and internationally. The company offers drug discovery, development, and drug life cycle management support services in the areas of preclinical research, clinical research, and analytical services for biopharmaceutical companies; preclinical research and testing services for medical device companies; and contract research and testing for agrochemical and specialty chemical companies. It also provides food testing and analytical development services to support manufacturers, processors, farmers, retailers, traders, exporters, and regulators; and a testing laboratory for water, alcoholic, and non-alcoholic beverages. In addition, the company offers environmental regulatory services, such as impact assessments and post project monitoring, to various industries, including power, infrastructure, cement, oil and gas, and mining, etc.; and EMI/EMC testing for electronic and electrical products/components. It provides solutions to agriculture, biologics and biosimilars, home and personal care, medical device, specialty chemicals, food, electrical and electronics, nutraceuticals, water and beverages, pharmaceuticals, crop care, environment, health and safety, and packaging industries. Vimta Labs Limited was founded in 1984 and is headquartered in Hyderabad, India.",
@@ -12256,6 +13779,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "4",
+        "reserves": "374",
+        "borrowings": "9",
+        "otherLiabilities": "80",
+        "totalLiabilities": "467",
+        "fixedAssets": "224",
+        "investments": "0",
+        "otherAssets": "243",
+        "totalAssets": "467"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "9",
+        "reserves": "448",
+        "borrowings": "3",
+        "otherLiabilities": "102",
+        "totalLiabilities": "562",
+        "fixedAssets": "300",
+        "investments": "0",
+        "otherAssets": "262",
+        "totalAssets": "562"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "9",
         "reserves": "482",
@@ -12269,6 +13816,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "95",
+        "cfi": "-76",
+        "cff": "-17",
+        "netCash": "2"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "147",
+        "cfi": "-130",
+        "cff": "-10",
+        "netCash": "7"
+      },
       {
         "year": "Sep 26",
         "cfo": "46",
@@ -12429,6 +13990,24 @@
     },
     "debtToEquity": 0.03,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "344",
+        "expenses": "255",
+        "operatingProfit": "89",
+        "opm": "25.9%",
+        "netProfit": "67",
+        "eps": "₹29.86"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "407",
+        "expenses": "303",
+        "operatingProfit": "104",
+        "opm": "25.6%",
+        "netProfit": "78",
+        "eps": "₹17.2"
+      },
       {
         "year": "TTM",
         "sales": "441",
@@ -12804,6 +14383,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "146",
+        "reserves": "424",
+        "borrowings": "124",
+        "otherLiabilities": "31",
+        "totalLiabilities": "725",
+        "fixedAssets": "229",
+        "investments": "0",
+        "otherAssets": "496",
+        "totalAssets": "725"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "146",
         "reserves": "404",
@@ -12817,6 +14408,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "15",
+        "cfi": "-128",
+        "cff": "193",
+        "netCash": "80"
+      },
       {
         "year": "Sep 26",
         "cfo": "51",
@@ -12968,6 +14566,15 @@
     "debtToEquity": 0.24,
     "annualPnl": [
       {
+        "year": "Mar 26",
+        "sales": "553",
+        "expenses": "464",
+        "operatingProfit": "89",
+        "opm": "16.1%",
+        "netProfit": "72",
+        "eps": "₹4.96"
+      },
+      {
         "year": "TTM",
         "sales": "448",
         "expenses": "397",
@@ -13077,6 +14684,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "12",
+        "reserves": "4,074",
+        "borrowings": "1,155",
+        "otherLiabilities": "2,482",
+        "totalLiabilities": "7,723",
+        "fixedAssets": "132",
+        "investments": "149",
+        "otherAssets": "7,442",
+        "totalAssets": "7,723"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "12",
+        "reserves": "4,193",
+        "borrowings": "1,425",
+        "otherLiabilities": "2,733",
+        "totalLiabilities": "8,363",
+        "fixedAssets": "153",
+        "investments": "133",
+        "otherAssets": "8,077",
+        "totalAssets": "8,363"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "12",
         "reserves": "1,604",
@@ -13090,6 +14721,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-590",
+        "cfi": "6",
+        "cff": "528",
+        "netCash": "-56"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-160",
+        "cfi": "-21",
+        "cff": "109",
+        "netCash": "-72"
+      },
       {
         "year": "Sep 26",
         "cfo": "7",
@@ -13251,6 +14896,24 @@
     "debtToEquity": 0.92,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "4,054",
+        "expenses": "3,902",
+        "operatingProfit": "152",
+        "opm": "3.7%",
+        "netProfit": "203",
+        "eps": "₹171.16"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "3,593",
+        "expenses": "3,525",
+        "operatingProfit": "68",
+        "opm": "1.9%",
+        "netProfit": "220",
+        "eps": "₹185.79"
+      },
+      {
         "year": "TTM",
         "sales": "3,288",
         "expenses": "3,177",
@@ -13396,6 +15059,30 @@
         "totalAssets": "107"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "9",
+        "reserves": "5",
+        "borrowings": "40",
+        "otherLiabilities": "41",
+        "totalLiabilities": "95",
+        "fixedAssets": "25",
+        "investments": "0",
+        "otherAssets": "70",
+        "totalAssets": "95"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "19",
+        "reserves": "26",
+        "borrowings": "45",
+        "otherLiabilities": "35",
+        "totalLiabilities": "125",
+        "fixedAssets": "24",
+        "investments": "0",
+        "otherAssets": "101",
+        "totalAssets": "125"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "19",
         "reserves": "28",
@@ -13429,6 +15116,20 @@
         "cfi": "0",
         "cff": "-6",
         "netCash": "0"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "11",
+        "cfi": "-3",
+        "cff": "-8",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-12",
+        "cfi": "-1",
+        "cff": "30",
+        "netCash": "17"
       },
       {
         "year": "Sep 26",
@@ -13591,6 +15292,24 @@
     "debtToEquity": 1.11,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "75",
+        "expenses": "96",
+        "operatingProfit": "-21",
+        "opm": "-28.0%",
+        "netProfit": "-20",
+        "eps": "₹-21.9"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "59",
+        "expenses": "58",
+        "operatingProfit": "1",
+        "opm": "1.7%",
+        "netProfit": "2",
+        "eps": "₹1"
+      },
+      {
         "year": "TTM",
         "sales": "60",
         "expenses": "56",
@@ -13682,6 +15401,30 @@
         "totalAssets": "109"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "47",
+        "reserves": "36",
+        "borrowings": "3",
+        "otherLiabilities": "20",
+        "totalLiabilities": "106",
+        "fixedAssets": "29",
+        "investments": "0",
+        "otherAssets": "77",
+        "totalAssets": "106"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "47",
+        "reserves": "36",
+        "borrowings": "14",
+        "otherLiabilities": "27",
+        "totalLiabilities": "124",
+        "fixedAssets": "42",
+        "investments": "0",
+        "otherAssets": "82",
+        "totalAssets": "124"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "47",
         "reserves": "36",
@@ -13715,6 +15458,20 @@
         "cfi": "-27",
         "cff": "39",
         "netCash": "17"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-15",
+        "cfi": "-12",
+        "cff": "33",
+        "netCash": "6"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "15",
+        "cfi": "-31",
+        "cff": "10",
+        "netCash": "-6"
       },
       {
         "year": "Sep 26",
@@ -14034,6 +15791,24 @@
     "debtToEquity": 0.17,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "122",
+        "expenses": "115",
+        "operatingProfit": "7",
+        "opm": "5.7%",
+        "netProfit": "5",
+        "eps": "₹0.14"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "125",
+        "expenses": "124",
+        "operatingProfit": "1",
+        "opm": "0.8%",
+        "netProfit": "1",
+        "eps": "₹0.02"
+      },
+      {
         "year": "TTM",
         "sales": "154",
         "expenses": "155",
@@ -14161,6 +15936,30 @@
         "totalAssets": "234"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "2",
+        "reserves": "125",
+        "borrowings": "0",
+        "otherLiabilities": "135",
+        "totalLiabilities": "262",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "261",
+        "totalAssets": "262"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "2",
+        "reserves": "128",
+        "borrowings": "0",
+        "otherLiabilities": "103",
+        "totalLiabilities": "233",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "232",
+        "totalAssets": "233"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "2",
         "reserves": "134",
@@ -14194,6 +15993,20 @@
         "cfi": "20",
         "cff": "12",
         "netCash": "68"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "24",
+        "cfi": "-6",
+        "cff": "-12",
+        "netCash": "6"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-16",
+        "cfi": "21",
+        "cff": "-13",
+        "netCash": "-8"
       },
       {
         "year": "Sep 26",
@@ -14356,6 +16169,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "625",
+        "expenses": "595",
+        "operatingProfit": "30",
+        "opm": "4.8%",
+        "netProfit": "22",
+        "eps": "₹12.18"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "652",
+        "expenses": "630",
+        "operatingProfit": "22",
+        "opm": "3.4%",
+        "netProfit": "16",
+        "eps": "₹8.99"
+      },
+      {
         "year": "TTM",
         "sales": "827",
         "expenses": "784",
@@ -14463,8 +16294,48 @@
         "eps": "₹0.12"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "18",
+        "reserves": "167",
+        "borrowings": "78",
+        "otherLiabilities": "66",
+        "totalLiabilities": "329",
+        "fixedAssets": "28",
+        "investments": "0",
+        "otherAssets": "301",
+        "totalAssets": "329"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "18",
+        "reserves": "176",
+        "borrowings": "66",
+        "otherLiabilities": "68",
+        "totalLiabilities": "328",
+        "fixedAssets": "26",
+        "investments": "0",
+        "otherAssets": "302",
+        "totalAssets": "328"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-37",
+        "cfi": "4",
+        "cff": "34",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "20",
+        "cfi": "2",
+        "cff": "-22",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "46.55%",
       "public": "53.45%",
@@ -14608,9 +16479,31 @@
       "ttmEps": 0.92,
       "ttmSalesCr": 251,
       "ttmPatCr": 8,
+      "bookValue": 20.4,
+      "roePct": 4.1,
+      "rocePct": 3.8,
+      "debtToEquity": 0.34,
       "promoterPct": 46.55
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "237",
+        "expenses": "230",
+        "operatingProfit": "7",
+        "opm": "3.0%",
+        "netProfit": "5",
+        "eps": "₹0.62"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "254",
+        "expenses": "241",
+        "operatingProfit": "13",
+        "opm": "5.1%",
+        "netProfit": "10",
+        "eps": "₹1.07"
+      },
       {
         "year": "TTM",
         "sales": "251",
@@ -14620,7 +16513,8 @@
         "netProfit": "8",
         "eps": "₹0.92"
       }
-    ]
+    ],
+    "debtToEquity": 0.34
   },
   "VIPIND": {
     "about": "V.I.P. Industries Limited manufactures and retails luggage, backpacks, handbags, and accessories in India and internationally. It offers hard luggage, soft luggage, duffle bags, backpacks, business satchels, and ladies' handbags. The company sells its products under the VIP, Caprese, Carlton, Skybags, Alfa, and Aristocrat brands through exclusive brand outlets and e-commerce platforms. It also exports its products. The company was incorporated in 1968 and is based in Mumbai, India.",
@@ -14721,6 +16615,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "28",
+        "reserves": "588",
+        "borrowings": "415",
+        "otherLiabilities": "825",
+        "totalLiabilities": "1,856",
+        "fixedAssets": "193",
+        "investments": "5",
+        "otherAssets": "1,658",
+        "totalAssets": "1,856"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "28",
+        "reserves": "261",
+        "borrowings": "411",
+        "otherLiabilities": "904",
+        "totalLiabilities": "1,604",
+        "fixedAssets": "207",
+        "investments": "3",
+        "otherAssets": "1,394",
+        "totalAssets": "1,604"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "28",
         "reserves": "90",
@@ -14734,6 +16652,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "292",
+        "cfi": "-47",
+        "cff": "-251",
+        "netCash": "-6"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "181",
+        "cfi": "-48",
+        "cff": "-139",
+        "netCash": "-6"
+      },
       {
         "year": "Sep 26",
         "cfo": "-30",
@@ -14894,6 +16826,24 @@
     "debtToEquity": 4.05,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "2,178",
+        "expenses": "2,269",
+        "operatingProfit": "-91",
+        "opm": "-4.2%",
+        "netProfit": "-69",
+        "eps": "₹-4.83"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,858",
+        "expenses": "2,196",
+        "operatingProfit": "-338",
+        "opm": "-18.2%",
+        "netProfit": "-338",
+        "eps": "₹-23.79"
+      },
+      {
         "year": "TTM",
         "sales": "1,941",
         "expenses": "2,206",
@@ -14985,6 +16935,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "14",
+        "reserves": "363",
+        "borrowings": "85",
+        "otherLiabilities": "728",
+        "totalLiabilities": "1,190",
+        "fixedAssets": "36",
+        "investments": "2",
+        "otherAssets": "1,152",
+        "totalAssets": "1,190"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "14",
+        "reserves": "352",
+        "borrowings": "82",
+        "otherLiabilities": "668",
+        "totalLiabilities": "1,116",
+        "fixedAssets": "5",
+        "investments": "2",
+        "otherAssets": "1,109",
+        "totalAssets": "1,116"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "14",
         "reserves": "377",
@@ -14998,6 +16972,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "43",
+        "cfi": "12",
+        "cff": "-77",
+        "netCash": "-22"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-31",
+        "cfi": "9",
+        "cff": "10",
+        "netCash": "-12"
+      },
       {
         "year": "Sep 26",
         "cfo": "-19",
@@ -15158,6 +17146,24 @@
     "debtToEquity": 0.19,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "87",
+        "expenses": "115",
+        "operatingProfit": "-28",
+        "opm": "-32.2%",
+        "netProfit": "-28",
+        "eps": "₹-2.05"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "60",
+        "expenses": "67",
+        "operatingProfit": "-7",
+        "opm": "-11.7%",
+        "netProfit": "-8",
+        "eps": "₹-0.6"
+      },
+      {
         "year": "TTM",
         "sales": "106",
         "expenses": "118",
@@ -15312,6 +17318,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "103",
+        "reserves": "373",
+        "borrowings": "160",
+        "otherLiabilities": "211",
+        "totalLiabilities": "847",
+        "fixedAssets": "338",
+        "investments": "2",
+        "otherAssets": "507",
+        "totalAssets": "847"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "109",
+        "reserves": "384",
+        "borrowings": "141",
+        "otherLiabilities": "216",
+        "totalLiabilities": "850",
+        "fixedAssets": "309",
+        "investments": "1",
+        "otherAssets": "540",
+        "totalAssets": "850"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "113",
         "reserves": "374",
@@ -15325,6 +17355,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "84",
+        "cfi": "-78",
+        "cff": "-19",
+        "netCash": "-13"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "21",
+        "cfi": "-19",
+        "cff": "-1",
+        "netCash": "1"
+      },
       {
         "year": "Sep 26",
         "cfo": "53",
@@ -15485,6 +17529,24 @@
     },
     "debtToEquity": 0.31,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "301",
+        "expenses": "299",
+        "operatingProfit": "2",
+        "opm": "0.7%",
+        "netProfit": "1",
+        "eps": "₹0.07"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "284",
+        "expenses": "307",
+        "operatingProfit": "-23",
+        "opm": "-8.1%",
+        "netProfit": "-26",
+        "eps": "₹-2.52"
+      },
       {
         "year": "TTM",
         "sales": "194",
@@ -15685,6 +17747,30 @@
         "totalAssets": "1,019"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "116",
+        "reserves": "-1,477",
+        "borrowings": "1,357",
+        "otherLiabilities": "537",
+        "totalLiabilities": "533",
+        "fixedAssets": "447",
+        "investments": "3",
+        "otherAssets": "83",
+        "totalAssets": "533"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "129",
+        "reserves": "-349",
+        "borrowings": "354",
+        "otherLiabilities": "401",
+        "totalLiabilities": "535",
+        "fixedAssets": "446",
+        "investments": "4",
+        "otherAssets": "85",
+        "totalAssets": "535"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "146",
         "reserves": "-258",
@@ -15718,6 +17804,20 @@
         "cfi": "0",
         "cff": "-7",
         "netCash": "0"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "26",
+        "cfi": "-12",
+        "cff": "-13",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "36",
+        "cfi": "-25",
+        "cff": "-9",
+        "netCash": "2"
       },
       {
         "year": "Sep 26",
@@ -15875,6 +17975,24 @@
     },
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "566",
+        "expenses": "1,083",
+        "operatingProfit": "-517",
+        "opm": "-91.3%",
+        "netProfit": "-517",
+        "eps": "₹-44.61"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "562",
+        "expenses": "0",
+        "operatingProfit": "1,050",
+        "opm": "186.8%",
+        "netProfit": "1,050",
+        "eps": "₹85.85"
+      },
+      {
         "year": "TTM",
         "sales": "574",
         "expenses": "0",
@@ -15984,6 +18102,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "17",
+        "reserves": "727",
+        "borrowings": "478",
+        "otherLiabilities": "201",
+        "totalLiabilities": "1,423",
+        "fixedAssets": "718",
+        "investments": "0",
+        "otherAssets": "705",
+        "totalAssets": "1,423"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "17",
+        "reserves": "810",
+        "borrowings": "302",
+        "otherLiabilities": "220",
+        "totalLiabilities": "1,349",
+        "fixedAssets": "684",
+        "investments": "0",
+        "otherAssets": "665",
+        "totalAssets": "1,349"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "17",
         "reserves": "915",
@@ -15997,6 +18139,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "114",
+        "cfi": "-33",
+        "cff": "-100",
+        "netCash": "-19"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "183",
+        "cfi": "35",
+        "cff": "-210",
+        "netCash": "8"
+      },
       {
         "year": "Sep 26",
         "cfo": "50",
@@ -16297,6 +18453,24 @@
     "debtToEquity": 0.25,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "1,543",
+        "expenses": "1,545",
+        "operatingProfit": "-2",
+        "opm": "-0.1%",
+        "netProfit": "-3",
+        "eps": "₹-0.35"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,678",
+        "expenses": "1,571",
+        "operatingProfit": "107",
+        "opm": "6.4%",
+        "netProfit": "85",
+        "eps": "₹9.88"
+      },
+      {
         "year": "TTM",
         "sales": "1,841",
         "expenses": "1,636",
@@ -16460,6 +18634,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "13",
+        "reserves": "913",
+        "borrowings": "342",
+        "otherLiabilities": "366",
+        "totalLiabilities": "1,634",
+        "fixedAssets": "700",
+        "investments": "0",
+        "otherAssets": "934",
+        "totalAssets": "1,634"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "13",
+        "reserves": "1,056",
+        "borrowings": "527",
+        "otherLiabilities": "492",
+        "totalLiabilities": "2,088",
+        "fixedAssets": "794",
+        "investments": "1",
+        "otherAssets": "1,293",
+        "totalAssets": "2,088"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "13",
         "reserves": "905",
@@ -16473,6 +18671,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "90",
+        "cfi": "-100",
+        "cff": "10",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "127",
+        "cfi": "-267",
+        "cff": "146",
+        "netCash": "6"
+      },
       {
         "year": "Sep 26",
         "cfo": "16",
@@ -16634,6 +18846,24 @@
     "debtToEquity": 0.46,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "1,447",
+        "expenses": "1,279",
+        "operatingProfit": "168",
+        "opm": "11.6%",
+        "netProfit": "127",
+        "eps": "₹19.23"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,610",
+        "expenses": "1,415",
+        "operatingProfit": "195",
+        "opm": "12.1%",
+        "netProfit": "142",
+        "eps": "₹21.14"
+      },
+      {
         "year": "TTM",
         "sales": "1,297",
         "expenses": "1,155",
@@ -16696,8 +18926,48 @@
         "eps": "₹-0.91"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "44",
+        "reserves": "237",
+        "borrowings": "391",
+        "otherLiabilities": "147",
+        "totalLiabilities": "819",
+        "fixedAssets": "276",
+        "investments": "0",
+        "otherAssets": "543",
+        "totalAssets": "819"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "44",
+        "reserves": "209",
+        "borrowings": "421",
+        "otherLiabilities": "154",
+        "totalLiabilities": "828",
+        "fixedAssets": "481",
+        "investments": "3",
+        "otherAssets": "344",
+        "totalAssets": "828"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "50",
+        "cfi": "-83",
+        "cff": "41",
+        "netCash": "8"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "37",
+        "cfi": "-45",
+        "cff": "0",
+        "netCash": "-8"
+      }
+    ],
     "shareholding": {
       "promoters": "29.05%",
       "public": "70.95%",
@@ -16840,9 +19110,31 @@
       "ttmEps": -1.88,
       "ttmSalesCr": 415,
       "ttmPatCr": -42,
+      "bookValue": 11.5,
+      "roePct": -16.6,
+      "rocePct": -9.8,
+      "debtToEquity": 1.66,
       "promoterPct": 29.05
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "454",
+        "expenses": "485",
+        "operatingProfit": "-31",
+        "opm": "-6.8%",
+        "netProfit": "-37",
+        "eps": "₹-1.74"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "377",
+        "expenses": "429",
+        "operatingProfit": "-52",
+        "opm": "-13.8%",
+        "netProfit": "-28",
+        "eps": "₹-1.26"
+      },
       {
         "year": "TTM",
         "sales": "415",
@@ -16852,7 +19144,8 @@
         "netProfit": "-42",
         "eps": "₹-1.88"
       }
-    ]
+    ],
+    "debtToEquity": 1.66
   },
   "VISL": {
     "about": "Vedanta Iron and Steel Limited engages in the exploration, mining, and processing of iron ore in India and West Africa. It offers iron ores, TMT bars, ductile iron pipes, wire rods, steel billets, metallurgical coke, pig iron, and cement. The company was founded in 1954 and is based in Panjim, India. Vedanta Iron and Steel Limited operates as a subsidiary of Vedanta Resources Limited.",
@@ -16894,6 +19187,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "507",
@@ -17019,6 +19319,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "24",
+        "reserves": "68",
+        "borrowings": "48",
+        "otherLiabilities": "42",
+        "totalLiabilities": "182",
+        "fixedAssets": "84",
+        "investments": "20",
+        "otherAssets": "78",
+        "totalAssets": "182"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "24",
+        "reserves": "75",
+        "borrowings": "62",
+        "otherLiabilities": "58",
+        "totalLiabilities": "219",
+        "fixedAssets": "58",
+        "investments": "13",
+        "otherAssets": "148",
+        "totalAssets": "219"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "24",
         "reserves": "93",
@@ -17032,6 +19356,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "6",
+        "cfi": "-30",
+        "cff": "25",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "5",
+        "cfi": "-5",
+        "cff": "1",
+        "netCash": "1"
+      },
       {
         "year": "Sep 26",
         "cfo": "-9",
@@ -17173,6 +19511,24 @@
     "debtToEquity": 0.21,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "134",
+        "expenses": "128",
+        "operatingProfit": "6",
+        "opm": "4.5%",
+        "netProfit": "0",
+        "eps": "₹1.69"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "126",
+        "expenses": "124",
+        "operatingProfit": "2",
+        "opm": "1.6%",
+        "netProfit": "1",
+        "eps": "₹0.43"
+      },
+      {
         "year": "TTM",
         "sales": "176",
         "expenses": "166",
@@ -17219,6 +19575,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "6",
+        "reserves": "53",
+        "borrowings": "51",
+        "otherLiabilities": "104",
+        "totalLiabilities": "214",
+        "fixedAssets": "1",
+        "investments": "9",
+        "otherAssets": "204",
+        "totalAssets": "214"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "10",
+        "reserves": "106",
+        "borrowings": "100",
+        "otherLiabilities": "406",
+        "totalLiabilities": "622",
+        "fixedAssets": "3",
+        "investments": "21",
+        "otherAssets": "598",
+        "totalAssets": "622"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "123",
@@ -17232,6 +19612,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-14",
+        "cfi": "-37",
+        "cff": "52",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-4",
+        "cfi": "-34",
+        "cff": "39",
+        "netCash": "1"
+      },
       {
         "year": "Sep 26",
         "cfo": "2",
@@ -17494,7 +19888,27 @@
       "debtToEquity": 0.96,
       "promoterPct": 70.79
     },
-    "debtToEquity": 0.96
+    "debtToEquity": 0.96,
+    "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "219",
+        "expenses": "190",
+        "operatingProfit": "29",
+        "opm": "13.2%",
+        "netProfit": "0",
+        "eps": "₹32.04"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "531",
+        "expenses": "460",
+        "operatingProfit": "71",
+        "opm": "13.4%",
+        "netProfit": "53",
+        "eps": "₹52.33"
+      }
+    ]
   },
   "VIVIDHA": {
     "about": "Visagar Polytex Limited engages in the design, manufacture, wholesale, retail, and trade of textiles primarily in India. The company offers ethnic wear, including sarees, lehengas, and suits; and interlining goods, as well as various fabrics. It sells its products under the Vividha brand. Visagar Polytex Limited was incorporated in 1983 and is based in Mumbai, India.",
@@ -17566,6 +19980,30 @@
         "investments": "0",
         "otherAssets": "5",
         "totalAssets": "8"
+      },
+      {
+        "year": "Mar 25",
+        "equityCapital": "29",
+        "reserves": "-28",
+        "borrowings": "6",
+        "otherLiabilities": "0",
+        "totalLiabilities": "7",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "5",
+        "totalAssets": "7"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "29",
+        "reserves": "-30",
+        "borrowings": "6",
+        "otherLiabilities": "1",
+        "totalLiabilities": "6",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "4",
+        "totalAssets": "6"
       }
     ],
     "cashFlows": [
@@ -17585,6 +20023,20 @@
       },
       {
         "year": "Sep 24",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "1",
+        "cfi": "0",
+        "cff": "-1",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
         "cfo": "0",
         "cfi": "0",
         "cff": "0",
@@ -17800,6 +20252,7 @@
     "lastFinancialStatementUpdate": "2026-11-06T07:45:16.592Z",
     "financialChangeSummary": "Quarterly results refreshed (Sept 15)",
     "ratios": {
+      "marketCapCr": 14,
       "pe": 0.6,
       "ttmEps": 0.8,
       "ttmSalesCr": 81,
@@ -17888,6 +20341,18 @@
         "totalAssets": "943"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "17",
+        "reserves": "-52",
+        "borrowings": "847",
+        "otherLiabilities": "109",
+        "totalLiabilities": "921",
+        "fixedAssets": "254",
+        "investments": "168",
+        "otherAssets": "499",
+        "totalAssets": "921"
+      },
+      {
         "year": "Mar 26",
         "equityCapital": "17",
         "reserves": "-129",
@@ -17921,6 +20386,13 @@
         "cfi": "-4",
         "cff": "0",
         "netCash": "0"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-11",
+        "cfi": "5",
+        "cff": "5",
+        "netCash": "-1"
       },
       {
         "year": "Mar 26",
@@ -18389,6 +20861,24 @@
     },
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "116",
+        "expenses": "147",
+        "operatingProfit": "-31",
+        "opm": "-26.7%",
+        "netProfit": "-31",
+        "eps": "₹-3.74"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "70",
+        "expenses": "245",
+        "operatingProfit": "-175",
+        "opm": "-250.0%",
+        "netProfit": "-175",
+        "eps": "₹-20.53"
+      },
+      {
         "year": "TTM",
         "sales": "72",
         "expenses": "229",
@@ -18735,6 +21225,30 @@
     "updatedAt": 1794038126850,
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "108",
+        "reserves": "-63",
+        "borrowings": "0",
+        "otherLiabilities": "3",
+        "totalLiabilities": "48",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "46",
+        "totalAssets": "48"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "108",
+        "reserves": "-64",
+        "borrowings": "0",
+        "otherLiabilities": "3",
+        "totalLiabilities": "47",
+        "fixedAssets": "2",
+        "investments": "0",
+        "otherAssets": "45",
+        "totalAssets": "47"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "108",
         "reserves": "-65",
@@ -18748,6 +21262,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-60",
+        "cfi": "-1",
+        "cff": "63",
+        "netCash": "2"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "-2",
@@ -18953,6 +21481,24 @@
     },
     "debtToEquity": 0,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "31",
+        "expenses": "2,548",
+        "operatingProfit": "-2,517",
+        "opm": "-8119.4%",
+        "netProfit": "-2,517",
+        "eps": "₹-215.25"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "17",
+        "expenses": "18",
+        "operatingProfit": "-1",
+        "opm": "-5.9%",
+        "netProfit": "-1",
+        "eps": "₹-0.1"
+      },
       {
         "year": "TTM",
         "sales": "6",
@@ -19301,6 +21847,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "20",
+        "reserves": "790",
+        "borrowings": "149",
+        "otherLiabilities": "1,477",
+        "totalLiabilities": "2,436",
+        "fixedAssets": "527",
+        "investments": "0",
+        "otherAssets": "1,909",
+        "totalAssets": "2,436"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "79",
+        "reserves": "872",
+        "borrowings": "100",
+        "otherLiabilities": "1,729",
+        "totalLiabilities": "2,780",
+        "fixedAssets": "584",
+        "investments": "0",
+        "otherAssets": "2,196",
+        "totalAssets": "2,780"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "80",
         "reserves": "899",
@@ -19314,6 +21884,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "349",
+        "cfi": "-122",
+        "cff": "-215",
+        "netCash": "12"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "501",
+        "cfi": "-174",
+        "cff": "-346",
+        "netCash": "-19"
+      },
       {
         "year": "Sep 26",
         "cfo": "140",
@@ -19474,6 +22058,24 @@
     },
     "debtToEquity": 0.19,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "3,254",
+        "expenses": "3,210",
+        "operatingProfit": "44",
+        "opm": "1.4%",
+        "netProfit": "46",
+        "eps": "₹22.89"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "3,789",
+        "expenses": "3,634",
+        "operatingProfit": "155",
+        "opm": "4.1%",
+        "netProfit": "124",
+        "eps": "₹11.74"
+      },
       {
         "year": "TTM",
         "sales": "4,154",
@@ -19796,6 +22398,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "50",
+        "reserves": "179",
+        "borrowings": "229",
+        "otherLiabilities": "61",
+        "totalLiabilities": "519",
+        "fixedAssets": "176",
+        "investments": "0",
+        "otherAssets": "343",
+        "totalAssets": "519"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "50",
         "reserves": "184",
@@ -19809,6 +22423,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "-10",
+        "cfi": "-47",
+        "cff": "57",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "40",
@@ -19919,6 +22540,15 @@
     },
     "debtToEquity": 0.87,
     "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "839",
+        "expenses": "812",
+        "operatingProfit": "27",
+        "opm": "3.2%",
+        "netProfit": "21",
+        "eps": "₹4.95"
+      },
       {
         "year": "TTM",
         "sales": "860",
@@ -20040,6 +22670,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "32",
+        "reserves": "380",
+        "borrowings": "277",
+        "otherLiabilities": "280",
+        "totalLiabilities": "969",
+        "fixedAssets": "371",
+        "investments": "0",
+        "otherAssets": "598",
+        "totalAssets": "969"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "34",
         "reserves": "481",
@@ -20053,6 +22695,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "16",
+        "cfi": "-191",
+        "cff": "174",
+        "netCash": "-1"
+      },
       {
         "year": "Sep 26",
         "cfo": "-35",
@@ -20161,7 +22810,18 @@
       "debtToEquity": 0.6,
       "promoterPct": 44.05
     },
-    "debtToEquity": 0.6
+    "debtToEquity": 0.6,
+    "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "824",
+        "expenses": "799",
+        "operatingProfit": "25",
+        "opm": "3.0%",
+        "netProfit": "15",
+        "eps": "₹4.98"
+      }
+    ]
   },
   "VOGL": {
     "about": "Vedanta Oil and Gas Limited engages in the exploration and production of oil and gas. It holds interests in 44 blocks covering an area of approximately 47,000 square kilometers in India. The company was formerly known as MALCO Energy Limited and changed its name to Vedanta Oil and Gas Limited in June 2026. The company was incorporated in 2001 and is based in Gurugram, India. Vedanta Oil and Gas Limited operates as a subsidiary of Vedanta Resources Limited.",
@@ -20199,6 +22859,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "5",
+        "reserves": "-479",
+        "borrowings": "683",
+        "otherLiabilities": "369",
+        "totalLiabilities": "578",
+        "fixedAssets": "284",
+        "investments": "0",
+        "otherAssets": "294",
+        "totalAssets": "578"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "391",
         "reserves": "17,600",
@@ -20212,6 +22884,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "-168",
+        "cfi": "-8",
+        "cff": "92",
+        "netCash": "-84"
+      },
       {
         "year": "Sep 26",
         "cfo": "1,960",
@@ -20445,6 +23124,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "10",
+        "reserves": "1,578",
+        "borrowings": "0",
+        "otherLiabilities": "188",
+        "totalLiabilities": "1,776",
+        "fixedAssets": "117",
+        "investments": "932",
+        "otherAssets": "727",
+        "totalAssets": "1,776"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "10",
+        "reserves": "1,782",
+        "borrowings": "0",
+        "otherLiabilities": "226",
+        "totalLiabilities": "2,018",
+        "fixedAssets": "117",
+        "investments": "967",
+        "otherAssets": "934",
+        "totalAssets": "2,018"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "1,857",
@@ -20458,6 +23161,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "219",
+        "cfi": "-116",
+        "cff": "-94",
+        "netCash": "9"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "140",
+        "cfi": "-1",
+        "cff": "-104",
+        "netCash": "35"
+      },
       {
         "year": "Sep 26",
         "cfo": "124",
@@ -20619,6 +23336,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "1,934",
+        "expenses": "1,498",
+        "operatingProfit": "436",
+        "opm": "22.5%",
+        "netProfit": "325",
+        "eps": "₹321.65"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "2,154",
+        "expenses": "1,748",
+        "operatingProfit": "406",
+        "opm": "18.8%",
+        "netProfit": "305",
+        "eps": "₹301.85"
+      },
+      {
         "year": "TTM",
         "sales": "2,541",
         "expenses": "2,117",
@@ -20672,8 +23407,48 @@
         "eps": "₹-3.15"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "125",
+        "reserves": "655",
+        "borrowings": "707",
+        "otherLiabilities": "523",
+        "totalLiabilities": "2,010",
+        "fixedAssets": "222",
+        "investments": "1",
+        "otherAssets": "1,787",
+        "totalAssets": "2,010"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "125",
+        "reserves": "505",
+        "borrowings": "650",
+        "otherLiabilities": "600",
+        "totalLiabilities": "1,880",
+        "fixedAssets": "227",
+        "investments": "7",
+        "otherAssets": "1,646",
+        "totalAssets": "1,880"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-207",
+        "cfi": "-85",
+        "cff": "244",
+        "netCash": "-48"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "142",
+        "cfi": "-15",
+        "cff": "-132",
+        "netCash": "-5"
+      }
+    ],
     "shareholding": {
       "promoters": "39.03%",
       "public": "60.97%",
@@ -20816,9 +23591,31 @@
       "ttmEps": -15.76,
       "ttmSalesCr": 723,
       "ttmPatCr": -196,
+      "bookValue": 50.9,
+      "roePct": -31.1,
+      "rocePct": -18.7,
+      "debtToEquity": 1.03,
       "promoterPct": 39.03
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "1,237",
+        "expenses": "1,156",
+        "operatingProfit": "81",
+        "opm": "6.5%",
+        "netProfit": "59",
+        "eps": "₹4.7"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "851",
+        "expenses": "1,028",
+        "operatingProfit": "-177",
+        "opm": "-20.8%",
+        "netProfit": "-150",
+        "eps": "₹-12.04"
+      },
       {
         "year": "TTM",
         "sales": "723",
@@ -20828,7 +23625,8 @@
         "netProfit": "-196",
         "eps": "₹-15.76"
       }
-    ]
+    ],
+    "debtToEquity": 1.03
   },
   "VRAJ": {
     "about": "Vraj Iron and Steel Limited engages in the manufacture and sale of sponge iron, MS billets, TMT bars, power and others related items under the Vraj brand primarily in India. It sells its products directly, as well as through brokers and dealers to industrial customers and end-users. The company was incorporated in 2004 and is based in Raipur, India. Vraj Iron and Steel Limited operates as a subsidiary of Gopal Sponge and Power Private Limited.",
@@ -20942,6 +23740,30 @@
         "investments": "2",
         "otherAssets": "360",
         "totalAssets": "407"
+      },
+      {
+        "year": "Mar 25",
+        "equityCapital": "33",
+        "reserves": "364",
+        "borrowings": "1",
+        "otherLiabilities": "19",
+        "totalLiabilities": "417",
+        "fixedAssets": "195",
+        "investments": "2",
+        "otherAssets": "220",
+        "totalAssets": "417"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "33",
+        "reserves": "397",
+        "borrowings": "41",
+        "otherLiabilities": "25",
+        "totalLiabilities": "496",
+        "fixedAssets": "270",
+        "investments": "3",
+        "otherAssets": "223",
+        "totalAssets": "496"
       }
     ],
     "cashFlows": [
@@ -20958,6 +23780,20 @@
         "cfi": "-97",
         "cff": "95",
         "netCash": "3"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "14",
+        "cfi": "-103",
+        "cff": "90",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "31",
+        "cfi": "-70",
+        "cff": "38",
+        "netCash": "-1"
       }
     ],
     "shareholding": {
@@ -21093,9 +23929,31 @@
       "ttmEps": 10.36,
       "ttmSalesCr": 706,
       "ttmPatCr": 34,
+      "bookValue": 136.6,
+      "roePct": 7.9,
+      "rocePct": 10,
+      "debtToEquity": 0.1,
       "promoterPct": 74.95
     },
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "475",
+        "expenses": "418",
+        "operatingProfit": "57",
+        "opm": "12.0%",
+        "netProfit": "44",
+        "eps": "₹14.28"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "588",
+        "expenses": "548",
+        "operatingProfit": "40",
+        "opm": "6.8%",
+        "netProfit": "32",
+        "eps": "₹9.7"
+      },
       {
         "year": "TTM",
         "sales": "706",
@@ -21105,7 +23963,8 @@
         "netProfit": "34",
         "eps": "₹10.36"
       }
-    ]
+    ],
+    "debtToEquity": 0.1
   },
   "VRLLOG": {
     "about": "VRL Logistics Limited operates as a logistics and transport company in India. The company offers services, such as truckload and full truck load, door-to door FTL service, door collection and door delivery; and provides courier services for time sensitive documents and packages. It also provides vehicles for outdoor branding. The company was formerly known as Vijayanand Roadlines Ltd. and changed its name to VRL Logistics Limited in August 2006. VRL Logistics Limited was founded in 1976 and is based in Hubli, India.",
@@ -21206,6 +24065,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "87",
+        "reserves": "997",
+        "borrowings": "447",
+        "otherLiabilities": "1,055",
+        "totalLiabilities": "2,586",
+        "fixedAssets": "2,242",
+        "investments": "0",
+        "otherAssets": "344",
+        "totalAssets": "2,586"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "175",
+        "reserves": "968",
+        "borrowings": "456",
+        "otherLiabilities": "1,006",
+        "totalLiabilities": "2,605",
+        "fixedAssets": "2,304",
+        "investments": "0",
+        "otherAssets": "301",
+        "totalAssets": "2,605"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "175",
         "reserves": "1,149",
@@ -21219,6 +24102,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "558",
+        "cfi": "-430",
+        "cff": "-93",
+        "netCash": "35"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "654",
+        "cfi": "-294",
+        "cff": "-398",
+        "netCash": "-38"
+      },
       {
         "year": "Sep 26",
         "cfo": "362",
@@ -21380,6 +24277,24 @@
     "debtToEquity": 0.48,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "3,161",
+        "expenses": "2,911",
+        "operatingProfit": "250",
+        "opm": "7.9%",
+        "netProfit": "183",
+        "eps": "₹20.91"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "3,221",
+        "expenses": "2,903",
+        "operatingProfit": "318",
+        "opm": "9.9%",
+        "netProfit": "237",
+        "eps": "₹13.54"
+      },
+      {
         "year": "TTM",
         "sales": "4,426",
         "expenses": "3,891",
@@ -21480,6 +24395,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "82",
+        "reserves": "716",
+        "borrowings": "120",
+        "otherLiabilities": "218",
+        "totalLiabilities": "1,136",
+        "fixedAssets": "309",
+        "investments": "8",
+        "otherAssets": "819",
+        "totalAssets": "1,136"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "97",
+        "reserves": "1,181",
+        "borrowings": "93",
+        "otherLiabilities": "262",
+        "totalLiabilities": "1,633",
+        "fixedAssets": "585",
+        "investments": "3",
+        "otherAssets": "1,045",
+        "totalAssets": "1,633"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "97",
         "reserves": "1,242",
@@ -21493,6 +24432,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "127",
+        "cfi": "-127",
+        "cff": "3",
+        "netCash": "3"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "106",
+        "cfi": "-427",
+        "cff": "317",
+        "netCash": "-4"
+      },
       {
         "year": "Sep 26",
         "cfo": "34",
@@ -21654,6 +24607,24 @@
     "debtToEquity": 0.12,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "1,764",
+        "expenses": "1,639",
+        "operatingProfit": "125",
+        "opm": "7.1%",
+        "netProfit": "93",
+        "eps": "₹11.37"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,754",
+        "expenses": "1,590",
+        "operatingProfit": "164",
+        "opm": "9.4%",
+        "netProfit": "122",
+        "eps": "₹13.13"
+      },
+      {
         "year": "TTM",
         "sales": "2,023",
         "expenses": "1,806",
@@ -21763,6 +24734,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "170",
+        "reserves": "1,153",
+        "borrowings": "0",
+        "otherLiabilities": "493",
+        "totalLiabilities": "1,816",
+        "fixedAssets": "307",
+        "investments": "199",
+        "otherAssets": "1,310",
+        "totalAssets": "1,816"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "170",
+        "reserves": "1,276",
+        "borrowings": "0",
+        "otherLiabilities": "570",
+        "totalLiabilities": "2,016",
+        "fixedAssets": "244",
+        "investments": "0",
+        "otherAssets": "1,772",
+        "totalAssets": "2,016"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "170",
         "reserves": "1,156",
@@ -21776,6 +24771,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "193",
+        "cfi": "10",
+        "cff": "-221",
+        "netCash": "-18"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "218",
+        "cfi": "-31",
+        "cff": "-170",
+        "netCash": "17"
+      },
       {
         "year": "Sep 26",
         "cfo": "199",
@@ -21937,6 +24946,24 @@
     "debtToEquity": 0,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "1,809",
+        "expenses": "1,439",
+        "operatingProfit": "370",
+        "opm": "20.5%",
+        "netProfit": "290",
+        "eps": "₹17.1"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "2,046",
+        "expenses": "1,656",
+        "operatingProfit": "390",
+        "opm": "19.1%",
+        "netProfit": "292",
+        "eps": "₹17.21"
+      },
+      {
         "year": "TTM",
         "sales": "2,947",
         "expenses": "2,600",
@@ -22046,6 +25073,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "19",
+        "reserves": "169",
+        "borrowings": "171",
+        "otherLiabilities": "114",
+        "totalLiabilities": "473",
+        "fixedAssets": "69",
+        "investments": "0",
+        "otherAssets": "404",
+        "totalAssets": "473"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "19",
+        "reserves": "178",
+        "borrowings": "192",
+        "otherLiabilities": "50",
+        "totalLiabilities": "439",
+        "fixedAssets": "161",
+        "investments": "0",
+        "otherAssets": "278",
+        "totalAssets": "439"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "19",
         "reserves": "183",
@@ -22059,6 +25110,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "36",
+        "cfi": "-58",
+        "cff": "16",
+        "netCash": "-6"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "54",
+        "cfi": "-63",
+        "cff": "6",
+        "netCash": "-3"
+      },
       {
         "year": "Sep 26",
         "cfo": "-26",
@@ -22220,6 +25285,24 @@
     "debtToEquity": 1.27,
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "996",
+        "expenses": "979",
+        "operatingProfit": "17",
+        "opm": "1.7%",
+        "netProfit": "12",
+        "eps": "₹6.21"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,149",
+        "expenses": "1,137",
+        "operatingProfit": "12",
+        "opm": "1.0%",
+        "netProfit": "9",
+        "eps": "₹4.64"
+      },
+      {
         "year": "TTM",
         "sales": "1,292",
         "expenses": "1,279",
@@ -22302,6 +25385,30 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "9",
+        "reserves": "993",
+        "borrowings": "0",
+        "otherLiabilities": "263",
+        "totalLiabilities": "1,265",
+        "fixedAssets": "211",
+        "investments": "40",
+        "otherAssets": "1,014",
+        "totalAssets": "1,265"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "9",
+        "reserves": "1,085",
+        "borrowings": "0",
+        "otherLiabilities": "250",
+        "totalLiabilities": "1,344",
+        "fixedAssets": "204",
+        "investments": "16",
+        "otherAssets": "1,124",
+        "totalAssets": "1,344"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "9",
         "reserves": "1,140",
@@ -22315,6 +25422,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "77",
+        "cfi": "-29",
+        "cff": "-20",
+        "netCash": "28"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "132",
+        "cfi": "-136",
+        "cff": "-20",
+        "netCash": "-24"
+      },
       {
         "year": "Sep 26",
         "cfo": "24",
@@ -22475,6 +25596,24 @@
     },
     "debtToEquity": 0,
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "995",
+        "expenses": "875",
+        "operatingProfit": "120",
+        "opm": "12.1%",
+        "netProfit": "93",
+        "eps": "₹107.43"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "1,240",
+        "expenses": "1,098",
+        "operatingProfit": "142",
+        "opm": "11.5%",
+        "netProfit": "105",
+        "eps": "₹120.68"
+      },
       {
         "year": "TTM",
         "sales": "3,064",
@@ -22823,6 +25962,18 @@
     ],
     "balanceSheet": [
       {
+        "year": "Mar 26",
+        "equityCapital": "10",
+        "reserves": "305",
+        "borrowings": "75",
+        "otherLiabilities": "58",
+        "totalLiabilities": "448",
+        "fixedAssets": "123",
+        "investments": "51",
+        "otherAssets": "274",
+        "totalAssets": "448"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "10",
         "reserves": "311",
@@ -22836,6 +25987,13 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 26",
+        "cfo": "11",
+        "cfi": "-32",
+        "cff": "22",
+        "netCash": "1"
+      },
       {
         "year": "Sep 26",
         "cfo": "22",
@@ -22904,6 +26062,17 @@
       "debtToEquity": 0.22,
       "promoterPct": 75
     },
-    "debtToEquity": 0.22
+    "debtToEquity": 0.22,
+    "annualPnl": [
+      {
+        "year": "Mar 26",
+        "sales": "372",
+        "expenses": "357",
+        "operatingProfit": "15",
+        "opm": "4.0%",
+        "netProfit": "11",
+        "eps": "₹1.11"
+      }
+    ]
   }
 }

@@ -17,6 +17,18 @@ const StocksScreener = (function () {
   // Default featured community screens for instant discovery
   const FEATURED_SCREENS = [
     {
+      id: "featured-qvt",
+      name: "Stocks 360 QVT Leaders (QVT >= 70)",
+      description: "Top NSE equities scoring 70+ on Stocks 360's composite Quality, Value & Technical Momentum Score.",
+      author: "Stocks 360 Research",
+      isPublic: true,
+      requestedColumns: ["qvtOverall", "qvtQuality", "qvtValue", "qvtTrend", "marketCapCr", "pe"],
+      filters: [
+        { field: "qvtOverall", operator: ">=", value: 70, label: "Stocks 360 QVT Score >= 70" },
+        { field: "qvtQuality", operator: ">=", value: 65, label: "QVT Quality >= 65" }
+      ]
+    },
+    {
       id: "featured-1",
       name: "Golden Crossover Breakouts",
       description: "Bullish momentum stocks where short-term 50 DMA is trading above 200 DMA with strong volume.",

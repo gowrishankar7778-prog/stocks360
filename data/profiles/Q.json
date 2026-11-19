@@ -51,8 +51,48 @@
         "eps": "₹1.06"
       }
     ],
-    "balanceSheet": [],
-    "cashFlows": [],
+    "balanceSheet": [
+      {
+        "year": "Mar 25",
+        "equityCapital": "18",
+        "reserves": "72",
+        "borrowings": "60",
+        "otherLiabilities": "40",
+        "totalLiabilities": "190",
+        "fixedAssets": "23",
+        "investments": "0",
+        "otherAssets": "167",
+        "totalAssets": "190"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "19",
+        "reserves": "85",
+        "borrowings": "74",
+        "otherLiabilities": "35",
+        "totalLiabilities": "213",
+        "fixedAssets": "23",
+        "investments": "0",
+        "otherAssets": "190",
+        "totalAssets": "213"
+      }
+    ],
+    "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "20",
+        "cfi": "-45",
+        "cff": "26",
+        "netCash": "1"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "19",
+        "cfi": "-20",
+        "cff": "1",
+        "netCash": "0"
+      }
+    ],
     "shareholding": {
       "promoters": "68.11%",
       "public": "31.89%",
@@ -230,15 +270,37 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:16:09.246Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 321,
-      "pe": 49.4,
+      "marketCapCr": 325,
+      "pe": 50,
       "ttmEps": 3.44,
       "ttmSalesCr": 203,
       "ttmPatCr": 7,
+      "bookValue": 55.1,
+      "roePct": 6.7,
+      "rocePct": 5.6,
+      "debtToEquity": 0.71,
       "promoterPct": 68.11
     },
     "lastShpRecordId": "215713",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "156",
+        "expenses": "137",
+        "operatingProfit": "19",
+        "opm": "12.2%",
+        "netProfit": "0",
+        "eps": "₹6.77"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "173",
+        "expenses": "157",
+        "operatingProfit": "16",
+        "opm": "9.2%",
+        "netProfit": "0",
+        "eps": "₹5.4"
+      },
       {
         "year": "TTM",
         "sales": "203",
@@ -248,7 +310,8 @@
         "netProfit": "7",
         "eps": "₹3.44"
       }
-    ]
+    ],
+    "debtToEquity": 0.71
   },
   "QPOWER": {
     "about": "Quality Power Electrical Equipments Limited provides power products and solutions for power generation, transmission, distribution, and automation sectors in India and internationally. It offers metal enclosed capacitor banks; reactors, including series, shunt, FACTS/HVDC, and iron core reactors; transformers comprising special purpose, earthing, converter duty, dry type, and arc furnace transformers; PLCC components that include wave traps and LMU/LMDU; instrument transformers, such as current, potential, and discharge coil/PT's transformers; and Edison composites, as well as switchgears and circuit breakers. The company was incorporated in 2001 and is based in Sangli, India.",
@@ -503,8 +566,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750809_31102026075234_WEB.xml",
     "ratios": {
-      "marketCapCr": 11770,
-      "pe": 153.5,
+      "marketCapCr": 11616,
+      "pe": 151.5,
       "ttmEps": 10.07,
       "ttmSalesCr": 277,
       "ttmPatCr": 78,
@@ -554,6 +617,30 @@
     "updatedAt": 1794038126442,
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "40",
+        "reserves": "258",
+        "borrowings": "85",
+        "otherLiabilities": "19",
+        "totalLiabilities": "402",
+        "fixedAssets": "30",
+        "investments": "0",
+        "otherAssets": "372",
+        "totalAssets": "402"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "40",
+        "reserves": "218",
+        "borrowings": "24",
+        "otherLiabilities": "39",
+        "totalLiabilities": "321",
+        "fixedAssets": "27",
+        "investments": "0",
+        "otherAssets": "294",
+        "totalAssets": "321"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "40",
         "reserves": "201",
@@ -567,6 +654,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "-72",
+        "cfi": "-5",
+        "cff": "263",
+        "netCash": "186"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "-86",
+        "cfi": "-3",
+        "cff": "-65",
+        "netCash": "-154"
+      },
       {
         "year": "Sep 26",
         "cfo": "5",
@@ -908,7 +1009,7 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:16:09.215Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1786,
+      "marketCapCr": 1763,
       "ttmEps": -6.7,
       "ttmSalesCr": 162,
       "ttmPatCr": -24,
@@ -921,6 +1022,24 @@
     "debtToEquity": 0.09,
     "lastShpRecordId": "215031",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "151",
+        "expenses": "177",
+        "operatingProfit": "-26",
+        "opm": "-17.2%",
+        "netProfit": "-20",
+        "eps": "₹-6.03"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "153",
+        "expenses": "209",
+        "operatingProfit": "-56",
+        "opm": "-36.6%",
+        "netProfit": "-43",
+        "eps": "₹-10.61"
+      },
       {
         "year": "TTM",
         "sales": "162",
@@ -1095,6 +1214,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "380",
+        "cfi": "2",
+        "cff": "-318",
+        "netCash": "64"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "230",
+        "cfi": "-73",
+        "cff": "-237",
+        "netCash": "-80"
+      },
       {
         "year": "Sep 26",
         "cfo": "365",
@@ -1384,8 +1517,8 @@
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1750536_30102026093254_WEB.xml",
     "ratios": {
-      "marketCapCr": 4803,
-      "pe": 18.4,
+      "marketCapCr": 5018,
+      "pe": 19.2,
       "ttmEps": 17.79,
       "ttmSalesCr": 15203,
       "ttmPatCr": 265,
@@ -1398,6 +1531,24 @@
     "debtToEquity": 0,
     "lastShpRecordId": "214354",
     "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "14,967",
+        "expenses": "14,925",
+        "operatingProfit": "42",
+        "opm": "0.3%",
+        "netProfit": "46",
+        "eps": "₹3.07"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "15,305",
+        "expenses": "15,075",
+        "operatingProfit": "230",
+        "opm": "1.5%",
+        "netProfit": "222",
+        "eps": "₹14.85"
+      },
       {
         "year": "TTM",
         "sales": "15,203",
@@ -1535,6 +1686,30 @@
         "totalAssets": "517"
       },
       {
+        "year": "Mar 25",
+        "equityCapital": "54",
+        "reserves": "387",
+        "borrowings": "0",
+        "otherLiabilities": "84",
+        "totalLiabilities": "525",
+        "fixedAssets": "83",
+        "investments": "7",
+        "otherAssets": "435",
+        "totalAssets": "525"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "54",
+        "reserves": "382",
+        "borrowings": "0",
+        "otherLiabilities": "111",
+        "totalLiabilities": "547",
+        "fixedAssets": "89",
+        "investments": "0",
+        "otherAssets": "458",
+        "totalAssets": "547"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "54",
         "reserves": "383",
@@ -1568,6 +1743,20 @@
         "cfi": "11",
         "cff": "-13",
         "netCash": "-25"
+      },
+      {
+        "year": "Mar 25",
+        "cfo": "-22",
+        "cfi": "16",
+        "cff": "-10",
+        "netCash": "-16"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "15",
+        "cfi": "-26",
+        "cff": "3",
+        "netCash": "-8"
       },
       {
         "year": "Sep 26",
@@ -1818,6 +2007,24 @@
     "lastShpRecordId": "216104",
     "annualPnl": [
       {
+        "year": "Mar 25",
+        "sales": "280",
+        "expenses": "279",
+        "operatingProfit": "1",
+        "opm": "0.4%",
+        "netProfit": "5",
+        "eps": "₹0.91"
+      },
+      {
+        "year": "Mar 26",
+        "sales": "261",
+        "expenses": "282",
+        "operatingProfit": "-21",
+        "opm": "-8.0%",
+        "netProfit": "-11",
+        "eps": "₹-1.96"
+      },
+      {
         "year": "TTM",
         "sales": "265",
         "expenses": "292",
@@ -1890,6 +2097,30 @@
     "updatedAt": 1794038126453,
     "balanceSheet": [
       {
+        "year": "Mar 25",
+        "equityCapital": "27",
+        "reserves": "-40",
+        "borrowings": "13",
+        "otherLiabilities": "1",
+        "totalLiabilities": "1",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "1"
+      },
+      {
+        "year": "Mar 26",
+        "equityCapital": "27",
+        "reserves": "-40",
+        "borrowings": "14",
+        "otherLiabilities": "0",
+        "totalLiabilities": "1",
+        "fixedAssets": "1",
+        "investments": "0",
+        "otherAssets": "0",
+        "totalAssets": "1"
+      },
+      {
         "year": "Sep 26",
         "equityCapital": "27",
         "reserves": "-41",
@@ -1903,6 +2134,20 @@
       }
     ],
     "cashFlows": [
+      {
+        "year": "Mar 25",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
+      {
+        "year": "Mar 26",
+        "cfo": "0",
+        "cfi": "0",
+        "cff": "0",
+        "netCash": "0"
+      },
       {
         "year": "Sep 26",
         "cfo": "-1",
@@ -2321,8 +2566,8 @@
     "lastFinancialStatementUpdate": "2026-11-18T12:16:09.110Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 301,
-      "pe": 5,
+      "marketCapCr": 290,
+      "pe": 4.8,
       "ttmEps": 0.8,
       "ttmSalesCr": 399,
       "ttmPatCr": 57,

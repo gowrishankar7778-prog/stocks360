@@ -17,6 +17,8 @@ const {
   loadScreenerDataset,
   normalizeSectorName,
   computeFilingFundamentals,
+  buildIndustryPeerAvgPeMap,
+  computeStocks360QvtScore,
   parseFilingNumber,
   writeScreenerIndex,
   writeScreenerDataIfPresent,
@@ -900,6 +902,20 @@ async function run() {
   flushDirtyShards();
 
   if (updatedCount > 0) {
+    const peerAvgPeMap = buildIndustryPeerAvgPeMap(stocks);
+    for (const st of stocks) {
+      const stSym = String(st.symbol || '').toUpperCase();
+      const firstCh = stSym.charAt(0);
+      const stKey = (firstCh >= 'A' && firstCh <= 'Z') ? firstCh : '0_9';
+      const stShard = loadShard(stKey);
+      const stProfile = stShard[stSym] || null;
+      const qvt = computeStocks360QvtScore(st, stProfile, peerAvgPeMap);
+      st.qvtQuality = qvt.qvtQuality;
+      st.qvtValue = qvt.qvtValue;
+      st.qvtTrend = qvt.qvtTrend;
+      st.qvtOverall = qvt.qvtOverall;
+    }
+
     const now = new Date();
     const timeString = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true });
     const dateString = now.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short' });

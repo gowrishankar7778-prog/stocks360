@@ -122,6 +122,30 @@ const SCREENER_METRIC_DEFINITIONS = {
     unit: '%',
     category: 'volume',
     description: 'Percentage of total traded quantity taken for demat delivery (official NSE sec_bhavdata_full).'
+  },
+  qvtOverall: {
+    label: 'Stocks 360 QVT Score',
+    unit: '/100',
+    category: 'fundamental',
+    description: 'Composite Stocks 360 QVT Score (Quality, Value, Technical Momentum) derived from 3-year NSE filings & Bhavcopy technicals.'
+  },
+  qvtQuality: {
+    label: 'QVT Quality Score',
+    unit: '/100',
+    category: 'fundamental',
+    description: '3-year financial durability score (ROE/ROCE, multi-year growth, operating cash flow, leverage, ownership stability).'
+  },
+  qvtValue: {
+    label: 'QVT Value Score',
+    unit: '/100',
+    category: 'valuation',
+    description: 'Valuation attractiveness score (Industry Peer-relative P/E, Earnings Yield, and Price-to-Book).'
+  },
+  qvtTrend: {
+    label: 'QVT Technical Momentum',
+    unit: '/100',
+    category: 'technical',
+    description: 'Technical momentum score (50/200-DMA alignment, Golden Cross, 52W range, 14D RSI, volume surge & delivery %).'
   }
 };
 
@@ -481,7 +505,8 @@ function buildCompactIndex(stocks, lastUpdatedLabel) {
     const optionalNums = [
       'sharesCr', 'marketCapCr', 'pe', 'ttmEps', 'ttmSalesCr',
       'ttmPatCr', 'bookValue', 'roePct', 'rocePct', 'debtToEquity', 'promoterPct',
-      'deliveryVolume', 'deliveryPct'
+      'deliveryVolume', 'deliveryPct',
+      'qvtOverall', 'qvtQuality', 'qvtValue', 'qvtTrend'
     ];
     optionalNums.forEach((k) => {
       if (typeof s[k] === 'number' && Number.isFinite(s[k])) {
@@ -593,6 +618,177 @@ function syncMarketSummaryToFirestore(stocks, lastUpdatedLabel) {
   });
 }
 
+function buildIndustryPeerAvgPeMap(stocks) {
+  const groups = new Map();
+  for (const p of stocks || []) {
+    const ind = String(p.industry || '').trim().toLowerCase();
+    if (!ind || typeof p.pe !== 'number' || p.pe <= 0 || p.pe >= 250) continue;
+    if (!groups.has(ind)) groups.set(ind, { sum: 0, count: 0 });
+    const g = groups.get(ind);
+    g.sum += p.pe;
+    g.count++;
+  }
+  const avgMap = new Map();
+  for (const [ind, g] of groups.entries()) {
+    if (g.count > 0) avgMap.set(ind, g.sum / g.count);
+  }
+  return avgMap;
+}
+
+function computeStocks360QvtScore(stock, profile, peerAvgPeMap) {
+  if (!stock || stock.exchanges === 'BSE') {
+    return { qvtQuality: null, qvtValue: null, qvtTrend: null, qvtOverall: null };
+  }
+  const src = profile && typeof profile === 'object' ? { ...profile, ...stock } : stock;
+  const isBankOrNbfc = /^(BANKS|CREDIT SERVICES|MORTGAGE FINANCE|FINANCIAL CONGLOMERATES|INSURANCE)/i.test(String(src.industry || ''))
+    || /BANKING & FINANCIAL|FINANCIAL SERVICES & NBFC/i.test(String(src.sector || ''));
+
+  // 1. QUALITY (strictly normalized over available audited metrics — zero neutral fallbacks)
+  let qEarned = 0;
+  let qAvail = 0;
+
+  const roe = typeof src.roePct === 'number' ? src.roePct : null;
+  const roce = typeof src.rocePct === 'number' ? src.rocePct : null;
+  if (isBankOrNbfc && roe !== null) {
+    qEarned += roe >= 16 ? 25 : roe >= 12 ? 20 : roe >= 8 ? 14 : roe > 0 ? 8 : 0;
+    qAvail += 25;
+  } else if (!isBankOrNbfc && (roe !== null || roce !== null)) {
+    if (roe !== null) {
+      qEarned += roe >= 20 ? 15 : roe >= 15 ? 12 : roe >= 10 ? 8 : roe > 0 ? 4 : 0;
+      qAvail += 15;
+    }
+    if (roce !== null) {
+      qEarned += roce >= 20 ? 10 : roce >= 15 ? 8 : roce >= 10 ? 5 : roce > 0 ? 2 : 0;
+      qAvail += 10;
+    }
+  }
+
+  let salesGrowthPct = null;
+  let patGrowthPct = null;
+  const ap = Array.isArray(src.annualPnl) ? src.annualPnl.filter((r) => r && r.year !== 'TTM') : [];
+  if (ap.length >= 2) {
+    const first = ap[0], last = ap[ap.length - 1];
+    const s0 = parseFilingNumber(first.sales), s1 = parseFilingNumber(last.sales);
+    const p0 = parseFilingNumber(first.netProfit), p1 = parseFilingNumber(last.netProfit);
+    const yrs = Math.max(1, ap.length - 1);
+    if (s0 > 0 && s1 > 0) salesGrowthPct = (Math.pow(s1 / s0, 1 / yrs) - 1) * 100;
+    if (p0 > 0 && p1 > 0) patGrowthPct = (Math.pow(p1 / p0, 1 / yrs) - 1) * 100;
+    else if (p0 < 0 && p1 > 0) patGrowthPct = 20;
+  } else if (Array.isArray(src.quarterlyResults) && src.quarterlyResults.length >= 5) {
+    const qr = src.quarterlyResults;
+    const cur = qr[qr.length - 1], prev = qr[qr.length - 5];
+    const s0 = parseFilingNumber(prev.sales), s1 = parseFilingNumber(cur.sales);
+    const p0 = parseFilingNumber(prev.netProfit), p1 = parseFilingNumber(cur.netProfit);
+    if (s0 > 0 && s1 > 0) salesGrowthPct = ((s1 - s0) / s0) * 100;
+    if (p0 > 0 && p1 > 0) patGrowthPct = ((p1 - p0) / p0) * 100;
+  }
+  if (salesGrowthPct !== null) {
+    qEarned += salesGrowthPct >= 15 ? 12 : salesGrowthPct >= 8 ? 9 : salesGrowthPct > 0 ? 6 : 2;
+    qAvail += 12;
+  }
+  if (patGrowthPct !== null) {
+    qEarned += patGrowthPct >= 15 ? 13 : patGrowthPct >= 8 ? 10 : patGrowthPct > 0 ? 6 : 1;
+    qAvail += 13;
+  }
+
+  const cfs = Array.isArray(src.cashFlows) ? src.cashFlows : [];
+  if (cfs.length > 0) {
+    const posCfo = cfs.filter((c) => { const v = parseFilingNumber(c.cfo); return Number.isFinite(v) && v > 0; }).length;
+    qEarned += Math.round((posCfo / cfs.length) * 20);
+    qAvail += 20;
+  }
+
+  if (isBankOrNbfc && typeof src.bookValue === 'number' && src.bookValue > 0) {
+    qEarned += 15;
+    qAvail += 15;
+  } else if (!isBankOrNbfc && typeof src.debtToEquity === 'number') {
+    const de = src.debtToEquity;
+    qEarned += de <= 0.25 ? 15 : de <= 0.50 ? 12 : de <= 1.0 ? 8 : de <= 1.5 ? 4 : 1;
+    qAvail += 15;
+  }
+
+  const sh = src.shareholding;
+  if (sh && typeof sh === 'object' && sh.promoters !== undefined) {
+    const prom = parseFloat(sh.promoters) || 0;
+    const fii = parseFloat(sh.fii) || 0;
+    const dii = parseFloat(sh.dii) || 0;
+    const basePts = (prom >= 30 || (fii + dii) >= 40) ? 8 : (prom >= 15 || (fii + dii) >= 20) ? 5 : 3;
+    let stabPts = 7;
+    if (sh.series && Array.isArray(sh.series.promoters) && sh.series.promoters.length >= 2) {
+      const firstP = Number(sh.series.promoters[0]) || 0;
+      const lastP = Number(sh.series.promoters[sh.series.promoters.length - 1]) || 0;
+      if (firstP - lastP > 3) stabPts = 3;
+    }
+    qEarned += basePts + stabPts;
+    qAvail += 15;
+  }
+
+  const qvtQuality = qAvail >= 40 ? Math.max(0, Math.min(100, Math.round((qEarned / qAvail) * 100))) : null;
+
+  // 2. VALUE (strictly normalized over available valuation metrics; null if loss/missing P/E)
+  let vEarned = 0;
+  let vAvail = 0;
+  const pe = typeof src.pe === 'number' && src.pe > 0 ? src.pe : null;
+  const indKey = String(src.industry || '').trim().toLowerCase();
+  const peerAvgPe = peerAvgPeMap && indKey ? peerAvgPeMap.get(indKey) : null;
+
+  if (pe !== null) {
+    if (peerAvgPe && peerAvgPe > 0) {
+      const ratio = pe / peerAvgPe;
+      vEarned += ratio <= 0.70 ? 40 : ratio <= 0.90 ? 34 : ratio <= 1.10 ? 26 : ratio <= 1.35 ? 18 : ratio <= 1.75 ? 10 : 4;
+      vAvail += 40;
+    }
+    vEarned += pe <= 12 ? 30 : pe <= 18 ? 25 : pe <= 25 ? 19 : pe <= 35 ? 13 : pe <= 50 ? 7 : 3;
+    vAvail += 30;
+  }
+  const pb = (Number(src.cmp) > 0 && typeof src.bookValue === 'number' && src.bookValue > 0) ? (Number(src.cmp) / src.bookValue) : null;
+  if (pb !== null) {
+    vEarned += pb <= 1.5 ? 30 : pb <= 2.5 ? 25 : pb <= 4.0 ? 19 : pb <= 6.5 ? 13 : pb <= 10.0 ? 7 : 3;
+    vAvail += 30;
+  }
+  const qvtValue = (pe !== null && vAvail >= 30) ? Math.max(0, Math.min(100, Math.round((vEarned / vAvail) * 100))) : null;
+
+  // 3. TECHNICAL MOMENTUM (strictly normalized over available Bhavcopy technicals)
+  let tEarned = 0;
+  let tAvail = 0;
+  const cmp = Number(src.cmp) || 0;
+  const dma50 = Number(src.dma50) || 0;
+  const dma200 = Number(src.dma200) || 0;
+  const h52 = Number(src.high52) || 0;
+  const l52 = Number(src.low52) || 0;
+  const rsi = typeof src.rsi14 === 'number' && src.rsi14 > 0 ? src.rsi14 : null;
+  const volSurge = Number(src.volumeSurge) || 0;
+  const delivPct = Number(src.deliveryPct) || 0;
+
+  if (cmp > 0 && dma200 > 0 && dma50 > 0) {
+    tEarned += (cmp > dma200 ? 15 : 0) + (cmp > dma50 ? 10 : 0) + ((src.goldenCross || dma50 > dma200) ? 10 : 0);
+    tAvail += 35;
+  }
+  if (cmp > 0 && h52 > l52 && l52 > 0) {
+    const pos = Math.max(0, Math.min(1, (cmp - l52) / (h52 - l52)));
+    tEarned += Math.round(pos * 25);
+    tAvail += 25;
+  }
+  if (rsi !== null) {
+    tEarned += (rsi >= 50 && rsi <= 70) ? 20 : ((rsi >= 40 && rsi < 50) || (rsi > 70 && rsi <= 80)) ? 14 : rsi > 80 ? 10 : rsi >= 30 ? 8 : 5;
+    tAvail += 20;
+  }
+  if (volSurge > 0) {
+    tEarned += volSurge >= 1.25 ? 10 : volSurge >= 1.0 ? 6 : 3;
+    tAvail += 10;
+  }
+  if (delivPct > 0) {
+    tEarned += delivPct >= 50 ? 10 : delivPct >= 35 ? 7 : 4;
+    tAvail += 10;
+  }
+  const qvtTrend = tAvail >= 40 ? Math.max(0, Math.min(100, Math.round((tEarned / tAvail) * 100))) : null;
+
+  const pillars = [qvtQuality, qvtValue, qvtTrend].filter((x) => typeof x === 'number');
+  const qvtOverall = pillars.length >= 2 ? Math.round(pillars.reduce((a, b) => a + b, 0) / pillars.length) : null;
+
+  return { qvtQuality, qvtValue, qvtTrend, qvtOverall };
+}
+
 module.exports = {
   DATA_FILE_PATH,
   INDEX_FILE_PATH,
@@ -600,6 +796,8 @@ module.exports = {
   normalizeSectorName,
   parseFilingNumber,
   computeFilingFundamentals,
+  buildIndustryPeerAvgPeMap,
+  computeStocks360QvtScore,
   loadScreenerDataset,
   writeScreenerIndex,
   writeScreenerDataIfPresent,
