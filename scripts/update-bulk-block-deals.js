@@ -275,7 +275,8 @@ async function run() {
     return (Number(b.valueCr) || 0) - (Number(a.valueCr) || 0);
   });
 
-  const retainedDeals = mergedDeals.slice(0, 1000);
+  // Retain all historical deduplicated deals from workflow initiation (newest first)
+  const retainedDeals = mergedDeals;
   const latestTradeDate = retainedDeals[0] ? retainedDeals[0].date : '';
   const latestDeals = retainedDeals.filter((d) => d.date === latestTradeDate);
 
