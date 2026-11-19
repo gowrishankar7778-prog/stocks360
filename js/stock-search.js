@@ -1338,76 +1338,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const t = Math.max(0, Math.min(100, Math.round(tScore)));
     const overall = Math.round((q + v + t) / 3);
 
-    return { q, v, t, overall, qBreakdown, vBreakdown, tBreakdown, isBankOrNbfc };
-  }
-
-  function buildQvtFormulaSheetHtml(stock, qvt) {
-    const today = new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Stocks 360 QVT Score - Formula &amp; Methodology Sheet (${escapeHtml(stock.symbol)})</title>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: #0f172a; max-width: 900px; margin: 32px auto; padding: 0 20px; line-height: 1.55; }
-    h1 { font-size: 1.65rem; margin-bottom: 4px; }
-    h2 { font-size: 1.2rem; margin-top: 26px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
-    .meta { color: #475569; font-size: 0.9rem; margin-bottom: 20px; }
-    table { width: 100%; border-collapse: collapse; margin: 12px 0 20px 0; font-size: 0.9rem; }
-    th, td { border: 1px solid #cbd5e1; padding: 9px 12px; text-align: left; vertical-align: top; }
-    th { background: #f8fafc; font-weight: 700; }
-    .disclaimer { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 14px 16px; font-size: 0.88rem; color: #78350f; margin-top: 24px; }
-    .score-pill { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #eff6ff; border: 1px solid #bfdbfe; font-weight: 700; margin-right: 8px; }
-  </style>
-</head>
-<body>
-  <h1>Stocks 360 QVT Score &mdash; Official Formula &amp; Methodology Sheet</h1>
-  <div class="meta">
-    Generated for: <strong>${escapeHtml(stock.name)} (${escapeHtml(stock.symbol)})</strong> &bull; Date: ${escapeHtml(today)}<br/>
-    <span class="score-pill">Quality: ${qvt.q}/100</span>
-    <span class="score-pill">Value: ${qvt.v}/100</span>
-    <span class="score-pill">Technical Momentum: ${qvt.t}/100</span>
-    <span class="score-pill">Composite QVT: ${qvt.overall}/100</span>
-  </div>
-
-  <h2>1. Quality Score (0 &ndash; 100 Points)</h2>
-  <table>
-    <thead><tr><th>Component</th><th>Max Pts</th><th>Exact Formula &amp; Point Brackets</th><th>${escapeHtml(stock.symbol)} Breakdown</th></tr></thead>
-    <tbody>
-      <tr><td>Return Quality</td><td>25</td><td>Non-Banks: ROE (&ge;20%=15, &ge;15%=12, &ge;10%=8, &gt;0%=4) + ROCE (&ge;20%=10, &ge;15%=8, &ge;10%=5, &gt;0%=2). Banks/NBFCs: ROE (&ge;16%=25, &ge;12%=20, &ge;8%=14, &gt;0%=8).</td><td>${escapeHtml(qvt.qBreakdown[0] || "")}</td></tr>
-      <tr><td>3-Year Growth Consistency</td><td>25</td><td>Sales CAGR (&ge;15%=12, &ge;8%=9, &gt;0%=6, else 2) + Net Profit CAGR (&ge;15%=13, &ge;8%=10, &gt;0%=6, else 1) across Mar 24&ndash;Mar 26 / YoY quarters.</td><td>${escapeHtml(qvt.qBreakdown[1] || "")}</td></tr>
-      <tr><td>Operating Cash Flow (CFO)</td><td>20</td><td>20 &times; (Periods with positive CFO &divide; Total XBRL Cash Flow periods).</td><td>${escapeHtml(qvt.qBreakdown[2] || "")}</td></tr>
-      <tr><td>Balance Sheet &amp; Leverage</td><td>15</td><td>Non-Banks: Debt/Equity (&le;0.25=15, &le;0.50=12, &le;1.0=8, &le;1.5=4, &gt;1.5=1). Banks/NBFCs: Book Value &amp; Reserves adequacy (15).</td><td>${escapeHtml(qvt.qBreakdown[3] || "")}</td></tr>
-      <tr><td>Ownership Stability</td><td>15</td><td>Promoter &ge;30% or FII+DII &ge;40% (8 pts) + No &gt;3% promoter drop over 8&ndash;10 quarters (7 pts).</td><td>${escapeHtml(qvt.qBreakdown[4] || "")}</td></tr>
-    </tbody>
-  </table>
-
-  <h2>2. Value Score (0 &ndash; 100 Points)</h2>
-  <table>
-    <thead><tr><th>Component</th><th>Max Pts</th><th>Exact Formula &amp; Point Brackets</th><th>${escapeHtml(stock.symbol)} Breakdown</th></tr></thead>
-    <tbody>
-      <tr><td>Relative P/E vs Industry Peers</td><td>40</td><td>Ratio = Stock P/E &divide; Industry Peer Avg P/E (&le;0.70=40, &le;0.90=34, &le;1.10=26, &le;1.35=18, &le;1.75=10, &gt;1.75=4).</td><td>${escapeHtml(qvt.vBreakdown[0] || "")}</td></tr>
-      <tr><td>Earnings Yield (100 / P/E)</td><td>30</td><td>P/E &le;12=30, &le;18=25, &le;25=19, &le;35=13, &le;50=7, &gt;50=3, Loss/NA=0.</td><td>${escapeHtml(qvt.vBreakdown[1] || "")}</td></tr>
-      <tr><td>Price-to-Book (CMP / Book Value)</td><td>30</td><td>P/B &le;1.5=30, &le;2.5=25, &le;4.0=19, &le;6.5=13, &le;10.0=7, &gt;10.0=3.</td><td>${escapeHtml(qvt.vBreakdown[2] || "")}</td></tr>
-    </tbody>
-  </table>
-
-  <h2>3. Technical Momentum Score (0 &ndash; 100 Points)</h2>
-  <table>
-    <thead><tr><th>Component</th><th>Max Pts</th><th>Exact Formula &amp; Point Brackets</th><th>${escapeHtml(stock.symbol)} Breakdown</th></tr></thead>
-    <tbody>
-      <tr><td>Moving Average Alignment</td><td>35</td><td>CMP &gt; 200-DMA (+15) + CMP &gt; 50-DMA (+10) + Golden Cross 50-DMA &gt; 200-DMA (+10).</td><td>${escapeHtml(qvt.tBreakdown[0] || "")}</td></tr>
-      <tr><td>52-Week Range Strength</td><td>25</td><td>25 &times; ((CMP &minus; 52W Low) &divide; (52W High &minus; 52W Low)).</td><td>${escapeHtml(qvt.tBreakdown[1] || "")}</td></tr>
-      <tr><td>14-Day RSI Momentum Zone</td><td>20</td><td>50&ndash;70=20, 40&ndash;50 or 70&ndash;80=14, &gt;80=10, 30&ndash;40=8, &lt;30=5.</td><td>${escapeHtml(qvt.tBreakdown[2] || "")}</td></tr>
-      <tr><td>Volume &amp; Delivery Conviction</td><td>20</td><td>Volume Surge (&ge;1.25x=10, &ge;1.0x=6, else 3) + Delivery % (&ge;50%=10, &ge;35%=7, &gt;0%=4).</td><td>${escapeHtml(qvt.tBreakdown[3] || "")}</td></tr>
-    </tbody>
-  </table>
-
-  <div class="disclaimer">
-    <strong>Methodology &amp; Backtest Disclaimer:</strong> The Stocks 360 QVT Score is a transparent, rule-based analytical metric computed strictly from the last 3 years of official NSE corporate filings (Quarterly Results, Annual P&amp;L, XBRL Balance Sheets, Cash Flows, and Shareholding Patterns) paired with daily NSE Bhavcopy technical indicators. Because bulk multi-decade historical data is not used for statistical backtesting, this score has not been backtested across prior multi-decade market cycles and is provided solely for educational and screening purposes, not as SEBI-registered investment advice.
-  </div>
-</body>
-</html>`;
+    return { q, v, t, overall, isBankOrNbfc };
   }
 
   function buildQvtScoreSectionHtml(stock) {
@@ -1428,8 +1359,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnLabel: "Quality Information",
         score: qvt.q,
         band: qBand,
-        desc: "Measures 3-year financial durability from official NSE filings: ROE/ROCE, revenue & profit growth consistency, operating cash flow strength, leverage safety, and promoter/institutional ownership stability.",
-        breakdown: qvt.qBreakdown
+        desc: "Evaluates 3-year financial durability from official NSE filings: return efficiency (ROE/ROCE), multi-year revenue & profit growth consistency, operating cash flow generation, balance sheet leverage safety, and promoter/institutional ownership stability."
       },
       {
         id: "qvt-value",
@@ -1437,8 +1367,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnLabel: "Value Information",
         score: qvt.v,
         band: vBand,
-        desc: "Measures valuation attractiveness by comparing the stock's TTM P/E against its exact industry peer average, absolute earnings yield (100/P/E), and Price-to-Book multiple.",
-        breakdown: qvt.vBreakdown
+        desc: "Evaluates valuation attractiveness by comparing the stock's current TTM P/E against its exact industry peer average, earnings yield (100/P/E), and Price-to-Book multiple."
       },
       {
         id: "qvt-momentum",
@@ -1446,8 +1375,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnLabel: "Technical Momentum Information",
         score: qvt.t,
         band: tBand,
-        desc: "Measures price and volume trend strength from daily NSE Bhavcopy data: 50-DMA & 200-DMA alignment, Golden Crossover, 52-week range position, 14-day RSI, volume surge, and delivery conviction.",
-        breakdown: qvt.tBreakdown
+        desc: "Evaluates price and volume trend strength from daily NSE Bhavcopy data: 50-DMA & 200-DMA alignment, Golden Crossover, 52-week range position, 14-day RSI zone, volume surge, and delivery conviction."
       }
     ];
 
@@ -1459,9 +1387,6 @@ document.addEventListener("DOMContentLoaded", function () {
             Overall QVT: ${qvt.overall} / 100
           </span>
         </div>
-        <button type="button" id="btn-download-qvt-formula" style="cursor:pointer; font-size:0.82rem; font-weight:700; color:#0f172a; background:#f8fafc; border:1px solid #cbd5e1; border-radius:7px; padding:6px 12px;">
-          Download Formula Sheet &darr;
-        </button>
       </div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-bottom:12px;">
@@ -1479,10 +1404,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ${escapeHtml(c.btnLabel)}
               </button>
               <div class="ratio-info-box" hidden style="margin-top:6px; font-size:0.8rem; color:#334155; background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:10px 12px; line-height:1.48;">
-                <div style="margin-bottom:6px;">${escapeHtml(c.desc)}</div>
-                <ul style="margin:0; padding-left:16px; color:#0f172a;">
-                  ${c.breakdown.map((line) => `<li style="margin-bottom:2px;">${escapeHtml(line)}</li>`).join("")}
-                </ul>
+                ${escapeHtml(c.desc)}
               </div>
             </div>
           </div>
@@ -1743,7 +1665,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=74")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=75")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1755,7 +1677,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=74")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=75")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1775,7 +1697,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=74")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=75")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -2156,25 +2078,6 @@ document.addEventListener("DOMContentLoaded", function () {
           stockResult.querySelectorAll("tr.shp-holder-subrow").forEach((r) => {
             r.style.display = nextExp ? "" : "none";
           });
-          return;
-        }
-
-        const qvtDownloadBtn = e.target.closest("#btn-download-qvt-formula");
-        if (qvtDownloadBtn) {
-          e.preventDefault();
-          if (activeCompanyData && activeCompanyData.exchanges !== "BSE") {
-            const qvt = computeStocks360QvtScore(activeCompanyData);
-            const sheetHtml = buildQvtFormulaSheetHtml(activeCompanyData, qvt);
-            const blob = new Blob([sheetHtml], { type: "text/html;charset=utf-8" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `Stocks360-QVT-Formula-Sheet-${activeCompanyData.symbol}.html`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
-          }
           return;
         }
 
