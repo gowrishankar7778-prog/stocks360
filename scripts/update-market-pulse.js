@@ -129,11 +129,13 @@ function computeMarketBreadth() {
     const dayHigh = typeof s.dayHigh === 'number' ? s.dayHigh : cmp;
     const dayLow = typeof s.dayLow === 'number' ? s.dayLow : cmp;
 
-    if (high52 > 0 && (dayHigh >= high52 || cmp >= high52 * 0.99)) {
-      nearHigh52++;
-    }
-    if (low52 > 0 && (dayLow <= low52 || cmp <= low52 * 1.01)) {
-      nearLow52++;
+    if (high52 > 0 && low52 > 0 && high52 > low52 * 1.02) {
+      if (dayHigh >= high52 || cmp >= high52 * 0.99) {
+        nearHigh52++;
+      }
+      if (dayLow <= low52 || cmp <= low52 * 1.01) {
+        nearLow52++;
+      }
     }
     if (s.goldenCross === true) {
       goldenCrossCount++;

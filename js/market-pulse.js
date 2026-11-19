@@ -163,6 +163,15 @@
 
     root.innerHTML = `
       <div class="container" style="padding-top:20px; padding-bottom:10px;">
+        <div style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%); border-radius:14px; padding:18px 20px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; color:#ffffff;">
+          <div>
+            <h2 style="margin:0; font-size:1.18rem; font-weight:800; color:#ffffff;">Closing Market Snapshot (NSE &amp; BSE)</h2>
+            <p style="margin:4px 0 0 0; font-size:0.84rem; color:#cbd5e1;">Switch between NSE and BSE for tabular Indices, Sectors, FII/DII, Top Gainers/Losers, and 52W High/Low.</p>
+          </div>
+          <a href="market-snapshot.html" id="btn-open-market-snapshot" style="display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border-radius:8px; background:#2563eb; color:#ffffff; font-weight:700; font-size:0.9rem; text-decoration:none; white-space:nowrap;">
+            Open Market Snapshot &#8594;
+          </a>
+        </div>
         <div style="display:grid; grid-template-columns:1fr; gap:16px;">
           ${fiiCardHtml}
           ${breadthCardHtml}

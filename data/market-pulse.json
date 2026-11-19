@@ -1,22 +1,37 @@
 {
-  "updatedAt": "2026-11-19T11:50:05.191Z",
+  "updatedAt": "2026-11-19T12:41:48.741Z",
   "source": "Official NSE FII/DII Cash Activity & Exchange Bhavcopy",
   "fiiDiiLatest": {
-    "date": "2026-11-18",
-    "dateDisplay": "18-Nov-2026",
+    "date": "2026-11-19",
+    "dateDisplay": "19-Nov-2026",
     "fii": {
-      "buyCr": 17913.16,
-      "sellCr": 12046.38,
-      "netCr": 5866.78
+      "buyCr": 20706.95,
+      "sellCr": 13295.54,
+      "netCr": 7411.41
     },
     "dii": {
-      "buyCr": 14602.25,
-      "sellCr": 17762.15,
-      "netCr": -3159.9
+      "buyCr": 17651.5,
+      "sellCr": 19008.07,
+      "netCr": -1356.57
     },
-    "combinedNetCr": 2706.88
+    "combinedNetCr": 6054.84
   },
   "fiiDiiHistory": [
+    {
+      "date": "2026-11-19",
+      "dateDisplay": "19-Nov-2026",
+      "fii": {
+        "buyCr": 20706.95,
+        "sellCr": 13295.54,
+        "netCr": 7411.41
+      },
+      "dii": {
+        "buyCr": 17651.5,
+        "sellCr": 19008.07,
+        "netCr": -1356.57
+      },
+      "combinedNetCr": 6054.84
+    },
     {
       "date": "2026-11-18",
       "dateDisplay": "18-Nov-2026",
@@ -39,8 +54,8 @@
     "declines": 3097,
     "unchanged": 276,
     "adRatio": 0.64,
-    "nearHigh52": 2732,
-    "nearLow52": 2746,
+    "nearHigh52": 1707,
+    "nearLow52": 1718,
     "goldenCrossCount": 598,
     "aboveDma200": 1150,
     "sessionLabel": "Today (17 Nov), 4:29 pm IST",

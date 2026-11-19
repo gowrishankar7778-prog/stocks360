@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Closing Market Snapshot (NSE &amp; BSE) - Stocks 360</title>
+  <meta name="description" content="Official EOD NSE and BSE Market Snapshot with Advance/Decline Ratio, Sector Performance, FII/DII Flows, Top Gainers, Top Losers, Most Active Stocks, and 52-Week High/Low tables.">
+  <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
+  <link rel="stylesheet" href="css/styles.css?v=83">
+</head>
+<body>
+
+  <!-- 1. SKIP TO MAIN CONTENT LINK -->
+  <a class="skip-link" href="#page-heading">Skip to main content</a>
+
+  <!-- 2. TOP ACCESSIBILITY BUTTON & USER ACCOUNT HEADER BAR -->
+  <header class="top-bar">
+    <div class="container top-bar-flex">
+      <div class="top-controls">
+        <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
+          Turn On Special Accessibility
+        </button>
+      </div>
+      <div id="nav-auth-container" class="top-auth-box"></div>
+    </div>
+  </header>
+
+  <!-- 3. MAIN NAVIGATION LINKS -->
+  <nav id="main-navigation" aria-label="Main navigation">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mutual-funds.html">Mutual Funds</a></li>
+        <li><a href="learn.html">Learn Modules</a></li>
+        <li><a href="deals.html">Bulk &amp; Block Deals</a></li>
+        <li><a href="screener.html">Screener</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 4. MAIN CONTENT AREA -->
+  <main id="main-content" tabindex="-1">
+    <div class="container">
+      <div class="detail-container">
+
+        <div class="focused-nav-bar" role="navigation" aria-label="Market Snapshot navigation">
+          <div class="focused-nav-group">
+            <a href="index.html" class="nav-back-btn" id="snapshot-back-home" aria-label="Go back to Stocks 360 homepage">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home
+            </a>
+          </div>
+          <span class="focused-nav-hint" id="snapshot-session-hint">Official Closing Exchange Bhavcopy</span>
+        </div>
+
+        <header style="margin-bottom: 18px;">
+          <h1 id="page-heading" tabindex="-1" style="font-size: clamp(1.6rem, 2.4vw, 2.1rem); color: #0f172a; margin-bottom: 6px; font-weight: 800; letter-spacing: -0.02em;">
+            Closing Market Snapshot
+          </h1>
+          <p style="margin:0; font-size:0.92rem; color:#475569;">
+            Choose an exchange below to inspect closing market breadth, sectors, FII/DII flows, top gainers/losers, volume leaders, and 52-week highs/lows in tabular format.
+          </p>
+        </header>
+
+        <!-- EXCHANGE SELECTOR (NSE vs BSE) -->
+        <div id="snapshot-exchange-bar" role="group" aria-label="Select Stock Exchange" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:20px; padding:12px 16px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="font-size:0.9rem; font-weight:800; color:#0f172a;">Select Exchange:</span>
+            <button type="button" id="btn-snapshot-nse" data-exchange="NSE" aria-pressed="true" style="padding:8px 18px; font-size:0.9rem; font-weight:700; border-radius:8px; cursor:pointer; border:1px solid #0f172a; background:#0f172a; color:#ffffff;">
+              NSE (National Stock Exchange)
+            </button>
+            <button type="button" id="btn-snapshot-bse" data-exchange="BSE" aria-pressed="false" style="padding:8px 18px; font-size:0.9rem; font-weight:700; border-radius:8px; cursor:pointer; border:1px solid #cbd5e1; background:#ffffff; color:#334155;">
+              BSE (Bombay Stock Exchange)
+            </button>
+          </div>
+          <span id="snapshot-active-meta" style="font-size:0.82rem; font-weight:600; color:#475569;">Showing NSE Closing Data</span>
+        </div>
+
+        <section id="market-snapshot-root" aria-live="polite">
+          <div style="padding:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; color:#64748b;">
+            Loading Closing Market Snapshot...
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 5. REGULATORY DISCLAIMER & FOOTER -->
+  <footer>
+    <div class="container">
+      <p class="footer-disclaimer" role="note">
+        <strong>Disclaimer:</strong> Closing Market Snapshot data is derived from official NSE &amp; BSE Exchange Bhavcopy archives and FII/DII disclosures purely for educational purposes and does not constitute investment advice. Stocks 360 is not a SEBI registered investment adviser.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Firebase Cloud SDKs & Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js?v=83"></script>
+  <script src="js/auth.js?v=83"></script>
+  <script src="js/screener-index.js?v=83"></script>
+  <script src="js/market-pulse-data.js?v=83"></script>
+  <script src="js/market-snapshot.js?v=83"></script>
+  <script src="js/accessibility.js?v=83"></script>
+</body>
+</html>
