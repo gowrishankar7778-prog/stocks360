@@ -1665,7 +1665,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=75")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=76")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1677,7 +1677,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=75")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=76")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1697,7 +1697,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=75")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=76")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -2415,7 +2415,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ---------------- DEDICATED RELIABLE SPEECH SYNTHESIS ENGINE ----------------
+  // ---------------- DEDICATED LOW-LATENCY SPEECH SYNTHESIS ENGINE ----------------
+  let cachedLocalEnVoice = null;
+  function warmUpLocalVoice() {
+    if (!("speechSynthesis" in window)) return null;
+    try {
+      const voices = window.speechSynthesis.getVoices() || [];
+      if (voices.length > 0) {
+        cachedLocalEnVoice =
+          voices.find((v) => v.localService && /en[-_](IN|GB|US)/i.test(v.lang)) ||
+          voices.find((v) => v.localService && /^en/i.test(v.lang)) ||
+          voices.find((v) => /^en/i.test(v.lang)) ||
+          voices[0];
+      }
+    } catch (_) {}
+    return cachedLocalEnVoice;
+  }
+  if (typeof window !== "undefined" && "speechSynthesis" in window) {
+    warmUpLocalVoice();
+    if (typeof window.speechSynthesis.addEventListener === "function") {
+      window.speechSynthesis.addEventListener("voiceschanged", warmUpLocalVoice);
+    }
+  }
+
+  function splitNarrationSentences(text) {
+    const raw = String(text || "").replace(/\s+/g, " ").trim();
+    if (!raw) return [];
+    const parts = raw.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) || [raw];
+    const chunks = [];
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i].trim();
+      if (!p) continue;
+      // Keep the very first chunk short (1 sentence) for instant audio start; group tiny fragments afterwards
+      if (chunks.length > 1 && chunks[chunks.length - 1].length + p.length < 180) {
+        chunks[chunks.length - 1] += " " + p;
+      } else {
+        chunks.push(p);
+      }
+    }
+    return chunks;
+  }
+
   function resetListenButtonUI() {
     const listenBtn = document.getElementById("btn-listen-company");
     if (listenBtn) {
@@ -2426,6 +2466,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     window._stocks360IsSpeakingCompany = false;
     window._stocks360SpeechUtterance = null;
+    window._stocks360SpeechSessionId = (window._stocks360SpeechSessionId || 0) + 1;
   }
 
   function getAboutCompanyNarration(stock) {
@@ -2449,20 +2490,24 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleCompanyVoiceOverview(stock) {
     const listenBtn = document.getElementById("btn-listen-company");
 
-    // If currently speaking our company overview, stop it
+    // If currently speaking our company overview, stop it immediately
     if (window._stocks360IsSpeakingCompany) {
+      resetListenButtonUI();
       if ("speechSynthesis" in window) {
         try { window.speechSynthesis.cancel(); } catch (_) {}
       }
-      resetListenButtonUI();
       return;
     }
 
     const narration = getAboutCompanyNarration(stock);
+    const chunks = splitNarrationSentences(narration);
+    if (chunks.length === 0) return;
 
     // Record start timestamp so smart-assist.js does not cancel speech on reflexive Ctrl press
     window._stocks360SpeechStartedAt = Date.now();
     window._stocks360IsSpeakingCompany = true;
+    const sessionId = (window._stocks360SpeechSessionId || 0) + 1;
+    window._stocks360SpeechSessionId = sessionId;
 
     if (listenBtn) {
       listenBtn.textContent = "Stop Listening";
@@ -2476,51 +2521,54 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     try {
-      window.speechSynthesis.cancel();
+      // Avoid calling cancel() when idle (prevents Chromium's 500-2000ms audio pipeline reset delay)
+      if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+        window.speechSynthesis.cancel();
+      }
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume();
       }
 
-      const utterance = new SpeechSynthesisUtterance(narration);
-      utterance.rate = 0.95;
-      utterance.volume = 1.0;
-      utterance.pitch = 1.0;
+      const voice = cachedLocalEnVoice || warmUpLocalVoice();
 
-      // Prefer a local English voice so Windows Chromium does not hang on remote Natural voices
-      const voices = window.speechSynthesis.getVoices() || [];
-      const localEn =
-        voices.find((v) => v.localService && /en[-_](IN|GB|US)/i.test(v.lang)) ||
-        voices.find((v) => v.localService && /^en/i.test(v.lang)) ||
-        voices.find((v) => /^en/i.test(v.lang));
+      function speakChunk(idx) {
+        if (!window._stocks360IsSpeakingCompany || window._stocks360SpeechSessionId !== sessionId) return;
+        if (idx >= chunks.length) {
+          resetListenButtonUI();
+          return;
+        }
+        const utterance = new SpeechSynthesisUtterance(chunks[idx]);
+        utterance.rate = 0.98;
+        utterance.volume = 1.0;
+        utterance.pitch = 1.0;
+        if (voice) {
+          utterance.voice = voice;
+          utterance.lang = voice.lang;
+        } else {
+          utterance.lang = "en-US";
+        }
 
-      if (localEn) {
-        utterance.voice = localEn;
-        utterance.lang = localEn.lang;
-      } else {
-        utterance.lang = "en-US";
+        window._stocks360SpeechUtterance = utterance;
+        utterance.onend = function () {
+          if (!window._stocks360IsSpeakingCompany || window._stocks360SpeechSessionId !== sessionId) return;
+          speakChunk(idx + 1);
+        };
+        utterance.onerror = function (err) {
+          if (err && (err.error === "interrupted" || err.error === "canceled")) return;
+          resetListenButtonUI();
+        };
+
+        window.speechSynthesis.speak(utterance);
       }
 
-      window._stocks360SpeechUtterance = utterance;
+      speakChunk(0);
 
-      utterance.onend = function () {
-        resetListenButtonUI();
-      };
-
-      utterance.onerror = function (err) {
-        // Ignore 'interrupted' or 'canceled' events triggered by cancel()
-        if (err && (err.error === "interrupted" || err.error === "canceled")) return;
-        resetListenButtonUI();
-      };
-
-      // Speak synchronously inside the user gesture using the web default browser speech engine!
-      window.speechSynthesis.speak(utterance);
-
-      // Watchdog: if Chromium paused the queue, resume it after 150ms
+      // Watchdog: if Chromium paused the queue, resume it after 120ms
       setTimeout(() => {
-        if (window._stocks360IsSpeakingCompany && window.speechSynthesis.paused) {
+        if (window._stocks360IsSpeakingCompany && window._stocks360SpeechSessionId === sessionId && window.speechSynthesis.paused) {
           try { window.speechSynthesis.resume(); } catch (_) {}
         }
-      }, 150);
+      }, 120);
     } catch (e) {
       console.warn("Speech synthesis error:", e);
       resetListenButtonUI();
