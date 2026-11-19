@@ -38959,7 +38959,7 @@
     ],
     "shareholding": {
       "promoters": "0.00%",
-      "public": "100.00%",
+      "public": "81.93%",
       "total": "100.00%",
       "quarters": [
         "Sep 2024",
@@ -38993,7 +38993,7 @@
           null,
           null,
           null,
-          null
+          12.93
         ],
         "dii": [
           null,
@@ -39004,7 +39004,7 @@
           null,
           null,
           null,
-          null
+          5.14
         ],
         "diiMutualFunds": [
           null,
@@ -39015,7 +39015,7 @@
           null,
           null,
           null,
-          null
+          0.44
         ],
         "diiInsurance": [
           null,
@@ -39026,7 +39026,7 @@
           null,
           null,
           null,
-          null
+          1.35
         ],
         "diiPensionFunds": [
           null,
@@ -39037,7 +39037,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -39048,7 +39048,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           99.94,
@@ -39059,7 +39059,7 @@
           99.99,
           99.99,
           100,
-          100
+          81.93
         ],
         "employeeTrusts": [
           0.06,
@@ -39075,19 +39075,183 @@
       },
       "holders": {
         "promoters": [],
-        "fii": [],
+        "fii": [
+          {
+            "name": "COHESION MK BEST IDEAS SUB-TRUST",
+            "subCategory": "FPI Category II",
+            "pct": 3.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.01
+            ]
+          },
+          {
+            "name": "ELLIPSIS PARTNERS LLC",
+            "subCategory": "FPI Category I",
+            "pct": 1.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.54
+            ]
+          }
+        ],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "AUGUSTA INVESTMENTS II PTE. LTD.",
+            "subCategory": "Foreign Companies",
+            "pct": 13.81,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.81
+            ]
+          },
+          {
+            "name": "LEAPFROG FINANCIAL INCLUSION INDIA (II) LTD",
+            "subCategory": "Foreign Companies",
+            "pct": 12.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.45
+            ]
+          },
+          {
+            "name": "INTERNATIONAL FINANCE CORPORATION",
+            "subCategory": "Foreign Companies",
+            "pct": 6.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.07
+            ]
+          },
+          {
+            "name": "SHUBHI CONSULTANCY SERVICES LLP",
+            "subCategory": "Bodies Corporate",
+            "pct": 2.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.89
+            ]
+          },
+          {
+            "name": "PLUTUS WEALTH MANAGEMENT LLP",
+            "subCategory": "Bodies Corporate",
+            "pct": 2.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.47
+            ]
+          },
+          {
+            "name": "ASHISH DHAWAN",
+            "subCategory": "Individual Investor",
+            "pct": 2.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.16
+            ]
+          },
+          {
+            "name": "CYBAGE SOFTWARE PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.53,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.53
+            ]
+          },
+          {
+            "name": "DVARA HOLDINGS",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.31
+            ]
+          }
+        ]
+      },
+      "fii": "12.93%",
+      "dii": "5.14%"
     },
     "updatedAt": 1794038126372,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:19.386Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:15:34.425Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1752049_03112026063317_WEB.xml",
     "ratios": {
-      "marketCapCr": 4421,
-      "pe": 8.9,
+      "marketCapCr": 4462,
+      "pe": 9,
       "ttmEps": 30.72,
       "ttmSalesCr": 2931,
       "ttmPatCr": 497,
@@ -39126,7 +39290,8 @@
         "netProfit": "497",
         "eps": "₹30.72"
       }
-    ]
+    ],
+    "lastShpRecordId": "216231"
   },
   "NOVAAGRI": {
     "about": "Nova Agritech Limited manufactures, distributes, and markets agricultural inputs in India. It offers soil health management, crop nutrition, bio stimulant products, bio pesticides, integrated pest management, agricultural technologies, insecticides, fungicides, herbicides, plant growth regulators, and crop protection products. The company is also involved in the production of crop seeds. Nova Agritech Limited was incorporated in 2007 and is based in Siddipet, India.",

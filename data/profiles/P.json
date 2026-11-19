@@ -19641,7 +19641,7 @@
     ],
     "shareholding": {
       "promoters": "0.00%",
-      "public": "100.00%",
+      "public": "26.96%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -19678,7 +19678,7 @@
           null,
           null,
           null,
-          null
+          43.52
         ],
         "dii": [
           null,
@@ -19690,7 +19690,7 @@
           null,
           null,
           null,
-          null
+          29.51
         ],
         "diiMutualFunds": [
           null,
@@ -19702,7 +19702,7 @@
           null,
           null,
           null,
-          null
+          21.17
         ],
         "diiInsurance": [
           null,
@@ -19714,7 +19714,7 @@
           null,
           null,
           null,
-          null
+          6.22
         ],
         "diiPensionFunds": [
           null,
@@ -19726,7 +19726,7 @@
           null,
           null,
           null,
-          null
+          0.88
         ],
         "government": [
           null,
@@ -19738,7 +19738,7 @@
           null,
           null,
           null,
-          null
+          0.01
         ],
         "public": [
           100,
@@ -19750,7 +19750,7 @@
           100,
           100,
           100,
-          100
+          26.96
         ],
         "employeeTrusts": [
           0,
@@ -19767,19 +19767,348 @@
       },
       "holders": {
         "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "fii": [
+          {
+            "name": "Resilient Asset Management B V",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 7.19,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.19
+            ]
+          },
+          {
+            "name": "Saif Iii Mauritius Company Limited",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 7.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.01
+            ]
+          },
+          {
+            "name": "Saif Partners India Iv Limited",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 2.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.98
+            ]
+          },
+          {
+            "name": "Amansa Holdings Private Limited",
+            "subCategory": "FPI Category I",
+            "pct": 1.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.54
+            ]
+          },
+          {
+            "name": "Tree Line Asia Master Fund (Singapore) Pte. Limited",
+            "subCategory": "FPI Category I",
+            "pct": 1.34,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.34
+            ]
+          },
+          {
+            "name": "Government Pension Fund Global",
+            "subCategory": "FPI Category I",
+            "pct": 1.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.1
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "Motilal Oswal Midcap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 5.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.14
+            ]
+          },
+          {
+            "name": "Tata Aia Life Insurance Co Ltd-Whole Life Mid Cap Equity Fund-Ulif 009 04/01/07 Wle 110",
+            "subCategory": "Insurance",
+            "pct": 2.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.17
+            ]
+          },
+          {
+            "name": "Kotak Mahindra Trustee Co Ltd A/C Kotak Multicap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 2.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.13
+            ]
+          },
+          {
+            "name": "Sbi Life Insurance Co. Ltd",
+            "subCategory": "Insurance",
+            "pct": 1.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.74
+            ]
+          },
+          {
+            "name": "Mirae Asset Large Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.67
+            ]
+          },
+          {
+            "name": "Nippon Life India Trustee Ltd- A/C Nippon India Growth Mid Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.59
+            ]
+          },
+          {
+            "name": "Sbi Contra Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.47
+            ]
+          },
+          {
+            "name": "Bandhan Large & Mid Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.16
+            ]
+          },
+          {
+            "name": "Axis Elss Tax Saver Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.13
+            ]
+          },
+          {
+            "name": "Sundaram Mutual Fund A/C Sundaram Large And Mid Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.05
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Vijay Shekhar Sharma",
+            "subCategory": "Directors and their relatives (excluding independent directors and nominee directors)",
+            "pct": 9.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.02
+            ]
+          },
+          {
+            "name": "Axis Trustee Services Limited",
+            "subCategory": "Bodies Corporate",
+            "pct": 4.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.83
+            ]
+          },
+          {
+            "name": "Akash Bhanshali",
+            "subCategory": "Individual Investor",
+            "pct": 1.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.23
+            ]
+          }
+        ]
+      },
+      "fii": "43.52%",
+      "dii": "29.51%",
+      "government": "0.01%"
     },
     "updatedAt": 1794038126413,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:33.908Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:15:47.190Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746347_26102026105228_WEB.xml",
     "ratios": {
-      "marketCapCr": 121040,
-      "pe": 195.5,
+      "marketCapCr": 110484,
+      "pe": 178.5,
       "ttmEps": 9.67,
       "ttmSalesCr": 5384,
       "ttmPatCr": 618,
@@ -19827,7 +20156,8 @@
         "netProfit": "618",
         "eps": "₹9.67"
       }
-    ]
+    ],
+    "lastShpRecordId": "214200"
   },
   "PBMPOLY": {
     "about": "PBM Polytex Limited manufactures and sells cotton yarns in India and internationally. It offers single and double count yarns; and gassed products. The company also operates yarn spinning units, windmills and solar power plants. It also exports its products. The company was formerly known as The Petlad Bulakhidas Mills Co. Ltd. and changed to PBM Polytex Limited in 1978. PBM Polytex Limited was incorporated in 1919 and is based in Vadodara, India.",
@@ -29335,7 +29665,7 @@
     ],
     "shareholding": {
       "promoters": "0.00%",
-      "public": "100.00%",
+      "public": "57.24%",
       "total": "100.00%",
       "quarters": [
         "Dec 2025",
@@ -29354,43 +29684,43 @@
           null,
           null,
           null,
-          null
+          13.18
         ],
         "dii": [
           null,
           null,
           null,
-          null
+          29.58
         ],
         "diiMutualFunds": [
           null,
           null,
           null,
-          null
+          26.69
         ],
         "diiInsurance": [
           null,
           null,
           null,
-          null
+          1.88
         ],
         "diiPensionFunds": [
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           100,
           100,
           100,
-          100
+          57.24
         ],
         "employeeTrusts": [
           0,
@@ -29401,19 +29731,211 @@
       },
       "holders": {
         "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "fii": [
+          {
+            "name": "TEMPLETON EMERGING MARKETS INVESTMENT TRUST PLC",
+            "subCategory": "FPI Category I",
+            "pct": 1.05,
+            "history": [
+              null,
+              null,
+              null,
+              1.05
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "SBI MUTUAL FUND - Through its various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 6.96,
+            "history": [
+              null,
+              null,
+              null,
+              6.96
+            ]
+          },
+          {
+            "name": "KOTAK LARGE & MIDCAP FUND - Through its various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 4.97,
+            "history": [
+              null,
+              null,
+              null,
+              4.97
+            ]
+          },
+          {
+            "name": "FRANKLIN INDIA MUTUAL FUND - Through its various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 4.63,
+            "history": [
+              null,
+              null,
+              null,
+              4.63
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA MUTUAL FUND - Through its various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 2.62,
+            "history": [
+              null,
+              null,
+              null,
+              2.62
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL LIFE INSURANCE COMPANY LIMITED",
+            "subCategory": "Insurance",
+            "pct": 1.53,
+            "history": [
+              null,
+              null,
+              null,
+              1.53
+            ]
+          },
+          {
+            "name": "AXIS MUTUAL FUND - Through its various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 1.24,
+            "history": [
+              null,
+              null,
+              null,
+              1.24
+            ]
+          },
+          {
+            "name": "HSBC MUTUAL FUND - Through its various schemes",
+            "subCategory": "Mutual Funds",
+            "pct": 1.13,
+            "history": [
+              null,
+              null,
+              null,
+              1.13
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "PEAK XV PARTNERS PINE INVESTMENT HOLDINGS",
+            "subCategory": "Foreign Companies",
+            "pct": 16.72,
+            "history": [
+              null,
+              null,
+              null,
+              16.72
+            ]
+          },
+          {
+            "name": "MACRITCHIE INVESTMENTS PTE LTD",
+            "subCategory": "Foreign Companies",
+            "pct": 5.77,
+            "history": [
+              null,
+              null,
+              null,
+              5.77
+            ]
+          },
+          {
+            "name": "PAYPAL PTE. LTD",
+            "subCategory": "Foreign Companies",
+            "pct": 4.93,
+            "history": [
+              null,
+              null,
+              null,
+              4.93
+            ]
+          },
+          {
+            "name": "BAIRAVARASU AMRISH RAU",
+            "subCategory": "Directors and their relatives (excluding independent directors and nominee directors)",
+            "pct": 2.29,
+            "history": [
+              null,
+              null,
+              null,
+              2.29
+            ]
+          },
+          {
+            "name": "ACT EQUITY HOLDINGS PTE LTD",
+            "subCategory": "Foreign Companies",
+            "pct": 1.85,
+            "history": [
+              null,
+              null,
+              null,
+              1.85
+            ]
+          },
+          {
+            "name": "SOFINA VENTURES SA",
+            "subCategory": "Foreign Companies",
+            "pct": 1.45,
+            "history": [
+              null,
+              null,
+              null,
+              1.45
+            ]
+          },
+          {
+            "name": "SG FINTECH AFFILIATES PTE LTD",
+            "subCategory": "Foreign Companies",
+            "pct": 1.32,
+            "history": [
+              null,
+              null,
+              null,
+              1.32
+            ]
+          },
+          {
+            "name": "BARON EMERGING MARKETS FUND",
+            "subCategory": "Foreign Companies",
+            "pct": 1.18,
+            "history": [
+              null,
+              null,
+              null,
+              1.18
+            ]
+          },
+          {
+            "name": "MARSHALL WACE INVESTMENT STRATEGIES - EUREKA FUND",
+            "subCategory": "Foreign Companies",
+            "pct": 1.1,
+            "history": [
+              null,
+              null,
+              null,
+              1.1
+            ]
+          }
+        ]
+      },
+      "fii": "13.18%",
+      "dii": "29.58%"
     },
     "updatedAt": 1794038126420,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:10:36.913Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:15:52.148Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748593_29102026013340_WEB.xml",
     "ratios": {
-      "marketCapCr": 19739,
-      "pe": 86.1,
+      "marketCapCr": 18756,
+      "pe": 81.8,
       "ttmEps": 1.97,
       "ttmSalesCr": 2411,
       "ttmPatCr": 225,
@@ -29443,7 +29965,8 @@
         "netProfit": "225",
         "eps": "₹1.97"
       }
-    ]
+    ],
+    "lastShpRecordId": "214221"
   },
   "PIONEEREMB": {
     "about": "Pioneer Embroideries Limited, together with its subsidiaries, engages in the manufacture of special polyester filament yarn, embroidery, and lace products in India. The company offers special polyester filament yarns, which include air texturized, carpet, twisted, fully drawn, draw textured, thermal, camouflage, biodegradable, recycle, flame retardant, and anti-microbial / UV-stabilised and partially oriented yarns under the SILKOLITE brand name. It also provides sarees, salwar kameez, SKDs, fashion fabrics, apparels, and men's ethnic wear under the Hakoba brand name. In addition, the company offers embroidery and lace products comprising guipure and fabric allovers and laces, as well as braided and fancy laces. Further, it provides dope dyed polyester yarns, elastics, embroidered dress materials and laces, flat bed knitted laces, motifs/collars/necks, and torchon/bobbin laces products. The company also exports its products. The company was incorporated in 1991 and is based in Mumbai, India.",

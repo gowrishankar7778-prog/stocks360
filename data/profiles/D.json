@@ -43057,6 +43057,51 @@
     "sector": "Logistics & Transport",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "306",
+        "expenses": "279",
+        "operatingProfit": "27",
+        "opm": "8.8%",
+        "netProfit": "20",
+        "eps": "₹3.71"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "282",
+        "expenses": "257",
+        "operatingProfit": "25",
+        "opm": "8.9%",
+        "netProfit": "18",
+        "eps": "₹3.32"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "323",
+        "expenses": "298",
+        "operatingProfit": "25",
+        "opm": "7.7%",
+        "netProfit": "18",
+        "eps": "₹3.37"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "318",
+        "expenses": "295",
+        "operatingProfit": "23",
+        "opm": "7.2%",
+        "netProfit": "17",
+        "eps": "₹3.13"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "342",
+        "expenses": "317",
+        "operatingProfit": "25",
+        "opm": "7.3%",
+        "netProfit": "18",
+        "eps": "₹3.36"
+      },
+      {
         "period": "Dec 25",
         "sales": "58",
         "expenses": "67",
@@ -43343,7 +43388,7 @@
     },
     "updatedAt": 1794038126065,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-18T12:13:21.813Z",
+    "lastFinancialStatementUpdate": "2026-11-19T12:12:35.827Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1752336_03112026101813_WEB.xml",
     "ratios": {
@@ -43888,7 +43933,7 @@
     ],
     "shareholding": {
       "promoters": "50.11%",
-      "public": "49.89%",
+      "public": "37.73%",
       "total": "100.00%",
       "quarters": [
         "Dec 2025",
@@ -43907,43 +43952,43 @@
           null,
           null,
           null,
-          null
+          0.97
         ],
         "dii": [
           null,
           null,
           null,
-          null
+          11.2
         ],
         "diiMutualFunds": [
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
           null,
           null,
-          null
+          4.64
         ],
         "diiPensionFunds": [
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           49.89,
           49.89,
           49.89,
-          49.89
+          37.73
         ],
         "employeeTrusts": [
           0,
@@ -43953,17 +43998,110 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "URVASHI TILAKDHAR",
+            "subCategory": "Promoter",
+            "pct": 30.93,
+            "history": [
+              null,
+              null,
+              null,
+              30.93
+            ]
+          },
+          {
+            "name": "ALOK BANSIDHAR SHRIRAM",
+            "subCategory": "Promoter Group",
+            "pct": 10.28,
+            "history": [
+              null,
+              null,
+              null,
+              10.28
+            ]
+          },
+          {
+            "name": "SUMAN BANSI DHAR",
+            "subCategory": "Promoter Group",
+            "pct": 5.48,
+            "history": [
+              null,
+              null,
+              null,
+              5.48
+            ]
+          },
+          {
+            "name": "BANSURI CHARITABLE SOCIETY",
+            "subCategory": "Promoter Group",
+            "pct": 3.42,
+            "history": [
+              null,
+              null,
+              null,
+              3.42
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA",
+            "subCategory": "Insurance",
+            "pct": 4.64,
+            "history": [
+              null,
+              null,
+              null,
+              4.64
+            ]
+          },
+          {
+            "name": "H B PORTFOLIO LIMITED",
+            "subCategory": "NBFCs registered with RBI",
+            "pct": 3.68,
+            "history": [
+              null,
+              null,
+              null,
+              3.68
+            ]
+          },
+          {
+            "name": "ABAKKUS EMERGING OPPORTUNITIES FUND-1",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 2.86,
+            "history": [
+              null,
+              null,
+              null,
+              2.86
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "DCM SHRIRAM FINE CHEMICALS LIMITED UNCLAIMED SECUR",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.24,
+            "history": [
+              null,
+              null,
+              null,
+              1.24
+            ]
+          }
+        ]
+      },
+      "fii": "0.97%",
+      "dii": "11.20%"
     },
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:07:59.801Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:12:37.481Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 187,
+      "marketCapCr": 172,
       "ttmEps": -0.38,
       "ttmSalesCr": 377,
       "ttmPatCr": -4,
@@ -43993,7 +44131,8 @@
         "eps": "₹-0.38"
       }
     ],
-    "debtToEquity": 0.04
+    "debtToEquity": 0.04,
+    "lastShpRecordId": "215148"
   },
   "DSKULKARNI": {
     "about": "D S Kulkarni Developers Limited, together with its subsidiaries, engages in real estate development business in India. The company was incorporated in 1991 and is based in Pune, India.",
@@ -44001,6 +44140,51 @@
     "industry": "Real Estate - Development",
     "sector": "Real Estate & Housing",
     "quarterlyResults": [
+      {
+        "period": "Mar 24",
+        "sales": "28",
+        "expenses": "28",
+        "operatingProfit": "-0",
+        "opm": "0.0%",
+        "netProfit": "-0",
+        "eps": "₹-0.04"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "20",
+        "expenses": "18",
+        "operatingProfit": "2",
+        "opm": "10.0%",
+        "netProfit": "2",
+        "eps": "₹2.18"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "9",
+        "expenses": "8",
+        "operatingProfit": "1",
+        "opm": "11.1%",
+        "netProfit": "1",
+        "eps": "₹0.91"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "14",
+        "expenses": "13",
+        "operatingProfit": "1",
+        "opm": "7.1%",
+        "netProfit": "1",
+        "eps": "₹1.43"
+      },
+      {
+        "period": "Sep 25",
+        "sales": "14",
+        "expenses": "14",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.04"
+      },
       {
         "period": "Dec 25",
         "sales": "14",
@@ -44311,12 +44495,12 @@
     },
     "updatedAt": 1794038126066,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:07:59.775Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:12:37.306Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1756863_12112026072338_WEB.xml",
     "ratios": {
-      "marketCapCr": 44,
-      "pe": 3,
+      "marketCapCr": 47,
+      "pe": 3.2,
       "ttmEps": 15.22,
       "ttmSalesCr": 99,
       "ttmPatCr": 15,
@@ -45593,7 +45777,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "dii": [
           null,
@@ -45605,7 +45789,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiMutualFunds": [
           null,
@@ -45617,7 +45801,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -45629,7 +45813,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -45641,7 +45825,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -45653,7 +45837,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           48.03,
@@ -45681,20 +45865,58 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "ARUN GOVIL",
+            "subCategory": "Promoter",
+            "pct": 38.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              38.08
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "NINJA SECURITIES PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.12
+            ]
+          }
+        ]
+      },
+      "fii": "0.00%",
+      "dii": "0.00%"
     },
     "updatedAt": 1794038126067,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:00.530Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:12:36.715Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754408_05112026114240_WEB.xml",
     "ratios": {
-      "marketCapCr": 34,
-      "pe": 34.3,
+      "marketCapCr": 33,
+      "pe": 33,
       "ttmEps": 0.04,
       "ttmSalesCr": 227,
       "ttmPatCr": 1,
@@ -45733,7 +45955,8 @@
         "netProfit": "1",
         "eps": "₹0.04"
       }
-    ]
+    ],
+    "lastShpRecordId": "214957"
   },
   "DVL": {
     "about": "Dhunseri Ventures Limited engages in the treasury operations in shares and securities in India, Singapore, and internationally. It operates through Trading, Treasury Operations, and Flexible Packaging Films segments. The company is involved in the manufacture of BOPET film; trades in commodities and PET resin; and operations relate to holding treasury assets. The company was formerly known as Dhunseri Petrochem Limited and changed its name to Dhunseri Ventures Limited in December 2018. The company was incorporated in 1916 and is based in Kolkata, India. Dhunseri Ventures Limited is a subsidiary of Dhunseri Investments Limited.",
@@ -46947,7 +47170,7 @@
     ],
     "shareholding": {
       "promoters": "68.18%",
-      "public": "31.82%",
+      "public": "30.20%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -46984,7 +47207,7 @@
           null,
           null,
           null,
-          null
+          0.87
         ],
         "dii": [
           null,
@@ -46996,7 +47219,7 @@
           null,
           null,
           null,
-          null
+          0.75
         ],
         "diiMutualFunds": [
           null,
@@ -47008,7 +47231,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -47020,7 +47243,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -47032,7 +47255,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -47044,7 +47267,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           31.83,
@@ -47056,7 +47279,7 @@
           31.82,
           31.82,
           31.82,
-          31.82
+          30.2
         ],
         "employeeTrusts": [
           0,
@@ -47072,20 +47295,193 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "ASHISH MANGAL",
+            "subCategory": "Promoter",
+            "pct": 31.81,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              31.81
+            ]
+          },
+          {
+            "name": "RAHUL MANGAL",
+            "subCategory": "Promoter",
+            "pct": 21.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              21.85
+            ]
+          },
+          {
+            "name": "SAROJ MANGAL",
+            "subCategory": "Promoter Group",
+            "pct": 13.62,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.62
+            ]
+          },
+          {
+            "name": "SHIV KRIPA PIPES LLP",
+            "subCategory": "Promoter Group",
+            "pct": 0.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.47
+            ]
+          },
+          {
+            "name": "ANIKETA MANGAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.16
+            ]
+          },
+          {
+            "name": "SHALU MANGAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.09
+            ]
+          },
+          {
+            "name": "MEENAKSHI MANGAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.09,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.09
+            ]
+          },
+          {
+            "name": "ALPANA SHARMA",
+            "subCategory": "Promoter Group",
+            "pct": 0.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.04
+            ]
+          },
+          {
+            "name": "ADITI MANGAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          },
+          {
+            "name": "RASIK MANGAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.01
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
-      }
+      },
+      "fii": "0.87%",
+      "dii": "0.75%"
     },
     "updatedAt": 1794038126068,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:01.379Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:12:36.845Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746873_27102026051516_WEB.xml",
     "ratios": {
-      "marketCapCr": 1754,
-      "pe": 17.2,
+      "marketCapCr": 1689,
+      "pe": 16.5,
       "ttmEps": 21.23,
       "ttmSalesCr": 1324,
       "ttmPatCr": 87,
@@ -47124,7 +47520,8 @@
         "netProfit": "87",
         "eps": "₹21.23"
       }
-    ]
+    ],
+    "lastShpRecordId": "215341"
   },
   "DYNAMATECH": {
     "about": "Dynamatic Technologies Limited manufactures and sells engineered products to the aerospace, automotive, and hydraulic industries in India, the United States, the United Kingdom, rest of Europe, Canada, and internationally. The company offers gear pumps, low noise pumps, high-pressure pumps, axial piston pumps, low torque high-speed hydraulic motors, plunger hand pumps, hitch control valves, rock shaft assemblies, power steering valves, and mobile control valves; and bespoke, high-flow scavenging pumps, lube oil pumps, and water pumps. It also provides high-precision airframe and aerospace components; control surfaces, such as wings, ailerons, fuselages, and doors; key flight-critical airframe structures, such as flap track beams; and intricate iron castings. In addition, the company offers geared motors; power steering units; construction equipment; and aluminium body, hydraulic gear pumps and motors from low to very high-pressure ratings, integrated gear and piston pump packages, and heavy duty compact cast iron gear pumps, and fan drive motors. Further, it provides unmanned aerial vehicles; engineering services; metallurgical ferrous castings; medical products comprising HCV rapid antibody test, viral RNA isolation, and DNA extraction kits; and laboratory services, such as testing and validation of products. The company was formerly known as Dynamatic Hydraulics Limited and changed its name to Dynamatic Technologies Limited in 1992. Dynamatic Technologies Limited was incorporated in 1973 and is based in Bengaluru, India.",
@@ -47796,6 +48193,51 @@
     "sector": "Chemicals & Materials",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "72",
+        "expenses": "71",
+        "operatingProfit": "1",
+        "opm": "1.4%",
+        "netProfit": "1",
+        "eps": "₹1.02"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "79",
+        "expenses": "76",
+        "operatingProfit": "3",
+        "opm": "3.8%",
+        "netProfit": "5",
+        "eps": "₹3.9"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "80",
+        "expenses": "76",
+        "operatingProfit": "4",
+        "opm": "5.0%",
+        "netProfit": "3",
+        "eps": "₹2.28"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "98",
+        "expenses": "93",
+        "operatingProfit": "5",
+        "opm": "5.1%",
+        "netProfit": "4",
+        "eps": "₹3.2"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "96",
+        "expenses": "90",
+        "operatingProfit": "6",
+        "opm": "6.3%",
+        "netProfit": "4",
+        "eps": "₹3.56"
+      },
+      {
         "period": "Dec 25",
         "sales": "91",
         "expenses": "85",
@@ -47895,7 +48337,7 @@
     ],
     "shareholding": {
       "promoters": "29.42%",
-      "public": "70.58%",
+      "public": "70.26%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -47932,7 +48374,7 @@
           null,
           null,
           null,
-          null
+          0.02
         ],
         "dii": [
           null,
@@ -47944,7 +48386,7 @@
           null,
           null,
           null,
-          null
+          0.31
         ],
         "diiMutualFunds": [
           null,
@@ -47956,7 +48398,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -47968,7 +48410,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -47980,7 +48422,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -47992,7 +48434,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           70.58,
@@ -48004,7 +48446,7 @@
           70.58,
           70.58,
           70.58,
-          70.58
+          70.26
         ],
         "employeeTrusts": [
           0,
@@ -48020,20 +48462,262 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "BHAGWANDAS KALIDAS PATEL",
+            "subCategory": "Promoter",
+            "pct": 10.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.49
+            ]
+          },
+          {
+            "name": "RAMESHKUMAR BHAGWANDAS PATEL",
+            "subCategory": "Promoter",
+            "pct": 5.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.97
+            ]
+          },
+          {
+            "name": "VIMALABEN BHAGAWANDAS PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 2.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.72
+            ]
+          },
+          {
+            "name": "DIXIT BHAGWANDAS PATEL",
+            "subCategory": "Promoter",
+            "pct": 1.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.69
+            ]
+          },
+          {
+            "name": "DYNEMIC HOLDINGS PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 1.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.26
+            ]
+          },
+          {
+            "name": "KIRTIKUMAR BHAGWANDAS PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 1.2,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.2
+            ]
+          },
+          {
+            "name": "CHETNABEN M PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 1.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.12
+            ]
+          },
+          {
+            "name": "MUKESHBHAI B PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.97
+            ]
+          },
+          {
+            "name": "VISHNUBHAI BHAGWANBHAI PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.72
+            ]
+          },
+          {
+            "name": "BHAGWANDAS K PATEL",
+            "subCategory": "Promoter Group",
+            "pct": 0.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.58
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "ELPRO INTERNATIONAL LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 4.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.02
+            ]
+          },
+          {
+            "name": "OPENXCELL TECHNOLABS PVT LTD",
+            "subCategory": "Bodies Corporate",
+            "pct": 2.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.14
+            ]
+          },
+          {
+            "name": "DASHRATHBHAI PRAHLADBHAI PATEL",
+            "subCategory": "Individual Investor",
+            "pct": 1.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.3
+            ]
+          },
+          {
+            "name": "MANOJ DUA",
+            "subCategory": "Individual Investor",
+            "pct": 1.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.21
+            ]
+          }
+        ]
+      },
+      "fii": "0.02%",
+      "dii": "0.31%"
     },
     "updatedAt": 1794038126068,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:08:01.408Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-19T12:12:37.609Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1749830_30102026034133_WEB.xml",
     "ratios": {
-      "marketCapCr": 304,
-      "pe": 12.6,
+      "marketCapCr": 297,
+      "pe": 12.3,
       "ttmEps": 18.14,
       "ttmSalesCr": 408,
       "ttmPatCr": 24,
@@ -48072,6 +48756,7 @@
         "netProfit": "24",
         "eps": "₹18.14"
       }
-    ]
+    ],
+    "lastShpRecordId": "213274"
   }
 }

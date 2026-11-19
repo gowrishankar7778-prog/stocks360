@@ -70180,15 +70180,6 @@
     "sector": "Real Estate & Housing",
     "quarterlyResults": [
       {
-        "period": "Dec 23",
-        "sales": "106",
-        "expenses": "78",
-        "operatingProfit": "28",
-        "opm": "26.4%",
-        "netProfit": "29",
-        "eps": "₹1.6"
-      },
-      {
         "period": "Mar 24",
         "sales": "161",
         "expenses": "178",
@@ -70268,6 +70259,15 @@
         "opm": "-133.3%",
         "netProfit": "-7",
         "eps": "₹0.41"
+      },
+      {
+        "period": "Jun 26",
+        "sales": "5",
+        "expenses": "5",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.02"
       }
     ],
     "balanceSheet": [
@@ -70659,15 +70659,15 @@
     },
     "updatedAt": 1794038125904,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-18T12:11:54.636Z",
+    "lastFinancialStatementUpdate": "2026-11-19T12:11:37.055Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1730759_29092026082451_WEB.xml",
     "ratios": {
-      "marketCapCr": 48,
-      "pe": 1,
-      "ttmEps": 3.21,
-      "ttmSalesCr": 54,
-      "ttmPatCr": 35,
+      "marketCapCr": 47,
+      "pe": 1.3,
+      "ttmEps": 2.39,
+      "ttmSalesCr": 35,
+      "ttmPatCr": 22,
       "promoterPct": 48.77
     },
     "lastShpRecordId": "213523",
@@ -70692,12 +70692,12 @@
       },
       {
         "year": "TTM",
-        "sales": "54",
-        "expenses": "21",
-        "operatingProfit": "33",
-        "opm": "61.1%",
-        "netProfit": "35",
-        "eps": "₹3.21"
+        "sales": "35",
+        "expenses": "15",
+        "operatingProfit": "20",
+        "opm": "57.1%",
+        "netProfit": "22",
+        "eps": "₹2.39"
       }
     ]
   },
