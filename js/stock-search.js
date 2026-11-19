@@ -1634,7 +1634,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=81")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=82")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1646,7 +1646,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=81")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=82")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1666,7 +1666,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=81")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=82")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }

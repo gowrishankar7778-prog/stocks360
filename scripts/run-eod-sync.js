@@ -81,6 +81,14 @@ async function main() {
       [path.join(__dirname, 'build-lightweight-index.js')]
     );
 
+    // Step 3b: Sync NSE FII/DII Activity & Market Breadth
+    log('STEP 3b: Syncing Official NSE FII/DII Flows & Market Breadth...');
+    await runStep(
+      'NSE FII/DII & Market Breadth Synchronizer',
+      process.execPath,
+      [path.join(__dirname, 'update-market-pulse.js')]
+    );
+
     // Step 3: Refresh official regulatory announcements from NSE
     log('STEP 3/5: Syncing Official NSE Corporate Filings & Announcements...');
     await runStep(

@@ -10,7 +10,7 @@
   <meta http-equiv="Expires" content="0">
   <script>
     (function () {
-      var BUILD_VERSION = "20261119_v81";
+      var BUILD_VERSION = "20261119_v82";
       try {
         var last = localStorage.getItem("stocks360_active_build");
         if (last !== BUILD_VERSION) {
@@ -26,7 +26,7 @@
     })();
   </script>
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css?v=81">
+  <link rel="stylesheet" href="css/styles.css?v=82">
 </head>
 <body>
 
@@ -105,7 +105,9 @@
   </nav>
 
   <!-- 6. MAIN CONTENT -->
-  <main id="main-content" tabindex="-1"></main>
+  <main id="main-content" tabindex="-1">
+    <section id="home-market-pulse" aria-label="FII DII Activity and Market Breadth" hidden></section>
+  </main>
 
   <footer>
     <div class="container">
@@ -117,14 +119,16 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=81"></script>
-  <script src="js/auth.js?v=81"></script>
-  <script src="js/data-store.js?v=81"></script>
-  <script src="js/gemini-ai.js?v=81"></script>
-  <script src="js/main.js?v=81"></script>
-  <script src="js/accessibility.js?v=81"></script>
-  <script src="js/screener-index.js?v=81"></script>
-  <script src="js/stock-search.js?v=81"></script>
-  <script src="js/smart-assist.js?v=81"></script>
+  <script src="js/firebase-config.js?v=82"></script>
+  <script src="js/auth.js?v=82"></script>
+  <script src="js/data-store.js?v=82"></script>
+  <script src="js/gemini-ai.js?v=82"></script>
+  <script src="js/main.js?v=82"></script>
+  <script src="js/market-pulse-data.js?v=82"></script>
+  <script src="js/market-pulse.js?v=82"></script>
+  <script src="js/accessibility.js?v=82"></script>
+  <script src="js/screener-index.js?v=82"></script>
+  <script src="js/stock-search.js?v=82"></script>
+  <script src="js/smart-assist.js?v=82"></script>
 </body>
 </html>
