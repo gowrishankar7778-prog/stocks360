@@ -43,12 +43,16 @@ jobs:
         run: |
           node scripts/update-company-fundamentals.js --all
 
+      - name: Synchronize Official NSE FII/DII Flows & Market Breadth
+        run: |
+          node scripts/update-market-pulse.js
+
       - name: Commit & Push Updated Stock Data & Filings
         id: git_push
         run: |
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
-          git add js/screener-index.js data/bse/ data/news/ data/profiles/ data/mutual-funds/
+          git add js/screener-index.js js/market-pulse-data.js data/market-pulse.json data/bse/ data/news/ data/profiles/ data/mutual-funds/
           if git diff --staged --quiet; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No price, indicator, or corporate filing changes detected today."
