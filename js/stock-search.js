@@ -479,12 +479,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function closeCompanyAnalysis() {
-    if (window._stocks360IsSpeakingCompany) {
-      if ("speechSynthesis" in window) {
-        try { window.speechSynthesis.cancel(); } catch (_) {}
-      }
-      resetListenButtonUI();
-    }
+    stopCompanyVoiceOverview();
     if (stockResult) {
       stockResult.hidden = true;
       stockResult.style.display = "none";
@@ -1614,7 +1609,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=77")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=78")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1626,7 +1621,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=77")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=78")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1646,7 +1641,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=77")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=78")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -2410,12 +2405,39 @@ document.addEventListener("DOMContentLoaded", function () {
     if (listenBtn) {
       listenBtn.textContent = "Listen to About the Company";
       listenBtn.setAttribute("aria-pressed", "false");
+      listenBtn.setAttribute("aria-busy", "false");
       listenBtn.style.background = "";
       listenBtn.style.color = "";
     }
     window._stocks360IsSpeakingCompany = false;
     window._stocks360SpeechUtterance = null;
     window._stocks360SpeechSessionId = (window._stocks360SpeechSessionId || 0) + 1;
+  }
+
+  function stopCompanyVoiceOverview() {
+    if (window._stocks360CompanyAudioEl) {
+      try {
+        window._stocks360CompanyAudioEl.pause();
+        window._stocks360CompanyAudioEl.removeAttribute("src");
+        window._stocks360CompanyAudioEl.load();
+      } catch (_) {}
+      window._stocks360CompanyAudioEl = null;
+    }
+    if ("speechSynthesis" in window) {
+      try { window.speechSynthesis.cancel(); } catch (_) {}
+    }
+    resetListenButtonUI();
+  }
+
+  function setListenButtonPlayingUI() {
+    const listenBtn = document.getElementById("btn-listen-company");
+    if (listenBtn) {
+      listenBtn.textContent = "Stop Listening";
+      listenBtn.setAttribute("aria-pressed", "true");
+      listenBtn.setAttribute("aria-busy", "false");
+      listenBtn.style.background = "#dc2626";
+      listenBtn.style.color = "#ffffff";
+    }
   }
 
   function getAboutCompanyNarration(stock) {
@@ -2436,41 +2458,15 @@ document.addEventListener("DOMContentLoaded", function () {
     return text;
   }
 
-  function toggleCompanyVoiceOverview(stock) {
-    const listenBtn = document.getElementById("btn-listen-company");
-
-    // If currently speaking our company overview, stop it immediately
-    if (window._stocks360IsSpeakingCompany) {
-      resetListenButtonUI();
-      if ("speechSynthesis" in window) {
-        try { window.speechSynthesis.cancel(); } catch (_) {}
-      }
-      return;
-    }
-
-    const narration = getAboutCompanyNarration(stock);
+  function playBrowserSpeechFallback(narration, sessionId) {
     const chunks = splitNarrationSentences(narration);
-    if (chunks.length === 0) return;
-
-    // Record start timestamp so smart-assist.js does not cancel speech on reflexive Ctrl press
-    window._stocks360SpeechStartedAt = Date.now();
-    window._stocks360IsSpeakingCompany = true;
-    const sessionId = (window._stocks360SpeechSessionId || 0) + 1;
-    window._stocks360SpeechSessionId = sessionId;
-
-    if (listenBtn) {
-      listenBtn.textContent = "Stop Listening";
-      listenBtn.setAttribute("aria-pressed", "true");
-      listenBtn.style.background = "#dc2626";
-      listenBtn.style.color = "#ffffff";
-    }
-
-    if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+    if (chunks.length === 0 || !("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+      resetListenButtonUI();
       return;
     }
 
+    setListenButtonPlayingUI();
     try {
-      // Avoid calling cancel() when idle (prevents Chromium's 500-2000ms audio pipeline reset delay)
       if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
         window.speechSynthesis.cancel();
       }
@@ -2512,7 +2508,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       speakChunk(0);
 
-      // Watchdog: if Chromium paused the queue, resume it after 120ms
       setTimeout(() => {
         if (window._stocks360IsSpeakingCompany && window._stocks360SpeechSessionId === sessionId && window.speechSynthesis.paused) {
           try { window.speechSynthesis.resume(); } catch (_) {}
@@ -2522,6 +2517,81 @@ document.addEventListener("DOMContentLoaded", function () {
       console.warn("Speech synthesis error:", e);
       resetListenButtonUI();
     }
+  }
+
+  async function toggleCompanyVoiceOverview(stock) {
+    const listenBtn = document.getElementById("btn-listen-company");
+
+    // If currently speaking or loading company overview, stop immediately
+    if (window._stocks360IsSpeakingCompany) {
+      stopCompanyVoiceOverview();
+      return;
+    }
+
+    const narration = getAboutCompanyNarration(stock);
+    if (!narration) return;
+
+    // Record start timestamp so smart-assist.js does not cancel speech on reflexive Ctrl press
+    window._stocks360SpeechStartedAt = Date.now();
+    window._stocks360IsSpeakingCompany = true;
+    const sessionId = (window._stocks360SpeechSessionId || 0) + 1;
+    window._stocks360SpeechSessionId = sessionId;
+
+    if (listenBtn) {
+      listenBtn.textContent = "Loading Neural Voice...";
+      listenBtn.setAttribute("aria-pressed", "true");
+      listenBtn.setAttribute("aria-busy", "true");
+      listenBtn.style.background = "#1e293b";
+      listenBtn.style.color = "#ffffff";
+    }
+
+    // 1. Try StocksAudioEngine (IndexedDB -> Firebase Firestore `site_settings/audio_company_<SYMBOL>` -> Google Neural2 TTS MP3 + auto-save to Firebase)
+    if (typeof StocksAudioEngine !== "undefined" && typeof StocksAudioEngine.resolveArticleAudioSource === "function") {
+      try {
+        const rawSym = String(stock.symbol || stock.bseCode || stock.isin || "STOCK")
+          .replace(/[^a-zA-Z0-9_-]/g, "_")
+          .toUpperCase();
+        const resolved = await StocksAudioEngine.resolveArticleAudioSource({
+          id: "company_" + rawSym,
+          title: stock.name,
+          body: narration,
+          audioVoiceLang: "en-IN"
+        });
+
+        if (!window._stocks360IsSpeakingCompany || window._stocks360SpeechSessionId !== sessionId) {
+          return;
+        }
+
+        if (resolved && resolved.type === "single-mp3" && resolved.src && typeof Audio !== "undefined") {
+          const audioEl = new Audio(resolved.src);
+          window._stocks360CompanyAudioEl = audioEl;
+          audioEl.onended = function () {
+            if (window._stocks360SpeechSessionId === sessionId) {
+              stopCompanyVoiceOverview();
+            }
+          };
+          audioEl.onerror = function () {
+            if (window._stocks360SpeechSessionId === sessionId) {
+              window._stocks360CompanyAudioEl = null;
+              playBrowserSpeechFallback(narration, sessionId);
+            }
+          };
+
+          setListenButtonPlayingUI();
+          await audioEl.play();
+          return;
+        }
+      } catch (err) {
+        console.warn("Neural TTS company playback fallback:", err && err.message ? err.message : err);
+      }
+    }
+
+    if (!window._stocks360IsSpeakingCompany || window._stocks360SpeechSessionId !== sessionId) {
+      return;
+    }
+
+    // 2. Fallback to browser Web Speech Synthesis if Neural MP3 unavailable or autoplay blocked
+    playBrowserSpeechFallback(narration, sessionId);
   }
 
   function escapeHtml(str) {
@@ -2558,10 +2628,7 @@ document.addEventListener("DOMContentLoaded", function () {
       performSearch(sym, false);
     } else if (stockResult && !stockResult.hidden) {
       if (window._stocks360IsSpeakingCompany) {
-        if ("speechSynthesis" in window) {
-          try { window.speechSynthesis.cancel(); } catch (_) {}
-        }
-        resetListenButtonUI();
+        stopCompanyVoiceOverview();
       }
       stockResult.hidden = true;
       stockResult.style.display = "none";

@@ -390,7 +390,7 @@ const StocksAudioEngine = (function () {
               }
             })
           }),
-          3500,
+          6500,
           null
         );
 
