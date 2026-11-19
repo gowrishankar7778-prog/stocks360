@@ -5,7 +5,7 @@
  */
 
 const StocksDeals = (function () {
-  const DEALS_URL = "data/market/bulk-block-deals.json?v=71";
+  const DEALS_URL = "data/market/bulk-block-deals.json?v=72";
 
   const DEAL_VIEW_OPTIONS = [
     { value: "ALL", label: "All" },

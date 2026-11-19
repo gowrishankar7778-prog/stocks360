@@ -515,11 +515,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const cols = quarterlyResults.slice(-10);
     return `
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-        <span style="font-size:0.83rem; color:#475569; font-weight:600;">
-          Official NSE Quarterly Financial Results (Rolling ${cols.length} Quarters &bull; ₹ Crores)
-        </span>
-      </div>
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
         <table class="stocks360-data-table" id="company-quarterly-table" style="font-size:0.88rem; width:100%; border-collapse:collapse; min-width:720px;">
           <thead>
@@ -573,11 +568,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const cols = annualPnl.slice(-4);
     return `
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-        <span style="font-size:0.83rem; color:#475569; font-weight:600;">
-          Official NSE Annual Profit &amp; Loss (Rolling ${cols.length} Period${cols.length > 1 ? "s" : ""} &bull; Fiscal Years + TTM &bull; ₹ Crores)
-        </span>
-      </div>
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
         <table class="stocks360-data-table" id="company-annual-pnl-table" style="font-size:0.88rem; width:100%; border-collapse:collapse; min-width:540px;">
           <thead>
@@ -631,11 +621,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const cols = balanceSheet.slice(-6);
     return `
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-        <span style="font-size:0.83rem; color:#475569; font-weight:600;">
-          Official NSE XBRL Balance Sheet (Rolling ${cols.length} Filing Period${cols.length > 1 ? "s" : ""} &bull; ₹ Crores)
-        </span>
-      </div>
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
         <table class="stocks360-data-table" id="company-balancesheet-table" style="font-size:0.88rem; width:100%; border-collapse:collapse; min-width:620px;">
           <thead>
@@ -693,11 +678,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const cols = cashFlows.slice(-6);
     return `
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-        <span style="font-size:0.83rem; color:#475569; font-weight:600;">
-          Official NSE XBRL Cash Flow Statement (Rolling ${cols.length} Filing Period${cols.length > 1 ? "s" : ""} &bull; ₹ Crores)
-        </span>
-      </div>
       <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
         <table class="stocks360-data-table" id="company-cashflow-table" style="font-size:0.88rem; width:100%; border-collapse:collapse; min-width:620px;">
           <thead>
@@ -823,16 +803,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const latestPub = Number(s.public && s.public[latestIdx]) || Math.max(0, Number((100 - latestProm - latestFii - latestDii - latestGovt).toFixed(2)));
 
       return `
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
-          <span style="font-size:0.83rem; color:#475569; font-weight:600;">
-            Official NSE Quarterly Shareholding Pattern (${nQ} Quarters &bull; SEBI Reg. 31 Filings, Named Holders &ge; 1%)
-          </span>
-          ${hasAnyNamedHolders ? `
+        ${hasAnyNamedHolders ? `
+          <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
             <button type="button" id="btn-toggle-all-shp-holders" data-expanded="true" style="padding:5px 12px; font-size:0.78rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; cursor:pointer;">
               Collapse Named Institutions (&minus;)
             </button>
-          ` : ""}
-        </div>
+          </div>
+        ` : ""}
         <div style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
           <table class="stocks360-data-table" id="company-shareholding-table" style="font-size:0.86rem; width:100%; border-collapse:collapse; min-width:720px;">
             <thead>
@@ -1402,7 +1379,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=71")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=72")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1414,7 +1391,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=71")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=72")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1434,7 +1411,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=71")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=72")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
