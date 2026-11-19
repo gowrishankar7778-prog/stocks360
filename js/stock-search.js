@@ -1634,7 +1634,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=79")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=80")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1646,7 +1646,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=79")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=80")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1666,7 +1666,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=79")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=80")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -2378,6 +2378,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleCompanyVoiceOverview(stock);
       });
     }
+    prewarmCachedCompanyAudio(stock);
 
     if (shouldScroll) {
       const headingEl = document.getElementById("company-view-title") || stockResult;
@@ -2554,10 +2555,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  async function toggleCompanyVoiceOverview(stock) {
-    const listenBtn = document.getElementById("btn-listen-company");
+  function getCompanyAudioKey(stock) {
+    return String((stock && (stock.symbol || stock.bseCode || stock.isin)) || "STOCK")
+      .replace(/[^a-zA-Z0-9_-]/g, "_")
+      .toUpperCase();
+  }
 
-    // If currently speaking or loading company overview, stop immediately
+  function prewarmCachedCompanyAudio(stock) {
+    const rawSym = getCompanyAudioKey(stock);
+    window._stocks360PreloadedCompanyAudio = null;
+    if (typeof StocksFirebase === "undefined" || !StocksFirebase.isReady()) return;
+    setTimeout(async () => {
+      try {
+        const doc = await StocksFirebase.getDb()
+          .collection("site_settings")
+          .doc("audio_company_" + rawSym)
+          .get();
+        if (doc && doc.exists && doc.data() && doc.data().audioDataUrl) {
+          window._stocks360PreloadedCompanyAudio = { sym: rawSym, src: doc.data().audioDataUrl };
+        }
+      } catch (_) {}
+    }, 0);
+  }
+
+  async function toggleCompanyVoiceOverview(stock) {
+    // If currently speaking, stop immediately
     if (window._stocks360IsSpeakingCompany) {
       stopCompanyVoiceOverview();
       return;
@@ -2572,20 +2594,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const sessionId = (window._stocks360SpeechSessionId || 0) + 1;
     window._stocks360SpeechSessionId = sessionId;
 
-    if (listenBtn) {
-      listenBtn.textContent = "Loading Neural Voice...";
-      listenBtn.setAttribute("aria-pressed", "true");
-      listenBtn.setAttribute("aria-busy", "true");
-      listenBtn.style.background = "#1e293b";
-      listenBtn.style.color = "#ffffff";
+    setListenButtonPlayingUI();
+
+    const rawSym = getCompanyAudioKey(stock);
+    const preloaded = window._stocks360PreloadedCompanyAudio;
+    if (preloaded && preloaded.sym === rawSym && preloaded.src && typeof Audio !== "undefined") {
+      try {
+        const audioEl = new Audio(preloaded.src);
+        window._stocks360CompanyAudioEl = audioEl;
+        audioEl.onended = function () {
+          if (window._stocks360SpeechSessionId === sessionId) stopCompanyVoiceOverview();
+        };
+        audioEl.onerror = function () {
+          if (window._stocks360SpeechSessionId === sessionId) {
+            window._stocks360CompanyAudioEl = null;
+            playBrowserSpeechFallback(narration, sessionId);
+          }
+        };
+        await audioEl.play();
+        return;
+      } catch (_) {}
     }
 
     // 1. Try StocksAudioEngine (IndexedDB -> Firebase Firestore `site_settings/audio_company_<SYMBOL>` -> Google Neural2 TTS MP3 + auto-save to Firebase)
     if (typeof StocksAudioEngine !== "undefined" && typeof StocksAudioEngine.resolveArticleAudioSource === "function") {
       try {
-        const rawSym = String(stock.symbol || stock.bseCode || stock.isin || "STOCK")
-          .replace(/[^a-zA-Z0-9_-]/g, "_")
-          .toUpperCase();
         const resolved = await StocksAudioEngine.resolveArticleAudioSource({
           id: "company_" + rawSym,
           title: stock.name,
