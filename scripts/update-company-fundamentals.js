@@ -17,6 +17,7 @@ const {
   loadScreenerDataset,
   normalizeSectorName,
   computeFilingFundamentals,
+  parseFilingNumber,
   writeScreenerIndex,
   writeScreenerDataIfPresent,
   syncMarketSummaryToFirestore
@@ -325,6 +326,74 @@ function periodSortKey(periodLabel) {
   const mon = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
   const yr = 2000 + parseInt(m[2], 10);
   return yr * 100 + (monMap[mon] || 0);
+}
+
+function updateRollingAnnualPnl(profile) {
+  const qr = Array.isArray(profile.quarterlyResults) ? profile.quarterlyResults : [];
+  if (qr.length < 4) return false;
+  const byYear = new Map();
+  for (const row of (Array.isArray(profile.annualPnl) ? profile.annualPnl : [])) {
+    if (row && row.year && row.year !== 'TTM') byYear.set(row.year, row);
+  }
+  const byFy = new Map();
+  for (const q of qr) {
+    const m = String(q.period || '').trim().match(/^([A-Za-z]{3})\s+(\d{2})$/);
+    if (!m) continue;
+    const mon = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+    const yr = parseInt(m[2], 10);
+    const fyYr = (mon === 'Jan' || mon === 'Feb' || mon === 'Mar') ? yr : (yr + 1);
+    const fyLabel = `Mar ${String(fyYr).padStart(2, '0')}`;
+    if (!byFy.has(fyLabel)) byFy.set(fyLabel, []);
+    byFy.get(fyLabel).push(q);
+  }
+  for (const [fyLabel, rows] of byFy.entries()) {
+    if (rows.length !== 4) continue;
+    let s = 0, op = 0, pat = 0, eps = 0, validEps = 0;
+    for (const r of rows) {
+      s += parseFilingNumber(r.sales) || 0;
+      op += parseFilingNumber(r.operatingProfit) || 0;
+      pat += parseFilingNumber(r.netProfit) || 0;
+      const e = parseFilingNumber(r.eps);
+      if (Number.isFinite(e)) { eps += e; validEps++; }
+    }
+    if (s > 0) {
+      byYear.set(fyLabel, {
+        year: fyLabel,
+        sales: formatInr(Math.round(s)),
+        expenses: formatInr(Math.max(0, Math.round(s - op))),
+        operatingProfit: formatInr(Math.round(op)),
+        opm: `${((op / s) * 100).toFixed(1)}%`,
+        netProfit: formatInr(Math.round(pat)),
+        eps: validEps === 4 ? `₹${Number(eps.toFixed(2))}` : '--'
+      });
+    }
+  }
+  const fySort = (lbl) => { const m = String(lbl).match(/(\d{2})$/); return m ? 2000 + parseInt(m[1], 10) : 0; };
+  const fiscalYears = Array.from(byYear.values()).sort((a, b) => fySort(a.year) - fySort(b.year)).slice(-3);
+  const last4 = qr.slice(-4);
+  let ts = 0, top = 0, tpat = 0, teps = 0, tve = 0;
+  for (const r of last4) {
+    ts += parseFilingNumber(r.sales) || 0;
+    top += parseFilingNumber(r.operatingProfit) || 0;
+    tpat += parseFilingNumber(r.netProfit) || 0;
+    const e = parseFilingNumber(r.eps);
+    if (Number.isFinite(e)) { teps += e; tve++; }
+  }
+  const ttm = ts > 0 ? {
+    year: 'TTM',
+    sales: formatInr(Math.round(ts)),
+    expenses: formatInr(Math.max(0, Math.round(ts - top))),
+    operatingProfit: formatInr(Math.round(top)),
+    opm: `${((top / ts) * 100).toFixed(1)}%`,
+    netProfit: formatInr(Math.round(tpat)),
+    eps: tve === 4 ? `₹${Number(teps.toFixed(2))}` : '--'
+  } : null;
+  const next = ttm ? [...fiscalYears, ttm] : fiscalYears;
+  if (next.length > 0) {
+    profile.annualPnl = next;
+    return true;
+  }
+  return false;
 }
 
 function mergeRolling10Quarters(...quarterArrays) {
@@ -753,6 +822,7 @@ async function run() {
           || prevLatest.netProfit !== newLatest.netProfit
         ) {
           profile.quarterlyResults = mergedQ;
+          updateRollingAnnualPnl(profile);
           changed = true;
         }
       }
