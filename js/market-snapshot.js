@@ -1,10 +1,25 @@
 /**
- * Stocks 360 - Closing Market Snapshot (NSE & BSE Exchange Switcher)
- * Step 1: Bhavcopy-powered Market Breadth, Sector Performance, FII/DII Flows,
- *         Top Gainers, Top Losers, Most Active by Volume, and 52W High/Low tables.
+ * Stocks 360 - Closing Market Snapshot (Approach A: Single-Active Segment Viewer)
+ * - Vertical Exchange selector: NSE (default checked) above BSE
+ * - Always-visible FII & DII Data segment in clean tabular format
+ * - Clickable Market Segment Links that reveal one focused table at a time
  */
 (function () {
   let activeExchange = "NSE";
+  let activeSegment = null;
+
+  const SEGMENTS = [
+    { id: "indices", label: "Indices" },
+    { id: "sectors", label: "Sectors" },
+    { id: "ad-ratio", label: "Advance / Decline Ratio" },
+    { id: "top-gainers", label: "Top Gainers" },
+    { id: "top-losers", label: "Top Losers" },
+    { id: "high-52", label: "52-Week High" },
+    { id: "low-52", label: "52-Week Low" },
+    { id: "upper-circuit", label: "Upper Circuit" },
+    { id: "lower-circuit", label: "Lower Circuit" },
+    { id: "pcr-oi", label: "Put-Call Ratio & Open Interest" }
+  ];
 
   function esc(str) {
     return String(str == null ? "" : str)
@@ -37,12 +52,9 @@
     return (v > 0 ? "+₹ " : v < 0 ? "-₹ " : "₹ ") + abs + " Cr";
   }
 
-  function isNseStock(s) {
-    return s && s.exchanges !== "BSE";
-  }
-
-  function isBseStock(s) {
-    return s && (s.exchanges === "BSE" || !!s.bseCode);
+  function getExchangeStocks(exchange) {
+    const allStocks = Array.isArray(window.STOCKS_SCREENER_DATASET) ? window.STOCKS_SCREENER_DATASET : [];
+    return allStocks.filter((s) => (exchange === "BSE" ? s && (s.exchanges === "BSE" || !!s.bseCode) : s && s.exchanges !== "BSE"));
   }
 
   function hasValid52WeekRange(s) {
@@ -55,349 +67,368 @@
     );
   }
 
-  function renderStockTable(title, subtitle, rows, extraHeader, extraCellFn) {
+  function renderFiiDiiSegment() {
+    const container = document.getElementById("snapshot-fii-dii-section");
+    if (!container) return;
+    const pulse = window.STOCKS_MARKET_PULSE || null;
+    const fiiLatest = pulse && pulse.fiiDiiLatest;
+
+    if (!fiiLatest) {
+      container.innerHTML = `
+        <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:16px; color:#64748b;">
+          FII &amp; DII institutional flow data is not yet loaded.
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+        <div style="padding:14px 16px; border-bottom:1px solid #e2e8f0; background:#f8fafc; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <div>
+            <h2 style="margin:0; font-size:1.12rem; color:#0f172a; font-weight:800;">FII &amp; DII Data</h2>
+            <p style="margin:3px 0 0 0; font-size:0.8rem; color:#64748b;">Official NSE Provisional Cash Activity • Session: <strong>${esc(fiiLatest.dateDisplay || fiiLatest.date)}</strong></p>
+          </div>
+          <span style="font-size:0.82rem; font-weight:800; color:${fiiLatest.combinedNetCr >= 0 ? "#16a34a" : "#dc2626"};">
+            Combined Net: ${fmtCr(fiiLatest.combinedNetCr)}
+          </span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+            <thead>
+              <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.78rem; text-transform:uppercase;">
+                <th scope="col" style="padding:10px 14px; text-align:left;">Category</th>
+                <th scope="col" style="padding:10px 14px; text-align:right;">Buy Value (₹ Cr)</th>
+                <th scope="col" style="padding:10px 14px; text-align:right;">Sell Value (₹ Cr)</th>
+                <th scope="col" style="padding:10px 14px; text-align:right;">Net Value (₹ Cr)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #f1f5f9;">
+                <td style="padding:10px 14px; font-weight:700; color:#0f172a;">FII / FPI</td>
+                <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.fii && fiiLatest.fii.buyCr).replace(/^\+/, "")}</td>
+                <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.fii && fiiLatest.fii.sellCr).replace(/^\+/, "")}</td>
+                <td style="padding:10px 14px; text-align:right; font-weight:800; color:${(fiiLatest.fii && fiiLatest.fii.netCr) >= 0 ? "#16a34a" : "#dc2626"};">${fmtCr(fiiLatest.fii && fiiLatest.fii.netCr)}</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 14px; font-weight:700; color:#0f172a;">DII (Domestic)</td>
+                <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.dii && fiiLatest.dii.buyCr).replace(/^\+/, "")}</td>
+                <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.dii && fiiLatest.dii.sellCr).replace(/^\+/, "")}</td>
+                <td style="padding:10px 14px; text-align:right; font-weight:800; color:${(fiiLatest.dii && fiiLatest.dii.netCr) >= 0 ? "#16a34a" : "#dc2626"};">${fmtCr(fiiLatest.dii && fiiLatest.dii.netCr)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSegmentLinks() {
+    const linksEl = document.getElementById("snapshot-segment-links");
+    if (!linksEl) return;
+
+    linksEl.innerHTML = SEGMENTS.map((seg) => {
+      const isSelected = activeSegment === seg.id;
+      return `
+        <a
+          href="#snapshot-segment-panel"
+          class="snapshot-segment-link"
+          data-segment="${seg.id}"
+          aria-current="${isSelected ? "true" : "false"}"
+          style="display:inline-flex; align-items:center; padding:8px 14px; border-radius:8px; font-size:0.88rem; font-weight:700; text-decoration:none; border:1px solid ${isSelected ? "#2563eb" : "#cbd5e1"}; background:${isSelected ? "#2563eb" : "#ffffff"}; color:${isSelected ? "#ffffff" : "#1e293b"}; transition:all 0.15s;"
+        >
+          ${esc(seg.label)}
+        </a>
+      `;
+    }).join("");
+
+    linksEl.querySelectorAll(".snapshot-segment-link").forEach((linkEl) => {
+      linkEl.addEventListener("click", function (e) {
+        e.preventDefault();
+        const segId = this.getAttribute("data-segment");
+        openSegment(segId, true);
+      });
+    });
+  }
+
+  function buildStockRowsTable(title, subtitle, rows, extraColHeader, extraColFn) {
     const bodyHtml =
       rows.length > 0
         ? rows
             .map((s) => {
               const chg = typeof s.dayChangePct === "number" ? s.dayChangePct : 0;
               const chgColor = chg > 0 ? "#16a34a" : chg < 0 ? "#dc2626" : "#475569";
-              const symCode = activeExchange === "BSE" && s.bseCode ? s.bseCode : s.symbol;
+              const displaySym = activeExchange === "BSE" && s.bseCode ? s.bseCode : s.symbol;
               const linkSym = s.symbol || s.bseCode || "";
               return `
                 <tr style="border-bottom:1px solid #f1f5f9;">
-                  <td style="padding:10px 12px;">
-                    <a href="index.html?symbol=${encodeURIComponent(linkSym)}" style="font-weight:800; color:#1d4ed8; text-decoration:none;">
-                      ${esc(symCode)}
-                    </a>
-                    <div style="font-size:0.78rem; color:#64748b; max-width:240px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(s.name)}</div>
+                  <td style="padding:10px 14px;">
+                    <a href="index.html?symbol=${encodeURIComponent(linkSym)}" style="font-weight:800; color:#1d4ed8; text-decoration:none;">${esc(displaySym)}</a>
+                    <div style="font-size:0.78rem; color:#64748b;">${esc(s.name)}</div>
                   </td>
-                  <td style="padding:10px 12px; font-weight:700; color:#0f172a; text-align:right; white-space:nowrap;">${fmtPrice(s.cmp)}</td>
-                  <td style="padding:10px 12px; font-weight:800; color:${chgColor}; text-align:right; white-space:nowrap;">${fmtPct(s.dayChangePct)}</td>
-                  <td style="padding:10px 12px; color:#334155; text-align:right; white-space:nowrap;">${extraCellFn(s)}</td>
+                  <td style="padding:10px 14px; text-align:right; font-weight:700; color:#0f172a; white-space:nowrap;">${fmtPrice(s.cmp)}</td>
+                  <td style="padding:10px 14px; text-align:right; font-weight:800; color:${chgColor}; white-space:nowrap;">${fmtPct(s.dayChangePct)}</td>
+                  <td style="padding:10px 14px; text-align:right; color:#334155; white-space:nowrap;">${extraColFn(s)}</td>
                 </tr>
               `;
             })
             .join("")
-        : `<tr><td colspan="4" style="padding:16px; text-align:center; color:#64748b;">No qualifying stocks for this session.</td></tr>`;
+        : `<tr><td colspan="4" style="padding:18px; text-align:center; color:#64748b;">No qualifying ${esc(activeExchange)} stocks for this segment.</td></tr>`;
 
-    return `
-      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
-        <div style="padding:14px 16px; border-bottom:1px solid #e2e8f0; background:#f8fafc;">
-          <h2 style="margin:0; font-size:1.08rem; color:#0f172a; font-weight:800;">${esc(title)}</h2>
-          <p style="margin:3px 0 0 0; font-size:0.78rem; color:#64748b;">${esc(subtitle)}</p>
-        </div>
+    return wrapPanel(
+      title,
+      subtitle,
+      `
         <div style="overflow-x:auto;">
           <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
             <thead>
               <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.76rem; text-transform:uppercase;">
-                <th scope="col" style="padding:9px 12px; text-align:left;">Company</th>
-                <th scope="col" style="padding:9px 12px; text-align:right;">CMP</th>
-                <th scope="col" style="padding:9px 12px; text-align:right;">Day %</th>
-                <th scope="col" style="padding:9px 12px; text-align:right;">${esc(extraHeader)}</th>
+                <th scope="col" style="padding:10px 14px; text-align:left;">Company</th>
+                <th scope="col" style="padding:10px 14px; text-align:right;">CMP</th>
+                <th scope="col" style="padding:10px 14px; text-align:right;">Day %</th>
+                <th scope="col" style="padding:10px 14px; text-align:right;">${esc(extraColHeader)}</th>
               </tr>
             </thead>
             <tbody>${bodyHtml}</tbody>
           </table>
         </div>
+      `
+    );
+  }
+
+  function wrapPanel(title, subtitle, bodyHtml) {
+    return `
+      <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(15,23,42,0.06);">
+        <div style="padding:14px 16px; border-bottom:1px solid #e2e8f0; background:#f8fafc; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h2 id="snapshot-segment-heading" tabindex="-1" style="margin:0; font-size:1.15rem; color:#0f172a; font-weight:800;">${esc(title)}</h2>
+            <p style="margin:3px 0 0 0; font-size:0.8rem; color:#64748b;">${esc(subtitle)}</p>
+          </div>
+          <button type="button" id="btn-close-snapshot-segment" class="btn-secondary" style="padding:6px 12px; font-size:0.82rem; font-weight:700; border-radius:6px; cursor:pointer;">
+            Close Table &#10005;
+          </button>
+        </div>
+        ${bodyHtml}
       </div>
     `;
   }
 
-  function renderSnapshot(exchange) {
-    activeExchange = exchange === "BSE" ? "BSE" : "NSE";
-    const root = document.getElementById("market-snapshot-root");
-    const nseBtn = document.getElementById("btn-snapshot-nse");
-    const bseBtn = document.getElementById("btn-snapshot-bse");
-    const metaEl = document.getElementById("snapshot-active-meta");
-    const hintEl = document.getElementById("snapshot-session-hint");
+  function openSegment(segId, shouldScroll) {
+    const panel = document.getElementById("snapshot-segment-panel");
+    if (!panel || !segId) return;
 
-    if (nseBtn && bseBtn) {
-      const isNse = activeExchange === "NSE";
-      nseBtn.setAttribute("aria-pressed", isNse ? "true" : "false");
-      bseBtn.setAttribute("aria-pressed", !isNse ? "true" : "false");
-      nseBtn.style.background = isNse ? "#0f172a" : "#ffffff";
-      nseBtn.style.color = isNse ? "#ffffff" : "#334155";
-      nseBtn.style.borderColor = isNse ? "#0f172a" : "#cbd5e1";
-      bseBtn.style.background = !isNse ? "#2563eb" : "#ffffff";
-      bseBtn.style.color = !isNse ? "#ffffff" : "#334155";
-      bseBtn.style.borderColor = !isNse ? "#2563eb" : "#cbd5e1";
-    }
+    activeSegment = segId;
+    renderSegmentLinks();
 
-    if (!root) return;
-    const allStocks = Array.isArray(window.STOCKS_SCREENER_DATASET) ? window.STOCKS_SCREENER_DATASET : [];
-    const stocks = allStocks.filter(activeExchange === "NSE" ? isNseStock : isBseStock);
-    const pulse = window.STOCKS_MARKET_PULSE || null;
+    const stocks = getExchangeStocks(activeExchange);
+    const liquid = stocks.filter((s) => typeof s.cmp === "number" && s.cmp >= 10 && typeof s.volume === "number" && s.volume >= 5000);
+    const pool = liquid.length >= 20 ? liquid : stocks;
 
-    let sessionLabel = "Latest Closing Session";
-    let advances = 0;
-    let declines = 0;
-    let unchanged = 0;
-    let above200 = 0;
-    let goldenCross = 0;
-    const sectorMap = new Map();
+    let html = "";
 
-    for (const s of stocks) {
-      if (sessionLabel === "Latest Closing Session" && s.lastUpdated) {
-        sessionLabel = s.lastUpdated;
+    if (segId === "sectors") {
+      const sectorMap = new Map();
+      for (const s of stocks) {
+        const sec = s.sector || "Diversified Equities";
+        if (!sectorMap.has(sec)) sectorMap.set(sec, { sector: sec, count: 0, adv: 0, dec: 0, sumPct: 0 });
+        const b = sectorMap.get(sec);
+        b.count++;
+        b.sumPct += typeof s.dayChangePct === "number" ? s.dayChangePct : 0;
+        if ((s.dayChange || 0) > 0) b.adv++;
+        else if ((s.dayChange || 0) < 0) b.dec++;
       }
-      const chg = typeof s.dayChange === "number" ? s.dayChange : 0;
-      const chgPct = typeof s.dayChangePct === "number" ? s.dayChangePct : 0;
-      if (chg > 0) advances++;
-      else if (chg < 0) declines++;
-      else unchanged++;
+      const rows = Array.from(sectorMap.values())
+        .filter((b) => b.count >= 3)
+        .map((b) => ({ ...b, avgPct: Number((b.sumPct / b.count).toFixed(2)) }))
+        .sort((a, b) => b.avgPct - a.avgPct);
 
-      if (typeof s.dma200 === "number" && s.dma200 > 0 && s.cmp > s.dma200) above200++;
-      if (s.goldenCross === true) goldenCross++;
-
-      const sec = s.sector || "Diversified Equities";
-      if (!sectorMap.has(sec)) sectorMap.set(sec, { sector: sec, count: 0, adv: 0, dec: 0, sumPct: 0 });
-      const b = sectorMap.get(sec);
-      b.count++;
-      b.sumPct += chgPct;
-      if (chg > 0) b.adv++;
-      else if (chg < 0) b.dec++;
-    }
-
-    if (hintEl) hintEl.textContent = "Closing Session: " + sessionLabel;
-    if (metaEl) metaEl.textContent = `${activeExchange}: ${stocks.length.toLocaleString("en-IN")} Listed Equities • ${sessionLabel}`;
-
-    const total = Math.max(1, stocks.length);
-    const advPct = ((advances / total) * 100).toFixed(1);
-    const decPct = ((declines / total) * 100).toFixed(1);
-    const adRatio = declines > 0 ? (advances / declines).toFixed(2) : String(advances);
-
-    const sectors = Array.from(sectorMap.values())
-      .filter((b) => b.count >= 3)
-      .map((b) => ({ ...b, avgPct: Number((b.sumPct / b.count).toFixed(2)) }))
-      .sort((a, b) => b.avgPct - a.avgPct);
-
-    const liquidPool = stocks.filter((s) => typeof s.cmp === "number" && s.cmp >= 10 && typeof s.volume === "number" && s.volume >= 5000);
-    const gainersPool = (liquidPool.length >= 15 ? liquidPool : stocks)
-      .filter((s) => typeof s.dayChangePct === "number" && s.dayChangePct > 0)
-      .sort((a, b) => b.dayChangePct - a.dayChangePct)
-      .slice(0, 12);
-    const losersPool = (liquidPool.length >= 15 ? liquidPool : stocks)
-      .filter((s) => typeof s.dayChangePct === "number" && s.dayChangePct < 0)
-      .sort((a, b) => a.dayChangePct - b.dayChangePct)
-      .slice(0, 12);
-    const activePool = stocks
-      .filter((s) => typeof s.volume === "number" && s.volume > 0)
-      .sort((a, b) => b.volume - a.volume)
-      .slice(0, 12);
-
-    const high52Pool = stocks
-      .filter((s) => hasValid52WeekRange(s) && ((typeof s.dayHigh === "number" && s.dayHigh >= s.high52) || s.cmp >= s.high52 * 0.99))
-      .sort((a, b) => (b.volume || 0) - (a.volume || 0))
-      .slice(0, 12);
-    const low52Pool = stocks
-      .filter((s) => hasValid52WeekRange(s) && ((typeof s.dayLow === "number" && s.dayLow <= s.low52) || s.cmp <= s.low52 * 1.01))
-      .sort((a, b) => (b.volume || 0) - (a.volume || 0))
-      .slice(0, 12);
-
-    // 1. Breadth Summary Table / Strip
-    const breadthHtml = `
-      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:18px; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
-          <h2 style="margin:0; font-size:1.12rem; color:#0f172a; font-weight:800;">${activeExchange} Market Breadth &amp; Advance / Decline Ratio</h2>
-          <span style="font-size:0.82rem; font-weight:700; padding:4px 10px; border-radius:999px; background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">
-            A/D Ratio: ${adRatio}
-          </span>
-        </div>
-        <div style="display:flex; height:11px; border-radius:999px; overflow:hidden; background:#e2e8f0; margin-bottom:12px;">
-          <div style="width:${advPct}%; background:#16a34a;"></div>
-          <div style="width:${Math.max(0, 100 - Number(advPct) - Number(decPct)).toFixed(1)}%; background:#94a3b8;"></div>
-          <div style="width:${decPct}%; background:#dc2626;"></div>
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(145px, 1fr)); gap:10px;">
-          <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:10px 12px;">
-            <div style="font-size:0.75rem; color:#166534; font-weight:700;">Advances</div>
-            <div style="font-size:1.08rem; color:#16a34a; font-weight:800;">${advances.toLocaleString("en-IN")} (${advPct}%)</div>
-          </div>
-          <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:10px 12px;">
-            <div style="font-size:0.75rem; color:#991b1b; font-weight:700;">Declines</div>
-            <div style="font-size:1.08rem; color:#dc2626; font-weight:800;">${declines.toLocaleString("en-IN")} (${decPct}%)</div>
-          </div>
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
-            <div style="font-size:0.75rem; color:#475569; font-weight:700;">Unchanged</div>
-            <div style="font-size:1.08rem; color:#0f172a; font-weight:800;">${unchanged.toLocaleString("en-IN")}</div>
-          </div>
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
-            <div style="font-size:0.75rem; color:#475569; font-weight:700;">Above 200-DMA / GC</div>
-            <div style="font-size:1.02rem; color:#0f172a; font-weight:800;">${above200.toLocaleString("en-IN")} / ${goldenCross.toLocaleString("en-IN")}</div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // 2. FII/DII Cash Flows Table
-    const fiiLatest = pulse && pulse.fiiDiiLatest;
-    const fiiHtml = fiiLatest
-      ? `
-        <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
-          <div style="padding:14px 16px; border-bottom:1px solid #e2e8f0; background:#f8fafc; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <div>
-              <h2 style="margin:0; font-size:1.08rem; color:#0f172a; font-weight:800;">FII &amp; DII Cash Market Activity</h2>
-              <p style="margin:3px 0 0 0; font-size:0.78rem; color:#64748b;">Official NSE Provisional Institutional Flows • Session: ${esc(fiiLatest.dateDisplay || fiiLatest.date)}</p>
-            </div>
-            <span style="font-size:0.8rem; font-weight:700; color:${fiiLatest.combinedNetCr >= 0 ? "#16a34a" : "#dc2626"};">
-              Combined Net: ${fmtCr(fiiLatest.combinedNetCr)}
-            </span>
-          </div>
+      html = wrapPanel(
+        `${activeExchange} Sector Performance`,
+        "Equal-weighted closing breadth across sectors",
+        `
           <div style="overflow-x:auto;">
             <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
               <thead>
                 <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.76rem; text-transform:uppercase;">
-                  <th scope="col" style="padding:9px 14px; text-align:left;">Category</th>
-                  <th scope="col" style="padding:9px 14px; text-align:right;">Buy Value</th>
-                  <th scope="col" style="padding:9px 14px; text-align:right;">Sell Value</th>
-                  <th scope="col" style="padding:9px 14px; text-align:right;">Net Value</th>
+                  <th scope="col" style="padding:10px 14px; text-align:left;">Sector</th>
+                  <th scope="col" style="padding:10px 14px; text-align:right;">Stocks</th>
+                  <th scope="col" style="padding:10px 14px; text-align:right;">Advances / Declines</th>
+                  <th scope="col" style="padding:10px 14px; text-align:right;">Avg Day %</th>
                 </tr>
               </thead>
               <tbody>
-                <tr style="border-bottom:1px solid #f1f5f9;">
-                  <td style="padding:10px 14px; font-weight:700; color:#0f172a;">FII / FPI</td>
-                  <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.fii && fiiLatest.fii.buyCr).replace(/^\+/, "")}</td>
-                  <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.fii && fiiLatest.fii.sellCr).replace(/^\+/, "")}</td>
-                  <td style="padding:10px 14px; text-align:right; font-weight:800; color:${(fiiLatest.fii && fiiLatest.fii.netCr) >= 0 ? "#16a34a" : "#dc2626"};">${fmtCr(fiiLatest.fii && fiiLatest.fii.netCr)}</td>
-                </tr>
-                <tr>
-                  <td style="padding:10px 14px; font-weight:700; color:#0f172a;">DII (Domestic)</td>
-                  <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.dii && fiiLatest.dii.buyCr).replace(/^\+/, "")}</td>
-                  <td style="padding:10px 14px; text-align:right;">${fmtCr(fiiLatest.dii && fiiLatest.dii.sellCr).replace(/^\+/, "")}</td>
-                  <td style="padding:10px 14px; text-align:right; font-weight:800; color:${(fiiLatest.dii && fiiLatest.dii.netCr) >= 0 ? "#16a34a" : "#dc2626"};">${fmtCr(fiiLatest.dii && fiiLatest.dii.netCr)}</td>
-                </tr>
+                ${rows
+                  .map(
+                    (sec) => `
+                  <tr style="border-bottom:1px solid #f1f5f9;">
+                    <td style="padding:10px 14px; font-weight:700; color:#0f172a;">${esc(sec.sector)}</td>
+                    <td style="padding:10px 14px; text-align:right;">${sec.count}</td>
+                    <td style="padding:10px 14px; text-align:right;"><span style="color:#16a34a; font-weight:700;">${sec.adv}</span> / <span style="color:#dc2626; font-weight:700;">${sec.dec}</span></td>
+                    <td style="padding:10px 14px; text-align:right; font-weight:800; color:${sec.avgPct >= 0 ? "#16a34a" : "#dc2626"};">${fmtPct(sec.avgPct)}</td>
+                  </tr>
+                `
+                  )
+                  .join("")}
               </tbody>
             </table>
           </div>
-        </div>
-      `
-      : "";
-
-    // 3. Sector Performance Table
-    const sectorsHtml = `
-      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
-        <div style="padding:14px 16px; border-bottom:1px solid #e2e8f0; background:#f8fafc;">
-          <h2 style="margin:0; font-size:1.08rem; color:#0f172a; font-weight:800;">${activeExchange} Sector Performance</h2>
-          <p style="margin:3px 0 0 0; font-size:0.78rem; color:#64748b;">Equal-weighted closing breadth across sectors (minimum 3 listed stocks)</p>
-        </div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
-            <thead>
-              <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.76rem; text-transform:uppercase;">
-                <th scope="col" style="padding:9px 14px; text-align:left;">Sector</th>
-                <th scope="col" style="padding:9px 14px; text-align:right;">Stocks</th>
-                <th scope="col" style="padding:9px 14px; text-align:right;">Adv / Dec</th>
-                <th scope="col" style="padding:9px 14px; text-align:right;">Avg Day %</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${
-                sectors.length > 0
-                  ? sectors
-                      .map(
-                        (sec) => `
-                  <tr style="border-bottom:1px solid #f1f5f9;">
-                    <td style="padding:9px 14px; font-weight:700; color:#0f172a;">${esc(sec.sector)}</td>
-                    <td style="padding:9px 14px; text-align:right; color:#475569;">${sec.count}</td>
-                    <td style="padding:9px 14px; text-align:right; color:#475569;"><span style="color:#16a34a; font-weight:700;">${sec.adv}</span> / <span style="color:#dc2626; font-weight:700;">${sec.dec}</span></td>
-                    <td style="padding:9px 14px; text-align:right; font-weight:800; color:${sec.avgPct >= 0 ? "#16a34a" : "#dc2626"};">${fmtPct(sec.avgPct)}</td>
-                  </tr>
-                `
-                      )
-                      .join("")
-                  : `<tr><td colspan="4" style="padding:16px; text-align:center; color:#64748b;">No sector breakdown available.</td></tr>`
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
-    `;
-
-    // 4. Gainers, Losers, Most Active, 52W High/Low
-    const gainersHtml = renderStockTable(
-      `${activeExchange} Top Gainers`,
-      "Closing percentage leaders",
-      gainersPool,
-      "Volume",
-      (s) => fmtVol(s.volume)
-    );
-    const losersHtml = renderStockTable(
-      `${activeExchange} Top Losers`,
-      "Closing percentage decliners",
-      losersPool,
-      "Volume",
-      (s) => fmtVol(s.volume)
-    );
-    const activeHtml = renderStockTable(
-      `${activeExchange} Most Active by Volume`,
-      "Highest traded share volume",
-      activePool,
-      activeExchange === "NSE" ? "Deliv %" : "Volume",
-      (s) =>
-        activeExchange === "NSE" && typeof s.deliveryPct === "number" && s.deliveryPct > 0
-          ? s.deliveryPct.toFixed(1) + "% (" + fmtVol(s.volume) + ")"
-          : fmtVol(s.volume)
-    );
-    const high52Html =
-      activeExchange === "NSE"
-        ? renderStockTable(
-            "NSE 52-Week High Stocks",
-            "Closing at or within 1% of 52-week high",
-            high52Pool,
-            "52W High",
-            (s) => fmtPrice(s.high52)
-          )
-        : `
-          <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:18px; color:#475569; font-size:0.88rem;">
-            <strong style="color:#0f172a; display:block; margin-bottom:4px;">BSE 52-Week High / Low &amp; Circuits</strong>
-            BSE multi-month 52-Week High/Low and official Upper/Lower Circuit tables will be connected in Step 2 via BSE's official price band &amp; 52W feeds (zero synthetic approximations).
+        `
+      );
+    } else if (segId === "ad-ratio") {
+      let adv = 0;
+      let dec = 0;
+      let unch = 0;
+      let above200 = 0;
+      let goldenCross = 0;
+      for (const s of stocks) {
+        const chg = typeof s.dayChange === "number" ? s.dayChange : 0;
+        if (chg > 0) adv++;
+        else if (chg < 0) dec++;
+        else unch++;
+        if (typeof s.dma200 === "number" && s.dma200 > 0 && s.cmp > s.dma200) above200++;
+        if (s.goldenCross === true) goldenCross++;
+      }
+      const adRatio = dec > 0 ? (adv / dec).toFixed(2) : String(adv);
+      html = wrapPanel(
+        `${activeExchange} Advance / Decline Ratio`,
+        `Closing breadth across ${stocks.length.toLocaleString("en-IN")} listed equities`,
+        `
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+              <thead>
+                <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.76rem; text-transform:uppercase;">
+                  <th scope="col" style="padding:10px 14px; text-align:left;">Metric</th>
+                  <th scope="col" style="padding:10px 14px; text-align:right;">Count / Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px; font-weight:700;">Advances (Closing Higher)</td><td style="padding:10px 14px; text-align:right; font-weight:800; color:#16a34a;">${adv.toLocaleString("en-IN")}</td></tr>
+                <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px; font-weight:700;">Declines (Closing Lower)</td><td style="padding:10px 14px; text-align:right; font-weight:800; color:#dc2626;">${dec.toLocaleString("en-IN")}</td></tr>
+                <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px; font-weight:700;">Unchanged</td><td style="padding:10px 14px; text-align:right; font-weight:700;">${unch.toLocaleString("en-IN")}</td></tr>
+                <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px; font-weight:700;">Advance / Decline Ratio</td><td style="padding:10px 14px; text-align:right; font-weight:800; color:#1d4ed8;">${adRatio}</td></tr>
+                <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:10px 14px; font-weight:700;">Trading Above 200-DMA</td><td style="padding:10px 14px; text-align:right; font-weight:700;">${above200.toLocaleString("en-IN")}</td></tr>
+                <tr><td style="padding:10px 14px; font-weight:700;">Golden Crossover (50-DMA &gt; 200-DMA)</td><td style="padding:10px 14px; text-align:right; font-weight:700;">${goldenCross.toLocaleString("en-IN")}</td></tr>
+              </tbody>
+            </table>
           </div>
-        `;
-    const low52Html =
-      activeExchange === "NSE"
-        ? renderStockTable(
-            "NSE 52-Week Low Stocks",
-            "Closing at or within 1% of 52-week low",
-            low52Pool,
-            "52W Low",
-            (s) => fmtPrice(s.low52)
-          )
-        : "";
+        `
+      );
+    } else if (segId === "top-gainers") {
+      const rows = pool
+        .filter((s) => typeof s.dayChangePct === "number" && s.dayChangePct > 0)
+        .sort((a, b) => b.dayChangePct - a.dayChangePct)
+        .slice(0, 20);
+      html = buildStockRowsTable(`${activeExchange} Top Gainers`, "Top 20 closing percentage gainers", rows, "Volume", (s) => fmtVol(s.volume));
+    } else if (segId === "top-losers") {
+      const rows = pool
+        .filter((s) => typeof s.dayChangePct === "number" && s.dayChangePct < 0)
+        .sort((a, b) => a.dayChangePct - b.dayChangePct)
+        .slice(0, 20);
+      html = buildStockRowsTable(`${activeExchange} Top Losers`, "Top 20 closing percentage decliners", rows, "Volume", (s) => fmtVol(s.volume));
+    } else if (segId === "high-52") {
+      if (activeExchange === "BSE") {
+        html = wrapPanel(
+          "BSE 52-Week High Stocks",
+          "Official BSE 52-Week High Feed (Next Sync Step)",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">BSE multi-month 52-Week Highs are not included in single-day BSE Bhavcopy. They will populate here once BSE's official 52-Week High/Low feed is connected.</div>`
+        );
+      } else {
+        const rows = stocks
+          .filter((s) => hasValid52WeekRange(s) && ((typeof s.dayHigh === "number" && s.dayHigh >= s.high52) || s.cmp >= s.high52 * 0.99))
+          .sort((a, b) => (b.volume || 0) - (a.volume || 0))
+          .slice(0, 20);
+        html = buildStockRowsTable("NSE 52-Week High Stocks", "Closing at or within 1% of 52-week high", rows, "52W High", (s) => fmtPrice(s.high52));
+      }
+    } else if (segId === "low-52") {
+      if (activeExchange === "BSE") {
+        html = wrapPanel(
+          "BSE 52-Week Low Stocks",
+          "Official BSE 52-Week Low Feed (Next Sync Step)",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">BSE multi-month 52-Week Lows are not included in single-day BSE Bhavcopy. They will populate here once BSE's official 52-Week High/Low feed is connected.</div>`
+        );
+      } else {
+        const rows = stocks
+          .filter((s) => hasValid52WeekRange(s) && ((typeof s.dayLow === "number" && s.dayLow <= s.low52) || s.cmp <= s.low52 * 1.01))
+          .sort((a, b) => (b.volume || 0) - (a.volume || 0))
+          .slice(0, 20);
+        html = buildStockRowsTable("NSE 52-Week Low Stocks", "Closing at or within 1% of 52-week low", rows, "52W Low", (s) => fmtPrice(s.low52));
+      }
+    } else {
+      const segMeta = SEGMENTS.find((s) => s.id === segId) || { label: segId };
+      const feedHint =
+        segId === "indices"
+          ? `Official ${activeExchange} Indices feed will populate this table in Step 2.`
+          : segId === "pcr-oi"
+          ? `Official ${activeExchange} F&O Bhavcopy (Put-Call Ratio & Open Interest) will populate this table in Step 3.`
+          : `Official ${activeExchange} daily Price Band / Circuit feed will populate ${segMeta.label} in Step 2 (zero estimated circuit percentages).`;
+      html = wrapPanel(`${activeExchange} ${segMeta.label}`, "Official Exchange Feed Integration", `<div style="padding:18px; color:#475569; font-size:0.9rem;">${esc(feedHint)}</div>`);
+    }
 
-    root.innerHTML = `
-      <div style="display:flex; flex-direction:column; gap:20px;">
-        ${breadthHtml}
-        ${fiiHtml}
-        ${sectorsHtml}
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:18px;">
-          ${gainersHtml}
-          ${losersHtml}
-        </div>
-        ${activeHtml}
-        ${
-          activeExchange === "NSE"
-            ? `<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:18px;">${high52Html}${low52Html}</div>`
-            : high52Html
-        }
-      </div>
-    `;
+    panel.innerHTML = html;
+    panel.hidden = false;
+
+    const closeBtn = document.getElementById("btn-close-snapshot-segment");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        activeSegment = null;
+        panel.hidden = true;
+        panel.innerHTML = "";
+        renderSegmentLinks();
+      });
+    }
+
+    if (shouldScroll) {
+      const heading = document.getElementById("snapshot-segment-heading") || panel;
+      if (typeof requestAnimationFrame === "function") {
+        requestAnimationFrame(() => {
+          if (typeof heading.focus === "function") heading.focus();
+          if (typeof heading.scrollIntoView === "function") heading.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    }
+  }
+
+  function setExchange(exchange) {
+    activeExchange = exchange === "BSE" ? "BSE" : "NSE";
+    const stocks = getExchangeStocks(activeExchange);
+    let sessionLabel = "Latest Closing Session";
+    for (const s of stocks) {
+      if (s && s.lastUpdated) {
+        sessionLabel = s.lastUpdated;
+        break;
+      }
+    }
+
+    const metaEl = document.getElementById("snapshot-active-meta");
+    const hintEl = document.getElementById("snapshot-session-hint");
+    if (metaEl) metaEl.textContent = `Showing ${activeExchange}: ${stocks.length.toLocaleString("en-IN")} Listed Equities • ${sessionLabel}`;
+    if (hintEl) hintEl.textContent = "Closing Session: " + sessionLabel;
+
+    const nseRadio = document.getElementById("chk-snapshot-nse");
+    const bseRadio = document.getElementById("chk-snapshot-bse");
+    if (nseRadio) nseRadio.checked = activeExchange === "NSE";
+    if (bseRadio) bseRadio.checked = activeExchange === "BSE";
+
+    renderFiiDiiSegment();
+    renderSegmentLinks();
+    if (activeSegment) {
+      openSegment(activeSegment, false);
+    }
   }
 
   function init() {
-    const nseBtn = document.getElementById("btn-snapshot-nse");
-    const bseBtn = document.getElementById("btn-snapshot-bse");
-
-    if (nseBtn) nseBtn.addEventListener("click", () => renderSnapshot("NSE"));
-    if (bseBtn) bseBtn.addEventListener("click", () => renderSnapshot("BSE"));
+    const nseRadio = document.getElementById("chk-snapshot-nse");
+    const bseRadio = document.getElementById("chk-snapshot-bse");
+    if (nseRadio) nseRadio.addEventListener("change", () => { if (nseRadio.checked) setExchange("NSE"); });
+    if (bseRadio) bseRadio.addEventListener("change", () => { if (bseRadio.checked) setExchange("BSE"); });
 
     const params = typeof window !== "undefined" && window.location ? new URLSearchParams(window.location.search || "") : null;
     const initialEx = params && String(params.get("exchange") || "").toUpperCase() === "BSE" ? "BSE" : "NSE";
-    renderSnapshot(initialEx);
+    setExchange(initialEx);
   }
 
   if (typeof window !== "undefined") {
-    window.StocksMarketSnapshot = { renderSnapshot };
+    window.StocksMarketSnapshot = { setExchange, openSegment };
   }
 
   if (typeof document !== "undefined") {

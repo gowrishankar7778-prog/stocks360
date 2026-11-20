@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Closing Market Snapshot (NSE &amp; BSE) - Stocks 360</title>
-  <meta name="description" content="Official EOD NSE and BSE Market Snapshot with Advance/Decline Ratio, Sector Performance, FII/DII Flows, Top Gainers, Top Losers, Most Active Stocks, and 52-Week High/Low tables.">
+  <meta name="description" content="Official EOD NSE and BSE Market Snapshot with FII/DII Flows, Indices, Sectors, Advance/Decline Ratio, Top Gainers, Top Losers, 52-Week High/Low, Circuits, and PCR/OI in tabular format.">
   <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
-  <link rel="stylesheet" href="css/styles.css?v=83">
+  <link rel="stylesheet" href="css/styles.css?v=84">
 </head>
 <body>
 
@@ -30,6 +30,7 @@
     <div class="container">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="market-snapshot.html" class="active" aria-current="page">Market Snapshot</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="mutual-funds.html">Mutual Funds</a></li>
         <li><a href="learn.html">Learn Modules</a></li>
@@ -60,29 +61,41 @@
             Closing Market Snapshot
           </h1>
           <p style="margin:0; font-size:0.92rem; color:#475569;">
-            Choose an exchange below to inspect closing market breadth, sectors, FII/DII flows, top gainers/losers, volume leaders, and 52-week highs/lows in tabular format.
+            Select NSE or BSE below, inspect FII &amp; DII institutional flows, and click any market segment link to view its closing table.
           </p>
         </header>
 
-        <!-- EXCHANGE SELECTOR (NSE vs BSE) -->
-        <div id="snapshot-exchange-bar" role="group" aria-label="Select Stock Exchange" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:20px; padding:12px 16px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px;">
-          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-            <span style="font-size:0.9rem; font-weight:800; color:#0f172a;">Select Exchange:</span>
-            <button type="button" id="btn-snapshot-nse" data-exchange="NSE" aria-pressed="true" style="padding:8px 18px; font-size:0.9rem; font-weight:700; border-radius:8px; cursor:pointer; border:1px solid #0f172a; background:#0f172a; color:#ffffff;">
-              NSE (National Stock Exchange)
-            </button>
-            <button type="button" id="btn-snapshot-bse" data-exchange="BSE" aria-pressed="false" style="padding:8px 18px; font-size:0.9rem; font-weight:700; border-radius:8px; cursor:pointer; border:1px solid #cbd5e1; background:#ffffff; color:#334155;">
-              BSE (Bombay Stock Exchange)
-            </button>
+        <!-- VERTICAL EXCHANGE TICK / RADIO SELECTOR (NSE DEFAULT, BSE BELOW) -->
+        <fieldset id="snapshot-exchange-fieldset" style="margin:0 0 20px 0; padding:14px 18px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px;">
+          <legend style="font-size:0.9rem; font-weight:800; color:#0f172a; padding:0 6px;">Choose Exchange</legend>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+            <label for="chk-snapshot-nse" style="display:flex; align-items:center; gap:10px; font-size:0.96rem; font-weight:700; color:#0f172a; cursor:pointer;">
+              <input type="radio" id="chk-snapshot-nse" name="snapshot-exchange" value="NSE" checked style="width:18px; height:18px; accent-color:#0f172a; cursor:pointer;">
+              <span>NSE (National Stock Exchange)</span>
+            </label>
+            <label for="chk-snapshot-bse" style="display:flex; align-items:center; gap:10px; font-size:0.96rem; font-weight:700; color:#0f172a; cursor:pointer;">
+              <input type="radio" id="chk-snapshot-bse" name="snapshot-exchange" value="BSE" style="width:18px; height:18px; accent-color:#2563eb; cursor:pointer;">
+              <span>BSE (Bombay Stock Exchange)</span>
+            </label>
           </div>
-          <span id="snapshot-active-meta" style="font-size:0.82rem; font-weight:600; color:#475569;">Showing NSE Closing Data</span>
-        </div>
+          <div id="snapshot-active-meta" style="margin-top:10px; font-size:0.82rem; font-weight:600; color:#475569;">
+            Showing NSE Closing Data
+          </div>
+        </fieldset>
 
-        <section id="market-snapshot-root" aria-live="polite">
-          <div style="padding:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; color:#64748b;">
-            Loading Closing Market Snapshot...
-          </div>
+        <!-- FII & DII DATA SEGMENT (TABULAR FORMAT) -->
+        <section id="snapshot-fii-dii-section" aria-label="FII and DII Data" style="margin-bottom:22px;"></section>
+
+        <!-- MARKET SNAPSHOT SEGMENT LINKS -->
+        <section id="snapshot-links-section" aria-label="Market Snapshot Segment Links" style="margin-bottom:22px;">
+          <h2 style="margin:0 0 10px 0; font-size:1.1rem; color:#0f172a; font-weight:800;">
+            Explore Market Segments
+          </h2>
+          <div id="snapshot-segment-links" style="display:flex; flex-wrap:wrap; gap:10px;"></div>
         </section>
+
+        <!-- SINGLE-ACTIVE SEGMENT TABLE VIEWER (APPROACH A) -->
+        <section id="snapshot-segment-panel" aria-live="polite" hidden></section>
 
       </div>
     </div>
@@ -101,11 +114,11 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-  <script src="js/firebase-config.js?v=83"></script>
-  <script src="js/auth.js?v=83"></script>
-  <script src="js/screener-index.js?v=83"></script>
-  <script src="js/market-pulse-data.js?v=83"></script>
-  <script src="js/market-snapshot.js?v=83"></script>
-  <script src="js/accessibility.js?v=83"></script>
+  <script src="js/firebase-config.js?v=84"></script>
+  <script src="js/auth.js?v=84"></script>
+  <script src="js/screener-index.js?v=84"></script>
+  <script src="js/market-pulse-data.js?v=84"></script>
+  <script src="js/market-snapshot.js?v=84"></script>
+  <script src="js/accessibility.js?v=84"></script>
 </body>
 </html>
