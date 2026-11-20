@@ -353,14 +353,76 @@
           .slice(0, 20);
         html = buildStockRowsTable("NSE 52-Week Low Stocks", "Closing at or within 1% of 52-week low", rows, "52W Low", (s) => fmtPrice(s.low52));
       }
+    } else if (segId === "indices") {
+      const pulse = window.STOCKS_MARKET_PULSE || null;
+      const indices = activeExchange === "NSE" && pulse && Array.isArray(pulse.nseIndices) ? pulse.nseIndices : [];
+      if (activeExchange === "BSE" || indices.length === 0) {
+        html = wrapPanel(
+          `${activeExchange} Indices`,
+          "Official Exchange Indices Feed",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${activeExchange === "BSE" ? "BSE Indices feed will be connected next. Switch to NSE to inspect all Nifty broad &amp; sectoral indices." : "Indices data is currently unavailable."}</div>`
+        );
+      } else {
+        html = wrapPanel(
+          "NSE Market & Sector Indices",
+          `Official NSE Indices (${indices.length} indices)`,
+          `
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+                <thead>
+                  <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.76rem; text-transform:uppercase;">
+                    <th scope="col" style="padding:10px 14px; text-align:left;">Index</th>
+                    <th scope="col" style="padding:10px 14px; text-align:right;">Last</th>
+                    <th scope="col" style="padding:10px 14px; text-align:right;">Change %</th>
+                    <th scope="col" style="padding:10px 14px; text-align:right;">High / Low</th>
+                    <th scope="col" style="padding:10px 14px; text-align:right;">P/E</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${indices
+                    .map((idx) => {
+                      const chgColor = idx.percentChange > 0 ? "#16a34a" : idx.percentChange < 0 ? "#dc2626" : "#475569";
+                      return `
+                        <tr style="border-bottom:1px solid #f1f5f9;">
+                          <td style="padding:10px 14px; font-weight:700; color:#0f172a;">${esc(idx.index)}</td>
+                          <td style="padding:10px 14px; text-align:right; font-weight:700;">${Number(idx.last).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                          <td style="padding:10px 14px; text-align:right; font-weight:800; color:${chgColor};">${fmtPct(idx.percentChange)}</td>
+                          <td style="padding:10px 14px; text-align:right; color:#475569; white-space:nowrap;">${idx.high != null ? idx.high.toLocaleString("en-IN") : "--"} / ${idx.low != null ? idx.low.toLocaleString("en-IN") : "--"}</td>
+                          <td style="padding:10px 14px; text-align:right; color:#475569;">${idx.pe != null ? idx.pe.toFixed(2) : "--"}</td>
+                        </tr>
+                      `;
+                    })
+                    .join("")}
+                </tbody>
+              </table>
+            </div>
+          `
+        );
+      }
+    } else if (segId === "upper-circuit" || segId === "lower-circuit") {
+      const pulse = window.STOCKS_MARKET_PULSE || null;
+      const isUpper = segId === "upper-circuit";
+      const rows = activeExchange === "NSE" && pulse
+        ? (isUpper ? pulse.nseUpperCircuit : pulse.nseLowerCircuit) || []
+        : [];
+      if (activeExchange === "BSE") {
+        html = wrapPanel(
+          `BSE ${isUpper ? "Upper Circuit" : "Lower Circuit"} Stocks`,
+          "Official BSE Price Band Feed",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">BSE daily price band limits are not included in single-day BSE Bhavcopy. Switch to NSE to inspect official NSE ${isUpper ? "Upper" : "Lower"} Circuit hits.</div>`
+        );
+      } else {
+        html = buildStockRowsTable(
+          `NSE ${isUpper ? "Upper Circuit" : "Lower Circuit"} Stocks`,
+          `Matched strictly against official NSE Price Bands (sec_list.csv)`,
+          rows,
+          "Price Band",
+          (s) => `${s.bandPct}% • ${fmtVol(s.volume)}`
+        );
+      }
     } else {
       const segMeta = SEGMENTS.find((s) => s.id === segId) || { label: segId };
-      const feedHint =
-        segId === "indices"
-          ? `Official ${activeExchange} Indices feed will populate this table in Step 2.`
-          : segId === "pcr-oi"
-          ? `Official ${activeExchange} F&O Bhavcopy (Put-Call Ratio & Open Interest) will populate this table in Step 3.`
-          : `Official ${activeExchange} daily Price Band / Circuit feed will populate ${segMeta.label} in Step 2 (zero estimated circuit percentages).`;
+      const feedHint = `Official ${activeExchange} F&O Bhavcopy (Put-Call Ratio & Open Interest) will populate this table in Step 3.`;
       html = wrapPanel(`${activeExchange} ${segMeta.label}`, "Official Exchange Feed Integration", `<div style="padding:18px; color:#475569; font-size:0.9rem;">${esc(feedHint)}</div>`);
     }
 
