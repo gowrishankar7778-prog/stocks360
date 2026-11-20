@@ -47,6 +47,16 @@ jobs:
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Deploy Updated Deals & Pulse to Firebase Hosting
+        if: steps.git_push.outputs.pushed == 'true'
+        continue-on-error: true
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STOCKS360 }}
+          projectId: project-b005dc8f-09b3-4af6-b2b
+          channelId: live
+
       - name: Trigger Render Auto-Deploy
         if: steps.git_push.outputs.pushed == 'true'
         env:
