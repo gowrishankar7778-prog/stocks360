@@ -5,7 +5,8 @@
  */
 
 const StocksDeals = (function () {
-  const DEALS_URL = "data/market/bulk-block-deals.json?v=86";
+  const DEALS_URL = "data/market/bulk-block-deals.json?v=87";
+  const INSIDER_URL = "data/market/insider-trading.json?v=87";
 
   const DEAL_VIEW_OPTIONS = [
     { value: "ALL", label: "All" },
@@ -43,6 +44,16 @@ const StocksDeals = (function () {
     }
   }
 
+  async function fetchInsiderData() {
+    try {
+      const res = await fetch(INSIDER_URL);
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (_) {
+      return null;
+    }
+  }
+
   function computeNetDealsByStock(deals, mode) {
     const byStock = new Map();
     for (const d of deals || []) {
@@ -61,7 +72,7 @@ const StocksDeals = (function () {
       const g = byStock.get(k);
       const qty = Number(d.quantity) || 0;
       const price = Number(d.price) || 0;
-      const amt = qty * price;
+      const amt = price > 0 ? qty * price : ((Number(d.valueCr) || 0) * 10000000);
       if (d.side === "SELL") {
         g.sellQty += qty;
         g.sellAmt += amt;
@@ -524,62 +535,86 @@ const StocksDeals = (function () {
     return `${m[3]}-${MONTHS_ARR[moIdx]}-${m[1]}`;
   }
 
-  function renderFullDealsPage(root, payload) {
-    if (!payload || !Array.isArray(payload.deals)) {
-      root.innerHTML = `<div style="padding:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; color:#64748b;">Official NSE Bulk &amp; Block Deals data is temporarily unavailable.</div>`;
-      return;
-    }
+  function buildTabPanelSkeleton(opts) {
+    const {
+      prefix,
+      comboLabel,
+      dateLabel,
+      dateAriaLabel,
+      tableRegionLabel,
+      tableId,
+      headId,
+      bodyId,
+      metaId,
+      datePickerId,
+      latestBtnId,
+      allDatesBtnId,
+      latestNseDate,
+      minIsoDate,
+      maxIsoDate,
+      mode
+    } = opts;
 
-    const availableIsoDates = Array.from(new Set(payload.deals.map((d) => nseDateToIso(d.date)).filter(Boolean))).sort();
-    const minIsoDate = availableIsoDates[0] || "";
-    const latestNseDate = payload.latestTradeDate || (payload.deals[0] && payload.deals[0].date) || "";
-    const maxIsoDate = nseDateToIso(latestNseDate) || (availableIsoDates[availableIsoDates.length - 1] || "");
-
-    let mode = "ALL";
-    let selectedDate = latestNseDate; // Default strictly to latest updated date only
-
-    root.innerHTML = `
+    return `
       <div style="margin-bottom:16px; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px;">
         <div style="display:flex; flex-direction:column; gap:10px;">
           <div style="display:flex; align-items:center; gap:10px;">
-            <span id="deals-conviction-combo-label" style="font-size:0.9rem; font-weight:700; color:#334155; min-width:78px;">Deal View:</span>
-            ${buildCollapsibleComboHtml("deals-conviction", mode)}
+            <span id="${prefix}-combo-label" style="font-size:0.9rem; font-weight:700; color:#334155; min-width:88px;">${escapeHtml(comboLabel)}</span>
+            ${buildCollapsibleComboHtml(prefix, mode)}
           </div>
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-            <label for="deals-date-picker" style="font-size:0.9rem; font-weight:700; color:#334155; min-width:78px;">Deal Date:</label>
+            <label for="${datePickerId}" style="font-size:0.9rem; font-weight:700; color:#334155; min-width:88px;">${escapeHtml(dateLabel)}</label>
             <input
               type="date"
-              id="deals-date-picker"
+              id="${datePickerId}"
               value="${escapeHtml(maxIsoDate)}"
               ${minIsoDate ? `min="${escapeHtml(minIsoDate)}"` : ""}
               ${maxIsoDate ? `max="${escapeHtml(maxIsoDate)}"` : ""}
-              aria-label="Select historical deal date"
+              aria-label="${escapeHtml(dateAriaLabel)}"
               style="padding:7px 12px; border:1px solid #cbd5e1; border-radius:8px; font-weight:600; color:#0f172a; background:#ffffff; font-size:0.9rem; cursor:pointer;"
             />
-            <button type="button" id="btn-deals-latest-date" style="padding:7px 12px; border-radius:8px; border:1px solid #2563eb; background:#eff6ff; color:#1d4ed8; font-size:0.82rem; font-weight:700; cursor:pointer;">
+            <button type="button" id="${latestBtnId}" style="padding:7px 12px; border-radius:8px; border:1px solid #2563eb; background:#eff6ff; color:#1d4ed8; font-size:0.82rem; font-weight:700; cursor:pointer;">
               Latest (${escapeHtml(latestNseDate)})
             </button>
-            <button type="button" id="btn-deals-all-dates" style="padding:7px 12px; border-radius:8px; border:1px solid #cbd5e1; background:#ffffff; color:#334155; font-size:0.82rem; font-weight:600; cursor:pointer;">
+            <button type="button" id="${allDatesBtnId}" style="padding:7px 12px; border-radius:8px; border:1px solid #cbd5e1; background:#ffffff; color:#334155; font-size:0.82rem; font-weight:600; cursor:pointer;">
               All Stored Dates
             </button>
           </div>
         </div>
-        <span id="deals-match-meta" style="font-size:0.84rem; color:#64748b; font-weight:600;"></span>
+        <span id="${metaId}" style="font-size:0.84rem; color:#64748b; font-weight:600;"></span>
       </div>
 
       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 1px 3px rgba(15,23,42,0.04);">
-        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="NSE Bulk and Block Deals Table" style="overflow-x:auto;">
-          <table id="deals-data-table" class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:860px;">
-            <thead id="deals-table-head"></thead>
-            <tbody id="deals-table-body"></tbody>
+        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="${escapeHtml(tableRegionLabel)}" style="overflow-x:auto;">
+          <table id="${tableId}" class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:860px;">
+            <thead id="${headId}"></thead>
+            <tbody id="${bodyId}"></tbody>
           </table>
         </div>
       </div>
     `;
+  }
 
-    const datePickerEl = document.getElementById("deals-date-picker");
-    const latestBtnEl = document.getElementById("btn-deals-latest-date");
-    const allDatesBtnEl = document.getElementById("btn-deals-all-dates");
+  function wireTabPanelController(opts, payload) {
+    const {
+      prefix,
+      unitLabel,
+      headId,
+      bodyId,
+      metaId,
+      datePickerId,
+      latestBtnId,
+      allDatesBtnId,
+      latestNseDate,
+      maxIsoDate
+    } = opts;
+
+    let mode = "ALL";
+    let selectedDate = latestNseDate;
+
+    const datePickerEl = document.getElementById(datePickerId);
+    const latestBtnEl = document.getElementById(latestBtnId);
+    const allDatesBtnEl = document.getElementById(allDatesBtnId);
 
     function syncDateButtonStyles() {
       const isAll = selectedDate === "ALL_DATES";
@@ -597,9 +632,9 @@ const StocksDeals = (function () {
     }
 
     function updateTable() {
-      const thead = document.getElementById("deals-table-head");
-      const tbody = document.getElementById("deals-table-body");
-      const meta = document.getElementById("deals-match-meta");
+      const thead = document.getElementById(headId);
+      const tbody = document.getElementById(bodyId);
+      const meta = document.getElementById(metaId);
 
       const activeDeals = selectedDate === "ALL_DATES"
         ? payload.deals
@@ -609,8 +644,8 @@ const StocksDeals = (function () {
       if (tbody) tbody.innerHTML = buildDealsRowsHtml(activeDeals, mode, 500);
       if (meta) {
         meta.textContent = selectedDate === "ALL_DATES"
-          ? `All Historical Dates (${activeDeals.length} deals)`
-          : `${selectedDate} (${activeDeals.length} deals)`;
+          ? `All Historical Dates (${activeDeals.length} ${unitLabel})`
+          : `${selectedDate} (${activeDeals.length} ${unitLabel})`;
       }
       syncDateButtonStyles();
     }
@@ -638,12 +673,134 @@ const StocksDeals = (function () {
       });
     }
 
-    bindCollapsibleCombo("deals-conviction", mode, function (nextMode) {
+    bindCollapsibleCombo(prefix, mode, function (nextMode) {
       mode = nextMode;
       updateTable();
     });
 
     updateTable();
+  }
+
+  function renderFullDealsPage(root, payload, insiderPayload) {
+    if (!payload || !Array.isArray(payload.deals)) {
+      root.innerHTML = `<div style="padding:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; color:#64748b;">Official NSE Bulk &amp; Block Deals data is temporarily unavailable.</div>`;
+      return;
+    }
+
+    const availableIsoDates = Array.from(new Set(payload.deals.map((d) => nseDateToIso(d.date)).filter(Boolean))).sort();
+    const minIsoDate = availableIsoDates[0] || "";
+    const latestNseDate = payload.latestTradeDate || (payload.deals[0] && payload.deals[0].date) || "";
+    const maxIsoDate = nseDateToIso(latestNseDate) || (availableIsoDates[availableIsoDates.length - 1] || "");
+
+    const dealsOpts = {
+      prefix: "deals-conviction",
+      comboLabel: "Deal View:",
+      dateLabel: "Deal Date:",
+      dateAriaLabel: "Select historical deal date",
+      tableRegionLabel: "NSE Bulk and Block Deals Table",
+      tableId: "deals-data-table",
+      headId: "deals-table-head",
+      bodyId: "deals-table-body",
+      metaId: "deals-match-meta",
+      datePickerId: "deals-date-picker",
+      latestBtnId: "btn-deals-latest-date",
+      allDatesBtnId: "btn-deals-all-dates",
+      unitLabel: "deals",
+      latestNseDate,
+      minIsoDate,
+      maxIsoDate,
+      mode: "ALL"
+    };
+
+    const hasInsider = insiderPayload && Array.isArray(insiderPayload.deals) && insiderPayload.deals.length > 0;
+    const insIsoDates = hasInsider ? Array.from(new Set(insiderPayload.deals.map((d) => nseDateToIso(d.date)).filter(Boolean))).sort() : [];
+    const insLatestDate = hasInsider ? (insiderPayload.latestTradeDate || (insiderPayload.deals[0] && insiderPayload.deals[0].date) || "") : "";
+    const insMaxIso = nseDateToIso(insLatestDate) || (insIsoDates[insIsoDates.length - 1] || "");
+
+    const insiderOpts = {
+      prefix: "insider-conviction",
+      comboLabel: "Insider View:",
+      dateLabel: "Disclosure Date:",
+      dateAriaLabel: "Select historical insider trading date",
+      tableRegionLabel: "NSE SEBI PIT Insider Trading Table",
+      tableId: "insider-data-table",
+      headId: "insider-table-head",
+      bodyId: "insider-table-body",
+      metaId: "insider-match-meta",
+      datePickerId: "insider-date-picker",
+      latestBtnId: "btn-insider-latest-date",
+      allDatesBtnId: "btn-insider-all-dates",
+      unitLabel: "trades",
+      latestNseDate: insLatestDate,
+      minIsoDate: insIsoDates[0] || "",
+      maxIsoDate: insMaxIso,
+      mode: "ALL"
+    };
+
+    root.innerHTML = `
+      <div role="tablist" aria-label="Market Activity Tabs" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
+        <button type="button" role="tab" id="tab-btn-deals" aria-selected="true" aria-controls="tab-panel-deals" style="padding:9px 18px; border-radius:8px; border:1px solid #0f172a; background:#0f172a; color:#ffffff; font-weight:700; font-size:0.92rem; cursor:pointer;">
+          Bulk &amp; Block Deals
+        </button>
+        <button type="button" role="tab" id="tab-btn-insider" aria-selected="false" aria-controls="tab-panel-insider" style="padding:9px 18px; border-radius:8px; border:1px solid #cbd5e1; background:#ffffff; color:#334155; font-weight:700; font-size:0.92rem; cursor:pointer;">
+          Insider Trading (SEBI PIT)
+        </button>
+      </div>
+
+      <div id="tab-panel-deals" role="tabpanel" aria-labelledby="tab-btn-deals">
+        ${buildTabPanelSkeleton(dealsOpts)}
+      </div>
+
+      <div id="tab-panel-insider" role="tabpanel" aria-labelledby="tab-btn-insider" hidden>
+        ${
+          hasInsider
+            ? buildTabPanelSkeleton(insiderOpts)
+            : `<div style="padding:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; color:#64748b;">Official NSE SEBI PIT Insider Trading disclosures are not yet available.</div>`
+        }
+      </div>
+    `;
+
+    wireTabPanelController(dealsOpts, payload);
+    if (hasInsider) {
+      wireTabPanelController(insiderOpts, insiderPayload);
+    }
+
+    const tabDealsBtn = document.getElementById("tab-btn-deals");
+    const tabInsiderBtn = document.getElementById("tab-btn-insider");
+    const panelDeals = document.getElementById("tab-panel-deals");
+    const panelInsider = document.getElementById("tab-panel-insider");
+
+    function switchTab(tabName) {
+      const showInsider = tabName === "insider";
+      if (panelDeals) {
+        panelDeals.hidden = showInsider;
+        if (!showInsider && typeof panelDeals.removeAttribute === "function") panelDeals.removeAttribute("hidden");
+      }
+      if (panelInsider) {
+        panelInsider.hidden = !showInsider;
+        if (showInsider && typeof panelInsider.removeAttribute === "function") panelInsider.removeAttribute("hidden");
+      }
+      if (tabDealsBtn) {
+        tabDealsBtn.setAttribute("aria-selected", !showInsider ? "true" : "false");
+        if (tabDealsBtn.style) {
+          tabDealsBtn.style.background = !showInsider ? "#0f172a" : "#ffffff";
+          tabDealsBtn.style.color = !showInsider ? "#ffffff" : "#334155";
+          tabDealsBtn.style.borderColor = !showInsider ? "#0f172a" : "#cbd5e1";
+        }
+      }
+      if (tabInsiderBtn) {
+        tabInsiderBtn.setAttribute("aria-selected", showInsider ? "true" : "false");
+        if (tabInsiderBtn.style) {
+          tabInsiderBtn.style.background = showInsider ? "#0f172a" : "#ffffff";
+          tabInsiderBtn.style.color = showInsider ? "#ffffff" : "#334155";
+          tabInsiderBtn.style.borderColor = showInsider ? "#0f172a" : "#cbd5e1";
+        }
+      }
+    }
+
+    if (tabDealsBtn) tabDealsBtn.addEventListener("click", () => switchTab("deals"));
+    if (tabInsiderBtn) tabInsiderBtn.addEventListener("click", () => switchTab("insider"));
+    switchTab("deals");
   }
 
   function renderScreenerDealsPreview(root, payload) {
@@ -722,8 +879,11 @@ const StocksDeals = (function () {
     const previewRoot = document.getElementById("screener-deals-preview-root");
     if (!pageRoot && !previewRoot) return;
 
-    const payload = await fetchDealsData();
-    if (pageRoot) renderFullDealsPage(pageRoot, payload);
+    const [payload, insiderPayload] = await Promise.all([
+      fetchDealsData(),
+      pageRoot ? fetchInsiderData() : Promise.resolve(null)
+    ]);
+    if (pageRoot) renderFullDealsPage(pageRoot, payload, insiderPayload);
     if (previewRoot) renderScreenerDealsPreview(previewRoot, payload);
   }
 
