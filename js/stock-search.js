@@ -1010,7 +1010,7 @@ document.addEventListener("DOMContentLoaded", function () {
         label: "Current Price",
         btnLabel: "Current Price Information",
         value: activeCmp > 0 ? `₹ ${fmtNum(activeCmp)}` : "Not Available",
-        info: `Latest closing equity price from official ${activeExch} Bhavcopy.`
+        info: `Latest closing equity price on ${activeExch}.`
       },
       {
         id: "metric-high-low-52",
@@ -1024,7 +1024,7 @@ document.addEventListener("DOMContentLoaded", function () {
         label: "Daily Traded Value",
         btnLabel: "Daily Traded Value Information",
         value: tradedValText,
-        info: `Session turnover computed directly from official ${activeExch} Bhavcopy Price × Volume.`
+        info: `Session turnover computed from official ${activeExch} closing price and traded volume.`
       },
       {
         id: "metric-volume",
@@ -1042,21 +1042,21 @@ document.addEventListener("DOMContentLoaded", function () {
             label: "Previous Close",
             btnLabel: "Previous Close Information",
             value: activePrevClose > 0 ? `₹ ${fmtNum(activePrevClose)}` : "Not Available",
-            info: `Official previous session closing price from ${activeExch} Bhavcopy.`
+            info: `Official previous session closing price on ${activeExch}.`
           },
           {
             id: "metric-day-range",
             label: "Day High / Low",
             btnLabel: "Day High / Low Information",
             value: activeDayHigh > 0 && activeDayLow > 0 ? `₹ ${fmtNum(activeDayHigh)} / ₹ ${fmtNum(activeDayLow)}` : "Not Available",
-            info: `Intraday highest and lowest traded prices from official ${activeExch} Bhavcopy.`
+            info: `Intraday highest and lowest traded prices on ${activeExch}.`
           },
           {
             id: "metric-avg-vol",
             label: "10-Day Avg Volume",
             btnLabel: "10-Day Avg Volume Information",
             value: Number(stock.avgVolume) > 0 ? `${Math.round(Number(stock.avgVolume)).toLocaleString("en-IN")} shares` : `${activeVol.toLocaleString("en-IN")} shares`,
-            info: "Rolling 10-session average trading volume from daily Bhavcopy records."
+            info: "Rolling 10-session average daily trading volume."
           },
           {
             id: "metric-dma-pair",
@@ -1072,14 +1072,14 @@ document.addEventListener("DOMContentLoaded", function () {
             label: "Market Cap",
             btnLabel: "Market Cap Information",
             value: activeMcapCr ? `₹ ${activeMcapCr.toLocaleString("en-IN")} Cr` : "Pending Filing",
-            info: "Bhavcopy CMP multiplied by diluted equity shares derived from latest official NSE quarterly filings."
+            info: "Current Market Price multiplied by diluted equity shares derived from latest official NSE quarterly filings."
           },
           {
             id: "metric-pe",
             label: "Stock P/E (TTM)",
             btnLabel: "Stock P/E Information",
             value: activePe !== null ? `${activePe}x` : (typeof stock.ttmEps === "number" && stock.ttmEps <= 0 ? "N/A (Loss)" : "Pending Filing"),
-            info: "Bhavcopy CMP divided by Trailing 12-Month Diluted EPS from official NSE filings."
+            info: "Current Market Price divided by Trailing 12-Month Diluted EPS from official NSE filings."
           },
           {
             id: "metric-ttm-eps",
@@ -1344,7 +1344,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnLabel: "Technical Momentum Information",
         score: qvt.t,
         band: tBand,
-        desc: "Evaluates price and volume trend strength from daily NSE Bhavcopy data: 50-DMA & 200-DMA alignment, Golden Crossover, 52-week range position, 14-day RSI zone, volume surge, and delivery conviction."
+        desc: "Evaluates price and volume trend strength from daily NSE market data: 50-DMA & 200-DMA alignment, Golden Crossover, 52-week range position, 14-day RSI zone, volume surge, and delivery conviction."
       }
     ];
 
@@ -1381,7 +1381,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
 
       <div id="qvt-methodology-disclaimer" style="font-size:0.78rem; color:#64748b; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:9px 12px; line-height:1.45;">
-        <strong style="color:#92400e;">Disclaimer:</strong> The Stocks 360 QVT Score is a rule-based analytical metric derived solely from the last 3 years of official NSE financial filings and daily Bhavcopy technicals. Because bulk multi-decade historical data is not used for backtesting, this score is not backtested across prior market cycles and is meant strictly for educational and screening reference, not SEBI-registered investment advice.
+        <strong style="color:#92400e;">Disclaimer:</strong> The Stocks 360 QVT Score is a rule-based analytical metric derived solely from the last 3 years of official NSE financial filings and daily market technicals. Because multi-decade historical data is not used for backtesting, this score is not backtested across prior market cycles and is meant strictly for educational and screening reference, not SEBI-registered investment advice. Stocks 360 is not a SEBI registered investment adviser.
       </div>
     `;
   }
@@ -1634,7 +1634,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=87")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=88")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1646,7 +1646,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=87")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=88")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1666,7 +1666,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=87")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=88")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }

@@ -329,8 +329,8 @@
       if (activeExchange === "BSE") {
         html = wrapPanel(
           "BSE 52-Week High Stocks",
-          "Official BSE 52-Week High Feed (Next Sync Step)",
-          `<div style="padding:18px; color:#475569; font-size:0.9rem;">BSE multi-month 52-Week Highs are not included in single-day BSE Bhavcopy. They will populate here once BSE's official 52-Week High/Low feed is connected.</div>`
+          "Official BSE 52-Week High Summary",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">52-Week High data is currently unavailable for BSE in this view. Switch to NSE to view 52-Week High stocks.</div>`
         );
       } else {
         const rows = stocks
@@ -343,8 +343,8 @@
       if (activeExchange === "BSE") {
         html = wrapPanel(
           "BSE 52-Week Low Stocks",
-          "Official BSE 52-Week Low Feed (Next Sync Step)",
-          `<div style="padding:18px; color:#475569; font-size:0.9rem;">BSE multi-month 52-Week Lows are not included in single-day BSE Bhavcopy. They will populate here once BSE's official 52-Week High/Low feed is connected.</div>`
+          "Official BSE 52-Week Low Summary",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">52-Week Low data is currently unavailable for BSE in this view. Switch to NSE to view 52-Week Low stocks.</div>`
         );
       } else {
         const rows = stocks
@@ -408,13 +408,13 @@
       if (activeExchange === "BSE") {
         html = wrapPanel(
           `BSE ${isUpper ? "Upper Circuit" : "Lower Circuit"} Stocks`,
-          "Official BSE Price Band Feed",
-          `<div style="padding:18px; color:#475569; font-size:0.9rem;">BSE daily price band limits are not included in single-day BSE Bhavcopy. Switch to NSE to inspect official NSE ${isUpper ? "Upper" : "Lower"} Circuit hits.</div>`
+          "Official BSE Price Band Summary",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">Daily circuit limits are currently unavailable for BSE in this view. Switch to NSE to inspect official NSE ${isUpper ? "Upper" : "Lower"} Circuit stocks.</div>`
         );
       } else {
         html = buildStockRowsTable(
           `NSE ${isUpper ? "Upper Circuit" : "Lower Circuit"} Stocks`,
-          `Matched strictly against official NSE Price Bands (sec_list.csv)`,
+          `Matched against official NSE daily price bands`,
           rows,
           "Price Band",
           (s) => `${s.bandPct}% • ${fmtVol(s.volume)}`
@@ -426,8 +426,8 @@
       if (activeExchange === "BSE" || !fo) {
         html = wrapPanel(
           `${activeExchange} Put-Call Ratio & Open Interest`,
-          "Official Derivatives Bhavcopy Feed",
-          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${activeExchange === "BSE" ? "BSE F&amp;O Bhavcopy is not connected yet. Switch to NSE to inspect Index PCR and Stock Open Interest." : "NSE F&amp;O Bhavcopy data is currently unavailable."}</div>`
+          "Official Derivatives Summary",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${activeExchange === "BSE" ? "Derivatives summary is currently unavailable for BSE in this view. Switch to NSE to inspect Index PCR and Stock Open Interest." : "NSE Derivatives data is currently unavailable."}</div>`
         );
       } else {
         const idxRows = (fo.indexPcr || []).map((r) => `
@@ -453,7 +453,7 @@
 
         html = wrapPanel(
           "NSE Put-Call Ratio (PCR) & Open Interest",
-          `Official NSE F&O UDiFF Bhavcopy • Session: ${fo.tradeDate}`,
+          `Official NSE Derivatives Summary • Session: ${fo.tradeDate}`,
           `
             <div style="padding:14px 16px 6px 16px; font-size:0.86rem; font-weight:800; color:#0f172a;">Index Derivatives PCR &amp; Open Interest</div>
             <div style="overflow-x:auto;">
