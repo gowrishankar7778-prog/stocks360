@@ -420,10 +420,78 @@
           (s) => `${s.bandPct}% • ${fmtVol(s.volume)}`
         );
       }
+    } else if (segId === "pcr-oi") {
+      const pulse = window.STOCKS_MARKET_PULSE || null;
+      const fo = activeExchange === "NSE" && pulse && pulse.nseFoSnapshot ? pulse.nseFoSnapshot : null;
+      if (activeExchange === "BSE" || !fo) {
+        html = wrapPanel(
+          `${activeExchange} Put-Call Ratio & Open Interest`,
+          "Official Derivatives Bhavcopy Feed",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${activeExchange === "BSE" ? "BSE F&amp;O Bhavcopy is not connected yet. Switch to NSE to inspect Index PCR and Stock Open Interest." : "NSE F&amp;O Bhavcopy data is currently unavailable."}</div>`
+        );
+      } else {
+        const idxRows = (fo.indexPcr || []).map((r) => `
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:10px 14px; font-weight:800; color:#0f172a;">${esc(r.symbol)}</td>
+            <td style="padding:10px 14px; text-align:right; font-weight:800; color:#1d4ed8;">${r.pcrOi != null ? r.pcrOi.toFixed(2) : "--"}</td>
+            <td style="padding:10px 14px; text-align:right;">${fmtVol(r.ceOi)}</td>
+            <td style="padding:10px 14px; text-align:right;">${fmtVol(r.peOi)}</td>
+            <td style="padding:10px 14px; text-align:right; font-weight:700;">${fmtVol(r.totalOi)}</td>
+            <td style="padding:10px 14px; text-align:right; font-weight:800; color:${r.chgOiPct >= 0 ? "#16a34a" : "#dc2626"};">${fmtPct(r.chgOiPct)}</td>
+          </tr>
+        `).join("");
+
+        const stockRows = (fo.topStockOi || []).map((r) => `
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:10px 14px;"><a href="index.html?symbol=${encodeURIComponent(r.symbol)}" style="font-weight:800; color:#1d4ed8; text-decoration:none;">${esc(r.symbol)}</a></td>
+            <td style="padding:10px 14px; text-align:right;">${r.underlyingPrice != null ? fmtPrice(r.underlyingPrice) : "--"}</td>
+            <td style="padding:10px 14px; text-align:right; font-weight:800; color:#1d4ed8;">${r.pcrOi != null ? r.pcrOi.toFixed(2) : "--"}</td>
+            <td style="padding:10px 14px; text-align:right; font-weight:700;">${fmtVol(r.totalOi)}</td>
+            <td style="padding:10px 14px; text-align:right; font-weight:800; color:${r.chgOiPct >= 0 ? "#16a34a" : "#dc2626"};">${fmtPct(r.chgOiPct)}</td>
+          </tr>
+        `).join("");
+
+        html = wrapPanel(
+          "NSE Put-Call Ratio (PCR) & Open Interest",
+          `Official NSE F&O UDiFF Bhavcopy • Session: ${fo.tradeDate}`,
+          `
+            <div style="padding:14px 16px 6px 16px; font-size:0.86rem; font-weight:800; color:#0f172a;">Index Derivatives PCR &amp; Open Interest</div>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+                <thead>
+                  <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+                    <th scope="col" style="padding:9px 14px; text-align:left;">Index</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">PCR (OI)</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">Call OI</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">Put OI</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">Total OI</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">OI Chg %</th>
+                  </tr>
+                </thead>
+                <tbody>${idxRows}</tbody>
+              </table>
+            </div>
+            <div style="padding:16px 16px 6px 16px; font-size:0.86rem; font-weight:800; color:#0f172a; border-top:1px solid #e2e8f0;">Top 20 F&amp;O Stocks by Open Interest</div>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+                <thead>
+                  <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+                    <th scope="col" style="padding:9px 14px; text-align:left;">Stock</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">Underlying</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">PCR (OI)</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">Total OI</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">OI Chg %</th>
+                  </tr>
+                </thead>
+                <tbody>${stockRows}</tbody>
+              </table>
+            </div>
+          `
+        );
+      }
     } else {
       const segMeta = SEGMENTS.find((s) => s.id === segId) || { label: segId };
-      const feedHint = `Official ${activeExchange} F&O Bhavcopy (Put-Call Ratio & Open Interest) will populate this table in Step 3.`;
-      html = wrapPanel(`${activeExchange} ${segMeta.label}`, "Official Exchange Feed Integration", `<div style="padding:18px; color:#475569; font-size:0.9rem;">${esc(feedHint)}</div>`);
+      html = wrapPanel(`${activeExchange} ${segMeta.label}`, "Official Exchange Feed Integration", `<div style="padding:18px; color:#475569; font-size:0.9rem;">Data unavailable.</div>`);
     }
 
     panel.innerHTML = html;
