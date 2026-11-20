@@ -7,6 +7,15 @@
 (function () {
   let activeExchange = "NSE";
   let activeSegment = null;
+  let lastOpenedSegmentId = null;
+
+  function announceA11y(text) {
+    try {
+      if (typeof window !== "undefined" && typeof window.speakText === "function" && typeof localStorage !== "undefined" && localStorage.getItem("stocks360_special_a11y") === "true") {
+        window.speakText(text, true);
+      }
+    } catch (_) {}
+  }
 
   const SEGMENTS = [
     { id: "indices", label: "Indices" },
@@ -93,8 +102,8 @@
             Combined Net: ${fmtCr(fiiLatest.combinedNetCr)}
           </span>
         </div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="FII and DII Cash Market Activity Table" style="overflow-x:auto;">
+          <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.9rem; min-width:540px;">
             <thead>
               <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.78rem; text-transform:uppercase;">
                 <th scope="col" style="padding:10px 14px; text-align:left;">Category</th>
@@ -132,8 +141,11 @@
       return `
         <a
           href="#snapshot-segment-panel"
+          id="snapshot-link-${seg.id}"
           class="snapshot-segment-link"
           data-segment="${seg.id}"
+          aria-controls="snapshot-segment-panel"
+          aria-expanded="${isSelected ? "true" : "false"}"
           aria-current="${isSelected ? "true" : "false"}"
           style="display:inline-flex; align-items:center; padding:8px 14px; border-radius:8px; font-size:0.88rem; font-weight:700; text-decoration:none; border:1px solid ${isSelected ? "#2563eb" : "#cbd5e1"}; background:${isSelected ? "#2563eb" : "#ffffff"}; color:${isSelected ? "#ffffff" : "#1e293b"}; transition:all 0.15s;"
         >
@@ -179,8 +191,8 @@
       title,
       subtitle,
       `
-        <div style="overflow-x:auto;">
-          <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="${esc(title)}" style="overflow-x:auto;">
+          <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:540px;">
             <thead>
               <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.76rem; text-transform:uppercase;">
                 <th scope="col" style="padding:10px 14px; text-align:left;">Company</th>
@@ -494,20 +506,32 @@
       html = wrapPanel(`${activeExchange} ${segMeta.label}`, "Official Exchange Feed Integration", `<div style="padding:18px; color:#475569; font-size:0.9rem;">Data unavailable.</div>`);
     }
 
+    function closeActiveSegment(restoreFocus) {
+      const targetSeg = lastOpenedSegmentId;
+      activeSegment = null;
+      panel.hidden = true;
+      panel.innerHTML = "";
+      renderSegmentLinks();
+      if (restoreFocus && targetSeg) {
+        const prevLink = document.getElementById("snapshot-link-" + targetSeg);
+        if (prevLink && typeof prevLink.focus === "function") prevLink.focus();
+      }
+      announceA11y("Closed market segment table.");
+    }
+
+    lastOpenedSegmentId = segId;
     panel.innerHTML = html;
     panel.hidden = false;
+    if (typeof panel.removeAttribute === "function") panel.removeAttribute("hidden");
 
     const closeBtn = document.getElementById("btn-close-snapshot-segment");
     if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        activeSegment = null;
-        panel.hidden = true;
-        panel.innerHTML = "";
-        renderSegmentLinks();
-      });
+      closeBtn.addEventListener("click", () => closeActiveSegment(true));
     }
 
     if (shouldScroll) {
+      const segMeta = SEGMENTS.find((s) => s.id === segId);
+      announceA11y(`Opened ${activeExchange} ${segMeta ? segMeta.label : segId} table.`);
       const heading = document.getElementById("snapshot-segment-heading") || panel;
       if (typeof requestAnimationFrame === "function") {
         requestAnimationFrame(() => {
@@ -549,8 +573,26 @@
   function init() {
     const nseRadio = document.getElementById("chk-snapshot-nse");
     const bseRadio = document.getElementById("chk-snapshot-bse");
-    if (nseRadio) nseRadio.addEventListener("change", () => { if (nseRadio.checked) setExchange("NSE"); });
-    if (bseRadio) bseRadio.addEventListener("change", () => { if (bseRadio.checked) setExchange("BSE"); });
+    if (nseRadio) nseRadio.addEventListener("change", () => { if (nseRadio.checked) { setExchange("NSE"); announceA11y("Switched Market Snapshot to NSE."); } });
+    if (bseRadio) bseRadio.addEventListener("change", () => { if (bseRadio.checked) { setExchange("BSE"); announceA11y("Switched Market Snapshot to BSE."); } });
+
+    document.addEventListener("keydown", (e) => {
+      if ((e.key === "Escape" || e.key === "Esc") && activeSegment) {
+        const panel = document.getElementById("snapshot-segment-panel");
+        const prevSeg = lastOpenedSegmentId;
+        activeSegment = null;
+        if (panel) {
+          panel.hidden = true;
+          panel.innerHTML = "";
+        }
+        renderSegmentLinks();
+        if (prevSeg) {
+          const prevLink = document.getElementById("snapshot-link-" + prevSeg);
+          if (prevLink && typeof prevLink.focus === "function") prevLink.focus();
+        }
+        announceA11y("Closed market segment table.");
+      }
+    });
 
     const params = typeof window !== "undefined" && window.location ? new URLSearchParams(window.location.search || "") : null;
     const initialEx = params && String(params.get("exchange") || "").toUpperCase() === "BSE" ? "BSE" : "NSE";
