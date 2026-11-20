@@ -49448,6 +49448,15 @@
     },
     "quarterlyResults": [
       {
+        "period": "Sep 18",
+        "sales": "44",
+        "expenses": "69",
+        "operatingProfit": "-25",
+        "opm": "-56.8%",
+        "netProfit": "-25",
+        "eps": "₹-24.96"
+      },
+      {
         "period": "Dec 18",
         "sales": "136",
         "expenses": "153",
@@ -49485,8 +49494,8 @@
       }
     ],
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:32.567Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:23:07.718Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "balanceSheet": [],
     "cashFlows": [],
     "sector": "Diversified Equities",
@@ -49508,5 +49517,83 @@
         "eps": "₹-35.39"
       }
     ]
+  },
+  "KTIL": {
+    "updatedAt": "2026-11-20T12:26:50.826Z",
+    "shareholding": {
+      "promoters": "59.92%",
+      "public": "40.08%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Sep 18",
+        "sales": "10",
+        "expenses": "5",
+        "operatingProfit": "5",
+        "opm": "50.0%",
+        "netProfit": "4",
+        "eps": "₹3.57"
+      },
+      {
+        "period": "Dec 18",
+        "sales": "8",
+        "expenses": "5",
+        "operatingProfit": "3",
+        "opm": "37.5%",
+        "netProfit": "4",
+        "eps": "₹3.54"
+      },
+      {
+        "period": "Mar 19",
+        "sales": "12",
+        "expenses": "6",
+        "operatingProfit": "6",
+        "opm": "50.0%",
+        "netProfit": "7",
+        "eps": "₹6.51"
+      },
+      {
+        "period": "Jun 19",
+        "sales": "11",
+        "expenses": "6",
+        "operatingProfit": "5",
+        "opm": "45.5%",
+        "netProfit": "3",
+        "eps": "₹3.19"
+      },
+      {
+        "period": "Sep 19",
+        "sales": "10",
+        "expenses": "6",
+        "operatingProfit": "4",
+        "opm": "40.0%",
+        "netProfit": "3",
+        "eps": "₹2.49"
+      }
+    ],
+    "annualPnl": [
+      {
+        "year": "TTM",
+        "sales": "41",
+        "expenses": "23",
+        "operatingProfit": "18",
+        "opm": "43.9%",
+        "netProfit": "17",
+        "eps": "₹15.73"
+      }
+    ],
+    "sector": "Infrastructure & Construction",
+    "ratios": {
+      "marketCapCr": 70,
+      "pe": 3.7,
+      "ttmEps": 15.73,
+      "ttmSalesCr": 41,
+      "ttmPatCr": 17,
+      "promoterPct": 59.92
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:52.418Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

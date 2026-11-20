@@ -64463,5 +64463,165 @@
       "promoterPct": 50.08
     },
     "lastShpRecordId": "214265"
+  },
+  "GUJSTATFIN": {
+    "updatedAt": "2026-11-20T12:26:34.595Z",
+    "shareholding": {
+      "promoters": "83.95%",
+      "public": "16.05%",
+      "total": "100.00%"
+    },
+    "sector": "Financial Services & NBFC",
+    "ratios": {
+      "promoterPct": 83.95
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:35.191Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
+  },
+  "GTNTEX": {
+    "updatedAt": "2026-11-20T12:26:46.554Z",
+    "shareholding": {
+      "promoters": "63.36%",
+      "public": "36.64%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Sep 20",
+        "sales": "6",
+        "expenses": "12",
+        "operatingProfit": "-6",
+        "opm": "-100.0%",
+        "netProfit": "-6",
+        "eps": "₹-5.4"
+      },
+      {
+        "period": "Dec 20",
+        "sales": "11",
+        "expenses": "16",
+        "operatingProfit": "-5",
+        "opm": "-45.5%",
+        "netProfit": "-5",
+        "eps": "₹-4.35"
+      },
+      {
+        "period": "Mar 21",
+        "sales": "17",
+        "expenses": "24",
+        "operatingProfit": "-7",
+        "opm": "-41.2%",
+        "netProfit": "-19",
+        "eps": "₹-16.55"
+      },
+      {
+        "period": "Jun 21",
+        "sales": "16",
+        "expenses": "20",
+        "operatingProfit": "-4",
+        "opm": "-25.0%",
+        "netProfit": "-4",
+        "eps": "₹-3.36"
+      },
+      {
+        "period": "Sep 21",
+        "sales": "24",
+        "expenses": "27",
+        "operatingProfit": "-3",
+        "opm": "-12.5%",
+        "netProfit": "-3",
+        "eps": "₹-2.9"
+      }
+    ],
+    "annualPnl": [
+      {
+        "year": "TTM",
+        "sales": "68",
+        "expenses": "87",
+        "operatingProfit": "-19",
+        "opm": "-27.9%",
+        "netProfit": "-31",
+        "eps": "₹-27.16"
+      }
+    ],
+    "sector": "Infrastructure & Construction",
+    "ratios": {
+      "marketCapCr": 8,
+      "ttmEps": -27.16,
+      "ttmSalesCr": 68,
+      "ttmPatCr": -31,
+      "promoterPct": 63.36
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:48.928Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
+  },
+  "GSTL": {
+    "updatedAt": "2026-11-20T12:27:27.346Z",
+    "shareholding": {
+      "promoters": "27.83%",
+      "public": "72.17%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Mar 25",
+        "sales": "6",
+        "expenses": "9",
+        "operatingProfit": "-3",
+        "opm": "-50.0%",
+        "netProfit": "-3",
+        "eps": "₹-1.95"
+      },
+      {
+        "period": "Sep 25",
+        "sales": "8",
+        "expenses": "9",
+        "operatingProfit": "-1",
+        "opm": "-12.5%",
+        "netProfit": "-1",
+        "eps": "₹0.56"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "13",
+        "expenses": "12",
+        "operatingProfit": "1",
+        "opm": "7.7%",
+        "netProfit": "1",
+        "eps": "₹0.39"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "3",
+        "expenses": "5",
+        "operatingProfit": "-2",
+        "opm": "-66.7%",
+        "netProfit": "-2",
+        "eps": "₹-1.16"
+      }
+    ],
+    "annualPnl": [
+      {
+        "year": "TTM",
+        "sales": "30",
+        "expenses": "35",
+        "operatingProfit": "-5",
+        "opm": "-16.7%",
+        "netProfit": "-5",
+        "eps": "₹-2.16"
+      }
+    ],
+    "sector": "Information Technology",
+    "ratios": {
+      "marketCapCr": 46,
+      "ttmEps": -2.16,
+      "ttmSalesCr": 30,
+      "ttmPatCr": -5,
+      "promoterPct": 27.83
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:27:29.134Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

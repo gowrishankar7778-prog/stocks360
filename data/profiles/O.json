@@ -22719,5 +22719,44 @@
       }
     ],
     "debtToEquity": 1.22
+  },
+  "ORTEL": {
+    "updatedAt": "2026-11-20T12:30:42.349Z",
+    "shareholding": {
+      "promoters": "55.43%",
+      "public": "44.57%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Sep 20",
+        "sales": "19",
+        "expenses": "24",
+        "operatingProfit": "-5",
+        "opm": "-26.3%",
+        "netProfit": "-5",
+        "eps": "₹-1.47"
+      },
+      {
+        "period": "Mar 21",
+        "sales": "15",
+        "expenses": "23",
+        "operatingProfit": "-8",
+        "opm": "-53.3%",
+        "netProfit": "-8",
+        "eps": "₹-2.52"
+      }
+    ],
+    "sector": "Media & Telecommunications",
+    "ratios": {
+      "marketCapCr": 4,
+      "ttmEps": -3.99,
+      "ttmSalesCr": 34,
+      "ttmPatCr": -13,
+      "promoterPct": 55.43
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:30:43.752Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

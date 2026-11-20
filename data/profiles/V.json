@@ -27228,6 +27228,51 @@
     "sector": "Consumer & FMCG",
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "107",
+        "expenses": "74",
+        "operatingProfit": "33",
+        "opm": "30.8%",
+        "netProfit": "31",
+        "eps": "₹1.66"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "164",
+        "expenses": "154",
+        "operatingProfit": "10",
+        "opm": "6.1%",
+        "netProfit": "2",
+        "eps": "₹0.13"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "102",
+        "expenses": "119",
+        "operatingProfit": "-17",
+        "opm": "-16.7%",
+        "netProfit": "-17",
+        "eps": "₹-0.92"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "93",
+        "expenses": "115",
+        "operatingProfit": "-22",
+        "opm": "-23.7%",
+        "netProfit": "-22",
+        "eps": "₹-1"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "94",
+        "expenses": "93",
+        "operatingProfit": "1",
+        "opm": "1.1%",
+        "netProfit": "1",
+        "eps": "₹0.03"
+      },
+      {
         "period": "Sep 25",
         "sales": "191",
         "expenses": "222",
@@ -27238,10 +27283,10 @@
       },
       {
         "period": "Dec 25",
-        "sales": "80",
-        "expenses": "87",
+        "sales": "79",
+        "expenses": "86",
         "operatingProfit": "-7",
-        "opm": "-8.8%",
+        "opm": "-8.9%",
         "netProfit": "-7",
         "eps": "₹-0.31"
       },
@@ -27623,12 +27668,12 @@
     },
     "updatedAt": 1794038126847,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-19T12:17:56.233Z",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:42.171Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 105,
+      "marketCapCr": 104,
       "ttmEps": -1.88,
-      "ttmSalesCr": 415,
+      "ttmSalesCr": 414,
       "ttmPatCr": -42,
       "bookValue": 11.5,
       "roePct": -16.6,
@@ -27657,8 +27702,8 @@
       },
       {
         "year": "TTM",
-        "sales": "415",
-        "expenses": "481",
+        "sales": "414",
+        "expenses": "480",
         "operatingProfit": "-66",
         "opm": "-15.9%",
         "netProfit": "-42",
@@ -30904,7 +30949,7 @@
     ],
     "shareholding": {
       "promoters": "44.14%",
-      "public": "55.86%",
+      "public": "8.82%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -30941,7 +30986,7 @@
           null,
           null,
           null,
-          null
+          16.4
         ],
         "dii": [
           null,
@@ -30953,7 +30998,7 @@
           null,
           null,
           null,
-          null
+          30.64
         ],
         "diiMutualFunds": [
           null,
@@ -30965,7 +31010,7 @@
           null,
           null,
           null,
-          null
+          30.12
         ],
         "diiInsurance": [
           null,
@@ -30977,7 +31022,7 @@
           null,
           null,
           null,
-          null
+          0.06
         ],
         "diiPensionFunds": [
           null,
@@ -30989,7 +31034,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -31001,7 +31046,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           55.67,
@@ -31013,7 +31058,7 @@
           55.85,
           55.8,
           55.85,
-          55.86
+          8.82
         ],
         "employeeTrusts": [
           0,
@@ -31029,20 +31074,263 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
+        "promoters": [
+          {
+            "name": "CONQUEST BUSINESS SERVICES PVT LTD",
+            "subCategory": "Promoter",
+            "pct": 37.65,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              37.65
+            ]
+          },
+          {
+            "name": "Madan Gopal Agarwal",
+            "subCategory": "Promoter",
+            "pct": 5.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.24
+            ]
+          },
+          {
+            "name": "Lalit Agarwal",
+            "subCategory": "Promoter",
+            "pct": 1.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.24
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "AMANSA HOLDINGS PRIVATE LIMITED",
+            "subCategory": "FPI Category I",
+            "pct": 7.77,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.77
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "SBI MULTI ASSET ALLOCATION FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 5.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.38
+            ]
+          },
+          {
+            "name": "BANDHAN FLEXI CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 5.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.07
+            ]
+          },
+          {
+            "name": "KOTAK SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 4.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.47
+            ]
+          },
+          {
+            "name": "MOTILAL OSWAL NIFTY MICROCAP 250 INDEX FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.07
+            ]
+          },
+          {
+            "name": "CANARA ROBECO MUTUAL FUND A/C CANARA ROBECO CONSER",
+            "subCategory": "Mutual Funds",
+            "pct": 2.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.51
+            ]
+          },
+          {
+            "name": "TEMPLETON INDIA VALUE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.45
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL AGGRESSIVE HYBRID FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.18
+            ]
+          },
+          {
+            "name": "EDELWEISS TRUSTEESHIP CO LTD AC- EDELWEISS MF AC-E",
+            "subCategory": "Mutual Funds",
+            "pct": 1.7,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.7
+            ]
+          },
+          {
+            "name": "INVESCO INDIA CONTRA FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.55,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.55
+            ]
+          },
+          {
+            "name": "UTI-INDIA CONSUMER FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.06
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "16.40%",
+      "dii": "30.64%"
     },
     "updatedAt": 1794038126851,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:10.283Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:45.540Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751893_03112026051227_WEB.xml",
     "ratios": {
-      "marketCapCr": 6155,
-      "pe": 48.2,
+      "marketCapCr": 5907,
+      "pe": 46.2,
       "ttmEps": 16.45,
       "ttmSalesCr": 4154,
       "ttmPatCr": 130,
@@ -31081,7 +31369,8 @@
         "netProfit": "130",
         "eps": "₹16.45"
       }
-    ]
+    ],
+    "lastShpRecordId": "214607"
   },
   "VMM": {
     "about": "Vishal Mega Mart Limited engages in the wholesale, trading, and retail of apparel, fast moving consumer goods, and general merchandise in India. The company offers apparel, including t-shirts, classics, fashion, lingerie, men's formal and casual, kids' wear, women's casual and ethnic, denims, athleisure, infant wear, and girl's wear products; and general merchandise, such as home appliances and furnishings, crockery, utensils, and travel products, as well as footwear and lifestyle products. It also provides fast-moving consumer goods comprising staples, packaged food, women hygiene, home care, personal care, infant diapers, savoury products, dairy and confectionery, kitchen roll napkin, facial tissue, and incense products. The company sells its products through its stores, mobile application, and website under third party and its own brand names. The company was incorporated in 2018 and is based in Gurugram, India.",
@@ -31190,7 +31479,7 @@
     ],
     "shareholding": {
       "promoters": "40.02%",
-      "public": "59.98%",
+      "public": "4.77%",
       "total": "100.00%",
       "quarters": [
         "Dec 2024",
@@ -31221,7 +31510,7 @@
           null,
           null,
           null,
-          null
+          18.75
         ],
         "dii": [
           null,
@@ -31231,7 +31520,7 @@
           null,
           null,
           null,
-          null
+          36.45
         ],
         "diiMutualFunds": [
           null,
@@ -31241,7 +31530,7 @@
           null,
           null,
           null,
-          null
+          31.75
         ],
         "diiInsurance": [
           null,
@@ -31251,7 +31540,7 @@
           null,
           null,
           null,
-          null
+          3.25
         ],
         "diiPensionFunds": [
           null,
@@ -31261,7 +31550,7 @@
           null,
           null,
           null,
-          null
+          1.26
         ],
         "government": [
           null,
@@ -31271,7 +31560,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           23.98,
@@ -31281,7 +31570,7 @@
           45.91,
           59.88,
           59.91,
-          59.98
+          4.77
         ],
         "employeeTrusts": [
           0,
@@ -31295,20 +31584,175 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
+        "promoters": [
+          {
+            "name": "Samayat Services LLP",
+            "subCategory": "Promoter",
+            "pct": 40.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              40.02
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "GOVERNMENT OF SINGAPORE",
+            "subCategory": "FPI Category I",
+            "pct": 2.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.74
+            ]
+          },
+          {
+            "name": "MONETARY AUTHORITY OF SINGAPORE",
+            "subCategory": "FPI Category I",
+            "pct": 1.23,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.23
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "HDFC MUTUAL FUND-HDFC RETIREMENT FUND - HYBRID-DEB",
+            "subCategory": "Mutual Funds",
+            "pct": 9.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.49
+            ]
+          },
+          {
+            "name": "KOTAK MAHINDRA TRUSTEE CO LTD A/C KOTAK MSCI INDIA",
+            "subCategory": "Mutual Funds",
+            "pct": 5.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.42
+            ]
+          },
+          {
+            "name": "SBI ARBITRAGE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 4.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.12
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD- A/C NIPPON INDIA AG",
+            "subCategory": "Mutual Funds",
+            "pct": 2.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.68
+            ]
+          },
+          {
+            "name": "AXIS MUTUAL FUND TRUSTEE LIMITED A/C AXIS MUTUAL F",
+            "subCategory": "Mutual Funds",
+            "pct": 1.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.97
+            ]
+          },
+          {
+            "name": "CANARA ROBECO MUTUAL FUND A/C CANARA ROBECO LARGE",
+            "subCategory": "Mutual Funds",
+            "pct": 1.95,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.95
+            ]
+          },
+          {
+            "name": "NPS TRUST- A/C SBI PENSION FUND SCHEME E - TIER I",
+            "subCategory": "Pension Funds",
+            "pct": 1.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.26
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "18.75%",
+      "dii": "36.45%"
     },
     "updatedAt": 1794038126851,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:10.265Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:46.489Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1742673_21102026013339_WEB.xml",
     "ratios": {
-      "marketCapCr": 44739,
-      "pe": 64.6,
+      "marketCapCr": 43362,
+      "pe": 62.6,
       "ttmEps": 1.47,
       "ttmSalesCr": 7196,
       "ttmPatCr": 686,
@@ -31347,7 +31791,8 @@
         "netProfit": "686",
         "eps": "₹1.47"
       }
-    ]
+    ],
+    "lastShpRecordId": "213371"
   },
   "VMSTMT": {
     "about": "VMS TMT Limited manufactures and sells thermo-mechanically treated high-strength reinforcement steel bars in India. The company offers TMT bars under the Kamdhenu NXT brand name; and sells scrap, binding wires and billets. VMS TMT Limited was incorporated in 2013 and is based in Ahmedabad, India.",
@@ -31355,6 +31800,15 @@
     "industry": "Steel",
     "sector": "Metals & Mining",
     "quarterlyResults": [
+      {
+        "period": "Sep 25",
+        "sales": "183",
+        "expenses": "180",
+        "operatingProfit": "3",
+        "opm": "1.6%",
+        "netProfit": "2",
+        "eps": "₹0.59"
+      },
       {
         "period": "Dec 25",
         "sales": "203",
@@ -31436,7 +31890,7 @@
     ],
     "shareholding": {
       "promoters": "67.18%",
-      "public": "32.82%",
+      "public": "27.92%",
       "total": "100.00%",
       "quarters": [
         "Sep 2025",
@@ -31458,49 +31912,49 @@
           null,
           null,
           null,
-          null
+          2.06
         ],
         "dii": [
           null,
           null,
           null,
           null,
-          null
+          2.83
         ],
         "diiMutualFunds": [
           null,
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
           null,
           null,
           null,
-          null
+          0.05
         ],
         "diiPensionFunds": [
           null,
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           32.82,
           32.82,
           32.82,
           32.82,
-          32.82
+          27.92
         ],
         "employeeTrusts": [
           0,
@@ -31511,20 +31965,134 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "promoters": [
+          {
+            "name": "RISHABH SUNIL SINGHI",
+            "subCategory": "Promoter",
+            "pct": 24.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              24.21
+            ]
+          },
+          {
+            "name": "MANOJKUMAR JAIN",
+            "subCategory": "Promoter",
+            "pct": 20.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              20.72
+            ]
+          },
+          {
+            "name": "VARUN MANOJKUMAR JAIN",
+            "subCategory": "Promoter",
+            "pct": 14.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              14.46
+            ]
+          },
+          {
+            "name": "SANGEETA MANOJ KUMAR JAIN",
+            "subCategory": "Promoter",
+            "pct": 5.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              5.13
+            ]
+          },
+          {
+            "name": "SUNNY SUNIL SINGHI",
+            "subCategory": "Promoter Group",
+            "pct": 2.66,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              2.66
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "ASTORNE CAPITAL VCC - ARVEN",
+            "subCategory": "FPI Category I",
+            "pct": 2.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              2.04
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "CHANAKYA OPPORTUNITIES FUND I",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 2.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              2.46
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "VARVEE GLOBAL LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 2.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              2.02
+            ]
+          },
+          {
+            "name": "KAMDHENU LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              1.06
+            ]
+          }
+        ]
+      },
+      "fii": "2.06%",
+      "dii": "2.83%"
     },
     "updatedAt": 1794038126851,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:10.200Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:46.751Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754296_05112026093323_WEB.xml",
     "ratios": {
-      "marketCapCr": 234,
-      "pe": 12.3,
+      "marketCapCr": 227,
+      "pe": 11.9,
       "ttmEps": 3.33,
       "ttmSalesCr": 860,
       "ttmPatCr": 16,
@@ -31554,7 +32122,8 @@
         "netProfit": "16",
         "eps": "₹3.33"
       }
-    ]
+    ],
+    "lastShpRecordId": "213610"
   },
   "VNL": {
     "about": "Vishal Nirmiti Limited, a civil engineering, manufacturing, and construction company, engages in the business of manufacturing and dealing in pre-stressed concrete sleepers for railways. The company operates in two segments, Manufacturing and Services. The company offers fabrication and erection of mild steel pipes (MS Pipes), MS liners, and penstock pipes for pumped storage project. It serves railways, renewable power, and industrial sectors. The company was incorporated in 1994 and is based in Pune, India.",
@@ -31570,6 +32139,15 @@
         "opm": "10.2%",
         "netProfit": "7",
         "eps": "₹3.47"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "83",
+        "expenses": "77",
+        "operatingProfit": "6",
+        "opm": "7.2%",
+        "netProfit": "4",
+        "eps": "₹2.19"
       }
     ],
     "balanceSheet": [],
@@ -31619,14 +32197,14 @@
     },
     "updatedAt": 1794038126852,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:10.254Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:45.895Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 238,
-      "pe": 8.5,
-      "ttmEps": 13.88,
-      "ttmSalesCr": 352,
-      "ttmPatCr": 28,
+      "marketCapCr": 214,
+      "pe": 10.3,
+      "ttmEps": 11.32,
+      "ttmSalesCr": 342,
+      "ttmPatCr": 22,
       "promoterPct": 49.4
     }
   },
@@ -31707,15 +32285,16 @@
       }
     ],
     "shareholding": {
-      "promoters": "44.05%",
-      "public": "55.95%",
+      "promoters": "46.22%",
+      "public": "34.64%",
       "total": "100.00%",
       "quarters": [
         "Jun 2026",
         "Jul 2026",
         "Aug 2026",
         "Sep 2026",
-        "Oct 2026"
+        "Oct 2026",
+        "Sep 2026"
       ],
       "series": {
         "promoters": [
@@ -31723,58 +32302,67 @@
           48.62,
           46.22,
           46.22,
-          44.05
+          44.05,
+          46.22
         ],
         "fii": [
           null,
           null,
           null,
           null,
-          null
+          null,
+          17.53
         ],
         "dii": [
           null,
           null,
           null,
           null,
-          null
+          null,
+          1.61
         ],
         "diiMutualFunds": [
           null,
           null,
           null,
           null,
-          null
+          null,
+          0.58
         ],
         "diiInsurance": [
           null,
           null,
           null,
           null,
-          null
+          null,
+          0
         ],
         "diiPensionFunds": [
           null,
           null,
           null,
           null,
-          null
+          null,
+          0
         ],
         "government": [
           null,
           null,
           null,
           null,
-          null
+          null,
+          0
         ],
         "public": [
           50.26,
           51.38,
           53.78,
           53.78,
-          55.95
+          55.95,
+          34.64
         ],
         "employeeTrusts": [
+          0,
           0,
           0,
           0,
@@ -31783,20 +32371,142 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
+        "promoters": [
+          {
+            "name": "SUKRIT ARVIND BHARATI",
+            "subCategory": "Promoter",
+            "pct": 44.54,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              44.54
+            ]
+          },
+          {
+            "name": "NIKITHA SHRAVAN PODDATUR",
+            "subCategory": "Promoter Group",
+            "pct": 0.97,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.97
+            ]
+          },
+          {
+            "name": "VISHRUT ARVIND BHARATI",
+            "subCategory": "Promoter Group",
+            "pct": 0.71,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.71
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "MALABAR INDIA FUND LTD",
+            "subCategory": "FPI Category I",
+            "pct": 13.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              13.59
+            ]
+          },
+          {
+            "name": "INDIA INSIGHT VALUE FUND",
+            "subCategory": "FPI Category I",
+            "pct": 3.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.84
+            ]
+          }
+        ],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "ARUNA TAPARIA",
+            "subCategory": "Individual Investor",
+            "pct": 2.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.15
+            ]
+          },
+          {
+            "name": "ANJALI ASHUTOSH TAPARIA",
+            "subCategory": "Individual Investor",
+            "pct": 2.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.15
+            ]
+          },
+          {
+            "name": "KARAN TAPARIA",
+            "subCategory": "Individual Investor",
+            "pct": 1.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.43
+            ]
+          },
+          {
+            "name": "MAHESH RAJESH AGRAWAL",
+            "subCategory": "Individual Investor",
+            "pct": 1.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.18
+            ]
+          }
+        ]
+      },
+      "fii": "17.53%",
+      "dii": "1.61%"
     },
     "updatedAt": 1794038126852,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:10.365Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:45.761Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754474_06112026122323_WEB.xml",
     "ratios": {
-      "marketCapCr": 1701,
-      "pe": 70.8,
+      "marketCapCr": 1728,
+      "pe": 71.9,
       "ttmEps": 6.61,
       "ttmSalesCr": 1157,
       "ttmPatCr": 20,
@@ -31804,7 +32514,7 @@
       "roePct": 3.9,
       "rocePct": 3.3,
       "debtToEquity": 0.6,
-      "promoterPct": 44.05
+      "promoterPct": 46.22
     },
     "debtToEquity": 0.6,
     "annualPnl": [
@@ -31817,7 +32527,8 @@
         "netProfit": "15",
         "eps": "₹4.98"
       }
-    ]
+    ],
+    "lastShpRecordId": "213742"
   },
   "VOGL": {
     "about": "Vedanta Oil and Gas Limited engages in the exploration and production of oil and gas. It holds interests in 44 blocks covering an area of approximately 47,000 square kilometers in India. The company was formerly known as MALCO Energy Limited and changed its name to Vedanta Oil and Gas Limited in June 2026. The company was incorporated in 2001 and is based in Gurugram, India. Vedanta Oil and Gas Limited operates as a subsidiary of Vedanta Resources Limited.",
@@ -31897,7 +32608,7 @@
     ],
     "shareholding": {
       "promoters": "56.38%",
-      "public": "43.46%",
+      "public": "32.01%",
       "total": "100.00%",
       "quarters": [
         "Jun 2026",
@@ -31910,31 +32621,31 @@
         ],
         "fii": [
           null,
-          null
+          5.44
         ],
         "dii": [
           null,
-          null
+          5.94
         ],
         "diiMutualFunds": [
           null,
-          null
+          0.72
         ],
         "diiInsurance": [
           null,
-          null
+          4.96
         ],
         "diiPensionFunds": [
           null,
-          null
+          0
         ],
         "government": [
           null,
-          null
+          0.06
         ],
         "public": [
           43.46,
-          43.46
+          32.01
         ],
         "employeeTrusts": [
           0.16,
@@ -31942,19 +32653,88 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "TWIN STAR HOLDINGS LTD",
+            "subCategory": "Promoter Group",
+            "pct": 40.02,
+            "history": [
+              null,
+              40.02
+            ]
+          },
+          {
+            "name": "VEDANTA HOLDINGS MAURITIUS II LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 12.6,
+            "history": [
+              null,
+              12.6
+            ]
+          },
+          {
+            "name": "VEDANTA HOLDINGS MAURITIUS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 2.75,
+            "history": [
+              null,
+              2.75
+            ]
+          },
+          {
+            "name": "WELTER TRADING LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.98,
+            "history": [
+              null,
+              0.98
+            ]
+          },
+          {
+            "name": "VEDANTA NETHERLANDS INVESTMENTS B.V.",
+            "subCategory": "Promoter Group",
+            "pct": 0.04,
+            "history": [
+              null,
+              0.04
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "LIFE INSURANCE CORPORATION OF INDIA",
+            "subCategory": "Insurance",
+            "pct": 4.55,
+            "history": [
+              null,
+              4.55
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "PTC CABLES PRIVATE LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.91,
+            "history": [
+              null,
+              1.91
+            ]
+          }
+        ]
+      },
+      "fii": "5.44%",
+      "dii": "5.94%",
+      "government": "0.06%"
     },
     "updatedAt": 1794038126852,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:10.319Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:49.735Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748946_29102026050324_WEB.xml",
     "ratios": {
-      "marketCapCr": 11474,
+      "marketCapCr": 11389,
       "ttmEps": -27.84,
       "ttmSalesCr": 4084,
       "ttmPatCr": 1547,
@@ -31975,7 +32755,8 @@
         "netProfit": "-191",
         "eps": "₹-81.53"
       }
-    ]
+    ],
+    "lastShpRecordId": "215431"
   },
   "VOITHPAPR": {
     "about": "Voith Paper Fabrics India Limited engages in the manufacture and trading of paper machine clothing for pulp, and paper and paperboard industries in India and internationally. The company offers forming, press, and dryer fabrics, as well as fabrics used for making fiber cement sheets and pipes. It also provides range of roll covers and doctor blades for various types of paper machines and QualiFlex sleeves for shoe press and doctor blades. The company was formerly known as Porritts & Spencer (Asia) Limited and changed its name to Voith Paper Fabrics India Limited in 2007. Voith Paper Fabrics India Limited was incorporated in 1968 and is based in Faridabad, India. The company operates as a subsidiary of VP Auslandsbeteiligungen GmbH.",
@@ -32181,7 +32962,7 @@
     ],
     "shareholding": {
       "promoters": "30.00%",
-      "public": "70.00%",
+      "public": "13.98%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -32218,7 +32999,7 @@
           null,
           null,
           null,
-          null
+          20.48
         ],
         "dii": [
           null,
@@ -32230,7 +33011,7 @@
           null,
           null,
           null,
-          null
+          35.48
         ],
         "diiMutualFunds": [
           null,
@@ -32242,7 +33023,7 @@
           null,
           null,
           null,
-          null
+          31.04
         ],
         "diiInsurance": [
           null,
@@ -32254,7 +33035,7 @@
           null,
           null,
           null,
-          null
+          3.5
         ],
         "diiPensionFunds": [
           null,
@@ -32266,7 +33047,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -32278,7 +33059,7 @@
           null,
           null,
           null,
-          null
+          0.05
         ],
         "public": [
           62,
@@ -32290,7 +33071,7 @@
           70,
           70,
           70,
-          70
+          13.98
         ],
         "employeeTrusts": [
           0,
@@ -32307,19 +33088,211 @@
       },
       "holders": {
         "promoters": [],
-        "fii": [],
-        "dii": [],
+        "fii": [
+          {
+            "name": "Nalanda India Equity Fund Limited",
+            "subCategory": "FPI Category I",
+            "pct": 6,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6
+            ]
+          },
+          {
+            "name": "Nalanda India Fund Limited",
+            "subCategory": "FPI Category I",
+            "pct": 1.7,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.7
+            ]
+          },
+          {
+            "name": "The Prudential Assurance Company Limited",
+            "subCategory": "FPI Category I",
+            "pct": 1.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.04
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "Hdfc Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 6.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.69
+            ]
+          },
+          {
+            "name": "Nippon Life India Trustee Ltd-A/C Nippon India Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 6.35,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.35
+            ]
+          },
+          {
+            "name": "Icici Prudential Manufacturing Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 4.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.78
+            ]
+          },
+          {
+            "name": "Uti-Mid Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 3.29,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.29
+            ]
+          },
+          {
+            "name": "Dsp Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 2.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.79
+            ]
+          },
+          {
+            "name": "Mahindra Manulife Multi Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 2.7,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.7
+            ]
+          },
+          {
+            "name": "Axis Max Life Insurance Limited A/C - Ulif01311/02/08lifehighgr104 - High Growth Fund",
+            "subCategory": "Insurance",
+            "pct": 1.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.73
+            ]
+          },
+          {
+            "name": "Mirae Asset Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.24
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "20.48%",
+      "dii": "35.48%",
+      "government": "0.05%"
     },
     "updatedAt": 1794038126853,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.284Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:44.721Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1748862_29102026042548_WEB.xml",
     "ratios": {
-      "marketCapCr": 9655,
-      "pe": 35.1,
+      "marketCapCr": 9830,
+      "pe": 35.7,
       "ttmEps": 272.21,
       "ttmSalesCr": 2541,
       "ttmPatCr": 323,
@@ -32358,7 +33331,8 @@
         "netProfit": "323",
         "eps": "₹272.21"
       }
-    ]
+    ],
+    "lastShpRecordId": "213959"
   },
   "VPRPL": {
     "about": "Vishnu Prakash R Punglia Limited engages in engineering, procurement, and construction of infrastructure projects in India. The company undertakes various projects, including water supply and sewerage networks; railways, highways, and bridges; roads; irrigation network projects; multistorey buildings and warehouses; and tunnels in hydropower, railways, metro rail, roads, and highways, as well as operation and maintenance works. The company is also involved in development of multi-dimensional smart city projects; and automation work involving PLC and SCADA. It serves central and state government, local bodies, public sector companies, world bank projects, and private bodies. Vishnu Prakash R Punglia Limited was founded in 1986 and is based in Jodhpur, India.",
@@ -32366,6 +33340,51 @@
     "industry": "Engineering & Construction",
     "sector": "Infrastructure & Construction",
     "quarterlyResults": [
+      {
+        "period": "Dec 23",
+        "sales": "245",
+        "expenses": "222",
+        "operatingProfit": "23",
+        "opm": "9.4%",
+        "netProfit": "17",
+        "eps": "₹1.39"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "661",
+        "expenses": "570",
+        "operatingProfit": "91",
+        "opm": "13.8%",
+        "netProfit": "67",
+        "eps": "₹5.39"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "259",
+        "expenses": "239",
+        "operatingProfit": "20",
+        "opm": "7.7%",
+        "netProfit": "15",
+        "eps": "₹1.18"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "337",
+        "expenses": "305",
+        "operatingProfit": "32",
+        "opm": "9.5%",
+        "netProfit": "24",
+        "eps": "₹1.9"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "243",
+        "expenses": "235",
+        "operatingProfit": "8",
+        "opm": "3.3%",
+        "netProfit": "4",
+        "eps": "₹0.31"
+      },
       {
         "period": "Sep 25",
         "sales": "298",
@@ -32401,6 +33420,15 @@
         "opm": "-36.7%",
         "netProfit": "-39",
         "eps": "₹-3.15"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "181",
+        "expenses": "214",
+        "operatingProfit": "-33",
+        "opm": "-18.2%",
+        "netProfit": "-25",
+        "eps": "₹-2.03"
       }
     ],
     "balanceSheet": [
@@ -32447,7 +33475,7 @@
     ],
     "shareholding": {
       "promoters": "39.03%",
-      "public": "60.97%",
+      "public": "56.65%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -32484,7 +33512,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "dii": [
           null,
@@ -32496,7 +33524,7 @@
           null,
           null,
           null,
-          null
+          4.08
         ],
         "diiMutualFunds": [
           null,
@@ -32508,7 +33536,7 @@
           null,
           null,
           null,
-          null
+          4.08
         ],
         "diiInsurance": [
           null,
@@ -32520,7 +33548,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -32532,7 +33560,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -32544,7 +33572,7 @@
           null,
           null,
           null,
-          null
+          0.24
         ],
         "public": [
           32.19,
@@ -32556,7 +33584,7 @@
           47.36,
           55.39,
           61.97,
-          60.97
+          56.65
         ],
         "employeeTrusts": [
           0,
@@ -32572,24 +33600,216 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Vishnu Prakash Punglia",
+            "subCategory": "Promoter",
+            "pct": 7.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.8
+            ]
+          },
+          {
+            "name": "Manohar Lal Punglia",
+            "subCategory": "Promoter",
+            "pct": 6.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.51
+            ]
+          },
+          {
+            "name": "Ajay Pungaliya",
+            "subCategory": "Promoter",
+            "pct": 5.34,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.34
+            ]
+          },
+          {
+            "name": "Kamal Kishor Pungalia",
+            "subCategory": "Promoter",
+            "pct": 4.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.45
+            ]
+          },
+          {
+            "name": "Sanjay Kumar Punglia",
+            "subCategory": "Promoter",
+            "pct": 4.05,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.05
+            ]
+          },
+          {
+            "name": "Vijay Punglia",
+            "subCategory": "Promoter Group",
+            "pct": 3.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.02
+            ]
+          },
+          {
+            "name": "Pushpa Devi Pungalia",
+            "subCategory": "Promoter Group",
+            "pct": 2.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.03
+            ]
+          },
+          {
+            "name": "Anil Punglia",
+            "subCategory": "Promoter Group",
+            "pct": 1.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.82
+            ]
+          },
+          {
+            "name": "Pooja Punglia",
+            "subCategory": "Promoter Group",
+            "pct": 1.13,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.13
+            ]
+          },
+          {
+            "name": "Nitu Punglia",
+            "subCategory": "Promoter Group",
+            "pct": 0.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.73
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "Quant Mutual Fund - Quant Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 4.08,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.08
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "0.00%",
+      "dii": "4.08%",
+      "government": "0.24%"
     },
     "updatedAt": 1794038126853,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.265Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:47.657Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 323,
-      "ttmEps": -15.76,
-      "ttmSalesCr": 723,
-      "ttmPatCr": -196,
-      "bookValue": 50.9,
-      "roePct": -31.1,
-      "rocePct": -18.7,
+      "marketCapCr": 317,
+      "ttmEps": -18.08,
+      "ttmSalesCr": 606,
+      "ttmPatCr": -225,
+      "bookValue": 51.2,
+      "roePct": -35.7,
+      "rocePct": -21.5,
       "debtToEquity": 1.03,
       "promoterPct": 39.03
     },
@@ -32614,15 +33834,16 @@
       },
       {
         "year": "TTM",
-        "sales": "723",
-        "expenses": "962",
-        "operatingProfit": "-239",
-        "opm": "-33.1%",
-        "netProfit": "-196",
-        "eps": "₹-15.76"
+        "sales": "606",
+        "expenses": "881",
+        "operatingProfit": "-275",
+        "opm": "-45.4%",
+        "netProfit": "-225",
+        "eps": "₹-18.08"
       }
     ],
-    "debtToEquity": 1.03
+    "debtToEquity": 1.03,
+    "lastShpRecordId": "214815"
   },
   "VRAJ": {
     "about": "Vraj Iron and Steel Limited engages in the manufacture and sale of sponge iron, MS billets, TMT bars, power and others related items under the Vraj brand primarily in India. It sells its products directly, as well as through brokers and dealers to industrial customers and end-users. The company was incorporated in 2004 and is based in Raipur, India. Vraj Iron and Steel Limited operates as a subsidiary of Gopal Sponge and Power Private Limited.",
@@ -32794,7 +34015,7 @@
     ],
     "shareholding": {
       "promoters": "74.95%",
-      "public": "25.05%",
+      "public": "21.16%",
       "total": "100.00%",
       "quarters": [
         "Sep 2024",
@@ -32828,7 +34049,7 @@
           null,
           null,
           null,
-          null
+          0.2
         ],
         "dii": [
           null,
@@ -32839,7 +34060,7 @@
           null,
           null,
           null,
-          null
+          3.69
         ],
         "diiMutualFunds": [
           null,
@@ -32850,7 +34071,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -32861,7 +34082,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -32872,7 +34093,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -32883,7 +34104,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           25.05,
@@ -32894,7 +34115,7 @@
           25.05,
           25.05,
           25.05,
-          25.05
+          21.16
         ],
         "employeeTrusts": [
           0,
@@ -32909,19 +34130,87 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Gopal Sponge and Power Private Limited",
+            "subCategory": "Promoter",
+            "pct": 71.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              71.37
+            ]
+          },
+          {
+            "name": "Vijay Anand Jhanwar",
+            "subCategory": "Promoter",
+            "pct": 3.01,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.01
+            ]
+          },
+          {
+            "name": "Kusum Lata Maheshwari",
+            "subCategory": "Promoter",
+            "pct": 0.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.58
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "VOLRADO VENTURE PARTNERS FUND IV GAMMA",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 3.66,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.66
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "0.20%",
+      "dii": "3.69%"
     },
     "updatedAt": 1794038126853,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.279Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:43.860Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 402,
-      "pe": 12.3,
+      "marketCapCr": 407,
+      "pe": 12.5,
       "ttmEps": 10.36,
       "ttmSalesCr": 706,
       "ttmPatCr": 34,
@@ -32960,7 +34249,8 @@
         "eps": "₹10.36"
       }
     ],
-    "debtToEquity": 0.1
+    "debtToEquity": 0.1,
+    "lastShpRecordId": "214435"
   },
   "VRLLOG": {
     "about": "VRL Logistics Limited operates as a logistics and transport company in India. The company offers services, such as truckload and full truck load, door-to door FTL service, door collection and door delivery; and provides courier services for time sensitive documents and packages. It also provides vehicles for outdoor branding. The company was formerly known as Vijayanand Roadlines Ltd. and changed its name to VRL Logistics Limited in August 2006. VRL Logistics Limited was founded in 1976 and is based in Hubli, India.",
@@ -33122,7 +34412,7 @@
     ],
     "shareholding": {
       "promoters": "60.24%",
-      "public": "39.76%",
+      "public": "11.57%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -33159,7 +34449,7 @@
           null,
           null,
           null,
-          null
+          3.69
         ],
         "dii": [
           null,
@@ -33171,7 +34461,7 @@
           null,
           null,
           null,
-          null
+          24.5
         ],
         "diiMutualFunds": [
           null,
@@ -33183,7 +34473,7 @@
           null,
           null,
           null,
-          null
+          23.68
         ],
         "diiInsurance": [
           null,
@@ -33195,7 +34485,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -33207,7 +34497,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -33219,7 +34509,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           39.76,
@@ -33231,7 +34521,7 @@
           39.76,
           39.76,
           39.76,
-          39.76
+          11.57
         ],
         "employeeTrusts": [
           0,
@@ -33247,19 +34537,176 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "ANAND VIJAY SANKESHWAR",
+            "subCategory": "Promoter",
+            "pct": 31.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              31.43
+            ]
+          },
+          {
+            "name": "VIJAY BASAVANNEPPA SANKESHWAR",
+            "subCategory": "Promoter",
+            "pct": 28.33,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              28.33
+            ]
+          },
+          {
+            "name": "VANI ANAND SANKESHWAR",
+            "subCategory": "Promoter Group",
+            "pct": 0.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.45
+            ]
+          },
+          {
+            "name": "LALITHA VIJAY SANKESHWAR",
+            "subCategory": "Promoter Group",
+            "pct": 0.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.02
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "HDFC SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 9.77,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.77
+            ]
+          },
+          {
+            "name": "BANDHAN VALUE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.94,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.94
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA MUL",
+            "subCategory": "Mutual Funds",
+            "pct": 3.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.43
+            ]
+          },
+          {
+            "name": "UTI AGGRESSIVE HYBRID FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.3
+            ]
+          },
+          {
+            "name": "SBI MULTI ASSET ALLOCATION FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.71,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.71
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "3.69%",
+      "dii": "24.50%"
     },
     "updatedAt": 1794038126854,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.097Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:52.719Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751462_02112026081232_WEB.xml",
     "ratios": {
-      "marketCapCr": 5937,
+      "marketCapCr": 5941,
       "pe": 14.9,
       "ttmEps": 22.91,
       "ttmSalesCr": 4426,
@@ -33299,7 +34746,8 @@
         "netProfit": "401",
         "eps": "₹22.91"
       }
-    ]
+    ],
+    "lastShpRecordId": "213929"
   },
   "VSSL": {
     "about": "Vardhman Special Steels Limited engages in the manufacture and sale of billets, steel bars, and bright bars of various categories of special and alloy steels in India and internationally. Its customers include passenger vehicles, two wheelers, commercial vehicles, tractors, off-highway vehicles,and railways, as well as engineering, bearing, and allied industries. The company was founded in 1973 and is headquartered in Ludhiana, India.",
@@ -33452,7 +34900,7 @@
     ],
     "shareholding": {
       "promoters": "51.18%",
-      "public": "48.82%",
+      "public": "45.73%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -33489,7 +34937,7 @@
           null,
           null,
           null,
-          null
+          0.57
         ],
         "dii": [
           null,
@@ -33501,7 +34949,7 @@
           null,
           null,
           null,
-          null
+          2.52
         ],
         "diiMutualFunds": [
           null,
@@ -33513,7 +34961,7 @@
           null,
           null,
           null,
-          null
+          2.46
         ],
         "diiInsurance": [
           null,
@@ -33525,7 +34973,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -33537,7 +34985,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -33549,7 +34997,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           39.44,
@@ -33561,7 +35009,7 @@
           48.9,
           48.94,
           48.94,
-          48.82
+          45.73
         ],
         "employeeTrusts": [
           0,
@@ -33577,20 +35025,263 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "VARDHMAN TEXTILES LIMITED",
+            "subCategory": "Promoter",
+            "pct": 20.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              20.21
+            ]
+          },
+          {
+            "name": "SACHIT JAIN",
+            "subCategory": "Promoter Group",
+            "pct": 11.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.64
+            ]
+          },
+          {
+            "name": "VARDHMAN HOLDINGS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 10.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.79
+            ]
+          },
+          {
+            "name": "DEVAKAR INVESTMENT AND TRADING COMPANY PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 4.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.58
+            ]
+          },
+          {
+            "name": "MAHAVIR SHARES TRUST (DEEPAK JAIN, TRUSTEE)",
+            "subCategory": "Promoter Group",
+            "pct": 1.1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.1
+            ]
+          },
+          {
+            "name": "VTL INVESTMENTS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.78
+            ]
+          },
+          {
+            "name": "SHRI PAUL OSWAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.46
+            ]
+          },
+          {
+            "name": "FLAMINGO FINANCE AND INVESTMENT COMPANY LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.41,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.41
+            ]
+          },
+          {
+            "name": "SANTON FINANCE AND INVESTMENT COMPANY LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.35,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.35
+            ]
+          },
+          {
+            "name": "RAMANIYA FINANCE AND INVESTMENT COMPANY LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.32,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.32
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "TATA MUTUAL FUND - TATA SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.46,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.46
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "AICHI STEEL CORPORATION",
+            "subCategory": "Foreign Companies",
+            "pct": 24.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              24.85
+            ]
+          },
+          {
+            "name": "DEEP J MASTER",
+            "subCategory": "Individual Investor",
+            "pct": 2.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.07
+            ]
+          },
+          {
+            "name": "CATAMARAN VENTURES LLP",
+            "subCategory": "Any Other (specify)",
+            "pct": 1.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.02
+            ]
+          }
+        ]
+      },
+      "fii": "0.57%",
+      "dii": "2.52%"
     },
     "updatedAt": 1794038126854,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.258Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:53.462Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1746636_27102026031118_WEB.xml",
     "ratios": {
-      "marketCapCr": 3602,
-      "pe": 22.5,
+      "marketCapCr": 3642,
+      "pe": 22.8,
       "ttmEps": 16.69,
       "ttmSalesCr": 2023,
       "ttmPatCr": 161,
@@ -33629,7 +35320,8 @@
         "netProfit": "161",
         "eps": "₹16.69"
       }
-    ]
+    ],
+    "lastShpRecordId": "213724"
   },
   "VSTIND": {
     "about": "VST Industries Limited engages in the manufacturing, trading, and marketing of cigarettes, tobacco, and tobacco products in India and internationally. It sells unmanufactured tobacco. The company was formerly known as Vazir Sultan Tobacco Company Limited and changed its name to VST Industries Limited in April 1983. VST Industries Limited was incorporated in 1930 and is based in Hyderabad, India.",
@@ -33791,7 +35483,7 @@
     ],
     "shareholding": {
       "promoters": "32.16%",
-      "public": "67.65%",
+      "public": "60.49%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -33828,7 +35520,7 @@
           null,
           null,
           null,
-          null
+          1.25
         ],
         "dii": [
           null,
@@ -33840,7 +35532,7 @@
           null,
           null,
           null,
-          null
+          5.91
         ],
         "diiMutualFunds": [
           null,
@@ -33852,7 +35544,7 @@
           null,
           null,
           null,
-          null
+          4.31
         ],
         "diiInsurance": [
           null,
@@ -33864,7 +35556,7 @@
           null,
           null,
           null,
-          null
+          1.53
         ],
         "diiPensionFunds": [
           null,
@@ -33876,7 +35568,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -33888,7 +35580,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           67.47,
@@ -33900,7 +35592,7 @@
           67.65,
           67.65,
           67.65,
-          67.65
+          60.49
         ],
         "employeeTrusts": [
           0.37,
@@ -33916,20 +35608,178 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "The Raleigh Investment Company Limited",
+            "subCategory": "Promoter",
+            "pct": 23.45,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              23.45
+            ]
+          },
+          {
+            "name": "Tobacco Manufacturers (India) Limited",
+            "subCategory": "Promoter",
+            "pct": 8.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              8.28
+            ]
+          },
+          {
+            "name": "Rothmans International Enterprises Limited",
+            "subCategory": "Promoter",
+            "pct": 0.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.43
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "Parag Parikh ELSS Tax Saver Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.89
+            ]
+          },
+          {
+            "name": "The New India Assurance Co. Ltd.",
+            "subCategory": "Insurance",
+            "pct": 1.51,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.51
+            ]
+          },
+          {
+            "name": "SBI Conservative Hybrid Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.31
+            ]
+          },
+          {
+            "name": "HDFC Mutual Fund-HDFC Childrens Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 1.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.11
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Bright Star Investments Pvt. Ltd.",
+            "subCategory": "Bodies Corporate",
+            "pct": 25.95,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              25.95
+            ]
+          },
+          {
+            "name": "Radhakishan Shivkishan Damani",
+            "subCategory": "Individual Investor",
+            "pct": 3.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.15
+            ]
+          }
+        ]
+      },
+      "fii": "1.25%",
+      "dii": "5.91%"
     },
     "updatedAt": 1794038126854,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.311Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:55.068Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747935_28102026054956_WEB.xml",
     "ratios": {
-      "marketCapCr": 3337,
-      "pe": 12.8,
+      "marketCapCr": 3299,
+      "pe": 12.7,
       "ttmEps": 15.33,
       "ttmSalesCr": 2947,
       "ttmPatCr": 260,
@@ -33968,7 +35818,8 @@
         "netProfit": "260",
         "eps": "₹15.33"
       }
-    ]
+    ],
+    "lastShpRecordId": "213377"
   },
   "VSTL": {
     "about": "Vibhor Steel Tubes Limited engages in the production and distribution of steel pipes and tubes for the heavy engineering sectors in India and internationally. The company offers electric resistance welded black pipes for water transport, oil, gas, and other nontoxic applications; hot-dipped galvanized pipes for agriculture and infrastructure; hollow section pipes/tubes in square and rectangular configurations; primer-painted pipes for enhanced protection and aesthetics; crash barriers for railway, highway, and road safety applications; transmission line towers; high mast lighting poles; octagonal poles; and monopoles. It serves the aerospace, shipbuilding, construction, power plant, oil and gas, and refinery industries. The company exports its products to approximately 8 countries. Vibhor Steel Tubes Limited was incorporated in 2003 and is based in Hisar, India.",
@@ -34130,7 +35981,7 @@
     ],
     "shareholding": {
       "promoters": "74.96%",
-      "public": "25.04%",
+      "public": "25.02%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -34167,7 +36018,7 @@
           null,
           null,
           null,
-          null
+          0.03
         ],
         "dii": [
           null,
@@ -34179,7 +36030,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiMutualFunds": [
           null,
@@ -34191,7 +36042,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiInsurance": [
           null,
@@ -34203,7 +36054,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -34215,7 +36066,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -34227,7 +36078,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           26.52,
@@ -34239,7 +36090,7 @@
           26.34,
           25.38,
           25.26,
-          25.04
+          25.02
         ],
         "employeeTrusts": [
           0,
@@ -34255,20 +36106,142 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "VIJAY LAXMI KAUSHIK",
+            "subCategory": "Promoter",
+            "pct": 22.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              22.83
+            ]
+          },
+          {
+            "name": "VIJAY KUMAR KAUSHIK",
+            "subCategory": "Promoter",
+            "pct": 22.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              22.21
+            ]
+          },
+          {
+            "name": "VIBHOR KAUSHIK",
+            "subCategory": "Promoter",
+            "pct": 18.3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              18.3
+            ]
+          },
+          {
+            "name": "VIJAY KAUSHIK HUF",
+            "subCategory": "Promoter",
+            "pct": 7.83,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.83
+            ]
+          },
+          {
+            "name": "PRATIMA SANDHIR",
+            "subCategory": "Promoter Group",
+            "pct": 1.95,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.95
+            ]
+          },
+          {
+            "name": "VIBHOR KAUSHIK HUF",
+            "subCategory": "Promoter Group",
+            "pct": 1.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.04
+            ]
+          },
+          {
+            "name": "RN SECURITIES PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.79
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
         "public": []
-      }
+      },
+      "fii": "0.03%",
+      "dii": "0.00%"
     },
     "updatedAt": 1794038126854,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.341Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:54.226Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1757489_13112026052542_WEB.xml",
     "ratios": {
-      "marketCapCr": 220,
-      "pe": 22.6,
+      "marketCapCr": 212,
+      "pe": 21.7,
       "ttmEps": 4.69,
       "ttmSalesCr": 1292,
       "ttmPatCr": 10,
@@ -34307,7 +36280,8 @@
         "netProfit": "10",
         "eps": "₹4.69"
       }
-    ]
+    ],
+    "lastShpRecordId": "213683"
   },
   "VSTTILLERS": {
     "about": "V.S.T. Tillers Tractors Limited manufactures and trades agricultural machinery in India and internationally. The company offers power tillers, power weeders, power reapers, brush cutters, and tractors; spare parts, lubricants and consumables, diesel engines, and electric water pumps; crankshafts, camshafts, and connecting rods; cylinder blocks and heads; locomotive parts; crankcase and transmission case; precision components, including engine components, locomotive and braking, metro components, light engineering components, and rotary assemblies; vertical engines, hydraulics, transmission, and front axles; precision implements comprising sprayers and rotary tillers; and source electric products. It also provides harvesters, binders, transplanters/planters, trench cutters, and front-end loaders. The company markets its products under the VST FIELDTRAC brand through a network of dealers, distributors, and retailers to small and marginal farmers. V.S.T. Tillers Tractors Limited was incorporated in 1967 and is headquartered in Bengaluru, India.",
@@ -34442,7 +36416,7 @@
     ],
     "shareholding": {
       "promoters": "55.55%",
-      "public": "44.45%",
+      "public": "23.22%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -34479,7 +36453,7 @@
           null,
           null,
           null,
-          null
+          1.1
         ],
         "dii": [
           null,
@@ -34491,7 +36465,7 @@
           null,
           null,
           null,
-          null
+          20.13
         ],
         "diiMutualFunds": [
           null,
@@ -34503,7 +36477,7 @@
           null,
           null,
           null,
-          null
+          15.28
         ],
         "diiInsurance": [
           null,
@@ -34515,7 +36489,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -34527,7 +36501,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -34539,7 +36513,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           44.37,
@@ -34551,7 +36525,7 @@
           44.39,
           44.39,
           44.45,
-          44.45
+          23.22
         ],
         "employeeTrusts": [
           0,
@@ -34567,20 +36541,245 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "V V VIJAYENDRA",
+            "subCategory": "Promoter",
+            "pct": 19.37,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              19.37
+            ]
+          },
+          {
+            "name": "V P TIRUVENGADASWAMY",
+            "subCategory": "Promoter",
+            "pct": 10.39,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.39
+            ]
+          },
+          {
+            "name": "V S T MOTORS PRIVATE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 4.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              4.49
+            ]
+          },
+          {
+            "name": "S MAHALAKSHMI",
+            "subCategory": "Promoter",
+            "pct": 3.07,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.07
+            ]
+          },
+          {
+            "name": "MITSUBISHI HEAVY INDUSTRIES ENGINE AND TURBOCHARGER LTD",
+            "subCategory": "Promoter",
+            "pct": 2.93,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.93
+            ]
+          },
+          {
+            "name": "V V PRAVINDRA",
+            "subCategory": "Promoter",
+            "pct": 2.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.59
+            ]
+          },
+          {
+            "name": "ARUN VELLORE SURENDRA",
+            "subCategory": "Promoter",
+            "pct": 2.49,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.49
+            ]
+          },
+          {
+            "name": "PADMANABAN MOTORS LLP",
+            "subCategory": "Promoter",
+            "pct": 1.58,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.58
+            ]
+          },
+          {
+            "name": "K S AND SONS LLP",
+            "subCategory": "Promoter",
+            "pct": 0.99,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.99
+            ]
+          },
+          {
+            "name": "V V SUJAY",
+            "subCategory": "Promoter",
+            "pct": 0.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.84
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "KOTAK AGGRESSIVE HYBRID FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 9.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.48
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 5.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.8
+            ]
+          },
+          {
+            "name": "IKIGAI EMERGING EQUITY FUND",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 3.77,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.77
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "1.10%",
+      "dii": "20.13%"
     },
     "updatedAt": 1794038126855,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.469Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:55.035Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1753610_05112026052230_WEB.xml",
     "ratios": {
-      "marketCapCr": 3322,
-      "pe": 41.9,
+      "marketCapCr": 3102,
+      "pe": 39.1,
       "ttmEps": 90.71,
       "ttmSalesCr": 3064,
       "ttmPatCr": 94,
@@ -34619,7 +36818,8 @@
         "netProfit": "94",
         "eps": "₹90.71"
       }
-    ]
+    ],
+    "lastShpRecordId": "215042"
   },
   "VTL": {
     "about": "Vardhman Textiles Limited, together with its subsidiaries, manufactures and sells cotton and synthetic yarn, woven fabrics, and garments in India and internationally. It operates through Textiles and Fibre segments. The company offers greige and dyed yarns in cotton, polyester, acrylic, and various blends; specialty yarns, such as organic cotton, melange, core-spun, gassed mercerised, and super-fine variants, as well as recycle cotton, linen and hemp blended, low pill, sustainable and performance, easy care stretchable, sustainable blended and slub, textured slub, cloud soft, and linen-luxe yarns; fabrics, such as piece dyed, yarn dyed, printed, fiber blends, weaved, and specialty finishes; acrylic fibers; and formal and casual shirts, including post cure and taped shirts. It is also involved in lending and investing activities. In addition, the company provides hot rolled bars, and special and alloy steel products, including carbon steel, case hardening steel, hardening steel, and other products for the automotive, engineering, bearing, and allied industries. It exports its products. The company was formerly known as Mahavir Spinning Mills Limited and changed its name to Vardhman Textiles Limited in September 2006. Vardhman Textiles Limited was founded in 1965 and is headquartered in Ludhiana, India.",
@@ -34743,7 +36943,7 @@
     ],
     "shareholding": {
       "promoters": "65.06%",
-      "public": "34.94%",
+      "public": "14.35%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -34780,7 +36980,7 @@
           null,
           null,
           null,
-          null
+          6.43
         ],
         "dii": [
           null,
@@ -34792,7 +36992,7 @@
           null,
           null,
           null,
-          null
+          14.17
         ],
         "diiMutualFunds": [
           null,
@@ -34804,7 +37004,7 @@
           null,
           null,
           null,
-          null
+          11.95
         ],
         "diiInsurance": [
           null,
@@ -34816,7 +37016,7 @@
           null,
           null,
           null,
-          null
+          0.49
         ],
         "diiPensionFunds": [
           null,
@@ -34828,7 +37028,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -34840,7 +37040,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           35.81,
@@ -34852,7 +37052,7 @@
           35.56,
           34.91,
           34.92,
-          34.94
+          14.35
         ],
         "employeeTrusts": [
           0,
@@ -34868,19 +37068,244 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "VARDHMAN HOLDINGS LIMITED",
+            "subCategory": "Promoter",
+            "pct": 28.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              28.96
+            ]
+          },
+          {
+            "name": "ADISHWAR ENTERPRISES LLP",
+            "subCategory": "Promoter Group",
+            "pct": 17.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              17.82
+            ]
+          },
+          {
+            "name": "DEVAKAR INVESTMENT AND TRADING COMPANY PRIVATE LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 11.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.72
+            ]
+          },
+          {
+            "name": "VTL INVESTMENTS LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 1.61,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.61
+            ]
+          },
+          {
+            "name": "SHRI PAUL OSWAL",
+            "subCategory": "Promoter Group",
+            "pct": 1.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.03
+            ]
+          },
+          {
+            "name": "FLAMINGO FINANCE AND INVESTMENT COMPANY LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.92,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.92
+            ]
+          },
+          {
+            "name": "SANTON FINANCE AND INVESTMENT COMPANY LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.79
+            ]
+          },
+          {
+            "name": "RAMANIYA FINANCE AND INVESTMENT COMPANY LIMITED",
+            "subCategory": "Promoter Group",
+            "pct": 0.73,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.73
+            ]
+          },
+          {
+            "name": "SUCHITA JAIN",
+            "subCategory": "Promoter Group",
+            "pct": 0.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.42
+            ]
+          },
+          {
+            "name": "SHAKUN OSWAL",
+            "subCategory": "Promoter Group",
+            "pct": 0.24,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.24
+            ]
+          }
+        ],
         "fii": [],
-        "dii": [],
+        "dii": [
+          {
+            "name": "HDFC SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 5.84,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.84
+            ]
+          },
+          {
+            "name": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.98,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.98
+            ]
+          },
+          {
+            "name": "DSP SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.47
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "6.43%",
+      "dii": "14.17%"
     },
     "updatedAt": 1794038126855,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.089Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:54.524Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754825_06112026050845_WEB.xml",
     "ratios": {
-      "marketCapCr": 15239,
+      "marketCapCr": 15288,
       "pe": 15.3,
       "ttmEps": 34.5,
       "ttmSalesCr": 10640,
@@ -34929,7 +37354,8 @@
         "netProfit": "998",
         "eps": "₹34.5"
       }
-    ]
+    ],
+    "lastShpRecordId": "213723"
   },
   "VTMLTD": {
     "about": "VTM Limited manufactures and sells textile products in India. It offers fabrics, such as drills, twills, sateens, piques, jacquards, dobbies, plain weaves, structured fabrics, specialty woven fabrics; home textiles, including bed sheets, bed linen, duvet covers, comforters, blankets, pillow covers, cushions, hospitality linen, spa linen, table linen, bath linen, and window furnishings; sustainable and specialty fibres, comprising cotton, organic cotton, linen, bamboo, TENCEL, lyocell, modal, polyester blends, and CVC blends. The company also exports its products. The company was incorporated in 1946 and is based in Virudhunagar, India.",
@@ -35000,7 +37426,7 @@
     ],
     "shareholding": {
       "promoters": "75.00%",
-      "public": "25.00%",
+      "public": "23.44%",
       "total": "100.00%",
       "quarters": [
         "Sep 2026"
@@ -35010,45 +37436,153 @@
           75
         ],
         "fii": [
-          null
+          0
         ],
         "dii": [
-          null
+          1.56
         ],
         "diiMutualFunds": [
-          null
+          0
         ],
         "diiInsurance": [
-          null
+          0
         ],
         "diiPensionFunds": [
-          null
+          0
         ],
         "government": [
-          null
+          0
         ],
         "public": [
-          25
+          23.44
         ],
         "employeeTrusts": [
           0
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "Partnership Firms",
+            "subCategory": "Promoter",
+            "pct": 57.26,
+            "history": [
+              57.26
+            ]
+          },
+          {
+            "name": "T.Kannan,Partner,Guruvayoorappan Investments",
+            "subCategory": "Promoter Group",
+            "pct": 18.69,
+            "history": [
+              18.69
+            ]
+          },
+          {
+            "name": "T.Kannan,Partner,Avittam Investments",
+            "subCategory": "Promoter Group",
+            "pct": 18.64,
+            "history": [
+              18.64
+            ]
+          },
+          {
+            "name": "T.Kannan,Partner, Karumuttu Investments",
+            "subCategory": "Promoter Group",
+            "pct": 15.39,
+            "history": [
+              15.39
+            ]
+          },
+          {
+            "name": "Thiagarajar Mills Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 6.66,
+            "history": [
+              6.66
+            ]
+          },
+          {
+            "name": "T.Kannan,Partner,Thirumagal Inestments",
+            "subCategory": "Promoter Group",
+            "pct": 4.54,
+            "history": [
+              4.54
+            ]
+          },
+          {
+            "name": "Sree Thiagaraja Finance Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 3.74,
+            "history": [
+              3.74
+            ]
+          },
+          {
+            "name": "Sree Devikarumari Finance Private Limited",
+            "subCategory": "Promoter Group",
+            "pct": 3.32,
+            "history": [
+              3.32
+            ]
+          },
+          {
+            "name": "Radha Kannan",
+            "subCategory": "Promoter Group",
+            "pct": 2.17,
+            "history": [
+              2.17
+            ]
+          },
+          {
+            "name": "Director or Director's Relatives",
+            "subCategory": "Promoter",
+            "pct": 1.84,
+            "history": [
+              1.84
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "IEPF",
+            "subCategory": "Investor Education and Protection Fund (IEPF)",
+            "pct": 2.15,
+            "history": [
+              2.15
+            ]
+          },
+          {
+            "name": "VTM LIMITED UNCLAIMED SECURITIES",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.88,
+            "history": [
+              1.88
+            ]
+          },
+          {
+            "name": "SHIRALI NIKHIL MERCHANT",
+            "subCategory": "Individual Investor",
+            "pct": 1.19,
+            "history": [
+              1.19
+            ]
+          }
+        ]
+      },
+      "fii": "0.00%",
+      "dii": "1.56%"
     },
     "updatedAt": 1794038126855,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:11.418Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:57.840Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1754401_05112026113311_WEB.xml",
     "ratios": {
-      "marketCapCr": 418,
-      "pe": 106.3,
+      "marketCapCr": 391,
+      "pe": 99.4,
       "ttmEps": 0.38,
       "ttmSalesCr": 209,
       "ttmPatCr": 4,
@@ -35069,6 +37603,7 @@
         "netProfit": "11",
         "eps": "₹1.11"
       }
-    ]
+    ],
+    "lastShpRecordId": "215829"
   }
 }

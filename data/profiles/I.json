@@ -54646,5 +54646,51 @@
       }
     ],
     "debtToEquity": 0.01
+  },
+  "INNOVATIVE": {
+    "updatedAt": "2026-11-20T12:27:34.386Z",
+    "shareholding": {
+      "promoters": "94.55%",
+      "public": "5.45%",
+      "total": "100.00%"
+    },
+    "sector": "Diversified Equities",
+    "ratios": {
+      "promoterPct": 94.55
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:27:34.753Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
+  },
+  "IGLSPIRITS": {
+    "updatedAt": "2026-11-20T12:29:09.885Z",
+    "shareholding": {
+      "promoters": "59.63%",
+      "public": "40.37%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Sep 26",
+        "sales": "2,295",
+        "expenses": "2,212",
+        "operatingProfit": "83",
+        "opm": "3.6%",
+        "netProfit": "61",
+        "eps": "₹9.13"
+      }
+    ],
+    "sector": "Diversified Equities",
+    "ratios": {
+      "marketCapCr": 5341,
+      "pe": 21.9,
+      "ttmEps": 36.52,
+      "ttmSalesCr": 9180,
+      "ttmPatCr": 244,
+      "promoterPct": 59.63
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:29:12.161Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

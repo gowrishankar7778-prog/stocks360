@@ -40990,6 +40990,33 @@
     },
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "13",
+        "expenses": "2",
+        "operatingProfit": "11",
+        "opm": "84.6%",
+        "netProfit": "11",
+        "eps": "₹0.54"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "17",
+        "expenses": "1",
+        "operatingProfit": "16",
+        "opm": "94.1%",
+        "netProfit": "16",
+        "eps": "₹0.77"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "9",
+        "expenses": "1",
+        "operatingProfit": "8",
+        "opm": "88.9%",
+        "netProfit": "8",
+        "eps": "₹0.39"
+      },
+      {
         "period": "Sep 24",
         "sales": "8",
         "expenses": "1",
@@ -41027,8 +41054,8 @@
       }
     ],
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:23.716Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:22:45.164Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "balanceSheet": [
       {
         "year": "Mar 25",
@@ -41054,8 +41081,8 @@
     ],
     "sector": "Automotive & Ancillaries",
     "ratios": {
-      "marketCapCr": 279,
-      "pe": 24.9,
+      "marketCapCr": 268,
+      "pe": 23.9,
       "ttmEps": 0.56,
       "ttmSalesCr": 20,
       "ttmPatCr": 11,
@@ -41068,11 +41095,11 @@
     "annualPnl": [
       {
         "year": "Mar 25",
-        "sales": "2",
-        "expenses": "0",
+        "sales": "24",
+        "expenses": "5",
         "operatingProfit": "19",
-        "opm": "950.0%",
-        "netProfit": "16",
+        "opm": "79.2%",
+        "netProfit": "15",
         "eps": "₹0.75"
       },
       {
@@ -41214,6 +41241,51 @@
     },
     "quarterlyResults": [
       {
+        "period": "Dec 23",
+        "sales": "48",
+        "expenses": "35",
+        "operatingProfit": "13",
+        "opm": "27.1%",
+        "netProfit": "10",
+        "eps": "₹3.24"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "61",
+        "expenses": "45",
+        "operatingProfit": "16",
+        "opm": "26.2%",
+        "netProfit": "12",
+        "eps": "₹3.72"
+      },
+      {
+        "period": "Jun 24",
+        "sales": "42",
+        "expenses": "34",
+        "operatingProfit": "8",
+        "opm": "19.0%",
+        "netProfit": "6",
+        "eps": "₹1.86"
+      },
+      {
+        "period": "Sep 24",
+        "sales": "3",
+        "expenses": "0",
+        "operatingProfit": "3",
+        "opm": "100.0%",
+        "netProfit": "14",
+        "eps": "₹4.4"
+      },
+      {
+        "period": "Dec 24",
+        "sales": "3",
+        "expenses": "0",
+        "operatingProfit": "3",
+        "opm": "100.0%",
+        "netProfit": "3",
+        "eps": "₹0.85"
+      },
+      {
         "period": "Mar 25",
         "sales": "0.2",
         "expenses": "0",
@@ -41233,10 +41305,10 @@
       },
       {
         "period": "Sep 25",
-        "sales": "5.5",
+        "sales": "6",
         "expenses": "1",
         "operatingProfit": "5",
-        "opm": "90.9%",
+        "opm": "83.3%",
         "netProfit": "5",
         "eps": "₹1.62"
       }
@@ -41285,21 +41357,41 @@
     ],
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1575506_14112025065106_WEB.xml",
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:30.204Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:23:01.913Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "sector": "Financial Services & NBFC",
     "ratios": {
-      "marketCapCr": 369,
-      "pe": 55.4,
-      "ttmEps": 2.16,
-      "ttmSalesCr": 8,
-      "ttmPatCr": 7,
+      "marketCapCr": 350,
+      "pe": 45.9,
+      "ttmEps": 2.47,
+      "ttmSalesCr": 9,
+      "ttmPatCr": 8,
       "bookValue": 279.3,
-      "roePct": 0.8,
-      "rocePct": 0.8,
+      "roePct": 0.9,
+      "rocePct": 0.9,
       "debtToEquity": 0,
       "promoterPct": 69.61
     },
-    "debtToEquity": 0
+    "debtToEquity": 0,
+    "annualPnl": [
+      {
+        "year": "Mar 25",
+        "sales": "48",
+        "expenses": "34",
+        "operatingProfit": "14",
+        "opm": "29.0%",
+        "netProfit": "23",
+        "eps": "₹7.11"
+      },
+      {
+        "year": "TTM",
+        "sales": "9",
+        "expenses": "1",
+        "operatingProfit": "8",
+        "opm": "85.1%",
+        "netProfit": "8",
+        "eps": "₹2.47"
+      }
+    ]
   }
 }

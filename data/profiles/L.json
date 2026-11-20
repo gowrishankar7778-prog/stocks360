@@ -29530,5 +29530,91 @@
       }
     ],
     "lastShpRecordId": "214616"
+  },
+  "LGBFORGE": {
+    "updatedAt": "2026-11-20T12:26:49.112Z",
+    "shareholding": {
+      "promoters": "73.79%",
+      "public": "26.21%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Mar 23",
+        "sales": "33",
+        "expenses": "35",
+        "operatingProfit": "-2",
+        "opm": "-6.1%",
+        "netProfit": "-2",
+        "eps": "₹-0.07"
+      },
+      {
+        "period": "Jun 23",
+        "sales": "29",
+        "expenses": "32",
+        "operatingProfit": "-3",
+        "opm": "-10.3%",
+        "netProfit": "-3",
+        "eps": "₹-0.11"
+      },
+      {
+        "period": "Sep 23",
+        "sales": "29",
+        "expenses": "31",
+        "operatingProfit": "-2",
+        "opm": "-6.9%",
+        "netProfit": "-2",
+        "eps": "₹-0.07"
+      },
+      {
+        "period": "Dec 23",
+        "sales": "28",
+        "expenses": "30",
+        "operatingProfit": "-2",
+        "opm": "-7.1%",
+        "netProfit": "-2",
+        "eps": "₹-0.09"
+      },
+      {
+        "period": "Mar 24",
+        "sales": "20",
+        "expenses": "22",
+        "operatingProfit": "-2",
+        "opm": "-10.0%",
+        "netProfit": "-3",
+        "eps": "₹-0.1"
+      }
+    ],
+    "annualPnl": [
+      {
+        "year": "Mar 24",
+        "sales": "106",
+        "expenses": "115",
+        "operatingProfit": "-9",
+        "opm": "-8.5%",
+        "netProfit": "-10",
+        "eps": "₹-0.37"
+      },
+      {
+        "year": "TTM",
+        "sales": "106",
+        "expenses": "115",
+        "operatingProfit": "-9",
+        "opm": "-8.5%",
+        "netProfit": "-10",
+        "eps": "₹-0.37"
+      }
+    ],
+    "sector": "Metals & Mining",
+    "ratios": {
+      "marketCapCr": 145,
+      "ttmEps": -0.37,
+      "ttmSalesCr": 106,
+      "ttmPatCr": -10,
+      "promoterPct": 73.79
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:50.553Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

@@ -121124,5 +121124,107 @@
         "eps": "₹-4.38"
       }
     ]
+  },
+  "AICHAMP": {
+    "updatedAt": "2026-11-20T12:26:46.554Z",
+    "shareholding": {
+      "promoters": "58.90%",
+      "public": "41.10%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Jun 17",
+        "sales": "30",
+        "expenses": "29",
+        "operatingProfit": "1",
+        "opm": "3.3%",
+        "netProfit": "1",
+        "eps": "₹0.39"
+      },
+      {
+        "period": "Sep 17",
+        "sales": "32",
+        "expenses": "32",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.09"
+      },
+      {
+        "period": "Dec 17",
+        "sales": "30",
+        "expenses": "30",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.05"
+      },
+      {
+        "period": "Mar 18",
+        "sales": "43",
+        "expenses": "43",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.12"
+      },
+      {
+        "period": "Jun 18",
+        "sales": "26",
+        "expenses": "26",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.1"
+      }
+    ],
+    "annualPnl": [
+      {
+        "year": "Mar 18",
+        "sales": "135",
+        "expenses": "134",
+        "operatingProfit": "1",
+        "opm": "0.7%",
+        "netProfit": "1",
+        "eps": "₹0.65"
+      },
+      {
+        "year": "TTM",
+        "sales": "131",
+        "expenses": "131",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.36"
+      }
+    ],
+    "sector": "Diversified Equities",
+    "ratios": {
+      "marketCapCr": 73,
+      "pe": 79.2,
+      "ttmEps": 0.36,
+      "ttmSalesCr": 131,
+      "ttmPatCr": 0,
+      "promoterPct": 58.9
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:47.874Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
+  },
+  "AMTL": {
+    "updatedAt": "2026-11-20T12:26:54.174Z",
+    "shareholding": {
+      "promoters": "63.55%",
+      "public": "36.45%",
+      "total": "100.00%"
+    },
+    "sector": "Information Technology",
+    "ratios": {
+      "promoterPct": 63.55
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:54.677Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

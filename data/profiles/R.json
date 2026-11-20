@@ -54286,6 +54286,15 @@
     },
     "quarterlyResults": [
       {
+        "period": "Mar 17",
+        "sales": "1",
+        "expenses": "1",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹0.07"
+      },
+      {
         "period": "Sep 18",
         "sales": "3",
         "expenses": "3",
@@ -54314,16 +54323,96 @@
       }
     ],
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:49.497Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:24:04.991Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "balanceSheet": [],
     "cashFlows": [],
     "sector": "Chemicals & Materials",
     "ratios": {
-      "ttmEps": -0.41,
-      "ttmSalesCr": 12,
+      "ttmEps": -0.24,
+      "ttmSalesCr": 10,
       "ttmPatCr": 0,
       "promoterPct": 45.46
-    }
+    },
+    "annualPnl": [
+      {
+        "year": "TTM",
+        "sales": "10",
+        "expenses": "10",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹-0.24"
+      }
+    ]
+  },
+  "RAJPUTANA": {
+    "updatedAt": "2026-11-20T12:27:08.663Z",
+    "shareholding": {
+      "promoters": "65.76%",
+      "public": "34.24%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Mar 25",
+        "sales": "17",
+        "expenses": "14",
+        "operatingProfit": "3",
+        "opm": "17.6%",
+        "netProfit": "2",
+        "eps": "₹3"
+      },
+      {
+        "period": "Sep 25",
+        "sales": "33",
+        "expenses": "30",
+        "operatingProfit": "3",
+        "opm": "9.1%",
+        "netProfit": "3",
+        "eps": "₹0"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "29",
+        "expenses": "26",
+        "operatingProfit": "3",
+        "opm": "10.3%",
+        "netProfit": "2",
+        "eps": "₹3.44"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "34",
+        "expenses": "30",
+        "operatingProfit": "4",
+        "opm": "11.8%",
+        "netProfit": "3",
+        "eps": "₹4.54"
+      }
+    ],
+    "annualPnl": [
+      {
+        "year": "TTM",
+        "sales": "113",
+        "expenses": "100",
+        "operatingProfit": "13",
+        "opm": "11.5%",
+        "netProfit": "10",
+        "eps": "₹10.98"
+      }
+    ],
+    "sector": "Financial Services & NBFC",
+    "ratios": {
+      "marketCapCr": 18,
+      "pe": 2.5,
+      "ttmEps": 10.98,
+      "ttmSalesCr": 113,
+      "ttmPatCr": 10,
+      "promoterPct": 65.76
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:27:10.946Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

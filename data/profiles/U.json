@@ -5592,7 +5592,7 @@
     ],
     "shareholding": {
       "promoters": "0.00%",
-      "public": "100.00%",
+      "public": "45.97%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -5629,7 +5629,7 @@
           null,
           null,
           null,
-          null
+          18.03
         ],
         "dii": [
           null,
@@ -5641,7 +5641,7 @@
           null,
           null,
           null,
-          null
+          36.01
         ],
         "diiMutualFunds": [
           null,
@@ -5653,7 +5653,7 @@
           null,
           null,
           null,
-          null
+          31.44
         ],
         "diiInsurance": [
           null,
@@ -5665,7 +5665,7 @@
           null,
           null,
           null,
-          null
+          3.1
         ],
         "diiPensionFunds": [
           null,
@@ -5677,7 +5677,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -5689,7 +5689,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           100,
@@ -5701,7 +5701,7 @@
           100,
           100,
           100,
-          100
+          45.97
         ],
         "employeeTrusts": [
           0,
@@ -5718,19 +5718,244 @@
       },
       "holders": {
         "promoters": [],
-        "fii": [],
-        "dii": [],
+        "fii": [
+          {
+            "name": "INTERNATIONAL FINANCE CORPORATION",
+            "subCategory": "Foreign Direct Investment",
+            "pct": 3.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.18
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "AXIS MUTUAL FUND TRUSTEE LIMITED A/C AXIS MUTUAL FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.38,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.38
+            ]
+          },
+          {
+            "name": "SUNDARAM MUTUAL FUND A/C SUNDARAM SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.31,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.31
+            ]
+          },
+          {
+            "name": "ADITYA BIRLA SUN LIFE MUTUAL FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.9,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.9
+            ]
+          },
+          {
+            "name": "FRANKLIN INDIA OPPORTUNITES FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.62,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.62
+            ]
+          },
+          {
+            "name": "KOTAK SMALL CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 2.36,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.36
+            ]
+          },
+          {
+            "name": "CANARA ROBECO MUTUAL FUND A/C",
+            "subCategory": "Mutual Funds",
+            "pct": 2.04,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.04
+            ]
+          },
+          {
+            "name": "MAHINDRA MANULIFE FLEXI CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.79,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.79
+            ]
+          },
+          {
+            "name": "UTI BALANCED ADVANTAGE FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.72,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.72
+            ]
+          },
+          {
+            "name": "UNION FLEXI CAP FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.67,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.67
+            ]
+          },
+          {
+            "name": "DSP BSE MIDSMALL PRIVATE BANKS ETF",
+            "subCategory": "Mutual Funds",
+            "pct": 1.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.64
+            ]
+          },
+          {
+            "name": "KOTAK MAHINDRA LIFE INSURANCE COMPANY LTD.",
+            "subCategory": "Insurance",
+            "pct": 1.15,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.15
+            ]
+          },
+          {
+            "name": "BARODA BNP PARIBAS RETIREMENT FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.02,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.02
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "18.03%",
+      "dii": "36.01%"
     },
     "updatedAt": 1794038126813,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:11:57.908Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:08.484Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_BANKING_1740387_16102026070815_WEB.xml",
     "ratios": {
-      "marketCapCr": 11721,
-      "pe": 10.2,
+      "marketCapCr": 11660,
+      "pe": 10.1,
       "ttmEps": 5.91,
       "ttmSalesCr": 8962,
       "ttmPatCr": 1150,
@@ -5778,7 +6003,8 @@
         "netProfit": "1,150",
         "eps": "₹5.91"
       }
-    ]
+    ],
+    "lastShpRecordId": "213491"
   },
   "ULTRACEMCO": {
     "about": "UltraTech Cement Limited, together with its subsidiaries, engages in the manufacturing, marketing, and distribution of building materials in India and internationally. It offers grey cement, including ordinary Portland, composite, and weather plus, as well as Portland pozzolana, pozzolana super, and slag cement; white cement, wall care putty, and value-added products; and ready-mix concrete. The company also provides tile adhesives, gouts, cleaners, and fixing accessories; waterproof coatings, preformed membranes, and repair and integral waterproofing solutions; and ready-mix plasters and industrial and precision grouts. It also provides building solutions and support services; and infrastructure solutions, such as decorative, durability multiplayer, smart repair, advance structural, and floor and slab solutions. The company was formerly known as UltraTech CemCo Limited and changed its name to UltraTech Cement Limited in October 2004. UltraTech Cement Limited was incorporated in 2000 and is based in Mumbai, India. The company operates as a subsidiary of Grasim Industries Limited.",
@@ -19984,7 +20210,7 @@
     ],
     "shareholding": {
       "promoters": "0.00%",
-      "public": "100.00%",
+      "public": "34.17%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -20021,7 +20247,7 @@
           null,
           null,
           null,
-          null
+          6.71
         ],
         "dii": [
           null,
@@ -20033,7 +20259,7 @@
           null,
           null,
           null,
-          null
+          59.12
         ],
         "diiMutualFunds": [
           null,
@@ -20045,7 +20271,7 @@
           null,
           null,
           null,
-          null
+          13.96
         ],
         "diiInsurance": [
           null,
@@ -20057,7 +20283,7 @@
           null,
           null,
           null,
-          null
+          10.22
         ],
         "diiPensionFunds": [
           null,
@@ -20069,7 +20295,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -20081,7 +20307,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           100,
@@ -20093,7 +20319,7 @@
           100,
           100,
           100,
-          100
+          34.17
         ],
         "employeeTrusts": [
           0,
@@ -20111,17 +20337,157 @@
       "holders": {
         "promoters": [],
         "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "dii": [
+          {
+            "name": "Punjab National Bank",
+            "subCategory": "Banks",
+            "pct": 15.03,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              15.03
+            ]
+          },
+          {
+            "name": "State Bank of India",
+            "subCategory": "Banks",
+            "pct": 9.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.85
+            ]
+          },
+          {
+            "name": "Bank of Baroda",
+            "subCategory": "Banks",
+            "pct": 9.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.85
+            ]
+          },
+          {
+            "name": "Life Insurance Corporation of India",
+            "subCategory": "Insurance",
+            "pct": 9.85,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              9.85
+            ]
+          },
+          {
+            "name": "HDFC Mutual Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 5.28,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.28
+            ]
+          },
+          {
+            "name": "Nippon India Mutual Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 2.89,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.89
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL Mutual Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 2.82,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.82
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "T. ROWE PRICE INTERNATIONAL LTD",
+            "subCategory": "Foreign Companies",
+            "pct": 22.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              22.69
+            ]
+          }
+        ]
+      },
+      "fii": "6.71%",
+      "dii": "59.12%"
     },
     "updatedAt": 1794038126823,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:01.534Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:21:16.423Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_NBFC_INDAS_1745096_23102026083645_WEB.xml",
     "ratios": {
-      "marketCapCr": 10735,
+      "marketCapCr": 10742,
       "pe": 20.7,
       "ttmEps": 40.34,
       "ttmSalesCr": 1531,
@@ -20161,7 +20527,8 @@
         "netProfit": "519",
         "eps": "₹40.34"
       }
-    ]
+    ],
+    "lastShpRecordId": "213965"
   },
   "UTKARSHBNK": {
     "about": "Utkarsh Small Finance Bank Limited provides banking and financial services in India. It operates through Corporate/Wholesale Banking, Retail Banking, Treasury, and Other Banking Operations segments. The company offers savings, salary, current, term and recurring deposit, escrow, and RERA banking accounts; term, fixed, and recurring deposits; locker facilities; digital products; investment products; joint liability group, business, MSME, commercial vehicle and construction equipment, gold, personal, housing, individual, group, and other loans, as well as loans for the purchase of commercial properties; wholesale lending; overdraft against fixed deposit, LAP retail, and Micro LAP; outward remittances; positive pay; UPI payment solutions; and bill and credit card bill payment services. It also provides institutional, NRI, micro, retail, corporate, and wholesale banking; cash management; branch, internet, mobile, and WhatsApp banking services; digital onboarding; online account opening facilities; ATMs and micro-ATMs; debit and credit cards; mutual funds; and life, health, and general insurance. The company serves low and middle-income households, micro-entrepreneurs, women entrepreneurs, self-employed individuals, small and marginal farmers, MSMEs, corporates, and institutional customers. Utkarsh Small Finance Bank Limited was founded in 2009 and is headquartered in Varanasi, India.",

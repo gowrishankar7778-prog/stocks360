@@ -77068,7 +77068,35 @@
         "netCash": "0"
       }
     ],
-    "quarterlyResults": [],
+    "quarterlyResults": [
+      {
+        "period": "Mar 24",
+        "sales": "12",
+        "expenses": "1",
+        "operatingProfit": "11",
+        "opm": "91.7%",
+        "netProfit": "11",
+        "eps": "₹7.9"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "1",
+        "expenses": "1",
+        "operatingProfit": "0",
+        "opm": "0.0%",
+        "netProfit": "0",
+        "eps": "₹1.6"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "2",
+        "expenses": "1",
+        "operatingProfit": "1",
+        "opm": "50.0%",
+        "netProfit": "1",
+        "eps": "₹4.47"
+      }
+    ],
     "shareholding": {
       "promoters": "94.57%",
       "public": "5.43%",
@@ -77223,8 +77251,13 @@
       "dii": "0.00%"
     },
     "ratios": {
-      "marketCapCr": 153,
-      "bookValue": 16.7,
+      "marketCapCr": 642,
+      "pe": 24.8,
+      "ttmEps": 18.63,
+      "ttmSalesCr": 20,
+      "ttmPatCr": 16,
+      "bookValue": 3.6,
+      "rocePct": 114.3,
       "debtToEquity": 1.8,
       "promoterPct": 94.57
     },
@@ -77239,6 +77272,79 @@
         "eps": "₹-7.66"
       }
     ],
-    "debtToEquity": 1.8
+    "debtToEquity": 1.8,
+    "lastShpRecordId": "214981",
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:41.928Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
+  },
+  "MAL": {
+    "updatedAt": "2026-11-20T12:26:12.811Z",
+    "shareholding": {
+      "promoters": "59.74%",
+      "public": "40.26%",
+      "total": "100.00%"
+    },
+    "quarterlyResults": [
+      {
+        "period": "Mar 25",
+        "sales": "234",
+        "expenses": "214",
+        "operatingProfit": "20",
+        "opm": "8.5%",
+        "netProfit": "12",
+        "eps": "₹5.03"
+      },
+      {
+        "period": "Sep 25",
+        "sales": "219",
+        "expenses": "207",
+        "operatingProfit": "12",
+        "opm": "5.5%",
+        "netProfit": "12",
+        "eps": "₹4.76"
+      },
+      {
+        "period": "Mar 26",
+        "sales": "222",
+        "expenses": "213",
+        "operatingProfit": "9",
+        "opm": "4.1%",
+        "netProfit": "3",
+        "eps": "₹1.18"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "180",
+        "expenses": "171",
+        "operatingProfit": "9",
+        "opm": "5.0%",
+        "netProfit": "6",
+        "eps": "₹2.47"
+      }
+    ],
+    "annualPnl": [
+      {
+        "year": "TTM",
+        "sales": "855",
+        "expenses": "805",
+        "operatingProfit": "50",
+        "opm": "5.8%",
+        "netProfit": "33",
+        "eps": "₹13.44"
+      }
+    ],
+    "sector": "Textiles & Apparels",
+    "ratios": {
+      "marketCapCr": 76,
+      "pe": 2.3,
+      "ttmEps": 13.44,
+      "ttmSalesCr": 855,
+      "ttmPatCr": 33,
+      "promoterPct": 59.74
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-20T12:26:14.086Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

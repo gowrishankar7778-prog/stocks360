@@ -759,7 +759,7 @@
     ],
     "shareholding": {
       "promoters": "67.91%",
-      "public": "32.09%",
+      "public": "23.45%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -796,7 +796,7 @@
           null,
           null,
           null,
-          null
+          5.9
         ],
         "dii": [
           null,
@@ -808,7 +808,7 @@
           null,
           null,
           null,
-          null
+          2.74
         ],
         "diiMutualFunds": [
           null,
@@ -820,7 +820,7 @@
           null,
           null,
           null,
-          null
+          0.61
         ],
         "diiInsurance": [
           null,
@@ -832,7 +832,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -844,7 +844,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -856,7 +856,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           28.08,
@@ -868,7 +868,7 @@
           32.01,
           32.09,
           32.09,
-          32.09
+          23.45
         ],
         "employeeTrusts": [
           0,
@@ -884,20 +884,246 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
+        "promoters": [
+          {
+            "name": "VINOD HARILAL JHAVERI",
+            "subCategory": "Promoter",
+            "pct": 23.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              23.43
+            ]
+          },
+          {
+            "name": "YAYESH VINOD JHAVERI",
+            "subCategory": "Promoter",
+            "pct": 11.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.26
+            ]
+          },
+          {
+            "name": "PARAG VINOD JHAVERI",
+            "subCategory": "Promoter",
+            "pct": 10.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.64
+            ]
+          },
+          {
+            "name": "NEHA PARAG JHAVERI",
+            "subCategory": "Promoter Group",
+            "pct": 6.43,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6.43
+            ]
+          },
+          {
+            "name": "PAYAL YAYESH JHAVERI",
+            "subCategory": "Promoter Group",
+            "pct": 5.68,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5.68
+            ]
+          },
+          {
+            "name": "DISHIT PARAG JHAVERI",
+            "subCategory": "Promoter Group",
+            "pct": 3.78,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.78
+            ]
+          },
+          {
+            "name": "YAYESH VINOD JHAVERI (HUF)",
+            "subCategory": "Promoter Group",
+            "pct": 3.69,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.69
+            ]
+          },
+          {
+            "name": "PARAG VINOD JHAVERI (HUF)",
+            "subCategory": "Promoter Group",
+            "pct": 3,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "MALABAR INDIA FUND LIMITED",
+            "subCategory": "FPI Category I",
+            "pct": 3.95,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.95
+            ]
+          }
+        ],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "BENGAL FINANCE AND INVESTMENT PVT LTD",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.64,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.64
+            ]
+          },
+          {
+            "name": "Aniruddha Narayan Malpani",
+            "subCategory": "Individual Investor",
+            "pct": 1.52,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.52
+            ]
+          },
+          {
+            "name": "ASHISH KACHOLIA",
+            "subCategory": "Individual Investor",
+            "pct": 1.48,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.48
+            ]
+          },
+          {
+            "name": "ANJALI ANIRUDDHA MALPANI",
+            "subCategory": "Individual Investor",
+            "pct": 1.4,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.4
+            ]
+          }
+        ]
+      },
+      "fii": "5.90%",
+      "dii": "2.74%"
     },
     "updatedAt": 1794038126875,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.452Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:22:21.809Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1747515_28102026014320_WEB.xml",
     "ratios": {
-      "marketCapCr": 4417,
-      "pe": 54.5,
+      "marketCapCr": 4272,
+      "pe": 52.7,
       "ttmEps": 66.42,
       "ttmSalesCr": 1096,
       "ttmPatCr": 79,
@@ -936,7 +1162,8 @@
         "netProfit": "79",
         "eps": "₹66.42"
       }
-    ]
+    ],
+    "lastShpRecordId": "214378"
   },
   "YATHARTH": {
     "about": "Yatharth Hospital & Trauma Care Services Limited, together with its subsidiaries, owns and operates super-specialty hospitals in India. The company offers services in the areas of medicine, cardiology, neurosciences, general surgery, nephrology and urology, pediatrics, gastroenterology, pulmonology, gynecology, orthopedics, spine and rheumatology, plastic and cosmetic surgery, ear, nose, throat, endocrinology, critical care, dermatology, nuclear medicine, and cancer and bone marrow transplant. It also provides services in the areas of GI surgery and liver transplant, robotic surgery, kidney transplant, IVF and fertility, emergency medicine, ophthalmology, dentistry, psychology and psychiatry, physiotherapy and rehabilitation, anesthesiology, radiology, pathology and laboratory medicine, nutrition and health, interventional spine and pain medicine, and transfusion medicine and cellular therapy. In addition, the company sells medicines, as well as provide cafeteria services. The company was incorporated in 2008 and is based in Noida, India.",
@@ -1060,7 +1287,7 @@
     ],
     "shareholding": {
       "promoters": "55.80%",
-      "public": "44.20%",
+      "public": "26.21%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1097,7 +1324,7 @@
           null,
           null,
           null,
-          null
+          7.05
         ],
         "dii": [
           null,
@@ -1109,7 +1336,7 @@
           null,
           null,
           null,
-          null
+          10.94
         ],
         "diiMutualFunds": [
           null,
@@ -1121,7 +1348,7 @@
           null,
           null,
           null,
-          null
+          9.56
         ],
         "diiInsurance": [
           null,
@@ -1133,7 +1360,7 @@
           null,
           null,
           null,
-          null
+          0.16
         ],
         "diiPensionFunds": [
           null,
@@ -1145,7 +1372,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1157,7 +1384,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           33.46,
@@ -1169,7 +1396,7 @@
           44.2,
           44.2,
           44.2,
-          44.2
+          26.21
         ],
         "employeeTrusts": [
           0,
@@ -1185,20 +1412,196 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
-        "public": []
-      }
+        "promoters": [
+          {
+            "name": "Ajay Kumar Tyagi",
+            "subCategory": "Promoter",
+            "pct": 30.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              30.59
+            ]
+          },
+          {
+            "name": "Kapil Kumar",
+            "subCategory": "Promoter",
+            "pct": 12.62,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              12.62
+            ]
+          },
+          {
+            "name": "Manju Tyagi",
+            "subCategory": "Promoter Group",
+            "pct": 11.96,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              11.96
+            ]
+          },
+          {
+            "name": "Neena Tyagi",
+            "subCategory": "Promoter Group",
+            "pct": 0.62,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.62
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "Jupiter India Fund",
+            "subCategory": "FPI Category I",
+            "pct": 1.16,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.16
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "Kotak Mahindra Trustee Co Ltd A/C Kotak Multicap",
+            "subCategory": "Mutual Funds",
+            "pct": 5,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              5
+            ]
+          },
+          {
+            "name": "Bandhan Small Cap Fund",
+            "subCategory": "Mutual Funds",
+            "pct": 3.81,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.81
+            ]
+          }
+        ],
+        "public": [
+          {
+            "name": "Hr Global Manufacturing Private Limited",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.56,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.56
+            ]
+          },
+          {
+            "name": "Mukul Mahavir Agrawal",
+            "subCategory": "Individual Investor",
+            "pct": 1.14,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.14
+            ]
+          },
+          {
+            "name": "Kedia Securities Private Limited",
+            "subCategory": "Any Other (specify)",
+            "pct": 1,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1
+            ]
+          }
+        ]
+      },
+      "fii": "7.05%",
+      "dii": "10.94%"
     },
     "updatedAt": 1794038126876,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.987Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:22:22.968Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1751894_03112026051425_WEB.xml",
     "ratios": {
-      "marketCapCr": 10274,
-      "pe": 91.2,
+      "marketCapCr": 10507,
+      "pe": 93.3,
       "ttmEps": 11.72,
       "ttmSalesCr": 735,
       "ttmPatCr": 113,
@@ -1237,7 +1640,8 @@
         "netProfit": "113",
         "eps": "₹11.72"
       }
-    ]
+    ],
+    "lastShpRecordId": "214851"
   },
   "YATRA": {
     "about": "Yatra Online Limited provides reservation and booking services, and customized solutions related to transport, travel, tours, and tourism in India and internationally. It is involved in air travel, hotel and package, cabs and ground transportation, rail and bus, corporate travel management, personal travel, and expense management, as well as meetings, incentives, conferences, and events (MICE) activities. It serves travelers its products through internet, mobile, call center, and retail lounges. The company was incorporated in 2005 and is based in Gurugram, India. Yatra Online Limited operates as a subsidiary of THCL Travel Holding Cyprus Limited.",
@@ -1354,7 +1758,7 @@
     ],
     "shareholding": {
       "promoters": "62.66%",
-      "public": "37.34%",
+      "public": "20.79%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1391,7 +1795,7 @@
           null,
           null,
           null,
-          null
+          4.69
         ],
         "dii": [
           null,
@@ -1403,7 +1807,7 @@
           null,
           null,
           null,
-          null
+          11.87
         ],
         "diiMutualFunds": [
           null,
@@ -1415,7 +1819,7 @@
           null,
           null,
           null,
-          null
+          10.45
         ],
         "diiInsurance": [
           null,
@@ -1427,7 +1831,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -1439,7 +1843,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1451,7 +1855,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           35.54,
@@ -1463,7 +1867,7 @@
           35.54,
           37.34,
           37.34,
-          37.34
+          20.79
         ],
         "employeeTrusts": [
           0,
@@ -1479,20 +1883,161 @@
         ]
       },
       "holders": {
-        "promoters": [],
-        "fii": [],
-        "dii": [],
+        "promoters": [
+          {
+            "name": "THCL TRAVEL HOLDING CYPRUS LIMITED",
+            "subCategory": "Promoter",
+            "pct": 55.59,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              55.59
+            ]
+          },
+          {
+            "name": "ASIA CONSOLIDATED DMC PTE LIMITED",
+            "subCategory": "Promoter",
+            "pct": 7.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              7.06
+            ]
+          }
+        ],
+        "fii": [
+          {
+            "name": "MASSACHUSETTS INSTITUTE OF TECHNOLOGY",
+            "subCategory": "FPI Category I",
+            "pct": 1.26,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.26
+            ]
+          },
+          {
+            "name": "BELGRAVE INVESTMENT FUND",
+            "subCategory": "FPI Category I",
+            "pct": 1.21,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.21
+            ]
+          }
+        ],
+        "dii": [
+          {
+            "name": "UTI-MNC FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.74,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.74
+            ]
+          },
+          {
+            "name": "ICICI PRUDENTIAL TECHNOLOGY FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 3.27,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              3.27
+            ]
+          },
+          {
+            "name": "BANDHAN ELSS - TAX SAVER FUND",
+            "subCategory": "Mutual Funds",
+            "pct": 1.47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.47
+            ]
+          },
+          {
+            "name": "ETERNALIS FLEXICAP GROWTH OPPORTUNITIES FUND",
+            "subCategory": "Alternate Investment Funds",
+            "pct": 1.22,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.22
+            ]
+          }
+        ],
         "public": []
-      }
+      },
+      "fii": "4.69%",
+      "dii": "11.87%"
     },
     "updatedAt": 1794038126877,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.755Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:22:29.839Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "lastXbrlUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1757100_12112026114439_WEB.xml",
     "ratios": {
-      "marketCapCr": 1406,
-      "pe": 42.8,
+      "marketCapCr": 1335,
+      "pe": 40.6,
       "ttmEps": 2.19,
       "ttmSalesCr": 645,
       "ttmPatCr": 34,
@@ -1531,7 +2076,8 @@
         "netProfit": "34",
         "eps": "₹2.19"
       }
-    ]
+    ],
+    "lastShpRecordId": "214669"
   },
   "YOGI": {
     "about": "Yogi Limited engages in trading of machines and ancillary products in India. The company operates through Real Estate and Trading in Machinery segments. It is also involved in contracting, building, and development of real estate; acquisition and development of immovable and movable properties; and town planning and infrastructure development activities. In addition, the company engages in renting and leasing properties and assets, including equipment, construction machinery, buildings, plots, vehicles, plants, ships, aircraft, vessels, computers, and other assets. The company was formerly known as Parsharti Investment Limited and changed its name to Yogi Limited in June 2022. Yogi Limited was incorporated in 1992 and is based in Mumbai, India.",
@@ -1728,7 +2274,7 @@
     ],
     "shareholding": {
       "promoters": "58.04%",
-      "public": "41.96%",
+      "public": "41.25%",
       "total": "100.00%",
       "quarters": [
         "Jun 2024",
@@ -1765,7 +2311,7 @@
           null,
           null,
           null,
-          null
+          0.02
         ],
         "dii": [
           null,
@@ -1777,7 +2323,7 @@
           null,
           null,
           null,
-          null
+          0.69
         ],
         "diiMutualFunds": [
           null,
@@ -1789,7 +2335,7 @@
           null,
           null,
           null,
-          null
+          0.01
         ],
         "diiInsurance": [
           null,
@@ -1801,7 +2347,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "diiPensionFunds": [
           null,
@@ -1813,7 +2359,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "government": [
           null,
@@ -1825,7 +2371,7 @@
           null,
           null,
           null,
-          null
+          0
         ],
         "public": [
           43.84,
@@ -1837,7 +2383,7 @@
           41.96,
           41.96,
           41.96,
-          41.96
+          41.25
         ],
         "employeeTrusts": [
           0,
@@ -1853,19 +2399,210 @@
         ]
       },
       "holders": {
-        "promoters": [],
+        "promoters": [
+          {
+            "name": "YUKEN KOGYO CO., LTD",
+            "subCategory": "Promoter",
+            "pct": 47,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              47
+            ]
+          },
+          {
+            "name": "BENEFIC INVESTMENT AND FINANCE COMPANY PVT LTD",
+            "subCategory": "Promoter",
+            "pct": 10.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              10.25
+            ]
+          },
+          {
+            "name": "C P RANGACHAR",
+            "subCategory": "Promoter",
+            "pct": 0.62,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.62
+            ]
+          },
+          {
+            "name": "VIDYA RANGACHAR",
+            "subCategory": "Promoter",
+            "pct": 0.12,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.12
+            ]
+          },
+          {
+            "name": "MADHURI RANGACHAR",
+            "subCategory": "Promoter",
+            "pct": 0.06,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              0.06
+            ]
+          }
+        ],
         "fii": [],
         "dii": [],
-        "public": []
-      }
+        "public": [
+          {
+            "name": "FAZAL NABI SHAIK",
+            "subCategory": "Individual Investor",
+            "pct": 2.25,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              2.25
+            ]
+          },
+          {
+            "name": "KCP SUGAR AND INDUSTRIES CORPORATION LIMITED",
+            "subCategory": "Bodies Corporate",
+            "pct": 1.8,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.8
+            ]
+          },
+          {
+            "name": "ANIL BHAVANJI SHAH",
+            "subCategory": "Individual Investor",
+            "pct": 1.42,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.42
+            ]
+          },
+          {
+            "name": "S.SHYAM",
+            "subCategory": "Individual Investor",
+            "pct": 1.18,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.18
+            ]
+          },
+          {
+            "name": "NARENDRA KUMAR AGARWAL",
+            "subCategory": "Individual Investor",
+            "pct": 1.17,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.17
+            ]
+          },
+          {
+            "name": "VINITHRA SEKHAR .",
+            "subCategory": "Individual Investor",
+            "pct": 1.11,
+            "history": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              1.11
+            ]
+          }
+        ]
+      },
+      "fii": "0.02%",
+      "dii": "0.69%"
     },
     "updatedAt": 1794038126878,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-13T12:12:16.928Z",
-    "financialChangeSummary": "Synced official NSE quarterly results & shareholding pattern",
+    "lastFinancialStatementUpdate": "2026-11-20T12:22:26.655Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 1568,
-      "pe": 109.4,
+      "marketCapCr": 1434,
+      "pe": 100,
       "ttmEps": 10,
       "ttmSalesCr": 470,
       "ttmPatCr": 14,
@@ -1904,6 +2641,7 @@
         "eps": "₹10"
       }
     ],
-    "debtToEquity": 0.28
+    "debtToEquity": 0.28,
+    "lastShpRecordId": "213284"
   }
 }
