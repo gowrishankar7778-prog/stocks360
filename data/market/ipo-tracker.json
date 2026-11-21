@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-11-21T09:37:59.058Z",
+  "updatedAt": "2026-11-21T09:58:55.420Z",
   "source": "Official NSE Mainboard & SME IPO Disclosures",
-  "openIpos": [],
-  "upcomingIpos": [],
+  "openIpos": [
+    {
+      "symbol": "MAHACOAL",
+      "companyName": "Mahanadi Coalfields Limited",
+      "series": "EQ",
+      "issueStartDate": "19-Nov-2026",
+      "issueEndDate": "23-Nov-2026",
+      "issuePrice": "Rs.129 to Rs.136",
+      "issueSizeText": "49.31 Cr Shares",
+      "status": "Active"
+    },
+    {
+      "symbol": "WATRANA",
+      "companyName": "Watrana Rentals Limited",
+      "series": "SME",
+      "issueStartDate": "19-Nov-2026",
+      "issueEndDate": "23-Nov-2026",
+      "issuePrice": "Rs.232 to Rs.245",
+      "issueSizeText": "35.16 L Shares",
+      "status": "Active"
+    }
+  ],
+  "upcomingIpos": [
+    {
+      "symbol": "SHREESIDHI",
+      "companyName": "Shree Siddhivinayak Greentech Industries Limited",
+      "series": "SME",
+      "issueStartDate": "25-Nov-2026",
+      "issueEndDate": "27-Nov-2026",
+      "issuePrice": "Rs.130 to Rs.142",
+      "issueSizeText": "65.96 L Shares",
+      "status": "Forthcoming"
+    }
+  ],
   "pastIpos": [
     {
       "symbol": "VPFL",
@@ -17,18 +49,6 @@
       "gainPct": null
     },
     {
-      "symbol": "HGSINDIALT",
-      "companyName": "HGS (India) Limited",
-      "securityType": "SME",
-      "ipoStartDate": "30-OCT-2026",
-      "ipoEndDate": "03-NOV-2026",
-      "listingDate": "06-NOV-2026",
-      "priceRange": "Rs.114 to Rs.120",
-      "issuePrice": 120,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "MAXENGS",
       "companyName": "Maxwell Engineering Solutions Limited",
       "securityType": "SME",
@@ -37,6 +57,18 @@
       "listingDate": "06-NOV-2026",
       "priceRange": "Rs.150 to Rs.158",
       "issuePrice": 158,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "HGSINDIALT",
+      "companyName": "HGS (India) Limited",
+      "securityType": "SME",
+      "ipoStartDate": "30-OCT-2026",
+      "ipoEndDate": "03-NOV-2026",
+      "listingDate": "06-NOV-2026",
+      "priceRange": "Rs.114 to Rs.120",
+      "issuePrice": 120,
       "cmp": null,
       "gainPct": null
     },
@@ -125,16 +157,16 @@
       "gainPct": 23.97
     },
     {
-      "symbol": "BONFIG",
-      "companyName": "Bonfiglioli Transmissions Limited",
+      "symbol": "TONBO",
+      "companyName": "Tonbo Imaging India Limited",
       "securityType": "Equity",
       "ipoStartDate": "15-OCT-2026",
       "ipoEndDate": "19-OCT-2026",
       "listingDate": "23-OCT-2026",
-      "priceRange": "Rs.558 to Rs.586",
-      "issuePrice": 586,
-      "cmp": 800.95,
-      "gainPct": 36.68
+      "priceRange": "Rs.665 to Rs.700",
+      "issuePrice": 700,
+      "cmp": 1457.1,
+      "gainPct": 108.16
     },
     {
       "symbol": "ZETWERK",
@@ -161,16 +193,16 @@
       "gainPct": 53.37
     },
     {
-      "symbol": "TONBO",
-      "companyName": "Tonbo Imaging India Limited",
+      "symbol": "BONFIG",
+      "companyName": "Bonfiglioli Transmissions Limited",
       "securityType": "Equity",
       "ipoStartDate": "15-OCT-2026",
       "ipoEndDate": "19-OCT-2026",
       "listingDate": "23-OCT-2026",
-      "priceRange": "Rs.665 to Rs.700",
-      "issuePrice": 700,
-      "cmp": 1457.1,
-      "gainPct": 108.16
+      "priceRange": "Rs.558 to Rs.586",
+      "issuePrice": 586,
+      "cmp": 800.95,
+      "gainPct": 36.68
     },
     {
       "symbol": "FUSIONCX",
@@ -293,18 +325,6 @@
       "gainPct": null
     },
     {
-      "symbol": "SHAHINVEST",
-      "companyName": "Shah Investor's Home Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "28-SEP-2026",
-      "ipoEndDate": "30-SEP-2026",
-      "listingDate": "06-OCT-2026",
-      "priceRange": "Rs.159 to Rs.167",
-      "issuePrice": 167,
-      "cmp": 145.22,
-      "gainPct": -13.04
-    },
-    {
       "symbol": "SRIT",
       "companyName": "Srit India Limited",
       "securityType": "Equity",
@@ -315,6 +335,18 @@
       "issuePrice": 130,
       "cmp": 129.08,
       "gainPct": -0.71
+    },
+    {
+      "symbol": "SHAHINVEST",
+      "companyName": "Shah Investor's Home Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "28-SEP-2026",
+      "ipoEndDate": "30-SEP-2026",
+      "listingDate": "06-OCT-2026",
+      "priceRange": "Rs.159 to Rs.167",
+      "issuePrice": 167,
+      "cmp": 145.22,
+      "gainPct": -13.04
     },
     {
       "symbol": "ACEVECTOR",
@@ -341,18 +373,6 @@
       "gainPct": -16.86
     },
     {
-      "symbol": "GERMAN",
-      "companyName": "German Green Steel and Power Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "25-SEP-2026",
-      "ipoEndDate": "29-SEP-2026",
-      "listingDate": "05-OCT-2026",
-      "priceRange": "Rs.132 to Rs.139",
-      "issuePrice": 139,
-      "cmp": 113.96,
-      "gainPct": -18.01
-    },
-    {
       "symbol": "ORIENTCABL",
       "companyName": "Orient Cables (India) Limited",
       "securityType": "Equity",
@@ -363,6 +383,18 @@
       "issuePrice": 272,
       "cmp": 384.6,
       "gainPct": 41.4
+    },
+    {
+      "symbol": "GERMAN",
+      "companyName": "German Green Steel and Power Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "25-SEP-2026",
+      "ipoEndDate": "29-SEP-2026",
+      "listingDate": "05-OCT-2026",
+      "priceRange": "Rs.132 to Rs.139",
+      "issuePrice": 139,
+      "cmp": 113.96,
+      "gainPct": -18.01
     },
     {
       "symbol": "HIMALAYAN",
@@ -389,18 +421,6 @@
       "gainPct": null
     },
     {
-      "symbol": "AONESTEELS",
-      "companyName": "A-One Steels India Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "24-SEP-2026",
-      "ipoEndDate": "28-SEP-2026",
-      "listingDate": "01-OCT-2026",
-      "priceRange": "Rs.385 to Rs.405",
-      "issuePrice": 405,
-      "cmp": 477.95,
-      "gainPct": 18.01
-    },
-    {
       "symbol": "MONEYVIEW",
       "companyName": "Moneyview Limited",
       "securityType": "Equity",
@@ -411,6 +431,18 @@
       "issuePrice": 34,
       "cmp": 56.79,
       "gainPct": 67.03
+    },
+    {
+      "symbol": "AONESTEELS",
+      "companyName": "A-One Steels India Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "24-SEP-2026",
+      "ipoEndDate": "28-SEP-2026",
+      "listingDate": "01-OCT-2026",
+      "priceRange": "Rs.385 to Rs.405",
+      "issuePrice": 405,
+      "cmp": 477.95,
+      "gainPct": 18.01
     },
     {
       "symbol": "GREENASIA",
@@ -425,16 +457,16 @@
       "gainPct": null
     },
     {
-      "symbol": "ELEVATE",
-      "companyName": "Elevate Campuses Limited",
+      "symbol": "ARMEE",
+      "companyName": "ArMee Infotech Limited",
       "securityType": "Equity",
       "ipoStartDate": "23-SEP-2026",
       "ipoEndDate": "25-SEP-2026",
       "listingDate": "30-SEP-2026",
-      "priceRange": "Rs.343 to Rs.362",
-      "issuePrice": 362,
-      "cmp": 306.7,
-      "gainPct": -15.28
+      "priceRange": "Rs.350 to Rs.375",
+      "issuePrice": 375,
+      "cmp": 293.05,
+      "gainPct": -21.85
     },
     {
       "symbol": "SWASTIKAIN",
@@ -449,18 +481,6 @@
       "gainPct": 1.36
     },
     {
-      "symbol": "ARMEE",
-      "companyName": "ArMee Infotech Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "23-SEP-2026",
-      "ipoEndDate": "25-SEP-2026",
-      "listingDate": "30-SEP-2026",
-      "priceRange": "Rs.350 to Rs.375",
-      "issuePrice": 375,
-      "cmp": 293.05,
-      "gainPct": -21.85
-    },
-    {
       "symbol": "ADROITIND",
       "companyName": "Adroit Industries (India) Limited",
       "securityType": "Equity",
@@ -471,6 +491,18 @@
       "issuePrice": 134,
       "cmp": 185.28,
       "gainPct": 38.27
+    },
+    {
+      "symbol": "ELEVATE",
+      "companyName": "Elevate Campuses Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "23-SEP-2026",
+      "ipoEndDate": "25-SEP-2026",
+      "listingDate": "30-SEP-2026",
+      "priceRange": "Rs.343 to Rs.362",
+      "issuePrice": 362,
+      "cmp": 306.7,
+      "gainPct": -15.28
     },
     {
       "symbol": "COREIN",
@@ -521,18 +553,6 @@
       "gainPct": null
     },
     {
-      "symbol": "NSE",
-      "companyName": "National Stock Exchange of India Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "17-SEP-2026",
-      "ipoEndDate": "21-SEP-2026",
-      "listingDate": "-",
-      "priceRange": "Rs.1700 to Rs.1785",
-      "issuePrice": null,
-      "cmp": 2220.3,
-      "gainPct": null
-    },
-    {
       "symbol": "SONA",
       "companyName": "Sonaselection India Limited",
       "securityType": "Equity",
@@ -545,15 +565,15 @@
       "gainPct": 22.84
     },
     {
-      "symbol": "KHERIAAUTO",
-      "companyName": "Kheria Autocomp Limited",
-      "securityType": "SME",
+      "symbol": "NSE",
+      "companyName": "National Stock Exchange of India Limited",
+      "securityType": "Equity",
       "ipoStartDate": "17-SEP-2026",
       "ipoEndDate": "21-SEP-2026",
-      "listingDate": "24-SEP-2026",
-      "priceRange": "Rs.96 to Rs.101",
-      "issuePrice": 101,
-      "cmp": null,
+      "listingDate": "-",
+      "priceRange": "Rs.1700 to Rs.1785",
+      "issuePrice": null,
+      "cmp": 2220.3,
       "gainPct": null
     },
     {
@@ -569,16 +589,28 @@
       "gainPct": null
     },
     {
-      "symbol": "HEROMOTORS",
-      "companyName": "Hero Motors Limited",
+      "symbol": "KHERIAAUTO",
+      "companyName": "Kheria Autocomp Limited",
+      "securityType": "SME",
+      "ipoStartDate": "17-SEP-2026",
+      "ipoEndDate": "21-SEP-2026",
+      "listingDate": "24-SEP-2026",
+      "priceRange": "Rs.96 to Rs.101",
+      "issuePrice": 101,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "JSIPL",
+      "companyName": "Jindal Supreme (India) Limited",
       "securityType": "Equity",
       "ipoStartDate": "16-SEP-2026",
       "ipoEndDate": "18-SEP-2026",
       "listingDate": "23-SEP-2026",
-      "priceRange": "Rs.79 to Rs.84",
-      "issuePrice": 84,
-      "cmp": 119.13,
-      "gainPct": 41.82
+      "priceRange": "Rs.88 to Rs.93",
+      "issuePrice": 93,
+      "cmp": 164.14,
+      "gainPct": 76.49
     },
     {
       "symbol": "SSRETAIL",
@@ -593,16 +625,16 @@
       "gainPct": 53.38
     },
     {
-      "symbol": "JSIPL",
-      "companyName": "Jindal Supreme (India) Limited",
+      "symbol": "HEROMOTORS",
+      "companyName": "Hero Motors Limited",
       "securityType": "Equity",
       "ipoStartDate": "16-SEP-2026",
       "ipoEndDate": "18-SEP-2026",
       "listingDate": "23-SEP-2026",
-      "priceRange": "Rs.88 to Rs.93",
-      "issuePrice": 93,
-      "cmp": 164.14,
-      "gainPct": 76.49
+      "priceRange": "Rs.79 to Rs.84",
+      "issuePrice": 84,
+      "cmp": 119.13,
+      "gainPct": 41.82
     },
     {
       "symbol": "MANIKA",
@@ -629,28 +661,16 @@
       "gainPct": 0.78
     },
     {
-      "symbol": "MPIMANIPAL",
-      "companyName": "Manipal Payment and Identity Solutions Limited",
+      "symbol": "RENTOMOJO",
+      "companyName": "Rentomojo Limited",
       "securityType": "Equity",
       "ipoStartDate": "09-SEP-2026",
       "ipoEndDate": "11-SEP-2026",
       "listingDate": "17-SEP-2026",
-      "priceRange": "Rs.322 to Rs.339",
-      "issuePrice": 339,
-      "cmp": 322.8,
-      "gainPct": -4.78
-    },
-    {
-      "symbol": "ARCIL",
-      "companyName": "Asset Reconstruction Company (India) Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "09-SEP-2026",
-      "ipoEndDate": "11-SEP-2026",
-      "listingDate": "17-SEP-2026",
-      "priceRange": "Rs.132 to Rs.139",
-      "issuePrice": 139,
-      "cmp": 123.87,
-      "gainPct": -10.88
+      "priceRange": "Rs.384 to Rs.404",
+      "issuePrice": 404,
+      "cmp": 555.45,
+      "gainPct": 37.49
     },
     {
       "symbol": "STEAMHOUSE",
@@ -665,28 +685,28 @@
       "gainPct": 98.65
     },
     {
-      "symbol": "RENTOMOJO",
-      "companyName": "Rentomojo Limited",
+      "symbol": "ARCIL",
+      "companyName": "Asset Reconstruction Company (India) Limited",
       "securityType": "Equity",
       "ipoStartDate": "09-SEP-2026",
       "ipoEndDate": "11-SEP-2026",
       "listingDate": "17-SEP-2026",
-      "priceRange": "Rs.384 to Rs.404",
-      "issuePrice": 404,
-      "cmp": 555.45,
-      "gainPct": 37.49
+      "priceRange": "Rs.132 to Rs.139",
+      "issuePrice": 139,
+      "cmp": 123.87,
+      "gainPct": -10.88
     },
     {
-      "symbol": "LCCPROJECT",
-      "companyName": "LCC Projects Limited",
+      "symbol": "MPIMANIPAL",
+      "companyName": "Manipal Payment and Identity Solutions Limited",
       "securityType": "Equity",
       "ipoStartDate": "09-SEP-2026",
       "ipoEndDate": "11-SEP-2026",
       "listingDate": "17-SEP-2026",
-      "priceRange": "Rs.139 to Rs.146",
-      "issuePrice": 146,
-      "cmp": 125.76,
-      "gainPct": -13.86
+      "priceRange": "Rs.322 to Rs.339",
+      "issuePrice": 339,
+      "cmp": 322.8,
+      "gainPct": -4.78
     },
     {
       "symbol": "KARAMTARA",
@@ -701,6 +721,18 @@
       "gainPct": 41.2
     },
     {
+      "symbol": "LCCPROJECT",
+      "companyName": "LCC Projects Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "09-SEP-2026",
+      "ipoEndDate": "11-SEP-2026",
+      "listingDate": "17-SEP-2026",
+      "priceRange": "Rs.139 to Rs.146",
+      "issuePrice": 146,
+      "cmp": 125.76,
+      "gainPct": -13.86
+    },
+    {
       "symbol": "VINOD",
       "companyName": "Vinod Texworld Limited",
       "securityType": "SME",
@@ -711,6 +743,18 @@
       "issuePrice": 94,
       "cmp": null,
       "gainPct": null
+    },
+    {
+      "symbol": "GLASSWALL",
+      "companyName": "Glass Wall Systems (India) Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "08-SEP-2026",
+      "ipoEndDate": "10-SEP-2026",
+      "listingDate": "16-SEP-2026",
+      "priceRange": "Rs.172 to Rs.182",
+      "issuePrice": 182,
+      "cmp": 277.5,
+      "gainPct": 52.47
     },
     {
       "symbol": "PRASOLCHEM",
@@ -737,18 +781,6 @@
       "gainPct": 63.63
     },
     {
-      "symbol": "GLASSWALL",
-      "companyName": "Glass Wall Systems (India) Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "08-SEP-2026",
-      "ipoEndDate": "10-SEP-2026",
-      "listingDate": "16-SEP-2026",
-      "priceRange": "Rs.172 to Rs.182",
-      "issuePrice": 182,
-      "cmp": 277.5,
-      "gainPct": 52.47
-    },
-    {
       "symbol": "PRANAV",
       "companyName": "Pranav Constructions Limited",
       "securityType": "Equity",
@@ -773,18 +805,6 @@
       "gainPct": null
     },
     {
-      "symbol": "MOMSBELIEF",
-      "companyName": "Rays of Belief Limited- For Profit Social Enterprise (FPSE)",
-      "securityType": "Equity",
-      "ipoStartDate": "01-SEP-2026",
-      "ipoEndDate": "03-SEP-2026",
-      "listingDate": "-",
-      "priceRange": "Rs.227 to Rs.239",
-      "issuePrice": null,
-      "cmp": 267.12,
-      "gainPct": null
-    },
-    {
       "symbol": "DEEPA",
       "companyName": "Deepa Jewellers Limited",
       "securityType": "Equity",
@@ -795,6 +815,18 @@
       "issuePrice": 177,
       "cmp": 191.72,
       "gainPct": 8.32
+    },
+    {
+      "symbol": "MOMSBELIEF",
+      "companyName": "Rays of Belief Limited- For Profit Social Enterprise (FPSE)",
+      "securityType": "Equity",
+      "ipoStartDate": "01-SEP-2026",
+      "ipoEndDate": "03-SEP-2026",
+      "listingDate": "-",
+      "priceRange": "Rs.227 to Rs.239",
+      "issuePrice": null,
+      "cmp": 267.12,
+      "gainPct": null
     },
     {
       "symbol": "PERNIASPOP",
@@ -833,18 +865,6 @@
       "gainPct": null
     },
     {
-      "symbol": "ESDS",
-      "companyName": "ESDS Software Solution Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "28-AUG-2026",
-      "ipoEndDate": "01-SEP-2026",
-      "listingDate": "04-SEP-2026",
-      "priceRange": "Rs.408 to Rs.429",
-      "issuePrice": 429,
-      "cmp": 1129.8,
-      "gainPct": 163.36
-    },
-    {
       "symbol": "PRIORITY",
       "companyName": "Priority Jewels Limited",
       "securityType": "Equity",
@@ -855,6 +875,18 @@
       "issuePrice": 200,
       "cmp": 231.6,
       "gainPct": 15.8
+    },
+    {
+      "symbol": "ESDS",
+      "companyName": "ESDS Software Solution Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "28-AUG-2026",
+      "ipoEndDate": "01-SEP-2026",
+      "listingDate": "04-SEP-2026",
+      "priceRange": "Rs.408 to Rs.429",
+      "issuePrice": 429,
+      "cmp": 1129.8,
+      "gainPct": 163.36
     },
     {
       "symbol": "LUMINO",
@@ -893,18 +925,6 @@
       "gainPct": null
     },
     {
-      "symbol": "HTEL",
-      "companyName": "Hy-Tech Engineers Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "24-AUG-2026",
-      "ipoEndDate": "27-AUG-2026",
-      "listingDate": "01-SEP-2026",
-      "priceRange": "Rs.50 to Rs.53",
-      "issuePrice": 53,
-      "cmp": 73.2,
-      "gainPct": 38.11
-    },
-    {
       "symbol": "SKYWAYS",
       "companyName": "Skyways Air Services Limited",
       "securityType": "Equity",
@@ -915,6 +935,18 @@
       "issuePrice": 138,
       "cmp": 117,
       "gainPct": -15.22
+    },
+    {
+      "symbol": "HTEL",
+      "companyName": "Hy-Tech Engineers Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "24-AUG-2026",
+      "ipoEndDate": "27-AUG-2026",
+      "listingDate": "01-SEP-2026",
+      "priceRange": "Rs.50 to Rs.53",
+      "issuePrice": 53,
+      "cmp": 73.2,
+      "gainPct": 38.11
     },
     {
       "symbol": "SYMBIOTEC",
@@ -1145,18 +1177,6 @@
       "gainPct": 83.39
     },
     {
-      "symbol": "TECHNOCRAF",
-      "companyName": "Technocraft Ventures Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "07-AUG-2026",
-      "ipoEndDate": "11-AUG-2026",
-      "listingDate": "14-AUG-2026",
-      "priceRange": "Rs.200 to Rs.212",
-      "issuePrice": 212,
-      "cmp": 492.2,
-      "gainPct": 132.17
-    },
-    {
       "symbol": "LEAP",
       "companyName": "Leap India Limited",
       "securityType": "Equity",
@@ -1167,6 +1187,18 @@
       "issuePrice": 159,
       "cmp": null,
       "gainPct": null
+    },
+    {
+      "symbol": "TECHNOCRAF",
+      "companyName": "Technocraft Ventures Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "07-AUG-2026",
+      "ipoEndDate": "11-AUG-2026",
+      "listingDate": "14-AUG-2026",
+      "priceRange": "Rs.200 to Rs.212",
+      "issuePrice": 212,
+      "cmp": 492.2,
+      "gainPct": 132.17
     },
     {
       "symbol": "OPTIMYSTIX",
@@ -1481,18 +1513,6 @@
       "gainPct": null
     },
     {
-      "symbol": "CORDELIA",
-      "companyName": "Waterways Leisure Tourism Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "23-JUN-2026",
-      "ipoEndDate": "25-JUN-2026",
-      "listingDate": "01-JUL-2026",
-      "priceRange": "Rs.769 to Rs.808",
-      "issuePrice": 808,
-      "cmp": 85.81,
-      "gainPct": -89.38
-    },
-    {
       "symbol": "RAMBHAJO",
       "companyName": "Advit Jewels Limited",
       "securityType": "Equity",
@@ -1503,6 +1523,18 @@
       "issuePrice": 138,
       "cmp": 334.35,
       "gainPct": 142.28
+    },
+    {
+      "symbol": "CORDELIA",
+      "companyName": "Waterways Leisure Tourism Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "23-JUN-2026",
+      "ipoEndDate": "25-JUN-2026",
+      "listingDate": "01-JUL-2026",
+      "priceRange": "Rs.769 to Rs.808",
+      "issuePrice": 808,
+      "cmp": 85.81,
+      "gainPct": -89.38
     },
     {
       "symbol": "SHREEDHAR",
@@ -1769,18 +1801,6 @@
       "gainPct": null
     },
     {
-      "symbol": "SAIPARENT",
-      "companyName": "Sai Parenteral's Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "24-MAR-2026",
-      "ipoEndDate": "27-MAR-2026",
-      "listingDate": "02-APR-2026",
-      "priceRange": "Rs.372 to Rs.392",
-      "issuePrice": 392,
-      "cmp": 492.3,
-      "gainPct": 25.59
-    },
-    {
       "symbol": "POWERICA",
       "companyName": "Powerica Limited",
       "securityType": "Equity",
@@ -1791,6 +1811,18 @@
       "issuePrice": 395,
       "cmp": 482.25,
       "gainPct": 22.09
+    },
+    {
+      "symbol": "SAIPARENT",
+      "companyName": "Sai Parenteral's Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "24-MAR-2026",
+      "ipoEndDate": "27-MAR-2026",
+      "listingDate": "02-APR-2026",
+      "priceRange": "Rs.372 to Rs.392",
+      "issuePrice": 392,
+      "cmp": 492.3,
+      "gainPct": 25.59
     },
     {
       "symbol": "AMIRCHAND",
@@ -1985,18 +2017,6 @@
       "gainPct": 39.77
     },
     {
-      "symbol": "CLEANMAX",
-      "companyName": "Clean Max Enviro Energy Solutions Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "23-FEB-2026",
-      "ipoEndDate": "25-FEB-2026",
-      "listingDate": "02-MAR-2026",
-      "priceRange": "Rs.1000 to Rs.1053",
-      "issuePrice": 1053,
-      "cmp": 1226.4,
-      "gainPct": 16.47
-    },
-    {
       "symbol": "SRTL",
       "companyName": "Shree Ram Twistex Limited",
       "securityType": "Equity",
@@ -2007,6 +2027,18 @@
       "issuePrice": 104,
       "cmp": 36,
       "gainPct": -65.38
+    },
+    {
+      "symbol": "CLEANMAX",
+      "companyName": "Clean Max Enviro Energy Solutions Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "23-FEB-2026",
+      "ipoEndDate": "25-FEB-2026",
+      "listingDate": "02-MAR-2026",
+      "priceRange": "Rs.1000 to Rs.1053",
+      "issuePrice": 1053,
+      "cmp": 1226.4,
+      "gainPct": 16.47
     },
     {
       "symbol": "MOBILISE",
@@ -2069,18 +2101,6 @@
       "gainPct": null
     },
     {
-      "symbol": "AYE",
-      "companyName": "Aye Finance Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "09-FEB-2026",
-      "ipoEndDate": "11-FEB-2026",
-      "listingDate": "16-FEB-2026",
-      "priceRange": "Rs.122 to Rs.129",
-      "issuePrice": 129,
-      "cmp": 139.25,
-      "gainPct": 7.95
-    },
-    {
       "symbol": "FRACTAL",
       "companyName": "Fractal Analytics Limited",
       "securityType": "Equity",
@@ -2093,6 +2113,18 @@
       "gainPct": -9.06
     },
     {
+      "symbol": "AYE",
+      "companyName": "Aye Finance Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "09-FEB-2026",
+      "ipoEndDate": "11-FEB-2026",
+      "listingDate": "16-FEB-2026",
+      "priceRange": "Rs.122 to Rs.129",
+      "issuePrice": 129,
+      "cmp": 139.25,
+      "gainPct": 7.95
+    },
+    {
       "symbol": "BIOPOL",
       "companyName": "Biopol Chemicals Limited",
       "securityType": "SME",
@@ -2101,6 +2133,18 @@
       "listingDate": "13-FEB-2026",
       "priceRange": "Rs.102 to Rs.108",
       "issuePrice": 108,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SAMPOORNA",
+      "companyName": "NFP Sampoorna Foods Limited-Issue Withdrawn",
+      "securityType": "SME",
+      "ipoStartDate": "04-FEB-2026",
+      "ipoEndDate": "06-FEB-2026",
+      "listingDate": "-",
+      "priceRange": "Rs.52 to Rs.55",
+      "issuePrice": null,
       "cmp": null,
       "gainPct": null
     },
@@ -2125,18 +2169,6 @@
       "listingDate": "11-FEB-2026",
       "priceRange": "Rs.167 to Rs.176",
       "issuePrice": 176,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "SAMPOORNA",
-      "companyName": "NFP Sampoorna Foods Limited-Issue Withdrawn",
-      "securityType": "SME",
-      "ipoStartDate": "04-FEB-2026",
-      "ipoEndDate": "06-FEB-2026",
-      "listingDate": "-",
-      "priceRange": "Rs.52 to Rs.55",
-      "issuePrice": null,
       "cmp": null,
       "gainPct": null
     },
@@ -2177,18 +2209,6 @@
       "gainPct": 147.78
     },
     {
-      "symbol": "PFCZCB1",
-      "companyName": "Power Finance Corporation Limited (Zero Coupon NCD)",
-      "securityType": "DEBT",
-      "ipoStartDate": "16-JAN-2026",
-      "ipoEndDate": "30-JAN-2026",
-      "listingDate": "-",
-      "priceRange": "Rs.100000",
-      "issuePrice": null,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "PFC2026",
       "companyName": "Power Finance Corporation Limited",
       "securityType": "DEBT",
@@ -2196,6 +2216,18 @@
       "ipoEndDate": "30-JAN-2026",
       "listingDate": "19-NOV-2026",
       "priceRange": "Rs.1000",
+      "issuePrice": null,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "PFCZCB1",
+      "companyName": "Power Finance Corporation Limited (Zero Coupon NCD)",
+      "securityType": "DEBT",
+      "ipoStartDate": "16-JAN-2026",
+      "ipoEndDate": "30-JAN-2026",
+      "listingDate": "-",
+      "priceRange": "Rs.100000",
       "issuePrice": null,
       "cmp": null,
       "gainPct": null
@@ -2321,18 +2353,6 @@
       "gainPct": null
     },
     {
-      "symbol": "SOCL",
-      "companyName": "Sundrex Oil Company Limited",
-      "securityType": "SME",
-      "ipoStartDate": "22-DEC-2025",
-      "ipoEndDate": "24-DEC-2025",
-      "listingDate": "30-DEC-2025",
-      "priceRange": "RS.81 to RS.86",
-      "issuePrice": 86,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SHYAMDHANI",
       "companyName": "Shyam Dhani Industries Limited",
       "securityType": "SME",
@@ -2341,6 +2361,18 @@
       "listingDate": "30-DEC-2025",
       "priceRange": "RS.65 to RS.70",
       "issuePrice": 70,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SOCL",
+      "companyName": "Sundrex Oil Company Limited",
+      "securityType": "SME",
+      "ipoStartDate": "22-DEC-2025",
+      "ipoEndDate": "24-DEC-2025",
+      "listingDate": "30-DEC-2025",
+      "priceRange": "RS.81 to RS.86",
+      "issuePrice": 86,
       "cmp": null,
       "gainPct": null
     },
@@ -2381,18 +2413,6 @@
       "gainPct": 36.79
     },
     {
-      "symbol": "EXIMROUTES",
-      "companyName": "Exim Routes Limited",
-      "securityType": "SME",
-      "ipoStartDate": "12-DEC-2025",
-      "ipoEndDate": "16-DEC-2025",
-      "listingDate": "19-DEC-2025",
-      "priceRange": "RS.83 to RS.88",
-      "issuePrice": 88,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "ASHWINI",
       "companyName": "Ashwini Container Movers Limited",
       "securityType": "SME",
@@ -2401,6 +2421,18 @@
       "listingDate": "19-DEC-2025",
       "priceRange": "RS.135 to RS.142",
       "issuePrice": 142,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "EXIMROUTES",
+      "companyName": "Exim Routes Limited",
+      "securityType": "SME",
+      "ipoStartDate": "12-DEC-2025",
+      "ipoEndDate": "16-DEC-2025",
+      "listingDate": "19-DEC-2025",
+      "priceRange": "RS.83 to RS.88",
+      "issuePrice": 88,
       "cmp": null,
       "gainPct": null
     },
@@ -2453,18 +2485,6 @@
       "gainPct": 113.11
     },
     {
-      "symbol": "ENCOMPAS",
-      "companyName": "Encompass Design India Limited",
-      "securityType": "SME",
-      "ipoStartDate": "05-DEC-2025",
-      "ipoEndDate": "09-DEC-2025",
-      "listingDate": "12-DEC-2025",
-      "priceRange": "RS.101 to RS.107",
-      "issuePrice": 107,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "FWSTC",
       "companyName": "Flywings Simulator Training Centre Limited",
       "securityType": "SME",
@@ -2473,6 +2493,18 @@
       "listingDate": "12-DEC-2025",
       "priceRange": "RS.181 to RS.191",
       "issuePrice": 191,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "ENCOMPAS",
+      "companyName": "Encompass Design India Limited",
+      "securityType": "SME",
+      "ipoStartDate": "05-DEC-2025",
+      "ipoEndDate": "09-DEC-2025",
+      "listingDate": "12-DEC-2025",
+      "priceRange": "RS.101 to RS.107",
+      "issuePrice": 107,
       "cmp": null,
       "gainPct": null
     },
@@ -2489,18 +2521,6 @@
       "gainPct": 80.65
     },
     {
-      "symbol": "VIDYAWIRES",
-      "companyName": "Vidya Wires Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "03-DEC-2025",
-      "ipoEndDate": "05-DEC-2025",
-      "listingDate": "10-DEC-2025",
-      "priceRange": "Rs.48 to Rs.52",
-      "issuePrice": 52,
-      "cmp": 73.8,
-      "gainPct": 41.92
-    },
-    {
       "symbol": "MEESHO",
       "companyName": "Meesho Limited",
       "securityType": "Equity",
@@ -2511,6 +2531,18 @@
       "issuePrice": 111,
       "cmp": 259.92,
       "gainPct": 134.16
+    },
+    {
+      "symbol": "VIDYAWIRES",
+      "companyName": "Vidya Wires Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "03-DEC-2025",
+      "ipoEndDate": "05-DEC-2025",
+      "listingDate": "10-DEC-2025",
+      "priceRange": "Rs.48 to Rs.52",
+      "issuePrice": 52,
+      "cmp": 73.8,
+      "gainPct": 41.92
     },
     {
       "symbol": "SHRIKANHA",
@@ -2537,6 +2569,18 @@
       "gainPct": null
     },
     {
+      "symbol": "INVICTA",
+      "companyName": "Invicta Diagnostic Limited",
+      "securityType": "SME",
+      "ipoStartDate": "01-DEC-2025",
+      "ipoEndDate": "03-DEC-2025",
+      "listingDate": "08-DEC-2025",
+      "priceRange": "RS.80 to RS.85",
+      "issuePrice": 85,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "CSSL",
       "companyName": "Clear Secured Services Limited",
       "securityType": "SME",
@@ -2557,18 +2601,6 @@
       "listingDate": "08-DEC-2025",
       "priceRange": "RS.52 to RS.56",
       "issuePrice": 56,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "INVICTA",
-      "companyName": "Invicta Diagnostic Limited",
-      "securityType": "SME",
-      "ipoStartDate": "01-DEC-2025",
-      "ipoEndDate": "03-DEC-2025",
-      "listingDate": "08-DEC-2025",
-      "priceRange": "RS.80 to RS.85",
-      "issuePrice": 85,
       "cmp": null,
       "gainPct": null
     },
@@ -2801,18 +2833,6 @@
       "gainPct": null
     },
     {
-      "symbol": "CRAMC",
-      "companyName": "Canara Robeco Asset Management Company Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "09-OCT-2025",
-      "ipoEndDate": "13-OCT-2025",
-      "listingDate": "16-OCT-2025",
-      "priceRange": "Rs.253 to Rs.266",
-      "issuePrice": 266,
-      "cmp": 228.62,
-      "gainPct": -14.05
-    },
-    {
       "symbol": "RUBICON",
       "companyName": "Rubicon Research Limited",
       "securityType": "Equity",
@@ -2823,6 +2843,18 @@
       "issuePrice": 485,
       "cmp": 1718.7,
       "gainPct": 254.37
+    },
+    {
+      "symbol": "CRAMC",
+      "companyName": "Canara Robeco Asset Management Company Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "09-OCT-2025",
+      "ipoEndDate": "13-OCT-2025",
+      "listingDate": "16-OCT-2025",
+      "priceRange": "Rs.253 to Rs.266",
+      "issuePrice": 266,
+      "cmp": 228.62,
+      "gainPct": -14.05
     },
     {
       "symbol": "LGEINDIA",
@@ -2897,14 +2929,14 @@
       "gainPct": 20.76
     },
     {
-      "symbol": "MUNISH",
-      "companyName": "Munish Forge Limited",
+      "symbol": "GREENLEAF",
+      "companyName": "Greenleaf Envirotech Limited",
       "securityType": "SME",
       "ipoStartDate": "30-SEP-2025",
-      "ipoEndDate": "03-OCT-2025",
-      "listingDate": "08-OCT-2025",
-      "priceRange": "RS.91 to RS.96",
-      "issuePrice": 96,
+      "ipoEndDate": "06-OCT-2025",
+      "listingDate": "09-OCT-2025",
+      "priceRange": "RS.136",
+      "issuePrice": 136,
       "cmp": null,
       "gainPct": null
     },
@@ -2921,6 +2953,18 @@
       "gainPct": null
     },
     {
+      "symbol": "MUNISH",
+      "companyName": "Munish Forge Limited",
+      "securityType": "SME",
+      "ipoStartDate": "30-SEP-2025",
+      "ipoEndDate": "03-OCT-2025",
+      "listingDate": "08-OCT-2025",
+      "priceRange": "RS.91 to RS.96",
+      "issuePrice": 96,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "SHEEL",
       "companyName": "Sheel Biotech Limited",
       "securityType": "SME",
@@ -2933,16 +2977,16 @@
       "gainPct": null
     },
     {
-      "symbol": "GREENLEAF",
-      "companyName": "Greenleaf Envirotech Limited",
-      "securityType": "SME",
-      "ipoStartDate": "30-SEP-2025",
-      "ipoEndDate": "06-OCT-2025",
-      "listingDate": "09-OCT-2025",
-      "priceRange": "RS.136",
-      "issuePrice": 136,
-      "cmp": null,
-      "gainPct": null
+      "symbol": "OMFREIGHT",
+      "companyName": "Om Freight Forwarders Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "29-SEP-2025",
+      "ipoEndDate": "03-OCT-2025",
+      "listingDate": "08-OCT-2025",
+      "priceRange": "Rs.128 to Rs.135",
+      "issuePrice": 135,
+      "cmp": 111.46,
+      "gainPct": -17.44
     },
     {
       "symbol": "GLOTTIS",
@@ -2967,18 +3011,6 @@
       "issuePrice": 191,
       "cmp": 140.37,
       "gainPct": -26.51
-    },
-    {
-      "symbol": "OMFREIGHT",
-      "companyName": "Om Freight Forwarders Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "29-SEP-2025",
-      "ipoEndDate": "03-OCT-2025",
-      "listingDate": "08-OCT-2025",
-      "priceRange": "Rs.128 to Rs.135",
-      "issuePrice": 135,
-      "cmp": 111.46,
-      "gainPct": -17.44
     },
     {
       "symbol": "VIJAYPD",
@@ -3113,18 +3145,6 @@
       "gainPct": -72.66
     },
     {
-      "symbol": "STYL",
-      "companyName": "Seshaasai Technologies Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "23-SEP-2025",
-      "ipoEndDate": "25-SEP-2025",
-      "listingDate": "30-SEP-2025",
-      "priceRange": "Rs.402 to Rs.423",
-      "issuePrice": 423,
-      "cmp": 289.55,
-      "gainPct": -31.55
-    },
-    {
       "symbol": "ARSSBL",
       "companyName": "Anand Rathi Share and Stock Brokers Limited",
       "securityType": "Equity",
@@ -3149,16 +3169,16 @@
       "gainPct": -56.38
     },
     {
-      "symbol": "ECOLINE",
-      "companyName": "Ecoline Exim Limited",
-      "securityType": "SME",
+      "symbol": "STYL",
+      "companyName": "Seshaasai Technologies Limited",
+      "securityType": "Equity",
       "ipoStartDate": "23-SEP-2025",
       "ipoEndDate": "25-SEP-2025",
       "listingDate": "30-SEP-2025",
-      "priceRange": "RS.134 to RS.141",
-      "issuePrice": 141,
-      "cmp": null,
-      "gainPct": null
+      "priceRange": "Rs.402 to Rs.423",
+      "issuePrice": 423,
+      "cmp": 289.55,
+      "gainPct": -31.55
     },
     {
       "symbol": "MGSL",
@@ -3173,16 +3193,16 @@
       "gainPct": null
     },
     {
-      "symbol": "ATLANTAELE",
-      "companyName": "Atlanta Electricals Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "22-SEP-2025",
-      "ipoEndDate": "24-SEP-2025",
-      "listingDate": "29-SEP-2025",
-      "priceRange": "Rs.718 to Rs.754",
-      "issuePrice": 754,
-      "cmp": 1450.8,
-      "gainPct": 92.41
+      "symbol": "ECOLINE",
+      "companyName": "Ecoline Exim Limited",
+      "securityType": "SME",
+      "ipoStartDate": "23-SEP-2025",
+      "ipoEndDate": "25-SEP-2025",
+      "listingDate": "30-SEP-2025",
+      "priceRange": "RS.134 to RS.141",
+      "issuePrice": 141,
+      "cmp": null,
+      "gainPct": null
     },
     {
       "symbol": "GANESHCP",
@@ -3197,6 +3217,18 @@
       "gainPct": -45.18
     },
     {
+      "symbol": "ATLANTAELE",
+      "companyName": "Atlanta Electricals Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "22-SEP-2025",
+      "ipoEndDate": "24-SEP-2025",
+      "listingDate": "29-SEP-2025",
+      "priceRange": "Rs.718 to Rs.754",
+      "issuePrice": 754,
+      "cmp": 1450.8,
+      "gainPct": 92.41
+    },
+    {
       "symbol": "PRIMECAB",
       "companyName": "Prime Cable Industries Limited",
       "securityType": "SME",
@@ -3205,6 +3237,18 @@
       "listingDate": "29-SEP-2025",
       "priceRange": "RS.78 to RS.83",
       "issuePrice": 83,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SAATVIK",
+      "companyName": "Saatvik Green Energy Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "19-SEP-2025",
+      "ipoEndDate": "23-SEP-2025",
+      "listingDate": "26-SEP-2025",
+      "priceRange": "Rs.442 to Rs.465",
+      "issuePrice": 465,
       "cmp": null,
       "gainPct": null
     },
@@ -3219,18 +3263,6 @@
       "issuePrice": 153,
       "cmp": 95.45,
       "gainPct": -37.61
-    },
-    {
-      "symbol": "SAATVIK",
-      "companyName": "Saatvik Green Energy Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "19-SEP-2025",
-      "ipoEndDate": "23-SEP-2025",
-      "listingDate": "26-SEP-2025",
-      "priceRange": "Rs.442 to Rs.465",
-      "issuePrice": 465,
-      "cmp": null,
-      "gainPct": null
     },
     {
       "symbol": "SIDDHICOTS",
@@ -3401,18 +3433,6 @@
       "gainPct": null
     },
     {
-      "symbol": "VIKRAN",
-      "companyName": "Vikran Engineering Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "26-AUG-2025",
-      "ipoEndDate": "29-AUG-2025",
-      "listingDate": "03-SEP-2025",
-      "priceRange": "Rs.92 to Rs.97",
-      "issuePrice": 97,
-      "cmp": 52.7,
-      "gainPct": -45.67
-    },
-    {
       "symbol": "AHCL",
       "companyName": "Anlon Healthcare Limited",
       "securityType": "Equity",
@@ -3423,6 +3443,18 @@
       "issuePrice": 91,
       "cmp": 25.17,
       "gainPct": -72.34
+    },
+    {
+      "symbol": "VIKRAN",
+      "companyName": "Vikran Engineering Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "26-AUG-2025",
+      "ipoEndDate": "29-AUG-2025",
+      "listingDate": "03-SEP-2025",
+      "priceRange": "Rs.92 to Rs.97",
+      "issuePrice": 97,
+      "cmp": 52.7,
+      "gainPct": -45.67
     },
     {
       "symbol": "CURRENT",
@@ -3449,14 +3481,14 @@
       "gainPct": null
     },
     {
-      "symbol": "ANONDITA",
-      "companyName": "Anondita Medicare Limited",
+      "symbol": "CLASSICEIL",
+      "companyName": "Classic Electrodes (India) Limited",
       "securityType": "SME",
       "ipoStartDate": "22-AUG-2025",
       "ipoEndDate": "26-AUG-2025",
       "listingDate": "01-SEP-2025",
-      "priceRange": "RS.137 to RS.145",
-      "issuePrice": 145,
+      "priceRange": "RS.82 to RS.87",
+      "issuePrice": 87,
       "cmp": null,
       "gainPct": null
     },
@@ -3473,14 +3505,14 @@
       "gainPct": null
     },
     {
-      "symbol": "CLASSICEIL",
-      "companyName": "Classic Electrodes (India) Limited",
+      "symbol": "ANONDITA",
+      "companyName": "Anondita Medicare Limited",
       "securityType": "SME",
       "ipoStartDate": "22-AUG-2025",
       "ipoEndDate": "26-AUG-2025",
       "listingDate": "01-SEP-2025",
-      "priceRange": "RS.82 to RS.87",
-      "issuePrice": 87,
+      "priceRange": "RS.137 to RS.145",
+      "issuePrice": 145,
       "cmp": null,
       "gainPct": null
     },
@@ -3509,28 +3541,16 @@
       "gainPct": -57.67
     },
     {
-      "symbol": "VIKRAMSOLR",
-      "companyName": "Vikram Solar Limited",
+      "symbol": "PATELRMART",
+      "companyName": "Patel Retail Limited",
       "securityType": "Equity",
       "ipoStartDate": "19-AUG-2025",
       "ipoEndDate": "21-AUG-2025",
       "listingDate": "26-AUG-2025",
-      "priceRange": "Rs.315 to Rs.332",
-      "issuePrice": 332,
-      "cmp": 136.75,
-      "gainPct": -58.81
-    },
-    {
-      "symbol": "SHREEJISPG",
-      "companyName": "Shreeji Shipping Global Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "19-AUG-2025",
-      "ipoEndDate": "21-AUG-2025",
-      "listingDate": "26-AUG-2025",
-      "priceRange": "Rs.240 to Rs.252",
-      "issuePrice": 252,
-      "cmp": 913.8,
-      "gainPct": 262.62
+      "priceRange": "Rs.237 to Rs.255",
+      "issuePrice": 255,
+      "cmp": 226.6,
+      "gainPct": -11.14
     },
     {
       "symbol": "GEMAROMA",
@@ -3545,16 +3565,28 @@
       "gainPct": -57.37
     },
     {
-      "symbol": "PATELRMART",
-      "companyName": "Patel Retail Limited",
+      "symbol": "SHREEJISPG",
+      "companyName": "Shreeji Shipping Global Limited",
       "securityType": "Equity",
       "ipoStartDate": "19-AUG-2025",
       "ipoEndDate": "21-AUG-2025",
       "listingDate": "26-AUG-2025",
-      "priceRange": "Rs.237 to Rs.255",
-      "issuePrice": 255,
-      "cmp": 226.6,
-      "gainPct": -11.14
+      "priceRange": "Rs.240 to Rs.252",
+      "issuePrice": 252,
+      "cmp": 913.8,
+      "gainPct": 262.62
+    },
+    {
+      "symbol": "VIKRAMSOLR",
+      "companyName": "Vikram Solar Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "19-AUG-2025",
+      "ipoEndDate": "21-AUG-2025",
+      "listingDate": "26-AUG-2025",
+      "priceRange": "Rs.315 to Rs.332",
+      "issuePrice": 332,
+      "cmp": 136.75,
+      "gainPct": -58.81
     },
     {
       "symbol": "STUDIOLSD",
@@ -3701,6 +3733,18 @@
       "gainPct": 11.88
     },
     {
+      "symbol": "JYOTIGLOBL",
+      "companyName": "Jyoti Global Plast Limited",
+      "securityType": "SME",
+      "ipoStartDate": "04-AUG-2025",
+      "ipoEndDate": "06-AUG-2025",
+      "listingDate": "11-AUG-2025",
+      "priceRange": "RS.62 to RS.66",
+      "issuePrice": 66,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "BHADORA",
       "companyName": "Bhadora Industries Limited",
       "securityType": "SME",
@@ -3737,18 +3781,6 @@
       "gainPct": null
     },
     {
-      "symbol": "JYOTIGLOBL",
-      "companyName": "Jyoti Global Plast Limited",
-      "securityType": "SME",
-      "ipoStartDate": "04-AUG-2025",
-      "ipoEndDate": "06-AUG-2025",
-      "listingDate": "11-AUG-2025",
-      "priceRange": "RS.62 to RS.66",
-      "issuePrice": 66,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "FLYSBS",
       "companyName": "FlySBS Aviation Limited",
       "securityType": "SME",
@@ -3761,18 +3793,6 @@
       "gainPct": null
     },
     {
-      "symbol": "RNPL",
-      "companyName": "Renol Polychem Limited",
-      "securityType": "SME",
-      "ipoStartDate": "31-JUL-2025",
-      "ipoEndDate": "04-AUG-2025",
-      "listingDate": "07-AUG-2025",
-      "priceRange": "RS.100 to RS.105",
-      "issuePrice": 105,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "CUDML",
       "companyName": "Cash Ur Drive Marketing Limited",
       "securityType": "SME",
@@ -3781,6 +3801,18 @@
       "listingDate": "07-AUG-2025",
       "priceRange": "RS.123 to RS.130",
       "issuePrice": 130,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "RNPL",
+      "companyName": "Renol Polychem Limited",
+      "securityType": "SME",
+      "ipoStartDate": "31-JUL-2025",
+      "ipoEndDate": "04-AUG-2025",
+      "listingDate": "07-AUG-2025",
+      "priceRange": "RS.100 to RS.105",
+      "issuePrice": 105,
       "cmp": null,
       "gainPct": null
     },
@@ -3821,18 +3853,6 @@
       "gainPct": 56.99
     },
     {
-      "symbol": "CPPLUS",
-      "companyName": "Aditya Infotech Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "29-JUL-2025",
-      "ipoEndDate": "31-JUL-2025",
-      "listingDate": "05-AUG-2025",
-      "priceRange": "Rs.640 to Rs.675",
-      "issuePrice": 675,
-      "cmp": 4026.2,
-      "gainPct": 496.47
-    },
-    {
       "symbol": "LAXMIINDIA",
       "companyName": "Laxmi India Finance Limited",
       "securityType": "Equity",
@@ -3843,6 +3863,18 @@
       "issuePrice": 158,
       "cmp": 98.53,
       "gainPct": -37.64
+    },
+    {
+      "symbol": "CPPLUS",
+      "companyName": "Aditya Infotech Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "29-JUL-2025",
+      "ipoEndDate": "31-JUL-2025",
+      "listingDate": "05-AUG-2025",
+      "priceRange": "Rs.640 to Rs.675",
+      "issuePrice": 675,
+      "cmp": 4026.2,
+      "gainPct": 496.47
     },
     {
       "symbol": "KAYTEX",
@@ -4049,14 +4081,14 @@
       "gainPct": -38.71
     },
     {
-      "symbol": "PUSHPA",
-      "companyName": "Pushpa Jewellers Limited",
+      "symbol": "CEDAAR",
+      "companyName": "Cedaar Textile Limited",
       "securityType": "SME",
       "ipoStartDate": "30-JUN-2025",
       "ipoEndDate": "02-JUL-2025",
       "listingDate": "07-JUL-2025",
-      "priceRange": "Rs.143 to RS.147",
-      "issuePrice": 147,
+      "priceRange": "Rs.130 to RS.140",
+      "issuePrice": 140,
       "cmp": null,
       "gainPct": null
     },
@@ -4073,14 +4105,14 @@
       "gainPct": null
     },
     {
-      "symbol": "CEDAAR",
-      "companyName": "Cedaar Textile Limited",
+      "symbol": "PUSHPA",
+      "companyName": "Pushpa Jewellers Limited",
       "securityType": "SME",
       "ipoStartDate": "30-JUN-2025",
       "ipoEndDate": "02-JUL-2025",
       "listingDate": "07-JUL-2025",
-      "priceRange": "Rs.130 to RS.140",
-      "issuePrice": 140,
+      "priceRange": "Rs.143 to RS.147",
+      "issuePrice": 147,
       "cmp": null,
       "gainPct": null
     },
@@ -4097,18 +4129,6 @@
       "gainPct": -46.07
     },
     {
-      "symbol": "MMEL",
-      "companyName": "Moving Media Entertainment Limited",
-      "securityType": "SME",
-      "ipoStartDate": "26-JUN-2025",
-      "ipoEndDate": "30-JUN-2025",
-      "listingDate": "03-JUL-2025",
-      "priceRange": "Rs.66 to RS.70",
-      "issuePrice": 70,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "PROFX",
       "companyName": "PRO FX Tech Limited",
       "securityType": "SME",
@@ -4121,16 +4141,16 @@
       "gainPct": null
     },
     {
-      "symbol": "SAMBHV",
-      "companyName": "Sambhv Steel Tubes Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "25-JUN-2025",
-      "ipoEndDate": "27-JUN-2025",
-      "listingDate": "02-JUL-2025",
-      "priceRange": "Rs.77 to Rs.82",
-      "issuePrice": 82,
-      "cmp": 158.06,
-      "gainPct": 92.76
+      "symbol": "MMEL",
+      "companyName": "Moving Media Entertainment Limited",
+      "securityType": "SME",
+      "ipoStartDate": "26-JUN-2025",
+      "ipoEndDate": "30-JUN-2025",
+      "listingDate": "03-JUL-2025",
+      "priceRange": "Rs.66 to RS.70",
+      "issuePrice": 70,
+      "cmp": null,
+      "gainPct": null
     },
     {
       "symbol": "HDBFS",
@@ -4143,6 +4163,18 @@
       "issuePrice": 740,
       "cmp": 567.75,
       "gainPct": -23.28
+    },
+    {
+      "symbol": "SAMBHV",
+      "companyName": "Sambhv Steel Tubes Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "25-JUN-2025",
+      "ipoEndDate": "27-JUN-2025",
+      "listingDate": "02-JUL-2025",
+      "priceRange": "Rs.77 to Rs.82",
+      "issuePrice": 82,
+      "cmp": 158.06,
+      "gainPct": 92.76
     },
     {
       "symbol": "SUNTECH",
@@ -4217,18 +4249,6 @@
       "gainPct": null
     },
     {
-      "symbol": "SAFEENTP",
-      "companyName": "Safe Enterprises Retail Fixtures Limited",
-      "securityType": "SME",
-      "ipoStartDate": "20-JUN-2025",
-      "ipoEndDate": "24-JUN-2025",
-      "listingDate": "27-JUN-2025",
-      "priceRange": "Rs.131 to RS. 138",
-      "issuePrice": 138,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "AAKAAR",
       "companyName": "Aakaar Medical Technologies Limited",
       "securityType": "SME",
@@ -4237,6 +4257,18 @@
       "listingDate": "27-JUN-2025",
       "priceRange": "Rs.68 to RS. 72",
       "issuePrice": 72,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SAFEENTP",
+      "companyName": "Safe Enterprises Retail Fixtures Limited",
+      "securityType": "SME",
+      "ipoStartDate": "20-JUN-2025",
+      "ipoEndDate": "24-JUN-2025",
+      "listingDate": "27-JUN-2025",
+      "priceRange": "Rs.131 to RS. 138",
+      "issuePrice": 138,
       "cmp": null,
       "gainPct": null
     },
@@ -4289,18 +4321,6 @@
       "gainPct": null
     },
     {
-      "symbol": "PATILAUTOM",
-      "companyName": "Patil Automation Limited",
-      "securityType": "SME",
-      "ipoStartDate": "16-JUN-2025",
-      "ipoEndDate": "18-JUN-2025",
-      "listingDate": "23-JUN-2025",
-      "priceRange": "Rs.114 to RS. 120",
-      "issuePrice": 120,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SAMAY",
       "companyName": "Samay Project Services Limited",
       "securityType": "SME",
@@ -4309,6 +4329,18 @@
       "listingDate": "23-JUN-2025",
       "priceRange": "Rs.32 to RS. 34",
       "issuePrice": 34,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "PATILAUTOM",
+      "companyName": "Patil Automation Limited",
+      "securityType": "SME",
+      "ipoStartDate": "16-JUN-2025",
+      "ipoEndDate": "18-JUN-2025",
+      "listingDate": "23-JUN-2025",
+      "priceRange": "Rs.114 to RS. 120",
+      "issuePrice": 120,
       "cmp": null,
       "gainPct": null
     },
@@ -4385,18 +4417,6 @@
       "gainPct": -35.7
     },
     {
-      "symbol": "NRVANDANA",
-      "companyName": "N R Vandana Tex Industries Limited",
-      "securityType": "SME",
-      "ipoStartDate": "28-MAY-2025",
-      "ipoEndDate": "30-MAY-2025",
-      "listingDate": "04-JUN-2025",
-      "priceRange": "Rs.42 to Rs.45",
-      "issuePrice": 45,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "NEPTUNE",
       "companyName": "Neptune Petrochemicals Limited",
       "securityType": "SME",
@@ -4405,6 +4425,18 @@
       "listingDate": "04-JUN-2025",
       "priceRange": "Rs.115 to RS. 122",
       "issuePrice": 122,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "NRVANDANA",
+      "companyName": "N R Vandana Tex Industries Limited",
+      "securityType": "SME",
+      "ipoStartDate": "28-MAY-2025",
+      "ipoEndDate": "30-MAY-2025",
+      "listingDate": "04-JUN-2025",
+      "priceRange": "Rs.42 to Rs.45",
+      "issuePrice": 45,
       "cmp": null,
       "gainPct": null
     },
@@ -4709,7 +4741,7 @@
       "gainPct": null
     },
     {
-      "symbol": "975SCL35",
+      "symbol": "SCL003",
       "companyName": "Sammaan Capital Limited",
       "securityType": "DEBT",
       "ipoStartDate": "27-FEB-2025",
@@ -4717,7 +4749,7 @@
       "listingDate": "16-SEP-2026",
       "priceRange": "Rs.1000",
       "issuePrice": null,
-      "cmp": 101000,
+      "cmp": null,
       "gainPct": null
     },
     {
@@ -4745,18 +4777,6 @@
       "gainPct": 262.26
     },
     {
-      "symbol": "ROYALARC",
-      "companyName": "Royal Arc Electrodes Limited",
-      "securityType": "SME",
-      "ipoStartDate": "14-FEB-2025",
-      "ipoEndDate": "18-FEB-2025",
-      "listingDate": "24-FEB-2025",
-      "priceRange": "Rs.114 to Rs.120",
-      "issuePrice": 120,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "TEJASCARGO",
       "companyName": "Tejas Cargo India Limited",
       "securityType": "SME",
@@ -4765,6 +4785,18 @@
       "listingDate": "24-FEB-2025",
       "priceRange": "Rs.160 to Rs.168",
       "issuePrice": 168,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "ROYALARC",
+      "companyName": "Royal Arc Electrodes Limited",
+      "securityType": "SME",
+      "ipoStartDate": "14-FEB-2025",
+      "ipoEndDate": "18-FEB-2025",
+      "listingDate": "24-FEB-2025",
+      "priceRange": "Rs.114 to Rs.120",
+      "issuePrice": 120,
       "cmp": null,
       "gainPct": null
     },
@@ -4793,18 +4825,6 @@
       "gainPct": null
     },
     {
-      "symbol": "PSRAJ",
-      "companyName": "P S Raj Steels Limited",
-      "securityType": "SME",
-      "ipoStartDate": "12-FEB-2025",
-      "ipoEndDate": "14-FEB-2025",
-      "listingDate": "19-FEB-2025",
-      "priceRange": "Rs.132 to Rs.140",
-      "issuePrice": 140,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "MAXVOLT",
       "companyName": "Maxvolt Energy Industries Limited",
       "securityType": "SME",
@@ -4813,6 +4833,18 @@
       "listingDate": "19-FEB-2025",
       "priceRange": "Rs.171 to Rs.180",
       "issuePrice": 180,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "PSRAJ",
+      "companyName": "P S Raj Steels Limited",
+      "securityType": "SME",
+      "ipoStartDate": "12-FEB-2025",
+      "ipoEndDate": "14-FEB-2025",
+      "listingDate": "19-FEB-2025",
+      "priceRange": "Rs.132 to Rs.140",
+      "issuePrice": 140,
       "cmp": null,
       "gainPct": null
     },
@@ -4973,18 +5005,6 @@
       "gainPct": -56.18
     },
     {
-      "symbol": "BARFLEX",
-      "companyName": "Barflex Polyfilms Limited",
-      "securityType": "SME",
-      "ipoStartDate": "10-JAN-2025",
-      "ipoEndDate": "15-JAN-2025",
-      "listingDate": "20-JAN-2025",
-      "priceRange": "Rs.57 to Rs.60",
-      "issuePrice": 60,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SATKARTAR",
       "companyName": "Sat Kartar Shopping Limited",
       "securityType": "SME",
@@ -4993,6 +5013,18 @@
       "listingDate": "17-JAN-2025",
       "priceRange": "Rs.77 to Rs.81",
       "issuePrice": 81,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "BARFLEX",
+      "companyName": "Barflex Polyfilms Limited",
+      "securityType": "SME",
+      "ipoStartDate": "10-JAN-2025",
+      "ipoEndDate": "15-JAN-2025",
+      "listingDate": "20-JAN-2025",
+      "priceRange": "Rs.57 to Rs.60",
+      "issuePrice": 60,
       "cmp": null,
       "gainPct": null
     },
@@ -5117,6 +5149,18 @@
       "gainPct": 178.98
     },
     {
+      "symbol": "SANATHAN",
+      "companyName": "Sanathan Textiles Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "19-DEC-2024",
+      "ipoEndDate": "23-DEC-2024",
+      "listingDate": "27-DEC-2024",
+      "priceRange": "Rs.305 to Rs.321",
+      "issuePrice": 321,
+      "cmp": 571.9,
+      "gainPct": 78.16
+    },
+    {
       "symbol": "TRANSRAILL",
       "companyName": "Transrail Lighting Limited",
       "securityType": "Equity",
@@ -5127,18 +5171,6 @@
       "issuePrice": 432,
       "cmp": 427.95,
       "gainPct": -0.94
-    },
-    {
-      "symbol": "DAMCAPITAL",
-      "companyName": "DAM Capital Advisors Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "19-DEC-2024",
-      "ipoEndDate": "23-DEC-2024",
-      "listingDate": "27-DEC-2024",
-      "priceRange": "Rs.269 to Rs.283",
-      "issuePrice": 283,
-      "cmp": 144.89,
-      "gainPct": -48.8
     },
     {
       "symbol": "MAMATA",
@@ -5153,18 +5185,6 @@
       "gainPct": 33.19
     },
     {
-      "symbol": "SANATHAN",
-      "companyName": "Sanathan Textiles Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "19-DEC-2024",
-      "ipoEndDate": "23-DEC-2024",
-      "listingDate": "27-DEC-2024",
-      "priceRange": "Rs.305 to Rs.321",
-      "issuePrice": 321,
-      "cmp": 571.9,
-      "gainPct": 78.16
-    },
-    {
       "symbol": "CEWATER",
       "companyName": "Concord Enviro Systems Limited",
       "securityType": "Equity",
@@ -5175,6 +5195,18 @@
       "issuePrice": 701,
       "cmp": 213.46,
       "gainPct": -69.55
+    },
+    {
+      "symbol": "DAMCAPITAL",
+      "companyName": "DAM Capital Advisors Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "19-DEC-2024",
+      "ipoEndDate": "23-DEC-2024",
+      "listingDate": "27-DEC-2024",
+      "priceRange": "Rs.269 to Rs.283",
+      "issuePrice": 283,
+      "cmp": 144.89,
+      "gainPct": -48.8
     },
     {
       "symbol": "NMSTEEL",
@@ -5261,18 +5293,6 @@
       "gainPct": 17.92
     },
     {
-      "symbol": "PURPLEUTED",
-      "companyName": "Purple United Sales Limited",
-      "securityType": "SME",
-      "ipoStartDate": "11-DEC-2024",
-      "ipoEndDate": "13-DEC-2024",
-      "listingDate": "18-DEC-2024",
-      "priceRange": "Rs.121 to Rs.126",
-      "issuePrice": 126,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SFML",
       "companyName": "Supreme Facility Management Limited",
       "securityType": "SME",
@@ -5285,7 +5305,19 @@
       "gainPct": null
     },
     {
-      "symbol": "975SCL35",
+      "symbol": "PURPLEUTED",
+      "companyName": "Purple United Sales Limited",
+      "securityType": "SME",
+      "ipoStartDate": "11-DEC-2024",
+      "ipoEndDate": "13-DEC-2024",
+      "listingDate": "18-DEC-2024",
+      "priceRange": "Rs.121 to Rs.126",
+      "issuePrice": 126,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SCL19325A",
       "companyName": "Sammaan Capital Limited",
       "securityType": "DEBT",
       "ipoStartDate": "09-DEC-2024",
@@ -5293,7 +5325,7 @@
       "listingDate": "16-SEP-2026",
       "priceRange": "Rs.1000",
       "issuePrice": null,
-      "cmp": 101000,
+      "cmp": null,
       "gainPct": null
     },
     {
@@ -5393,18 +5425,6 @@
       "gainPct": null
     },
     {
-      "symbol": "C2CW",
-      "companyName": "C2C Advanced Systems Limited- Withdrawal Window",
-      "securityType": "SME",
-      "ipoStartDate": "26-NOV-2024",
-      "ipoEndDate": "29-NOV-2024",
-      "listingDate": "-",
-      "priceRange": "Rs.214 to Rs.226",
-      "issuePrice": null,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "RAJPUTANA",
       "companyName": "Rajputana Biodiesel Limited",
       "securityType": "SME",
@@ -5415,6 +5435,18 @@
       "issuePrice": 130,
       "cmp": 27,
       "gainPct": -79.23
+    },
+    {
+      "symbol": "C2CW",
+      "companyName": "C2C Advanced Systems Limited- Withdrawal Window",
+      "securityType": "SME",
+      "ipoStartDate": "26-NOV-2024",
+      "ipoEndDate": "29-NOV-2024",
+      "listingDate": "-",
+      "priceRange": "Rs.214 to Rs.226",
+      "issuePrice": null,
+      "cmp": null,
+      "gainPct": null
     },
     {
       "symbol": "EIEL",
@@ -5513,18 +5545,6 @@
       "gainPct": 0.49
     },
     {
-      "symbol": "ACMESOLAR",
-      "companyName": "ACME Solar Holdings Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "06-NOV-2024",
-      "ipoEndDate": "08-NOV-2024",
-      "listingDate": "13-NOV-2024",
-      "priceRange": "Rs.275 to Rs.289",
-      "issuePrice": 289,
-      "cmp": 405.4,
-      "gainPct": 40.28
-    },
-    {
       "symbol": "SWIGGY",
       "companyName": "Swiggy Limited",
       "securityType": "Equity",
@@ -5535,6 +5555,18 @@
       "issuePrice": 390,
       "cmp": 178.2,
       "gainPct": -54.31
+    },
+    {
+      "symbol": "ACMESOLAR",
+      "companyName": "ACME Solar Holdings Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "06-NOV-2024",
+      "ipoEndDate": "08-NOV-2024",
+      "listingDate": "13-NOV-2024",
+      "priceRange": "Rs.275 to Rs.289",
+      "issuePrice": 289,
+      "cmp": 405.4,
+      "gainPct": 40.28
     },
     {
       "symbol": "SAGILITY",
@@ -5585,18 +5617,6 @@
       "gainPct": -43.82
     },
     {
-      "symbol": "OBSCP",
-      "companyName": "OBSC Perfection Limited",
-      "securityType": "SME",
-      "ipoStartDate": "22-OCT-2024",
-      "ipoEndDate": "24-OCT-2024",
-      "listingDate": "29-OCT-2024",
-      "priceRange": "Rs.95 to Rs.100",
-      "issuePrice": 100,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "DANISH",
       "companyName": "Danish Power Limited",
       "securityType": "SME",
@@ -5605,6 +5625,18 @@
       "listingDate": "29-OCT-2024",
       "priceRange": "Rs.360 to Rs.380",
       "issuePrice": 380,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "OBSCP",
+      "companyName": "OBSC Perfection Limited",
+      "securityType": "SME",
+      "ipoStartDate": "22-OCT-2024",
+      "ipoEndDate": "24-OCT-2024",
+      "listingDate": "29-OCT-2024",
+      "priceRange": "Rs.95 to Rs.100",
+      "issuePrice": 100,
       "cmp": null,
       "gainPct": null
     },
@@ -5621,18 +5653,6 @@
       "gainPct": null
     },
     {
-      "symbol": "WAAREEENER",
-      "companyName": "Waaree Energies Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "21-OCT-2024",
-      "ipoEndDate": "23-OCT-2024",
-      "listingDate": "28-OCT-2024",
-      "priceRange": "Rs.1427 to Rs.1503",
-      "issuePrice": 1503,
-      "cmp": 2461,
-      "gainPct": 63.74
-    },
-    {
       "symbol": "DBEIL",
       "companyName": "Deepak Builders & Engineers India Limited",
       "securityType": "Equity",
@@ -5643,6 +5663,18 @@
       "issuePrice": 203,
       "cmp": 6.06,
       "gainPct": -97.01
+    },
+    {
+      "symbol": "WAAREEENER",
+      "companyName": "Waaree Energies Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "21-OCT-2024",
+      "ipoEndDate": "23-OCT-2024",
+      "listingDate": "28-OCT-2024",
+      "priceRange": "Rs.1427 to Rs.1503",
+      "issuePrice": 1503,
+      "cmp": 2461,
+      "gainPct": 63.74
     },
     {
       "symbol": "PREMIUM",
@@ -5777,18 +5809,6 @@
       "gainPct": 151.64
     },
     {
-      "symbol": "FORGEAUTO",
-      "companyName": "Forge Auto International Limited",
-      "securityType": "SME",
-      "ipoStartDate": "26-SEP-2024",
-      "ipoEndDate": "30-SEP-2024",
-      "listingDate": "04-OCT-2024",
-      "priceRange": "Rs.102 to Rs.108",
-      "issuePrice": 108,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SAHASRA",
       "companyName": "Sahasra Electronic Solutions Limited",
       "securityType": "SME",
@@ -5813,6 +5833,18 @@
       "gainPct": null
     },
     {
+      "symbol": "FORGEAUTO",
+      "companyName": "Forge Auto International Limited",
+      "securityType": "SME",
+      "ipoStartDate": "26-SEP-2024",
+      "ipoEndDate": "30-SEP-2024",
+      "listingDate": "04-OCT-2024",
+      "priceRange": "Rs.102 to Rs.108",
+      "issuePrice": 108,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "KRN",
       "companyName": "KRN Heat Exchanger and Refrigeration Limited",
       "securityType": "Equity",
@@ -5823,6 +5855,18 @@
       "issuePrice": 220,
       "cmp": 970.1,
       "gainPct": 340.95
+    },
+    {
+      "symbol": "UNILEX",
+      "companyName": "Unilex Colours and Chemicals Limited",
+      "securityType": "SME",
+      "ipoStartDate": "25-SEP-2024",
+      "ipoEndDate": "27-SEP-2024",
+      "listingDate": "03-OCT-2024",
+      "priceRange": "Rs.82 to Rs.87",
+      "issuePrice": 87,
+      "cmp": null,
+      "gainPct": null
     },
     {
       "symbol": "THESL",
@@ -5849,18 +5893,6 @@
       "gainPct": null
     },
     {
-      "symbol": "UNILEX",
-      "companyName": "Unilex Colours and Chemicals Limited",
-      "securityType": "SME",
-      "ipoStartDate": "25-SEP-2024",
-      "ipoEndDate": "27-SEP-2024",
-      "listingDate": "03-OCT-2024",
-      "priceRange": "Rs.82 to Rs.87",
-      "issuePrice": 87,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "MANBA",
       "companyName": "Manba Finance Limited",
       "securityType": "Equity",
@@ -5873,18 +5905,6 @@
       "gainPct": 17.87
     },
     {
-      "symbol": "WOL3D",
-      "companyName": "WOL 3D India Limited",
-      "securityType": "SME",
-      "ipoStartDate": "23-SEP-2024",
-      "ipoEndDate": "25-SEP-2024",
-      "listingDate": "30-SEP-2024",
-      "priceRange": "Rs.142 to Rs.150",
-      "issuePrice": 150,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "RAPPID",
       "companyName": "Rappid Valves (India) Limited",
       "securityType": "SME",
@@ -5893,6 +5913,18 @@
       "listingDate": "30-SEP-2024",
       "priceRange": "Rs.210 to Rs.222",
       "issuePrice": 222,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "WOL3D",
+      "companyName": "WOL 3D India Limited",
+      "securityType": "SME",
+      "ipoStartDate": "23-SEP-2024",
+      "ipoEndDate": "25-SEP-2024",
+      "listingDate": "30-SEP-2024",
+      "priceRange": "Rs.142 to Rs.150",
+      "issuePrice": 150,
       "cmp": null,
       "gainPct": null
     },
@@ -5909,18 +5941,6 @@
       "gainPct": null
     },
     {
-      "symbol": "BIKEWO",
-      "companyName": "Bikewo Green Tech Limited",
-      "securityType": "SME",
-      "ipoStartDate": "20-SEP-2024",
-      "ipoEndDate": "24-SEP-2024",
-      "listingDate": "27-SEP-2024",
-      "priceRange": "Rs.59 to Rs.62",
-      "issuePrice": 62,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SDREAMS",
       "companyName": "S D Retail Limited",
       "securityType": "SME",
@@ -5929,6 +5949,18 @@
       "listingDate": "27-SEP-2024",
       "priceRange": "Rs.124 to Rs.131",
       "issuePrice": 131,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "BIKEWO",
+      "companyName": "Bikewo Green Tech Limited",
+      "securityType": "SME",
+      "ipoStartDate": "20-SEP-2024",
+      "ipoEndDate": "24-SEP-2024",
+      "listingDate": "27-SEP-2024",
+      "priceRange": "Rs.59 to Rs.62",
+      "issuePrice": 62,
       "cmp": null,
       "gainPct": null
     },
@@ -5993,18 +6025,6 @@
       "gainPct": null
     },
     {
-      "symbol": "OSELDEVICE",
-      "companyName": "Osel Devices Limited",
-      "securityType": "SME",
-      "ipoStartDate": "16-SEP-2024",
-      "ipoEndDate": "19-SEP-2024",
-      "listingDate": "24-SEP-2024",
-      "priceRange": "Rs.155 to Rs.160",
-      "issuePrice": 160,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "PELATRO",
       "companyName": "Pelatro Limited",
       "securityType": "SME",
@@ -6013,6 +6033,18 @@
       "listingDate": "24-SEP-2024",
       "priceRange": "Rs.190 to Rs.200",
       "issuePrice": 200,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "OSELDEVICE",
+      "companyName": "Osel Devices Limited",
+      "securityType": "SME",
+      "ipoStartDate": "16-SEP-2024",
+      "ipoEndDate": "19-SEP-2024",
+      "listingDate": "24-SEP-2024",
+      "priceRange": "Rs.155 to Rs.160",
+      "issuePrice": 160,
       "cmp": null,
       "gainPct": null
     },
@@ -6029,18 +6061,6 @@
       "gainPct": -53.73
     },
     {
-      "symbol": "ENVIRO",
-      "companyName": "Envirotech Systems Limited",
-      "securityType": "SME",
-      "ipoStartDate": "13-SEP-2024",
-      "ipoEndDate": "19-SEP-2024",
-      "listingDate": "24-SEP-2024",
-      "priceRange": "Rs.53 to Rs.56",
-      "issuePrice": 56,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "DECCANTRAN",
       "companyName": "Deccan Transcon Leasing Limited",
       "securityType": "SME",
@@ -6049,6 +6069,18 @@
       "listingDate": "24-SEP-2024",
       "priceRange": "Rs.102 to Rs.108",
       "issuePrice": 108,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "ENVIRO",
+      "companyName": "Envirotech Systems Limited",
+      "securityType": "SME",
+      "ipoStartDate": "13-SEP-2024",
+      "ipoEndDate": "19-SEP-2024",
+      "listingDate": "24-SEP-2024",
+      "priceRange": "Rs.53 to Rs.56",
+      "issuePrice": 56,
       "cmp": null,
       "gainPct": null
     },
@@ -6101,6 +6133,18 @@
       "gainPct": null
     },
     {
+      "symbol": "KROSS",
+      "companyName": "Kross Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "09-SEP-2024",
+      "ipoEndDate": "11-SEP-2024",
+      "listingDate": "16-SEP-2024",
+      "priceRange": "Rs.228 to Rs.240",
+      "issuePrice": 240,
+      "cmp": 278.3,
+      "gainPct": 15.96
+    },
+    {
       "symbol": "TOLINS",
       "companyName": "Tolins Tyres Limited",
       "securityType": "Equity",
@@ -6125,18 +6169,6 @@
       "gainPct": 17.07
     },
     {
-      "symbol": "KROSS",
-      "companyName": "Kross Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "09-SEP-2024",
-      "ipoEndDate": "11-SEP-2024",
-      "listingDate": "16-SEP-2024",
-      "priceRange": "Rs.228 to Rs.240",
-      "issuePrice": 240,
-      "cmp": 278.3,
-      "gainPct": 15.96
-    },
-    {
       "symbol": "GAJANAND",
       "companyName": "Gajanand International Limited",
       "securityType": "SME",
@@ -6145,18 +6177,6 @@
       "listingDate": "16-SEP-2024",
       "priceRange": "Rs.36",
       "issuePrice": 36,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "SHUBHSHREE",
-      "companyName": "Shubhshree Biofuels Energy Limited",
-      "securityType": "SME",
-      "ipoStartDate": "09-SEP-2024",
-      "ipoEndDate": "11-SEP-2024",
-      "listingDate": "16-SEP-2024",
-      "priceRange": "Rs.113 to Rs.119",
-      "issuePrice": 119,
       "cmp": null,
       "gainPct": null
     },
@@ -6173,7 +6193,19 @@
       "gainPct": null
     },
     {
-      "symbol": "975SCL35",
+      "symbol": "SHUBHSHREE",
+      "companyName": "Shubhshree Biofuels Energy Limited",
+      "securityType": "SME",
+      "ipoStartDate": "09-SEP-2024",
+      "ipoEndDate": "11-SEP-2024",
+      "listingDate": "16-SEP-2024",
+      "priceRange": "Rs.113 to Rs.119",
+      "issuePrice": 119,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SCL19325A",
       "companyName": "Sammaan Capital Limited",
       "securityType": "DEBT",
       "ipoStartDate": "06-SEP-2024",
@@ -6181,7 +6213,7 @@
       "listingDate": "16-SEP-2026",
       "priceRange": "Rs.1000",
       "issuePrice": null,
-      "cmp": 101000,
+      "cmp": null,
       "gainPct": null
     },
     {
@@ -6341,18 +6373,6 @@
       "gainPct": null
     },
     {
-      "symbol": "PARAMATRIX",
-      "companyName": "Paramatrix Technologies Limited",
-      "securityType": "SME",
-      "ipoStartDate": "27-AUG-2024",
-      "ipoEndDate": "30-AUG-2024",
-      "listingDate": "04-SEP-2024",
-      "priceRange": "Rs.110",
-      "issuePrice": 110,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "JAYBEE",
       "companyName": "Jay Bee Laminations Limited",
       "securityType": "SME",
@@ -6361,6 +6381,18 @@
       "listingDate": "03-SEP-2024",
       "priceRange": "Rs.138 to Rs.146",
       "issuePrice": 146,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "PARAMATRIX",
+      "companyName": "Paramatrix Technologies Limited",
+      "securityType": "SME",
+      "ipoStartDate": "27-AUG-2024",
+      "ipoEndDate": "30-AUG-2024",
+      "listingDate": "04-SEP-2024",
+      "priceRange": "Rs.110",
+      "issuePrice": 110,
       "cmp": null,
       "gainPct": null
     },
@@ -6473,18 +6505,6 @@
       "gainPct": -59.22
     },
     {
-      "symbol": "POSITRON",
-      "companyName": "Positron Energy Limited",
-      "securityType": "SME",
-      "ipoStartDate": "12-AUG-2024",
-      "ipoEndDate": "14-AUG-2024",
-      "listingDate": "20-AUG-2024",
-      "priceRange": "Rs.238 to Rs.250",
-      "issuePrice": 250,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SUNLITE",
       "companyName": "Sunlite Recycling Industries Limited",
       "securityType": "SME",
@@ -6493,6 +6513,18 @@
       "listingDate": "20-AUG-2024",
       "priceRange": "Rs.100 to Rs.105",
       "issuePrice": 105,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "POSITRON",
+      "companyName": "Positron Energy Limited",
+      "securityType": "SME",
+      "ipoStartDate": "12-AUG-2024",
+      "ipoEndDate": "14-AUG-2024",
+      "listingDate": "20-AUG-2024",
+      "priceRange": "Rs.238 to Rs.250",
+      "issuePrice": 250,
       "cmp": null,
       "gainPct": null
     },
@@ -6509,18 +6541,6 @@
       "gainPct": null
     },
     {
-      "symbol": "FIRSTCRY",
-      "companyName": "Brainbees Solutions Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "06-AUG-2024",
-      "ipoEndDate": "08-AUG-2024",
-      "listingDate": "13-AUG-2024",
-      "priceRange": "Rs.440 to Rs.465",
-      "issuePrice": 465,
-      "cmp": 170.2,
-      "gainPct": -63.4
-    },
-    {
       "symbol": "UNIECOM",
       "companyName": "Unicommerce eSolutions Limited",
       "securityType": "Equity",
@@ -6531,6 +6551,18 @@
       "issuePrice": 108,
       "cmp": 81.17,
       "gainPct": -24.84
+    },
+    {
+      "symbol": "FIRSTCRY",
+      "companyName": "Brainbees Solutions Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "06-AUG-2024",
+      "ipoEndDate": "08-AUG-2024",
+      "listingDate": "13-AUG-2024",
+      "priceRange": "Rs.440 to Rs.465",
+      "issuePrice": 465,
+      "cmp": 170.2,
+      "gainPct": -63.4
     },
     {
       "symbol": "OLAPP",
@@ -6653,18 +6685,6 @@
       "gainPct": null
     },
     {
-      "symbol": "SATECH",
-      "companyName": "S A Tech Software India Limited",
-      "securityType": "SME",
-      "ipoStartDate": "26-JUL-2024",
-      "ipoEndDate": "30-JUL-2024",
-      "listingDate": "02-AUG-2024",
-      "priceRange": "Rs.56 to Rs.59",
-      "issuePrice": 59,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "ESPRIT",
       "companyName": "Esprit Stones Limited",
       "securityType": "SME",
@@ -6677,14 +6697,14 @@
       "gainPct": null
     },
     {
-      "symbol": "TROM",
-      "companyName": "Trom Industries Limited",
+      "symbol": "SATECH",
+      "companyName": "S A Tech Software India Limited",
       "securityType": "SME",
-      "ipoStartDate": "25-JUL-2024",
-      "ipoEndDate": "29-JUL-2024",
-      "listingDate": "01-AUG-2024",
-      "priceRange": "Rs.110 to Rs.115",
-      "issuePrice": 115,
+      "ipoStartDate": "26-JUL-2024",
+      "ipoEndDate": "30-JUL-2024",
+      "listingDate": "02-AUG-2024",
+      "priceRange": "Rs.56 to Rs.59",
+      "issuePrice": 59,
       "cmp": null,
       "gainPct": null
     },
@@ -6697,6 +6717,18 @@
       "listingDate": "01-AUG-2024",
       "priceRange": "Rs.56 to Rs.58",
       "issuePrice": 58,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "TROM",
+      "companyName": "Trom Industries Limited",
+      "securityType": "SME",
+      "ipoStartDate": "25-JUL-2024",
+      "ipoEndDate": "29-JUL-2024",
+      "listingDate": "01-AUG-2024",
+      "priceRange": "Rs.110 to Rs.115",
+      "issuePrice": 115,
       "cmp": null,
       "gainPct": null
     },
@@ -6737,18 +6769,6 @@
       "gainPct": null
     },
     {
-      "symbol": "RNFI",
-      "companyName": "RNFI Services Limited",
-      "securityType": "SME",
-      "ipoStartDate": "22-JUL-2024",
-      "ipoEndDate": "24-JUL-2024",
-      "listingDate": "29-JUL-2024",
-      "priceRange": "Rs.98 to Rs.105",
-      "issuePrice": 105,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SARTELEFPO",
       "companyName": "SAR Televenture Limited - FPO",
       "securityType": "SME",
@@ -6757,6 +6777,18 @@
       "listingDate": "-",
       "priceRange": "Rs.200 to Rs.210",
       "issuePrice": null,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "RNFI",
+      "companyName": "RNFI Services Limited",
+      "securityType": "SME",
+      "ipoStartDate": "22-JUL-2024",
+      "ipoEndDate": "24-JUL-2024",
+      "listingDate": "29-JUL-2024",
+      "priceRange": "Rs.98 to Rs.105",
+      "issuePrice": 105,
       "cmp": null,
       "gainPct": null
     },
@@ -6785,18 +6817,6 @@
       "gainPct": null
     },
     {
-      "symbol": "KATARIA",
-      "companyName": "Kataria Industries Limited",
-      "securityType": "SME",
-      "ipoStartDate": "16-JUL-2024",
-      "ipoEndDate": "19-JUL-2024",
-      "listingDate": "24-JUL-2024",
-      "priceRange": "Rs.91 to Rs.96",
-      "issuePrice": 96,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "MACOBSTECH",
       "companyName": "Macobs Technologies Limited",
       "securityType": "SME",
@@ -6805,6 +6825,18 @@
       "listingDate": "24-JUL-2024",
       "priceRange": "Rs.71 to Rs.75",
       "issuePrice": 75,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "KATARIA",
+      "companyName": "Kataria Industries Limited",
+      "securityType": "SME",
+      "ipoStartDate": "16-JUL-2024",
+      "ipoEndDate": "19-JUL-2024",
+      "listingDate": "24-JUL-2024",
+      "priceRange": "Rs.91 to Rs.96",
+      "issuePrice": 96,
       "cmp": null,
       "gainPct": null
     },
@@ -6857,18 +6889,6 @@
       "gainPct": null
     },
     {
-      "symbol": "EFFWA",
-      "companyName": "Effwa Infra & Research Limited",
-      "securityType": "SME",
-      "ipoStartDate": "05-JUL-2024",
-      "ipoEndDate": "09-JUL-2024",
-      "listingDate": "12-JUL-2024",
-      "priceRange": "Rs.78 to Rs.82",
-      "issuePrice": 82,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "GGBL",
       "companyName": "Ganesh Green Bharat Limited",
       "securityType": "SME",
@@ -6877,6 +6897,18 @@
       "listingDate": "12-JUL-2024",
       "priceRange": "Rs.181 to Rs.190",
       "issuePrice": 190,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "EFFWA",
+      "companyName": "Effwa Infra & Research Limited",
+      "securityType": "SME",
+      "ipoStartDate": "05-JUL-2024",
+      "ipoEndDate": "09-JUL-2024",
+      "listingDate": "12-JUL-2024",
+      "priceRange": "Rs.78 to Rs.82",
+      "issuePrice": 82,
       "cmp": null,
       "gainPct": null
     },
@@ -6893,18 +6925,6 @@
       "gainPct": null
     },
     {
-      "symbol": "BANSALWIRE",
-      "companyName": "Bansal Wire Industries Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "03-JUL-2024",
-      "ipoEndDate": "05-JUL-2024",
-      "listingDate": "10-JUL-2024",
-      "priceRange": "Rs.243 to Rs.256",
-      "issuePrice": 256,
-      "cmp": 55.02,
-      "gainPct": -78.51
-    },
-    {
       "symbol": "EMCURE",
       "companyName": "Emcure Pharmaceuticals Limited",
       "securityType": "Equity",
@@ -6915,6 +6935,18 @@
       "issuePrice": 1008,
       "cmp": 2337.8,
       "gainPct": 131.92
+    },
+    {
+      "symbol": "BANSALWIRE",
+      "companyName": "Bansal Wire Industries Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "03-JUL-2024",
+      "ipoEndDate": "05-JUL-2024",
+      "listingDate": "10-JUL-2024",
+      "priceRange": "Rs.243 to Rs.256",
+      "issuePrice": 256,
+      "cmp": 55.02,
+      "gainPct": -78.51
     },
     {
       "symbol": "NEPHROCARE",
@@ -6965,14 +6997,14 @@
       "gainPct": 182.67
     },
     {
-      "symbol": "PCCL",
-      "companyName": "Petro Carbon and Chemicals Limited",
+      "symbol": "AKIKO",
+      "companyName": "Akiko Global Services Limited",
       "securityType": "SME",
       "ipoStartDate": "25-JUN-2024",
       "ipoEndDate": "27-JUN-2024",
       "listingDate": "02-JUL-2024",
-      "priceRange": "Rs.162 to Rs.171",
-      "issuePrice": 171,
+      "priceRange": "Rs.73 to Rs.77",
+      "issuePrice": 77,
       "cmp": null,
       "gainPct": null
     },
@@ -6989,38 +7021,14 @@
       "gainPct": null
     },
     {
-      "symbol": "AKIKO",
-      "companyName": "Akiko Global Services Limited",
+      "symbol": "PCCL",
+      "companyName": "Petro Carbon and Chemicals Limited",
       "securityType": "SME",
       "ipoStartDate": "25-JUN-2024",
       "ipoEndDate": "27-JUN-2024",
       "listingDate": "02-JUL-2024",
-      "priceRange": "Rs.73 to Rs.77",
-      "issuePrice": 77,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "SYLVANPLY",
-      "companyName": "Sylvan Plyboard (India) Limited",
-      "securityType": "SME",
-      "ipoStartDate": "24-JUN-2024",
-      "ipoEndDate": "26-JUN-2024",
-      "listingDate": "01-JUL-2024",
-      "priceRange": "Rs.55",
-      "issuePrice": 55,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "SPCL",
-      "companyName": "Shivalic Power Control Limited",
-      "securityType": "SME",
-      "ipoStartDate": "24-JUN-2024",
-      "ipoEndDate": "26-JUN-2024",
-      "listingDate": "01-JUL-2024",
-      "priceRange": "Rs.95 to Rs.100",
-      "issuePrice": 100,
+      "priceRange": "Rs.162 to Rs.171",
+      "issuePrice": 171,
       "cmp": null,
       "gainPct": null
     },
@@ -7045,6 +7053,30 @@
       "listingDate": "01-JUL-2024",
       "priceRange": "Rs.62 to Rs.64",
       "issuePrice": 64,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SYLVANPLY",
+      "companyName": "Sylvan Plyboard (India) Limited",
+      "securityType": "SME",
+      "ipoStartDate": "24-JUN-2024",
+      "ipoEndDate": "26-JUN-2024",
+      "listingDate": "01-JUL-2024",
+      "priceRange": "Rs.55",
+      "issuePrice": 55,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SPCL",
+      "companyName": "Shivalic Power Control Limited",
+      "securityType": "SME",
+      "ipoStartDate": "24-JUN-2024",
+      "ipoEndDate": "26-JUN-2024",
+      "listingDate": "01-JUL-2024",
+      "priceRange": "Rs.95 to Rs.100",
+      "issuePrice": 100,
       "cmp": null,
       "gainPct": null
     },
@@ -7265,18 +7297,6 @@
       "gainPct": -27.63
     },
     {
-      "symbol": "RULKA",
-      "companyName": "Rulka Electricals Limited",
-      "securityType": "SME",
-      "ipoStartDate": "16-MAY-2024",
-      "ipoEndDate": "21-MAY-2024",
-      "listingDate": "24-MAY-2024",
-      "priceRange": "Rs.223 to Rs.235",
-      "issuePrice": 235,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "HOACFOODS",
       "companyName": "HOAC Foods India Limited",
       "securityType": "SME",
@@ -7285,6 +7305,18 @@
       "listingDate": "24-MAY-2024",
       "priceRange": "Rs.48",
       "issuePrice": 48,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "RULKA",
+      "companyName": "Rulka Electricals Limited",
+      "securityType": "SME",
+      "ipoStartDate": "16-MAY-2024",
+      "ipoEndDate": "21-MAY-2024",
+      "listingDate": "24-MAY-2024",
+      "priceRange": "Rs.223 to Rs.235",
+      "issuePrice": 235,
       "cmp": null,
       "gainPct": null
     },
@@ -7325,18 +7357,6 @@
       "gainPct": null
     },
     {
-      "symbol": "IEML",
-      "companyName": "Indian Emulsifiers Limited",
-      "securityType": "SME",
-      "ipoStartDate": "13-MAY-2024",
-      "ipoEndDate": "16-MAY-2024",
-      "listingDate": "22-MAY-2024",
-      "priceRange": "Rs.125 to Rs.132",
-      "issuePrice": 132,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "MANDEEP",
       "companyName": "Mandeep Auto Industries Limited",
       "securityType": "SME",
@@ -7361,14 +7381,14 @@
       "gainPct": null
     },
     {
-      "symbol": "PRLIND",
-      "companyName": "Premier Roadlines Limited",
+      "symbol": "IEML",
+      "companyName": "Indian Emulsifiers Limited",
       "securityType": "SME",
-      "ipoStartDate": "10-MAY-2024",
-      "ipoEndDate": "14-MAY-2024",
-      "listingDate": "17-MAY-2024",
-      "priceRange": "Rs.63 to Rs.67",
-      "issuePrice": 67,
+      "ipoStartDate": "13-MAY-2024",
+      "ipoEndDate": "16-MAY-2024",
+      "listingDate": "22-MAY-2024",
+      "priceRange": "Rs.125 to Rs.132",
+      "issuePrice": 132,
       "cmp": null,
       "gainPct": null
     },
@@ -7381,6 +7401,18 @@
       "listingDate": "21-MAY-2024",
       "priceRange": "Rs.140 to Rs.147",
       "issuePrice": 147,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "PRLIND",
+      "companyName": "Premier Roadlines Limited",
+      "securityType": "SME",
+      "ipoStartDate": "10-MAY-2024",
+      "ipoEndDate": "14-MAY-2024",
+      "listingDate": "17-MAY-2024",
+      "priceRange": "Rs.63 to Rs.67",
+      "issuePrice": 67,
       "cmp": null,
       "gainPct": null
     },
@@ -7625,18 +7657,6 @@
       "gainPct": null
     },
     {
-      "symbol": "TAC",
-      "companyName": "TAC Infosec Limited",
-      "securityType": "SME",
-      "ipoStartDate": "27-MAR-2024",
-      "ipoEndDate": "02-APR-2024",
-      "listingDate": "05-APR-2024",
-      "priceRange": "Rs.100 to Rs.106",
-      "issuePrice": 106,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "RADIOWALLA",
       "companyName": "Radiowalla Network Limited",
       "securityType": "SME",
@@ -7645,6 +7665,18 @@
       "listingDate": "05-APR-2024",
       "priceRange": "Rs.72 to Rs.76",
       "issuePrice": 76,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "TAC",
+      "companyName": "TAC Infosec Limited",
+      "securityType": "SME",
+      "ipoStartDate": "27-MAR-2024",
+      "ipoEndDate": "02-APR-2024",
+      "listingDate": "05-APR-2024",
+      "priceRange": "Rs.100 to Rs.106",
+      "issuePrice": 106,
       "cmp": null,
       "gainPct": null
     },
@@ -7937,18 +7969,6 @@
       "gainPct": null
     },
     {
-      "symbol": "PLATIND",
-      "companyName": "Platinum Industries Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "27-FEB-2024",
-      "ipoEndDate": "29-FEB-2024",
-      "listingDate": "05-MAR-2024",
-      "priceRange": "Rs.162 to Rs.171",
-      "issuePrice": 171,
-      "cmp": 212.67,
-      "gainPct": 24.37
-    },
-    {
       "symbol": "EXICOM",
       "companyName": "Exicom Telesystems Limited",
       "securityType": "Equity",
@@ -7959,6 +7979,18 @@
       "issuePrice": 142,
       "cmp": 129.47,
       "gainPct": -8.82
+    },
+    {
+      "symbol": "PLATIND",
+      "companyName": "Platinum Industries Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "27-FEB-2024",
+      "ipoEndDate": "29-FEB-2024",
+      "listingDate": "05-MAR-2024",
+      "priceRange": "Rs.162 to Rs.171",
+      "issuePrice": 171,
+      "cmp": 212.67,
+      "gainPct": 24.37
     },
     {
       "symbol": "PURVFLEXI",
@@ -8069,6 +8101,30 @@
       "gainPct": null
     },
     {
+      "symbol": "INM",
+      "companyName": "Interiors & More Limited",
+      "securityType": "SME",
+      "ipoStartDate": "15-FEB-2024",
+      "ipoEndDate": "20-FEB-2024",
+      "listingDate": "23-FEB-2024",
+      "priceRange": "Rs.216 to Rs.227",
+      "issuePrice": 227,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "KTL",
+      "companyName": "Kalahridhaan Trendz Limited",
+      "securityType": "SME",
+      "ipoStartDate": "15-FEB-2024",
+      "ipoEndDate": "20-FEB-2024",
+      "listingDate": "23-FEB-2024",
+      "priceRange": "Rs.45",
+      "issuePrice": 10,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "TCL",
       "companyName": "Thaai Casting Limited",
       "securityType": "SME",
@@ -8089,30 +8145,6 @@
       "listingDate": "23-FEB-2024",
       "priceRange": "Rs.77",
       "issuePrice": 77,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "KTL",
-      "companyName": "Kalahridhaan Trendz Limited",
-      "securityType": "SME",
-      "ipoStartDate": "15-FEB-2024",
-      "ipoEndDate": "20-FEB-2024",
-      "listingDate": "23-FEB-2024",
-      "priceRange": "Rs.45",
-      "issuePrice": 10,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "INM",
-      "companyName": "Interiors & More Limited",
-      "securityType": "SME",
-      "ipoStartDate": "15-FEB-2024",
-      "ipoEndDate": "20-FEB-2024",
-      "listingDate": "23-FEB-2024",
-      "priceRange": "Rs.216 to Rs.227",
-      "issuePrice": 227,
       "cmp": null,
       "gainPct": null
     },
@@ -8189,18 +8221,6 @@
       "gainPct": null
     },
     {
-      "symbol": "CAPITALSFB",
-      "companyName": "Capital Small Finance Bank Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "07-FEB-2024",
-      "ipoEndDate": "09-FEB-2024",
-      "listingDate": "14-FEB-2024",
-      "priceRange": "Rs.445 to Rs.468",
-      "issuePrice": 468,
-      "cmp": 285.85,
-      "gainPct": -38.92
-    },
-    {
       "symbol": "RPTECH",
       "companyName": "Rashi Peripherals Limited",
       "securityType": "Equity",
@@ -8223,6 +8243,18 @@
       "issuePrice": 414,
       "cmp": 427.4,
       "gainPct": 3.24
+    },
+    {
+      "symbol": "CAPITALSFB",
+      "companyName": "Capital Small Finance Bank Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "07-FEB-2024",
+      "ipoEndDate": "09-FEB-2024",
+      "listingDate": "14-FEB-2024",
+      "priceRange": "Rs.445 to Rs.468",
+      "issuePrice": 468,
+      "cmp": 285.85,
+      "gainPct": -38.92
     },
     {
       "symbol": "PARKHOTELS",
@@ -8261,18 +8293,6 @@
       "gainPct": 10.57
     },
     {
-      "symbol": "MEGATHERM",
-      "companyName": "Megatherm Induction Limited",
-      "securityType": "SME",
-      "ipoStartDate": "29-JAN-2024",
-      "ipoEndDate": "31-JAN-2024",
-      "listingDate": "05-FEB-2024",
-      "priceRange": "Rs.100 to Rs.108",
-      "issuePrice": 108,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "BAWEJA",
       "companyName": "Baweja Studios Limited",
       "securityType": "SME",
@@ -8281,6 +8301,18 @@
       "listingDate": "06-FEB-2024",
       "priceRange": "Rs.170 to Rs.180",
       "issuePrice": 180,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "MEGATHERM",
+      "companyName": "Megatherm Induction Limited",
+      "securityType": "SME",
+      "ipoStartDate": "29-JAN-2024",
+      "ipoEndDate": "31-JAN-2024",
+      "listingDate": "05-FEB-2024",
+      "priceRange": "Rs.100 to Rs.108",
+      "issuePrice": 108,
       "cmp": null,
       "gainPct": null
     },
@@ -8297,18 +8329,6 @@
       "gainPct": null
     },
     {
-      "symbol": "FONEBOX",
-      "companyName": "Fonebox Retail Limited",
-      "securityType": "SME",
-      "ipoStartDate": "25-JAN-2024",
-      "ipoEndDate": "30-JAN-2024",
-      "listingDate": "02-FEB-2024",
-      "priceRange": "Rs.66 to Rs.70",
-      "issuePrice": 70,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "DHTL",
       "companyName": "Docmode Health Technologies Limited",
       "securityType": "SME",
@@ -8317,6 +8337,18 @@
       "listingDate": "02-FEB-2024",
       "priceRange": "Rs.79",
       "issuePrice": 79,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "FONEBOX",
+      "companyName": "Fonebox Retail Limited",
+      "securityType": "SME",
+      "ipoStartDate": "25-JAN-2024",
+      "ipoEndDate": "30-JAN-2024",
+      "listingDate": "02-FEB-2024",
+      "priceRange": "Rs.66 to Rs.70",
+      "issuePrice": 70,
       "cmp": null,
       "gainPct": null
     },
@@ -8501,6 +8533,30 @@
       "gainPct": 118.26
     },
     {
+      "symbol": "TECHLABS",
+      "companyName": "Trident Techlabs Limited",
+      "securityType": "SME",
+      "ipoStartDate": "21-DEC-2023",
+      "ipoEndDate": "26-DEC-2023",
+      "listingDate": "29-DEC-2023",
+      "priceRange": "Rs.33 to Rs.35",
+      "issuePrice": 35,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SUPREMEPWR",
+      "companyName": "Supreme Power Equipment Limited",
+      "securityType": "SME",
+      "ipoStartDate": "21-DEC-2023",
+      "ipoEndDate": "26-DEC-2023",
+      "listingDate": "29-DEC-2023",
+      "priceRange": "Rs.61 to Rs.65",
+      "issuePrice": 65,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "INDIFRA",
       "companyName": "Indifra Limited",
       "securityType": "SME",
@@ -8525,30 +8581,6 @@
       "gainPct": null
     },
     {
-      "symbol": "SUPREMEPWR",
-      "companyName": "Supreme Power Equipment Limited",
-      "securityType": "SME",
-      "ipoStartDate": "21-DEC-2023",
-      "ipoEndDate": "26-DEC-2023",
-      "listingDate": "29-DEC-2023",
-      "priceRange": "Rs.61 to Rs.65",
-      "issuePrice": 65,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "TECHLABS",
-      "companyName": "Trident Techlabs Limited",
-      "securityType": "SME",
-      "ipoStartDate": "21-DEC-2023",
-      "ipoEndDate": "26-DEC-2023",
-      "listingDate": "29-DEC-2023",
-      "priceRange": "Rs.33 to Rs.35",
-      "issuePrice": 35,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "AZAD",
       "companyName": "Azad Engineering Limited",
       "securityType": "Equity",
@@ -8561,18 +8593,6 @@
       "gainPct": 346.81
     },
     {
-      "symbol": "RBZJEWEL",
-      "companyName": "RBZ Jewellers Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "19-DEC-2023",
-      "ipoEndDate": "21-DEC-2023",
-      "listingDate": "27-DEC-2023",
-      "priceRange": "Rs.95 to Rs.100",
-      "issuePrice": 100,
-      "cmp": 157.04,
-      "gainPct": 57.04
-    },
-    {
       "symbol": "MUFTI",
       "companyName": "Credo Brands Marketing Limited",
       "securityType": "Equity",
@@ -8583,6 +8603,18 @@
       "issuePrice": 280,
       "cmp": 73.81,
       "gainPct": -73.64
+    },
+    {
+      "symbol": "RBZJEWEL",
+      "companyName": "RBZ Jewellers Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "19-DEC-2023",
+      "ipoEndDate": "21-DEC-2023",
+      "listingDate": "27-DEC-2023",
+      "priceRange": "Rs.95 to Rs.100",
+      "issuePrice": 100,
+      "cmp": 157.04,
+      "gainPct": 57.04
     },
     {
       "symbol": "HAPPYFORGE",
@@ -8609,16 +8641,16 @@
       "gainPct": null
     },
     {
-      "symbol": "MUTHOOTMF",
-      "companyName": "Muthoot Microfin Limited",
+      "symbol": "MOTISONS",
+      "companyName": "Motisons Jewellers Limited",
       "securityType": "Equity",
       "ipoStartDate": "18-DEC-2023",
       "ipoEndDate": "20-DEC-2023",
       "listingDate": "26-DEC-2023",
-      "priceRange": "Rs.277 to Rs.291",
-      "issuePrice": 291,
-      "cmp": 165.4,
-      "gainPct": -43.16
+      "priceRange": "Rs.52 to Rs.55",
+      "issuePrice": 55,
+      "cmp": 12.98,
+      "gainPct": -76.4
     },
     {
       "symbol": "SURAJEST",
@@ -8633,16 +8665,16 @@
       "gainPct": -49.43
     },
     {
-      "symbol": "MOTISONS",
-      "companyName": "Motisons Jewellers Limited",
+      "symbol": "MUTHOOTMF",
+      "companyName": "Muthoot Microfin Limited",
       "securityType": "Equity",
       "ipoStartDate": "18-DEC-2023",
       "ipoEndDate": "20-DEC-2023",
       "listingDate": "26-DEC-2023",
-      "priceRange": "Rs.52 to Rs.55",
-      "issuePrice": 55,
-      "cmp": 12.98,
-      "gainPct": -76.4
+      "priceRange": "Rs.277 to Rs.291",
+      "issuePrice": 291,
+      "cmp": 165.4,
+      "gainPct": -43.16
     },
     {
       "symbol": "INOXINDIA",
@@ -8669,18 +8701,6 @@
       "gainPct": null
     },
     {
-      "symbol": "INDIASHLTR",
-      "companyName": "India Shelter Finance Corporation Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "13-DEC-2023",
-      "ipoEndDate": "15-DEC-2023",
-      "listingDate": "20-DEC-2023",
-      "priceRange": "Rs.469 to Rs.493",
-      "issuePrice": 493,
-      "cmp": 640,
-      "gainPct": 29.82
-    },
-    {
       "symbol": "DOMS",
       "companyName": "DOMS Industries Limited",
       "securityType": "Equity",
@@ -8691,6 +8711,18 @@
       "issuePrice": 790,
       "cmp": 2151.9,
       "gainPct": 172.39
+    },
+    {
+      "symbol": "INDIASHLTR",
+      "companyName": "India Shelter Finance Corporation Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "13-DEC-2023",
+      "ipoEndDate": "15-DEC-2023",
+      "listingDate": "20-DEC-2023",
+      "priceRange": "Rs.469 to Rs.493",
+      "issuePrice": 493,
+      "cmp": 640,
+      "gainPct": 29.82
     },
     {
       "symbol": "SJLOGISTIC",
@@ -8765,18 +8797,6 @@
       "gainPct": null
     },
     {
-      "symbol": "CBAZAAR",
-      "companyName": "Net Avenue Technologies Limited",
-      "securityType": "SME",
-      "ipoStartDate": "30-NOV-2023",
-      "ipoEndDate": "04-DEC-2023",
-      "listingDate": "08-DEC-2023",
-      "priceRange": "Rs.16 to Rs.18",
-      "issuePrice": 18,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "MARINETRAN",
       "companyName": "Marinetrans India Limited",
       "securityType": "SME",
@@ -8801,6 +8821,18 @@
       "gainPct": null
     },
     {
+      "symbol": "CBAZAAR",
+      "companyName": "Net Avenue Technologies Limited",
+      "securityType": "SME",
+      "ipoStartDate": "30-NOV-2023",
+      "ipoEndDate": "04-DEC-2023",
+      "listingDate": "08-DEC-2023",
+      "priceRange": "Rs.16 to Rs.18",
+      "issuePrice": 18,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "888CIFCL33",
       "companyName": "Cholamandalam Investment and Finance Company Limited",
       "securityType": "DEBT",
@@ -8813,16 +8845,16 @@
       "gainPct": null
     },
     {
-      "symbol": "FEDFINA",
-      "companyName": "Fedbank Financial Services Limited",
+      "symbol": "GANDHAR",
+      "companyName": "Gandhar Oil Refinery (India) Limited",
       "securityType": "Equity",
       "ipoStartDate": "22-NOV-2023",
       "ipoEndDate": "24-NOV-2023",
       "listingDate": "30-NOV-2023",
-      "priceRange": "Rs.133 to Rs.140",
-      "issuePrice": 140,
-      "cmp": 141.89,
-      "gainPct": 1.35
+      "priceRange": "Rs.160 to Rs.169",
+      "issuePrice": 169,
+      "cmp": 250.87,
+      "gainPct": 48.44
     },
     {
       "symbol": "TATATECH",
@@ -8849,16 +8881,16 @@
       "gainPct": -20.92
     },
     {
-      "symbol": "GANDHAR",
-      "companyName": "Gandhar Oil Refinery (India) Limited",
+      "symbol": "FEDFINA",
+      "companyName": "Fedbank Financial Services Limited",
       "securityType": "Equity",
       "ipoStartDate": "22-NOV-2023",
       "ipoEndDate": "24-NOV-2023",
       "listingDate": "30-NOV-2023",
-      "priceRange": "Rs.160 to Rs.169",
-      "issuePrice": 169,
-      "cmp": 250.87,
-      "gainPct": 48.44
+      "priceRange": "Rs.133 to Rs.140",
+      "issuePrice": 140,
+      "cmp": 141.89,
+      "gainPct": 1.35
     },
     {
       "symbol": "ROCKPP",
@@ -8897,18 +8929,6 @@
       "gainPct": 123.71
     },
     {
-      "symbol": "ROXHITECH",
-      "companyName": "ROX Hi-Tech Limited",
-      "securityType": "SME",
-      "ipoStartDate": "07-NOV-2023",
-      "ipoEndDate": "09-NOV-2023",
-      "listingDate": "16-NOV-2023",
-      "priceRange": "Rs.80 to Rs.83",
-      "issuePrice": 83,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SUNREST",
       "companyName": "Sunrest Lifescience Limited",
       "securityType": "SME",
@@ -8917,6 +8937,18 @@
       "listingDate": "20-NOV-2023",
       "priceRange": "Rs.84",
       "issuePrice": 84,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "ROXHITECH",
+      "companyName": "ROX Hi-Tech Limited",
+      "securityType": "SME",
+      "ipoStartDate": "07-NOV-2023",
+      "ipoEndDate": "09-NOV-2023",
+      "listingDate": "16-NOV-2023",
+      "priceRange": "Rs.80 to Rs.83",
+      "issuePrice": 83,
       "cmp": null,
       "gainPct": null
     },
@@ -9173,18 +9205,6 @@
       "gainPct": -7.41
     },
     {
-      "symbol": "VISHNUINFR",
-      "companyName": "Vishnusurya Projects and Infra Limited",
-      "securityType": "SME",
-      "ipoStartDate": "29-SEP-2023",
-      "ipoEndDate": "05-OCT-2023",
-      "listingDate": "10-OCT-2023",
-      "priceRange": "Rs.68",
-      "issuePrice": 68,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SCML",
       "companyName": "Sharp Chucks and Machines Limited",
       "securityType": "SME",
@@ -9221,6 +9241,18 @@
       "gainPct": null
     },
     {
+      "symbol": "VISHNUINFR",
+      "companyName": "Vishnusurya Projects and Infra Limited",
+      "securityType": "SME",
+      "ipoStartDate": "29-SEP-2023",
+      "ipoEndDate": "05-OCT-2023",
+      "listingDate": "10-OCT-2023",
+      "priceRange": "Rs.68",
+      "issuePrice": 68,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "VALIANTLAB",
       "companyName": "Valiant Laboratories Limited",
       "securityType": "Equity",
@@ -9241,18 +9273,6 @@
       "listingDate": "24-APR-2024",
       "priceRange": "Rs.1000",
       "issuePrice": null,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "OLIL",
-      "companyName": "Oneclick Logistics India Limited",
-      "securityType": "SME",
-      "ipoStartDate": "27-SEP-2023",
-      "ipoEndDate": "03-OCT-2023",
-      "listingDate": "11-OCT-2023",
-      "priceRange": "Rs.99",
-      "issuePrice": 99,
       "cmp": null,
       "gainPct": null
     },
@@ -9305,6 +9325,18 @@
       "gainPct": null
     },
     {
+      "symbol": "OLIL",
+      "companyName": "Oneclick Logistics India Limited",
+      "securityType": "SME",
+      "ipoStartDate": "27-SEP-2023",
+      "ipoEndDate": "03-OCT-2023",
+      "listingDate": "11-OCT-2023",
+      "priceRange": "Rs.99",
+      "issuePrice": 99,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "GOYALSALT",
       "companyName": "Goyal Salt Limited",
       "securityType": "SME",
@@ -9315,18 +9347,6 @@
       "issuePrice": 38,
       "cmp": null,
       "gainPct": null
-    },
-    {
-      "symbol": "JSWINFRA",
-      "companyName": "JSW Infrastructure Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "25-SEP-2023",
-      "ipoEndDate": "27-SEP-2023",
-      "listingDate": "03-OCT-2023",
-      "priceRange": "Rs.113 to Rs.119",
-      "issuePrice": 119,
-      "cmp": 341.25,
-      "gainPct": 186.76
     },
     {
       "symbol": "UDS",
@@ -9341,6 +9361,18 @@
       "gainPct": -28.66
     },
     {
+      "symbol": "JSWINFRA",
+      "companyName": "JSW Infrastructure Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "25-SEP-2023",
+      "ipoEndDate": "27-SEP-2023",
+      "listingDate": "03-OCT-2023",
+      "priceRange": "Rs.113 to Rs.119",
+      "issuePrice": 119,
+      "cmp": 341.25,
+      "gainPct": 186.76
+    },
+    {
       "symbol": "SAAKSHI",
       "companyName": "Saakshi Medtech and Panels Limited",
       "securityType": "SME",
@@ -9349,30 +9381,6 @@
       "listingDate": "03-OCT-2023",
       "priceRange": "Rs.92 to Rs.97",
       "issuePrice": 97,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "INSPIRE",
-      "companyName": "Inspire Films Limited",
-      "securityType": "SME",
-      "ipoStartDate": "25-SEP-2023",
-      "ipoEndDate": "27-SEP-2023",
-      "listingDate": "05-OCT-2023",
-      "priceRange": "Rs.56 to Rs.59",
-      "issuePrice": 59,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "NEWJAISA",
-      "companyName": "Newjaisa Technologies Limited",
-      "securityType": "SME",
-      "ipoStartDate": "25-SEP-2023",
-      "ipoEndDate": "27-SEP-2023",
-      "listingDate": "05-OCT-2023",
-      "priceRange": "Rs.44 to Rs.47",
-      "issuePrice": 47,
       "cmp": null,
       "gainPct": null
     },
@@ -9401,6 +9409,30 @@
       "gainPct": null
     },
     {
+      "symbol": "INSPIRE",
+      "companyName": "Inspire Films Limited",
+      "securityType": "SME",
+      "ipoStartDate": "25-SEP-2023",
+      "ipoEndDate": "27-SEP-2023",
+      "listingDate": "05-OCT-2023",
+      "priceRange": "Rs.56 to Rs.59",
+      "issuePrice": 59,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "NEWJAISA",
+      "companyName": "Newjaisa Technologies Limited",
+      "securityType": "SME",
+      "ipoStartDate": "25-SEP-2023",
+      "ipoEndDate": "27-SEP-2023",
+      "listingDate": "05-OCT-2023",
+      "priceRange": "Rs.44 to Rs.47",
+      "issuePrice": 47,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "MVGJL",
       "companyName": "Manoj Vaibhav Gems N Jewellers Limited",
       "securityType": "Equity",
@@ -9413,14 +9445,14 @@
       "gainPct": -24.44
     },
     {
-      "symbol": "HIGREEN",
-      "companyName": "HI-Green Carbon Limited",
+      "symbol": "MARCO",
+      "companyName": "Marco Cables and Conductors Limited",
       "securityType": "SME",
       "ipoStartDate": "21-SEP-2023",
       "ipoEndDate": "25-SEP-2023",
       "listingDate": "28-SEP-2023",
-      "priceRange": "Rs.71 to Rs.75",
-      "issuePrice": 75,
+      "priceRange": "Rs.36",
+      "issuePrice": null,
       "cmp": null,
       "gainPct": null
     },
@@ -9437,28 +9469,16 @@
       "gainPct": -61.12
     },
     {
-      "symbol": "MARCO",
-      "companyName": "Marco Cables and Conductors Limited",
+      "symbol": "HIGREEN",
+      "companyName": "HI-Green Carbon Limited",
       "securityType": "SME",
       "ipoStartDate": "21-SEP-2023",
       "ipoEndDate": "25-SEP-2023",
       "listingDate": "28-SEP-2023",
-      "priceRange": "Rs.36",
-      "issuePrice": null,
+      "priceRange": "Rs.71 to Rs.75",
+      "issuePrice": 75,
       "cmp": null,
       "gainPct": null
-    },
-    {
-      "symbol": "SIGNATURE",
-      "companyName": "Signatureglobal (India) Limited",
-      "securityType": "Equity",
-      "ipoStartDate": "20-SEP-2023",
-      "ipoEndDate": "22-SEP-2023",
-      "listingDate": "27-SEP-2023",
-      "priceRange": "Rs.366 to Rs.385",
-      "issuePrice": 385,
-      "cmp": 859.4,
-      "gainPct": 123.22
     },
     {
       "symbol": "KALAMANDIR",
@@ -9473,16 +9493,16 @@
       "gainPct": -60.22
     },
     {
-      "symbol": "MASTER",
-      "companyName": "Master Components Limited",
-      "securityType": "SME",
-      "ipoStartDate": "18-SEP-2023",
-      "ipoEndDate": "21-SEP-2023",
-      "listingDate": "29-SEP-2023",
-      "priceRange": "Rs.140",
-      "issuePrice": 140,
-      "cmp": null,
-      "gainPct": null
+      "symbol": "SIGNATURE",
+      "companyName": "Signatureglobal (India) Limited",
+      "securityType": "Equity",
+      "ipoStartDate": "20-SEP-2023",
+      "ipoEndDate": "22-SEP-2023",
+      "listingDate": "27-SEP-2023",
+      "priceRange": "Rs.366 to Rs.385",
+      "issuePrice": 385,
+      "cmp": 859.4,
+      "gainPct": 123.22
     },
     {
       "symbol": "MADHUSUDAN",
@@ -9493,6 +9513,18 @@
       "listingDate": "26-SEP-2023",
       "priceRange": "Rs.66 to Rs.70",
       "issuePrice": 70,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "MASTER",
+      "companyName": "Master Components Limited",
+      "securityType": "SME",
+      "ipoStartDate": "18-SEP-2023",
+      "ipoEndDate": "21-SEP-2023",
+      "listingDate": "29-SEP-2023",
+      "priceRange": "Rs.140",
+      "issuePrice": 140,
       "cmp": null,
       "gainPct": null
     },
@@ -9509,18 +9541,6 @@
       "gainPct": -37.31
     },
     {
-      "symbol": "HOLMARC",
-      "companyName": "Holmarc Opto-Mechatronics Limited",
-      "securityType": "SME",
-      "ipoStartDate": "15-SEP-2023",
-      "ipoEndDate": "20-SEP-2023",
-      "listingDate": "25-SEP-2023",
-      "priceRange": "Rs.40",
-      "issuePrice": 40,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "KODYTECH",
       "companyName": "Kody Technolab Limited",
       "securityType": "SME",
@@ -9529,6 +9549,18 @@
       "listingDate": "27-SEP-2023",
       "priceRange": "Rs.160",
       "issuePrice": 160,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "HOLMARC",
+      "companyName": "Holmarc Opto-Mechatronics Limited",
+      "securityType": "SME",
+      "ipoStartDate": "15-SEP-2023",
+      "ipoEndDate": "20-SEP-2023",
+      "listingDate": "25-SEP-2023",
+      "priceRange": "Rs.40",
+      "issuePrice": 40,
       "cmp": null,
       "gainPct": null
     },
@@ -9581,18 +9613,6 @@
       "gainPct": 74.9
     },
     {
-      "symbol": "CHAVDA",
-      "companyName": "Chavda Infra Limited",
-      "securityType": "SME",
-      "ipoStartDate": "12-SEP-2023",
-      "ipoEndDate": "14-SEP-2023",
-      "listingDate": "25-SEP-2023",
-      "priceRange": "Rs.60 to Rs.65",
-      "issuePrice": 65,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "KEL",
       "companyName": "Kundan Edifice Limited",
       "securityType": "SME",
@@ -9603,6 +9623,18 @@
       "issuePrice": 91,
       "cmp": 19.01,
       "gainPct": -79.11
+    },
+    {
+      "symbol": "CHAVDA",
+      "companyName": "Chavda Infra Limited",
+      "securityType": "SME",
+      "ipoStartDate": "12-SEP-2023",
+      "ipoEndDate": "14-SEP-2023",
+      "listingDate": "25-SEP-2023",
+      "priceRange": "Rs.60 to Rs.65",
+      "issuePrice": 65,
+      "cmp": null,
+      "gainPct": null
     },
     {
       "symbol": "EMSLIMITED",
@@ -9617,18 +9649,6 @@
       "gainPct": 43.2
     },
     {
-      "symbol": "UNIHEALTH",
-      "companyName": "Unihealth Consultancy Limited",
-      "securityType": "SME",
-      "ipoStartDate": "08-SEP-2023",
-      "ipoEndDate": "12-SEP-2023",
-      "listingDate": "21-SEP-2023",
-      "priceRange": "Rs.126 to Rs.132",
-      "issuePrice": 132,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "JIWANRAM",
       "companyName": "Jiwanram Sheoduttrai Industries Limited",
       "securityType": "SME",
@@ -9637,6 +9657,18 @@
       "listingDate": "18-SEP-2023",
       "priceRange": "Rs.23",
       "issuePrice": 23,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "UNIHEALTH",
+      "companyName": "Unihealth Consultancy Limited",
+      "securityType": "SME",
+      "ipoStartDate": "08-SEP-2023",
+      "ipoEndDate": "12-SEP-2023",
+      "listingDate": "21-SEP-2023",
+      "priceRange": "Rs.126 to Rs.132",
+      "issuePrice": 132,
       "cmp": null,
       "gainPct": null
     },
@@ -9905,18 +9937,6 @@
       "gainPct": 50.68
     },
     {
-      "symbol": "VINSYS",
-      "companyName": "Vinsys IT Services India Limited",
-      "securityType": "SME",
-      "ipoStartDate": "01-AUG-2023",
-      "ipoEndDate": "04-AUG-2023",
-      "listingDate": "11-AUG-2023",
-      "priceRange": "Rs.121 to Rs.128",
-      "issuePrice": 128,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "ORIANA",
       "companyName": "Oriana Power Limited",
       "securityType": "SME",
@@ -9925,6 +9945,18 @@
       "listingDate": "11-AUG-2023",
       "priceRange": "Rs.115 to Rs.118",
       "issuePrice": 118,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "VINSYS",
+      "companyName": "Vinsys IT Services India Limited",
+      "securityType": "SME",
+      "ipoStartDate": "01-AUG-2023",
+      "ipoEndDate": "04-AUG-2023",
+      "listingDate": "11-AUG-2023",
+      "priceRange": "Rs.121 to Rs.128",
+      "issuePrice": 128,
       "cmp": null,
       "gainPct": null
     },
@@ -10074,18 +10106,6 @@
     },
     {
       "symbol": "PKH",
-      "companyName": "PKH Ventures Limited - Issue Withdrawn",
-      "securityType": "Equity",
-      "ipoStartDate": "30-JUN-2023",
-      "ipoEndDate": "04-JUL-2023",
-      "listingDate": "-",
-      "priceRange": "Rs.140 to Rs.148",
-      "issuePrice": null,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
-      "symbol": "PKH",
       "companyName": "PKH Ventures Limited",
       "securityType": "Equity",
       "ipoStartDate": "30-JUN-2023",
@@ -10097,14 +10117,14 @@
       "gainPct": null
     },
     {
-      "symbol": "SYNOPTICS",
-      "companyName": "Synoptics Technologies Limited",
-      "securityType": "SME",
+      "symbol": "PKH",
+      "companyName": "PKH Ventures Limited - Issue Withdrawn",
+      "securityType": "Equity",
       "ipoStartDate": "30-JUN-2023",
-      "ipoEndDate": "05-JUL-2023",
-      "listingDate": "13-JUL-2023",
-      "priceRange": "Rs.237",
-      "issuePrice": 237,
+      "ipoEndDate": "04-JUL-2023",
+      "listingDate": "-",
+      "priceRange": "Rs.140 to Rs.148",
+      "issuePrice": null,
       "cmp": null,
       "gainPct": null
     },
@@ -10117,6 +10137,18 @@
       "listingDate": "13-JUL-2023",
       "priceRange": "Rs.35 to Rs.42",
       "issuePrice": 42,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "SYNOPTICS",
+      "companyName": "Synoptics Technologies Limited",
+      "securityType": "SME",
+      "ipoStartDate": "30-JUN-2023",
+      "ipoEndDate": "05-JUL-2023",
+      "listingDate": "13-JUL-2023",
+      "priceRange": "Rs.237",
+      "issuePrice": 237,
       "cmp": null,
       "gainPct": null
     },
@@ -10169,6 +10201,18 @@
       "gainPct": null
     },
     {
+      "symbol": "MAGSON",
+      "companyName": "Magson Retail and Distribution Limited",
+      "securityType": "SME",
+      "ipoStartDate": "23-JUN-2023",
+      "ipoEndDate": "27-JUN-2023",
+      "listingDate": "06-JUL-2023",
+      "priceRange": "Rs.65",
+      "issuePrice": 65,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
       "symbol": "GREENCHEF",
       "companyName": "Greenchef Appliances Limited",
       "securityType": "SME",
@@ -10191,18 +10235,6 @@
       "issuePrice": 115,
       "cmp": 119.3,
       "gainPct": 3.74
-    },
-    {
-      "symbol": "MAGSON",
-      "companyName": "Magson Retail and Distribution Limited",
-      "securityType": "SME",
-      "ipoStartDate": "23-JUN-2023",
-      "ipoEndDate": "27-JUN-2023",
-      "listingDate": "06-JUL-2023",
-      "priceRange": "Rs.65",
-      "issuePrice": 65,
-      "cmp": null,
-      "gainPct": null
     },
     {
       "symbol": "HMAAGRO",
@@ -10637,18 +10669,6 @@
       "gainPct": null
     },
     {
-      "symbol": "VERTEXPLUS",
-      "companyName": "Vertexplus Technologies Limited",
-      "securityType": "SME",
-      "ipoStartDate": "02-MAR-2023",
-      "ipoEndDate": "06-MAR-2023",
-      "listingDate": "15-MAR-2023",
-      "priceRange": "Rs.91 to Rs.96",
-      "issuePrice": 96,
-      "cmp": null,
-      "gainPct": null
-    },
-    {
       "symbol": "SYSTANGO",
       "companyName": "Systango Technologies Limited",
       "securityType": "SME",
@@ -10657,6 +10677,18 @@
       "listingDate": "15-MAR-2023",
       "priceRange": "Rs.85 to Rs.90",
       "issuePrice": 90,
+      "cmp": null,
+      "gainPct": null
+    },
+    {
+      "symbol": "VERTEXPLUS",
+      "companyName": "Vertexplus Technologies Limited",
+      "securityType": "SME",
+      "ipoStartDate": "02-MAR-2023",
+      "ipoEndDate": "06-MAR-2023",
+      "listingDate": "15-MAR-2023",
+      "priceRange": "Rs.91 to Rs.96",
+      "issuePrice": 96,
       "cmp": null,
       "gainPct": null
     },

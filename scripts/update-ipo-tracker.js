@@ -26,11 +26,22 @@ const NSE_HEADERS = {
   'Referer': 'https://www.nseindia.com/market-data/all-upcoming-issues-ipo'
 };
 
-async function fetchJsonSafe(url) {
-  const res = await fetch(url, { headers: NSE_HEADERS });
-  if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
-  const data = await res.json();
-  return Array.isArray(data) ? data : [];
+async function fetchJsonSafe(url, attempts = 4) {
+  let lastErr;
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const res = await fetch(url, { headers: NSE_HEADERS });
+      if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
+      const data = await res.json();
+      return Array.isArray(data) ? data : [];
+    } catch (err) {
+      lastErr = err;
+      if (i < attempts) {
+        await new Promise((r) => setTimeout(r, i * 1000));
+      }
+    }
+  }
+  throw lastErr;
 }
 
 function parseIssuePriceNum(val) {
