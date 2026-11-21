@@ -132,11 +132,20 @@
     `;
   }
 
+  const BSE_SKIPPED_SEGMENTS = new Set(["high-52", "low-52", "upper-circuit", "lower-circuit"]);
+
+  function getVisibleSegments(exchange) {
+    return exchange === "BSE"
+      ? SEGMENTS.filter((s) => !BSE_SKIPPED_SEGMENTS.has(s.id))
+      : SEGMENTS;
+  }
+
   function renderSegmentLinks() {
     const linksEl = document.getElementById("snapshot-segment-links");
     if (!linksEl) return;
 
-    linksEl.innerHTML = SEGMENTS.map((seg) => {
+    const visibleSegs = getVisibleSegments(activeExchange);
+    linksEl.innerHTML = visibleSegs.map((seg) => {
       const isSelected = activeSegment === seg.id;
       return `
         <a
@@ -442,12 +451,12 @@
       }
     } else if (segId === "pcr-oi") {
       const pulse = window.STOCKS_MARKET_PULSE || null;
-      const fo = activeExchange === "NSE" && pulse && pulse.nseFoSnapshot ? pulse.nseFoSnapshot : null;
-      if (activeExchange === "BSE" || !fo) {
+      const fo = pulse ? (activeExchange === "BSE" ? pulse.bseFoSnapshot : pulse.nseFoSnapshot) : null;
+      if (!fo) {
         html = wrapPanel(
           `${activeExchange} Put-Call Ratio & Open Interest`,
           "Official Derivatives Summary",
-          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${activeExchange === "BSE" ? "Derivatives summary is currently unavailable for BSE in this view. Switch to NSE to inspect Index PCR and Stock Open Interest." : "NSE Derivatives data is currently unavailable."}</div>`
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${esc(activeExchange)} Derivatives data is currently unavailable.</div>`
         );
       } else {
         const idxRows = (fo.indexPcr || []).map((r) => `
@@ -471,13 +480,33 @@
           </tr>
         `).join("");
 
+        const stockSectionHtml = (fo.topStockOi && fo.topStockOi.length > 0)
+          ? `
+            <div style="padding:16px 16px 6px 16px; font-size:0.86rem; font-weight:800; color:#0f172a; border-top:1px solid #e2e8f0;">Top 20 F&amp;O Stocks by Open Interest</div>
+            <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="${esc(activeExchange)} Stock Open Interest Table" style="overflow-x:auto;">
+              <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:540px;">
+                <thead>
+                  <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+                    <th scope="col" style="padding:9px 14px; text-align:left;">Stock</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">Underlying</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">PCR (OI)</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">Total OI</th>
+                    <th scope="col" style="padding:9px 14px; text-align:right;">OI Chg %</th>
+                  </tr>
+                </thead>
+                <tbody>${stockRows}</tbody>
+              </table>
+            </div>
+          `
+          : "";
+
         html = wrapPanel(
-          "NSE Put-Call Ratio (PCR) & Open Interest",
-          `Official NSE Derivatives Summary • Session: ${fo.tradeDate}`,
+          `${activeExchange} Put-Call Ratio (PCR) & Open Interest`,
+          `Official ${activeExchange} Derivatives Summary • Session: ${fo.tradeDate}`,
           `
             <div style="padding:14px 16px 6px 16px; font-size:0.86rem; font-weight:800; color:#0f172a;">Index Derivatives PCR &amp; Open Interest</div>
-            <div style="overflow-x:auto;">
-              <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+            <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="${esc(activeExchange)} Index PCR Table" style="overflow-x:auto;">
+              <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:540px;">
                 <thead>
                   <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
                     <th scope="col" style="padding:9px 14px; text-align:left;">Index</th>
@@ -491,21 +520,7 @@
                 <tbody>${idxRows}</tbody>
               </table>
             </div>
-            <div style="padding:16px 16px 6px 16px; font-size:0.86rem; font-weight:800; color:#0f172a; border-top:1px solid #e2e8f0;">Top 20 F&amp;O Stocks by Open Interest</div>
-            <div style="overflow-x:auto;">
-              <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
-                <thead>
-                  <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
-                    <th scope="col" style="padding:9px 14px; text-align:left;">Stock</th>
-                    <th scope="col" style="padding:9px 14px; text-align:right;">Underlying</th>
-                    <th scope="col" style="padding:9px 14px; text-align:right;">PCR (OI)</th>
-                    <th scope="col" style="padding:9px 14px; text-align:right;">Total OI</th>
-                    <th scope="col" style="padding:9px 14px; text-align:right;">OI Chg %</th>
-                  </tr>
-                </thead>
-                <tbody>${stockRows}</tbody>
-              </table>
-            </div>
+            ${stockSectionHtml}
           `
         );
       }
@@ -572,6 +587,14 @@
     if (bseRadio) bseRadio.checked = activeExchange === "BSE";
 
     renderFiiDiiSegment();
+    if (activeExchange === "BSE" && activeSegment && BSE_SKIPPED_SEGMENTS.has(activeSegment)) {
+      activeSegment = null;
+      const panel = document.getElementById("snapshot-segment-panel");
+      if (panel) {
+        panel.hidden = true;
+        panel.innerHTML = "";
+      }
+    }
     renderSegmentLinks();
     if (activeSegment) {
       openSegment(activeSegment, false);

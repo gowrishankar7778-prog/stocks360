@@ -332,39 +332,7 @@ function extractFirstCsvFromZip(buf) {
   return (compMethod === 8 ? zlib.inflateRawSync(compressed) : compressed).toString('utf8');
 }
 
-async function fetchNseFoSnapshot() {
-  const headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
-    'Accept': '*/*',
-    'Referer': 'https://www.nseindia.com/all-reports-derivatives'
-  };
-
-  let csv = null;
-  let matchedDate = '';
-  const now = new Date();
-  for (let offset = 0; offset <= 6; offset++) {
-    const dt = new Date(now.getTime() - offset * 86400000);
-    const ist = new Date(dt.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-    const y = ist.getFullYear();
-    const m = String(ist.getMonth() + 1).padStart(2, '0');
-    const d = String(ist.getDate()).padStart(2, '0');
-    const yyyymmdd = `${y}${m}${d}`;
-    const url = `https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_${yyyymmdd}_F_0000.csv.zip`;
-    try {
-      const res = await fetch(url, { headers });
-      if (res.ok) {
-        const ab = await res.arrayBuffer();
-        csv = extractFirstCsvFromZip(Buffer.from(ab));
-        matchedDate = `${y}-${m}-${d}`;
-        break;
-      }
-    } catch (_) {}
-  }
-
-  if (!csv) {
-    throw new Error('Could not fetch recent NSE F&O Bhavcopy ZIP');
-  }
-
+function parseUdiffFoCsv(csv, matchedDate) {
   const lines = csv.split(/\r?\n/);
   const header = (lines[0] || '').split(',').map((h) => h.trim());
   const idxTp = header.indexOf('FinInstrmTp');
@@ -449,6 +417,65 @@ async function fetchNseFoSnapshot() {
     topStockOi,
     topOiGainers
   };
+}
+
+async function fetchNseFoSnapshot() {
+  const headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+    'Accept': '*/*',
+    'Referer': 'https://www.nseindia.com/all-reports-derivatives'
+  };
+
+  const now = new Date();
+  for (let offset = 0; offset <= 6; offset++) {
+    const dt = new Date(now.getTime() - offset * 86400000);
+    const ist = new Date(dt.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+    const y = ist.getFullYear();
+    const m = String(ist.getMonth() + 1).padStart(2, '0');
+    const d = String(ist.getDate()).padStart(2, '0');
+    const yyyymmdd = `${y}${m}${d}`;
+    const url = `https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_${yyyymmdd}_F_0000.csv.zip`;
+    try {
+      const res = await fetch(url, { headers });
+      if (res.ok) {
+        const ab = await res.arrayBuffer();
+        const csv = extractFirstCsvFromZip(Buffer.from(ab));
+        return parseUdiffFoCsv(csv, `${y}-${m}-${d}`);
+      }
+    } catch (_) {}
+  }
+
+  throw new Error('Could not fetch recent NSE F&O Bhavcopy ZIP');
+}
+
+async function fetchBseFoSnapshot() {
+  const headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+    'Accept': 'text/csv,text/plain,*/*',
+    'Referer': 'https://www.bseindia.com/'
+  };
+
+  const now = new Date();
+  for (let offset = 0; offset <= 6; offset++) {
+    const dt = new Date(now.getTime() - offset * 86400000);
+    const ist = new Date(dt.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+    const y = ist.getFullYear();
+    const m = String(ist.getMonth() + 1).padStart(2, '0');
+    const d = String(ist.getDate()).padStart(2, '0');
+    const yyyymmdd = `${y}${m}${d}`;
+    const url = `https://www.bseindia.com/download/BhavCopy/Derivative/BhavCopy_BSE_FO_0_0_0_${yyyymmdd}_F_0000.CSV`;
+    try {
+      const res = await fetch(url, { headers });
+      if (res.ok) {
+        const csv = await res.text();
+        if (csv && csv.includes('FinInstrmTp') && csv.includes('OpnIntrst')) {
+          return parseUdiffFoCsv(csv, `${y}-${m}-${d}`);
+        }
+      }
+    } catch (_) {}
+  }
+
+  throw new Error('Could not fetch recent BSE F&O Bhavcopy CSV');
 }
 
 function computeMarketBreadth() {
@@ -578,6 +605,7 @@ async function main() {
   let existingUpper = [];
   let existingLower = [];
   let existingFo = null;
+  let existingBseFo = null;
   if (fs.existsSync(JSON_OUT)) {
     try {
       const prev = JSON.parse(fs.readFileSync(JSON_OUT, 'utf8'));
@@ -586,6 +614,7 @@ async function main() {
       if (Array.isArray(prev.nseUpperCircuit)) existingUpper = prev.nseUpperCircuit;
       if (Array.isArray(prev.nseLowerCircuit)) existingLower = prev.nseLowerCircuit;
       if (prev.nseFoSnapshot) existingFo = prev.nseFoSnapshot;
+      if (prev.bseFoSnapshot) existingBseFo = prev.bseFoSnapshot;
     } catch (_) {}
   }
 
@@ -624,6 +653,14 @@ async function main() {
     console.warn('NSE F&O Bhavcopy fetch notice:', err.message);
   }
 
+  let bseFoSnapshot = existingBseFo;
+  try {
+    bseFoSnapshot = await fetchBseFoSnapshot();
+    console.log(`✓ Synced BSE F&O Bhavcopy (${bseFoSnapshot.tradeDate}): ${bseFoSnapshot.indexPcr.length} indices, ${bseFoSnapshot.topStockOi.length} top OI stocks`);
+  } catch (err) {
+    console.warn('BSE F&O Bhavcopy fetch notice:', err.message);
+  }
+
   const payload = {
     updatedAt: new Date().toISOString(),
     source: 'Official NSE & BSE Market Data, FII/DII, Indices, Price Bands, and Derivatives Records',
@@ -634,7 +671,8 @@ async function main() {
     bseIndices,
     nseUpperCircuit,
     nseLowerCircuit,
-    nseFoSnapshot
+    nseFoSnapshot,
+    bseFoSnapshot
   };
 
   fs.writeFileSync(JSON_OUT, JSON.stringify(payload, null, 2), 'utf8');

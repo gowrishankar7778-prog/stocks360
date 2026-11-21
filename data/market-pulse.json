@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T09:16:49.636Z",
+  "updatedAt": "2026-11-21T09:26:33.355Z",
   "source": "Official NSE & BSE Market Data, FII/DII, Indices, Price Bands, and Derivatives Records",
   "fiiDiiLatest": {
     "date": "2026-11-20",
@@ -4453,5 +4453,289 @@
         "pcrOi": 0.78
       }
     ]
+  },
+  "bseFoSnapshot": {
+    "tradeDate": "2026-11-20",
+    "indexPcr": [
+      {
+        "symbol": "SENSEX",
+        "isIndex": true,
+        "underlyingPrice": 83919.71,
+        "ceOi": 7913060,
+        "peOi": 11289105,
+        "futOi": 58890,
+        "totalOi": 19261055,
+        "totalChgOi": 10689385,
+        "chgOiPct": 124.71,
+        "pcrOi": 1.43
+      },
+      {
+        "symbol": "BANKEX",
+        "isIndex": true,
+        "underlyingPrice": 72696.05,
+        "ceOi": 49740,
+        "peOi": 59970,
+        "futOi": 1440,
+        "totalOi": 111150,
+        "totalChgOi": 2220,
+        "chgOiPct": 2.04,
+        "pcrOi": 1.21
+      },
+      {
+        "symbol": "FOCIT",
+        "isIndex": true,
+        "underlyingPrice": 37678.8,
+        "ceOi": 31635,
+        "peOi": 20700,
+        "futOi": 1620,
+        "totalOi": 53955,
+        "totalChgOi": 7830,
+        "chgOiPct": 16.98,
+        "pcrOi": 0.65
+      }
+    ],
+    "topStockOi": [
+      {
+        "symbol": "IDEA",
+        "isIndex": false,
+        "underlyingPrice": 12.15,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 71475,
+        "totalOi": 71475,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "IDFCFIRSTB",
+        "isIndex": false,
+        "underlyingPrice": 87.26,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 9275,
+        "totalOi": 9275,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "INOXWIND",
+        "isIndex": false,
+        "underlyingPrice": 55.46,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 6400,
+        "totalOi": 6400,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "IRFC",
+        "isIndex": false,
+        "underlyingPrice": 83.74,
+        "ceOi": 5425,
+        "peOi": 0,
+        "futOi": 0,
+        "totalOi": 5425,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": 0
+      },
+      {
+        "symbol": "ITC",
+        "isIndex": false,
+        "underlyingPrice": 299.1,
+        "ceOi": 0,
+        "peOi": 5175,
+        "futOi": 0,
+        "totalOi": 5175,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "BHEL",
+        "isIndex": false,
+        "underlyingPrice": 433.65,
+        "ceOi": 2625,
+        "peOi": 2500,
+        "futOi": 0,
+        "totalOi": 5125,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": 0.95
+      },
+      {
+        "symbol": "RELIANCE",
+        "isIndex": false,
+        "underlyingPrice": 1377.5,
+        "ceOi": 500,
+        "peOi": 0,
+        "futOi": 2500,
+        "totalOi": 3000,
+        "totalChgOi": -500,
+        "chgOiPct": -14.29,
+        "pcrOi": 0
+      },
+      {
+        "symbol": "SBIN",
+        "isIndex": false,
+        "underlyingPrice": 1165.1,
+        "ceOi": 750,
+        "peOi": 0,
+        "futOi": 2250,
+        "totalOi": 3000,
+        "totalChgOi": 750,
+        "chgOiPct": 33.33,
+        "pcrOi": 0
+      },
+      {
+        "symbol": "BANKBARODA",
+        "isIndex": false,
+        "underlyingPrice": 287,
+        "ceOi": 0,
+        "peOi": 2925,
+        "futOi": 0,
+        "totalOi": 2925,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "TATASTEEL",
+        "isIndex": false,
+        "underlyingPrice": 178,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 2750,
+        "totalOi": 2750,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "ONGC",
+        "isIndex": false,
+        "underlyingPrice": 223.46,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 2250,
+        "totalOi": 2250,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "POWERGRID",
+        "isIndex": false,
+        "underlyingPrice": 269,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 1900,
+        "totalOi": 1900,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "INDUSTOWER",
+        "isIndex": false,
+        "underlyingPrice": 387,
+        "ceOi": 1700,
+        "peOi": 0,
+        "futOi": 0,
+        "totalOi": 1700,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": 0
+      },
+      {
+        "symbol": "TATAPOWER",
+        "isIndex": false,
+        "underlyingPrice": 339.7,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 1450,
+        "totalOi": 1450,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "OIL",
+        "isIndex": false,
+        "underlyingPrice": 432,
+        "ceOi": 1400,
+        "peOi": 0,
+        "futOi": 0,
+        "totalOi": 1400,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": 0
+      },
+      {
+        "symbol": "KALYANKJIL",
+        "isIndex": false,
+        "underlyingPrice": 638.7,
+        "ceOi": 1350,
+        "peOi": 0,
+        "futOi": 0,
+        "totalOi": 1350,
+        "totalChgOi": -13500,
+        "chgOiPct": -90.91,
+        "pcrOi": 0
+      },
+      {
+        "symbol": "COALINDIA",
+        "isIndex": false,
+        "underlyingPrice": 390,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 1350,
+        "totalOi": 1350,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "HDFCBANK",
+        "isIndex": false,
+        "underlyingPrice": 846,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 1300,
+        "totalOi": 1300,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "isIndex": false,
+        "underlyingPrice": 1122,
+        "ceOi": 750,
+        "peOi": 0,
+        "futOi": 0,
+        "totalOi": 750,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": 0
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "isIndex": false,
+        "underlyingPrice": 1003,
+        "ceOi": 0,
+        "peOi": 0,
+        "futOi": 700,
+        "totalOi": 700,
+        "totalChgOi": 0,
+        "chgOiPct": 0,
+        "pcrOi": null
+      }
+    ],
+    "topOiGainers": []
   }
 }
