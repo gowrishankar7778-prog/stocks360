@@ -150,6 +150,90 @@ async function fetchNseIndices() {
     });
 }
 
+async function fetchBseIndices() {
+  const headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+    'Accept': 'text/csv,text/plain,*/*',
+    'Referer': 'https://www.bseindia.com/'
+  };
+
+  let csv = null;
+  let tradeDate = '';
+  const now = new Date();
+  for (let offset = 0; offset <= 6; offset++) {
+    const dt = new Date(now.getTime() - offset * 86400000);
+    const ist = new Date(dt.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+    const d = String(ist.getDate()).padStart(2, '0');
+    const m = String(ist.getMonth() + 1).padStart(2, '0');
+    const y = ist.getFullYear();
+    const url = `https://www.bseindia.com/bsedata/Index_Bhavcopy/INDEXSUMMARY_${d}${m}${y}.csv`;
+    try {
+      const res = await fetch(url, { headers });
+      if (res.ok) {
+        const text = await res.text();
+        if (text && text.includes('IndexName') && text.includes('ClosePrice')) {
+          csv = text;
+          tradeDate = `${y}-${m}-${d}`;
+          break;
+        }
+      }
+    } catch (_) {}
+  }
+
+  if (!csv) {
+    throw new Error('Could not fetch recent BSE Index Summary CSV');
+  }
+
+  const priority = [
+    'BSE SENSEX', 'BSE 100', 'BSE 200', 'BSE 500', 'BSE MIDCAP', 'BSE SMALLCAP',
+    'BSE BANKEX', 'BSE IT', 'BSE AUTO', 'BSE HEALTHCARE', 'BSE FMCG', 'BSE METAL',
+    'BSE OIL & GAS', 'BSE POWER', 'BSE REALTY', 'BSE CAPITAL GOODS'
+  ];
+  const rankMap = new Map(priority.map((name, idx) => [name, idx]));
+
+  const lines = csv.split(/\r?\n/);
+  const out = [];
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    const cols = line.split(',');
+    if (cols.length < 8) continue;
+    const indexName = String(cols[2] || '').replace(/"/g, '').trim();
+    const prev = toNum(cols[3]);
+    const open = toNum(cols[4]);
+    const high = toNum(cols[5]);
+    const low = toNum(cols[6]);
+    const last = toNum(cols[7]);
+    const yearHigh = toNum(cols[8]);
+    const yearLow = toNum(cols[9]);
+    if (!indexName || last == null || last <= 0) continue;
+    const variation = prev != null && prev > 0 ? Number((last - prev).toFixed(2)) : 0;
+    const percentChange = prev != null && prev > 0 ? Number(((variation / prev) * 100).toFixed(2)) : 0;
+
+    out.push({
+      index: indexName,
+      tradeDate,
+      last,
+      variation,
+      percentChange,
+      open,
+      high,
+      low,
+      previousClose: prev,
+      yearHigh,
+      yearLow,
+      pe: null
+    });
+  }
+
+  return out.sort((a, b) => {
+    const ra = rankMap.has(a.index.toUpperCase()) ? rankMap.get(a.index.toUpperCase()) : 999;
+    const rb = rankMap.has(b.index.toUpperCase()) ? rankMap.get(b.index.toUpperCase()) : 999;
+    if (ra !== rb) return ra - rb;
+    return a.index.localeCompare(b.index);
+  });
+}
+
 async function fetchNseCircuits(stocks) {
   const headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
@@ -490,6 +574,7 @@ async function main() {
   console.log(`✓ Computed Market Breadth across ${breadth.totalStocks} stocks: Adv ${breadth.advances} / Dec ${breadth.declines} (A/D ${breadth.adRatio})`);
 
   let existingIndices = [];
+  let existingBseIndices = [];
   let existingUpper = [];
   let existingLower = [];
   let existingFo = null;
@@ -497,6 +582,7 @@ async function main() {
     try {
       const prev = JSON.parse(fs.readFileSync(JSON_OUT, 'utf8'));
       if (Array.isArray(prev.nseIndices)) existingIndices = prev.nseIndices;
+      if (Array.isArray(prev.bseIndices)) existingBseIndices = prev.bseIndices;
       if (Array.isArray(prev.nseUpperCircuit)) existingUpper = prev.nseUpperCircuit;
       if (Array.isArray(prev.nseLowerCircuit)) existingLower = prev.nseLowerCircuit;
       if (prev.nseFoSnapshot) existingFo = prev.nseFoSnapshot;
@@ -509,6 +595,14 @@ async function main() {
     console.log(`✓ Synced ${nseIndices.length} official NSE Indices`);
   } catch (err) {
     console.warn('NSE Indices fetch notice:', err.message);
+  }
+
+  let bseIndices = existingBseIndices;
+  try {
+    bseIndices = await fetchBseIndices();
+    console.log(`✓ Synced ${bseIndices.length} official BSE Indices (${bseIndices[0] ? bseIndices[0].tradeDate : ''})`);
+  } catch (err) {
+    console.warn('BSE Indices fetch notice:', err.message);
   }
 
   let nseUpperCircuit = existingUpper;
@@ -532,11 +626,12 @@ async function main() {
 
   const payload = {
     updatedAt: new Date().toISOString(),
-    source: 'Official NSE FII/DII, NSE Indices, NSE Price Bands, NSE F&O Bhavcopy & Equity Bhavcopy',
+    source: 'Official NSE & BSE Market Data, FII/DII, Indices, Price Bands, and Derivatives Records',
     fiiDiiLatest: latestFiiDii,
     fiiDiiHistory: existingHistory,
     breadth,
     nseIndices,
+    bseIndices,
     nseUpperCircuit,
     nseLowerCircuit,
     nseFoSnapshot

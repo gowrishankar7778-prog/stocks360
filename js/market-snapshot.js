@@ -367,40 +367,48 @@
       }
     } else if (segId === "indices") {
       const pulse = window.STOCKS_MARKET_PULSE || null;
-      const indices = activeExchange === "NSE" && pulse && Array.isArray(pulse.nseIndices) ? pulse.nseIndices : [];
-      if (activeExchange === "BSE" || indices.length === 0) {
+      const indices =
+        activeExchange === "BSE"
+          ? (pulse && Array.isArray(pulse.bseIndices) ? pulse.bseIndices : [])
+          : (pulse && Array.isArray(pulse.nseIndices) ? pulse.nseIndices : []);
+      if (indices.length === 0) {
         html = wrapPanel(
           `${activeExchange} Indices`,
-          "Official Exchange Indices Feed",
-          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${activeExchange === "BSE" ? "BSE Indices feed will be connected next. Switch to NSE to inspect all Nifty broad &amp; sectoral indices." : "Indices data is currently unavailable."}</div>`
+          "Official Exchange Indices",
+          `<div style="padding:18px; color:#475569; font-size:0.9rem;">${activeExchange} Indices data is currently unavailable.</div>`
         );
       } else {
+        const extraHdr = activeExchange === "BSE" ? "52W High / Low" : "P/E";
         html = wrapPanel(
-          "NSE Market & Sector Indices",
-          `Official NSE Indices (${indices.length} indices)`,
+          `${activeExchange} Market & Sector Indices`,
+          `Official ${activeExchange} Indices (${indices.length} indices)`,
           `
-            <div style="overflow-x:auto;">
-              <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+            <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="${esc(activeExchange)} Indices Table" style="overflow-x:auto;">
+              <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.88rem; min-width:540px;">
                 <thead>
                   <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.76rem; text-transform:uppercase;">
                     <th scope="col" style="padding:10px 14px; text-align:left;">Index</th>
                     <th scope="col" style="padding:10px 14px; text-align:right;">Last</th>
                     <th scope="col" style="padding:10px 14px; text-align:right;">Change %</th>
                     <th scope="col" style="padding:10px 14px; text-align:right;">High / Low</th>
-                    <th scope="col" style="padding:10px 14px; text-align:right;">P/E</th>
+                    <th scope="col" style="padding:10px 14px; text-align:right;">${extraHdr}</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${indices
                     .map((idx) => {
                       const chgColor = idx.percentChange > 0 ? "#16a34a" : idx.percentChange < 0 ? "#dc2626" : "#475569";
+                      const extraVal =
+                        activeExchange === "BSE"
+                          ? (idx.yearHigh != null && idx.yearLow != null ? `${idx.yearHigh.toLocaleString("en-IN")} / ${idx.yearLow.toLocaleString("en-IN")}` : "--")
+                          : (idx.pe != null ? idx.pe.toFixed(2) : "--");
                       return `
                         <tr style="border-bottom:1px solid #f1f5f9;">
                           <td style="padding:10px 14px; font-weight:700; color:#0f172a;">${esc(idx.index)}</td>
                           <td style="padding:10px 14px; text-align:right; font-weight:700;">${Number(idx.last).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                           <td style="padding:10px 14px; text-align:right; font-weight:800; color:${chgColor};">${fmtPct(idx.percentChange)}</td>
                           <td style="padding:10px 14px; text-align:right; color:#475569; white-space:nowrap;">${idx.high != null ? idx.high.toLocaleString("en-IN") : "--"} / ${idx.low != null ? idx.low.toLocaleString("en-IN") : "--"}</td>
-                          <td style="padding:10px 14px; text-align:right; color:#475569;">${idx.pe != null ? idx.pe.toFixed(2) : "--"}</td>
+                          <td style="padding:10px 14px; text-align:right; color:#475569; white-space:nowrap;">${extraVal}</td>
                         </tr>
                       `;
                     })
