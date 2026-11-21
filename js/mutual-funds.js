@@ -1015,7 +1015,7 @@
   function init() {
     bindEvents();
 
-    fetch("data/mutual-funds/top-mutual-funds.json?v=90")
+    fetch("data/mutual-funds/top-mutual-funds.json?v=91")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         allFunds = data.funds || [];

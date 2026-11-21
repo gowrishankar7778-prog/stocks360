@@ -1634,7 +1634,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=90")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=91")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1646,7 +1646,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=90")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=91")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1666,7 +1666,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=90")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=91")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1862,6 +1862,9 @@ document.addEventListener("DOMContentLoaded", function () {
               <strong id="pp-deliv-pct" style="font-size:0.92rem; color:#2563eb;">${delivPctText}</strong>
             </div>
           </div>
+          <p id="price-delayed-disclaimer" role="note" hidden style="margin:10px 0 0 0; font-size:0.78rem; color:#92400e; background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:7px 11px;">
+            <strong>Market Hours Notice:</strong> Prices shown during market hours are delayed by 15 minutes and are provided strictly for informational and educational reference only.
+          </p>
         </section>
 
         <!-- TRADINGVIEW CHART LINKS -->
@@ -2379,6 +2382,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     warmUpLocalVoice();
+    refreshDelayedPriceIfMarketHours(stock, stock.exchanges === "BSE" ? "BSE" : "NSE");
 
     if (shouldScroll) {
       const headingEl = document.getElementById("company-view-title") || stockResult;
@@ -2613,6 +2617,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call browser speech synchronously in the exact click tick for zero latency & full iOS/Android user-gesture compliance
     playBrowserSpeechFallback(narration, sessionId);
+  }
+
+  function isIndianMarketHours(nowDate) {
+    try {
+      const dt = nowDate instanceof Date ? nowDate : new Date();
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Kolkata",
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).formatToParts(dt);
+      const getVal = (type) => {
+        const p = parts.find((x) => x.type === type);
+        return p ? p.value : "";
+      };
+      const wd = getVal("weekday");
+      if (wd === "Sat" || wd === "Sun") return false;
+      const hr = parseInt(getVal("hour"), 10);
+      const min = parseInt(getVal("minute"), 10);
+      if (!Number.isFinite(hr) || !Number.isFinite(min)) return false;
+      const totalMins = (hr === 24 ? 0 : hr) * 60 + min;
+      return totalMins >= 555 && totalMins <= 930; // 09:15 to 15:30 IST
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function getQuoteProxyUrl() {
+    if (typeof window !== "undefined" && window.STOCKS360_QUOTE_PROXY_URL) {
+      return String(window.STOCKS360_QUOTE_PROXY_URL).trim();
+    }
+    if (typeof FIREBASE_CONFIG !== "undefined" && FIREBASE_CONFIG && FIREBASE_CONFIG.quoteProxyUrl) {
+      return String(FIREBASE_CONFIG.quoteProxyUrl).trim();
+    }
+    try {
+      if (typeof localStorage !== "undefined") {
+        return String(localStorage.getItem("stocks360_quote_proxy_url") || "").trim();
+      }
+    } catch (_) {}
+    return "";
+  }
+
+  async function refreshDelayedPriceIfMarketHours(stock, exch) {
+    const discEl = document.getElementById("price-delayed-disclaimer");
+    if (!stock || !isIndianMarketHours()) {
+      if (discEl) discEl.hidden = true;
+      return;
+    }
+
+    const proxyBase = getQuoteProxyUrl();
+    if (!proxyBase || typeof fetch !== "function") {
+      if (discEl) discEl.hidden = true;
+      return;
+    }
+
+    try {
+      const sep = proxyBase.includes("?") ? "&" : "?";
+      const reqUrl = `${proxyBase}${sep}symbol=${encodeURIComponent(stock.symbol)}&exchange=${encodeURIComponent(exch || "NSE")}${stock.bseCode ? `&bseCode=${encodeURIComponent(stock.bseCode)}` : ""}`;
+      const res = await fetch(reqUrl);
+      if (!res || !res.ok) return;
+      const q = await res.json();
+      if (!q || typeof q.cmp !== "number" || !activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
+
+      const fmtP = (v) => Number(v || 0).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const cmpEl = document.getElementById("company-hero-cmp");
+      const pillEl = document.getElementById("company-hero-day-pill");
+      const sessEl = document.getElementById("company-hero-session");
+      const openEl = document.getElementById("pp-open");
+      const highEl = document.getElementById("pp-high");
+      const lowEl = document.getElementById("pp-low");
+      const prevEl = document.getElementById("pp-prev-close");
+
+      if (cmpEl) cmpEl.textContent = `₹ ${fmtP(q.cmp)}`;
+      if (pillEl) {
+        const gain = q.dayChange >= 0;
+        pillEl.textContent = gain
+          ? `+ ₹${Math.abs(q.dayChange).toFixed(2)} (+${Math.abs(q.dayChangePct).toFixed(2)}%) Day Gain`
+          : `- ₹${Math.abs(q.dayChange).toFixed(2)} (-${Math.abs(q.dayChangePct).toFixed(2)}%) Day Loss`;
+        pillEl.style.background = gain ? "#f0fdf4" : "#fef2f2";
+        pillEl.style.color = gain ? "#16a34a" : "#dc2626";
+        pillEl.style.borderColor = gain ? "#bbf7d0" : "#fecaca";
+      }
+      if (sessEl) sessEl.textContent = "(Session: Market Hours • 15-min delayed)";
+      if (openEl && typeof q.dayOpen === "number") openEl.textContent = `₹ ${fmtP(q.dayOpen)}`;
+      if (highEl && typeof q.dayHigh === "number") highEl.textContent = `₹ ${fmtP(q.dayHigh)}`;
+      if (lowEl && typeof q.dayLow === "number") lowEl.textContent = `₹ ${fmtP(q.dayLow)}`;
+      if (prevEl && typeof q.prevClose === "number") prevEl.textContent = `₹ ${fmtP(q.prevClose)}`;
+      if (discEl) {
+        discEl.hidden = false;
+        if (typeof discEl.removeAttribute === "function") discEl.removeAttribute("hidden");
+      }
+    } catch (_) {
+      // Quietly fall back to EOD data without showing any error
+    }
   }
 
   function escapeHtml(str) {
