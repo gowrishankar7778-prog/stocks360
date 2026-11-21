@@ -35,12 +35,16 @@ jobs:
         run: |
           node scripts/update-market-pulse.js
 
+      - name: Synchronize Official NSE IPO Tracker
+        run: |
+          node scripts/update-ipo-tracker.js
+
       - name: Commit & Push Updated Bulk & Block Deals Dataset
         id: git_push
         run: |
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
-          git add data/market/bulk-block-deals.json data/market/insider-trading.json data/market-pulse.json js/market-pulse-data.js
+          git add data/market/bulk-block-deals.json data/market/insider-trading.json data/market/ipo-tracker.json data/market-pulse.json js/market-pulse-data.js js/ipo-data.js
           if git diff --staged --quiet; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No new Bulk or Block Deals detected today."

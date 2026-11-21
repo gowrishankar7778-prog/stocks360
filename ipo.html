@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NSE Mainboard &amp; SME IPO Tracker - Stocks 360</title>
+  <meta name="description" content="Track open, upcoming, and recently listed Mainboard and SME IPOs on NSE with price bands, issue dates, listing dates, and current gains.">
+  <link rel="icon" type="image/svg+xml" href="assets/stocks360-mark.svg">
+  <link rel="stylesheet" href="css/styles.css?v=95">
+</head>
+<body>
+
+  <!-- 1. SKIP TO MAIN CONTENT LINK -->
+  <a class="skip-link" href="#page-heading">Skip to main content</a>
+
+  <!-- 2. TOP ACCESSIBILITY BUTTON & USER ACCOUNT HEADER BAR -->
+  <header class="top-bar">
+    <div class="container top-bar-flex">
+      <div class="top-controls">
+        <button id="accessibility-toggle" aria-pressed="false" class="a11y-toggle-btn">
+          Turn On Special Accessibility
+        </button>
+      </div>
+      <div id="nav-auth-container" class="top-auth-box"></div>
+    </div>
+  </header>
+
+  <!-- 3. MAIN NAVIGATION LINKS -->
+  <nav id="main-navigation" aria-label="Main navigation">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="market-snapshot.html">Market Snapshot</a></li>
+        <li><a href="ipo.html" class="active" aria-current="page">IPO Tracker</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mutual-funds.html">Mutual Funds</a></li>
+        <li><a href="learn.html">Learn Modules</a></li>
+        <li><a href="deals.html">Bulk &amp; Block Deals</a></li>
+        <li><a href="screener.html">Screener</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 4. MAIN CONTENT AREA -->
+  <main id="main-content" tabindex="-1">
+    <div class="container">
+      <div class="detail-container">
+
+        <div class="focused-nav-bar" role="navigation" aria-label="IPO Tracker navigation">
+          <div class="focused-nav-group">
+            <a href="index.html" class="nav-back-btn" id="ipo-back-home" aria-label="Go back to Stocks 360 homepage">
+              <span aria-hidden="true">&#8592;</span> Go Back to Home
+            </a>
+          </div>
+          <span class="focused-nav-hint" id="ipo-updated-hint">Official NSE IPO Issues</span>
+        </div>
+
+        <header style="margin-bottom: 18px;">
+          <h1 id="page-heading" tabindex="-1" style="font-size: clamp(1.6rem, 2.4vw, 2.1rem); color: #0f172a; margin-bottom: 4px; font-weight: 800; letter-spacing: -0.02em;">
+            IPO Tracker
+          </h1>
+        </header>
+
+        <section id="ipo-tracker-root" aria-live="polite">
+          <div style="padding:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; color:#64748b;">
+            Loading IPO Tracker...
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 5. REGULATORY DISCLAIMER & FOOTER -->
+  <footer>
+    <div class="container">
+      <p class="footer-disclaimer" role="note">
+        <strong>Disclaimer:</strong> IPO issue details and listing figures are sourced from official NSE records purely for educational purposes and do not constitute investment advice. Stocks 360 is not a SEBI registered investment adviser.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Firebase Cloud SDKs & Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js?v=95"></script>
+  <script src="js/auth.js?v=95"></script>
+  <script src="js/ipo-data.js?v=95"></script>
+  <script src="js/ipo-tracker.js?v=95"></script>
+  <script src="js/accessibility.js?v=95"></script>
+  <script src="js/smart-assist.js?v=95"></script>
+</body>
+</html>
