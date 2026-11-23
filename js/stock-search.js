@@ -738,6 +738,244 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
+  function matchAmcForMutualFundsLink(holderName) {
+    const clean = String(holderName || "").toUpperCase().replace(/[^A-Z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+    if (!clean) return null;
+    const amcRules = [
+      { re: /\bBARODA\s+BNP\b/, label: "Baroda BNP Paribas MF", amcParam: "Baroda BNP" },
+      { re: /\bADITYA\s+BIRLA\b/, label: "Aditya Birla Sun Life MF", amcParam: "Aditya Birla" },
+      { re: /\bCANARA\s+ROBECO\b|\bCANARA\b/, label: "Canara Robeco MF", amcParam: "Canara" },
+      { re: /\bPARAG\s+PARIKH\b|\bPPFAS\b/, label: "PPFAS Mutual Fund", amcParam: "PPFAS" },
+      { re: /ICICI\s+PRUDENTIAL/, label: "ICICI Prudential MF", amcParam: "ICICI Prudential" },
+      { re: /\bNIPPON\b/, label: "Nippon India MF", amcParam: "Nippon" },
+      { re: /\bMOTILAL\b/, label: "Motilal Oswal MF", amcParam: "Motilal" },
+      { re: /\bJM\s+FINANCIAL\b/, label: "JM Financial MF", amcParam: "JM Financial" },
+      { re: /\b360\s+ONE\b/, label: "360 ONE Mutual Fund", amcParam: "360 ONE" },
+      { re: /\bQUANTUM\b/, label: "Quantum Mutual Fund", amcParam: "Quantum" },
+      { re: /\bQUANT\b/, label: "Quant Mutual Fund", amcParam: "Quant" },
+      { re: /\bSBI\b/, label: "SBI Mutual Fund", amcParam: "SBI" },
+      { re: /\bHDFC\b/, label: "HDFC Mutual Fund", amcParam: "HDFC" },
+      { re: /\bUTI\b/, label: "UTI Mutual Fund", amcParam: "UTI" },
+      { re: /\bKOTAK\b/, label: "Kotak Mahindra MF", amcParam: "Kotak" },
+      { re: /\bAXIS\b/, label: "Axis Mutual Fund", amcParam: "Axis" },
+      { re: /\bMIRAE\b/, label: "Mirae Asset MF", amcParam: "Mirae" },
+      { re: /\bDSP\b/, label: "DSP Mutual Fund", amcParam: "DSP" },
+      { re: /\bTATA\b/, label: "Tata Mutual Fund", amcParam: "Tata" },
+      { re: /\bFRANKLIN\b/, label: "Franklin Templeton MF", amcParam: "Franklin" },
+      { re: /\bSUNDARAM\b/, label: "Sundaram Mutual Fund", amcParam: "Sundaram" },
+      { re: /\bINVESCO\b/, label: "Invesco Mutual Fund", amcParam: "Invesco" },
+      { re: /\bBANDHAN\b/, label: "Bandhan Mutual Fund", amcParam: "Bandhan" },
+      { re: /\bHSBC\b/, label: "HSBC Mutual Fund", amcParam: "HSBC" },
+      { re: /\bEDELWEISS\b/, label: "Edelweiss Mutual Fund", amcParam: "Edelweiss" },
+      { re: /\bLIC\b/, label: "LIC Mutual Fund", amcParam: "LIC" },
+      { re: /\bPGIM\b/, label: "PGIM India MF", amcParam: "PGIM" },
+      { re: /\bWHITEOAK\b/, label: "WhiteOak Capital MF", amcParam: "WhiteOak" },
+      { re: /\bMAHINDRA\b/, label: "Mahindra Manulife MF", amcParam: "Mahindra" },
+      { re: /\bUNION\b/, label: "Union Mutual Fund", amcParam: "Union" }
+    ];
+    for (let i = 0; i < amcRules.length; i++) {
+      if (amcRules[i].re.test(clean)) {
+        return { label: amcRules[i].label, amcParam: amcRules[i].amcParam };
+      }
+    }
+    return null;
+  }
+
+  function buildMutualFundHoldingsPanelHtml(stock, isLoading) {
+    const sh = stock && stock.shareholding && typeof stock.shareholding === "object" ? stock.shareholding : null;
+    const headerHtml = `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+        <div>
+          <h3 id="mf-holdings-panel-heading" style="margin:0; font-size:1.12rem; color:#0f172a; font-weight:800;">
+            Mutual Fund Holdings in ${escapeHtml(stock ? stock.name : "")}
+          </h3>
+          <p style="margin:4px 0 0 0; font-size:0.8rem; color:#475569;">
+            Official quarterly exchange shareholding disclosures (mandatory reporting for ≥ 1% stake). Press Esc or Close to collapse.
+          </p>
+        </div>
+        <button type="button" id="btn-close-mf-holdings" style="padding:7px 13px; border-radius:7px; border:1px solid #0f172a; background:#0f172a; color:#ffffff; font-weight:700; font-size:0.84rem; cursor:pointer;">
+          Close
+        </button>
+      </div>
+    `;
+
+    if (!sh) {
+      return `
+        ${headerHtml}
+        <div style="padding:14px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; color:#475569; font-size:0.9rem;">
+          ${isLoading ? "Loading official quarterly Mutual Fund shareholding disclosures..." : "Official quarterly Mutual Fund shareholding data is pending exchange filing for this company."}
+        </div>
+      `;
+    }
+
+    const qs = Array.isArray(sh.quarters) ? sh.quarters : [];
+    const mfSeries = sh.series && Array.isArray(sh.series.diiMutualFunds) ? sh.series.diiMutualFunds : [];
+
+    let latestIdx = -1;
+    for (let i = mfSeries.length - 1; i >= 0; i--) {
+      if (typeof mfSeries[i] === "number" && Number.isFinite(mfSeries[i])) {
+        latestIdx = i;
+        break;
+      }
+    }
+    const latestMfPct = latestIdx >= 0 ? mfSeries[latestIdx] : null;
+    const prevMfPct = latestIdx > 0 && typeof mfSeries[latestIdx - 1] === "number" ? mfSeries[latestIdx - 1] : null;
+    const yoyMfPct = latestIdx >= 4 && typeof mfSeries[latestIdx - 4] === "number" ? mfSeries[latestIdx - 4] : null;
+    const latestQLabel = latestIdx >= 0 && qs[latestIdx] ? qs[latestIdx] : (qs[qs.length - 1] || "Latest Quarter");
+    const prevQLabel = latestIdx > 0 && qs[latestIdx - 1] ? qs[latestIdx - 1] : "";
+
+    const qoqDelta = latestMfPct !== null && prevMfPct !== null ? Number((latestMfPct - prevMfPct).toFixed(2)) : null;
+    const yoyDelta = latestMfPct !== null && yoyMfPct !== null ? Number((latestMfPct - yoyMfPct).toFixed(2)) : null;
+    const fmtDelta = (d) => (d === null ? "--" : `${d > 0 ? "+" : ""}${d.toFixed(2)}%`);
+
+    const rawDiiHolders = sh.holders && Array.isArray(sh.holders.dii) ? sh.holders.dii : [];
+    const lastQuarterIdx = qs.length > 0 ? qs.length - 1 : -1;
+    const mfHolders = rawDiiHolders
+      .filter((h) => h && h.subCategory === "Mutual Funds")
+      .map((h) => {
+        const hist = Array.isArray(h.history) ? h.history : [];
+        let lastHIdx = -1;
+        for (let i = hist.length - 1; i >= 0; i--) {
+          if (typeof hist[i] === "number" && Number.isFinite(hist[i])) {
+            lastHIdx = i;
+            break;
+          }
+        }
+        const activeInLatest = lastQuarterIdx >= 0 && lastHIdx === lastQuarterIdx;
+        const stakePct = lastHIdx >= 0
+          ? hist[lastHIdx]
+          : (typeof h.pct === "number" && Number.isFinite(h.pct) ? h.pct : null);
+        const prevStake = lastHIdx > 0 && typeof hist[lastHIdx - 1] === "number" ? hist[lastHIdx - 1] : null;
+        const qoq = stakePct !== null && prevStake !== null ? Number((stakePct - prevStake).toFixed(2)) : null;
+        const asOfQuarter = lastHIdx >= 0 && qs[lastHIdx] ? qs[lastHIdx] : latestQLabel;
+        const amcMatch = matchAmcForMutualFundsLink(h.name);
+        return {
+          name: String(h.name || "").trim(),
+          stakePct,
+          qoq,
+          activeInLatest,
+          asOfQuarter,
+          amcMatch
+        };
+      })
+      .filter((h) => h.name && h.stakePct !== null)
+      .sort((a, b) => {
+        if (a.activeInLatest !== b.activeInLatest) return a.activeInLatest ? -1 : 1;
+        return (b.stakePct || 0) - (a.stakePct || 0);
+      });
+
+    const summaryCardsHtml = `
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin-bottom:14px;">
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
+          <div style="font-size:0.75rem; color:#475569; font-weight:700; text-transform:uppercase;">Total Mutual Fund Stake</div>
+          <div style="font-size:1.2rem; font-weight:800; color:#0f172a; margin-top:3px;">${latestMfPct !== null ? `${latestMfPct.toFixed(2)}%` : "--"}</div>
+          <div style="font-size:0.75rem; color:#64748b;">As of ${escapeHtml(latestQLabel)}</div>
+        </div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
+          <div style="font-size:0.75rem; color:#475569; font-weight:700; text-transform:uppercase;">Quarter-on-Quarter Change</div>
+          <div style="font-size:1.2rem; font-weight:800; color:${qoqDelta === null ? "#334155" : qoqDelta >= 0 ? "#15803d" : "#b91c1c"}; margin-top:3px;">${fmtDelta(qoqDelta)}</div>
+          <div style="font-size:0.75rem; color:#64748b;">${prevQLabel ? `vs ${escapeHtml(prevQLabel)}` : "Prior quarter"}</div>
+        </div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
+          <div style="font-size:0.75rem; color:#475569; font-weight:700; text-transform:uppercase;">Named Major Funds (≥ 1% Stake)</div>
+          <div style="font-size:1.2rem; font-weight:800; color:#0f172a; margin-top:3px;">${mfHolders.length}</div>
+          <div style="font-size:0.75rem; color:#64748b;">${yoyDelta !== null ? `1Y Trend: ${fmtDelta(yoyDelta)}` : "SEBI ≥1% threshold"}</div>
+        </div>
+      </div>
+    `;
+
+    let holdersHtml = "";
+    if (mfHolders.length > 0) {
+      holdersHtml = `
+        <h4 style="margin:0 0 8px 0; font-size:0.95rem; color:#0f172a; font-weight:800;">Disclosed Mutual Funds Holding ≥ 1% Stake</h4>
+        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Named Mutual Fund Shareholders" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
+          <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.86rem; min-width:600px;">
+            <thead>
+              <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+                <th scope="col" style="padding:9px 12px; text-align:left;">Mutual Fund / AMC</th>
+                <th scope="col" style="padding:9px 12px; text-align:right;">Latest Disclosed Stake</th>
+                <th scope="col" style="padding:9px 12px; text-align:right;">QoQ Change</th>
+                <th scope="col" style="padding:9px 12px; text-align:right;">Explore AMC</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${mfHolders
+                .map((h, idx) => {
+                  const bg = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
+                  const qCol = h.qoq === null ? "#475569" : h.qoq >= 0 ? "#15803d" : "#b91c1c";
+                  const amcLinkHtml = h.amcMatch
+                    ? `<a href="mutual-funds.html?amc=${encodeURIComponent(h.amcMatch.amcParam)}" target="_blank" rel="noopener noreferrer" style="font-weight:700; color:#1d4ed8; text-decoration:none;">Explore ${escapeHtml(h.amcMatch.label)} &#8599;</a>`
+                    : `<a href="mutual-funds.html" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#475569; text-decoration:none;">Mutual Funds Explorer &#8599;</a>`;
+                  return `
+                    <tr style="background:${bg}; border-bottom:1px solid #f1f5f9;">
+                      <td style="padding:9px 12px; color:#0f172a; font-weight:700;">
+                        ${escapeHtml(h.name)}
+                        ${!h.activeInLatest && h.asOfQuarter ? `<div style="font-size:0.74rem; color:#64748b; font-weight:500;">Last reported ≥ 1% in ${escapeHtml(h.asOfQuarter)}</div>` : ""}
+                      </td>
+                      <td style="padding:9px 12px; text-align:right; color:#0f172a; font-weight:800; white-space:nowrap;">${h.stakePct.toFixed(2)}%</td>
+                      <td style="padding:9px 12px; text-align:right; color:${qCol}; font-weight:700; white-space:nowrap;">${fmtDelta(h.qoq)}</td>
+                      <td style="padding:9px 12px; text-align:right; white-space:nowrap;">${amcLinkHtml}</td>
+                    </tr>
+                  `;
+                })
+                .join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    } else if (latestMfPct !== null && latestMfPct > 0) {
+      holdersHtml = `
+        <p style="margin:0 0 14px 0; padding:12px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-size:0.86rem; color:#334155;">
+          Total Mutual Fund ownership is <strong>${latestMfPct.toFixed(2)}%</strong>, distributed across schemes individually holding below the 1% quarterly disclosure threshold.
+        </p>
+      `;
+    } else {
+      holdersHtml = `
+        <p style="margin:0 0 14px 0; padding:12px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-size:0.86rem; color:#475569;">
+          No Mutual Fund holdings reported in the latest official quarterly shareholding filing.
+        </p>
+      `;
+    }
+
+    const trendPairs = [];
+    for (let i = 0; i < qs.length; i++) {
+      if (typeof mfSeries[i] === "number" && Number.isFinite(mfSeries[i])) {
+        trendPairs.push({ q: qs[i], v: mfSeries[i] });
+      }
+    }
+    const trendHtml = trendPairs.length > 0
+      ? `
+        <h4 style="margin:0 0 8px 0; font-size:0.95rem; color:#0f172a; font-weight:800;">Quarterly Mutual Fund Ownership Trend</h4>
+        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Quarterly Mutual Fund Ownership Trend" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:12px;">
+          <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.82rem; min-width:520px;">
+            <thead>
+              <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569;">
+                <th scope="col" style="padding:8px 10px; text-align:left;">Quarter</th>
+                ${trendPairs.map((p) => `<th scope="col" style="padding:8px 10px; text-align:right; white-space:nowrap;">${escapeHtml(p.q)}</th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#ffffff;">
+                <td style="padding:8px 10px; font-weight:700; color:#0f172a; white-space:nowrap;">MF Category Total</td>
+                ${trendPairs.map((p) => `<td style="padding:8px 10px; text-align:right; font-weight:700; color:#1d4ed8; white-space:nowrap;">${p.v.toFixed(2)}%</td>`).join("")}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `
+      : "";
+
+    return `
+      ${headerHtml}
+      ${summaryCardsHtml}
+      ${holdersHtml}
+      ${trendHtml}
+      <p style="margin:0; font-size:0.78rem; color:#64748b;">
+        Source: Official quarterly exchange shareholding disclosures. Named funds reflect mandatory disclosures for stakes of 1% or more in the company.
+      </p>
+    `;
+  }
+
   function buildShareholdingHtml(shareholding, isLoading) {
     if (!shareholding || typeof shareholding !== "object" || !shareholding.promoters) {
       return `<div style="padding:16px; color:#64748b; background:#f8fafc; border-radius:8px;">${isLoading ? "Loading official NSE shareholding pattern..." : "Shareholding pattern pending official exchange filing."}</div>`;
@@ -1634,7 +1872,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=98")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=99")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1646,7 +1884,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=98")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=99")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1666,7 +1904,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=98")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=99")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1783,6 +2021,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 </a>
               </div>
               <h2 id="company-view-title" style="margin:8px 0 4px 0; font-size:1.75rem; color:#0f172a; font-weight:800;">${escapeHtml(stock.name)}</h2>
+              ${!isBseOnly ? `<div style="margin:6px 0 8px 0;">
+                <button type="button" id="btn-see-mf-holdings" aria-expanded="false" aria-controls="company-mf-holdings-panel" style="padding:7px 14px; font-size:0.86rem; font-weight:700; border-radius:7px; border:1px solid #1d4ed8; background:#eff6ff; color:#1d4ed8; cursor:pointer;">
+                  See This Stock in Mutual Fund Holdings
+                </button>
+              </div>` : ''}
               
               <div style="display:flex; align-items:baseline; gap:12px; margin-top:6px; flex-wrap:wrap;">
                 <span id="company-hero-cmp" style="font-size:2.1rem; font-weight:800; color:#0f172a;">₹ ${fmtPrice(stock.cmp)}</span>
@@ -1810,6 +2053,8 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
         </div>
+
+        ${!isBseOnly ? `<section id="company-mf-holdings-panel" role="region" aria-labelledby="mf-holdings-panel-heading" tabindex="-1" hidden style="margin-bottom:18px; background:#ffffff; border:2px solid #1d4ed8; border-radius:12px; padding:18px; box-shadow:0 2px 10px rgba(29,78,216,0.08);"></section>` : ''}
 
         <!-- EXCHANGE SWITCHER (NSE / BSE) -->
         <div id="exchange-switcher-bar" role="group" aria-label="Switch Stock Exchange" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding:10px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px;">
@@ -2239,6 +2484,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const shContainer = document.getElementById("company-shareholding-container");
       if (shContainer) shContainer.innerHTML = buildShareholdingHtml(stock.shareholding, false);
 
+      refreshMfHoldingsPanel(false);
+
       const peersTitle = document.getElementById("company-peers-title");
       if (peersTitle) {
         peersTitle.textContent = `Peer Comparison (${stock.industry || stock.sector || "Sector Peers"})`;
@@ -2437,6 +2684,61 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+
+    function closeMfHoldingsPanel(restoreFocus) {
+      const mfPanel = document.getElementById("company-mf-holdings-panel");
+      const mfBtn = document.getElementById("btn-see-mf-holdings");
+      if (mfPanel) {
+        mfPanel.hidden = true;
+        if (typeof mfPanel.setAttribute === "function") mfPanel.setAttribute("hidden", "");
+      }
+      if (mfBtn) {
+        mfBtn.setAttribute("aria-expanded", "false");
+        if (restoreFocus && typeof mfBtn.focus === "function") mfBtn.focus();
+      }
+    }
+
+    function refreshMfHoldingsPanel(forceRender) {
+      const mfPanel = document.getElementById("company-mf-holdings-panel");
+      if (!mfPanel) return;
+      if (!forceRender && mfPanel.hidden) return;
+      mfPanel.innerHTML = buildMutualFundHoldingsPanelHtml(stock, !isBseOnly && !stock._profileLoaded);
+      const closeMfBtn = document.getElementById("btn-close-mf-holdings");
+      if (closeMfBtn) {
+        closeMfBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          closeMfHoldingsPanel(true);
+        });
+      }
+    }
+
+    const mfPanelInit = document.getElementById("company-mf-holdings-panel");
+    if (mfPanelInit) {
+      mfPanelInit.hidden = true;
+      if (typeof mfPanelInit.setAttribute === "function") mfPanelInit.setAttribute("hidden", "");
+    }
+    const mfHoldingsBtn = document.getElementById("btn-see-mf-holdings");
+    if (mfHoldingsBtn) {
+      mfHoldingsBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const mfPanel = document.getElementById("company-mf-holdings-panel");
+        if (!mfPanel) return;
+        const isClosed = Boolean(mfPanel.hidden || (typeof mfPanel.hasAttribute === "function" && mfPanel.hasAttribute("hidden")));
+        if (!isClosed) {
+          closeMfHoldingsPanel(false);
+          return;
+        }
+        mfPanel.hidden = false;
+        if (typeof mfPanel.removeAttribute === "function") mfPanel.removeAttribute("hidden");
+        mfHoldingsBtn.setAttribute("aria-expanded", "true");
+        refreshMfHoldingsPanel(true);
+        if (typeof mfPanel.scrollIntoView === "function") mfPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        if (typeof mfPanel.focus === "function") mfPanel.focus();
+        if (typeof window.speakText === "function" && typeof localStorage !== "undefined" && localStorage.getItem("stocks360_special_a11y") === "true") {
+          window.speakText(`Showing mutual fund holdings in ${stock.name}. Press Escape to close.`, true);
+        }
+      });
+    }
 
     // Connect Dedicated "Go Back to Home & Stock Search" Button
     const backHomeBtn = document.getElementById("btn-back-to-home-search");
@@ -2820,6 +3122,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (toggleBtn && toggleBtn.classList.contains("ratio-info-toggle-btn")) {
           toggleBtn.setAttribute("aria-expanded", "false");
           toggleBtn.focus();
+        }
+        return;
+      }
+      const mfPanel = document.getElementById("company-mf-holdings-panel");
+      if (mfPanel && !mfPanel.hidden) {
+        mfPanel.hidden = true;
+        if (typeof mfPanel.setAttribute === "function") mfPanel.setAttribute("hidden", "");
+        const mfBtn = document.getElementById("btn-see-mf-holdings");
+        if (mfBtn) {
+          mfBtn.setAttribute("aria-expanded", "false");
+          mfBtn.focus();
         }
         return;
       }
