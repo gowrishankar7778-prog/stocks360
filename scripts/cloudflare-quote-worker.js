@@ -3,31 +3,93 @@
  * Free Tier: 100,000 requests/day at Rs 0/month.
  *
  * Deployment steps (1 minute):
- * 1. Create a free Worker at https://dash.cloudflare.com -> Workers & Pages -> Create
+ * 1. Open https://dash.cloudflare.com -> Workers & Pages -> stocks360-quotes -> Edit code
  * 2. Paste this entire file into the Worker editor and click Deploy
- * 3. Copy your Worker URL (e.g. https://stocks360-quotes.<subdomain>.workers.dev)
- *    and set `quoteProxyUrl` in Firebase config / `window.STOCKS360_QUOTE_PROXY_URL`.
+ * 3. Configured in js/stock-search.js (`getQuoteProxyUrl`) or `FIREBASE_CONFIG.quoteProxyUrl`.
  */
 
 const EDGE_CACHE_SECONDS = 900; // Exact 15-minute delay cache
 
-function corsHeaders(origin) {
-  const allowed = origin && (origin.includes('stocks360.web.app') || origin.includes('localhost') || origin.includes('127.0.0.1'))
-    ? origin
-    : 'https://stocks360.web.app';
+function corsHeaders() {
   return {
-    'Access-Control-Allow-Origin': allowed,
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Vary': 'Origin'
+    'Access-Control-Allow-Headers': 'Content-Type'
   };
+}
+
+function buildTickerCandidates(rawSym, exchange, bseCode) {
+  const candidates = [];
+  const pushUnique = (ticker) => {
+    if (ticker && !candidates.includes(ticker)) {
+      candidates.push(ticker);
+    }
+  };
+
+  if (exchange === 'BSE') {
+    if (/[A-Z]/.test(rawSym)) {
+      pushUnique(`${rawSym}.BO`);
+      if (bseCode) pushUnique(`${bseCode}.BO`);
+    } else {
+      pushUnique(`${bseCode || rawSym}.BO`);
+      if (rawSym) pushUnique(`${rawSym}.BO`);
+    }
+  } else {
+    pushUnique(`${rawSym}.NS`);
+  }
+
+  return candidates;
+}
+
+function extractDayOpen(result, meta, cmp) {
+  const opens = result && result.indicators && Array.isArray(result.indicators.quote) && result.indicators.quote[0]
+    ? result.indicators.quote[0].open
+    : null;
+  if (Array.isArray(opens)) {
+    for (let i = 0; i < opens.length; i++) {
+      if (typeof opens[i] === 'number' && Number.isFinite(opens[i]) && opens[i] > 0) {
+        return Number(opens[i].toFixed(2));
+      }
+    }
+  }
+  if (meta && typeof meta.regularMarketOpen === 'number' && Number.isFinite(meta.regularMarketOpen) && meta.regularMarketOpen > 0) {
+    return Number(meta.regularMarketOpen.toFixed(2));
+  }
+  return cmp;
+}
+
+async function fetchYahooChart(ticker) {
+  const hosts = ['query1.finance.yahoo.com', 'query2.finance.yahoo.com'];
+  let sawOkWithoutQuote = false;
+
+  for (let i = 0; i < hosts.length; i++) {
+    const upstreamUrl = `https://${hosts[i]}/v8/finance/chart/${encodeURIComponent(ticker)}?interval=15m&range=1d`;
+    try {
+      const upstreamRes = await fetch(upstreamUrl, {
+        headers: { 'User-Agent': 'Mozilla/5.0' }
+      });
+      if (!upstreamRes || !upstreamRes.ok) {
+        continue;
+      }
+      const data = await upstreamRes.json();
+      const result = data && data.chart && Array.isArray(data.chart.result) ? data.chart.result[0] : null;
+      const meta = result && result.meta ? result.meta : null;
+      if (meta && typeof meta.regularMarketPrice === 'number' && Number.isFinite(meta.regularMarketPrice)) {
+        return { ok: true, result, meta };
+      }
+      sawOkWithoutQuote = true;
+    } catch (_) {
+      // Fall through to secondary Yahoo Finance host
+    }
+  }
+
+  return { ok: false, sawOkWithoutQuote };
 }
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    const origin = request.headers.get('Origin') || '';
-    const headers = corsHeaders(origin);
+    const headers = corsHeaders();
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers });
@@ -51,40 +113,49 @@ export default {
       });
     }
 
+    const normalizedUrl = new URL(url.origin + '/quote');
+    normalizedUrl.searchParams.set('symbol', rawSym);
+    normalizedUrl.searchParams.set('exchange', exchange);
+    if (bseCode) normalizedUrl.searchParams.set('bseCode', bseCode);
+    const cacheKey = new Request(normalizedUrl.toString(), { method: 'GET' });
+
     const cache = caches.default;
-    const cacheKey = new Request(url.toString(), request);
     const cached = await cache.match(cacheKey);
     if (cached) {
       return cached;
     }
 
-    const ticker = exchange === 'BSE'
-      ? `${bseCode || rawSym}.BO`
-      : `${rawSym}.NS`;
+    const candidates = buildTickerCandidates(rawSym, exchange, bseCode);
 
     try {
-      const upstreamUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=15m&range=1d`;
-      const upstreamRes = await fetch(upstreamUrl, {
-        headers: { 'User-Agent': 'Mozilla/5.0' }
-      });
-      if (!upstreamRes.ok) {
-        return new Response(JSON.stringify({ error: 'Upstream unavailable' }), {
-          status: 502,
+      let matched = null;
+      let anyNoQuote = false;
+
+      for (let i = 0; i < candidates.length; i++) {
+        const res = await fetchYahooChart(candidates[i]);
+        if (res.ok) {
+          matched = res;
+          break;
+        }
+        if (res.sawOkWithoutQuote) {
+          anyNoQuote = true;
+        }
+      }
+
+      if (!matched) {
+        const status = anyNoQuote ? 404 : 502;
+        const message = anyNoQuote ? 'No quote found' : 'Upstream unavailable';
+        return new Response(JSON.stringify({ error: message }), {
+          status,
           headers: { ...headers, 'Content-Type': 'application/json' }
         });
       }
 
-      const data = await upstreamRes.json();
-      const result = data && data.chart && Array.isArray(data.chart.result) ? data.chart.result[0] : null;
-      const meta = result && result.meta ? result.meta : null;
-      if (!meta || typeof meta.regularMarketPrice !== 'number') {
-        return new Response(JSON.stringify({ error: 'No quote found' }), {
-          status: 404,
-          headers: { ...headers, 'Content-Type': 'application/json' }
-        });
-      }
-
+      const { result, meta } = matched;
       const cmp = Number(meta.regularMarketPrice.toFixed(2));
+      const dayOpen = extractDayOpen(result, meta, cmp);
+      const dayHigh = typeof meta.regularMarketDayHigh === 'number' ? Number(meta.regularMarketDayHigh.toFixed(2)) : cmp;
+      const dayLow = typeof meta.regularMarketDayLow === 'number' ? Number(meta.regularMarketDayLow.toFixed(2)) : cmp;
       const prevClose = Number((meta.chartPreviousClose || meta.previousClose || cmp).toFixed(2));
       const dayChange = Number((cmp - prevClose).toFixed(2));
       const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
@@ -93,14 +164,15 @@ export default {
         symbol: rawSym || bseCode,
         exchange,
         cmp,
-        dayOpen: typeof meta.regularMarketOpen === 'number' ? Number(meta.regularMarketOpen.toFixed(2)) : cmp,
-        dayHigh: typeof meta.regularMarketDayHigh === 'number' ? Number(meta.regularMarketDayHigh.toFixed(2)) : cmp,
-        dayLow: typeof meta.regularMarketDayLow === 'number' ? Number(meta.regularMarketDayLow.toFixed(2)) : cmp,
+        dayOpen,
+        dayHigh,
+        dayLow,
         prevClose,
         dayChange,
         dayChangePct,
         isGain: dayChange >= 0,
         delayedMinutes: 15,
+        marketTime: meta.regularMarketTime || null,
         timestamp: Date.now()
       };
 

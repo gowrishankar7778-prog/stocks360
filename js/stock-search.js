@@ -1634,7 +1634,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadVerifiedProfile(symbol) {
     const key = newsShardKey(symbol);
     if (!profileShardCache[key]) {
-      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=95")
+      profileShardCache[key] = fetch("data/profiles/" + encodeURIComponent(key) + ".json?v=96")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1646,7 +1646,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadBseQuote(symbol) {
     const key = newsShardKey(symbol);
     if (!bseShardCache[key]) {
-      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=95")
+      bseShardCache[key] = fetch("data/bse/" + encodeURIComponent(key) + ".json?v=96")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -1666,7 +1666,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadCompanyNews(symbol) {
     const key = newsShardKey(symbol);
     if (!newsShardCache[key]) {
-      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=95")
+      newsShardCache[key] = fetch("data/news/" + encodeURIComponent(key) + ".json?v=96")
         .then((res) => (res.ok ? res.json() : {}))
         .catch(() => ({}));
     }
@@ -2124,6 +2124,64 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     let bseQuoteSnapshot = null;
     let activeExchangeView = stock.exchanges === "BSE" ? "BSE" : "NSE";
+    const delayedQuotes = { NSE: null, BSE: null };
+
+    function applyDelayedDataToSnapshot(target, q) {
+      if (!target || !q || typeof q.cmp !== "number") return target;
+      const nextCmp = q.cmp;
+      const nextOpen = typeof q.dayOpen === "number" && q.dayOpen > 0 ? q.dayOpen : (target.dayOpen || nextCmp);
+      const nextHigh = typeof q.dayHigh === "number" && q.dayHigh > 0 ? q.dayHigh : (target.dayHigh || nextCmp);
+      const nextLow = typeof q.dayLow === "number" && q.dayLow > 0 ? q.dayLow : (target.dayLow || nextCmp);
+      const nextPrev = typeof q.prevClose === "number" && q.prevClose > 0 ? q.prevClose : (target.prevClose || nextCmp);
+      const nextChange = typeof q.dayChange === "number" ? q.dayChange : Number((nextCmp - nextPrev).toFixed(2));
+      const nextPct = typeof q.dayChangePct === "number" ? q.dayChangePct : (nextPrev > 0 ? Number(((nextChange / nextPrev) * 100).toFixed(2)) : 0);
+      target.cmp = nextCmp;
+      target.dayOpen = nextOpen;
+      target.dayHigh = nextHigh;
+      target.dayLow = nextLow;
+      target.prevClose = nextPrev;
+      target.dayChange = nextChange;
+      target.dayChangePct = nextPct;
+      target.isGain = typeof q.isGain === "boolean" ? q.isGain : nextChange >= 0;
+      target.high52 = Math.max(target.high52 || 0, nextHigh || 0);
+      target.low52 = target.low52 > 0 ? Math.min(target.low52, nextLow || target.low52) : (nextLow || 0);
+      target.lastUpdated = "Market Hours • 15-min delayed";
+      target._isDelayedLive = true;
+      return target;
+    }
+
+    function triggerDelayedRefresh(exch) {
+      const targetExch = exch === "BSE" ? "BSE" : "NSE";
+      if (!isIndianMarketHours()) return;
+      const reqBseCode = targetExch === "BSE"
+        ? ((bseQuoteSnapshot && bseQuoteSnapshot.bseCode) || stock.bseCode || "")
+        : "";
+      refreshDelayedPriceIfMarketHours(stock, targetExch, {
+        bseCode: reqBseCode,
+        onQuote: (q) => {
+          delayedQuotes[targetExch] = q;
+          if (targetExch === "NSE") {
+            applyDelayedDataToSnapshot(nseQuoteSnapshot, q);
+          } else {
+            if (!bseQuoteSnapshot) {
+              bseQuoteSnapshot = {
+                exchangeLabel: "BSE",
+                bseCode: stock.bseCode || "",
+                high52,
+                low52,
+                volume: stock.volume,
+                deliveryVolume: stock.deliveryVolume,
+                deliveryPct: stock.deliveryPct
+              };
+            }
+            applyDelayedDataToSnapshot(bseQuoteSnapshot, q);
+          }
+          if (activeExchangeView === targetExch) {
+            applyExchangeQuote(targetExch, { skipRefresh: true });
+          }
+        }
+      });
+    }
 
     // Helper to apply Verified profile data to DOM elements live
     function applyVerifiedProfileToView(profile) {
@@ -2218,7 +2276,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    function applyExchangeQuote(exch) {
+    function applyExchangeQuote(exch, opts) {
       activeExchangeView = exch;
       const q = exch === "BSE" && bseQuoteSnapshot ? bseQuoteSnapshot : nseQuoteSnapshot;
       const badgeEl = document.getElementById("company-exchange-badge");
@@ -2237,6 +2295,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const statusEl = document.getElementById("exchange-switcher-status");
       const btnNse = document.getElementById("btn-exchange-nse");
       const btnBse = document.getElementById("btn-exchange-bse");
+      const discEl = document.getElementById("price-delayed-disclaimer");
 
       if (badgeEl) {
         badgeEl.textContent = exch === "BSE"
@@ -2267,6 +2326,14 @@ document.addEventListener("DOMContentLoaded", function () {
         fundContainer.innerHTML = buildFundamentalsGridHtml(stock, Object.assign({ exchangeLabel: exch, high52, low52 }, q));
       }
       if (statusEl) statusEl.textContent = exch === "BSE" ? "Exchange: BSE" : "Exchange: NSE";
+      if (discEl) {
+        if (q && q._isDelayedLive && isIndianMarketHours()) {
+          discEl.hidden = false;
+          if (typeof discEl.removeAttribute === "function") discEl.removeAttribute("hidden");
+        } else {
+          discEl.hidden = true;
+        }
+      }
 
       if (btnNse) {
         const active = exch === "NSE";
@@ -2281,6 +2348,10 @@ document.addEventListener("DOMContentLoaded", function () {
         btnBse.style.background = active ? "#2563eb" : "#ffffff";
         btnBse.style.color = active ? "#ffffff" : "#334155";
         btnBse.style.borderColor = active ? "#2563eb" : "#cbd5e1";
+      }
+
+      if (!(opts && opts.skipRefresh) && isIndianMarketHours() && !(q && q._isDelayedLive)) {
+        triggerDelayedRefresh(exch);
       }
     }
 
@@ -2301,11 +2372,15 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
       const btnBse = document.getElementById("btn-exchange-bse");
       if (bse && bse.cmp) {
-        bseQuoteSnapshot = {
+        const nextBseSnapshot = {
           ...bse,
           high52: Math.max(high52 || 0, bse.dayHigh || 0),
           low52: low52 > 0 ? Math.min(low52, bse.dayLow || low52) : (bse.dayLow || 0)
         };
+        if (delayedQuotes.BSE) {
+          applyDelayedDataToSnapshot(nextBseSnapshot, delayedQuotes.BSE);
+        }
+        bseQuoteSnapshot = nextBseSnapshot;
         if (btnBse) {
           btnBse.disabled = false;
           btnBse.removeAttribute("title");
@@ -2319,8 +2394,8 @@ document.addEventListener("DOMContentLoaded", function () {
           tvBseBtn.setAttribute("href", `https://www.tradingview.com/chart/?symbol=${encodeURIComponent("BSE:" + bseSym)}`);
           tvBseBtn.style.display = "inline-block";
         }
-        if (stock.exchanges === "BSE") {
-          applyExchangeQuote("BSE");
+        if (activeExchangeView === "BSE") {
+          applyExchangeQuote("BSE", { skipRefresh: Boolean(bseQuoteSnapshot._isDelayedLive) });
         }
       } else if (btnBse && stock.exchanges !== "BSE") {
         btnBse.disabled = true;
@@ -2382,7 +2457,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     warmUpLocalVoice();
-    refreshDelayedPriceIfMarketHours(stock, stock.exchanges === "BSE" ? "BSE" : "NSE");
+    triggerDelayedRefresh(activeExchangeView);
 
     if (shouldScroll) {
       const headingEl = document.getElementById("company-view-title") || stockResult;
@@ -2627,7 +2702,8 @@ document.addEventListener("DOMContentLoaded", function () {
         weekday: "short",
         hour: "2-digit",
         minute: "2-digit",
-        hour12: false
+        hour12: false,
+        hourCycle: "h23"
       }).formatToParts(dt);
       const getVal = (type) => {
         const p = parts.find((x) => x.type === type);
@@ -2661,26 +2737,36 @@ document.addEventListener("DOMContentLoaded", function () {
     return "https://stocks360-quotes.stocks360-app.workers.dev/quote";
   }
 
-  async function refreshDelayedPriceIfMarketHours(stock, exch) {
+  async function refreshDelayedPriceIfMarketHours(stock, exch, opts) {
+    const hasCallback = Boolean(opts && typeof opts.onQuote === "function");
     const discEl = document.getElementById("price-delayed-disclaimer");
     if (!stock || !isIndianMarketHours()) {
-      if (discEl) discEl.hidden = true;
+      if (discEl && !hasCallback) discEl.hidden = true;
       return;
     }
 
     const proxyBase = getQuoteProxyUrl();
     if (!proxyBase || typeof fetch !== "function") {
-      if (discEl) discEl.hidden = true;
+      if (discEl && !hasCallback) discEl.hidden = true;
       return;
     }
 
     try {
+      const targetExch = exch || "NSE";
+      const reqBseCode = (opts && opts.bseCode !== undefined)
+        ? opts.bseCode
+        : (targetExch === "BSE" ? (stock.bseCode || "") : "");
       const sep = proxyBase.includes("?") ? "&" : "?";
-      const reqUrl = `${proxyBase}${sep}symbol=${encodeURIComponent(stock.symbol)}&exchange=${encodeURIComponent(exch || "NSE")}${stock.bseCode ? `&bseCode=${encodeURIComponent(stock.bseCode)}` : ""}`;
+      const reqUrl = `${proxyBase}${sep}symbol=${encodeURIComponent(stock.symbol)}&exchange=${encodeURIComponent(targetExch)}${reqBseCode ? `&bseCode=${encodeURIComponent(reqBseCode)}` : ""}`;
       const res = await fetch(reqUrl);
       if (!res || !res.ok) return;
       const q = await res.json();
       if (!q || typeof q.cmp !== "number" || !activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;
+
+      if (hasCallback) {
+        opts.onQuote(q);
+        return;
+      }
 
       const fmtP = (v) => Number(v || 0).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const cmpEl = document.getElementById("company-hero-cmp");
