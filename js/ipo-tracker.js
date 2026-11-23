@@ -53,6 +53,31 @@
     return clean;
   }
 
+  function parseIpoDate(dateStr) {
+    const m = String(dateStr || "").trim().match(/^(\d{1,2})[-/\s]([A-Za-z]{3})[-/\s](\d{2,4})$/);
+    if (!m) return null;
+    const months = {
+      JAN: 0, FEB: 1, MAR: 2, APR: 3, MAY: 4, JUN: 5,
+      JUL: 6, AUG: 7, SEP: 8, OCT: 9, NOV: 10, DEC: 11
+    };
+    const yr = m[3].length === 2 ? 2000 + Number(m[3]) : Number(m[3]);
+    const mo = months[m[2].toUpperCase()];
+    if (mo === undefined) return null;
+    const dt = new Date(Date.UTC(yr, mo, Number(m[1])));
+    return Number.isFinite(dt.getTime()) ? dt : null;
+  }
+
+  function getSixMonthListedIpos(pastRows, refIso) {
+    let ref = refIso ? new Date(refIso) : new Date();
+    if (!Number.isFinite(ref.getTime())) ref = new Date();
+    const cutoff = new Date(Date.UTC(ref.getUTCFullYear(), ref.getUTCMonth() - 6, ref.getUTCDate()));
+    return (pastRows || []).filter((r) => {
+      if (!r) return false;
+      const dt = parseIpoDate(r.listingDate);
+      return Boolean(dt && dt.getTime() >= cutoff.getTime());
+    });
+  }
+
   function formatUpdatedHint(iso) {
     if (!iso) return "Official NSE IPO Disclosures";
     try {
@@ -385,40 +410,50 @@
       .join("");
   }
 
-  function updatePastTableBodyOnly(allPastRows) {
-    const filtered = filterPastRows(allPastRows);
-    const limit = pastShowAll ? filtered.length : 100;
-    const visible = filtered.slice(0, limit);
+  function buildMoreWrapHtml(allPastRows, recentSixMonthRows) {
+    if (!allPastRows || !recentSixMonthRows || allPastRows.length <= recentSixMonthRows.length) {
+      return "";
+    }
+    if (pastShowAll) {
+      return `<a href="#recent-listed-ipos" id="btn-ipo-past-show-all" style="display:inline-block; padding:8px 16px; border-radius:7px; border:1px solid #0f172a; background:#ffffff; color:#0f172a; font-weight:700; font-size:0.86rem; text-decoration:none;">Show Last 6 Months Only (${recentSixMonthRows.length})</a>`;
+    }
+    return `<a href="#all-listed-ipos" id="btn-ipo-past-show-all" style="display:inline-block; padding:8px 16px; border-radius:7px; border:1px solid #0f172a; background:#ffffff; color:#0f172a; font-weight:700; font-size:0.86rem; text-decoration:none;">View All Listed IPOs (${allPastRows.length})</a>`;
+  }
+
+  function buildPastCountText(filteredLen, baseLen, isAllMode) {
+    return isAllMode
+      ? `Showing ${filteredLen} of ${baseLen} all-time listed IPOs`
+      : `Showing ${filteredLen} of ${baseLen} IPOs listed in the last 6 months`;
+  }
+
+  function updatePastTableBodyOnly(allPastRows, recentSixMonthRows) {
+    const baseRows = pastShowAll ? allPastRows : recentSixMonthRows;
+    const filtered = filterPastRows(baseRows);
 
     const tbody = typeof document !== "undefined" ? document.getElementById("ipo-past-tbody") : null;
-    if (tbody) tbody.innerHTML = buildPastRowsHtml(visible);
+    if (tbody) tbody.innerHTML = buildPastRowsHtml(filtered);
 
     const countEl = typeof document !== "undefined" ? document.getElementById("ipo-past-count") : null;
     if (countEl) {
-      countEl.textContent = `Showing ${visible.length} of ${filtered.length} matching recently listed IPOs (${allPastRows.length} total)`;
+      countEl.textContent = buildPastCountText(filtered.length, baseRows.length, pastShowAll);
     }
 
     const moreWrap = typeof document !== "undefined" ? document.getElementById("ipo-past-more-wrap") : null;
     if (moreWrap) {
-      if (filtered.length > visible.length) {
-        moreWrap.innerHTML = `<button type="button" id="btn-ipo-past-show-all" style="padding:8px 16px; border-radius:7px; border:1px solid #0f172a; background:#ffffff; color:#0f172a; font-weight:700; font-size:0.86rem; cursor:pointer;">Show All ${filtered.length} Matching IPOs</button>`;
-        const moreBtn = typeof document !== "undefined" ? document.getElementById("btn-ipo-past-show-all") : null;
-        if (moreBtn) {
-          moreBtn.addEventListener("click", function () {
-            pastShowAll = true;
-            updatePastTableBodyOnly(allPastRows);
-            announceA11y(`Showing all ${filtered.length} recently listed IPOs.`);
-          });
-        }
-      } else {
-        moreWrap.innerHTML = "";
+      moreWrap.innerHTML = buildMoreWrapHtml(allPastRows, recentSixMonthRows);
+      const moreLink = typeof document !== "undefined" ? document.getElementById("btn-ipo-past-show-all") : null;
+      if (moreLink) {
+        moreLink.addEventListener("click", function (e) {
+          if (e && typeof e.preventDefault === "function") e.preventDefault();
+          toggleShowAllPast();
+        });
       }
     }
   }
 
-  function renderPastTable(rows) {
-    const filtered = filterPastRows(rows);
-    const visible = pastShowAll ? filtered : filtered.slice(0, 100);
+  function renderPastTable(allPastRows, recentSixMonthRows) {
+    const baseRows = pastShowAll ? allPastRows : recentSixMonthRows;
+    const filtered = filterPastRows(baseRows);
     const boards = [
       { id: "ALL", label: "All Boards" },
       { id: "MAINBOARD", label: "Mainboard" },
@@ -442,7 +477,7 @@
       </div>
       <div style="padding:8px 16px; background:#f8fafc; border-bottom:1px solid #e2e8f0;">
         <p id="ipo-past-count" style="margin:0; font-size:0.8rem; color:#475569; font-weight:600;">
-          Showing ${visible.length} of ${filtered.length} matching recently listed IPOs (${rows.length} total)
+          ${esc(buildPastCountText(filtered.length, baseRows.length, pastShowAll))}
         </p>
       </div>
       <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Recently Listed IPOs Table" style="overflow-x:auto;">
@@ -459,13 +494,21 @@
               <th scope="col" style="padding:10px 12px; text-align:right;">P/E</th>
             </tr>
           </thead>
-          <tbody id="ipo-past-tbody">${buildPastRowsHtml(visible)}</tbody>
+          <tbody id="ipo-past-tbody">${buildPastRowsHtml(filtered)}</tbody>
         </table>
       </div>
       <div id="ipo-past-more-wrap" style="padding:14px 16px; text-align:center; background:#f8fafc; border-top:1px solid #e2e8f0;">
-        ${filtered.length > visible.length ? `<button type="button" id="btn-ipo-past-show-all" style="padding:8px 16px; border-radius:7px; border:1px solid #0f172a; background:#ffffff; color:#0f172a; font-weight:700; font-size:0.86rem; cursor:pointer;">Show All ${filtered.length} Matching IPOs</button>` : ""}
+        ${buildMoreWrapHtml(allPastRows, recentSixMonthRows)}
       </div>
     `;
+  }
+
+  function toggleShowAllPast(forceVal) {
+    pastShowAll = typeof forceVal === "boolean" ? forceVal : !pastShowAll;
+    renderIpoView("past");
+    const data = getData();
+    const allCount = data && Array.isArray(data.pastIpos) ? data.pastIpos.length : 0;
+    announceA11y(pastShowAll ? `Showing all ${allCount} listed IPOs.` : "Showing IPOs listed in the last 6 months.");
   }
 
   function openResearchDetail(sym, triggerId) {
@@ -527,11 +570,12 @@
     const openRows = Array.isArray(data.openIpos) ? data.openIpos : [];
     const upcomingRows = Array.isArray(data.upcomingIpos) ? data.upcomingIpos : [];
     const pastRows = Array.isArray(data.pastIpos) ? data.pastIpos : [];
+    const recentSixMonthRows = getSixMonthListedIpos(pastRows, data.updatedAt);
 
     const tabs = [
-      { id: "open", label: `Open IPOs (${openRows.length})` },
-      { id: "upcoming", label: `Upcoming IPOs (${upcomingRows.length})` },
-      { id: "past", label: `Recently Listed IPOs (${pastRows.length})` }
+      { id: "open", label: `Open IPOs ${openRows.length}` },
+      { id: "upcoming", label: `Upcoming IPOs ${upcomingRows.length}` },
+      { id: "past", label: `Recently Listed IPOs ${recentSixMonthRows.length}` }
     ];
 
     let panelHtml = "";
@@ -541,35 +585,33 @@
       panelHtml = renderCurrentOrUpcomingTable(upcomingRows, "No upcoming IPOs scheduled on NSE right now.", panelTitle, false);
     } else if (activeTab === "past") {
       panelTitle = "Recently Listed IPOs Performance";
-      panelHtml = renderPastTable(pastRows);
+      panelHtml = renderPastTable(pastRows, recentSixMonthRows);
     } else {
       panelTitle = "Open / Live NSE IPOs";
       panelHtml = renderCurrentOrUpcomingTable(openRows, "No IPO issues are currently open on NSE.", panelTitle, true);
     }
 
     root.innerHTML = `
-      <div role="tablist" aria-label="IPO Categories" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
+      <nav aria-label="IPO Categories" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">
         ${tabs
           .map((t) => {
             const isSel = activeTab === t.id;
             return `
-              <button
-                type="button"
-                role="tab"
+              <a
+                href="#ipo-${t.id}"
                 id="ipo-tab-${t.id}"
-                aria-selected="${isSel ? "true" : "false"}"
-                aria-controls="ipo-panel-box"
+                ${isSel ? 'aria-current="true"' : ""}
                 data-tab="${t.id}"
-                style="padding:9px 16px; border-radius:8px; border:1px solid ${isSel ? "#0f172a" : "#cbd5e1"}; background:${isSel ? "#0f172a" : "#ffffff"}; color:${isSel ? "#ffffff" : "#334155"}; font-weight:700; font-size:0.9rem; cursor:pointer;"
+                style="display:inline-block; padding:9px 16px; border-radius:8px; border:1px solid ${isSel ? "#0f172a" : "#cbd5e1"}; background:${isSel ? "#0f172a" : "#ffffff"}; color:${isSel ? "#ffffff" : "#334155"}; font-weight:700; font-size:0.9rem; text-decoration:none; cursor:pointer;"
               >
                 ${esc(t.label)}
-              </button>
+              </a>
             `;
           })
           .join("")}
-      </div>
+      </nav>
 
-      <div id="ipo-panel-box" role="tabpanel" aria-labelledby="ipo-tab-${activeTab}" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+      <div id="ipo-panel-box" role="region" aria-labelledby="ipo-section-heading" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
         <div style="padding:14px 16px; border-bottom:1px solid #e2e8f0; background:#f8fafc;">
           <h2 id="ipo-section-heading" tabindex="-1" style="margin:0; font-size:1.12rem; color:#0f172a; font-weight:800;">${esc(panelTitle)}</h2>
         </div>
@@ -578,11 +620,13 @@
     `;
 
     if (typeof root.querySelectorAll === "function") {
-      root.querySelectorAll('[role="tab"]').forEach((btn) => {
-        btn.addEventListener("click", function () {
+      root.querySelectorAll("[data-tab]").forEach((linkEl) => {
+        linkEl.addEventListener("click", function (e) {
+          if (e && typeof e.preventDefault === "function") e.preventDefault();
           const next = this.getAttribute("data-tab");
           renderIpoView(next);
-          announceA11y(`Showing ${next} IPOs.`);
+          const spoken = next === "past" ? "recently listed IPOs" : `${next} IPOs`;
+          announceA11y(`Showing ${spoken}.`);
         });
       });
 
@@ -597,7 +641,6 @@
         btn.addEventListener("click", function () {
           const b = this.getAttribute("data-board") || "ALL";
           pastBoardFilter = b;
-          pastShowAll = false;
           root.querySelectorAll(".ipo-past-board-btn").forEach((other) => {
             const on = (other.getAttribute("data-board") || "ALL") === b;
             other.setAttribute("aria-pressed", on ? "true" : "false");
@@ -605,7 +648,7 @@
             other.style.color = on ? "#ffffff" : "#334155";
             other.style.borderColor = on ? "#0f172a" : "#cbd5e1";
           });
-          updatePastTableBodyOnly(pastRows);
+          updatePastTableBodyOnly(pastRows, recentSixMonthRows);
           announceA11y(`Filtered recently listed IPOs by ${b}.`);
         });
       });
@@ -620,17 +663,15 @@
     if (pastSearch) {
       pastSearch.addEventListener("input", function () {
         pastSearchQuery = this.value || "";
-        pastShowAll = false;
-        updatePastTableBodyOnly(pastRows);
+        updatePastTableBodyOnly(pastRows, recentSixMonthRows);
       });
     }
 
-    const showAllBtn = typeof document !== "undefined" ? document.getElementById("btn-ipo-past-show-all") : null;
-    if (showAllBtn) {
-      showAllBtn.addEventListener("click", function () {
-        pastShowAll = true;
-        updatePastTableBodyOnly(pastRows);
-        announceA11y(`Showing all matching recently listed IPOs.`);
+    const showAllLink = typeof document !== "undefined" ? document.getElementById("btn-ipo-past-show-all") : null;
+    if (showAllLink) {
+      showAllLink.addEventListener("click", function (e) {
+        if (e && typeof e.preventDefault === "function") e.preventDefault();
+        toggleShowAllPast();
       });
     }
 
@@ -650,7 +691,7 @@
   }
 
   if (typeof window !== "undefined") {
-    window.StocksIpoTracker = { renderIpoView, openResearchDetail, closeResearchDetail };
+    window.StocksIpoTracker = { renderIpoView, openResearchDetail, closeResearchDetail, toggleShowAllPast };
   }
 
   if (typeof document !== "undefined") {
