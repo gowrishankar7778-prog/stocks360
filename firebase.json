@@ -13,7 +13,8 @@
       "scripts/**",
       "**/*.log",
       "test-*.js",
-      "package*.json"
+      "package*.json",
+      "wrangler.toml"
     ],
     "headers": [
       {
