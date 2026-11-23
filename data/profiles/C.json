@@ -57845,5 +57845,79 @@
         "eps": "₹0.44"
       }
     ]
+  },
+  "CLCIND": {
+    "updatedAt": "2026-11-23T12:17:00.870Z",
+    "shareholding": {
+      "promoters": "90.00%",
+      "fii": "0.00%",
+      "dii": "0.00%",
+      "public": "10.00%",
+      "total": "100.00%",
+      "quarters": [
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          90
+        ],
+        "fii": [
+          0
+        ],
+        "dii": [
+          0
+        ],
+        "diiMutualFunds": [
+          0
+        ],
+        "diiInsurance": [
+          0
+        ],
+        "diiPensionFunds": [
+          0
+        ],
+        "government": [
+          0
+        ],
+        "public": [
+          10
+        ],
+        "employeeTrusts": [
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Manjeet Cotton Private Limited",
+            "subCategory": "Promoter",
+            "pct": 90,
+            "history": [
+              90
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [],
+        "public": [
+          {
+            "name": "ASHISH CHOUDHARY",
+            "subCategory": "Individual Investor",
+            "pct": 1.18,
+            "history": [
+              1.18
+            ]
+          }
+        ]
+      }
+    },
+    "lastShpRecordId": "213411",
+    "sector": "Diversified Equities",
+    "ratios": {
+      "promoterPct": 90
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-23T12:17:01.313Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

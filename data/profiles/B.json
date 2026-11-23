@@ -66753,5 +66753,126 @@
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-20T12:29:17.482Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
+  },
+  "BGLOBAL": {
+    "updatedAt": "2026-11-23T12:17:00.868Z",
+    "shareholding": {
+      "promoters": "48.46%",
+      "fii": "0.00%",
+      "dii": "0.00%",
+      "public": "51.54%",
+      "total": "100.00%",
+      "quarters": [
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          48.46
+        ],
+        "fii": [
+          0
+        ],
+        "dii": [
+          0
+        ],
+        "diiMutualFunds": [
+          0
+        ],
+        "diiInsurance": [
+          0
+        ],
+        "diiPensionFunds": [
+          0
+        ],
+        "government": [
+          0
+        ],
+        "public": [
+          51.54
+        ],
+        "employeeTrusts": [
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "Rakesh Bhatia",
+            "subCategory": "Promoter",
+            "pct": 18.55,
+            "history": [
+              18.55
+            ]
+          },
+          {
+            "name": "Arti Bhatia",
+            "subCategory": "Promoter",
+            "pct": 13.6,
+            "history": [
+              13.6
+            ]
+          },
+          {
+            "name": "Grindlay Finman Pvt. Ltd.",
+            "subCategory": "Promoter Group",
+            "pct": 4.38,
+            "history": [
+              4.38
+            ]
+          },
+          {
+            "name": "Number One Finvest Pvt. Ltd.",
+            "subCategory": "Promoter Group",
+            "pct": 4.15,
+            "history": [
+              4.15
+            ]
+          },
+          {
+            "name": "Rakesh Bhatia (HUF)",
+            "subCategory": "Promoter",
+            "pct": 3.41,
+            "history": [
+              3.41
+            ]
+          },
+          {
+            "name": "BGIL Films & Technologies Limited",
+            "subCategory": "Promoter Group",
+            "pct": 3.25,
+            "history": [
+              3.25
+            ]
+          },
+          {
+            "name": "Number One Finsec Pvt. Ltd.",
+            "subCategory": "Promoter Group",
+            "pct": 0.63,
+            "history": [
+              0.63
+            ]
+          },
+          {
+            "name": "Gaurav Bhatia",
+            "subCategory": "Promoter",
+            "pct": 0.49,
+            "history": [
+              0.49
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [],
+        "public": []
+      }
+    },
+    "lastShpRecordId": "215189",
+    "sector": "Media & Telecommunications",
+    "ratios": {
+      "promoterPct": 48.46
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-23T12:17:01.245Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }

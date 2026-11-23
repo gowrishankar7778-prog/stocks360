@@ -63449,6 +63449,15 @@
         "opm": "1000.0%",
         "netProfit": "4",
         "eps": "₹0.21"
+      },
+      {
+        "period": "Sep 26",
+        "sales": "1",
+        "expenses": "3",
+        "operatingProfit": "-2",
+        "opm": "-200.0%",
+        "netProfit": "-2",
+        "eps": "₹-0.13"
       }
     ],
     "balanceSheet": [
@@ -63666,16 +63675,17 @@
     },
     "updatedAt": 1794038126139,
     "hasFinancialUpdate": true,
-    "lastFinancialStatementUpdate": "2026-11-19T12:13:32.966Z",
+    "lastFinancialStatementUpdate": "2026-11-23T12:10:27.086Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings",
     "ratios": {
-      "marketCapCr": 133,
-      "ttmEps": -5.04,
-      "ttmSalesCr": 4,
-      "ttmPatCr": -89,
-      "bookValue": 4.3,
-      "roePct": -108.5,
-      "rocePct": -91.8,
+      "marketCapCr": 104,
+      "pe": 169.3,
+      "ttmEps": 0.04,
+      "ttmSalesCr": 3,
+      "ttmPatCr": -1,
+      "bookValue": 5.3,
+      "roePct": -1.2,
+      "rocePct": -2,
       "debtToEquity": 0.2,
       "promoterPct": 74.8
     },
@@ -63700,12 +63710,12 @@
       },
       {
         "year": "TTM",
-        "sales": "4",
-        "expenses": "94",
-        "operatingProfit": "-90",
-        "opm": "-2093.0%",
-        "netProfit": "-89",
-        "eps": "₹-5.04"
+        "sales": "3",
+        "expenses": "5",
+        "operatingProfit": "-2",
+        "opm": "-60.6%",
+        "netProfit": "-1",
+        "eps": "₹0.04"
       }
     ],
     "debtToEquity": 0.2,

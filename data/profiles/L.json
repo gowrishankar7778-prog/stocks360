@@ -29616,5 +29616,79 @@
     "hasFinancialUpdate": true,
     "lastFinancialStatementUpdate": "2026-11-20T12:26:50.553Z",
     "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
+  },
+  "LASA": {
+    "updatedAt": "2026-11-23T12:17:00.873Z",
+    "shareholding": {
+      "promoters": "53.65%",
+      "fii": "0.00%",
+      "dii": "0.00%",
+      "public": "46.35%",
+      "total": "100.00%",
+      "quarters": [
+        "Sep 2026"
+      ],
+      "series": {
+        "promoters": [
+          53.65
+        ],
+        "fii": [
+          0
+        ],
+        "dii": [
+          0
+        ],
+        "diiMutualFunds": [
+          0
+        ],
+        "diiInsurance": [
+          0
+        ],
+        "diiPensionFunds": [
+          0
+        ],
+        "government": [
+          0
+        ],
+        "public": [
+          46.35
+        ],
+        "employeeTrusts": [
+          0
+        ]
+      },
+      "holders": {
+        "promoters": [
+          {
+            "name": "OMKAR PRAVIN HERLEKAR",
+            "subCategory": "Promoter",
+            "pct": 53.65,
+            "history": [
+              53.65
+            ]
+          }
+        ],
+        "fii": [],
+        "dii": [],
+        "public": [
+          {
+            "name": "MAHENDRA GIRDHARILAL WADHWANI",
+            "subCategory": "Individual Investor",
+            "pct": 1,
+            "history": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "lastShpRecordId": "216134",
+    "sector": "Diversified Equities",
+    "ratios": {
+      "promoterPct": 53.65
+    },
+    "hasFinancialUpdate": true,
+    "lastFinancialStatementUpdate": "2026-11-23T12:17:01.297Z",
+    "financialChangeSummary": "Synced official NSE quarterly results & XBRL balance sheet filings"
   }
 }
