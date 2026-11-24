@@ -796,58 +796,27 @@ document.addEventListener("DOMContentLoaded", function () {
     return null;
   }
 
-  function buildMutualFundHoldingsPanelHtml(stock, isLoading) {
-    const sh = stock && stock.shareholding && typeof stock.shareholding === "object" ? stock.shareholding : null;
-    const headerHtml = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
-        <div>
-          <h3 id="mf-holdings-panel-heading" style="margin:0; font-size:1.12rem; color:#0f172a; font-weight:800;">
-            Mutual Fund Holdings in ${escapeHtml(stock ? stock.name : "")}
-          </h3>
-          <p style="margin:4px 0 0 0; font-size:0.8rem; color:#475569;">
-            Official quarterly exchange shareholding disclosures (mandatory reporting for ≥ 1% stake). Press Esc or Close to collapse.
-          </p>
-        </div>
-        <button type="button" id="btn-close-mf-holdings" style="padding:7px 13px; border-radius:7px; border:1px solid #0f172a; background:#0f172a; color:#ffffff; font-weight:700; font-size:0.84rem; cursor:pointer;">
-          Close
-        </button>
-      </div>
-    `;
-
-    if (!sh) {
-      return `
-        ${headerHtml}
-        <div style="padding:14px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; color:#475569; font-size:0.9rem;">
-          ${isLoading ? "Loading official quarterly Mutual Fund shareholding disclosures..." : "Official quarterly Mutual Fund shareholding data is pending exchange filing for this company."}
-        </div>
-      `;
-    }
-
-    const qs = Array.isArray(sh.quarters) ? sh.quarters : [];
-    const mfSeries = sh.series && Array.isArray(sh.series.diiMutualFunds) ? sh.series.diiMutualFunds : [];
-
-    let latestIdx = -1;
-    for (let i = mfSeries.length - 1; i >= 0; i--) {
-      if (typeof mfSeries[i] === "number" && Number.isFinite(mfSeries[i])) {
-        latestIdx = i;
+  function getLatestSeriesValue(series, qs) {
+    const arr = Array.isArray(series) ? series : [];
+    let idx = -1;
+    for (let i = arr.length - 1; i >= 0; i--) {
+      if (typeof arr[i] === "number" && Number.isFinite(arr[i])) {
+        idx = i;
         break;
       }
     }
-    const latestMfPct = latestIdx >= 0 ? mfSeries[latestIdx] : null;
-    const prevMfPct = latestIdx > 0 && typeof mfSeries[latestIdx - 1] === "number" ? mfSeries[latestIdx - 1] : null;
-    const yoyMfPct = latestIdx >= 4 && typeof mfSeries[latestIdx - 4] === "number" ? mfSeries[latestIdx - 4] : null;
-    const latestQLabel = latestIdx >= 0 && qs[latestIdx] ? qs[latestIdx] : (qs[qs.length - 1] || "Latest Quarter");
-    const prevQLabel = latestIdx > 0 && qs[latestIdx - 1] ? qs[latestIdx - 1] : "";
+    const val = idx >= 0 ? arr[idx] : null;
+    const prev = idx > 0 && typeof arr[idx - 1] === "number" ? arr[idx - 1] : null;
+    const qoq = val !== null && prev !== null ? Number((val - prev).toFixed(2)) : null;
+    const label = idx >= 0 && Array.isArray(qs) && qs[idx] ? qs[idx] : "Latest Quarter";
+    return { val, prev, qoq, idx, label };
+  }
 
-    const qoqDelta = latestMfPct !== null && prevMfPct !== null ? Number((latestMfPct - prevMfPct).toFixed(2)) : null;
-    const yoyDelta = latestMfPct !== null && yoyMfPct !== null ? Number((latestMfPct - yoyMfPct).toFixed(2)) : null;
-    const fmtDelta = (d) => (d === null ? "--" : `${d > 0 ? "+" : ""}${d.toFixed(2)}%`);
-
-    const rawDiiHolders = sh.holders && Array.isArray(sh.holders.dii) ? sh.holders.dii : [];
-    const lastQuarterIdx = qs.length > 0 ? qs.length - 1 : -1;
-    const mfHolders = rawDiiHolders
-      .filter((h) => h && h.subCategory === "Mutual Funds")
+  function normalizeInstitutionalHolders(rawList, qs, latestQLabel, includeAmcLinks) {
+    const lastQuarterIdx = Array.isArray(qs) && qs.length > 0 ? qs.length - 1 : -1;
+    return (Array.isArray(rawList) ? rawList : [])
       .map((h) => {
+        if (!h) return null;
         const hist = Array.isArray(h.history) ? h.history : [];
         let lastHIdx = -1;
         for (let i = hist.length - 1; i >= 0; i--) {
@@ -863,116 +832,212 @@ document.addEventListener("DOMContentLoaded", function () {
         const prevStake = lastHIdx > 0 && typeof hist[lastHIdx - 1] === "number" ? hist[lastHIdx - 1] : null;
         const qoq = stakePct !== null && prevStake !== null ? Number((stakePct - prevStake).toFixed(2)) : null;
         const asOfQuarter = lastHIdx >= 0 && qs[lastHIdx] ? qs[lastHIdx] : latestQLabel;
-        const amcMatch = matchAmcForMutualFundsLink(h.name);
+        const isMutualFund = h.subCategory === "Mutual Funds" || /mutual\s*fund/i.test(String(h.name || ""));
+        const amcMatch = includeAmcLinks && isMutualFund ? matchAmcForMutualFundsLink(h.name) : null;
         return {
           name: String(h.name || "").trim(),
+          category: String(h.subCategory || (includeAmcLinks ? "Domestic Institution" : "FPI / FII")).trim(),
           stakePct,
           qoq,
           activeInLatest,
           asOfQuarter,
+          isMutualFund,
           amcMatch
         };
       })
-      .filter((h) => h.name && h.stakePct !== null)
+      .filter((h) => h && h.name && h.stakePct !== null && h.stakePct >= 1)
       .sort((a, b) => {
         if (a.activeInLatest !== b.activeInLatest) return a.activeInLatest ? -1 : 1;
         return (b.stakePct || 0) - (a.stakePct || 0);
       });
+  }
+
+  function buildInstitutionalTableHtml(title, regionLabel, holders, showActionCol, emptyNote, fmtDelta) {
+    if (!holders || holders.length === 0) {
+      return `
+        <h4 style="margin:0 0 8px 0; font-size:0.96rem; color:#0f172a; font-weight:800;">${escapeHtml(title)}</h4>
+        <p style="margin:0 0 16px 0; padding:12px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-size:0.86rem; color:#475569;">
+          ${escapeHtml(emptyNote)}
+        </p>
+      `;
+    }
+
+    return `
+      <h4 style="margin:0 0 8px 0; font-size:0.96rem; color:#0f172a; font-weight:800;">${escapeHtml(title)}</h4>
+      <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="${escapeHtml(regionLabel)}" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:16px;">
+        <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.86rem; min-width:580px;">
+          <thead>
+            <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+              <th scope="col" style="padding:9px 12px; text-align:left;">Institution Name</th>
+              <th scope="col" style="padding:9px 12px; text-align:left;">Category</th>
+              <th scope="col" style="padding:9px 12px; text-align:right;">Latest Stake (%)</th>
+              <th scope="col" style="padding:9px 12px; text-align:right;">QoQ Change</th>
+              ${showActionCol ? `<th scope="col" style="padding:9px 12px; text-align:right;">Mutual Fund Schemes</th>` : ""}
+            </tr>
+          </thead>
+          <tbody>
+            ${holders
+              .map((h, idx) => {
+                const bg = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
+                const qCol = h.qoq === null ? "#475569" : h.qoq >= 0 ? "#15803d" : "#b91c1c";
+                let actionCell = "";
+                if (showActionCol) {
+                  const linkHtml = h.amcMatch
+                    ? `<a href="mutual-funds.html?amc=${encodeURIComponent(h.amcMatch.amcParam)}" target="_blank" rel="noopener noreferrer" style="font-weight:700; color:#1d4ed8; text-decoration:underline;">View ${escapeHtml(h.amcMatch.label)}</a>`
+                    : (h.isMutualFund
+                      ? `<a href="mutual-funds.html" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#475569; text-decoration:underline;">MF Explorer</a>`
+                      : `<span style="color:#94a3b8;">&mdash;</span>`);
+                  actionCell = `<td style="padding:9px 12px; text-align:right; white-space:nowrap;">${linkHtml}</td>`;
+                }
+                return `
+                  <tr style="background:${bg}; border-bottom:1px solid #f1f5f9;">
+                    <td style="padding:9px 12px; color:#0f172a; font-weight:700;">
+                      ${escapeHtml(h.name)}
+                      ${!h.activeInLatest && h.asOfQuarter ? `<div style="font-size:0.74rem; color:#64748b; font-weight:500;">Last reported &ge; 1% in ${escapeHtml(h.asOfQuarter)}</div>` : ""}
+                    </td>
+                    <td style="padding:9px 12px; color:#475569; font-weight:600; white-space:nowrap;">${escapeHtml(h.category)}</td>
+                    <td style="padding:9px 12px; text-align:right; color:#0f172a; font-weight:800; white-space:nowrap;">${h.stakePct.toFixed(2)}%</td>
+                    <td style="padding:9px 12px; text-align:right; color:${qCol}; font-weight:700; white-space:nowrap;">${fmtDelta(h.qoq)}</td>
+                    ${actionCell}
+                  </tr>
+                `;
+              })
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  function buildInstitutionalHoldingsModalHtml(stock, isLoading) {
+    const sh = stock && stock.shareholding && typeof stock.shareholding === "object" ? stock.shareholding : null;
+    const headerHtml = `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #e2e8f0;">
+        <div>
+          <h3 id="institutional-holdings-modal-heading" tabindex="-1" style="margin:0; font-size:1.22rem; color:#0f172a; font-weight:800;">
+            Institutional Holdings in ${escapeHtml(stock ? stock.name : "")}
+          </h3>
+          <p style="margin:4px 0 0 0; font-size:0.82rem; color:#475569;">
+            Major non-promoter institutional investors holding 1% or more stake. Press Esc or Close to return.
+          </p>
+        </div>
+        <button type="button" id="btn-close-institutional-holdings" style="padding:7px 14px; border-radius:7px; border:1px solid #0f172a; background:#0f172a; color:#ffffff; font-weight:700; font-size:0.84rem; cursor:pointer;">
+          Close
+        </button>
+      </div>
+    `;
+
+    if (!sh) {
+      return `
+        <div class="stocks360-modal-dialog" role="document">
+          ${headerHtml}
+          <div style="padding:14px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; color:#475569; font-size:0.9rem;">
+            ${isLoading ? "Loading official quarterly Institutional shareholding disclosures..." : "Official quarterly Institutional shareholding data is pending exchange filing for this company."}
+          </div>
+        </div>
+      `;
+    }
+
+    const qs = Array.isArray(sh.quarters) ? sh.quarters : [];
+    const series = sh.series && typeof sh.series === "object" ? sh.series : {};
+    const fmtDelta = (d) => (d === null ? "--" : `${d > 0 ? "+" : ""}${d.toFixed(2)}%`);
+
+    const fiiStat = getLatestSeriesValue(series.fii, qs);
+    const diiStat = getLatestSeriesValue(series.dii, qs);
+    const mfStat = getLatestSeriesValue(series.diiMutualFunds, qs);
+    const latestQLabel = diiStat.val !== null ? diiStat.label : (fiiStat.val !== null ? fiiStat.label : (qs[qs.length - 1] || "Latest Quarter"));
+
+    const combinedInstPct = (fiiStat.val !== null || diiStat.val !== null)
+      ? Number(((fiiStat.val || 0) + (diiStat.val || 0)).toFixed(2))
+      : null;
+
+    const rawDii = sh.holders && Array.isArray(sh.holders.dii) ? sh.holders.dii : [];
+    const rawFii = sh.holders && Array.isArray(sh.holders.fii) ? sh.holders.fii : [];
+    const diiHolders = normalizeInstitutionalHolders(rawDii, qs, latestQLabel, true);
+    const fiiHolders = normalizeInstitutionalHolders(rawFii, qs, latestQLabel, false);
 
     const summaryCardsHtml = `
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin-bottom:14px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin-bottom:16px;">
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
-          <div style="font-size:0.75rem; color:#475569; font-weight:700; text-transform:uppercase;">Total Mutual Fund Stake</div>
-          <div style="font-size:1.2rem; font-weight:800; color:#0f172a; margin-top:3px;">${latestMfPct !== null ? `${latestMfPct.toFixed(2)}%` : "--"}</div>
+          <div style="font-size:0.74rem; color:#475569; font-weight:700; text-transform:uppercase;">Combined Institutional (FII + DII)</div>
+          <div style="font-size:1.22rem; font-weight:800; color:#0f172a; margin-top:3px;">${combinedInstPct !== null ? `${combinedInstPct.toFixed(2)}%` : "--"}</div>
           <div style="font-size:0.75rem; color:#64748b;">As of ${escapeHtml(latestQLabel)}</div>
         </div>
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
-          <div style="font-size:0.75rem; color:#475569; font-weight:700; text-transform:uppercase;">Quarter-on-Quarter Change</div>
-          <div style="font-size:1.2rem; font-weight:800; color:${qoqDelta === null ? "#334155" : qoqDelta >= 0 ? "#15803d" : "#b91c1c"}; margin-top:3px;">${fmtDelta(qoqDelta)}</div>
-          <div style="font-size:0.75rem; color:#64748b;">${prevQLabel ? `vs ${escapeHtml(prevQLabel)}` : "Prior quarter"}</div>
+          <div style="font-size:0.74rem; color:#475569; font-weight:700; text-transform:uppercase;">Domestic Institutions (DII)</div>
+          <div style="font-size:1.22rem; font-weight:800; color:#0f172a; margin-top:3px;">${diiStat.val !== null ? `${diiStat.val.toFixed(2)}%` : "--"}</div>
+          <div style="font-size:0.75rem; color:${diiStat.qoq === null ? "#64748b" : diiStat.qoq >= 0 ? "#15803d" : "#b91c1c"}; font-weight:600;">
+            ${diiHolders.length} named &ge;1% &bull; QoQ: ${fmtDelta(diiStat.qoq)}
+          </div>
         </div>
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px;">
-          <div style="font-size:0.75rem; color:#475569; font-weight:700; text-transform:uppercase;">Named Major Funds (≥ 1% Stake)</div>
-          <div style="font-size:1.2rem; font-weight:800; color:#0f172a; margin-top:3px;">${mfHolders.length}</div>
-          <div style="font-size:0.75rem; color:#64748b;">${yoyDelta !== null ? `1Y Trend: ${fmtDelta(yoyDelta)}` : "SEBI ≥1% threshold"}</div>
+          <div style="font-size:0.74rem; color:#475569; font-weight:700; text-transform:uppercase;">Foreign Institutions (FII / FPI)</div>
+          <div style="font-size:1.22rem; font-weight:800; color:#0f172a; margin-top:3px;">${fiiStat.val !== null ? `${fiiStat.val.toFixed(2)}%` : "--"}</div>
+          <div style="font-size:0.75rem; color:${fiiStat.qoq === null ? "#64748b" : fiiStat.qoq >= 0 ? "#15803d" : "#b91c1c"}; font-weight:600;">
+            ${fiiHolders.length} named &ge;1% &bull; QoQ: ${fmtDelta(fiiStat.qoq)}
+          </div>
         </div>
       </div>
     `;
 
-    let holdersHtml = "";
-    if (mfHolders.length > 0) {
-      holdersHtml = `
-        <h4 style="margin:0 0 8px 0; font-size:0.95rem; color:#0f172a; font-weight:800;">Disclosed Mutual Funds Holding ≥ 1% Stake</h4>
-        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Named Mutual Fund Shareholders" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
-          <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.86rem; min-width:600px;">
-            <thead>
-              <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
-                <th scope="col" style="padding:9px 12px; text-align:left;">Mutual Fund / AMC</th>
-                <th scope="col" style="padding:9px 12px; text-align:right;">Latest Disclosed Stake</th>
-                <th scope="col" style="padding:9px 12px; text-align:right;">QoQ Change</th>
-                <th scope="col" style="padding:9px 12px; text-align:right;">Explore AMC</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${mfHolders
-                .map((h, idx) => {
-                  const bg = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
-                  const qCol = h.qoq === null ? "#475569" : h.qoq >= 0 ? "#15803d" : "#b91c1c";
-                  const amcLinkHtml = h.amcMatch
-                    ? `<a href="mutual-funds.html?amc=${encodeURIComponent(h.amcMatch.amcParam)}" target="_blank" rel="noopener noreferrer" style="font-weight:700; color:#1d4ed8; text-decoration:none;">Explore ${escapeHtml(h.amcMatch.label)} &#8599;</a>`
-                    : `<a href="mutual-funds.html" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#475569; text-decoration:none;">Mutual Funds Explorer &#8599;</a>`;
-                  return `
-                    <tr style="background:${bg}; border-bottom:1px solid #f1f5f9;">
-                      <td style="padding:9px 12px; color:#0f172a; font-weight:700;">
-                        ${escapeHtml(h.name)}
-                        ${!h.activeInLatest && h.asOfQuarter ? `<div style="font-size:0.74rem; color:#64748b; font-weight:500;">Last reported ≥ 1% in ${escapeHtml(h.asOfQuarter)}</div>` : ""}
-                      </td>
-                      <td style="padding:9px 12px; text-align:right; color:#0f172a; font-weight:800; white-space:nowrap;">${h.stakePct.toFixed(2)}%</td>
-                      <td style="padding:9px 12px; text-align:right; color:${qCol}; font-weight:700; white-space:nowrap;">${fmtDelta(h.qoq)}</td>
-                      <td style="padding:9px 12px; text-align:right; white-space:nowrap;">${amcLinkHtml}</td>
-                    </tr>
-                  `;
-                })
-                .join("")}
-            </tbody>
-          </table>
-        </div>
-      `;
-    } else if (latestMfPct !== null && latestMfPct > 0) {
-      holdersHtml = `
-        <p style="margin:0 0 14px 0; padding:12px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-size:0.86rem; color:#334155;">
-          Total Mutual Fund ownership is <strong>${latestMfPct.toFixed(2)}%</strong>, distributed across schemes individually holding below the 1% quarterly disclosure threshold.
-        </p>
-      `;
-    } else {
-      holdersHtml = `
-        <p style="margin:0 0 14px 0; padding:12px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-size:0.86rem; color:#475569;">
-          No Mutual Fund holdings reported in the latest official quarterly shareholding filing.
-        </p>
-      `;
-    }
+    const diiTableHtml = buildInstitutionalTableHtml(
+      `Domestic Institutional Investors (DII ≥ 1% Stake)`,
+      "Domestic Institutional Investors holding 1 percent or more",
+      diiHolders,
+      true,
+      diiStat.val && diiStat.val > 0
+        ? `Total DII ownership is ${diiStat.val.toFixed(2)}%, distributed across funds/institutions individually holding below the 1% quarterly disclosure threshold.`
+        : "No Domestic Institutional Investor (DII) holdings ≥ 1% reported in the latest quarterly shareholding filing.",
+      fmtDelta
+    );
 
-    const trendPairs = [];
+    const fiiTableHtml = buildInstitutionalTableHtml(
+      `Foreign Institutional Investors (FII / FPI ≥ 1% Stake)`,
+      "Foreign Institutional Investors holding 1 percent or more",
+      fiiHolders,
+      false,
+      fiiStat.val && fiiStat.val > 0
+        ? `Total FII/FPI ownership is ${fiiStat.val.toFixed(2)}%, distributed across foreign funds individually holding below the 1% quarterly disclosure threshold.`
+        : "No Foreign Institutional Investor (FII / FPI) holdings ≥ 1% reported in the latest quarterly shareholding filing.",
+      fmtDelta
+    );
+
+    const fiiSeries = Array.isArray(series.fii) ? series.fii : [];
+    const diiSeries = Array.isArray(series.dii) ? series.dii : [];
+    const mfSeries = Array.isArray(series.diiMutualFunds) ? series.diiMutualFunds : [];
+    const trendCols = [];
     for (let i = 0; i < qs.length; i++) {
-      if (typeof mfSeries[i] === "number" && Number.isFinite(mfSeries[i])) {
-        trendPairs.push({ q: qs[i], v: mfSeries[i] });
+      const fVal = typeof fiiSeries[i] === "number" && Number.isFinite(fiiSeries[i]) ? fiiSeries[i] : null;
+      const dVal = typeof diiSeries[i] === "number" && Number.isFinite(diiSeries[i]) ? diiSeries[i] : null;
+      const mVal = typeof mfSeries[i] === "number" && Number.isFinite(mfSeries[i]) ? mfSeries[i] : null;
+      if (fVal !== null || dVal !== null || mVal !== null) {
+        trendCols.push({ q: qs[i], fVal, dVal, mVal });
       }
     }
-    const trendHtml = trendPairs.length > 0
+
+    const trendHtml = trendCols.length > 0
       ? `
-        <h4 style="margin:0 0 8px 0; font-size:0.95rem; color:#0f172a; font-weight:800;">Quarterly Mutual Fund Ownership Trend</h4>
-        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Quarterly Mutual Fund Ownership Trend" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:12px;">
+        <h4 style="margin:0 0 8px 0; font-size:0.96rem; color:#0f172a; font-weight:800;">Quarterly Institutional Ownership Trend</h4>
+        <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Quarterly Institutional Ownership Trend" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:12px;">
           <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.82rem; min-width:520px;">
             <thead>
               <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569;">
-                <th scope="col" style="padding:8px 10px; text-align:left;">Quarter</th>
-                ${trendPairs.map((p) => `<th scope="col" style="padding:8px 10px; text-align:right; white-space:nowrap;">${escapeHtml(p.q)}</th>`).join("")}
+                <th scope="col" style="padding:8px 10px; text-align:left;">Category</th>
+                ${trendCols.map((p) => `<th scope="col" style="padding:8px 10px; text-align:right; white-space:nowrap;">${escapeHtml(p.q)}</th>`).join("")}
               </tr>
             </thead>
             <tbody>
+              <tr style="background:#ffffff; border-bottom:1px solid #f1f5f9;">
+                <td style="padding:8px 10px; font-weight:700; color:#0f172a; white-space:nowrap;">FII / FPI Total</td>
+                ${trendCols.map((p) => `<td style="padding:8px 10px; text-align:right; font-weight:700; color:#0f172a; white-space:nowrap;">${p.fVal !== null ? `${p.fVal.toFixed(2)}%` : "--"}</td>`).join("")}
+              </tr>
+              <tr style="background:#f8fafc; border-bottom:1px solid #f1f5f9;">
+                <td style="padding:8px 10px; font-weight:700; color:#0f172a; white-space:nowrap;">DII Total</td>
+                ${trendCols.map((p) => `<td style="padding:8px 10px; text-align:right; font-weight:700; color:#0f172a; white-space:nowrap;">${p.dVal !== null ? `${p.dVal.toFixed(2)}%` : "--"}</td>`).join("")}
+              </tr>
               <tr style="background:#ffffff;">
-                <td style="padding:8px 10px; font-weight:700; color:#0f172a; white-space:nowrap;">MF Category Total</td>
-                ${trendPairs.map((p) => `<td style="padding:8px 10px; text-align:right; font-weight:700; color:#1d4ed8; white-space:nowrap;">${p.v.toFixed(2)}%</td>`).join("")}
+                <td style="padding:8px 10px; font-weight:700; color:#1d4ed8; white-space:nowrap;">Mutual Funds (within DII)</td>
+                ${trendCols.map((p) => `<td style="padding:8px 10px; text-align:right; font-weight:700; color:#1d4ed8; white-space:nowrap;">${p.mVal !== null ? `${p.mVal.toFixed(2)}%` : "--"}</td>`).join("")}
               </tr>
             </tbody>
           </table>
@@ -981,13 +1046,17 @@ document.addEventListener("DOMContentLoaded", function () {
       : "";
 
     return `
-      ${headerHtml}
-      ${summaryCardsHtml}
-      ${holdersHtml}
-      ${trendHtml}
-      <p style="margin:0; font-size:0.78rem; color:#64748b;">
-        Source: Official quarterly exchange shareholding disclosures. Named funds reflect mandatory disclosures for stakes of 1% or more in the company.
-      </p>
+      <div class="stocks360-modal-dialog" role="document">
+        ${headerHtml}
+        ${summaryCardsHtml}
+        ${diiTableHtml}
+        ${fiiTableHtml}
+        ${trendHtml}
+        <p style="margin:0; font-size:0.78rem; color:#64748b;">
+          Based on quarterly exchange shareholding filings (institutions holding 1% or more).
+          ${mfStat.val !== null ? `Mutual Funds represent ${mfStat.val.toFixed(2)}% within DII.` : ""}
+        </p>
+      </div>
     `;
   }
 
@@ -2036,14 +2105,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 <span id="company-exchange-badge" class="badge badge-success" style="font-size:0.75rem; background:${stock.exchanges === 'BSE' ? '#2563eb' : '#10b981'}; color:#ffffff; padding:3px 8px; border-radius:4px; font-weight:700;">${stock.exchanges === 'BSE' ? `BSE: ${escapeHtml(stock.bseCode || stock.symbol)}` : `NSE: ${escapeHtml(stock.symbol)}`}</span>
                 <span id="company-sector-label" style="font-size:0.85rem; color:#64748b; font-weight:600;">${escapeHtml(sectorHeadingLabel)}</span>
                 <a id="company-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.8rem; color:#2563eb; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
-                  Official Website ↗
+                  Company Website
                 </a>
               </div>
               <h2 id="company-view-title" tabindex="-1" style="margin:8px 0 4px 0; font-size:1.75rem; color:#0f172a; font-weight:800;">${escapeHtml(stock.name)}</h2>
               ${!isBseOnly ? `<div style="margin:6px 0 8px 0;">
-                <button type="button" id="btn-see-mf-holdings" aria-expanded="false" aria-controls="company-mf-holdings-panel" style="padding:7px 14px; font-size:0.86rem; font-weight:700; border-radius:7px; border:1px solid #1d4ed8; background:#eff6ff; color:#1d4ed8; cursor:pointer;">
-                  See This Stock in Mutual Fund Holdings
-                </button>
+                <a href="#institutional-holdings" id="link-see-institutional-holdings" class="institutional-holdings-link" role="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="company-institutional-holdings-modal">
+                  See this in Institutional Holdings
+                </a>
               </div>` : ''}
               
               <div style="display:flex; align-items:baseline; gap:12px; margin-top:6px; flex-wrap:wrap;">
@@ -2063,17 +2132,17 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
               ${!isBseOnly ? `<div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
                 <a id="btn-annual-report-header" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:5px 12px; border-radius:6px; text-decoration:none;">
-                  ${stock.latestAnnualReportUrl ? 'View Latest Annual Report PDF ↗' : 'View Official Annual Report &amp; NSE Filings ↗'}
+                  ${stock.latestAnnualReportUrl ? 'Latest Annual Report PDF' : 'Annual Report &amp; NSE Filings'}
                 </a>
                 <a href="https://www.nseindia.com/companies-listing/corporate-filings-annual-reports" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:5px 12px; border-radius:6px; text-decoration:none;">
-                  NSE Annual Reports Archive ↗
+                  NSE Annual Reports Archive
                 </a>
               </div>` : ''}
             </div>
           </div>
         </div>
 
-        ${!isBseOnly ? `<section id="company-mf-holdings-panel" role="region" aria-labelledby="mf-holdings-panel-heading" tabindex="-1" hidden style="margin-bottom:18px; background:#ffffff; border:2px solid #1d4ed8; border-radius:12px; padding:18px; box-shadow:0 2px 10px rgba(29,78,216,0.08);"></section>` : ''}
+        ${!isBseOnly ? `<div id="company-institutional-holdings-modal" class="stocks360-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="institutional-holdings-modal-heading" hidden></div>` : ''}
 
         <!-- EXCHANGE SWITCHER (NSE / BSE) -->
         <div id="exchange-switcher-bar" role="group" aria-label="Switch Stock Exchange" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding:10px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px;">
@@ -2164,9 +2233,9 @@ document.addEventListener("DOMContentLoaded", function () {
               ${aboutText}
             </div>
             <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-              ${!isBseOnly ? `<a id="btn-annual-report-about" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">${stock.latestAnnualReportUrl ? `Official Latest Annual Report PDF (${escapeHtml(stock.symbol)}) ↗` : `Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗`}</a>` : ''}
+              ${!isBseOnly ? `<a id="btn-annual-report-about" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">${stock.latestAnnualReportUrl ? `Latest Annual Report PDF (${escapeHtml(stock.symbol)})` : `Annual Report &amp; NSE Filings (${escapeHtml(stock.symbol)})`}</a>` : ''}
               <a id="about-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.84rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
-                Official Company Website ↗
+                Company Website
               </a>
             </div>
           </section>
@@ -2533,7 +2602,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const shContainer = document.getElementById("company-shareholding-container");
       if (shContainer) shContainer.innerHTML = buildShareholdingHtml(stock.shareholding, false);
 
-      refreshMfHoldingsPanel(false);
+      refreshInstitutionalHoldingsModal(false);
 
       const peersTitle = document.getElementById("company-peers-title");
       if (peersTitle) {
@@ -2723,68 +2792,76 @@ document.addEventListener("DOMContentLoaded", function () {
         const headerArBtn = document.getElementById("btn-annual-report-header");
         if (headerArBtn) {
           headerArBtn.href = arItem.link;
-          headerArBtn.textContent = `View Latest Annual Report PDF (${arItem.date || "Official"}) ↗`;
+          headerArBtn.textContent = `Latest Annual Report PDF (${arItem.date || "NSE"})`;
         }
         const aboutArBtn = document.getElementById("btn-annual-report-about");
         if (aboutArBtn) {
           aboutArBtn.href = arItem.link;
-          aboutArBtn.textContent = `Official Latest Annual Report PDF (${stock.symbol} - ${arItem.date || "NSE"}) ↗`;
+          aboutArBtn.textContent = `Latest Annual Report PDF (${stock.symbol} - ${arItem.date || "NSE"})`;
         }
       }
     });
 
 
-    function closeMfHoldingsPanel(restoreFocus) {
-      const mfPanel = document.getElementById("company-mf-holdings-panel");
-      const mfBtn = document.getElementById("btn-see-mf-holdings");
-      if (mfPanel) {
-        mfPanel.hidden = true;
-        if (typeof mfPanel.setAttribute === "function") mfPanel.setAttribute("hidden", "");
+    function closeInstitutionalHoldingsModal(restoreFocus) {
+      const modal = document.getElementById("company-institutional-holdings-modal");
+      const link = document.getElementById("link-see-institutional-holdings");
+      if (modal) {
+        modal.hidden = true;
+        if (typeof modal.setAttribute === "function") modal.setAttribute("hidden", "");
       }
-      if (mfBtn) {
-        mfBtn.setAttribute("aria-expanded", "false");
-        if (restoreFocus && typeof mfBtn.focus === "function") mfBtn.focus();
+      if (link) {
+        link.setAttribute("aria-expanded", "false");
+        if (restoreFocus && typeof link.focus === "function") link.focus();
       }
     }
 
-    function refreshMfHoldingsPanel(forceRender) {
-      const mfPanel = document.getElementById("company-mf-holdings-panel");
-      if (!mfPanel) return;
-      if (!forceRender && mfPanel.hidden) return;
-      mfPanel.innerHTML = buildMutualFundHoldingsPanelHtml(stock, !isBseOnly && !stock._profileLoaded);
-      const closeMfBtn = document.getElementById("btn-close-mf-holdings");
-      if (closeMfBtn) {
-        closeMfBtn.addEventListener("click", (e) => {
+    function refreshInstitutionalHoldingsModal(forceRender) {
+      const modal = document.getElementById("company-institutional-holdings-modal");
+      if (!modal) return;
+      if (!forceRender && modal.hidden) return;
+      modal.innerHTML = buildInstitutionalHoldingsModalHtml(stock, !isBseOnly && !stock._profileLoaded);
+      const closeBtn = document.getElementById("btn-close-institutional-holdings");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
           e.preventDefault();
-          closeMfHoldingsPanel(true);
+          closeInstitutionalHoldingsModal(true);
         });
       }
     }
 
-    const mfPanelInit = document.getElementById("company-mf-holdings-panel");
-    if (mfPanelInit) {
-      mfPanelInit.hidden = true;
-      if (typeof mfPanelInit.setAttribute === "function") mfPanelInit.setAttribute("hidden", "");
+    const instModalInit = document.getElementById("company-institutional-holdings-modal");
+    if (instModalInit) {
+      instModalInit.hidden = true;
+      if (typeof instModalInit.setAttribute === "function") instModalInit.setAttribute("hidden", "");
+      instModalInit.addEventListener("click", (e) => {
+        if (e.target === instModalInit) {
+          closeInstitutionalHoldingsModal(true);
+        }
+      });
     }
-    const mfHoldingsBtn = document.getElementById("btn-see-mf-holdings");
-    if (mfHoldingsBtn) {
-      mfHoldingsBtn.addEventListener("click", (e) => {
+
+    const instHoldingsLink = document.getElementById("link-see-institutional-holdings");
+    if (instHoldingsLink) {
+      instHoldingsLink.addEventListener("click", (e) => {
         e.preventDefault();
-        const mfPanel = document.getElementById("company-mf-holdings-panel");
-        if (!mfPanel) return;
-        const isClosed = Boolean(mfPanel.hidden || (typeof mfPanel.hasAttribute === "function" && mfPanel.hasAttribute("hidden")));
+        const modal = document.getElementById("company-institutional-holdings-modal");
+        if (!modal) return;
+        const isClosed = Boolean(modal.hidden || (typeof modal.hasAttribute === "function" && modal.hasAttribute("hidden")));
         if (!isClosed) {
-          closeMfHoldingsPanel(false);
+          closeInstitutionalHoldingsModal(false);
           return;
         }
-        mfPanel.hidden = false;
-        if (typeof mfPanel.removeAttribute === "function") mfPanel.removeAttribute("hidden");
-        mfHoldingsBtn.setAttribute("aria-expanded", "true");
-        refreshMfHoldingsPanel(true);
-        if (typeof mfPanel.scrollIntoView === "function") mfPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        if (typeof mfPanel.focus === "function") mfPanel.focus();
+        modal.hidden = false;
+        if (typeof modal.removeAttribute === "function") modal.removeAttribute("hidden");
+        instHoldingsLink.setAttribute("aria-expanded", "true");
+        refreshInstitutionalHoldingsModal(true);
+        const modalHeading = document.getElementById("institutional-holdings-modal-heading");
+        if (modalHeading && typeof modalHeading.focus === "function") {
+          modalHeading.focus();
+        }
         if (typeof window.speakText === "function" && typeof localStorage !== "undefined" && localStorage.getItem("stocks360_special_a11y") === "true") {
-          window.speakText(`Showing mutual fund holdings in ${stock.name}. Press Escape to close.`, true);
+          window.speakText(`Showing institutional holdings in ${stock.name}. Press Escape to close.`, true);
         }
       });
     }
@@ -3286,14 +3363,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return;
       }
-      const mfPanel = document.getElementById("company-mf-holdings-panel");
-      if (mfPanel && !mfPanel.hidden) {
-        mfPanel.hidden = true;
-        if (typeof mfPanel.setAttribute === "function") mfPanel.setAttribute("hidden", "");
-        const mfBtn = document.getElementById("btn-see-mf-holdings");
-        if (mfBtn) {
-          mfBtn.setAttribute("aria-expanded", "false");
-          mfBtn.focus();
+      const instModal = document.getElementById("company-institutional-holdings-modal");
+      if (instModal && !instModal.hidden) {
+        instModal.hidden = true;
+        if (typeof instModal.setAttribute === "function") instModal.setAttribute("hidden", "");
+        const instLink = document.getElementById("link-see-institutional-holdings");
+        if (instLink) {
+          instLink.setAttribute("aria-expanded", "false");
+          instLink.focus();
         }
         return;
       }

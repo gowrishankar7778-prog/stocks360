@@ -216,13 +216,13 @@
             .map(
               (doc) => `
               <a href="${esc(doc.url)}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; padding:8px 12px; border-radius:7px; border:1px solid #bfdbfe; background:#eff6ff; color:#1d4ed8; font-weight:700; font-size:0.84rem; text-decoration:none;">
-                ${esc(doc.label)} <span aria-hidden="true">&#8599;</span>
+                ${esc(doc.label)}
               </a>
             `
             )
             .join("")}
           <a href="https://www.nseindia.com/market-data/all-upcoming-issues-ipo" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; padding:8px 12px; border-radius:7px; border:1px solid #cbd5e1; background:#f8fafc; color:#0f172a; font-weight:700; font-size:0.84rem; text-decoration:none;">
-            NSE Official IPO Portal <span aria-hidden="true">&#8599;</span>
+            NSE IPO Portal
           </a>
         </div>
       </div>

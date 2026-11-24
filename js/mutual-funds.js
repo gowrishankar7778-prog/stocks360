@@ -427,10 +427,10 @@
               <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:0.84rem; color:#64748b; font-weight:600; margin-bottom:6px;">
                 <span>${escapeHtml(scheme.fundHouse)} &bull; ${escapeHtml(scheme.category)} &bull; AMFI Code: <span id="mf-live-scheme-code">${escapeHtml(currentPlanCode)}</span></span>
                 <a href="${escapeHtml(officialLinks.websiteUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem; color:#2563eb; font-weight:700; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
-                  Official AMC Website ↗
+                  AMC Website
                 </a>
                 <a href="${escapeHtml(officialLinks.sidUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem; color:#1e293b; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#ffffff; border:1px solid #cbd5e1;">
-                  Scheme Information Document (SID) ↗
+                  Scheme Information Document (SID)
                 </a>
               </div>
               <h2 id="mf-live-scheme-title" style="font-size:1.45rem; color:#0f172a; margin:0; font-weight:800;">
@@ -529,13 +529,13 @@
             </p>
             <div style="display:flex; flex-wrap:wrap; gap:10px;">
               <a href="${escapeHtml(officialLinks.websiteUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.86rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:8px 14px; border-radius:6px; text-decoration:none;">
-                Visit Official ${escapeHtml(scheme.amcShort || scheme.fundHouse)} Scheme Portal ↗
+                Visit ${escapeHtml(scheme.amcShort || scheme.fundHouse)} Scheme Portal
               </a>
               <a href="${escapeHtml(officialLinks.sidUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.86rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:8px 14px; border-radius:6px; text-decoration:none;">
-                View Official SEBI Scheme Information Document (SID) ↗
+                Scheme Information Document (SID)
               </a>
               <a href="${escapeHtml(officialLinks.amfiUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.86rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:8px 14px; border-radius:6px; text-decoration:none;">
-                Official AMFI NAV Archive ↗
+                AMFI NAV Archive
               </a>
             </div>
           </section>
