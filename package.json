@@ -21,5 +21,8 @@
     "financial-statements"
   ],
   "author": "Stocks 360",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "wrangler": "^3.114.17"
+  }
 }
