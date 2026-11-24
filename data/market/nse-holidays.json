@@ -1,0 +1,131 @@
+{
+  "source": "NSE Official Trading Holiday Master (CM - Capital Market / Equities)",
+  "endpoint": "https://www.nseindia.com/api/holiday-master?type=trading",
+  "years": [
+    2026
+  ],
+  "updatedAt": "2026-11-24T08:56:44.281Z",
+  "count": 20,
+  "holidays": [
+    {
+      "date": "2026-01-15",
+      "tradingDate": "15-Jan-2026",
+      "weekDay": "Thursday",
+      "description": "Municipal Corporation Election - Maharashtra"
+    },
+    {
+      "date": "2026-01-26",
+      "tradingDate": "26-Jan-2026",
+      "weekDay": "Monday",
+      "description": "Republic Day"
+    },
+    {
+      "date": "2026-02-15",
+      "tradingDate": "15-Feb-2026",
+      "weekDay": "Sunday",
+      "description": "Mahashivratri"
+    },
+    {
+      "date": "2026-03-03",
+      "tradingDate": "03-Mar-2026",
+      "weekDay": "Tuesday",
+      "description": "Holi"
+    },
+    {
+      "date": "2026-03-21",
+      "tradingDate": "21-Mar-2026",
+      "weekDay": "Saturday",
+      "description": "Id-Ul-Fitr (Ramadan Eid)"
+    },
+    {
+      "date": "2026-03-26",
+      "tradingDate": "26-Mar-2026",
+      "weekDay": "Thursday",
+      "description": "Shri Ram Navami"
+    },
+    {
+      "date": "2026-03-31",
+      "tradingDate": "31-Mar-2026",
+      "weekDay": "Tuesday",
+      "description": "Shri Mahavir Jayanti"
+    },
+    {
+      "date": "2026-04-03",
+      "tradingDate": "03-Apr-2026",
+      "weekDay": "Friday",
+      "description": "Good Friday"
+    },
+    {
+      "date": "2026-04-14",
+      "tradingDate": "14-Apr-2026",
+      "weekDay": "Tuesday",
+      "description": "Dr. Baba Saheb Ambedkar Jayanti"
+    },
+    {
+      "date": "2026-05-01",
+      "tradingDate": "01-May-2026",
+      "weekDay": "Friday",
+      "description": "Maharashtra Day"
+    },
+    {
+      "date": "2026-05-28",
+      "tradingDate": "28-May-2026",
+      "weekDay": "Thursday",
+      "description": "Bakri Id"
+    },
+    {
+      "date": "2026-06-26",
+      "tradingDate": "26-Jun-2026",
+      "weekDay": "Friday",
+      "description": "Muharram"
+    },
+    {
+      "date": "2026-08-15",
+      "tradingDate": "15-Aug-2026",
+      "weekDay": "Saturday",
+      "description": "Independence Day"
+    },
+    {
+      "date": "2026-09-14",
+      "tradingDate": "14-Sep-2026",
+      "weekDay": "Monday",
+      "description": "Ganesh Chaturthi"
+    },
+    {
+      "date": "2026-10-02",
+      "tradingDate": "02-Oct-2026",
+      "weekDay": "Friday",
+      "description": "Mahatma Gandhi Jayanti"
+    },
+    {
+      "date": "2026-10-20",
+      "tradingDate": "20-Oct-2026",
+      "weekDay": "Tuesday",
+      "description": "Dussehra"
+    },
+    {
+      "date": "2026-11-08",
+      "tradingDate": "08-Nov-2026",
+      "weekDay": "Sunday",
+      "description": "Diwali Laxmi Pujan*"
+    },
+    {
+      "date": "2026-11-10",
+      "tradingDate": "10-Nov-2026",
+      "weekDay": "Tuesday",
+      "description": "Diwali-Balipratipada"
+    },
+    {
+      "date": "2026-11-24",
+      "tradingDate": "24-Nov-2026",
+      "weekDay": "Tuesday",
+      "description": "Prakash Gurpurb Sri Guru Nanak Dev"
+    },
+    {
+      "date": "2026-12-25",
+      "tradingDate": "25-Dec-2026",
+      "weekDay": "Friday",
+      "description": "Christmas"
+    }
+  ]
+}

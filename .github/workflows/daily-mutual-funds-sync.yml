@@ -1,10 +1,10 @@
-name: Daily Mutual Funds AMFI NAV Sync (9:15 PM IST)
+name: Daily Mutual Funds AMFI NAV Sync (9:32 PM IST)
 
-# Runs automatically at 9:15 PM IST every day (right after AMFI publishes daily NAVs at 9:00 PM IST)
-# 9:15 PM IST = 15:45 UTC (15:45 + 5:30 = 21:15 IST)
+# Runs automatically at 9:32 PM IST every weekday (Monday through Friday), skipping NSE holidays
+# 9:32 PM IST = 16:02 UTC (16:02 + 5:30 = 21:32 IST)
 on:
   schedule:
-    - cron: '45 15 * * *'
+    - cron: '2 16 * * 1-5'
   workflow_dispatch: # Allows manual 1-click trigger anytime from GitHub Actions tab
 
 permissions:
@@ -23,28 +23,35 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Verify Trading Day (Skip Weekends & NSE Holidays)
+        id: market_check
+        run: |
+          node scripts/check-market-open.js
+
       - name: Fetch AMFI 9:00 PM Daily NAVs & Update Mutual Fund Schemes
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/update-mutual-funds.js
 
       - name: Commit & Push Updated Mutual Funds NAV Dataset
+        if: steps.market_check.outputs.is_open == 'true'
         id: git_push
         run: |
           git config user.name "Stocks 360 AMFI NAV Bot"
           git config user.email "bot@stocks360.local"
-          git add data/mutual-funds/top-mutual-funds.json
+          git add data/mutual-funds/top-mutual-funds.json data/market/nse-holidays.json
           if git diff --staged --quiet; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No AMFI NAV changes detected today."
           else
-            git commit -m "Auto-update daily AMFI Mutual Fund NAVs & holdings [9:15 PM IST]"
+            git commit -m "Auto-update daily AMFI Mutual Fund NAVs & holdings [9:32 PM IST]"
             git pull --rebase --autostash origin main
             git push origin main
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Trigger Render Auto-Deploy
-        if: steps.git_push.outputs.pushed == 'true'
+        if: steps.market_check.outputs.is_open == 'true' && steps.git_push.outputs.pushed == 'true'
         env:
           RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |

@@ -1,10 +1,10 @@
 name: Daily Stock Screener Auto-Sync
 
-# Runs automatically at 4:45 PM IST every weekday (Monday through Friday)
-# 4:45 PM IST = 11:15 UTC (11:15 + 5:30 = 16:45 IST)
+# Runs automatically at 4:37 PM IST every weekday (Monday through Friday), skipping NSE holidays
+# 4:37 PM IST = 11:07 UTC (11:07 + 5:30 = 16:37 IST)
 on:
   schedule:
-    - cron: '15 11 * * 1-5'
+    - cron: '7 11 * * 1-5'
   workflow_dispatch: # Allows manual 1-click trigger anytime from GitHub Actions tab
 
 permissions:
@@ -23,52 +23,65 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Verify Trading Day (Skip Weekends & NSE Holidays)
+        id: market_check
+        run: |
+          node scripts/check-market-open.js
+
       - name: Auto-Discover New NSE IPOs & Equity Listings
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/import-all-nse-stocks.js
 
       - name: Synchronize All Live NSE Prices & Indicators
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/update-nse-stocks.js --all
 
       - name: Synchronize All BSE Listed Equities & Daily Bhavcopy
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/update-bse-stocks.js
 
       - name: Synchronize Official NSE Corporate Announcements & Filings
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/update-nse-news.js
 
       - name: Synchronize Official Real Company Fundamentals & Annual Statements
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/update-company-fundamentals.js --all
 
       - name: Synchronize Official NSE FII/DII Flows & Market Breadth
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/update-market-pulse.js
 
       - name: Synchronize Official NSE IPO Tracker
+        if: steps.market_check.outputs.is_open == 'true'
         run: |
           node scripts/update-ipo-tracker.js
 
       - name: Commit & Push Updated Stock Data & Filings
+        if: steps.market_check.outputs.is_open == 'true'
         id: git_push
         run: |
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
-          git add js/screener-index.js js/market-pulse-data.js js/ipo-data.js data/market-pulse.json data/market/ipo-tracker.json data/bse/ data/news/ data/profiles/ data/mutual-funds/
+          git add js/screener-index.js js/market-pulse-data.js js/ipo-data.js data/market-pulse.json data/market/ipo-tracker.json data/market/nse-holidays.json data/bse/ data/news/ data/profiles/ data/mutual-funds/
           if git diff --staged --quiet; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No price, indicator, or corporate filing changes detected today."
           else
-            git commit -m "Auto-update NSE stock prices, moving averages, indicators, and corporate filings [4:45 PM IST]"
+            git commit -m "Auto-update NSE stock prices, moving averages, indicators, and corporate filings [4:37 PM IST]"
             git pull --rebase --autostash origin main
             git push origin main
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Trigger Render Auto-Deploy
-        if: steps.git_push.outputs.pushed == 'true'
+        if: steps.market_check.outputs.is_open == 'true' && steps.git_push.outputs.pushed == 'true'
         env:
           RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
