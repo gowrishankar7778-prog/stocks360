@@ -1882,14 +1882,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return `
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+        <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Technicals</h3>
         <div>
-          <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Technicals</h3>
-          <p style="margin:3px 0 0 0; font-size:0.82rem; color:#475569;">
-            End-of-day Bhavcopy analysis (${tech.barsCount} trading sessions, as of ${escapeHtml(tech.asOfDate || "Latest")}) &bull; ${tech.maBullCount} of ${tech.maTotalValid} Moving Averages Bullish
-          </p>
-        </div>
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span style="font-size:0.82rem; font-weight:700; color:#475569;">Overall Verdict:</span>
           ${renderVerdictBadge(tech.overallRating)}
         </div>
       </div>
