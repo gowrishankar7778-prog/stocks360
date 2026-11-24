@@ -259,7 +259,17 @@ export default {
       const temperature = typeof reqBody.temperature === 'number' ? reqBody.temperature : 0.55;
       const maxOutputTokens = typeof reqBody.maxOutputTokens === 'number' ? reqBody.maxOutputTokens : 850;
 
-      const geminiPayload = {
+      const payloadWithSearch = {
+        systemInstruction: { parts: [{ text: systemInstruction }] },
+        contents: contents,
+        tools: [{ google_search: {} }],
+        generationConfig: {
+          temperature: temperature,
+          maxOutputTokens: maxOutputTokens
+        }
+      };
+
+      const payloadNoSearch = {
         systemInstruction: { parts: [{ text: systemInstruction }] },
         contents: contents,
         generationConfig: {
@@ -271,19 +281,32 @@ export default {
       const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
 
       try {
-        const geminiRes = await fetch(geminiUrl, {
+        // 1. Try with Google Search Grounding for live web & breaking news
+        let geminiRes = await fetch(geminiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(geminiPayload)
+          body: JSON.stringify(payloadWithSearch)
         });
 
-        const geminiData = await geminiRes.json();
+        let geminiData = await geminiRes.json();
+
+        // 2. If search tool is restricted (e.g. 429 quota on free-tier keys without billing), fallback to standard generation
+        if (geminiData.error) {
+          geminiRes = await fetch(geminiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payloadNoSearch)
+          });
+          geminiData = await geminiRes.json();
+        }
+
+        // 3. If 3.5-flash-lite still has an issue, fallback to gemini-3.8-flash
         if (geminiData.error) {
           const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
           const fallbackRes = await fetch(fallbackUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(geminiPayload)
+            body: JSON.stringify(payloadNoSearch)
           });
           const fallbackData = await fallbackRes.json();
           if (fallbackData.error) {
