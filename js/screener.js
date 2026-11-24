@@ -79,6 +79,33 @@ const StocksScreener = (function () {
       ]
     },
     {
+      id: "featured-tech-macd-adx",
+      name: "MACD Bullish & Strong Trend (ADX >= 25)",
+      description: "Stocks in a strong directional trend (ADX >= 25) with positive MACD Histogram and >= 10 bullish Moving Averages.",
+      author: "Stocks 360 Research",
+      isPublic: true,
+      requestedColumns: ["macdHist", "adx14", "maBullCount", "rsi14"],
+      filters: [
+        { field: "macdHist", operator: ">", value: 0, label: "MACD Histogram > 0" },
+        { field: "adx14", operator: ">=", value: 25, label: "ADX >= 25" },
+        { field: "maBullCount", operator: ">=", value: 10, label: "Bullish MAs >= 10" }
+      ]
+    },
+    {
+      id: "featured-tech-ema",
+      name: "20 & 50 EMA Bullish Momentum",
+      description: "Equities trading above their 20-Day EMA with 50-Day EMA above 200-Day EMA and healthy RSI (50–70).",
+      author: "Stocks 360 Research",
+      isPublic: true,
+      requestedColumns: ["ema20", "ema50", "ema200", "rsi14"],
+      filters: [
+        { field: "cmp_vs_ema20", operator: ">", value: 0, label: "CMP > 20 EMA" },
+        { field: "ema50_vs_ema200", operator: ">", value: 0, label: "50 EMA > 200 EMA" },
+        { field: "rsi14", operator: ">=", value: 50, label: "RSI >= 50" },
+        { field: "rsi14", operator: "<=", value: 70, label: "RSI <= 70" }
+      ]
+    },
+    {
       id: "featured-5",
       name: "High ROE & Low Debt Quality Compounders",
       description: "Profitable NSE businesses with ROE >= 15%, ROCE >= 18%, low leverage (Debt/Equity <= 0.5), and Market Cap >= ₹1,000 Cr.",
@@ -420,6 +447,22 @@ const StocksScreener = (function () {
         if (field === "cmp_vs_dma50") {
           if (!(stock.cmp > 0) || !(stock.dma50 > 0)) return false;
           return op === ">" ? stock.cmp > stock.dma50 : stock.cmp <= stock.dma50;
+        }
+        if (field === "cmp_vs_ema20") {
+          if (!(stock.cmp > 0) || !(stock.ema20 > 0)) return false;
+          return op === ">" ? stock.cmp > stock.ema20 : stock.cmp <= stock.ema20;
+        }
+        if (field === "cmp_vs_ema50") {
+          if (!(stock.cmp > 0) || !(stock.ema50 > 0)) return false;
+          return op === ">" ? stock.cmp > stock.ema50 : stock.cmp <= stock.ema50;
+        }
+        if (field === "cmp_vs_ema200") {
+          if (!(stock.cmp > 0) || !(stock.ema200 > 0)) return false;
+          return op === ">" ? stock.cmp > stock.ema200 : stock.cmp <= stock.ema200;
+        }
+        if (field === "ema50_vs_ema200") {
+          if (!(stock.ema50 > 0) || !(stock.ema200 > 0)) return false;
+          return op === ">" ? stock.ema50 > stock.ema200 : stock.ema50 <= stock.ema200;
         }
 
         const stockVal = stock[field];

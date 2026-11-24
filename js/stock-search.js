@@ -1588,7 +1588,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const v = (pe !== null && vAvail >= 30) ? Math.max(0, Math.min(100, Math.round((vEarned / vAvail) * 100))) : null;
 
-    // 3. TECHNICAL MOMENTUM (strictly normalized over available Bhavcopy technicals)
+    // 3. TECHNICAL MOMENTUM (comprehensive Bhavcopy MAs, MACD, ADX, RSI, 52W & Volume/Delivery)
     let tEarned = 0;
     let tAvail = 0;
     const cmp = Number(stock.cmp) || 0;
@@ -1596,37 +1596,346 @@ document.addEventListener("DOMContentLoaded", function () {
     const dma200 = Number(stock.dma200) || 0;
     const h52 = Number(stock.high52) || 0;
     const l52 = Number(stock.low52) || 0;
-    const rsi = typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? stock.rsi14 : null;
+    const tech = stock.technicals && typeof stock.technicals === "object" ? stock.technicals : null;
+    const ind = tech && tech.indicators ? tech.indicators : null;
+    const rsi = (ind && typeof ind.rsi14 === "number" && ind.rsi14 > 0)
+      ? ind.rsi14
+      : (typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? stock.rsi14 : null);
     const volSurge = Number(stock.volumeSurge) || 0;
     const delivPct = Number(stock.deliveryPct) || 0;
 
-    if (cmp > 0 && dma200 > 0 && dma50 > 0) {
-      tEarned += (cmp > dma200 ? 15 : 0) + (cmp > dma50 ? 10 : 0) + ((stock.goldenCross || dma50 > dma200) ? 10 : 0);
-      tAvail += 35;
+    if (tech && tech.maTotalValid > 0) {
+      tEarned += Math.round((tech.maBullCount / tech.maTotalValid) * 30);
+      tAvail += 30;
+    } else if (typeof stock.maBullCount === "number" && stock.maBullCount >= 0) {
+      tEarned += Math.round((Math.min(16, stock.maBullCount) / 16) * 30);
+      tAvail += 30;
+    } else if (cmp > 0 && dma200 > 0 && dma50 > 0) {
+      tEarned += (cmp > dma200 ? 12 : 0) + (cmp > dma50 ? 9 : 0) + ((stock.goldenCross || dma50 > dma200) ? 9 : 0);
+      tAvail += 30;
     }
+
+    const macdObj = ind && ind.macd ? ind.macd : null;
+    const macdHist = macdObj ? macdObj.histogram : (typeof stock.macdHist === "number" ? stock.macdHist : null);
+    if (macdHist !== null) {
+      tEarned += macdHist > 0 ? 12 : macdHist === 0 ? 6 : 2;
+      tAvail += 12;
+    }
+
+    const adxVal = ind && typeof ind.adx14 === "number" ? ind.adx14 : (typeof stock.adx14 === "number" ? stock.adx14 : null);
+    if (adxVal !== null) {
+      const plusDi = ind && typeof ind.plusDi14 === "number" ? ind.plusDi14 : null;
+      const minusDi = ind && typeof ind.minusDi14 === "number" ? ind.minusDi14 : null;
+      if (adxVal >= 25) {
+        tEarned += (plusDi !== null && minusDi !== null) ? (plusDi > minusDi ? 8 : 1) : 6;
+      } else if (adxVal >= 18) {
+        tEarned += 5;
+      } else {
+        tEarned += 3;
+      }
+      tAvail += 8;
+    }
+
     if (cmp > 0 && h52 > l52 && l52 > 0) {
       const pos = Math.max(0, Math.min(1, (cmp - l52) / (h52 - l52)));
-      tEarned += Math.round(pos * 25);
-      tAvail += 25;
-    }
-    if (rsi !== null) {
-      tEarned += (rsi >= 50 && rsi <= 70) ? 20 : ((rsi >= 40 && rsi < 50) || (rsi > 70 && rsi <= 80)) ? 14 : rsi > 80 ? 10 : rsi >= 30 ? 8 : 5;
+      tEarned += Math.round(pos * 20);
       tAvail += 20;
     }
+    if (rsi !== null) {
+      tEarned += (rsi >= 50 && rsi <= 70) ? 15 : ((rsi >= 40 && rsi < 50) || (rsi > 70 && rsi <= 80)) ? 10 : rsi > 80 ? 7 : rsi >= 30 ? 6 : 4;
+      tAvail += 15;
+    }
     if (volSurge > 0) {
-      tEarned += volSurge >= 1.25 ? 10 : volSurge >= 1.0 ? 6 : 3;
-      tAvail += 10;
+      tEarned += volSurge >= 1.25 ? 8 : volSurge >= 1.0 ? 5 : 2;
+      tAvail += 8;
     }
     if (delivPct > 0) {
-      tEarned += delivPct >= 50 ? 10 : delivPct >= 35 ? 7 : 4;
-      tAvail += 10;
+      tEarned += delivPct >= 50 ? 7 : delivPct >= 35 ? 5 : 3;
+      tAvail += 7;
     }
-    const t = tAvail >= 40 ? Math.max(0, Math.min(100, Math.round((tEarned / tAvail) * 100))) : null;
+    const t = tAvail >= 35 ? Math.max(0, Math.min(100, Math.round((tEarned / tAvail) * 100))) : null;
 
     const pillars = [q, v, t].filter((x) => typeof x === "number");
     const overall = pillars.length >= 2 ? Math.round(pillars.reduce((a, b) => a + b, 0) / pillars.length) : null;
 
     return { q, v, t, overall, isBankOrNbfc };
+  }
+
+  function renderVerdictBadge(verdict) {
+    const v = String(verdict || "Neutral");
+    let color = "#475569";
+    let bg = "#f1f5f9";
+    let border = "#cbd5e1";
+    if (/strong bullish|bullish|active|uptrend|positive|accumulation|golden support|above 23\.6/i.test(v)) {
+      color = "#15803d";
+      bg = "#f0fdf4";
+      border = "#bbf7d0";
+    } else if (/bearish|downtrend|overbought|oversold|negative|weak|below 61\.8/i.test(v)) {
+      color = "#b91c1c";
+      bg = "#fef2f2";
+      border = "#fecaca";
+    } else if (/moderate|squeeze|pullback|neutral|normal/i.test(v)) {
+      color = "#b45309";
+      bg = "#fffbeb";
+      border = "#fde68a";
+    }
+    return `<span style="display:inline-block; font-size:0.78rem; font-weight:700; padding:3px 9px; border-radius:999px; color:${color}; background:${bg}; border:1px solid ${border}; white-space:nowrap;">${escapeHtml(v)}</span>`;
+  }
+
+  function formatInrPrice(v) {
+    return typeof v === "number" && Number.isFinite(v)
+      ? v.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+      : "--";
+  }
+
+  function buildComprehensiveTechnicalsHtml(stock, isLoading) {
+    const isBseOnly = stock && stock.exchanges === "BSE";
+    const tech = !isBseOnly && stock && stock.technicals && typeof stock.technicals === "object" ? stock.technicals : null;
+
+    if (isBseOnly || !tech) {
+      const statusNote = !isBseOnly && isLoading
+        ? `<p style="margin:0 0 12px 0; font-size:0.86rem; color:#475569;">Loading full Moving Averages, Indicators, and Fibonacci levels...</p>`
+        : "";
+      return `
+        <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Technicals</h3>
+        ${statusNote}
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; color:#475569;">50-DMA</span>
+            <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma50 === "number" && stock.dma50 > 0 ? "₹ " + formatInrPrice(stock.dma50) : "--"}</strong>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; color:#475569;">200-DMA</span>
+            <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma200 === "number" && stock.dma200 > 0 ? "₹ " + formatInrPrice(stock.dma200) : "--"}</strong>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; color:#475569;">Golden Crossover</span>
+            <strong style="font-size:0.92rem; color:${stock.goldenCross ? '#16a34a' : '#64748b'};">${stock.goldenCross ? 'Active Bullish' : 'Neutral'}</strong>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; color:#475569;">14-Day RSI</span>
+            <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? Number(stock.rsi14).toFixed(1) : "--"}</strong>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; color:#475569;">Volume Surge</span>
+            <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volumeSurge === "number" && stock.volumeSurge > 0 ? Number(stock.volumeSurge).toFixed(2) + "x" : "--"}</strong>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; color:#475569;">Trading Volume</span>
+            <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volume === "number" && stock.volume > 0 ? stock.volume.toLocaleString("en-IN") : "--"}</strong>
+          </div>
+        </div>
+      `;
+    }
+
+    const maPeriods = [5, 10, 20, 26, 30, 50, 100, 200];
+    const maMap = tech.movingAverages || {};
+    const maRowsHtml = maPeriods
+      .map((p, idx) => {
+        const row = maMap[String(p)] || {};
+        const bg = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
+        const smaTxt = typeof row.sma === "number" ? `₹ ${formatInrPrice(row.sma)}` : "--";
+        const emaTxt = typeof row.ema === "number" ? `₹ ${formatInrPrice(row.ema)}` : "--";
+        return `
+          <tr style="background:${bg}; border-bottom:1px solid #f1f5f9;">
+            <td style="padding:9px 12px; font-weight:700; color:#0f172a; white-space:nowrap;">${p}-Day</td>
+            <td style="padding:9px 12px; text-align:right; font-weight:700; color:#0f172a; white-space:nowrap;">${smaTxt}</td>
+            <td style="padding:9px 12px; text-align:center;">${renderVerdictBadge(row.smaVerdict || "Insufficient Data")}</td>
+            <td style="padding:9px 12px; text-align:right; font-weight:700; color:#0f172a; white-space:nowrap;">${emaTxt}</td>
+            <td style="padding:9px 12px; text-align:center;">${renderVerdictBadge(row.emaVerdict || "Insufficient Data")}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    const ind = tech.indicators || {};
+    const rsi = typeof ind.rsi14 === "number" ? ind.rsi14 : null;
+    const rsiVerdict = rsi === null ? "Insufficient Data"
+      : rsi >= 70 ? "Overbought"
+      : rsi <= 30 ? "Oversold"
+      : rsi >= 55 ? "Bullish Momentum"
+      : rsi <= 45 ? "Bearish Momentum"
+      : "Neutral";
+
+    const macd = ind.macd || null;
+    const macdVal = macd ? `${macd.macd.toFixed(2)} (Sig: ${macd.signal.toFixed(2)}, Hist: ${macd.histogram >= 0 ? "+" : ""}${macd.histogram.toFixed(2)})` : "--";
+    const macdVerdict = !macd ? "Insufficient Data"
+      : (macd.macd > macd.signal && macd.histogram > 0) ? "Bullish Crossover"
+      : "Bearish Crossover";
+
+    const bb = ind.bollinger || null;
+    const bbVal = bb ? `₹ ${formatInrPrice(bb.lower)} – ₹ ${formatInrPrice(bb.upper)} (${bb.posPct.toFixed(0)}%)` : "--";
+    const bbVerdict = !bb ? "Insufficient Data"
+      : bb.posPct >= 95 ? "Overbought (Upper Band)"
+      : bb.posPct <= 5 ? "Oversold (Lower Band)"
+      : bb.widthPct < 8 ? "Volatility Squeeze"
+      : "Normal Range";
+
+    const adx = typeof ind.adx14 === "number" ? ind.adx14 : null;
+    const adxVal = adx !== null ? `${adx.toFixed(1)} (+DI: ${ind.plusDi14?.toFixed(1) ?? "--"}, -DI: ${ind.minusDi14?.toFixed(1) ?? "--"})` : "--";
+    const adxVerdict = adx === null ? "Insufficient Data"
+      : (adx >= 25 && ind.plusDi14 > ind.minusDi14) ? "Strong Uptrend"
+      : (adx >= 25 && ind.minusDi14 > ind.plusDi14) ? "Strong Downtrend"
+      : adx < 20 ? "Weak / Sideways"
+      : "Moderate Trend";
+
+    const atrVal = typeof ind.atr14 === "number" ? `₹ ${formatInrPrice(ind.atr14)} (${ind.atrPct?.toFixed(2) ?? "--"}%)` : "--";
+    const atrVerdict = typeof ind.atrPct !== "number" ? "Insufficient Data"
+      : ind.atrPct >= 4 ? "High Volatility"
+      : ind.atrPct <= 1.5 ? "Low Volatility"
+      : "Moderate Volatility";
+
+    const stoch = ind.stochastic || null;
+    const stochVal = stoch ? `%K: ${stoch.k.toFixed(1)} / %D: ${stoch.d.toFixed(1)}` : "--";
+    const stochVerdict = !stoch ? "Insufficient Data"
+      : stoch.k >= 80 ? "Overbought"
+      : stoch.k <= 20 ? "Oversold"
+      : stoch.k > stoch.d ? "Bullish"
+      : "Bearish";
+
+    const roc = typeof ind.roc14 === "number" ? ind.roc14 : null;
+    const rocVal = roc !== null ? `${roc >= 0 ? "+" : ""}${roc.toFixed(2)}%` : "--";
+    const rocVerdict = roc === null ? "Insufficient Data"
+      : roc >= 5 ? "Strong Positive"
+      : roc > 0 ? "Positive"
+      : roc <= -5 ? "Strong Negative"
+      : "Negative";
+
+    const deliv = typeof stock.deliveryPct === "number" && stock.deliveryPct > 0 ? stock.deliveryPct : null;
+    const volSurge = typeof stock.volumeSurge === "number" && stock.volumeSurge > 0 ? stock.volumeSurge : null;
+    const delivVal = deliv !== null ? `${deliv.toFixed(1)}%${volSurge !== null ? ` (Vol ${volSurge.toFixed(2)}x)` : ""}` : (volSurge !== null ? `Vol ${volSurge.toFixed(2)}x` : "--");
+    const delivVerdict = deliv !== null
+      ? (deliv >= 50 ? "High Accumulation" : deliv >= 35 ? "Moderate Delivery" : "Low Delivery")
+      : (volSurge !== null ? (volSurge >= 1.25 ? "Volume Surge" : "Normal Volume") : "Neutral");
+
+    const indicatorRows = [
+      { name: "RSI (14)", value: rsi !== null ? rsi.toFixed(2) : "--", verdict: rsiVerdict },
+      { name: "MACD (12, 26, 9)", value: macdVal, verdict: macdVerdict },
+      { name: "Bollinger Bands (20, 2)", value: bbVal, verdict: bbVerdict },
+      { name: "ADX (14)", value: adxVal, verdict: adxVerdict },
+      { name: "ATR (14)", value: atrVal, verdict: atrVerdict },
+      { name: "Stochastic (14, 3)", value: stochVal, verdict: stochVerdict },
+      { name: "ROC (14-Day)", value: rocVal, verdict: rocVerdict },
+      { name: "Delivery % & Volume Surge", value: delivVal, verdict: delivVerdict }
+    ];
+
+    const indicatorRowsHtml = indicatorRows
+      .map((r, idx) => {
+        const bg = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
+        return `
+          <tr style="background:${bg}; border-bottom:1px solid #f1f5f9;">
+            <td style="padding:9px 12px; font-weight:700; color:#0f172a; white-space:nowrap;">${escapeHtml(r.name)}</td>
+            <td style="padding:9px 12px; text-align:right; font-weight:700; color:#0f172a; white-space:nowrap;">${escapeHtml(r.value)}</td>
+            <td style="padding:9px 12px; text-align:center;">${renderVerdictBadge(r.verdict)}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    const fib = tech.fibonacci || null;
+    const piv = tech.pivots || null;
+
+    const fibTableHtml = fib ? `
+      <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Fibonacci Retracement Levels" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
+        <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.84rem;">
+          <thead>
+            <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+              <th scope="col" style="padding:8px 12px; text-align:left;">Fibonacci Ratio</th>
+              <th scope="col" style="padding:8px 12px; text-align:right;">Price Level (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#ffffff; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600;">0.0% (Swing High)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(fib.swingHigh)}</td></tr>
+            <tr style="background:#f8fafc; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600;">23.6% Retracement</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(fib.r236)}</td></tr>
+            <tr style="background:#ffffff; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600;">38.2% Retracement</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(fib.r382)}</td></tr>
+            <tr style="background:#f8fafc; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600;">50.0% Retracement</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(fib.r500)}</td></tr>
+            <tr style="background:#ffffff; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600;">61.8% (Golden Ratio)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(fib.r618)}</td></tr>
+            <tr style="background:#f8fafc; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600;">78.6% Retracement</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(fib.r786)}</td></tr>
+            <tr style="background:#ffffff;"><td style="padding:7px 12px; font-weight:600;">100.0% (Swing Low)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(fib.swingLow)}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:8px; font-size:0.82rem; color:#334155;">Current Zone: ${renderVerdictBadge(fib.zone)}</div>
+    ` : "";
+
+    const pivTableHtml = piv ? `
+      <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Classic Pivot Points" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px;">
+        <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.84rem;">
+          <thead>
+            <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+              <th scope="col" style="padding:8px 12px; text-align:left;">Classic Pivot Level</th>
+              <th scope="col" style="padding:8px 12px; text-align:right;">Price Level (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#ffffff; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600; color:#b91c1c;">Resistance 3 (R3)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(piv.r3)}</td></tr>
+            <tr style="background:#f8fafc; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600; color:#b91c1c;">Resistance 2 (R2)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(piv.r2)}</td></tr>
+            <tr style="background:#ffffff; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600; color:#b91c1c;">Resistance 1 (R1)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(piv.r1)}</td></tr>
+            <tr style="background:#eff6ff; border-bottom:1px solid #bfdbfe;"><td style="padding:7px 12px; font-weight:800; color:#1d4ed8;">Pivot Point (PP)</td><td style="padding:7px 12px; text-align:right; font-weight:800; color:#1d4ed8;">₹ ${formatInrPrice(piv.pp)}</td></tr>
+            <tr style="background:#ffffff; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600; color:#15803d;">Support 1 (S1)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(piv.s1)}</td></tr>
+            <tr style="background:#f8fafc; border-bottom:1px solid #f1f5f9;"><td style="padding:7px 12px; font-weight:600; color:#15803d;">Support 2 (S2)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(piv.s2)}</td></tr>
+            <tr style="background:#ffffff;"><td style="padding:7px 12px; font-weight:600; color:#15803d;">Support 3 (S3)</td><td style="padding:7px 12px; text-align:right; font-weight:700;">₹ ${formatInrPrice(piv.s3)}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    ` : "";
+
+    return `
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+        <div>
+          <h3 style="font-size:1.25rem; color:#0f172a; margin:0; font-weight:700;">Technicals</h3>
+          <p style="margin:3px 0 0 0; font-size:0.82rem; color:#475569;">
+            End-of-day Bhavcopy analysis (${tech.barsCount} trading sessions, as of ${escapeHtml(tech.asOfDate || "Latest")}) &bull; ${tech.maBullCount} of ${tech.maTotalValid} Moving Averages Bullish
+          </p>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:0.82rem; font-weight:700; color:#475569;">Overall Verdict:</span>
+          ${renderVerdictBadge(tech.overallRating)}
+        </div>
+      </div>
+
+      <h4 style="font-size:1.05rem; color:#0f172a; margin:0 0 10px 0; font-weight:800;">Moving Averages</h4>
+      <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Moving Averages Table" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:20px;">
+        <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.86rem; min-width:560px;">
+          <thead>
+            <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+              <th scope="col" style="padding:9px 12px; text-align:left;">Period</th>
+              <th scope="col" style="padding:9px 12px; text-align:right;">SMA (₹)</th>
+              <th scope="col" style="padding:9px 12px; text-align:center;">SMA Verdict</th>
+              <th scope="col" style="padding:9px 12px; text-align:right;">EMA (₹)</th>
+              <th scope="col" style="padding:9px 12px; text-align:center;">EMA Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${maRowsHtml}
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="font-size:1.05rem; color:#0f172a; margin:0 0 10px 0; font-weight:800;">Indicators</h4>
+      <div class="table-responsive-wrapper" tabindex="0" role="region" aria-label="Technical Indicators Table" style="overflow-x:auto; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:20px;">
+        <table class="stocks360-data-table" style="width:100%; border-collapse:collapse; font-size:0.86rem; min-width:500px;">
+          <thead>
+            <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#475569; font-size:0.75rem; text-transform:uppercase;">
+              <th scope="col" style="padding:9px 12px; text-align:left;">Indicator</th>
+              <th scope="col" style="padding:9px 12px; text-align:right;">Value</th>
+              <th scope="col" style="padding:9px 12px; text-align:center;">Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${indicatorRowsHtml}
+          </tbody>
+        </table>
+      </div>
+
+      ${(fibTableHtml || pivTableHtml) ? `
+        <h4 style="font-size:1.05rem; color:#0f172a; margin:0 0 10px 0; font-weight:800;">Fibonacci Retracement &amp; Pivot Levels</h4>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:16px;">
+          ${fibTableHtml ? `<div>${fibTableHtml}</div>` : ""}
+          ${pivTableHtml ? `<div>${pivTableHtml}</div>` : ""}
+        </div>
+      ` : ""}
+    `;
   }
 
   function buildQvtScoreSectionHtml(stock) {
@@ -2254,32 +2563,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <!-- TAB PANEL 3: TECHNICALS & QVT SCORE -->
         <div id="panel-technicals" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-technicals" tabindex="0" hidden>
           <section id="sec-technicals" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Technicals</h3>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.88rem; color:#475569;">50-DMA</span>
-                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma50 === "number" && stock.dma50 > 0 ? "₹ " + fmtPrice(stock.dma50) : "--"}</strong>
-              </div>
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.88rem; color:#475569;">200-DMA</span>
-                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma200 === "number" && stock.dma200 > 0 ? "₹ " + fmtPrice(stock.dma200) : "--"}</strong>
-              </div>
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.88rem; color:#475569;">Golden Crossover</span>
-                <strong style="font-size:0.92rem; color:${stock.goldenCross ? '#16a34a' : '#64748b'};">${stock.goldenCross ? 'Active Bullish' : 'Neutral'}</strong>
-              </div>
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.88rem; color:#475569;">14-Day RSI</span>
-                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? Number(stock.rsi14).toFixed(1) : "--"}</strong>
-              </div>
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.88rem; color:#475569;">Volume Surge</span>
-                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volumeSurge === "number" && stock.volumeSurge > 0 ? Number(stock.volumeSurge).toFixed(2) + "x" : "--"}</strong>
-              </div>
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.88rem; color:#475569;">Trading Volume</span>
-                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volume === "number" && stock.volume > 0 ? stock.volume.toLocaleString("en-IN") : "--"}</strong>
-              </div>
+            <div id="company-technicals-container">
+              ${buildComprehensiveTechnicalsHtml(stock, isProfileLoading)}
             </div>
           </section>
 
@@ -2586,6 +2871,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (qvtContainer && stock.exchanges !== "BSE") {
         qvtContainer.innerHTML = buildQvtScoreSectionHtml(stock);
       }
+
+      const techContainer = document.getElementById("company-technicals-container");
+      if (techContainer) techContainer.innerHTML = buildComprehensiveTechnicalsHtml(stock, false);
 
       const qContainer = document.getElementById("company-quarterly-container");
       if (qContainer) qContainer.innerHTML = buildQuarterlyTableHtml(stock.quarterlyResults, false);

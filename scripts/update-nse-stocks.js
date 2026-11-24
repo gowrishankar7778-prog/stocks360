@@ -10,6 +10,8 @@
  * - Zero Yahoo Finance dependency & zero external npm dependencies (uses native Node.js https + zlib)
  */
 
+const fs = require('fs');
+const path = require('path');
 const https = require('https');
 const zlib = require('zlib');
 const {
@@ -18,6 +20,21 @@ const {
   writeScreenerDataIfPresent,
   syncMarketSummaryToFirestore
 } = require('./lib/screener-store');
+const { computeComprehensiveTechnicals } = require('./lib/technicals-engine');
+
+const HISTORY_FILE = path.join(__dirname, '..', 'data', 'market', 'nse-ohlcv-history.json.gz');
+const PROFILES_DIR = path.join(__dirname, '..', 'data', 'profiles');
+const MAX_OHLCV_BARS = 220;
+
+function toIsoDate(ddmmyyyy) {
+  const parts = String(ddmmyyyy || '').split('-');
+  return parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : ddmmyyyy;
+}
+
+function getProfileShardName(symbol) {
+  const ch = String(symbol || '').trim().toUpperCase().charAt(0);
+  return /^[A-Z]$/.test(ch) ? `${ch}.json` : '0-9.json';
+}
 
 function fetchBuffer(url, redirectsLeft = 3) {
   return new Promise((resolve) => {
@@ -246,6 +263,17 @@ async function updateAllStocks() {
   const delivRes = await fetchLatestNseDeliveryMap();
   const delivMap = delivRes ? delivRes.map : new Map();
 
+  let historyMap = {};
+  if (fs.existsSync(HISTORY_FILE)) {
+    try {
+      historyMap = JSON.parse(zlib.gunzipSync(fs.readFileSync(HISTORY_FILE)).toString('utf8'));
+    } catch (e) {
+      console.warn('Warning: Could not read OHLCV history cache:', e.message);
+    }
+  }
+  const isoTradeDate = toIsoDate(bhav.tradeDate);
+  const shardUpdates = new Map();
+
   const updateLimit = process.env.UPDATE_LIMIT ? parseInt(process.env.UPDATE_LIMIT, 10) : stocks.length;
   let updatedCount = 0;
 
@@ -311,6 +339,53 @@ async function updateAllStocks() {
       } else {
         s.dma200 = fresh.cmp;
       }
+
+      // Append today's bar to rolling 220-day OHLCV cache and recompute exact technicals
+      if (!Array.isArray(historyMap[sym])) historyMap[sym] = [];
+      const arr = historyMap[sym];
+      const newBar = [isoTradeDate, fresh.dayOpen, fresh.dayHigh, fresh.dayLow, fresh.cmp, fresh.volume || 0];
+      if (arr.length > 0 && arr[arr.length - 1][0] === isoTradeDate) {
+        arr[arr.length - 1] = newBar;
+      } else {
+        arr.push(newBar);
+      }
+      if (arr.length > MAX_OHLCV_BARS) {
+        historyMap[sym] = arr.slice(-MAX_OHLCV_BARS);
+      }
+
+      const tech = computeComprehensiveTechnicals(
+        historyMap[sym].map(([d, o, h, l, c, v]) => ({ d, o, h, l, c, v }))
+      );
+      if (tech) {
+        const ma20 = tech.movingAverages['20'];
+        const ma50 = tech.movingAverages['50'];
+        const ma200 = tech.movingAverages['200'];
+        if (ma50 && ma50.sma !== null) s.dma50 = ma50.sma;
+        if (ma200 && ma200.sma !== null) s.dma200 = ma200.sma;
+        if (tech.indicators.rsi14 !== null) s.rsi14 = tech.indicators.rsi14;
+        if (tech.fibonacci) {
+          if (tech.fibonacci.swingHigh > 0) s.high52 = tech.fibonacci.swingHigh;
+          if (tech.fibonacci.swingLow > 0) s.low52 = tech.fibonacci.swingLow;
+          s.fibZone = tech.fibonacci.zone;
+        }
+        s.sma20 = ma20 ? ma20.sma : null;
+        s.ema20 = ma20 ? ma20.ema : null;
+        s.ema50 = ma50 ? ma50.ema : null;
+        s.ema200 = ma200 ? ma200.ema : null;
+        s.macdHist = tech.indicators.macd ? tech.indicators.macd.histogram : null;
+        s.adx14 = tech.indicators.adx14;
+        s.bbPct = tech.indicators.bollinger ? tech.indicators.bollinger.posPct : null;
+        s.atrPct = tech.indicators.atrPct;
+        s.stochK = tech.indicators.stochastic ? tech.indicators.stochastic.k : null;
+        s.roc14 = tech.indicators.roc14;
+        s.maBullCount = tech.maBullCount;
+        s.techRating = tech.overallRating;
+
+        const shardName = getProfileShardName(sym);
+        if (!shardUpdates.has(shardName)) shardUpdates.set(shardName, []);
+        shardUpdates.get(shardName).push({ sym, tech });
+      }
+
       s.goldenCross = s.dma50 > s.dma200 && s.cmp > s.dma50;
       s.lastUpdated = lastUpdatedLabel;
       updatedCount++;
@@ -320,6 +395,25 @@ async function updateAllStocks() {
   }
 
   console.log(`✓ Updated ${updatedCount} / ${Math.min(updateLimit, stocks.length)} NSE stocks from official Bhavcopy (${bhav.tradeDate}).`);
+
+  if (Object.keys(historyMap).length > 0) {
+    fs.mkdirSync(path.dirname(HISTORY_FILE), { recursive: true });
+    fs.writeFileSync(HISTORY_FILE, zlib.gzipSync(JSON.stringify(historyMap)));
+  }
+
+  for (const [shardName, items] of shardUpdates.entries()) {
+    const shardPath = path.join(PROFILES_DIR, shardName);
+    let shardData = {};
+    if (fs.existsSync(shardPath)) {
+      try { shardData = JSON.parse(fs.readFileSync(shardPath, 'utf8')); } catch (_) {}
+    }
+    for (const { sym, tech } of items) {
+      if (!shardData[sym] || typeof shardData[sym] !== 'object') shardData[sym] = { symbol: sym };
+      shardData[sym].technicals = tech;
+    }
+    fs.writeFileSync(shardPath, JSON.stringify(shardData));
+  }
+  console.log(`✓ Updated comprehensive technicals across ${shardUpdates.size} profile shards.`);
 
   if (writeScreenerDataIfPresent(stocks, defsContent, 'Automatically synchronized from Official NSE Bhavcopy.', lastUpdatedLabel)) {
     console.log(`✓ Updated js/screener-data.js`);

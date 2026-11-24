@@ -93,6 +93,78 @@ const SCREENER_METRIC_DEFINITIONS = {
     category: 'technical',
     description: 'Momentum oscillator from 0 to 100 (>70 overbought, <30 oversold).'
   },
+  sma20: {
+    label: '20-Day SMA',
+    unit: '₹',
+    category: 'technical',
+    description: '20-session Simple Moving Average of closing price.'
+  },
+  ema20: {
+    label: '20-Day EMA',
+    unit: '₹',
+    category: 'technical',
+    description: '20-session Exponential Moving Average of closing price.'
+  },
+  ema50: {
+    label: '50-Day EMA',
+    unit: '₹',
+    category: 'technical',
+    description: '50-session Exponential Moving Average of closing price.'
+  },
+  ema200: {
+    label: '200-Day EMA',
+    unit: '₹',
+    category: 'technical',
+    description: '200-session Exponential Moving Average of closing price.'
+  },
+  macdHist: {
+    label: 'MACD Histogram (12, 26, 9)',
+    unit: 'pts',
+    category: 'technical',
+    description: 'MACD Line minus Signal Line (>0 bullish momentum, <0 bearish).'
+  },
+  adx14: {
+    label: 'ADX (14-Day Trend Strength)',
+    unit: 'pts',
+    category: 'technical',
+    description: 'Average Directional Index (>25 indicates a strong trend).'
+  },
+  bbPct: {
+    label: 'Bollinger Band Position % (20, 2)',
+    unit: '%',
+    category: 'technical',
+    description: 'Price position within 20-day Bollinger Bands (0% lower band, 100% upper band).'
+  },
+  atrPct: {
+    label: 'ATR Volatility % (14-Day)',
+    unit: '%',
+    category: 'technical',
+    description: '14-day Average True Range as a percentage of CMP.'
+  },
+  stochK: {
+    label: 'Stochastic %K (14, 3)',
+    unit: 'pts',
+    category: 'technical',
+    description: 'Stochastic momentum oscillator (>80 overbought, <20 oversold).'
+  },
+  roc14: {
+    label: 'ROC (14-Day Rate of Change %)',
+    unit: '%',
+    category: 'technical',
+    description: '14-session percentage price change.'
+  },
+  maBullCount: {
+    label: 'Bullish Moving Averages Count (out of 16)',
+    unit: 'count',
+    category: 'technical',
+    description: 'Number of SMA & EMA periods (5, 10, 20, 26, 30, 50, 100, 200) below CMP.'
+  },
+  techRating: {
+    label: 'Overall Technical Verdict',
+    unit: 'Text',
+    category: 'technical',
+    description: 'Overall technical rating (Strong Bullish, Bullish, Neutral, Bearish, Strong Bearish).'
+  },
   volume: {
     label: "Day's Trading Volume",
     unit: 'shares',
