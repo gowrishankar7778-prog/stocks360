@@ -371,8 +371,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function selectSuggestion(symbol) {
     if (!symbol) return;
+    originalTypedQuery = "";
     if (searchInput) {
       searchInput.value = "";
+      if (typeof searchInput.removeAttribute === "function") searchInput.removeAttribute("aria-activedescendant");
       if (typeof searchInput.blur === "function") searchInput.blur();
     }
     if (suggestionBox) {
@@ -386,6 +388,11 @@ document.addEventListener("DOMContentLoaded", function () {
   if (searchInput) {
     searchInput.addEventListener("input", function () {
       originalTypedQuery = this.value;
+      if (this.value && this.value.trim().length > 0 && stockResult && !stockResult.hidden) {
+        stopCompanyVoiceOverview();
+        stockResult.hidden = true;
+        stockResult.style.display = "none";
+      }
       renderSuggestions(this.value);
     });
 
@@ -395,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // ArrowDown, ArrowUp, Enter, Escape Navigation with Live Listing Below
+    // ArrowDown, ArrowUp, Enter, Escape Navigation (dropdown-only until user selects)
     searchInput.addEventListener("keydown", function (e) {
       const isDropdownOpen = suggestionBox && suggestionBox.style.display !== "none" && currentSuggestions.length > 0;
 
@@ -409,8 +416,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const activeStock = currentSuggestions[0];
             if (activeStock) {
               this.value = activeStock.symbol;
-              activeCompanyData = activeStock;
-              renderDetailedCompanyAnalysis(activeStock);
             }
           }
           return;
@@ -421,9 +426,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const activeStock = currentSuggestions[activeSuggestionIndex];
         if (activeStock) {
           this.value = activeStock.symbol;
-          // Live render the company analysis below as user navigates with arrow keys
-          activeCompanyData = activeStock;
-          renderDetailedCompanyAnalysis(activeStock);
         }
       } else if (e.key === "ArrowUp") {
         if (!isDropdownOpen) return;
@@ -433,9 +435,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const activeStock = currentSuggestions[activeSuggestionIndex];
         if (activeStock) {
           this.value = activeStock.symbol;
-          // Live render the company analysis below as user navigates with arrow keys
-          activeCompanyData = activeStock;
-          renderDetailedCompanyAnalysis(activeStock);
         }
       } else if (e.key === "Enter") {
         e.preventDefault();
@@ -510,19 +509,30 @@ document.addEventListener("DOMContentLoaded", function () {
       cleanupCompanyJumpTabs();
       cleanupCompanyJumpTabs = null;
     }
+    originalTypedQuery = "";
+    currentSuggestions = [];
+    activeSuggestionIndex = -1;
+    if (suggestionBox) {
+      suggestionBox.style.display = "none";
+      suggestionBox.innerHTML = "";
+    }
     if (stockResult) {
       stockResult.hidden = true;
       stockResult.style.display = "none";
       stockResult.innerHTML = "";
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
     if (searchInput) {
       searchInput.value = "";
-      searchInput.focus();
+      try {
+        searchInput.focus({ preventScroll: true });
+      } catch (_) {
+        searchInput.focus();
+      }
     }
     try {
       history.pushState({}, "", "index.html");
     } catch (_) {}
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   // Visual Statement Table Renderers (Reusable for initial render + verified shard async updates)
@@ -2029,7 +2039,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   Official Website ↗
                 </a>
               </div>
-              <h2 id="company-view-title" style="margin:8px 0 4px 0; font-size:1.75rem; color:#0f172a; font-weight:800;">${escapeHtml(stock.name)}</h2>
+              <h2 id="company-view-title" tabindex="-1" style="margin:8px 0 4px 0; font-size:1.75rem; color:#0f172a; font-weight:800;">${escapeHtml(stock.name)}</h2>
               ${!isBseOnly ? `<div style="margin:6px 0 8px 0;">
                 <button type="button" id="btn-see-mf-holdings" aria-expanded="false" aria-controls="company-mf-holdings-panel" style="padding:7px 14px; font-size:0.86rem; font-weight:700; border-radius:7px; border:1px solid #1d4ed8; background:#eff6ff; color:#1d4ed8; cursor:pointer;">
                   See This Stock in Mutual Fund Holdings
@@ -2910,6 +2920,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const scrollFn = () => {
         if (headingEl && typeof headingEl.scrollIntoView === "function") {
           headingEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if (headingEl && typeof headingEl.focus === "function") {
+          try {
+            headingEl.focus({ preventScroll: true });
+          } catch (_) {
+            headingEl.focus();
+          }
         }
       };
       if (typeof requestAnimationFrame === "function") {

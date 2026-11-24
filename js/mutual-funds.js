@@ -755,18 +755,34 @@
     const overviewSection = document.getElementById("mf-scheme-overview-section");
     const amcSection = document.getElementById("mf-amc-results-section");
     const searchInput = document.getElementById("mf-search");
+    const listEl = document.getElementById("mf-search-suggestions");
     if (overviewSection) {
       overviewSection.hidden = true;
       overviewSection.innerHTML = "";
     }
     activeScheme = null;
     activePlanCode = null;
+    currentSuggestions = [];
+    activeSuggestionIndex = -1;
+    if (listEl) {
+      listEl.hidden = true;
+      listEl.innerHTML = "";
+    }
     renderQuickPills();
     if (amcSection && amcSection.innerHTML.trim() !== "" && !amcSection.hidden) {
-      amcSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      const amcHeading = amcSection.querySelector("h2") || amcSection;
+      scrollToElementHeading(amcHeading);
     } else {
-      if (searchInput) searchInput.focus();
       window.scrollTo({ top: 0, behavior: "smooth" });
+      if (searchInput) {
+        searchInput.value = "";
+        searchInput.setAttribute("aria-expanded", "false");
+        try {
+          searchInput.focus({ preventScroll: true });
+        } catch (_) {
+          searchInput.focus();
+        }
+      }
     }
     try {
       history.pushState({}, "", "mutual-funds.html");
@@ -776,19 +792,31 @@
   function closeAmcView() {
     const amcSection = document.getElementById("mf-amc-results-section");
     const searchInput = document.getElementById("mf-search");
+    const listEl = document.getElementById("mf-search-suggestions");
     if (amcSection) {
       amcSection.hidden = true;
       amcSection.innerHTML = "";
     }
     activeAmc = null;
+    currentSuggestions = [];
+    activeSuggestionIndex = -1;
+    if (listEl) {
+      listEl.hidden = true;
+      listEl.innerHTML = "";
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
     if (searchInput) {
       searchInput.value = "";
-      searchInput.focus();
+      searchInput.setAttribute("aria-expanded", "false");
+      try {
+        searchInput.focus({ preventScroll: true });
+      } catch (_) {
+        searchInput.focus();
+      }
     }
     try {
       history.pushState({}, "", "mutual-funds.html");
     } catch (_) {}
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   let cachedAmcList = null;
@@ -887,8 +915,22 @@
   }
 
   function scrollToElementHeading(el) {
-    if (!el || typeof el.scrollIntoView !== "function") return;
-    const fn = () => el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el) return;
+    const fn = () => {
+      if (typeof el.scrollIntoView === "function") {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      if (typeof el.setAttribute === "function" && !el.hasAttribute("tabindex")) {
+        el.setAttribute("tabindex", "-1");
+      }
+      if (typeof el.focus === "function") {
+        try {
+          el.focus({ preventScroll: true });
+        } catch (_) {
+          el.focus();
+        }
+      }
+    };
     if (typeof requestAnimationFrame === "function") {
       requestAnimationFrame(fn);
     } else {
@@ -948,6 +990,16 @@
 
     if (input) {
       input.addEventListener("input", function () {
+        if (this.value && this.value.trim().length > 0) {
+          const overviewSec = document.getElementById("mf-scheme-overview-section");
+          const amcSec = document.getElementById("mf-amc-results-section");
+          if (overviewSec && !overviewSec.hidden) {
+            overviewSec.hidden = true;
+          }
+          if (amcSec && !amcSec.hidden) {
+            amcSec.hidden = true;
+          }
+        }
         currentSuggestions = buildSuggestions(this.value);
         activeSuggestionIndex = currentSuggestions.length > 0 ? 0 : -1;
         renderSuggestionsDropdown();
@@ -1033,12 +1085,17 @@
         const code = quickSchemeBtn.getAttribute("data-code");
         const found = allFunds.find((f) => f.schemeCode === code);
         if (found) {
+          if (suggestionsEl) suggestionsEl.hidden = true;
           const amcSec = document.getElementById("mf-amc-results-section");
           if (amcSec) amcSec.hidden = true;
-          if (input) input.value = found.shortName || found.name;
+          if (input) {
+            input.value = "";
+            input.setAttribute("aria-expanded", "false");
+            if (typeof input.blur === "function") input.blur();
+          }
           renderSchemeOverview(found);
-          const overviewEl = document.getElementById("mf-scheme-overview-section");
-          if (overviewEl) overviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          const headingEl = document.getElementById("mf-live-scheme-title") || document.getElementById("mf-scheme-overview-section");
+          scrollToElementHeading(headingEl);
         }
         return;
       }
@@ -1048,11 +1105,13 @@
         const code = schemeRow.getAttribute("data-code");
         const found = allFunds.find((f) => f.schemeCode === code);
         if (found) {
+          if (suggestionsEl) suggestionsEl.hidden = true;
           const amcSec = document.getElementById("mf-amc-results-section");
           if (amcSec) amcSec.hidden = true;
+          if (input && typeof input.blur === "function") input.blur();
           renderSchemeOverview(found);
-          const overviewEl = document.getElementById("mf-scheme-overview-section");
-          if (overviewEl) overviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          const headingEl = document.getElementById("mf-live-scheme-title") || document.getElementById("mf-scheme-overview-section");
+          scrollToElementHeading(headingEl);
         }
       }
     });
@@ -1065,11 +1124,13 @@
         const code = schemeRow.getAttribute("data-code");
         const found = allFunds.find((f) => f.schemeCode === code);
         if (found) {
+          if (suggestionsEl) suggestionsEl.hidden = true;
           const amcSec = document.getElementById("mf-amc-results-section");
           if (amcSec) amcSec.hidden = true;
+          if (input && typeof input.blur === "function") input.blur();
           renderSchemeOverview(found);
-          const overviewEl = document.getElementById("mf-scheme-overview-section");
-          if (overviewEl) overviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          const headingEl = document.getElementById("mf-live-scheme-title") || document.getElementById("mf-scheme-overview-section");
+          scrollToElementHeading(headingEl);
         }
       }
     });
