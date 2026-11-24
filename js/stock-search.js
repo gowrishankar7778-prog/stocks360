@@ -2079,21 +2079,21 @@ document.addEventListener("DOMContentLoaded", function () {
           <span id="exchange-switcher-status" style="font-size:0.78rem; color:#64748b;">${stock.exchanges === 'BSE' ? 'Exchange: BSE' : 'Exchange: NSE'}</span>
         </div>
 
-        <!-- STICKY HYBRID TAB BAR (OPTION C JUMP-NAVIGATION) -->
-        <nav id="company-section-tabs" class="company-sticky-tabs" aria-label="Company analysis sections">
-          <div class="company-sticky-tabs-track">
-            <a href="#sec-overview" class="company-jump-tab active" data-target="sec-overview" aria-current="location">Overview</a>
-            <a href="#sec-fundamentals" class="company-jump-tab" data-target="sec-fundamentals">Fundamentals</a>
-            <a href="#sec-technicals-group" class="company-jump-tab" data-target="sec-technicals-group">${isBseOnly ? 'Technicals' : 'Technicals &amp; QVT'}</a>
-            ${!isBseOnly ? `<a href="#sec-financials" class="company-jump-tab" data-target="sec-financials">Financials</a>` : ''}
-            ${!isBseOnly ? `<a href="#sec-shareholding" class="company-jump-tab" data-target="sec-shareholding">Shareholding</a>` : ''}
-            ${!isBseOnly ? `<a href="#sec-filings" class="company-jump-tab" data-target="sec-filings">Filings</a>` : ''}
-            <a href="#sec-peers" class="company-jump-tab" data-target="sec-peers">Peers</a>
+        <!-- WAI-ARIA ACCESSIBLE TABBED UI -->
+        <div id="company-section-tabs" class="company-tabs-bar" role="tablist" aria-label="Company analysis tabs">
+          <div class="company-tabs-track">
+            <button type="button" role="tab" id="tab-overview" class="company-tab-btn active" data-tab="overview" aria-selected="true" aria-controls="panel-overview" tabindex="0">Overview</button>
+            <button type="button" role="tab" id="tab-fundamentals" class="company-tab-btn" data-tab="fundamentals" aria-selected="false" aria-controls="panel-fundamentals" tabindex="-1">Fundamentals</button>
+            <button type="button" role="tab" id="tab-technicals" class="company-tab-btn" data-tab="technicals" aria-selected="false" aria-controls="panel-technicals" tabindex="-1">${isBseOnly ? 'Technicals' : 'Technicals &amp; QVT'}</button>
+            ${!isBseOnly ? `<button type="button" role="tab" id="tab-financials" class="company-tab-btn" data-tab="financials" aria-selected="false" aria-controls="panel-financials" tabindex="-1">Financial Statements</button>` : ''}
+            ${!isBseOnly ? `<button type="button" role="tab" id="tab-shareholding" class="company-tab-btn" data-tab="shareholding" aria-selected="false" aria-controls="panel-shareholding" tabindex="-1">Shareholding</button>` : ''}
+            ${!isBseOnly ? `<button type="button" role="tab" id="tab-filings" class="company-tab-btn" data-tab="filings" aria-selected="false" aria-controls="panel-filings" tabindex="-1">Filings &amp; News</button>` : ''}
+            <button type="button" role="tab" id="tab-peers" class="company-tab-btn" data-tab="peers" aria-selected="false" aria-controls="panel-peers" tabindex="-1">Peer Comparison</button>
           </div>
-        </nav>
+        </div>
 
-        <!-- TAB SECTION 1: OVERVIEW (PRICE PERFORMANCE, CHART & ABOUT) -->
-        <div id="sec-overview" class="company-tab-section">
+        <!-- TAB PANEL 1: OVERVIEW (PRICE PERFORMANCE, CHART & ABOUT) -->
+        <div id="panel-overview" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
           <!-- PRICE PERFORMANCE -->
           <section id="sec-price" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Price Performance</h3>
@@ -2148,7 +2148,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </section>
 
           <!-- ABOUT THE COMPANY -->
-          <section id="sec-about" class="company-section-card" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <section id="sec-about" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">About the Company</h3>
             <div id="company-about-content" style="font-size:0.95rem; color:#334155; line-height:1.7;">
               ${aboutText}
@@ -2162,16 +2162,18 @@ document.addEventListener("DOMContentLoaded", function () {
           </section>
         </div>
 
-        <!-- TAB SECTION 2: FUNDAMENTALS -->
-        <section id="sec-fundamentals" class="company-tab-section company-section-card" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Fundamentals</h3>
-          <div id="company-fundamentals-container">
-            ${buildFundamentalsGridHtml(stock)}
-          </div>
-        </section>
+        <!-- TAB PANEL 2: FUNDAMENTALS -->
+        <div id="panel-fundamentals" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-fundamentals" tabindex="0" hidden>
+          <section id="sec-fundamentals" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Fundamentals</h3>
+            <div id="company-fundamentals-container">
+              ${buildFundamentalsGridHtml(stock)}
+            </div>
+          </section>
+        </div>
 
-        <!-- TAB SECTION 3: TECHNICALS & QVT SCORE -->
-        <div id="sec-technicals-group" class="company-tab-section">
+        <!-- TAB PANEL 3: TECHNICALS & QVT SCORE -->
+        <div id="panel-technicals" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-technicals" tabindex="0" hidden>
           <section id="sec-technicals" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Technicals</h3>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
@@ -2203,75 +2205,85 @@ document.addEventListener("DOMContentLoaded", function () {
           </section>
 
           <!-- STOCKS 360 QVT SCORE (NSE ONLY) -->
-          <section id="sec-qvt-score" class="company-section-card" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <section id="sec-qvt-score" class="company-section-card" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
             <div id="company-qvt-container">
               ${isBseOnly ? '' : buildQvtScoreSectionHtml(stock)}
             </div>
           </section>
         </div>
 
-        <!-- TAB SECTION 4: FINANCIALS (OFFICIAL EXCHANGE FILINGS ONLY) -->
-        <section id="sec-financials" class="company-tab-section" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 16px 0; font-weight:700; border-bottom:2px solid #e2e8f0; padding-bottom:8px;">Financials</h3>
+        ${!isBseOnly ? `
+        <!-- TAB PANEL 4: FINANCIAL STATEMENTS (OFFICIAL EXCHANGE FILINGS ONLY) -->
+        <div id="panel-financials" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-financials" tabindex="0" hidden>
+          <section id="sec-financials" style="margin-bottom:8px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 16px 0; font-weight:700; border-bottom:2px solid #e2e8f0; padding-bottom:8px;">Financial Statements</h3>
 
-          <!-- 4.1: QUARTERLY RESULTS -->
-          <div id="sec-quarterly" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Quarterly Results (₹ Crores)</h4>
-            <div id="company-quarterly-container">
-              ${buildQuarterlyTableHtml(quarterlyResults, isProfileLoading)}
+            <!-- 4.1: QUARTERLY RESULTS -->
+            <div id="sec-quarterly" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+              <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Quarterly Results (₹ Crores)</h4>
+              <div id="company-quarterly-container">
+                ${buildQuarterlyTableHtml(quarterlyResults, isProfileLoading)}
+              </div>
             </div>
-          </div>
 
-          <!-- 4.2: ANNUAL PROFIT & LOSS -->
-          <div id="sec-annual-pnl" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Annual Profit &amp; Loss (₹ Crores)</h4>
-            <div id="company-annual-pnl-container">
-              ${buildAnnualPnlTableHtml((!isBseOnly && Array.isArray(stock.annualPnl)) ? stock.annualPnl : [], isProfileLoading)}
+            <!-- 4.2: ANNUAL PROFIT & LOSS -->
+            <div id="sec-annual-pnl" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+              <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Annual Profit &amp; Loss (₹ Crores)</h4>
+              <div id="company-annual-pnl-container">
+                ${buildAnnualPnlTableHtml((!isBseOnly && Array.isArray(stock.annualPnl)) ? stock.annualPnl : [], isProfileLoading)}
+              </div>
             </div>
-          </div>
 
-          <!-- 4.3: BALANCE SHEET -->
-          <div id="sec-balancesheet" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
-            <div id="company-balancesheet-container">
-              ${buildBalanceSheetTableHtml(balanceSheet, isProfileLoading)}
+            <!-- 4.3: BALANCE SHEET -->
+            <div id="sec-balancesheet" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+              <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
+              <div id="company-balancesheet-container">
+                ${buildBalanceSheetTableHtml(balanceSheet, isProfileLoading)}
+              </div>
             </div>
-          </div>
 
-          <!-- 4.4: CASH FLOWS -->
-          <div id="sec-cashflow" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Cash Flows (₹ Crores)</h4>
-            <div id="company-cashflow-container">
-              ${buildCashFlowTableHtml(cashFlows, isProfileLoading)}
+            <!-- 4.4: CASH FLOWS -->
+            <div id="sec-cashflow" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+              <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Cash Flows (₹ Crores)</h4>
+              <div id="company-cashflow-container">
+                ${buildCashFlowTableHtml(cashFlows, isProfileLoading)}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
-        <!-- TAB SECTION 5: SHAREHOLDING PATTERN -->
-        <section id="sec-shareholding" class="company-tab-section company-section-card" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h3>
-          <div id="company-shareholding-container">
-            ${buildShareholdingHtml(shareholding, isProfileLoading)}
-          </div>
-        </section>
+        <!-- TAB PANEL 5: SHAREHOLDING PATTERN -->
+        <div id="panel-shareholding" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-shareholding" tabindex="0" hidden>
+          <section id="sec-shareholding" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h3>
+            <div id="company-shareholding-container">
+              ${buildShareholdingHtml(shareholding, isProfileLoading)}
+            </div>
+          </section>
+        </div>
 
-        <!-- TAB SECTION 6: NEWS AND CORPORATE FILINGS -->
-        <section id="sec-filings" class="company-tab-section company-section-card" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">News and Corporate Filings</h3>
-          <div id="company-news-list" style="display:flex; flex-direction:column; gap:10px;">
-            ${initialNews
-              ? renderNewsItems(initialNews, stock)
-              : `<div style="padding:12px 16px; font-size:0.9rem; color:#64748b; background:#f8fafc; border-radius:8px;">Loading latest NSE announcements...</div>`}
-          </div>
-        </section>
+        <!-- TAB PANEL 6: NEWS AND CORPORATE FILINGS -->
+        <div id="panel-filings" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-filings" tabindex="0" hidden>
+          <section id="sec-filings" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">News and Corporate Filings</h3>
+            <div id="company-news-list" style="display:flex; flex-direction:column; gap:10px;">
+              ${initialNews
+                ? renderNewsItems(initialNews, stock)
+                : `<div style="padding:12px 16px; font-size:0.9rem; color:#64748b; background:#f8fafc; border-radius:8px;">Loading latest NSE announcements...</div>`}
+            </div>
+          </section>
+        </div>
+        ` : ''}
 
-        <!-- TAB SECTION 7: PEER COMPARISON -->
-        <section id="sec-peers" class="company-tab-section company-section-card" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-          <h3 id="company-peers-title" style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.industry || stock.sector || "Sector Peers")})</h3>
-          <div id="company-peers-container">
-            ${buildStockPeerComparisonHtml(stock)}
-          </div>
-        </section>
+        <!-- TAB PANEL 7: PEER COMPARISON -->
+        <div id="panel-peers" class="company-tab-panel" role="tabpanel" aria-labelledby="tab-peers" tabindex="0" hidden>
+          <section id="sec-peers" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 id="company-peers-title" style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.industry || stock.sector || "Sector Peers")})</h3>
+            <div id="company-peers-container">
+              ${buildStockPeerComparisonHtml(stock)}
+            </div>
+          </section>
+        </div>
 
       </div>
     `;
@@ -2785,165 +2797,109 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleCompanyVoiceOverview(stock);
       });
     }
-    // Connect Sticky Hybrid Jump-Nav Tabs (Option C)
-    (function initCompanyJumpTabs() {
+    // Connect WAI-ARIA Accessible Tabbed UI
+    (function initCompanyTabs() {
       const tabNav = document.getElementById("company-section-tabs");
       if (!tabNav || typeof tabNav.querySelectorAll !== "function") return;
-      const tabTrack = tabNav.querySelector ? tabNav.querySelector(".company-sticky-tabs-track") : null;
-      const tabLinks = Array.prototype.slice.call(tabNav.querySelectorAll(".company-jump-tab"));
-      if (tabLinks.length === 0) return;
+      const tabTrack = tabNav.querySelector ? tabNav.querySelector(".company-tabs-track") : null;
+      const tabBtns = Array.prototype.slice.call(tabNav.querySelectorAll('.company-tab-btn[role="tab"]'));
+      if (tabBtns.length === 0) return;
 
-      let activeTargetId = tabLinks[0].getAttribute("data-target") || "sec-overview";
-      let programmaticScrollUntil = 0;
-      let rafPending = false;
+      const validKeys = new Set(tabBtns.map((b) => b.getAttribute("data-tab")));
 
-      function setActiveTab(targetId) {
-        if (!targetId || activeTargetId === targetId) return;
-        activeTargetId = targetId;
-        let activeLinkEl = null;
-        for (let i = 0; i < tabLinks.length; i++) {
-          const link = tabLinks[i];
-          const isMatch = link.getAttribute("data-target") === targetId;
-          if (link.classList) {
-            link.classList.toggle("active", isMatch);
+      function activateTab(tabKey, options) {
+        if (!tabKey || !validKeys.has(tabKey)) return;
+        const opts = options || {};
+        let activeBtn = null;
+
+        for (let i = 0; i < tabBtns.length; i++) {
+          const btn = tabBtns[i];
+          const key = btn.getAttribute("data-tab");
+          const isMatch = key === tabKey;
+          if (btn.classList) {
+            btn.classList.toggle("active", isMatch);
           }
-          if (isMatch) {
-            link.setAttribute("aria-current", "location");
-            activeLinkEl = link;
-          } else {
-            link.removeAttribute("aria-current");
+          btn.setAttribute("aria-selected", isMatch ? "true" : "false");
+          btn.setAttribute("tabindex", isMatch ? "0" : "-1");
+
+          const panelId = btn.getAttribute("aria-controls");
+          const panelEl = panelId ? document.getElementById(panelId) : null;
+          if (panelEl) {
+            panelEl.hidden = !isMatch;
+            if (isMatch) {
+              if (typeof panelEl.removeAttribute === "function") panelEl.removeAttribute("hidden");
+            } else {
+              if (typeof panelEl.setAttribute === "function") panelEl.setAttribute("hidden", "");
+            }
           }
+
+          if (isMatch) activeBtn = btn;
         }
-        // Keep active pill centered horizontally on compact/mobile screens without affecting vertical scroll
-        if (activeLinkEl && tabTrack && typeof tabTrack.scrollTo === "function" && tabTrack.scrollWidth > tabTrack.clientWidth) {
-          const desiredLeft = activeLinkEl.offsetLeft - (tabTrack.clientWidth / 2) + (activeLinkEl.offsetWidth / 2);
+
+        if (activeBtn && opts.moveFocus && typeof activeBtn.focus === "function") {
+          activeBtn.focus();
+        }
+
+        // Keep active tab scrolled horizontally into view on mobile screens
+        if (activeBtn && tabTrack && typeof tabTrack.scrollTo === "function" && tabTrack.scrollWidth > tabTrack.clientWidth) {
+          const desiredLeft = activeBtn.offsetLeft - (tabTrack.clientWidth / 2) + (activeBtn.offsetWidth / 2);
           try {
             tabTrack.scrollTo({ left: Math.max(0, desiredLeft), behavior: "smooth" });
           } catch (_) {
             tabTrack.scrollLeft = Math.max(0, desiredLeft);
           }
         }
-      }
 
-      function jumpToSection(targetId, fromKeyboard) {
-        const targetEl = document.getElementById(targetId);
-        if (!targetEl || targetEl.hidden || (typeof targetEl.hasAttribute === "function" && targetEl.hasAttribute("hidden"))) return;
-        programmaticScrollUntil = Date.now() + 750;
-        setActiveTab(targetId);
-
-        if (typeof targetEl.scrollIntoView === "function") {
-          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-
-        // Sync screen-reader & keyboard reading cursor to the section heading without visual outline noise
-        const headingEl = targetEl.querySelector ? targetEl.querySelector("h3, h4") : null;
-        const focusTarget = headingEl || targetEl;
-        if (focusTarget && typeof focusTarget.focus === "function") {
-          if (typeof focusTarget.setAttribute === "function" && !focusTarget.hasAttribute("tabindex")) {
-            focusTarget.setAttribute("tabindex", "-1");
-          }
-          const applyFocus = () => {
-            try {
-              focusTarget.focus({ preventScroll: true });
-            } catch (_) {
-              if (fromKeyboard) focusTarget.focus();
-            }
-          };
-          if (fromKeyboard) {
-            setTimeout(applyFocus, 280);
-          } else {
-            applyFocus();
-          }
+        if (opts.updateHash !== false && typeof history !== "undefined" && typeof history.replaceState === "function" && typeof window !== "undefined" && window.location) {
+          try {
+            const nextUrl = window.location.pathname + window.location.search + "#" + encodeURIComponent(tabKey);
+            history.replaceState(history.state, "", nextUrl);
+          } catch (_) {}
         }
       }
 
-      tabLinks.forEach((link, idx) => {
-        link.addEventListener("click", (e) => {
-          if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      tabBtns.forEach((btn, idx) => {
+        btn.addEventListener("click", (e) => {
           e.preventDefault();
-          const targetId = link.getAttribute("data-target");
-          const fromKeyboard = e.detail === 0;
-          if (targetId) jumpToSection(targetId, fromKeyboard);
+          const key = btn.getAttribute("data-tab");
+          if (key) activateTab(key, { moveFocus: false, updateHash: true });
         });
 
-        link.addEventListener("keydown", (e) => {
+        btn.addEventListener("keydown", (e) => {
           let nextIdx = -1;
           if (e.key === "ArrowRight") {
-            nextIdx = (idx + 1) % tabLinks.length;
+            nextIdx = (idx + 1) % tabBtns.length;
           } else if (e.key === "ArrowLeft") {
-            nextIdx = (idx - 1 + tabLinks.length) % tabLinks.length;
+            nextIdx = (idx - 1 + tabBtns.length) % tabBtns.length;
           } else if (e.key === "Home") {
             nextIdx = 0;
           } else if (e.key === "End") {
-            nextIdx = tabLinks.length - 1;
-          }
-          if (nextIdx >= 0 && tabLinks[nextIdx]) {
+            nextIdx = tabBtns.length - 1;
+          } else if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            tabLinks[nextIdx].focus();
+            const key = btn.getAttribute("data-tab");
+            if (key) activateTab(key, { moveFocus: false, updateHash: true });
+            return;
+          }
+
+          if (nextIdx >= 0 && tabBtns[nextIdx]) {
+            e.preventDefault();
+            const nextKey = tabBtns[nextIdx].getAttribute("data-tab");
+            if (nextKey) activateTab(nextKey, { moveFocus: true, updateHash: true });
           }
         });
       });
 
-      function updateActiveTabOnScroll() {
-        rafPending = false;
-        if (Date.now() < programmaticScrollUntil) return;
-        if (!stockResult || stockResult.hidden) return;
-
-        const navRect = typeof tabNav.getBoundingClientRect === "function" ? tabNav.getBoundingClientRect() : { height: 56 };
-        const triggerLine = Math.max(80, (navRect.height || 56) + 38);
-        let candidateId = tabLinks[0].getAttribute("data-target");
-
-        for (let i = 0; i < tabLinks.length; i++) {
-          const tid = tabLinks[i].getAttribute("data-target");
-          const sec = tid ? document.getElementById(tid) : null;
-          if (!sec || sec.hidden || (typeof sec.hasAttribute === "function" && sec.hasAttribute("hidden"))) continue;
-          if (typeof sec.getBoundingClientRect !== "function") continue;
-          const rect = sec.getBoundingClientRect();
-          if (rect.top <= triggerLine) {
-            candidateId = tid;
-          }
-        }
-
-        // If scrolled near the very bottom of the document, allow the final visible section to highlight cleanly
-        if (typeof window !== "undefined" && typeof document.documentElement !== "undefined") {
-          const docEl = document.documentElement;
-          const nearBottom = (window.innerHeight + (window.scrollY || window.pageYOffset || 0)) >= (docEl.scrollHeight - 28);
-          if (nearBottom) {
-            for (let j = tabLinks.length - 1; j >= 0; j--) {
-              const lastTid = tabLinks[j].getAttribute("data-target");
-              const lastSec = lastTid ? document.getElementById(lastTid) : null;
-              if (lastSec && !lastSec.hidden && typeof lastSec.getBoundingClientRect === "function") {
-                const lr = lastSec.getBoundingClientRect();
-                if (lr.top < window.innerHeight * 0.72) {
-                  candidateId = lastTid;
-                }
-                break;
-              }
-            }
-          }
-        }
-
-        if (candidateId) setActiveTab(candidateId);
-      }
-
-      function onScrollOrResize() {
-        if (rafPending) return;
-        rafPending = true;
-        if (typeof requestAnimationFrame === "function") {
-          requestAnimationFrame(updateActiveTabOnScroll);
-        } else {
-          updateActiveTabOnScroll();
+      // Restore tab from URL hash if present (supports #financials or legacy #sec-financials)
+      let initialTab = "overview";
+      if (typeof window !== "undefined" && window.location && window.location.hash) {
+        const rawHash = decodeURIComponent(window.location.hash.replace(/^#/, "")).replace(/^sec-/, "").toLowerCase();
+        const hashAlias = rawHash === "technicals-group" ? "technicals" : rawHash;
+        if (validKeys.has(hashAlias)) {
+          initialTab = hashAlias;
         }
       }
-
-      if (typeof window !== "undefined" && typeof window.addEventListener === "function") {
-        window.addEventListener("scroll", onScrollOrResize, { passive: true });
-        window.addEventListener("resize", onScrollOrResize, { passive: true });
-        cleanupCompanyJumpTabs = function () {
-          window.removeEventListener("scroll", onScrollOrResize);
-          window.removeEventListener("resize", onScrollOrResize);
-        };
-      }
+      activateTab(initialTab, { moveFocus: false, updateHash: false });
     })();
 
     warmUpLocalVoice();

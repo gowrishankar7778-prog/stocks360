@@ -2565,23 +2565,15 @@ body.high-contrast .focused-nav-hint {
 }
 
 /* ==========================================================================
-   COMPANY ANALYSIS STICKY HYBRID TAB BAR (OPTION C JUMP-NAVIGATION)
+   COMPANY ANALYSIS WAI-ARIA ACCESSIBLE TABBED UI
    ========================================================================== */
-.company-sticky-tabs {
-  position: sticky;
-  top: 0;
-  z-index: 85;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-top: 1px solid #e2e8f0;
+.company-tabs-bar {
   border-bottom: 2px solid #e2e8f0;
-  margin: 0 -24px 22px -24px;
-  padding: 10px 24px;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
-.company-sticky-tabs-track {
+.company-tabs-track {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2594,99 +2586,104 @@ body.high-contrast .focused-nav-hint {
   padding: 2px 0;
 }
 
-.company-sticky-tabs-track::-webkit-scrollbar {
+.company-tabs-track::-webkit-scrollbar {
   display: none;
 }
 
-.company-jump-tab {
+.company-tab-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   scroll-snap-align: start;
-  padding: 8px 16px;
+  padding: 9px 18px;
   border-radius: 9999px;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.25;
   color: #475569;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  text-decoration: none;
+  border: 1px solid #cbd5e1;
   white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
-.company-jump-tab:hover {
+.company-tab-btn:hover {
   background: #eff6ff;
   color: #1d4ed8;
-  border-color: #bfdbfe;
+  border-color: #93c5fd;
 }
 
-.company-jump-tab.active,
-.company-jump-tab[aria-current="location"] {
+.company-tab-btn.active,
+.company-tab-btn[aria-selected="true"] {
   background: #2563eb;
   color: #ffffff;
   border-color: #1d4ed8;
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
 }
 
-.company-jump-tab:focus-visible {
+.company-tab-btn:focus-visible {
   outline: 3px solid #2563eb;
   outline-offset: 2px;
 }
 
-.company-tab-section {
-  scroll-margin-top: 76px;
+.company-tab-panel[hidden] {
+  display: none !important;
 }
 
-.company-tab-section h3[tabindex="-1"]:focus:not(:focus-visible),
-.company-tab-section h4[tabindex="-1"]:focus:not(:focus-visible),
-.company-tab-section[tabindex="-1"]:focus:not(:focus-visible) {
+.company-tab-panel:not([hidden]) {
+  animation: companyTabFadeIn 0.16s ease-out;
+}
+
+.company-tab-panel:focus {
   outline: none;
 }
 
+.company-tab-panel:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+@keyframes companyTabFadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 768px) {
-  .company-sticky-tabs {
-    margin: 0 -16px 18px -16px;
-    padding: 9px 16px;
+  .company-tabs-bar {
+    margin-bottom: 16px;
+    padding-bottom: 8px;
   }
 
-  .company-jump-tab {
+  .company-tab-btn {
     padding: 8px 14px;
     font-size: 0.86rem;
-    min-height: 38px;
-  }
-
-  .company-tab-section {
-    scroll-margin-top: 72px;
+    min-height: 40px;
   }
 }
 
-/* High Contrast Mode (Special Accessibility) for Sticky Hybrid Tab Bar */
-body.high-contrast .company-sticky-tabs {
-  background: #000000 !important;
-  border-top: 2px solid #ffff00 !important;
+/* High Contrast Mode (Special Accessibility) for Company Analysis Tabs */
+body.high-contrast .company-tabs-bar {
   border-bottom: 2px solid #ffff00 !important;
-  box-shadow: none !important;
 }
 
-body.high-contrast .company-jump-tab {
+body.high-contrast .company-tab-btn {
   background: #000000 !important;
   color: #ffff00 !important;
   border: 2px solid #ffff00 !important;
 }
 
-body.high-contrast .company-jump-tab:hover,
-body.high-contrast .company-jump-tab:focus-visible {
+body.high-contrast .company-tab-btn:hover,
+body.high-contrast .company-tab-btn:focus-visible {
   background: #ffff00 !important;
   color: #000000 !important;
   outline: 2px solid #ffffff !important;
 }
 
-body.high-contrast .company-jump-tab.active,
-body.high-contrast .company-jump-tab[aria-current="location"] {
+body.high-contrast .company-tab-btn.active,
+body.high-contrast .company-tab-btn[aria-selected="true"] {
   background: #ffff00 !important;
   color: #000000 !important;
   border: 2px solid #ffffff !important;
