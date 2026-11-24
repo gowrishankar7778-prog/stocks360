@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     askInput.value = "";
+    askInput.placeholder = "Ask a follow-up question about the market...";
     const existingStream = askResponse.querySelector(".ai-chat-stream");
     if (existingStream) {
       const tempTurn = document.createElement("div");

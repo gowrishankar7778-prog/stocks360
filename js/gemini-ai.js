@@ -1105,6 +1105,38 @@ const StocksGeminiAI = (function () {
     return parsed;
   }
 
+  // Format plain/markdown text into accessible HTML
+  function formatAiAnswer(text) {
+    if (!text) return "";
+    let str = escapeHtml(String(text).trim());
+    str = str.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    const lines = str.split("\n");
+    let inList = false;
+    const output = [];
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) {
+        if (inList) { output.push("</ul>"); inList = false; }
+        output.push("<p style='margin:6px 0;'></p>");
+      } else if (/^[-*•]\s+/.test(line)) {
+        if (!inList) { output.push("<ul style='margin:6px 0 10px 20px; padding:0;'>"); inList = true; }
+        output.push(`<li style='margin-bottom:4px;'>${line.replace(/^[-*•]\s+/, "")}</li>`);
+      } else if (/^\d+\.\s+/.test(line)) {
+        if (inList) { output.push("</ul>"); inList = false; }
+        output.push(`<p style='margin:6px 0; font-weight:500;'>${line}</p>`);
+      } else if (/^###\s+/.test(line)) {
+        if (inList) { output.push("</ul>"); inList = false; }
+        output.push(`<h5 style='margin:12px 0 4px 0; font-size:0.96rem; color:#1e3a8a; font-weight:700;'>${line.replace(/^###\s+/, "")}</h5>`);
+      } else {
+        if (inList) { output.push("</ul>"); inList = false; }
+        output.push(`<p style='margin:6px 0;'>${line}</p>`);
+      }
+    }
+    if (inList) output.push("</ul>");
+    return output.join("");
+  }
+
   // ---------------- NATURAL CONVERSATIONAL CHAT UI RENDERER ----------------
   function renderAiResponseCard(containerEl, resultObj, onSelectFollowUp) {
     if (!containerEl || !resultObj) return;
@@ -1118,16 +1150,45 @@ const StocksGeminiAI = (function () {
 
     const turnsHtml = history
       .map(
-        (turn) => `
-        <div class="ai-chat-turn" style="margin-bottom: 14px;">
-          <div style="display:flex; justify-content:flex-end; margin-bottom: 8px;">
-            <div style="background:#eff6ff; color:#1e3a8a; border:1px solid #bfdbfe; padding:8px 14px; border-radius:16px 16px 4px 16px; max-width:85%; font-size:0.95rem; font-weight:500; line-height:1.45;">
+        (turn, idx) => `
+        <div class="ai-chat-turn" style="margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #e2e8f0;">
+          <!-- 1. QUESTION SECTION IN CLEAR HEADING -->
+          <div class="ai-question-block" style="margin-bottom: 14px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 4px;">
+              <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:#64748b; letter-spacing:0.5px; background:#f1f5f9; padding:2px 8px; border-radius:4px;">
+                Question
+              </span>
+            </div>
+            <h3 class="ai-question-heading" style="margin: 6px 0 10px 0; font-size: 1.15rem; font-weight: 700; color: #0f172a; line-height: 1.45;">
               ${escapeHtml(turn.question)}
+            </h3>
+            <!-- QUESTION OPTIONS: EDIT & COPY BUTTONS -->
+            <div class="ai-question-actions" style="display:flex; gap:8px; align-items:center;">
+              <button type="button" class="ai-action-btn ai-edit-btn" data-question="${escapeHtml(turn.question)}" style="display:inline-flex; align-items:center; gap:5px; font-size:0.82rem; font-weight:600; padding:5px 12px; border-radius:6px; border:1px solid #cbd5e1; background:#ffffff; color:#334155; cursor:pointer;" aria-label="Edit question">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                <span>Edit</span>
+              </button>
+              <button type="button" class="ai-action-btn ai-copy-btn" data-copy-text="${escapeHtml(turn.question)}" style="display:inline-flex; align-items:center; gap:5px; font-size:0.82rem; font-weight:600; padding:5px 12px; border-radius:6px; border:1px solid #cbd5e1; background:#ffffff; color:#334155; cursor:pointer;" aria-label="Copy question to clipboard">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy</span>
+              </button>
             </div>
           </div>
-          <div style="display:flex; justify-content:flex-start;">
-            <div style="background:#ffffff; color:#1e293b; border:1px solid #e2e8f0; padding:12px 16px; border-radius:16px 16px 16px 4px; max-width:92%; font-size:0.98rem; line-height:1.65; box-shadow:0 1px 2px rgba(15,23,42,0.04);">
-              ${escapeHtml(turn.answer)}
+
+          <!-- 2. AI RESPONSE SECTION IN NEXT HEADING -->
+          <div class="ai-response-block" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 18px; box-shadow:0 1px 3px rgba(15,23,42,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid #f1f5f9;">
+              <h4 class="ai-response-heading" style="margin:0; font-size:1.02rem; font-weight:700; color:#1d4ed8; display:flex; align-items:center; gap:8px;">
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#2563eb;"></span>
+                <span>Stocks 360 AI Response</span>
+              </h4>
+              <button type="button" class="ai-action-btn ai-copy-btn" data-copy-text="${escapeHtml(turn.answer)}" style="display:inline-flex; align-items:center; gap:4px; font-size:0.78rem; font-weight:600; padding:3px 9px; border-radius:4px; border:1px solid #e2e8f0; background:#f8fafc; color:#64748b; cursor:pointer;" aria-label="Copy AI response">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Response</span>
+              </button>
+            </div>
+            <div class="ai-response-content" style="color:#1e293b; font-size:0.98rem; line-height:1.7;">
+              ${formatAiAnswer(turn.answer)}
             </div>
           </div>
         </div>
@@ -1138,13 +1199,13 @@ const StocksGeminiAI = (function () {
     const chipsHtml =
       suggestions.length > 0
         ? `
-        <div class="ai-natural-suggestions" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+        <div class="ai-natural-suggestions" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
           ${suggestions
             .map(
               (q) =>
                 `<button type="button" class="quick-ticker-pill ai-followup-chip" data-followup="${escapeHtml(
                   q
-                )}" style="text-align:left; font-size:0.85rem; padding:6px 13px; border-radius:999px; background:#f8fafc; border:1px solid #cbd5e1; color:#1e40af; cursor:pointer;">${escapeHtml(
+                )}" style="text-align:left; font-size:0.85rem; padding:6px 14px; border-radius:999px; background:#f8fafc; border:1px solid #cbd5e1; color:#1e40af; cursor:pointer;">${escapeHtml(
                   q
                 )}</button>`
             )
@@ -1154,19 +1215,80 @@ const StocksGeminiAI = (function () {
         : "";
 
     containerEl.innerHTML = `
-      <div class="ask360-ai-card" tabindex="-1" style="padding:14px 16px; background:#f8fafc; border-radius:14px; border:1px solid #e2e8f0;">
-        <div class="ai-chat-stream" style="max-height:340px; overflow-y:auto; padding-right:4px;">
+      <div class="ask360-ai-card" tabindex="-1" style="padding:16px 18px; background:#f8fafc; border-radius:14px; border:1px solid #e2e8f0;">
+        <div class="ai-chat-stream" style="max-height:420px; overflow-y:auto; padding-right:4px;">
           ${turnsHtml}
         </div>
         ${chipsHtml}
       </div>
     `;
 
+    // Find the associated text input to keep it fresh and clean
+    const parentBox = containerEl.closest(".ask360-box") || document;
+    const askInputEl = parentBox.querySelector("input[type='text']") || document.getElementById("home-ask360-input");
+
+    // Ensure input field is clean & ready for continuing conversation
+    if (askInputEl) {
+      askInputEl.value = "";
+      askInputEl.placeholder = "Ask a follow-up question about the market...";
+    }
+
+    // Auto-scroll stream to latest message
     const streamEl = containerEl.querySelector(".ai-chat-stream");
     if (streamEl) {
       streamEl.scrollTop = streamEl.scrollHeight;
     }
 
+    // Wire up Edit buttons (populates the question back into the input box for editing)
+    containerEl.querySelectorAll(".ai-edit-btn").forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const questionText = this.getAttribute("data-question");
+        if (askInputEl && questionText) {
+          askInputEl.value = questionText;
+          askInputEl.focus();
+          askInputEl.select();
+          askInputEl.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    });
+
+    // Wire up Copy buttons (copies text and gives friendly confirmation)
+    containerEl.querySelectorAll(".ai-copy-btn").forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const textToCopy = this.getAttribute("data-copy-text");
+        if (!textToCopy) return;
+
+        const copyAction = navigator.clipboard && navigator.clipboard.writeText
+          ? navigator.clipboard.writeText(textToCopy)
+          : Promise.reject();
+
+        copyAction
+          .catch(() => {
+            const ta = document.createElement("textarea");
+            ta.value = textToCopy;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+          })
+          .finally(() => {
+            const span = btn.querySelector("span");
+            const originalText = span ? span.textContent : "Copy";
+            if (span) span.textContent = "Copied!";
+            btn.style.borderColor = "#16a34a";
+            btn.style.color = "#16a34a";
+            setTimeout(() => {
+              if (span) span.textContent = originalText;
+              btn.style.borderColor = "";
+              btn.style.color = "";
+            }, 2000);
+          });
+      });
+    });
+
+    // Wire up follow-up chips
     if (typeof onSelectFollowUp === "function") {
       containerEl.querySelectorAll(".ai-followup-chip").forEach((chip) => {
         chip.addEventListener("click", function (e) {
@@ -1174,6 +1296,7 @@ const StocksGeminiAI = (function () {
           e.stopPropagation();
           const followUpQ = this.getAttribute("data-followup");
           if (followUpQ) {
+            if (askInputEl) askInputEl.value = "";
             onSelectFollowUp(followUpQ);
           }
         });
