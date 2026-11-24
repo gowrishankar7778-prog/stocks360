@@ -1393,7 +1393,7 @@ Provide its business overview, latest reported fundamentals, investment thesis (
         timeoutMs: 40000,
         totalBudgetMs: 42000,
         useSearch: true,
-        forceModel: "gemini-2.5-flash",
+        forceModel: "gemini-3.5-flash-lite",
         onError: (model, result) => {
           // 429 / 400 / 403 here means Search grounding is not available on this key (e.g. free tier)
           if (result && (result.status === 429 || result.status === 400 || result.status === 403)) {
@@ -1419,7 +1419,7 @@ Provide its business overview, latest reported fundamentals, investment thesis (
         fallbackTimeoutMs: 15000,
         totalBudgetMs: 50000,
         responseMimeType: "application/json",
-        forceModel: "gemini-2.5-flash"
+        forceModel: "gemini-3.5-flash-lite"
       });
       parsed = parseProfileJson(rawText);
     }
