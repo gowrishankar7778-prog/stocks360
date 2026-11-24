@@ -420,103 +420,126 @@
           <span class="focused-nav-hint">Press Esc to return</span>
         </div>
 
-        <!-- HEADING 1: MUTUAL FUND CORE SCHEME -->
-        <section id="mf-sec-core" style="margin-bottom:32px;">
-          <h2 style="font-size:1.25rem; color:#0f172a; margin:0 0 16px 0; font-weight:700; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
-            Mutual Fund Core Scheme
-          </h2>
-
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:20px; margin-bottom:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #e2e8f0;">
-              <div>
-                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:0.84rem; color:#64748b; font-weight:600; margin-bottom:6px;">
-                  <span>${escapeHtml(scheme.fundHouse)} &bull; ${escapeHtml(scheme.category)} &bull; AMFI Code: <span id="mf-live-scheme-code">${escapeHtml(currentPlanCode)}</span></span>
-                  <a href="${escapeHtml(officialLinks.websiteUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem; color:#2563eb; font-weight:700; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
-                    Official AMC Website ↗
-                  </a>
-                  <a href="${escapeHtml(officialLinks.sidUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem; color:#1e293b; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#ffffff; border:1px solid #cbd5e1;">
-                    Scheme Information Document (SID) ↗
-                  </a>
-                </div>
-                <h3 id="mf-live-scheme-title" style="font-size:1.5rem; color:#0f172a; margin:0; font-weight:800;">
-                  ${escapeHtml(scheme.name)}
-                </h3>
+        <!-- SCHEME HERO HEADER & PLAN SWITCHER -->
+        <div id="mf-scheme-hero" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:20px; margin-bottom:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid #e2e8f0;">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:0.84rem; color:#64748b; font-weight:600; margin-bottom:6px;">
+                <span>${escapeHtml(scheme.fundHouse)} &bull; ${escapeHtml(scheme.category)} &bull; AMFI Code: <span id="mf-live-scheme-code">${escapeHtml(currentPlanCode)}</span></span>
+                <a href="${escapeHtml(officialLinks.websiteUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem; color:#2563eb; font-weight:700; text-decoration:none; padding:2px 8px; border-radius:4px; background:#eff6ff; border:1px solid #bfdbfe;">
+                  Official AMC Website ↗
+                </a>
+                <a href="${escapeHtml(officialLinks.sidUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem; color:#1e293b; font-weight:600; text-decoration:none; padding:2px 8px; border-radius:4px; background:#ffffff; border:1px solid #cbd5e1;">
+                  Scheme Information Document (SID) ↗
+                </a>
               </div>
-
-              <div style="text-align:right;">
-                <span id="mf-live-nav-date" style="display:block; font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase;">NAV (${escapeHtml(plans[0].date || scheme.navDate || "Latest")})</span>
-                <strong id="mf-live-nav-val" style="display:block; font-size:1.55rem; font-weight:800; color:#0f172a; margin-top:2px;">
-                  ₹ ${Number(plans[0].nav || scheme.nav).toFixed(4)}
-                </strong>
-              </div>
+              <h2 id="mf-live-scheme-title" style="font-size:1.45rem; color:#0f172a; margin:0; font-weight:800;">
+                ${escapeHtml(scheme.name)}
+              </h2>
             </div>
 
-            <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between;">
-              <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
-                <div style="min-width:240px;">
-                  <label for="mf-plan-combo" style="display:block; font-size:0.82rem; font-weight:600; color:#475569; margin-bottom:6px;">
-                    Plan / Option (${plans.length} Official AMFI ${plans.length === 1 ? "Plan" : "Plans"})
-                  </label>
-                  <select id="mf-plan-combo" style="padding:9px 14px; font-size:0.9rem; font-weight:600; color:#0f172a; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; cursor:pointer; width:100%;">
-                    ${plans
-                      .map(
-                        (pl, idx) =>
-                          `<option value="${idx}">${escapeHtml(pl.plan)} — ₹${Number(pl.nav).toFixed(2)} (Code: ${escapeHtml(pl.code)})</option>`
-                      )
-                      .join("")}
-                  </select>
-                </div>
-
-                <div style="min-width:200px;">
-                  <label for="mf-period-combo" style="display:block; font-size:0.82rem; font-weight:600; color:#475569; margin-bottom:6px;">
-                    Return Period
-                  </label>
-                  <select id="mf-period-combo" style="padding:9px 14px; font-size:0.92rem; font-weight:600; color:#0f172a; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; cursor:pointer; width:100%;">
-                    <option value="1M">1 Month</option>
-                    <option value="3M">3 Months</option>
-                    <option value="6M">6 Months</option>
-                    <option value="1Y">1 Year</option>
-                    <option value="3Y" selected>3 Years</option>
-                    <option value="5Y">5 Years</option>
-                    <option value="inception">Since Inception</option>
-                  </select>
-                </div>
-              </div>
-
-              <div id="mf-period-combo-output" aria-live="polite" style="display:flex; gap:24px; flex-wrap:wrap; align-items:center;"></div>
+            <div style="text-align:right;">
+              <span id="mf-live-nav-date" style="display:block; font-size:0.75rem; font-weight:600; color:#64748b; text-transform:uppercase;">NAV (${escapeHtml(plans[0].date || scheme.navDate || "Latest")})</span>
+              <strong id="mf-live-nav-val" style="display:block; font-size:1.55rem; font-weight:800; color:#0f172a; margin-top:2px;">
+                ₹ ${Number(plans[0].nav || scheme.nav).toFixed(4)}
+              </strong>
             </div>
           </div>
 
-          <div>
-            <h3 style="font-size:1.1rem; color:#0f172a; margin:0 0 8px 0; font-weight:700;">
-              About the Scheme
+          <div style="min-width:240px; max-width:480px;">
+            <label for="mf-plan-combo" style="display:block; font-size:0.82rem; font-weight:600; color:#475569; margin-bottom:6px;">
+              Plan / Option (${plans.length} Official AMFI ${plans.length === 1 ? "Plan" : "Plans"})
+            </label>
+            <select id="mf-plan-combo" style="padding:9px 14px; font-size:0.9rem; font-weight:600; color:#0f172a; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; cursor:pointer; width:100%;">
+              ${plans
+                .map(
+                  (pl, idx) =>
+                    `<option value="${idx}">${escapeHtml(pl.plan)} — ₹${Number(pl.nav).toFixed(2)} (Code: ${escapeHtml(pl.code)})</option>`
+                )
+                .join("")}
+            </select>
+          </div>
+        </div>
+
+        <!-- WAI-ARIA ACCESSIBLE TABBED UI -->
+        <div id="mf-section-tabs" class="company-tabs-bar" role="tablist" aria-label="Mutual fund scheme tabs">
+          <div class="company-tabs-track">
+            <button type="button" role="tab" id="mf-tab-overview" class="company-tab-btn active" data-tab="overview" aria-selected="true" aria-controls="mf-panel-overview" tabindex="0">Returns &amp; Overview</button>
+            <button type="button" role="tab" id="mf-tab-risk" class="company-tab-btn" data-tab="risk" aria-selected="false" aria-controls="mf-panel-risk" tabindex="-1">Risk &amp; Volatility Ratios</button>
+            <button type="button" role="tab" id="mf-tab-documents" class="company-tab-btn" data-tab="documents" aria-selected="false" aria-controls="mf-panel-documents" tabindex="-1">Official Documents</button>
+          </div>
+        </div>
+
+        <!-- TAB PANEL 1: RETURNS & OVERVIEW -->
+        <div id="mf-panel-overview" class="company-tab-panel" role="tabpanel" aria-labelledby="mf-tab-overview" tabindex="0">
+          <section id="mf-sec-core" class="company-section-card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.2rem; color:#0f172a; margin:0 0 14px 0; font-weight:700; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              Historical Returns &amp; Scheme Overview
             </h3>
-            <p style="font-size:0.93rem; color:#334155; line-height:1.65; margin:0 0 12px 0;">
-              ${escapeHtml(scheme.about)}${scheme.objective ? ` ${escapeHtml(scheme.objective)}` : ""}
+
+            <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px; margin-bottom:18px;">
+              <div style="min-width:220px;">
+                <label for="mf-period-combo" style="display:block; font-size:0.82rem; font-weight:600; color:#475569; margin-bottom:6px;">
+                  Return Period
+                </label>
+                <select id="mf-period-combo" style="padding:9px 14px; font-size:0.92rem; font-weight:600; color:#0f172a; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; cursor:pointer; width:100%;">
+                  <option value="1M">1 Month</option>
+                  <option value="3M">3 Months</option>
+                  <option value="6M">6 Months</option>
+                  <option value="1Y">1 Year</option>
+                  <option value="3Y" selected>3 Years</option>
+                  <option value="5Y">5 Years</option>
+                  <option value="inception">Since Inception</option>
+                </select>
+              </div>
+              <div id="mf-period-combo-output" aria-live="polite" style="display:flex; gap:24px; flex-wrap:wrap; align-items:center;"></div>
+            </div>
+
+            <div>
+              <h4 style="font-size:1.05rem; color:#0f172a; margin:0 0 8px 0; font-weight:700;">
+                About the Scheme
+              </h4>
+              <p style="font-size:0.93rem; color:#334155; line-height:1.65; margin:0;">
+                ${escapeHtml(scheme.about)}${scheme.objective ? ` ${escapeHtml(scheme.objective)}` : ""}
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <!-- TAB PANEL 2: RISK RATIOS (NAV-DERIVED ONLY) -->
+        <div id="mf-panel-risk" class="company-tab-panel" role="tabpanel" aria-labelledby="mf-tab-risk" tabindex="0" hidden>
+          <section id="mf-sec-risk" class="company-section-card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.2rem; color:#0f172a; margin:0 0 14px 0; font-weight:700; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              NAV Volatility &amp; Risk Ratios (1-Year Daily NAV)
+            </h3>
+            <div id="mf-risk-cards-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+              ${buildRiskCardsHtml(currentRisk, !hasInitialMetrics)}
+            </div>
+          </section>
+        </div>
+
+        <!-- TAB PANEL 3: OFFICIAL DOCUMENTS & LINKS -->
+        <div id="mf-panel-documents" class="company-tab-panel" role="tabpanel" aria-labelledby="mf-tab-documents" tabindex="0" hidden>
+          <section id="mf-sec-documents" class="company-section-card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.2rem; color:#0f172a; margin:0 0 14px 0; font-weight:700; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+              Official AMC, SEBI &amp; AMFI Documents
+            </h3>
+            <p style="font-size:0.9rem; color:#475569; margin:0 0 14px 0;">
+              Access official regulatory disclosures, Scheme Information Documents (SID), and daily NAV history directly from authorized portals.
             </p>
-            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:4px;">
-              <a href="${escapeHtml(officialLinks.websiteUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <a href="${escapeHtml(officialLinks.websiteUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.86rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:8px 14px; border-radius:6px; text-decoration:none;">
                 Visit Official ${escapeHtml(scheme.amcShort || scheme.fundHouse)} Scheme Portal ↗
               </a>
-              <a href="${escapeHtml(officialLinks.sidUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
+              <a href="${escapeHtml(officialLinks.sidUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.86rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:8px 14px; border-radius:6px; text-decoration:none;">
                 View Official SEBI Scheme Information Document (SID) ↗
               </a>
-              <a href="${escapeHtml(officialLinks.amfiUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
+              <a href="${escapeHtml(officialLinks.amfiUrl)}" target="_blank" rel="noopener noreferrer" style="font-size:0.86rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:8px 14px; border-radius:6px; text-decoration:none;">
                 Official AMFI NAV Archive ↗
               </a>
             </div>
-          </div>
-        </section>
-
-        <!-- HEADING 2: RISK RATIOS (NAV-DERIVED ONLY) -->
-        <section id="mf-sec-risk" style="margin-bottom:8px;">
-          <h2 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
-            NAV Volatility &amp; Risk Ratios (1-Year Daily NAV)
-          </h2>
-          <div id="mf-risk-cards-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
-            ${buildRiskCardsHtml(currentRisk, !hasInitialMetrics)}
-          </div>
-        </section>
+          </section>
+        </div>
 
       </div>
     `;
@@ -624,6 +647,108 @@
         closeSchemeOverview();
       });
     }
+
+    // Connect WAI-ARIA Accessible Tabbed UI for Mutual Fund Scheme Overview
+    (function initMfTabs() {
+      const tabNav = document.getElementById("mf-section-tabs");
+      if (!tabNav || typeof tabNav.querySelectorAll !== "function") return;
+      const tabTrack = tabNav.querySelector ? tabNav.querySelector(".company-tabs-track") : null;
+      const tabBtns = Array.prototype.slice.call(tabNav.querySelectorAll('.company-tab-btn[role="tab"]'));
+      if (tabBtns.length === 0) return;
+
+      const validKeys = new Set(tabBtns.map((b) => b.getAttribute("data-tab")));
+
+      function activateMfTab(tabKey, options) {
+        if (!tabKey || !validKeys.has(tabKey)) return;
+        const opts = options || {};
+        let activeBtn = null;
+
+        for (let i = 0; i < tabBtns.length; i++) {
+          const btn = tabBtns[i];
+          const key = btn.getAttribute("data-tab");
+          const isMatch = key === tabKey;
+          if (btn.classList) {
+            btn.classList.toggle("active", isMatch);
+          }
+          btn.setAttribute("aria-selected", isMatch ? "true" : "false");
+          btn.setAttribute("tabindex", isMatch ? "0" : "-1");
+
+          const panelId = btn.getAttribute("aria-controls");
+          const panelEl = panelId ? document.getElementById(panelId) : null;
+          if (panelEl) {
+            panelEl.hidden = !isMatch;
+            if (isMatch) {
+              if (typeof panelEl.removeAttribute === "function") panelEl.removeAttribute("hidden");
+            } else {
+              if (typeof panelEl.setAttribute === "function") panelEl.setAttribute("hidden", "");
+            }
+          }
+
+          if (isMatch) activeBtn = btn;
+        }
+
+        if (activeBtn && opts.moveFocus && typeof activeBtn.focus === "function") {
+          activeBtn.focus();
+        }
+
+        if (activeBtn && tabTrack && typeof tabTrack.scrollTo === "function" && tabTrack.scrollWidth > tabTrack.clientWidth) {
+          const desiredLeft = activeBtn.offsetLeft - (tabTrack.clientWidth / 2) + (activeBtn.offsetWidth / 2);
+          try {
+            tabTrack.scrollTo({ left: Math.max(0, desiredLeft), behavior: "smooth" });
+          } catch (_) {
+            tabTrack.scrollLeft = Math.max(0, desiredLeft);
+          }
+        }
+
+        if (opts.updateHash !== false && typeof history !== "undefined" && typeof history.replaceState === "function" && typeof window !== "undefined" && window.location) {
+          try {
+            const nextUrl = window.location.pathname + window.location.search + "#" + encodeURIComponent(tabKey);
+            history.replaceState(history.state, "", nextUrl);
+          } catch (_) {}
+        }
+      }
+
+      tabBtns.forEach((btn, idx) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const key = btn.getAttribute("data-tab");
+          if (key) activateMfTab(key, { moveFocus: false, updateHash: true });
+        });
+
+        btn.addEventListener("keydown", (e) => {
+          let nextIdx = -1;
+          if (e.key === "ArrowRight") {
+            nextIdx = (idx + 1) % tabBtns.length;
+          } else if (e.key === "ArrowLeft") {
+            nextIdx = (idx - 1 + tabBtns.length) % tabBtns.length;
+          } else if (e.key === "Home") {
+            nextIdx = 0;
+          } else if (e.key === "End") {
+            nextIdx = tabBtns.length - 1;
+          } else if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            const key = btn.getAttribute("data-tab");
+            if (key) activateMfTab(key, { moveFocus: false, updateHash: true });
+            return;
+          }
+
+          if (nextIdx >= 0 && tabBtns[nextIdx]) {
+            e.preventDefault();
+            const nextKey = tabBtns[nextIdx].getAttribute("data-tab");
+            if (nextKey) activateMfTab(nextKey, { moveFocus: true, updateHash: true });
+          }
+        });
+      });
+
+      let initialTab = "overview";
+      if (typeof window !== "undefined" && window.location && window.location.hash) {
+        const rawHash = decodeURIComponent(window.location.hash.replace(/^#/, "")).replace(/^mf-(?:sec-|panel-)?/, "").toLowerCase();
+        if (validKeys.has(rawHash)) {
+          initialTab = rawHash;
+        }
+      }
+      activateMfTab(initialTab, { moveFocus: false, updateHash: false });
+    })();
   }
 
   function closeSchemeOverview() {
@@ -1015,7 +1140,7 @@
   function init() {
     bindEvents();
 
-    fetch("data/mutual-funds/top-mutual-funds.json?v=99")
+    fetch("data/mutual-funds/top-mutual-funds.json?v=101")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         allFunds = data.funds || [];
