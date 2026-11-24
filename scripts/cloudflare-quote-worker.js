@@ -1,20 +1,23 @@
 /**
- * Stocks 360 - Cloudflare Worker 15-Minute Delayed Quote Proxy
+ * Stocks 360 - Cloudflare Worker
+ * 1. 15-Minute Delayed Quote Proxy (/quote)
+ * 2. Secure AI Screener Query Parser (/api/parse-screen)
+ *
  * Free Tier: 100,000 requests/day at Rs 0/month.
  *
- * Deployment steps (1 minute):
+ * Deployment steps:
  * 1. Open https://dash.cloudflare.com -> Workers & Pages -> stocks360-quotes -> Edit code
  * 2. Paste this entire file into the Worker editor and click Deploy
- * 3. Configured in js/stock-search.js (`getQuoteProxyUrl`) or `FIREBASE_CONFIG.quoteProxyUrl`.
+ * 3. Store `GEMINI_API_KEY` under Settings -> Variables and Secrets -> Secrets
  */
 
-const EDGE_CACHE_SECONDS = 900; // Exact 15-minute delay cache
+const EDGE_CACHE_SECONDS = 900; // 15-minute delay cache
 
 function corsHeaders() {
   return {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type'
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
   };
 }
 
@@ -52,21 +55,21 @@ function extractDayOpen(result, meta, cmp) {
       }
     }
   }
-  if (meta && typeof meta.regularMarketOpen === 'number' && Number.isFinite(meta.regularMarketOpen) && meta.regularMarketOpen > 0) {
-    return Number(meta.regularMarketOpen.toFixed(2));
-  }
-  return cmp;
+  return typeof meta.regularMarketDayOpen === 'number' ? Number(meta.regularMarketDayOpen.toFixed(2)) : cmp;
 }
 
-async function fetchYahooChart(ticker) {
+async function tryFetchYahooChart(ticker) {
   const hosts = ['query1.finance.yahoo.com', 'query2.finance.yahoo.com'];
   let sawOkWithoutQuote = false;
 
-  for (let i = 0; i < hosts.length; i++) {
-    const upstreamUrl = `https://${hosts[i]}/v8/finance/chart/${encodeURIComponent(ticker)}?interval=15m&range=1d`;
+  for (const host of hosts) {
     try {
-      const upstreamRes = await fetch(upstreamUrl, {
-        headers: { 'User-Agent': 'Mozilla/5.0' }
+      const url = `https://${host}/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1d`;
+      const upstreamRes = await fetch(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+          'Accept': 'application/json'
+        }
       });
       if (!upstreamRes || !upstreamRes.ok) {
         continue;
@@ -95,6 +98,223 @@ export default {
       return new Response(null, { status: 204, headers });
     }
 
+    // -------------------------------------------------------------
+    // SECURE AI SCREENER QUERY PARSER (ZERO CLIENT-SIDE EXPOSURE)
+    // -------------------------------------------------------------
+    if (url.pathname === '/api/parse-screen') {
+      if (request.method !== 'POST') {
+        return new Response(JSON.stringify({ error: 'POST required' }), {
+          status: 405,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const apiKey = env && env.GEMINI_API_KEY ? env.GEMINI_API_KEY.trim() : null;
+      if (!apiKey) {
+        return new Response(JSON.stringify({ error: 'GEMINI_API_KEY secret not configured in Cloudflare Worker' }), {
+          status: 500,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      let reqBody;
+      try {
+        reqBody = await request.json();
+      } catch (_) {
+        return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
+          status: 400,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const userPrompt = String(reqBody.prompt || '').trim();
+      if (!userPrompt) {
+        return new Response(JSON.stringify({ error: 'Prompt is required' }), {
+          status: 400,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const systemInstruction =
+        "You are Stocks 360 AI, an expert quantitative stock screener parser for Indian Equities (NSE/BSE). " +
+        "Translate user plain-English screening words into strict JSON filter criteria matching our screener database fields. " +
+        "Fields available: " +
+        "- 'cmp' (Current Market Price in INR) " +
+        "- 'marketCapCr' (Market Cap in INR Crores: Large Cap > 20000, Mid Cap 5000 to 20000, Small Cap < 5000) " +
+        "- 'pe' (P/E Ratio) " +
+        "- 'roePct' (Return on Equity %) " +
+        "- 'rocePct' (Return on Capital Employed %) " +
+        "- 'debtToEquity' (Debt to Equity Ratio: Low Debt <= 0.5, Zero Debt <= 0.05) " +
+        "- 'dma50' (50-Day Moving Average in INR) " +
+        "- 'dma200' (200-Day Moving Average in INR) " +
+        "- 'goldenCross' (Boolean: true if 50 DMA > 200 DMA) " +
+        "- 'rsi14' (14-day Relative Strength Index: Oversold <= 35, Bullish 50 to 70, Overbought >= 75) " +
+        "- 'volume' (Day's Trading Volume) " +
+        "- 'volumeSurge' (Volume Surge Ratio vs 10D avg, e.g. >= 1.25) " +
+        "- 'deliveryPct' (Demat Delivery Percentage, e.g. >= 50 for high accumulation) " +
+        "- 'sma20', 'ema20', 'ema50', 'ema200' (Moving Averages in INR) " +
+        "- 'cmp_vs_dma50', 'cmp_vs_dma200', 'cmp_vs_ema20', 'cmp_vs_ema50', 'cmp_vs_ema200' (Operator '>' or '<', value: 0) " +
+        "- 'ema50_vs_ema200' (Operator '>', value: 0 for Bullish EMA trend) " +
+        "- 'macdHist' (MACD Histogram: > 0 for bullish crossover) " +
+        "- 'adx14' (ADX Trend Strength: >= 25 for strong trend) " +
+        "- 'maBullCount' (Number of Bullish MAs out of 16, e.g. >= 10) " +
+        "- 'sector' (Exact sector string e.g. 'Information Technology', 'Financial Services', 'Automobile', 'Healthcare & Pharma', 'Capital Goods', 'Consumer Goods', 'Oil & Gas', 'Metals & Mining', 'Telecommunication') " +
+        "CRITICAL OUTPUT FORMAT: Return ONLY valid JSON with keys: " +
+        "'interpretation' (A warm, friendly 1-sentence plain-English explanation of what you understood), " +
+        "'suggestedName' (A concise 3-5 word title for this screen), " +
+        "'suggestedDescription' (A brief 1-sentence educational description), " +
+        "'requestedColumns' (Array of relevant field names to display), " +
+        "'filters' (Array of filter objects: { field, operator, value, label }). " +
+        "Valid operators: '>', '>=', '<', '<=', '=='.";
+
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
+      const geminiPayload = {
+        contents: [
+          { role: 'user', parts: [{ text: `${systemInstruction}\n\nUSER SCREENER REQUEST: ${userPrompt}` }] }
+        ],
+        generationConfig: {
+          temperature: 0.1,
+          responseMimeType: 'application/json'
+        }
+      };
+
+      try {
+        const geminiRes = await fetch(geminiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(geminiPayload)
+        });
+
+        const geminiData = await geminiRes.json();
+        if (geminiData.error) {
+          // If 3.5-flash-lite returns error, attempt fallback to gemini-3.8-flash
+          const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+          const fallbackRes = await fetch(fallbackUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(geminiPayload)
+          });
+          const fallbackData = await fallbackRes.json();
+          if (fallbackData.error) {
+            return new Response(JSON.stringify({ error: fallbackData.error.message }), {
+              status: 502,
+              headers: { ...headers, 'Content-Type': 'application/json' }
+            });
+          }
+          const text = fallbackData.candidates?.[0]?.content?.parts?.[0]?.text;
+          return new Response(text || JSON.stringify({ error: 'Empty AI response' }), {
+            status: 200,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text;
+        return new Response(text || JSON.stringify({ error: 'Empty AI response' }), {
+          status: 200,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: 'Failed to contact Gemini API', details: err.message }), {
+          status: 502,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
+    // -------------------------------------------------------------
+    // SECURE CONVERSATIONAL AI CHAT PROXY (ZERO CLIENT-SIDE EXPOSURE)
+    // -------------------------------------------------------------
+    if (url.pathname === '/api/chat') {
+      if (request.method !== 'POST') {
+        return new Response(JSON.stringify({ error: 'POST required' }), {
+          status: 405,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const apiKey = env && env.GEMINI_API_KEY ? env.GEMINI_API_KEY.trim() : null;
+      if (!apiKey) {
+        return new Response(JSON.stringify({ error: 'GEMINI_API_KEY secret not configured in Cloudflare Worker' }), {
+          status: 500,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      let reqBody;
+      try {
+        reqBody = await request.json();
+      } catch (_) {
+        return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
+          status: 400,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const systemInstruction = String(reqBody.systemInstruction || 'You are Stocks 360 AI, an educational stock market assistant.').trim();
+      const prompt = String(reqBody.prompt || '').trim();
+      const contents = Array.isArray(reqBody.contents) && reqBody.contents.length > 0
+        ? reqBody.contents
+        : [{ role: 'user', parts: [{ text: prompt }] }];
+
+      const temperature = typeof reqBody.temperature === 'number' ? reqBody.temperature : 0.55;
+      const maxOutputTokens = typeof reqBody.maxOutputTokens === 'number' ? reqBody.maxOutputTokens : 850;
+
+      const geminiPayload = {
+        systemInstruction: { parts: [{ text: systemInstruction }] },
+        contents: contents,
+        generationConfig: {
+          temperature: temperature,
+          maxOutputTokens: maxOutputTokens
+        }
+      };
+
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
+
+      try {
+        const geminiRes = await fetch(geminiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(geminiPayload)
+        });
+
+        const geminiData = await geminiRes.json();
+        if (geminiData.error) {
+          const fallbackUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+          const fallbackRes = await fetch(fallbackUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(geminiPayload)
+          });
+          const fallbackData = await fallbackRes.json();
+          if (fallbackData.error) {
+            return new Response(JSON.stringify({ error: fallbackData.error.message }), {
+              status: 502,
+              headers: { ...headers, 'Content-Type': 'application/json' }
+            });
+          }
+          const text = fallbackData.candidates?.[0]?.content?.parts?.map(p => p.text || '').join(' ').trim() || '';
+          return new Response(JSON.stringify({ text }), {
+            status: 200,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const text = geminiData.candidates?.[0]?.content?.parts?.map(p => p.text || '').join(' ').trim() || '';
+        return new Response(JSON.stringify({ text }), {
+          status: 200,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: 'Failed to contact Gemini API', details: err.message }), {
+          status: 502,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 15-MINUTE DELAYED QUOTE PROXY (/quote)
+    // -------------------------------------------------------------
     if (url.pathname !== '/quote' && url.pathname !== '/') {
       return new Response(JSON.stringify({ error: 'Not found' }), {
         status: 404,
@@ -102,51 +322,49 @@ export default {
       });
     }
 
-    const rawSym = (url.searchParams.get('symbol') || '').trim().toUpperCase().replace(/[^A-Z0-9&-]/g, '');
-    const exchange = (url.searchParams.get('exchange') || 'NSE').trim().toUpperCase() === 'BSE' ? 'BSE' : 'NSE';
-    const bseCode = (url.searchParams.get('bseCode') || '').trim().replace(/[^0-9]/g, '');
+    const rawSym = (url.searchParams.get('symbol') || '').trim().toUpperCase();
+    const exchange = (url.searchParams.get('exchange') || 'NSE').trim().toUpperCase();
+    const bseCode = (url.searchParams.get('bseCode') || '').trim();
 
     if (!rawSym && !bseCode) {
-      return new Response(JSON.stringify({ error: 'Missing symbol' }), {
+      return new Response(JSON.stringify({ error: 'Missing symbol or bseCode parameter' }), {
         status: 400,
         headers: { ...headers, 'Content-Type': 'application/json' }
       });
     }
 
-    const normalizedUrl = new URL(url.origin + '/quote');
-    normalizedUrl.searchParams.set('symbol', rawSym);
-    normalizedUrl.searchParams.set('exchange', exchange);
-    if (bseCode) normalizedUrl.searchParams.set('bseCode', bseCode);
-    const cacheKey = new Request(normalizedUrl.toString(), { method: 'GET' });
-
+    const cacheKey = new Request(url.toString(), request);
     const cache = caches.default;
-    const cached = await cache.match(cacheKey);
-    if (cached) {
-      return cached;
+    const cachedResponse = await cache.match(cacheKey);
+    if (cachedResponse) {
+      return cachedResponse;
     }
 
-    const candidates = buildTickerCandidates(rawSym, exchange, bseCode);
+    const tickerCandidates = buildTickerCandidates(rawSym, exchange, bseCode);
 
     try {
       let matched = null;
-      let anyNoQuote = false;
+      let saw404Equivalent = false;
 
-      for (let i = 0; i < candidates.length; i++) {
-        const res = await fetchYahooChart(candidates[i]);
-        if (res.ok) {
-          matched = res;
+      for (const ticker of tickerCandidates) {
+        const attempt = await tryFetchYahooChart(ticker);
+        if (attempt.ok) {
+          matched = attempt;
           break;
         }
-        if (res.sawOkWithoutQuote) {
-          anyNoQuote = true;
+        if (attempt.sawOkWithoutQuote) {
+          saw404Equivalent = true;
         }
       }
 
       if (!matched) {
-        const status = anyNoQuote ? 404 : 502;
-        const message = anyNoQuote ? 'No quote found' : 'Upstream unavailable';
-        return new Response(JSON.stringify({ error: message }), {
-          status,
+        return new Response(JSON.stringify({
+          error: 'Symbol not found on upstream provider',
+          symbol: rawSym || bseCode,
+          exchange,
+          saw404: saw404Equivalent
+        }), {
+          status: 404,
           headers: { ...headers, 'Content-Type': 'application/json' }
         });
       }

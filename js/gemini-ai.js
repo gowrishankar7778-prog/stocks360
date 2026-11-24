@@ -24,7 +24,7 @@ const StocksGeminiAI = (function () {
 
   const DEFAULT_CONFIG = {
     apiKey: "",
-    model: "gemini-2.5-flash",
+    model: "gemini-3.5-flash-lite",
     dailyLimit: 500,
     maxOutputTokens: 850,
     temperatureStrict: 0.2,
@@ -32,9 +32,9 @@ const StocksGeminiAI = (function () {
   };
 
   const FALLBACK_MODELS = [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
     "gemini-2.5-flash",
-    "gemini-2.5-flash-lite",
-    "gemini-2.0-flash",
     "gemini-flash-latest"
   ];
 
@@ -116,9 +116,9 @@ const StocksGeminiAI = (function () {
     runtimeConfig = Object.assign({}, DEFAULT_CONFIG, localCfg, {
       apiKey: fallbackKey
     });
-    // Upgrade legacy 3.x model strings to gemini-2.5-flash so the 2.5 rollout applies everywhere
-    if (!runtimeConfig.model || /^gemini-3/i.test(runtimeConfig.model)) {
-      runtimeConfig.model = "gemini-2.5-flash";
+    // Standardize model to gemini-3.5-flash-lite (active Google API model)
+    if (!runtimeConfig.model || /^gemini-2\./i.test(runtimeConfig.model)) {
+      runtimeConfig.model = "gemini-3.5-flash-lite";
     }
     if (!runtimeConfig.maxOutputTokens || Number(runtimeConfig.maxOutputTokens) < 850) {
       runtimeConfig.maxOutputTokens = 850;
@@ -234,7 +234,6 @@ const StocksGeminiAI = (function () {
   // ---------------- GEMINI REST API CALL WITH MULTI-TURN MEMORY ----------------
   async function callGeminiModel(systemInstruction, userPrompt, isStrictMode, priorTurns, customOpts) {
     const cfg = await loadConfig();
-    if (!cfg.apiKey) return null;
 
     const stats = getUsageStats();
     const dailyCap = parseInt(cfg.dailyLimit || "500", 10) || 500;
@@ -242,7 +241,7 @@ const StocksGeminiAI = (function () {
       return null;
     }
 
-    const preferredModel = (customOpts && customOpts.forceModel) || cfg.model || "gemini-2.5-flash";
+    const preferredModel = (customOpts && customOpts.forceModel) || cfg.model || "gemini-3.5-flash-lite";
     const modelsToTry = [preferredModel].concat(
       FALLBACK_MODELS.filter((m) => m !== preferredModel)
     );
@@ -263,6 +262,33 @@ const StocksGeminiAI = (function () {
       });
     }
     contents.push({ role: "user", parts: [{ text: userPrompt }] });
+
+    // Secure fallback: If client doesn't have a direct API key, call the secure Cloudflare proxy
+    if (!cfg.apiKey) {
+      try {
+        const proxyUrl = "https://stocks360-quotes.stocks360-app.workers.dev/api/chat";
+        const proxyRes = await fetch(proxyUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            systemInstruction: systemInstruction,
+            contents: contents,
+            temperature: temperature,
+            maxOutputTokens: maxOutputTokens
+          })
+        });
+        if (proxyRes.ok) {
+          const proxyData = await proxyRes.json();
+          if (proxyData && proxyData.text) {
+            incrementUsage(false);
+            return proxyData.text;
+          }
+        }
+      } catch (proxyErr) {
+        console.warn("Secure worker AI proxy attempt failed:", proxyErr);
+      }
+      return null;
+    }
 
     const useSearch = !!(customOpts && customOpts.useSearch);
     // Allow full model fallback cascade so if the primary model is busy (429/503/timeout),
@@ -984,58 +1010,94 @@ const StocksGeminiAI = (function () {
     const cleanPrompt = String(userPrompt || "").trim();
     if (!cleanPrompt) return null;
 
-    const systemInstruction =
-      "You are Stocks 360 AI, an expert stock screener parser. " +
-      "The user will describe stock screening criteria in plain everyday words. " +
-      "Your task is to parse their criteria into structured JSON filter rules matching our database fields: " +
-      "Fields available: " +
-      "- 'cmp' (Current Market Price in INR) " +
-      "- 'marketCapCr' (Market Cap in INR Crores) " +
-      "- 'pe' (Price-to-Earnings Ratio) " +
-      "- 'roePct' (Return on Equity %) " +
-      "- 'rocePct' (Return on Capital Employed %) " +
-      "- 'debtToEquity' (Debt to Equity Ratio) " +
-      "- 'divYieldPct' (Dividend Yield %) " +
-      "- 'dma50' (50-Day Moving Average in INR) " +
-      "- 'dma200' (200-Day Moving Average in INR) " +
-      "- 'goldenCross' (Boolean: true if 50 DMA > 200 DMA) " +
-      "- 'rsi14' (14-day Relative Strength Index) " +
-      "- 'volume' (Day's Trading Volume) " +
-      "- 'volumeSurge' (Volume Surge Ratio vs 10D avg, e.g. 1.2) " +
-      "- 'sector' (Exact sector name e.g. 'Information Technology', 'Financial Services', 'Automobile', 'Healthcare & Pharma') " +
-      "CRITICAL OUTPUT FORMAT: Return ONLY valid JSON with keys: " +
-      "'interpretation' (A warm, friendly 1-sentence plain explanation of what was understood), " +
-      "'suggestedName' (A concise 3-4 word title for this screener), " +
-      "'suggestedDescription' (A brief educational description), " +
-      "'requestedColumns' (Array of field names the user specifically asked for, e.g. ['marketCapCr', 'roePct', 'rocePct']), " +
-      "'filters' (Array of objects: { field, operator, value, label }). " +
-      "Valid operators are '>', '>=', '<', '<=', '=='.";
-
-    const prompt = "USER SCREENER REQUEST: " + cleanPrompt;
-
     let parsed = null;
+
+    // 1. First attempt: call secure Cloudflare Worker proxy (/api/parse-screen)
+    // Zero API key exposed to the client!
+    const proxyUrl = "https://stocks360-quotes.stocks360-app.workers.dev/api/parse-screen";
     try {
-      const rawText = await callGeminiModel(systemInstruction, prompt, false);
-      if (rawText) {
-        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          const obj = JSON.parse(jsonMatch[0]);
-          if (obj && Array.isArray(obj.filters) && obj.filters.length > 0) {
-            parsed = {
-              rawPrompt: cleanPrompt,
-              interpretation: obj.interpretation || ("I understood: " + cleanPrompt),
-              suggestedName: obj.suggestedName || "Stocks 360 Custom Screen",
-              suggestedDescription: obj.suggestedDescription || "",
-              requestedColumns: Array.isArray(obj.requestedColumns) ? obj.requestedColumns : [],
-              filters: obj.filters
-            };
-          }
+      const res = await fetch(proxyUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: cleanPrompt })
+      });
+      if (res.ok) {
+        const obj = await res.json();
+        if (obj && Array.isArray(obj.filters) && obj.filters.length > 0) {
+          parsed = {
+            rawPrompt: cleanPrompt,
+            interpretation: obj.interpretation || ("I understood: " + cleanPrompt),
+            suggestedName: obj.suggestedName || "Stocks 360 Custom Screen",
+            suggestedDescription: obj.suggestedDescription || "",
+            requestedColumns: Array.isArray(obj.requestedColumns) ? obj.requestedColumns : [],
+            filters: obj.filters
+          };
         }
       }
     } catch (e) {
-      console.warn("Gemini screener parse error, using local fallback:", e);
+      console.warn("Secure worker parse attempt failed, trying fallback:", e);
     }
 
+    // 2. Second attempt: Direct Gemini call if runtimeConfig.apiKey is configured
+    if (!parsed) {
+      const systemInstruction =
+        "You are Stocks 360 AI, an expert quantitative stock screener parser for Indian Equities (NSE/BSE). " +
+        "Translate user plain-English screening words into strict JSON filter criteria matching our screener database fields. " +
+        "Fields available: " +
+        "- 'cmp' (Current Market Price in INR) " +
+        "- 'marketCapCr' (Market Cap in INR Crores) " +
+        "- 'pe' (P/E Ratio) " +
+        "- 'roePct' (Return on Equity %) " +
+        "- 'rocePct' (Return on Capital Employed %) " +
+        "- 'debtToEquity' (Debt to Equity Ratio) " +
+        "- 'dma50' (50-Day Moving Average in INR) " +
+        "- 'dma200' (200-Day Moving Average in INR) " +
+        "- 'goldenCross' (Boolean: true if 50 DMA > 200 DMA) " +
+        "- 'rsi14' (14-day Relative Strength Index) " +
+        "- 'volume' (Day's Trading Volume) " +
+        "- 'volumeSurge' (Volume Surge Ratio vs 10D avg) " +
+        "- 'deliveryPct' (Demat Delivery Percentage) " +
+        "- 'sma20', 'ema20', 'ema50', 'ema200' (Moving Averages in INR) " +
+        "- 'cmp_vs_dma50', 'cmp_vs_dma200', 'cmp_vs_ema20', 'cmp_vs_ema50', 'cmp_vs_ema200' (Operator '>' or '<', value: 0) " +
+        "- 'ema50_vs_ema200' (Operator '>', value: 0 for Bullish EMA trend) " +
+        "- 'macdHist' (MACD Histogram: > 0 for bullish crossover) " +
+        "- 'adx14' (ADX Trend Strength: >= 25 for strong trend) " +
+        "- 'maBullCount' (Number of Bullish MAs out of 16, e.g. >= 10) " +
+        "- 'sector' (Exact sector string) " +
+        "CRITICAL OUTPUT FORMAT: Return ONLY valid JSON with keys: " +
+        "'interpretation' (A warm, friendly 1-sentence plain explanation of what was understood), " +
+        "'suggestedName' (A concise 3-5 word title for this screen), " +
+        "'suggestedDescription' (A brief educational description), " +
+        "'requestedColumns' (Array of field names to display), " +
+        "'filters' (Array of objects: { field, operator, value, label }). " +
+        "Valid operators are '>', '>=', '<', '<=', '=='.";
+
+      const prompt = "USER SCREENER REQUEST: " + cleanPrompt;
+
+      try {
+        const rawText = await callGeminiModel(systemInstruction, prompt, false);
+        if (rawText) {
+          const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const obj = JSON.parse(jsonMatch[0]);
+            if (obj && Array.isArray(obj.filters) && obj.filters.length > 0) {
+              parsed = {
+                rawPrompt: cleanPrompt,
+                interpretation: obj.interpretation || ("I understood: " + cleanPrompt),
+                suggestedName: obj.suggestedName || "Stocks 360 Custom Screen",
+                suggestedDescription: obj.suggestedDescription || "",
+                requestedColumns: Array.isArray(obj.requestedColumns) ? obj.requestedColumns : [],
+                filters: obj.filters
+              };
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("Direct Gemini parse error, using local fallback:", e);
+      }
+    }
+
+    // 3. Third attempt: deterministic local regex engine
     if (!parsed) {
       parsed = buildLocalScreenerFallback(cleanPrompt);
     }
