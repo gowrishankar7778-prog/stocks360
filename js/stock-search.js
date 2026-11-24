@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const quickPills = document.querySelectorAll(".stock-quick-pick");
 
   let activeCompanyData = null;
+  let cleanupCompanyJumpTabs = null;
 
   // Starter Quick Pick Pills
   function bindQuickPills() {
@@ -505,6 +506,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function closeCompanyAnalysis() {
     stopCompanyVoiceOverview();
+    if (typeof cleanupCompanyJumpTabs === "function") {
+      cleanupCompanyJumpTabs();
+      cleanupCompanyJumpTabs = null;
+    }
     if (stockResult) {
       stockResult.hidden = true;
       stockResult.style.display = "none";
@@ -1951,6 +1956,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---------------- RENDER COMPLETE DETAILED VIEW ----------------
   function renderDetailedCompanyAnalysis(stock, shouldScroll = true) {
     if (!stock || !stockResult) return;
+    if (typeof cleanupCompanyJumpTabs === "function") {
+      cleanupCompanyJumpTabs();
+      cleanupCompanyJumpTabs = null;
+    }
     stockResult.removeAttribute("hidden");
     stockResult.hidden = false;
     stockResult.style.display = "block";
@@ -2070,115 +2079,185 @@ document.addEventListener("DOMContentLoaded", function () {
           <span id="exchange-switcher-status" style="font-size:0.78rem; color:#64748b;">${stock.exchanges === 'BSE' ? 'Exchange: BSE' : 'Exchange: NSE'}</span>
         </div>
 
-        <!-- SECTION 1: PRICE PERFORMANCE -->
-        <section id="sec-price" style="margin-bottom:28px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Price Performance</h3>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Today Open</span>
-              <strong id="pp-open" style="font-size:0.92rem; color:#0f172a;">₹ ${fmtPrice(dayOpen)}</strong>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Today High</span>
-              <strong id="pp-high" style="font-size:0.92rem; color:#16a34a;">₹ ${fmtPrice(dayHigh)}</strong>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Today Low</span>
-              <strong id="pp-low" style="font-size:0.92rem; color:#dc2626;">₹ ${fmtPrice(dayLow)}</strong>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Previous Close</span>
-              <strong id="pp-prev-close" style="font-size:0.92rem; color:#0f172a;">₹ ${fmtPrice(prevClose)}</strong>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">52-Week High</span>
-              <strong id="pp-high52" style="font-size:0.92rem; color:#16a34a;">₹ ${fmtPrice(high52)}</strong>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">52-Week Low</span>
-              <strong id="pp-low52" style="font-size:0.92rem; color:#dc2626;">₹ ${fmtPrice(low52)}</strong>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Delivery Volume</span>
-              <strong id="pp-deliv-vol" style="font-size:0.92rem; color:#0f172a;">${delivVolText}</strong>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Delivery %</span>
-              <strong id="pp-deliv-pct" style="font-size:0.92rem; color:#2563eb;">${delivPctText}</strong>
-            </div>
+        <!-- STICKY HYBRID TAB BAR (OPTION C JUMP-NAVIGATION) -->
+        <nav id="company-section-tabs" class="company-sticky-tabs" aria-label="Company analysis sections">
+          <div class="company-sticky-tabs-track">
+            <a href="#sec-overview" class="company-jump-tab active" data-target="sec-overview" aria-current="location">Overview</a>
+            <a href="#sec-fundamentals" class="company-jump-tab" data-target="sec-fundamentals">Fundamentals</a>
+            <a href="#sec-technicals-group" class="company-jump-tab" data-target="sec-technicals-group">${isBseOnly ? 'Technicals' : 'Technicals &amp; QVT'}</a>
+            ${!isBseOnly ? `<a href="#sec-financials" class="company-jump-tab" data-target="sec-financials">Financials</a>` : ''}
+            ${!isBseOnly ? `<a href="#sec-shareholding" class="company-jump-tab" data-target="sec-shareholding">Shareholding</a>` : ''}
+            ${!isBseOnly ? `<a href="#sec-filings" class="company-jump-tab" data-target="sec-filings">Filings</a>` : ''}
+            <a href="#sec-peers" class="company-jump-tab" data-target="sec-peers">Peers</a>
           </div>
-          <p id="price-delayed-disclaimer" role="note" hidden style="margin:10px 0 0 0; font-size:0.78rem; color:#92400e; background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:7px 11px;">
-            <strong>Market Hours Notice:</strong> Prices shown during market hours are delayed by 15 minutes and are provided strictly for informational and educational reference only.
-          </p>
-        </section>
+        </nav>
 
-        <!-- TRADINGVIEW CHART LINKS -->
-        <section id="sec-live-chart" style="margin-bottom:24px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px;">
-            <h3 style="font-size:1.2rem; color:#0f172a; margin:0; font-weight:700;">TradingView Chart</h3>
-            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-              ${stock.exchanges !== 'BSE' ? `<a id="tv-btn-open-nse" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent('NSE:' + stock.symbol)}" target="_blank" rel="noopener noreferrer" style="padding:8px 14px; font-size:0.85rem; font-weight:700; color:#ffffff; background:#2563eb; border:1px solid #2563eb; border-radius:7px; text-decoration:none;">See TradingView Chart in NSE</a>` : ''}
-              <a id="tv-btn-open-bse" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent('BSE:' + (stock.bseCode || stock.symbol))}" target="_blank" rel="noopener noreferrer" style="padding:8px 14px; font-size:0.85rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:7px; text-decoration:none;${stock.exchanges === 'BSE' || stock.bseCode ? '' : ' display:none;'}">See TradingView Chart in BSE</a>
+        <!-- TAB SECTION 1: OVERVIEW (PRICE PERFORMANCE, CHART & ABOUT) -->
+        <div id="sec-overview" class="company-tab-section">
+          <!-- PRICE PERFORMANCE -->
+          <section id="sec-price" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Price Performance</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Today Open</span>
+                <strong id="pp-open" style="font-size:0.92rem; color:#0f172a;">₹ ${fmtPrice(dayOpen)}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Today High</span>
+                <strong id="pp-high" style="font-size:0.92rem; color:#16a34a;">₹ ${fmtPrice(dayHigh)}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Today Low</span>
+                <strong id="pp-low" style="font-size:0.92rem; color:#dc2626;">₹ ${fmtPrice(dayLow)}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Previous Close</span>
+                <strong id="pp-prev-close" style="font-size:0.92rem; color:#0f172a;">₹ ${fmtPrice(prevClose)}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">52-Week High</span>
+                <strong id="pp-high52" style="font-size:0.92rem; color:#16a34a;">₹ ${fmtPrice(high52)}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">52-Week Low</span>
+                <strong id="pp-low52" style="font-size:0.92rem; color:#dc2626;">₹ ${fmtPrice(low52)}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Delivery Volume</span>
+                <strong id="pp-deliv-vol" style="font-size:0.92rem; color:#0f172a;">${delivVolText}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Delivery %</span>
+                <strong id="pp-deliv-pct" style="font-size:0.92rem; color:#2563eb;">${delivPctText}</strong>
+              </div>
             </div>
-          </div>
-        </section>
+            <p id="price-delayed-disclaimer" role="note" hidden style="margin:10px 0 0 0; font-size:0.78rem; color:#92400e; background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:7px 11px;">
+              <strong>Market Hours Notice:</strong> Prices shown during market hours are delayed by 15 minutes and are provided strictly for informational and educational reference only.
+            </p>
+          </section>
 
-        <!-- SECTION 2: FUNDAMENTALS (BHAVCOPY + OFFICIAL EXCHANGE FILINGS) -->
-        <section id="sec-fundamentals" style="margin-bottom:28px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Fundamentals</h3>
+          <!-- TRADINGVIEW CHART LINKS -->
+          <section id="sec-live-chart" style="margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;">
+              <h3 style="font-size:1.2rem; color:#0f172a; margin:0; font-weight:700;">TradingView Chart</h3>
+              <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                ${stock.exchanges !== 'BSE' ? `<a id="tv-btn-open-nse" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent('NSE:' + stock.symbol)}" target="_blank" rel="noopener noreferrer" style="padding:8px 14px; font-size:0.85rem; font-weight:700; color:#ffffff; background:#2563eb; border:1px solid #2563eb; border-radius:7px; text-decoration:none;">See TradingView Chart in NSE</a>` : ''}
+                <a id="tv-btn-open-bse" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent('BSE:' + (stock.bseCode || stock.symbol))}" target="_blank" rel="noopener noreferrer" style="padding:8px 14px; font-size:0.85rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; border-radius:7px; text-decoration:none;${stock.exchanges === 'BSE' || stock.bseCode ? '' : ' display:none;'}">See TradingView Chart in BSE</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- ABOUT THE COMPANY -->
+          <section id="sec-about" class="company-section-card" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">About the Company</h3>
+            <div id="company-about-content" style="font-size:0.95rem; color:#334155; line-height:1.7;">
+              ${aboutText}
+            </div>
+            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+              ${!isBseOnly ? `<a id="btn-annual-report-about" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">${stock.latestAnnualReportUrl ? `Official Latest Annual Report PDF (${escapeHtml(stock.symbol)}) ↗` : `Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗`}</a>` : ''}
+              <a id="about-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.84rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
+                Official Company Website ↗
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <!-- TAB SECTION 2: FUNDAMENTALS -->
+        <section id="sec-fundamentals" class="company-tab-section company-section-card" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Fundamentals</h3>
           <div id="company-fundamentals-container">
             ${buildFundamentalsGridHtml(stock)}
           </div>
         </section>
 
-        <!-- SECTION 3: TECHNICALS -->
-        <section id="sec-technicals" style="margin-bottom:28px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">Technicals</h3>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">50-DMA</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma50 === "number" && stock.dma50 > 0 ? "₹ " + fmtPrice(stock.dma50) : "--"}</strong>
+        <!-- TAB SECTION 3: TECHNICALS & QVT SCORE -->
+        <div id="sec-technicals-group" class="company-tab-section">
+          <section id="sec-technicals" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Technicals</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">50-DMA</span>
+                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma50 === "number" && stock.dma50 > 0 ? "₹ " + fmtPrice(stock.dma50) : "--"}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">200-DMA</span>
+                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma200 === "number" && stock.dma200 > 0 ? "₹ " + fmtPrice(stock.dma200) : "--"}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Golden Crossover</span>
+                <strong style="font-size:0.92rem; color:${stock.goldenCross ? '#16a34a' : '#64748b'};">${stock.goldenCross ? 'Active Bullish' : 'Neutral'}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">14-Day RSI</span>
+                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? Number(stock.rsi14).toFixed(1) : "--"}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Volume Surge</span>
+                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volumeSurge === "number" && stock.volumeSurge > 0 ? Number(stock.volumeSurge).toFixed(2) + "x" : "--"}</strong>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.88rem; color:#475569;">Trading Volume</span>
+                <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volume === "number" && stock.volume > 0 ? stock.volume.toLocaleString("en-IN") : "--"}</strong>
+              </div>
             </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">200-DMA</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.dma200 === "number" && stock.dma200 > 0 ? "₹ " + fmtPrice(stock.dma200) : "--"}</strong>
+          </section>
+
+          <!-- STOCKS 360 QVT SCORE (NSE ONLY) -->
+          <section id="sec-qvt-score" class="company-section-card" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <div id="company-qvt-container">
+              ${isBseOnly ? '' : buildQvtScoreSectionHtml(stock)}
             </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Golden Crossover</span>
-              <strong style="font-size:0.92rem; color:${stock.goldenCross ? '#16a34a' : '#64748b'};">${stock.goldenCross ? 'Active Bullish' : 'Neutral'}</strong>
+          </section>
+        </div>
+
+        <!-- TAB SECTION 4: FINANCIALS (OFFICIAL EXCHANGE FILINGS ONLY) -->
+        <section id="sec-financials" class="company-tab-section" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px;">
+          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 16px 0; font-weight:700; border-bottom:2px solid #e2e8f0; padding-bottom:8px;">Financials</h3>
+
+          <!-- 4.1: QUARTERLY RESULTS -->
+          <div id="sec-quarterly" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Quarterly Results (₹ Crores)</h4>
+            <div id="company-quarterly-container">
+              ${buildQuarterlyTableHtml(quarterlyResults, isProfileLoading)}
             </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">14-Day RSI</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.rsi14 === "number" && stock.rsi14 > 0 ? Number(stock.rsi14).toFixed(1) : "--"}</strong>
+          </div>
+
+          <!-- 4.2: ANNUAL PROFIT & LOSS -->
+          <div id="sec-annual-pnl" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Annual Profit &amp; Loss (₹ Crores)</h4>
+            <div id="company-annual-pnl-container">
+              ${buildAnnualPnlTableHtml((!isBseOnly && Array.isArray(stock.annualPnl)) ? stock.annualPnl : [], isProfileLoading)}
             </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Volume Surge</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volumeSurge === "number" && stock.volumeSurge > 0 ? Number(stock.volumeSurge).toFixed(2) + "x" : "--"}</strong>
+          </div>
+
+          <!-- 4.3: BALANCE SHEET -->
+          <div id="sec-balancesheet" class="company-section-card" style="margin-bottom:20px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
+            <div id="company-balancesheet-container">
+              ${buildBalanceSheetTableHtml(balanceSheet, isProfileLoading)}
             </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.88rem; color:#475569;">Trading Volume</span>
-              <strong style="font-size:0.92rem; color:#0f172a;">${typeof stock.volume === "number" && stock.volume > 0 ? stock.volume.toLocaleString("en-IN") : "--"}</strong>
+          </div>
+
+          <!-- 4.4: CASH FLOWS -->
+          <div id="sec-cashflow" class="company-section-card" style="margin-bottom:8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Cash Flows (₹ Crores)</h4>
+            <div id="company-cashflow-container">
+              ${buildCashFlowTableHtml(cashFlows, isProfileLoading)}
             </div>
           </div>
         </section>
 
-        <!-- SECTION 4: ABOUT THE COMPANY -->
-        <section id="sec-about" style="margin-bottom:28px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">About the Company</h3>
-          <div id="company-about-content" style="font-size:0.95rem; color:#334155; line-height:1.7;">
-            ${aboutText}
-          </div>
-          <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-            ${!isBseOnly ? `<a id="btn-annual-report-about" href="${stock.latestAnnualReportUrl ? escapeHtml(stock.latestAnnualReportUrl) : `https://www.nseindia.com/get-quotes/equity?symbol=${encodeURIComponent(stock.symbol)}`}" target="_blank" rel="noopener noreferrer" style="font-size:0.84rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border:1px solid #bfdbfe; padding:6px 12px; border-radius:6px; text-decoration:none;">${stock.latestAnnualReportUrl ? `Official Latest Annual Report PDF (${escapeHtml(stock.symbol)}) ↗` : `Official Annual Report &amp; NSE Corporate Filings (${escapeHtml(stock.symbol)}) ↗`}</a>` : ''}
-            <a id="about-official-website-link" href="${stock.website ? escapeHtml(stock.website) : '#'}" target="_blank" rel="noopener noreferrer" style="display:${stock.website ? 'inline-flex' : 'none'}; font-size:0.84rem; font-weight:600; color:#334155; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; text-decoration:none;">
-              Official Company Website ↗
-            </a>
+        <!-- TAB SECTION 5: SHAREHOLDING PATTERN -->
+        <section id="sec-shareholding" class="company-tab-section company-section-card" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h3>
+          <div id="company-shareholding-container">
+            ${buildShareholdingHtml(shareholding, isProfileLoading)}
           </div>
         </section>
 
-        <!-- SECTION 5: NEWS AND CORPORATE FILINGS -->
-        <section id="sec-filings" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:28px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:14px; font-weight:700;">News and Corporate Filings</h3>
+        <!-- TAB SECTION 6: NEWS AND CORPORATE FILINGS -->
+        <section id="sec-filings" class="company-tab-section company-section-card" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <h3 style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">News and Corporate Filings</h3>
           <div id="company-news-list" style="display:flex; flex-direction:column; gap:10px;">
             ${initialNews
               ? renderNewsItems(initialNews, stock)
@@ -2186,61 +2265,9 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </section>
 
-        <!-- SECTION 5B: STOCKS 360 QVT SCORE (NSE ONLY, BEFORE FINANCIALS) -->
-        <section id="sec-qvt-score" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-          <div id="company-qvt-container">
-            ${isBseOnly ? '' : buildQvtScoreSectionHtml(stock)}
-          </div>
-        </section>
-
-        <!-- SECTION 6: FINANCIALS (OFFICIAL EXCHANGE FILINGS ONLY) -->
-        <section id="sec-financials" ${isBseOnly ? 'hidden' : ''} style="margin-bottom:24px;">
-          <h3 style="font-size:1.25rem; color:#0f172a; margin-bottom:16px; font-weight:700; border-bottom:2px solid #e2e8f0; padding-bottom:8px;">Financials</h3>
-
-          <!-- 6.1: QUARTERLY RESULTS -->
-          <div id="sec-quarterly" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Quarterly Results (₹ Crores)</h4>
-            <div id="company-quarterly-container">
-              ${buildQuarterlyTableHtml(quarterlyResults, isProfileLoading)}
-            </div>
-          </div>
-
-          <!-- 6.1B: ANNUAL PROFIT & LOSS -->
-          <div id="sec-annual-pnl" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Annual Profit &amp; Loss (₹ Crores)</h4>
-            <div id="company-annual-pnl-container">
-              ${buildAnnualPnlTableHtml((!isBseOnly && Array.isArray(stock.annualPnl)) ? stock.annualPnl : [], isProfileLoading)}
-            </div>
-          </div>
-
-          <!-- 6.2: BALANCE SHEET -->
-          <div id="sec-balancesheet" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Balance Sheet (₹ Crores)</h4>
-            <div id="company-balancesheet-container">
-              ${buildBalanceSheetTableHtml(balanceSheet, isProfileLoading)}
-            </div>
-          </div>
-
-          <!-- 6.3: CASH FLOWS -->
-          <div id="sec-cashflow" style="margin-bottom:24px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Cash Flows (₹ Crores)</h4>
-            <div id="company-cashflow-container">
-              ${buildCashFlowTableHtml(cashFlows, isProfileLoading)}
-            </div>
-          </div>
-
-          <!-- 6.4: SHAREHOLDING PATTERN -->
-          <div id="sec-shareholding" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-            <h4 style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Shareholding Pattern</h4>
-            <div id="company-shareholding-container">
-              ${buildShareholdingHtml(shareholding, isProfileLoading)}
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 7: PEER COMPARISON -->
-        <section id="sec-peers" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
-          <h4 id="company-peers-title" style="font-size:1.15rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.industry || stock.sector || "Sector Peers")})</h4>
+        <!-- TAB SECTION 7: PEER COMPARISON -->
+        <section id="sec-peers" class="company-tab-section company-section-card" style="margin-bottom:12px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px;">
+          <h3 id="company-peers-title" style="font-size:1.25rem; color:#0f172a; margin:0 0 14px 0; font-weight:700;">Peer Comparison (${escapeHtml(stock.industry || stock.sector || "Sector Peers")})</h3>
           <div id="company-peers-container">
             ${buildStockPeerComparisonHtml(stock)}
           </div>
@@ -2758,6 +2785,167 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleCompanyVoiceOverview(stock);
       });
     }
+    // Connect Sticky Hybrid Jump-Nav Tabs (Option C)
+    (function initCompanyJumpTabs() {
+      const tabNav = document.getElementById("company-section-tabs");
+      if (!tabNav || typeof tabNav.querySelectorAll !== "function") return;
+      const tabTrack = tabNav.querySelector ? tabNav.querySelector(".company-sticky-tabs-track") : null;
+      const tabLinks = Array.prototype.slice.call(tabNav.querySelectorAll(".company-jump-tab"));
+      if (tabLinks.length === 0) return;
+
+      let activeTargetId = tabLinks[0].getAttribute("data-target") || "sec-overview";
+      let programmaticScrollUntil = 0;
+      let rafPending = false;
+
+      function setActiveTab(targetId) {
+        if (!targetId || activeTargetId === targetId) return;
+        activeTargetId = targetId;
+        let activeLinkEl = null;
+        for (let i = 0; i < tabLinks.length; i++) {
+          const link = tabLinks[i];
+          const isMatch = link.getAttribute("data-target") === targetId;
+          if (link.classList) {
+            link.classList.toggle("active", isMatch);
+          }
+          if (isMatch) {
+            link.setAttribute("aria-current", "location");
+            activeLinkEl = link;
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        }
+        // Keep active pill centered horizontally on compact/mobile screens without affecting vertical scroll
+        if (activeLinkEl && tabTrack && typeof tabTrack.scrollTo === "function" && tabTrack.scrollWidth > tabTrack.clientWidth) {
+          const desiredLeft = activeLinkEl.offsetLeft - (tabTrack.clientWidth / 2) + (activeLinkEl.offsetWidth / 2);
+          try {
+            tabTrack.scrollTo({ left: Math.max(0, desiredLeft), behavior: "smooth" });
+          } catch (_) {
+            tabTrack.scrollLeft = Math.max(0, desiredLeft);
+          }
+        }
+      }
+
+      function jumpToSection(targetId, fromKeyboard) {
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl || targetEl.hidden || (typeof targetEl.hasAttribute === "function" && targetEl.hasAttribute("hidden"))) return;
+        programmaticScrollUntil = Date.now() + 750;
+        setActiveTab(targetId);
+
+        if (typeof targetEl.scrollIntoView === "function") {
+          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // Sync screen-reader & keyboard reading cursor to the section heading without visual outline noise
+        const headingEl = targetEl.querySelector ? targetEl.querySelector("h3, h4") : null;
+        const focusTarget = headingEl || targetEl;
+        if (focusTarget && typeof focusTarget.focus === "function") {
+          if (typeof focusTarget.setAttribute === "function" && !focusTarget.hasAttribute("tabindex")) {
+            focusTarget.setAttribute("tabindex", "-1");
+          }
+          const applyFocus = () => {
+            try {
+              focusTarget.focus({ preventScroll: true });
+            } catch (_) {
+              if (fromKeyboard) focusTarget.focus();
+            }
+          };
+          if (fromKeyboard) {
+            setTimeout(applyFocus, 280);
+          } else {
+            applyFocus();
+          }
+        }
+      }
+
+      tabLinks.forEach((link, idx) => {
+        link.addEventListener("click", (e) => {
+          if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          const targetId = link.getAttribute("data-target");
+          const fromKeyboard = e.detail === 0;
+          if (targetId) jumpToSection(targetId, fromKeyboard);
+        });
+
+        link.addEventListener("keydown", (e) => {
+          let nextIdx = -1;
+          if (e.key === "ArrowRight") {
+            nextIdx = (idx + 1) % tabLinks.length;
+          } else if (e.key === "ArrowLeft") {
+            nextIdx = (idx - 1 + tabLinks.length) % tabLinks.length;
+          } else if (e.key === "Home") {
+            nextIdx = 0;
+          } else if (e.key === "End") {
+            nextIdx = tabLinks.length - 1;
+          }
+          if (nextIdx >= 0 && tabLinks[nextIdx]) {
+            e.preventDefault();
+            tabLinks[nextIdx].focus();
+          }
+        });
+      });
+
+      function updateActiveTabOnScroll() {
+        rafPending = false;
+        if (Date.now() < programmaticScrollUntil) return;
+        if (!stockResult || stockResult.hidden) return;
+
+        const navRect = typeof tabNav.getBoundingClientRect === "function" ? tabNav.getBoundingClientRect() : { height: 56 };
+        const triggerLine = Math.max(80, (navRect.height || 56) + 38);
+        let candidateId = tabLinks[0].getAttribute("data-target");
+
+        for (let i = 0; i < tabLinks.length; i++) {
+          const tid = tabLinks[i].getAttribute("data-target");
+          const sec = tid ? document.getElementById(tid) : null;
+          if (!sec || sec.hidden || (typeof sec.hasAttribute === "function" && sec.hasAttribute("hidden"))) continue;
+          if (typeof sec.getBoundingClientRect !== "function") continue;
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= triggerLine) {
+            candidateId = tid;
+          }
+        }
+
+        // If scrolled near the very bottom of the document, allow the final visible section to highlight cleanly
+        if (typeof window !== "undefined" && typeof document.documentElement !== "undefined") {
+          const docEl = document.documentElement;
+          const nearBottom = (window.innerHeight + (window.scrollY || window.pageYOffset || 0)) >= (docEl.scrollHeight - 28);
+          if (nearBottom) {
+            for (let j = tabLinks.length - 1; j >= 0; j--) {
+              const lastTid = tabLinks[j].getAttribute("data-target");
+              const lastSec = lastTid ? document.getElementById(lastTid) : null;
+              if (lastSec && !lastSec.hidden && typeof lastSec.getBoundingClientRect === "function") {
+                const lr = lastSec.getBoundingClientRect();
+                if (lr.top < window.innerHeight * 0.72) {
+                  candidateId = lastTid;
+                }
+                break;
+              }
+            }
+          }
+        }
+
+        if (candidateId) setActiveTab(candidateId);
+      }
+
+      function onScrollOrResize() {
+        if (rafPending) return;
+        rafPending = true;
+        if (typeof requestAnimationFrame === "function") {
+          requestAnimationFrame(updateActiveTabOnScroll);
+        } else {
+          updateActiveTabOnScroll();
+        }
+      }
+
+      if (typeof window !== "undefined" && typeof window.addEventListener === "function") {
+        window.addEventListener("scroll", onScrollOrResize, { passive: true });
+        window.addEventListener("resize", onScrollOrResize, { passive: true });
+        cleanupCompanyJumpTabs = function () {
+          window.removeEventListener("scroll", onScrollOrResize);
+          window.removeEventListener("resize", onScrollOrResize);
+        };
+      }
+    })();
+
     warmUpLocalVoice();
     triggerDelayedRefresh(activeExchangeView);
 
@@ -3149,6 +3337,10 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (stockResult && !stockResult.hidden) {
       if (window._stocks360IsSpeakingCompany) {
         stopCompanyVoiceOverview();
+      }
+      if (typeof cleanupCompanyJumpTabs === "function") {
+        cleanupCompanyJumpTabs();
+        cleanupCompanyJumpTabs = null;
       }
       stockResult.hidden = true;
       stockResult.style.display = "none";
