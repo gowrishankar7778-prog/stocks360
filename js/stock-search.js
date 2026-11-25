@@ -38,6 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let activeCompanyData = null;
   let cleanupCompanyJumpTabs = null;
+  let cleanupCompanyDelayedAutoRefresh = null;
+
+  function stopCompanyDelayedAutoRefresh() {
+    if (typeof cleanupCompanyDelayedAutoRefresh === "function") {
+      cleanupCompanyDelayedAutoRefresh();
+      cleanupCompanyDelayedAutoRefresh = null;
+    }
+  }
 
   // Starter Quick Pick Pills
   function bindQuickPills() {
@@ -505,6 +513,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function closeCompanyAnalysis() {
     stopCompanyVoiceOverview();
+    stopCompanyDelayedAutoRefresh();
     if (typeof cleanupCompanyJumpTabs === "function") {
       cleanupCompanyJumpTabs();
       cleanupCompanyJumpTabs = null;
@@ -2338,6 +2347,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---------------- RENDER COMPLETE DETAILED VIEW ----------------
   function renderDetailedCompanyAnalysis(stock, shouldScroll = true) {
     if (!stock || !stockResult) return;
+    stopCompanyDelayedAutoRefresh();
     if (typeof cleanupCompanyJumpTabs === "function") {
       cleanupCompanyJumpTabs();
       cleanupCompanyJumpTabs = null;
@@ -2768,6 +2778,20 @@ document.addEventListener("DOMContentLoaded", function () {
     let activeExchangeView = stock.exchanges === "BSE" ? "BSE" : "NSE";
     const delayedQuotes = { NSE: null, BSE: null };
 
+    let lastStockDelayedFetchAt = 0;
+
+    function formatIstUpdateTime(ts) {
+      try {
+        return new Date(ts || Date.now()).toLocaleTimeString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      } catch (_) {
+        return "";
+      }
+    }
+
     function applyDelayedDataToSnapshot(target, q) {
       if (!target || !q || typeof q.cmp !== "number") return target;
       const nextCmp = q.cmp;
@@ -2787,20 +2811,26 @@ document.addEventListener("DOMContentLoaded", function () {
       target.isGain = typeof q.isGain === "boolean" ? q.isGain : nextChange >= 0;
       target.high52 = Math.max(target.high52 || 0, nextHigh || 0);
       target.low52 = target.low52 > 0 ? Math.min(target.low52, nextLow || target.low52) : (nextLow || 0);
-      target.lastUpdated = "Market Hours • 15-min delayed";
+      const updatedTimeStr = formatIstUpdateTime(q._fetchedAt || Date.now());
+      target.lastUpdated = updatedTimeStr
+        ? `15-min delayed • Updated ${updatedTimeStr} IST`
+        : "Market Hours • 15-min delayed";
       target._isDelayedLive = true;
       return target;
     }
 
     function triggerDelayedRefresh(exch) {
       const targetExch = exch === "BSE" ? "BSE" : "NSE";
-      if (!isIndianMarketHours()) return;
+      if (!shouldUseDelayedQuotesToday()) return;
       const reqBseCode = targetExch === "BSE"
         ? ((bseQuoteSnapshot && bseQuoteSnapshot.bseCode) || stock.bseCode || "")
         : "";
       refreshDelayedPriceIfMarketHours(stock, targetExch, {
         bseCode: reqBseCode,
         onQuote: (q) => {
+          const fetchedAt = Date.now();
+          lastStockDelayedFetchAt = fetchedAt;
+          q._fetchedAt = fetchedAt;
           delayedQuotes[targetExch] = q;
           if (targetExch === "NSE") {
             applyDelayedDataToSnapshot(nseQuoteSnapshot, q);
@@ -2974,7 +3004,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       if (statusEl) statusEl.textContent = exch === "BSE" ? "Exchange: BSE" : "Exchange: NSE";
       if (discEl) {
-        if (q && q._isDelayedLive && isIndianMarketHours()) {
+        if (q && q._isDelayedLive && shouldUseDelayedQuotesToday()) {
           discEl.hidden = false;
           if (typeof discEl.removeAttribute === "function") discEl.removeAttribute("hidden");
         } else {
@@ -2997,7 +3027,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnBse.style.borderColor = active ? "#2563eb" : "#cbd5e1";
       }
 
-      if (!(opts && opts.skipRefresh) && isIndianMarketHours() && !(q && q._isDelayedLive)) {
+      if (!(opts && opts.skipRefresh) && shouldUseDelayedQuotesToday() && !(q && q._isDelayedLive)) {
         triggerDelayedRefresh(exch);
       }
     }
@@ -3273,6 +3303,80 @@ document.addEventListener("DOMContentLoaded", function () {
 
     warmUpLocalVoice();
     triggerDelayedRefresh(activeExchangeView);
+
+    // Auto-refresh this stock's 15-min delayed quote in place while user stays on the page
+    (function startCompanyDelayedAutoRefresh() {
+      const STOCK_REFRESH_MS = 15 * 60 * 1000;
+      let timerId = null;
+
+      function isDelayedAutoRefreshWindowIST() {
+        try {
+          const parts = new Intl.DateTimeFormat("en-US", {
+            timeZone: "Asia/Kolkata",
+            weekday: "short",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            hourCycle: "h23"
+          }).formatToParts(new Date());
+          const getVal = (type) => {
+            const p = parts.find((x) => x.type === type);
+            return p ? p.value : "";
+          };
+          const wd = getVal("weekday");
+          if (wd === "Sat" || wd === "Sun") return false;
+          const hr = parseInt(getVal("hour"), 10);
+          const min = parseInt(getVal("minute"), 10);
+          if (!Number.isFinite(hr) || !Number.isFinite(min)) return false;
+          const totalMins = (hr === 24 ? 0 : hr) * 60 + min;
+          return totalMins >= 555 && totalMins <= 945 && !isEodSyncedForToday();
+        } catch (_) {
+          return false;
+        }
+      }
+
+      function scheduleNext() {
+        if (timerId) {
+          clearTimeout(timerId);
+          timerId = null;
+        }
+        if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol || !stockResult || stockResult.hidden) return;
+        if (!isDelayedAutoRefreshWindowIST()) return;
+        const elapsed = lastStockDelayedFetchAt > 0 ? Math.max(0, Date.now() - lastStockDelayedFetchAt) : 0;
+        const delay = Math.max(1000, STOCK_REFRESH_MS - elapsed);
+        timerId = setTimeout(function () {
+          if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol || !stockResult || stockResult.hidden) return;
+          if (isDelayedAutoRefreshWindowIST()) {
+            triggerDelayedRefresh(activeExchangeView);
+            scheduleNext();
+          }
+        }, delay);
+      }
+
+      function onVisibilityChange() {
+        if (document.hidden) return;
+        if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol || !stockResult || stockResult.hidden) return;
+        if (Date.now() - lastStockDelayedFetchAt >= STOCK_REFRESH_MS && shouldUseDelayedQuotesToday()) {
+          triggerDelayedRefresh(activeExchangeView);
+        }
+        scheduleNext();
+      }
+
+      if (typeof document !== "undefined" && typeof document.addEventListener === "function") {
+        document.addEventListener("visibilitychange", onVisibilityChange);
+      }
+      scheduleNext();
+
+      cleanupCompanyDelayedAutoRefresh = function () {
+        if (timerId) {
+          clearTimeout(timerId);
+          timerId = null;
+        }
+        if (typeof document !== "undefined" && typeof document.removeEventListener === "function") {
+          document.removeEventListener("visibilitychange", onVisibilityChange);
+        }
+      };
+    })();
 
     if (shouldScroll) {
       const headingEl = document.getElementById("company-view-title") || stockResult;
@@ -3729,6 +3833,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window._stocks360IsSpeakingCompany) {
         stopCompanyVoiceOverview();
       }
+      stopCompanyDelayedAutoRefresh();
       if (typeof cleanupCompanyJumpTabs === "function") {
         cleanupCompanyJumpTabs();
         cleanupCompanyJumpTabs = null;

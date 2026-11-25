@@ -256,14 +256,14 @@ document.addEventListener("DOMContentLoaded", function () {
       { label: "BANK NIFTY", symbol: "^NSEBANK" }
     ];
 
-    function isMarketHoursIST() {
+    function isDelayedAutoRefreshWindowIST() {
       try {
         const now = new Date();
         const ist = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
         const day = ist.getDay();
         if (day === 0 || day === 6) return false;
         const mins = ist.getHours() * 60 + ist.getMinutes();
-        return mins >= 555 && mins <= 930; // 09:15 to 15:30 IST
+        return mins >= 555 && mins <= 945; // 09:15 to 15:45 IST (captures 15:30 close on 15-min delay)
       } catch (_) {
         return false;
       }
@@ -357,6 +357,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    let lastFetchedAt = 0;
+    let refreshTimerId = null;
+
+    function scheduleNextRefresh() {
+      if (refreshTimerId) {
+        clearTimeout(refreshTimerId);
+        refreshTimerId = null;
+      }
+      if (!isDelayedAutoRefreshWindowIST() || isEodSyncedForToday()) return;
+      const elapsed = lastFetchedAt > 0 ? Math.max(0, Date.now() - lastFetchedAt) : REFRESH_MS;
+      const delay = Math.max(1000, REFRESH_MS - elapsed);
+      refreshTimerId = setTimeout(async function () {
+        if (isDelayedAutoRefreshWindowIST() && !isEodSyncedForToday()) {
+          await fetchAllIndices();
+        }
+        scheduleNextRefresh();
+      }, delay);
+    }
+
     async function fetchAllIndices() {
       try {
         const results = await Promise.all(
@@ -380,12 +399,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (results.some(function (r) { return typeof r.cmp === "number"; })) {
           const now = Date.now();
+          lastFetchedAt = now;
           renderIndices(results, now);
           try {
             localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: now, items: results }));
           } catch (_) {}
         }
       } catch (_) {}
+      scheduleNextRefresh();
     }
 
     // 1. Render cached values immediately if available
@@ -393,7 +414,8 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
       if (cached && Array.isArray(cached.items) && cached.items.length === 3) {
-        cacheAge = Date.now() - Number(cached.timestamp || 0);
+        lastFetchedAt = Number(cached.timestamp || 0);
+        cacheAge = Date.now() - lastFetchedAt;
         renderIndices(cached.items, cached.timestamp);
       }
     } catch (_) {}
@@ -401,13 +423,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // 2. Fetch fresh 15-min delayed quotes up until automated EOD workflow syncs today (or if no cache exists)
     if (cacheAge >= REFRESH_MS && (shouldUseDelayedIndicesToday() || cacheAge === Infinity)) {
       fetchAllIndices();
+    } else {
+      // 3. Schedule exact next 15-minute refresh aligned to lastFetchedAt (e.g., 10:30 -> 10:45)
+      scheduleNextRefresh();
     }
 
-    // 3. Auto-refresh every 15 minutes during Indian market hours until EOD sync completes
-    setInterval(function () {
-      if (isMarketHoursIST() && !isEodSyncedForToday()) {
+    // 4. Catch up immediately when a backgrounded/sleeping tab becomes visible again
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) return;
+      if (Date.now() - lastFetchedAt >= REFRESH_MS && shouldUseDelayedIndicesToday()) {
         fetchAllIndices();
+      } else {
+        scheduleNextRefresh();
       }
-    }, REFRESH_MS);
+    });
   })();
 });
