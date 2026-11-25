@@ -2778,7 +2778,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let activeExchangeView = stock.exchanges === "BSE" ? "BSE" : "NSE";
     const delayedQuotes = { NSE: null, BSE: null };
 
-    let lastStockDelayedFetchAt = 0;
+    const quoteTimestamps = { NSE: 0, BSE: 0 };
+    let scheduleCompanyQuoteRefresh = null;
 
     function formatIstUpdateTime(ts) {
       try {
@@ -2811,10 +2812,14 @@ document.addEventListener("DOMContentLoaded", function () {
       target.isGain = typeof q.isGain === "boolean" ? q.isGain : nextChange >= 0;
       target.high52 = Math.max(target.high52 || 0, nextHigh || 0);
       target.low52 = target.low52 > 0 ? Math.min(target.low52, nextLow || target.low52) : (nextLow || 0);
-      const updatedTimeStr = formatIstUpdateTime(q._fetchedAt || Date.now());
+      const trueQuoteTs = (typeof q._fetchedAt === "number" && q._fetchedAt > 0)
+        ? q._fetchedAt
+        : ((typeof q.timestamp === "number" && q.timestamp > 0) ? q.timestamp : Date.now());
+      const updatedTimeStr = formatIstUpdateTime(trueQuoteTs);
       target.lastUpdated = updatedTimeStr
         ? `15-min delayed • Updated ${updatedTimeStr} IST`
         : "Market Hours • 15-min delayed";
+      target._quoteTimestamp = trueQuoteTs;
       target._isDelayedLive = true;
       return target;
     }
@@ -2828,9 +2833,10 @@ document.addEventListener("DOMContentLoaded", function () {
       refreshDelayedPriceIfMarketHours(stock, targetExch, {
         bseCode: reqBseCode,
         onQuote: (q) => {
-          const fetchedAt = Date.now();
-          lastStockDelayedFetchAt = fetchedAt;
-          q._fetchedAt = fetchedAt;
+          // Use the exact Worker cache timestamp (e.g., 2:31 PM even if revisited at 2:41 PM)
+          const trueQuoteTs = (typeof q.timestamp === "number" && q.timestamp > 0) ? q.timestamp : Date.now();
+          q._fetchedAt = trueQuoteTs;
+          quoteTimestamps[targetExch] = trueQuoteTs;
           delayedQuotes[targetExch] = q;
           if (targetExch === "NSE") {
             applyDelayedDataToSnapshot(nseQuoteSnapshot, q);
@@ -2850,6 +2856,9 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           if (activeExchangeView === targetExch) {
             applyExchangeQuote(targetExch, { skipRefresh: true });
+          }
+          if (typeof scheduleCompanyQuoteRefresh === "function") {
+            scheduleCompanyQuoteRefresh();
           }
         }
       });
@@ -3029,6 +3038,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!(opts && opts.skipRefresh) && shouldUseDelayedQuotesToday() && !(q && q._isDelayedLive)) {
         triggerDelayedRefresh(exch);
+      } else if (typeof scheduleCompanyQuoteRefresh === "function") {
+        scheduleCompanyQuoteRefresh();
       }
     }
 
@@ -3304,7 +3315,7 @@ document.addEventListener("DOMContentLoaded", function () {
     warmUpLocalVoice();
     triggerDelayedRefresh(activeExchangeView);
 
-    // Auto-refresh this stock's 15-min delayed quote in place while user stays on the page
+    // Auto-refresh this stock's 15-min delayed quote in place aligned to its exact Worker cache expiry (q.timestamp + 15m)
     (function startCompanyDelayedAutoRefresh() {
       const STOCK_REFRESH_MS = 15 * 60 * 1000;
       let timerId = null;
@@ -3342,24 +3353,38 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol || !stockResult || stockResult.hidden) return;
         if (!isDelayedAutoRefreshWindowIST()) return;
-        const elapsed = lastStockDelayedFetchAt > 0 ? Math.max(0, Date.now() - lastStockDelayedFetchAt) : 0;
-        const delay = Math.max(1000, STOCK_REFRESH_MS - elapsed);
+
+        const now = Date.now();
+        const activeQuoteTs = quoteTimestamps[activeExchangeView] || 0;
+        let delay;
+        if (activeQuoteTs > 0) {
+          const expiresAt = activeQuoteTs + STOCK_REFRESH_MS;
+          // If quote expires in the future (e.g. fetched 2:31 PM, visited 2:41 PM -> expires 2:46 PM),
+          // fire 2s after expiry (2:46:02 PM). If already past expiry due to slight clock skew, retry in 5s.
+          delay = expiresAt > now ? (expiresAt - now + 2000) : 5000;
+        } else {
+          delay = STOCK_REFRESH_MS;
+        }
+
         timerId = setTimeout(function () {
           if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol || !stockResult || stockResult.hidden) return;
           if (isDelayedAutoRefreshWindowIST()) {
             triggerDelayedRefresh(activeExchangeView);
-            scheduleNext();
           }
         }, delay);
       }
 
+      scheduleCompanyQuoteRefresh = scheduleNext;
+
       function onVisibilityChange() {
         if (document.hidden) return;
         if (!activeCompanyData || activeCompanyData.symbol !== stock.symbol || !stockResult || stockResult.hidden) return;
-        if (Date.now() - lastStockDelayedFetchAt >= STOCK_REFRESH_MS && shouldUseDelayedQuotesToday()) {
+        const activeQuoteTs = quoteTimestamps[activeExchangeView] || 0;
+        if ((activeQuoteTs === 0 || Date.now() - activeQuoteTs >= STOCK_REFRESH_MS) && shouldUseDelayedQuotesToday()) {
           triggerDelayedRefresh(activeExchangeView);
+        } else {
+          scheduleNext();
         }
-        scheduleNext();
       }
 
       if (typeof document !== "undefined" && typeof document.addEventListener === "function") {
@@ -3368,6 +3393,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scheduleNext();
 
       cleanupCompanyDelayedAutoRefresh = function () {
+        scheduleCompanyQuoteRefresh = null;
         if (timerId) {
           clearTimeout(timerId);
           timerId = null;
@@ -3739,7 +3765,7 @@ document.addEventListener("DOMContentLoaded", function () {
         : (targetExch === "BSE" ? (stock.bseCode || "") : "");
       const sep = proxyBase.includes("?") ? "&" : "?";
       const reqUrl = `${proxyBase}${sep}symbol=${encodeURIComponent(stock.symbol)}&exchange=${encodeURIComponent(targetExch)}${reqBseCode ? `&bseCode=${encodeURIComponent(reqBseCode)}` : ""}`;
-      const res = await fetch(reqUrl);
+      const res = await fetch(reqUrl, { cache: "no-store" });
       if (!res || !res.ok) return;
       const q = await res.json();
       if (!q || typeof q.cmp !== "number" || !activeCompanyData || activeCompanyData.symbol !== stock.symbol) return;

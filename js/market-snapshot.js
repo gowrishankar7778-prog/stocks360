@@ -141,7 +141,51 @@
     return null;
   }
 
+  const SNAPSHOT_SLOT_MS = 15 * 60 * 1000;
+  let snapshotAutoRefreshTimer = null;
+
+  function getSnapshotIndexSlotMs() {
+    try {
+      const ts = Date.now();
+      const ist = new Date(new Date(ts).toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+      const day = ist.getDay();
+      if (day === 0 || day === 6 || isEodSyncedForToday()) return null;
+      const mins = ist.getHours() * 60 + ist.getMinutes();
+      if (mins < 555) return null;
+      if (mins <= 945) return Math.floor(ts / SNAPSHOT_SLOT_MS) * SNAPSHOT_SLOT_MS;
+      const msPast1545 = ((mins - 945) * 60 + ist.getSeconds()) * 1000 + (ts % 1000);
+      return Math.round((ts - msPast1545) / SNAPSHOT_SLOT_MS) * SNAPSHOT_SLOT_MS;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function scheduleSnapshotSegmentRefresh(segId) {
+    if (snapshotAutoRefreshTimer) {
+      clearTimeout(snapshotAutoRefreshTimer);
+      snapshotAutoRefreshTimer = null;
+    }
+    if ((segId !== "indices" && segId !== "sectors") || activeSegment !== segId || !isIndianMarketHours()) return;
+    try {
+      const now = Date.now();
+      const ist = new Date(new Date(now).toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+      const mins = ist.getHours() * 60 + ist.getMinutes();
+      if (mins < 555 || mins >= 945) return;
+      const nextSlotMs = (Math.floor(now / SNAPSHOT_SLOT_MS) + 1) * SNAPSHOT_SLOT_MS;
+      const delay = Math.max(2000, nextSlotMs - now + 2000);
+      snapshotAutoRefreshTimer = setTimeout(() => {
+        if (activeSegment === segId && isIndianMarketHours()) {
+          refreshSegmentDelayedQuotes(segId);
+        }
+      }, delay);
+    } catch (_) {}
+  }
+
   async function refreshSegmentDelayedQuotes(segId) {
+    if (snapshotAutoRefreshTimer) {
+      clearTimeout(snapshotAutoRefreshTimer);
+      snapshotAutoRefreshTimer = null;
+    }
     if ((segId !== "indices" && segId !== "sectors") || !isIndianMarketHours() || typeof fetch !== "function") {
       return;
     }
@@ -153,8 +197,11 @@
 
     const uniqueSyms = Array.from(new Set(rows.map((r) => r.getAttribute("data-quote-sym")).filter(Boolean)));
     const subtitleEl = document.getElementById("snapshot-segment-subtitle");
+    const targetSlot = getSnapshotIndexSlotMs();
+    const slotParam = targetSlot ? `&slot=${targetSlot}` : "";
 
     let updatedCount = 0;
+    let latestQuoteTs = 0;
     const batchSize = 5;
     for (let i = 0; i < uniqueSyms.length; i += batchSize) {
       if (activeSegment !== segId) return;
@@ -162,10 +209,16 @@
       await Promise.all(
         batch.map(async (sym) => {
           try {
-            const res = await fetch(`${QUOTE_PROXY_BASE}?symbol=${encodeURIComponent(sym)}&exchange=INDEX`);
+            const res = await fetch(
+              `${QUOTE_PROXY_BASE}?symbol=${encodeURIComponent(sym)}&exchange=INDEX${slotParam}`,
+              { cache: "no-store" }
+            );
             if (!res || !res.ok) return;
             const q = await res.json();
             if (!q || typeof q.cmp !== "number" || activeSegment !== segId) return;
+            if (typeof q.timestamp === "number" && q.timestamp > latestQuoteTs) {
+              latestQuoteTs = q.timestamp;
+            }
 
             const matchingRows = panel.querySelectorAll(`tr[data-quote-sym="${sym}"]`);
             matchingRows.forEach((tr) => {
@@ -192,9 +245,11 @@
     }
 
     if (updatedCount > 0 && subtitleEl && activeSegment === segId) {
-      const timeStr = new Date().toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit" });
+      const displayTs = targetSlot || latestQuoteTs || Date.now();
+      const timeStr = new Date(displayTs).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit" });
       subtitleEl.textContent = `15-min delayed live quotes active • Updated ${timeStr} IST`;
     }
+    scheduleSnapshotSegmentRefresh(segId);
   }
 
   function getExchangeStocks(exchange) {

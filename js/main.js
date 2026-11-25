@@ -256,17 +256,62 @@ document.addEventListener("DOMContentLoaded", function () {
       { label: "BANK NIFTY", symbol: "^NSEBANK" }
     ];
 
-    function isDelayedAutoRefreshWindowIST() {
+    const SLOT_MS = 15 * 60 * 1000; // Exact 15-min clock slots (IST = UTC+5:30 = 22 * 15m, so UTC & IST 15m boundaries match)
+
+    function getIstClockParts(nowMs) {
       try {
-        const now = new Date();
-        const ist = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-        const day = ist.getDay();
-        if (day === 0 || day === 6) return false;
-        const mins = ist.getHours() * 60 + ist.getMinutes();
-        return mins >= 555 && mins <= 945; // 09:15 to 15:45 IST (captures 15:30 close on 15-min delay)
+        const dt = new Date(nowMs || Date.now());
+        const parts = new Intl.DateTimeFormat("en-US", {
+          timeZone: "Asia/Kolkata",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+          hourCycle: "h23"
+        }).formatToParts(dt);
+        const getVal = function (type) {
+          const p = parts.find(function (x) { return x.type === type; });
+          return p ? p.value : "";
+        };
+        const wd = getVal("weekday");
+        const hrRaw = parseInt(getVal("hour"), 10);
+        const hr = hrRaw === 24 ? 0 : hrRaw;
+        const min = parseInt(getVal("minute"), 10);
+        const sec = parseInt(getVal("second"), 10) || 0;
+        if (!Number.isFinite(hr) || !Number.isFinite(min)) return null;
+        return {
+          isWeekend: wd === "Sat" || wd === "Sun",
+          totalMins: hr * 60 + min,
+          sec: sec
+        };
       } catch (_) {
-        return false;
+        return null;
       }
+    }
+
+    // Returns the active 15-min IST slot start timestamp (09:15, 09:30, 09:45, ..., 15:45 IST),
+    // clamping post-15:45 times (before EOD sync) to today's 15:45 IST closing-delay slot.
+    function getTargetIndexSlotMs(nowMs) {
+      const ts = typeof nowMs === "number" ? nowMs : Date.now();
+      const clk = getIstClockParts(ts);
+      if (!clk || clk.isWeekend) return null;
+      if (clk.totalMins < 555) return null; // Before 09:15 AM IST
+      if (isEodSyncedForToday()) return null; // Official EOD dataset already synced for today
+      const currentSlot = Math.floor(ts / SLOT_MS) * SLOT_MS;
+      if (clk.totalMins <= 945) {
+        return currentSlot; // 09:15, 09:30, 09:45 ... 15:45 IST
+      }
+      // After 15:45 IST (and before EOD sync): clamp to today's 15:45 IST slot
+      const minsPast1545 = clk.totalMins - 945;
+      const msPast1545 = (minsPast1545 * 60 + clk.sec) * 1000 + (ts % 1000);
+      return Math.round((ts - msPast1545) / SLOT_MS) * SLOT_MS;
+    }
+
+    function isDelayedAutoRefreshWindowIST() {
+      const clk = getIstClockParts(Date.now());
+      if (!clk || clk.isWeekend) return false;
+      return clk.totalMins >= 555 && clk.totalMins < 945 && !isEodSyncedForToday();
     }
 
     function isEodSyncedForToday() {
@@ -357,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    let lastFetchedAt = 0;
+    let lastSlotStart = 0;
     let refreshTimerId = null;
 
     function scheduleNextRefresh() {
@@ -365,23 +410,49 @@ document.addEventListener("DOMContentLoaded", function () {
         clearTimeout(refreshTimerId);
         refreshTimerId = null;
       }
-      if (!isDelayedAutoRefreshWindowIST() || isEodSyncedForToday()) return;
-      const elapsed = lastFetchedAt > 0 ? Math.max(0, Date.now() - lastFetchedAt) : REFRESH_MS;
-      const delay = Math.max(1000, REFRESH_MS - elapsed);
+      const now = Date.now();
+      const clk = getIstClockParts(now);
+      if (!clk || clk.isWeekend || isEodSyncedForToday()) return;
+
+      // Before 09:15 AM IST on a weekday: schedule wakeup right at 09:15:02 AM IST
+      if (clk.totalMins < 555) {
+        const secsUntil0915 = (555 - clk.totalMins) * 60 - clk.sec;
+        const delayToOpen = Math.max(2000, secsUntil0915 * 1000 + 2000);
+        refreshTimerId = setTimeout(function () {
+          fetchAllIndices();
+        }, delayToOpen);
+        return;
+      }
+
+      // Stop scheduling new timers once the 15:45 IST closing-delay slot has been fetched
+      if (clk.totalMins >= 945 && lastSlotStart >= (getTargetIndexSlotMs(now) || 0)) {
+        return;
+      }
+
+      // Schedule for exact next quarter-hour boundary (:00, :15, :30, :45 IST) + 2s buffer
+      const nextBoundaryMs = (Math.floor(now / SLOT_MS) + 1) * SLOT_MS;
+      const delay = Math.max(2000, nextBoundaryMs - now + 2000);
       refreshTimerId = setTimeout(async function () {
-        if (isDelayedAutoRefreshWindowIST() && !isEodSyncedForToday()) {
+        if (shouldUseDelayedIndicesToday()) {
           await fetchAllIndices();
+        } else {
+          scheduleNextRefresh();
         }
-        scheduleNextRefresh();
       }, delay);
     }
 
     async function fetchAllIndices() {
+      const now = Date.now();
+      const targetSlot = getTargetIndexSlotMs(now);
+      const slotParam = targetSlot ? `&slot=${targetSlot}` : "";
       try {
         const results = await Promise.all(
           KEY_INDICES.map(async function (idx) {
             try {
-              const res = await fetch(`${PROXY_BASE}?symbol=${encodeURIComponent(idx.symbol)}&exchange=INDEX`);
+              const res = await fetch(
+                `${PROXY_BASE}?symbol=${encodeURIComponent(idx.symbol)}&exchange=INDEX${slotParam}`,
+                { cache: "no-store" }
+              );
               if (!res.ok) return { label: idx.label, symbol: idx.symbol };
               const data = await res.json();
               return {
@@ -389,7 +460,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 symbol: idx.symbol,
                 cmp: data.cmp,
                 dayChange: data.dayChange,
-                dayChangePct: data.dayChangePct
+                dayChangePct: data.dayChangePct,
+                timestamp: data.timestamp
               };
             } catch (_) {
               return { label: idx.label, symbol: idx.symbol };
@@ -398,11 +470,22 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         if (results.some(function (r) { return typeof r.cmp === "number"; })) {
-          const now = Date.now();
-          lastFetchedAt = now;
-          renderIndices(results, now);
+          const displayTs = targetSlot || results.reduce(function (acc, r) {
+            return typeof r.timestamp === "number" && r.timestamp > acc ? r.timestamp : acc;
+          }, 0) || Date.now();
+          if (targetSlot) {
+            lastSlotStart = targetSlot;
+          }
+          renderIndices(results, displayTs);
           try {
-            localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: now, items: results }));
+            localStorage.setItem(
+              CACHE_KEY,
+              JSON.stringify({
+                slotStart: targetSlot || 0,
+                timestamp: displayTs,
+                items: results
+              })
+            );
           } catch (_) {}
         }
       } catch (_) {}
@@ -410,28 +493,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 1. Render cached values immediately if available
-    let cacheAge = Infinity;
+    let hasCachedItems = false;
     try {
       const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
       if (cached && Array.isArray(cached.items) && cached.items.length === 3) {
-        lastFetchedAt = Number(cached.timestamp || 0);
-        cacheAge = Date.now() - lastFetchedAt;
-        renderIndices(cached.items, cached.timestamp);
+        hasCachedItems = true;
+        lastSlotStart = Number(cached.slotStart || 0);
+        renderIndices(cached.items, cached.slotStart || cached.timestamp);
       }
     } catch (_) {}
 
-    // 2. Fetch fresh 15-min delayed quotes up until automated EOD workflow syncs today (or if no cache exists)
-    if (cacheAge >= REFRESH_MS && (shouldUseDelayedIndicesToday() || cacheAge === Infinity)) {
+    // 2. Fetch if current 15-min IST slot (09:15, 09:30, 09:45...) hasn't been fetched yet, or if no cache exists
+    const initialTargetSlot = getTargetIndexSlotMs(Date.now());
+    if ((initialTargetSlot && lastSlotStart !== initialTargetSlot) || !hasCachedItems) {
       fetchAllIndices();
     } else {
-      // 3. Schedule exact next 15-minute refresh aligned to lastFetchedAt (e.g., 10:30 -> 10:45)
       scheduleNextRefresh();
     }
 
-    // 4. Catch up immediately when a backgrounded/sleeping tab becomes visible again
+    // 3. Catch up immediately if tab wakes up in a newer 15-minute IST slot
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) return;
-      if (Date.now() - lastFetchedAt >= REFRESH_MS && shouldUseDelayedIndicesToday()) {
+      const currentTargetSlot = getTargetIndexSlotMs(Date.now());
+      if (currentTargetSlot && lastSlotStart !== currentTargetSlot) {
         fetchAllIndices();
       } else {
         scheduleNextRefresh();
