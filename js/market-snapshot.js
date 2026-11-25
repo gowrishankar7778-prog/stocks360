@@ -63,6 +63,33 @@
 
   const QUOTE_PROXY_BASE = "https://stocks360-quotes.stocks360-app.workers.dev/quote";
 
+  function isEodSyncedForToday() {
+    try {
+      const now = new Date();
+      const istDateIso = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(now);
+      if (typeof window !== "undefined" && window.STOCKS_MARKET_PULSE && window.STOCKS_MARKET_PULSE.updatedAt) {
+        const pulseDt = new Date(window.STOCKS_MARKET_PULSE.updatedAt);
+        if (!isNaN(pulseDt.getTime())) {
+          const pulseIso = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(pulseDt);
+          const pulseHm = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false }).format(pulseDt);
+          if (pulseIso === istDateIso && pulseHm >= "15:30") return true;
+        }
+      }
+      const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", month: "short", day: "2-digit" }).formatToParts(now);
+      const day = (parts.find((p) => p.type === "day") || {}).value || "";
+      const month = (parts.find((p) => p.type === "month") || {}).value || "";
+      const dayNoPad = String(parseInt(day, 10));
+      const ds = typeof window !== "undefined" && Array.isArray(window.STOCKS_SCREENER_DATASET) ? window.STOCKS_SCREENER_DATASET : null;
+      if (ds && ds.length > 0) {
+        for (let i = 0; i < Math.min(5, ds.length); i++) {
+          const lu = String((ds[i] && ds[i].lastUpdated) || "");
+          if (lu && (lu.includes(`(${day} ${month})`) || lu.includes(`(${dayNoPad} ${month})`))) return true;
+        }
+      }
+    } catch (_) {}
+    return false;
+  }
+
   function isIndianMarketHours() {
     try {
       const now = new Date();
@@ -70,7 +97,9 @@
       const day = ist.getDay();
       if (day === 0 || day === 6) return false;
       const mins = ist.getHours() * 60 + ist.getMinutes();
-      return mins >= 555 && mins <= 930; // 09:15 to 15:30 IST
+      if (mins < 555) return false; // Before 09:15 IST
+      if (isEodSyncedForToday()) return false; // Automated EOD workflow already synced today
+      return true;
     } catch (_) {
       return false;
     }

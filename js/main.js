@@ -269,6 +269,47 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    function isEodSyncedForToday() {
+      try {
+        const now = new Date();
+        const parts = new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Asia/Kolkata",
+          month: "short",
+          day: "2-digit"
+        }).formatToParts(now);
+        const day = (parts.find((p) => p.type === "day") || {}).value || "";
+        const month = (parts.find((p) => p.type === "month") || {}).value || "";
+        const dayNoPad = String(parseInt(day, 10));
+        const ds = typeof window !== "undefined" && Array.isArray(window.STOCKS_SCREENER_DATASET)
+          ? window.STOCKS_SCREENER_DATASET
+          : null;
+        if (ds && ds.length > 0) {
+          for (let i = 0; i < Math.min(5, ds.length); i++) {
+            const lu = String((ds[i] && ds[i].lastUpdated) || "");
+            if (lu && (lu.includes(`(${day} ${month})`) || lu.includes(`(${dayNoPad} ${month})`))) {
+              return true;
+            }
+          }
+        }
+      } catch (_) {}
+      return false;
+    }
+
+    function shouldUseDelayedIndicesToday() {
+      try {
+        const now = new Date();
+        const ist = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+        const day = ist.getDay();
+        if (day === 0 || day === 6) return false;
+        const mins = ist.getHours() * 60 + ist.getMinutes();
+        if (mins < 555) return false; // Before 09:15 IST
+        if (isEodSyncedForToday()) return false; // Automated EOD workflow already synced today
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
     function fmtNum(v) {
       return Number(v).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
@@ -357,14 +398,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (_) {}
 
-    // 2. Fetch fresh 15-min delayed quotes if cache is older than 15 mins (or missing)
-    if (cacheAge >= REFRESH_MS) {
+    // 2. Fetch fresh 15-min delayed quotes up until automated EOD workflow syncs today (or if no cache exists)
+    if (cacheAge >= REFRESH_MS && (shouldUseDelayedIndicesToday() || cacheAge === Infinity)) {
       fetchAllIndices();
     }
 
-    // 3. Auto-refresh every 15 minutes during Indian market hours
+    // 3. Auto-refresh every 15 minutes during Indian market hours until EOD sync completes
     setInterval(function () {
-      if (isMarketHoursIST()) {
+      if (isMarketHoursIST() && !isEodSyncedForToday()) {
         fetchAllIndices();
       }
     }, REFRESH_MS);

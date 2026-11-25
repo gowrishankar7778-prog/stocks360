@@ -3516,6 +3516,61 @@ document.addEventListener("DOMContentLoaded", function () {
     playBrowserSpeechFallback(narration, sessionId);
   }
 
+  function isEodSyncedForToday() {
+    try {
+      const now = new Date();
+      const parts = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Kolkata",
+        month: "short",
+        day: "2-digit"
+      }).formatToParts(now);
+      const day = (parts.find((p) => p.type === "day") || {}).value || "";
+      const month = (parts.find((p) => p.type === "month") || {}).value || "";
+      const dayNoPad = String(parseInt(day, 10));
+      const ds = typeof window !== "undefined" && Array.isArray(window.STOCKS_SCREENER_DATASET)
+        ? window.STOCKS_SCREENER_DATASET
+        : null;
+      if (ds && ds.length > 0) {
+        for (let i = 0; i < Math.min(5, ds.length); i++) {
+          const lu = String((ds[i] && ds[i].lastUpdated) || "");
+          if (lu && (lu.includes(`(${day} ${month})`) || lu.includes(`(${dayNoPad} ${month})`))) {
+            return true;
+          }
+        }
+      }
+    } catch (_) {}
+    return false;
+  }
+
+  function shouldUseDelayedQuotesToday(nowDate) {
+    try {
+      const dt = nowDate instanceof Date ? nowDate : new Date();
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Kolkata",
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        hourCycle: "h23"
+      }).formatToParts(dt);
+      const getVal = (type) => {
+        const p = parts.find((x) => x.type === type);
+        return p ? p.value : "";
+      };
+      const wd = getVal("weekday");
+      if (wd === "Sat" || wd === "Sun") return false;
+      const hr = parseInt(getVal("hour"), 10);
+      const min = parseInt(getVal("minute"), 10);
+      if (!Number.isFinite(hr) || !Number.isFinite(min)) return false;
+      const totalMins = (hr === 24 ? 0 : hr) * 60 + min;
+      if (totalMins < 555) return false; // Before 09:15 IST
+      if (isEodSyncedForToday()) return false; // Automated EOD workflow already synced today
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   function isIndianMarketHours(nowDate) {
     try {
       const dt = nowDate instanceof Date ? nowDate : new Date();
@@ -3562,7 +3617,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function refreshDelayedPriceIfMarketHours(stock, exch, opts) {
     const hasCallback = Boolean(opts && typeof opts.onQuote === "function");
     const discEl = document.getElementById("price-delayed-disclaimer");
-    if (!stock || !isIndianMarketHours()) {
+    if (!stock || !shouldUseDelayedQuotesToday()) {
       if (discEl && !hasCallback) discEl.hidden = true;
       return;
     }
@@ -3609,7 +3664,11 @@ document.addEventListener("DOMContentLoaded", function () {
         pillEl.style.color = gain ? "#16a34a" : "#dc2626";
         pillEl.style.borderColor = gain ? "#bbf7d0" : "#fecaca";
       }
-      if (sessEl) sessEl.textContent = "(Session: Market Hours • 15-min delayed)";
+      if (sessEl) {
+        sessEl.textContent = isIndianMarketHours()
+          ? "(Session: Market Hours • 15-min delayed)"
+          : "(Session: Today's Close • 15-min delayed feed)";
+      }
       if (openEl && typeof q.dayOpen === "number") openEl.textContent = `₹ ${fmtP(q.dayOpen)}`;
       if (highEl && typeof q.dayHigh === "number") highEl.textContent = `₹ ${fmtP(q.dayHigh)}`;
       if (lowEl && typeof q.dayLow === "number") lowEl.textContent = `₹ ${fmtP(q.dayLow)}`;
