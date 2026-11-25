@@ -77,7 +77,7 @@ const StocksGeminiAI = (function () {
 
   // ---------------- CONFIGURATION & DAILY QUOTA GUARDRAILS ----------------
   async function loadConfig() {
-    if (runtimeConfig && runtimeConfig.apiKey) {
+    if (runtimeConfig) {
       return runtimeConfig;
     }
 
@@ -85,6 +85,11 @@ const StocksGeminiAI = (function () {
     try {
       const saved = localStorage.getItem(CONFIG_STORAGE_KEY);
       if (saved) localCfg = JSON.parse(saved) || {};
+      // Security: purge any Gemini API key previously cached in the browser
+      if (localCfg.apiKey) {
+        delete localCfg.apiKey;
+        localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(localCfg));
+      }
     } catch (_) {}
 
     // Check Firebase Firestore (`site_settings/gemini_ai`) if connected
@@ -104,17 +109,10 @@ const StocksGeminiAI = (function () {
       } catch (_) {}
     }
 
-    // Also check if `firebase-secret.json` provided a `geminiApiKey` or `apiKey`
-    const fallbackKey =
-      (typeof FIREBASE_CONFIG !== "undefined" &&
-        (FIREBASE_CONFIG.geminiApiKey ||
-          (FIREBASE_CONFIG.geminiAi && FIREBASE_CONFIG.geminiAi.apiKey) ||
-          FIREBASE_CONFIG.apiKey)) ||
-      localCfg.apiKey ||
-      "";
-
+    // Security: the Gemini API key lives ONLY in the Cloudflare Worker secret (GEMINI_API_KEY).
+    // The browser never holds a key, so every AI call routes through the secure Worker proxy.
     runtimeConfig = Object.assign({}, DEFAULT_CONFIG, localCfg, {
-      apiKey: fallbackKey
+      apiKey: ""
     });
     // Standardize model to gemini-3.5-flash-lite (active Google API model)
     if (!runtimeConfig.model || /^gemini-2\./i.test(runtimeConfig.model)) {
@@ -131,8 +129,9 @@ const StocksGeminiAI = (function () {
     try {
       current = JSON.parse(localStorage.getItem(CONFIG_STORAGE_KEY) || "{}");
     } catch (_) {}
-    const merged = Object.assign({}, DEFAULT_CONFIG, current, newSettings);
-    runtimeConfig = merged;
+    const merged = Object.assign({}, DEFAULT_CONFIG, current, newSettings, { apiKey: "" });
+    delete merged.apiKey;
+    runtimeConfig = Object.assign({}, merged, { apiKey: "" });
     try {
       localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(merged));
     } catch (_) {}
@@ -146,7 +145,7 @@ const StocksGeminiAI = (function () {
             model: merged.model,
             dailyLimit: merged.dailyLimit,
             maxOutputTokens: merged.maxOutputTokens,
-            apiKey: merged.apiKey || "",
+            apiKey: "", // Never store Gemini keys in Firestore (clears any previously saved key)
             updatedAt: Date.now()
           },
           { merge: true }

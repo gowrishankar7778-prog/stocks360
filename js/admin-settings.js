@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (typeof StocksGeminiAI !== "undefined") {
     StocksGeminiAI.loadConfig().then(function (cfg) {
-      if (geminiKeyInput && cfg.apiKey) geminiKeyInput.value = cfg.apiKey;
+      if (geminiKeyInput) {
+        geminiKeyInput.value = "";
+        geminiKeyInput.disabled = true;
+        geminiKeyInput.placeholder = "Managed securely in Cloudflare Worker secret (GEMINI_API_KEY)";
+      }
       if (geminiModelSelect && cfg.model) geminiModelSelect.value = cfg.model;
       if (geminiDailyLimitInput && cfg.dailyLimit) geminiDailyLimitInput.value = cfg.dailyLimit;
     });
@@ -35,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
     geminiForm.addEventListener("submit", function (e) {
       e.preventDefault();
       StocksGeminiAI.saveConfig({
-        apiKey: geminiKeyInput ? geminiKeyInput.value.trim() : "",
         model: geminiModelSelect ? geminiModelSelect.value : "gemini-3.5-flash-lite",
         dailyLimit: geminiDailyLimitInput ? parseInt(geminiDailyLimitInput.value, 10) || 500 : 500
       });
