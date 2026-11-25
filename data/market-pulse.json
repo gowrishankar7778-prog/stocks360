@@ -1,22 +1,37 @@
 {
-  "updatedAt": "2026-11-25T12:12:55.051Z",
+  "updatedAt": "2026-11-25T14:30:03.075Z",
   "source": "Official NSE & BSE Market Data, FII/DII, Indices, Price Bands, and Derivatives Records",
   "fiiDiiLatest": {
-    "date": "2026-11-20",
-    "dateDisplay": "20-Nov-2026",
+    "date": "2026-11-25",
+    "dateDisplay": "25-Nov-2026",
     "fii": {
-      "buyCr": 23596.4,
-      "sellCr": 13287.98,
-      "netCr": 10308.42
+      "buyCr": 24309.87,
+      "sellCr": 19830.79,
+      "netCr": 4479.08
     },
     "dii": {
-      "buyCr": 18492.63,
-      "sellCr": 23352.43,
-      "netCr": -4859.8
+      "buyCr": 22379.82,
+      "sellCr": 18361.1,
+      "netCr": 4018.72
     },
-    "combinedNetCr": 5448.62
+    "combinedNetCr": 8497.8
   },
   "fiiDiiHistory": [
+    {
+      "date": "2026-11-25",
+      "dateDisplay": "25-Nov-2026",
+      "fii": {
+        "buyCr": 24309.87,
+        "sellCr": 19830.79,
+        "netCr": 4479.08
+      },
+      "dii": {
+        "buyCr": 22379.82,
+        "sellCr": 18361.1,
+        "netCr": 4018.72
+      },
+      "combinedNetCr": 8497.8
+    },
     {
       "date": "2026-11-20",
       "dateDisplay": "20-Nov-2026",
@@ -3471,12 +3486,20 @@
   ],
   "nseUpperCircuit": [
     {
+      "symbol": "JWL",
+      "name": "Jupiter Wagons Limited",
+      "cmp": 222.46,
+      "dayChangePct": 20,
+      "bandPct": 20,
+      "volume": 63678666
+    },
+    {
       "symbol": "DHARAN",
       "name": "DHARAN INFRA-EPC LIMITED",
       "cmp": 0.12,
-      "dayChangePct": -7.69,
+      "dayChangePct": 0,
       "bandPct": 5,
-      "volume": 34501674
+      "volume": 17054925
     },
     {
       "symbol": "FILATFASH",
@@ -3484,135 +3507,71 @@
       "cmp": 0.16,
       "dayChangePct": 0,
       "bandPct": 10,
-      "volume": 23874771
+      "volume": 16305794
+    },
+    {
+      "symbol": "GATECH",
+      "name": "GACM Technologies Limited",
+      "cmp": 0.51,
+      "dayChangePct": 2,
+      "bandPct": 10,
+      "volume": 15105865
     },
     {
       "symbol": "EMPOWER",
       "name": "Empower India Limited",
-      "cmp": 0.99,
-      "dayChangePct": 3.13,
+      "cmp": 1,
+      "dayChangePct": 1.01,
       "bandPct": 5,
-      "volume": 18132971
-    },
-    {
-      "symbol": "ELITECON",
-      "name": "Elitecon International Limited",
-      "cmp": 4.68,
-      "dayChangePct": 4,
-      "bandPct": 5,
-      "volume": 17957628
-    },
-    {
-      "symbol": "PASHUPATI",
-      "name": "Pashupati Cotspin Limited",
-      "cmp": 28.51,
-      "dayChangePct": 4.89,
-      "bandPct": 5,
-      "volume": 11499318
+      "volume": 7415765
     },
     {
       "symbol": "KSHITIJPOL",
       "name": "Kshitij Polyline Limited",
-      "cmp": 3.68,
-      "dayChangePct": 4.55,
+      "cmp": 3.85,
+      "dayChangePct": 4.62,
       "bandPct": 5,
-      "volume": 5540181
+      "volume": 5014483
     },
     {
-      "symbol": "HCL-INSYS",
-      "name": "HCL Infosystems Limited",
-      "cmp": 11.38,
-      "dayChangePct": 19.92,
-      "bandPct": 20,
-      "volume": 3446829
+      "symbol": "PASHUPATI",
+      "name": "Pashupati Cotspin Limited",
+      "cmp": 29.93,
+      "dayChangePct": 4.98,
+      "bandPct": 5,
+      "volume": 4262985
+    },
+    {
+      "symbol": "RHETAN",
+      "name": "Rhetan TMT Limited",
+      "cmp": 13.33,
+      "dayChangePct": 4.88,
+      "bandPct": 5,
+      "volume": 2945367
     },
     {
       "symbol": "RCOM",
       "name": "Reliance Communications Limited",
       "cmp": 0.78,
-      "dayChangePct": -1.27,
+      "dayChangePct": 0,
       "bandPct": 5,
-      "volume": 3258624
+      "volume": 1924493
     },
     {
-      "symbol": "MILKYMIST",
-      "name": "Milky Mist Dairy Food Limited",
-      "cmp": 339.45,
-      "dayChangePct": 4.88,
-      "bandPct": 5,
-      "volume": 2081498
-    },
-    {
-      "symbol": "ATALREAL",
-      "name": "Atal Realtech Limited",
-      "cmp": 14.06,
-      "dayChangePct": 4.69,
-      "bandPct": 5,
-      "volume": 1771198
-    },
-    {
-      "symbol": "GANGAFORGE",
-      "name": "Ganga Forging Limited",
-      "cmp": 1.09,
-      "dayChangePct": 4.81,
-      "bandPct": 5,
-      "volume": 981405
-    },
-    {
-      "symbol": "TPHQ",
-      "name": "Teamo Productions HQ Limited",
-      "cmp": 0.47,
-      "dayChangePct": 9.3,
-      "bandPct": 10,
-      "volume": 963513
-    },
-    {
-      "symbol": "LANDSMILL",
-      "name": "Landsmill Green Limited",
-      "cmp": 0.68,
-      "dayChangePct": 1.49,
-      "bandPct": 5,
-      "volume": 782640
-    },
-    {
-      "symbol": "TAKE",
-      "name": "TAKE Limited",
-      "cmp": 14.34,
-      "dayChangePct": 4.75,
-      "bandPct": 5,
-      "volume": 630568
-    },
-    {
-      "symbol": "PRAXIS",
-      "name": "Praxis Home Retail Limited",
-      "cmp": 4.71,
-      "dayChangePct": 4.9,
-      "bandPct": 5,
-      "volume": 591394
+      "symbol": "SUPREMEENG",
+      "name": "Supreme Engineering Limited",
+      "cmp": 6.68,
+      "dayChangePct": 1.98,
+      "bandPct": 2,
+      "volume": 939178
     },
     {
       "symbol": "SITINET",
       "name": "Siti Networks Limited",
       "cmp": 0.23,
-      "dayChangePct": -4.17,
-      "bandPct": 2,
-      "volume": 560866
-    },
-    {
-      "symbol": "VIRTUALG",
-      "name": "Virtual Global Education Limited",
-      "cmp": 0.41,
-      "dayChangePct": -2.38,
-      "bandPct": 5,
-      "volume": 375309
-    },
-    {
-      "symbol": "SHRENIK",
-      "name": "Shrenik Limited",
-      "cmp": 0.25,
       "dayChangePct": 0,
-      "bandPct": 5,
-      "volume": 329639
+      "bandPct": 2,
+      "volume": 647114
     },
     {
       "symbol": "SANWARIA",
@@ -3620,837 +3579,893 @@
       "cmp": 0.19,
       "dayChangePct": 0,
       "bandPct": 2,
-      "volume": 322569
+      "volume": 493707
     },
     {
-      "symbol": "SUPREMEENG",
-      "name": "Supreme Engineering Limited",
-      "cmp": 6.55,
-      "dayChangePct": 1.87,
-      "bandPct": 2,
-      "volume": 284241
+      "symbol": "WEL",
+      "name": "Wonder Electricals Limited",
+      "cmp": 87.15,
+      "dayChangePct": 4.94,
+      "bandPct": 5,
+      "volume": 479015
+    },
+    {
+      "symbol": "SHRENIK",
+      "name": "Shrenik Limited",
+      "cmp": 0.25,
+      "dayChangePct": 0,
+      "bandPct": 5,
+      "volume": 396004
+    },
+    {
+      "symbol": "GANGAFORGE",
+      "name": "Ganga Forging Limited",
+      "cmp": 1.14,
+      "dayChangePct": 4.59,
+      "bandPct": 5,
+      "volume": 357192
+    },
+    {
+      "symbol": "ONIXSOLAR",
+      "name": "Onix Solar Energy Limited",
+      "cmp": 265.4,
+      "dayChangePct": 4.98,
+      "bandPct": 5,
+      "volume": 342851
+    },
+    {
+      "symbol": "DUCON",
+      "name": "Ducon Infratechnologies Limited",
+      "cmp": 1.35,
+      "dayChangePct": 1.5,
+      "bandPct": 5,
+      "volume": 331642
+    },
+    {
+      "symbol": "RMC",
+      "name": "RMC Switchgears Limited",
+      "cmp": 196.33,
+      "dayChangePct": 20,
+      "bandPct": 20,
+      "volume": 304106
+    },
+    {
+      "symbol": "VCL",
+      "name": "Vaxtex Cotfab Limited",
+      "cmp": 1.8,
+      "dayChangePct": 4.65,
+      "bandPct": 5,
+      "volume": 303801
+    },
+    {
+      "symbol": "TURTLEMINT",
+      "name": "Turtlemint Fintech Solutions Limited",
+      "cmp": 67.81,
+      "dayChangePct": 4.99,
+      "bandPct": 5,
+      "volume": 283475
     },
     {
       "symbol": "TOYAMSL",
       "name": "Toyam Sports Limited",
       "cmp": 0.6,
-      "dayChangePct": -1.64,
-      "bandPct": 5,
-      "volume": 189492
-    },
-    {
-      "symbol": "VCL",
-      "name": "Vaxtex Cotfab Limited",
-      "cmp": 1.72,
-      "dayChangePct": 4.88,
-      "bandPct": 5,
-      "volume": 168527
-    },
-    {
-      "symbol": "PRISMX",
-      "name": "Prismx Global Ventures Limited",
-      "cmp": 0.49,
       "dayChangePct": 0,
       "bandPct": 5,
-      "volume": 143416
-    },
-    {
-      "symbol": "AGASTYAEN",
-      "name": "Agastya Energy and Infrastructure Limited",
-      "cmp": 46.97,
-      "dayChangePct": 2,
-      "bandPct": 2,
-      "volume": 62077
+      "volume": 211074
     },
     {
       "symbol": "FEL",
       "name": "Future Enterprises Limited",
-      "cmp": 0.3,
-      "dayChangePct": 3.45,
+      "cmp": 0.29,
+      "dayChangePct": -3.33,
       "bandPct": 2,
-      "volume": 50276
+      "volume": 183838
     },
     {
-      "symbol": "TIKONA",
-      "name": "Tikona Communication Limited",
-      "cmp": 27.95,
-      "dayChangePct": 4.96,
+      "symbol": "PRAXIS",
+      "name": "Praxis Home Retail Limited",
+      "cmp": 4.94,
+      "dayChangePct": 4.88,
       "bandPct": 5,
-      "volume": 48024
+      "volume": 136470
     },
     {
-      "symbol": "ANKITMETAL",
-      "name": "Ankit Metal & Power Limited",
-      "cmp": 1.7,
-      "dayChangePct": 1.8,
-      "bandPct": 2,
-      "volume": 41995
-    },
-    {
-      "symbol": "VIVIMEDLAB",
-      "name": "Vivimed Labs Limited",
-      "cmp": 5.12,
-      "dayChangePct": 1.99,
-      "bandPct": 2,
-      "volume": 30571
-    },
-    {
-      "symbol": "SETUINFRA",
-      "name": "Setubandhan Infrastructure Limited",
-      "cmp": 0.41,
-      "dayChangePct": -4.65,
+      "symbol": "VIRTUALG",
+      "name": "Virtual Global Education Limited",
+      "cmp": 0.42,
+      "dayChangePct": 2.44,
       "bandPct": 5,
-      "volume": 29206
+      "volume": 130984
     },
     {
-      "symbol": "CRESTO",
-      "name": "CRESTO TECHNO LIMITED",
-      "cmp": 17.51,
-      "dayChangePct": 4.98,
-      "bandPct": 5,
-      "volume": 29183
-    }
-  ],
-  "nseLowerCircuit": [
-    {
-      "symbol": "GATECH",
-      "name": "GACM Technologies Limited",
+      "symbol": "PRISMX",
+      "name": "Prismx Global Ventures Limited",
       "cmp": 0.5,
-      "dayChangePct": -1.96,
+      "dayChangePct": 2.04,
+      "bandPct": 5,
+      "volume": 92268
+    },
+    {
+      "symbol": "UMAEXPORTS",
+      "name": "Uma Exports Limited",
+      "cmp": 21.76,
+      "dayChangePct": 9.79,
       "bandPct": 10,
-      "volume": 10117722
+      "volume": 84949
     },
     {
-      "symbol": "SADHNANIQ",
-      "name": "Sadhana Nitrochem Limited",
-      "cmp": 2.3,
-      "dayChangePct": -4.96,
-      "bandPct": 5,
-      "volume": 8095044
-    },
-    {
-      "symbol": "HFCL",
-      "name": "HFCL Limited",
-      "cmp": 178.6,
-      "dayChangePct": -5,
-      "bandPct": 5,
-      "volume": 4789650
-    },
-    {
-      "symbol": "STLNETWORK",
-      "name": "STL Networks Limited",
-      "cmp": 38.94,
-      "dayChangePct": -4.98,
-      "bandPct": 5,
-      "volume": 1951239
-    },
-    {
-      "symbol": "E2E",
-      "name": "E2E Networks Limited",
-      "cmp": 452.45,
-      "dayChangePct": -5,
-      "bandPct": 5,
-      "volume": 1580754
-    },
-    {
-      "symbol": "ESAFSFB",
-      "name": "ESAF Small Finance Bank Limited",
-      "cmp": 42.48,
-      "dayChangePct": -4.99,
-      "bandPct": 5,
-      "volume": 974079
-    },
-    {
-      "symbol": "STLTECH",
-      "name": "Sterlite Technologies Limited",
-      "cmp": 590.8,
-      "dayChangePct": -4.99,
-      "bandPct": 5,
-      "volume": 800482
-    },
-    {
-      "symbol": "GVKPIL",
-      "name": "GVK Power & Infrastructure Limited",
-      "cmp": 2.01,
-      "dayChangePct": -1.47,
+      "symbol": "MEP",
+      "name": "MEP Infrastructure Developers Limited",
+      "cmp": 0.66,
+      "dayChangePct": -1.49,
       "bandPct": 2,
-      "volume": 620089
+      "volume": 73383
     },
     {
-      "symbol": "GRADIENTE",
-      "name": "Gradiente Infotainment Limited",
-      "cmp": 2.16,
-      "dayChangePct": -4.85,
+      "symbol": "OMFREIGHT",
+      "name": "Om Freight Forwarders Limited",
+      "cmp": 114.45,
+      "dayChangePct": 5,
       "bandPct": 5,
-      "volume": 582267
+      "volume": 42007
     },
     {
-      "symbol": "ESDS",
-      "name": "ESDS Software Solution Limited",
-      "cmp": 1073.4,
-      "dayChangePct": -4.99,
+      "symbol": "BAFNAPH",
+      "name": "Bafna Pharmaceuticals Limited",
+      "cmp": 507.25,
+      "dayChangePct": 5,
       "bandPct": 5,
-      "volume": 527819
-    },
-    {
-      "symbol": "A2ZINFRA",
-      "name": "A2Z Infra Engineering Limited",
-      "cmp": 11.64,
-      "dayChangePct": -4.98,
-      "bandPct": 5,
-      "volume": 521769
-    },
-    {
-      "symbol": "UGARSUGAR",
-      "name": "The Ugar Sugar Works Limited",
-      "cmp": 37.2,
-      "dayChangePct": -4.98,
-      "bandPct": 5,
-      "volume": 461770
-    },
-    {
-      "symbol": "GENSOL",
-      "name": "Gensol Engineering Limited",
-      "cmp": 9.06,
-      "dayChangePct": -4.93,
-      "bandPct": 5,
-      "volume": 361481
-    },
-    {
-      "symbol": "AQYLON",
-      "name": "Aqylon Nexus Limited",
-      "cmp": 10.64,
-      "dayChangePct": -5,
-      "bandPct": 5,
-      "volume": 330045
-    },
-    {
-      "symbol": "ARSHIYA",
-      "name": "Arshiya Limited",
-      "cmp": 0.81,
-      "dayChangePct": -4.71,
-      "bandPct": 5,
-      "volume": 264693
-    },
-    {
-      "symbol": "RUSHIL",
-      "name": "Rushil Decor Limited",
-      "cmp": 20.81,
-      "dayChangePct": -4.98,
-      "bandPct": 5,
-      "volume": 259930
-    },
-    {
-      "symbol": "BIRLACABLE",
-      "name": "Birla Cable Limited",
-      "cmp": 280.95,
-      "dayChangePct": -4.88,
-      "bandPct": 5,
-      "volume": 225097
-    },
-    {
-      "symbol": "SPENCERS",
-      "name": "Spencer's Retail Limited",
-      "cmp": 20.53,
-      "dayChangePct": -5,
-      "bandPct": 5,
-      "volume": 156137
-    },
-    {
-      "symbol": "CALSOFT",
-      "name": "California Software Company Limited",
-      "cmp": 22.17,
-      "dayChangePct": -4.97,
-      "bandPct": 5,
-      "volume": 139311
-    },
-    {
-      "symbol": "JKSHAH",
-      "name": "J.K.Shah Commerce Education Limited",
-      "cmp": 178.44,
-      "dayChangePct": -4.94,
-      "bandPct": 5,
-      "volume": 121543
-    },
-    {
-      "symbol": "SADBHIN",
-      "name": "Sadbhav Infrastructure Project Limited",
-      "cmp": 2.82,
-      "dayChangePct": -3.42,
-      "bandPct": 5,
-      "volume": 113618
+      "volume": 38985
     },
     {
       "symbol": "TVVISION",
       "name": "TV Vision Limited",
-      "cmp": 2.2,
-      "dayChangePct": -4.76,
+      "cmp": 2.3,
+      "dayChangePct": 4.55,
       "bandPct": 5,
-      "volume": 95677
-    },
+      "volume": 35447
+    }
+  ],
+  "nseLowerCircuit": [
     {
-      "symbol": "MBLINFRA",
-      "name": "MBL Infrastructure Limited",
-      "cmp": 18.74,
-      "dayChangePct": -4.92,
+      "symbol": "HFCL",
+      "name": "HFCL Limited",
+      "cmp": 169.95,
+      "dayChangePct": -4.84,
       "bandPct": 5,
-      "volume": 73936
+      "volume": 14364434
     },
     {
-      "symbol": "RELINFRA",
-      "name": "Reliance Infrastructure Limited",
-      "cmp": 55.51,
-      "dayChangePct": -2,
-      "bandPct": 2,
-      "volume": 73071
-    },
-    {
-      "symbol": "RAJRILTD",
-      "name": "Raj Rayon Industries Limited",
-      "cmp": 21.86,
-      "dayChangePct": -1.97,
-      "bandPct": 2,
-      "volume": 68495
-    },
-    {
-      "symbol": "AAREYDRUGS",
-      "name": "Aarey Drugs & Pharmaceuticals Limited",
-      "cmp": 110.23,
-      "dayChangePct": -5,
+      "symbol": "ELITECON",
+      "name": "Elitecon International Limited",
+      "cmp": 4.45,
+      "dayChangePct": -4.91,
       "bandPct": 5,
-      "volume": 49012
+      "volume": 11699155
     },
     {
-      "symbol": "FLFL",
-      "name": "Future Lifestyle Fashions Limited",
-      "cmp": 0.71,
-      "dayChangePct": -2.74,
-      "bandPct": 5,
-      "volume": 43020
-    },
-    {
-      "symbol": "MORARJEE",
-      "name": "Morarjee Textiles Limited",
-      "cmp": 5.83,
-      "dayChangePct": -4.74,
-      "bandPct": 5,
-      "volume": 39124
-    },
-    {
-      "symbol": "VERANDA",
-      "name": "Veranda Learning Solutions Limited",
-      "cmp": 24.77,
+      "symbol": "LALITHAA",
+      "name": "Lalithaa Jewellery Mart Limited",
+      "cmp": 293.9,
       "dayChangePct": -4.99,
       "bandPct": 5,
-      "volume": 36948
+      "volume": 2686480
+    },
+    {
+      "symbol": "SGMART",
+      "name": "SG Mart Limited",
+      "cmp": 829.45,
+      "dayChangePct": -20,
+      "bandPct": 20,
+      "volume": 1916295
+    },
+    {
+      "symbol": "SGFIN",
+      "name": "SG Finserve Limited",
+      "cmp": 630.2,
+      "dayChangePct": -19.99,
+      "bandPct": 20,
+      "volume": 1579298
+    },
+    {
+      "symbol": "TPHQ",
+      "name": "Teamo Productions HQ Limited",
+      "cmp": 0.46,
+      "dayChangePct": -2.13,
+      "bandPct": 10,
+      "volume": 1232199
+    },
+    {
+      "symbol": "LANDSMILL",
+      "name": "Landsmill Green Limited",
+      "cmp": 0.66,
+      "dayChangePct": -2.94,
+      "bandPct": 5,
+      "volume": 1200547
+    },
+    {
+      "symbol": "SPCENET",
+      "name": "Spacenet Enterprises India Limited",
+      "cmp": 3.4,
+      "dayChangePct": -4.76,
+      "bandPct": 5,
+      "volume": 1024419
+    },
+    {
+      "symbol": "ESAFSFB",
+      "name": "ESAF Small Finance Bank Limited",
+      "cmp": 40.36,
+      "dayChangePct": -4.99,
+      "bandPct": 5,
+      "volume": 987893
+    },
+    {
+      "symbol": "AQYLON",
+      "name": "Aqylon Nexus Limited",
+      "cmp": 10.11,
+      "dayChangePct": -4.98,
+      "bandPct": 5,
+      "volume": 948670
+    },
+    {
+      "symbol": "GVKPIL",
+      "name": "GVK Power & Infrastructure Limited",
+      "cmp": 2,
+      "dayChangePct": -0.5,
+      "bandPct": 2,
+      "volume": 549749
+    },
+    {
+      "symbol": "STALLION",
+      "name": "Stallion India Fluorochemicals Limited",
+      "cmp": 171.59,
+      "dayChangePct": -4.93,
+      "bandPct": 5,
+      "volume": 475322
+    },
+    {
+      "symbol": "UGARSUGAR",
+      "name": "The Ugar Sugar Works Limited",
+      "cmp": 35.34,
+      "dayChangePct": -5,
+      "bandPct": 5,
+      "volume": 362045
+    },
+    {
+      "symbol": "RUSHIL",
+      "name": "Rushil Decor Limited",
+      "cmp": 19.77,
+      "dayChangePct": -5,
+      "bandPct": 5,
+      "volume": 275602
+    },
+    {
+      "symbol": "BODALCHEM",
+      "name": "Bodal Chemicals Limited",
+      "cmp": 133.57,
+      "dayChangePct": -4.99,
+      "bandPct": 5,
+      "volume": 249506
+    },
+    {
+      "symbol": "AKSHOPTFBR",
+      "name": "Aksh Optifibre Limited",
+      "cmp": 6.28,
+      "dayChangePct": -4.56,
+      "bandPct": 5,
+      "volume": 240266
+    },
+    {
+      "symbol": "CALSOFT",
+      "name": "California Software Company Limited",
+      "cmp": 21.09,
+      "dayChangePct": -4.87,
+      "bandPct": 5,
+      "volume": 161685
+    },
+    {
+      "symbol": "ROLLT",
+      "name": "Rollatainers Limited",
+      "cmp": 5.1,
+      "dayChangePct": -1.92,
+      "bandPct": 2,
+      "volume": 158250
+    },
+    {
+      "symbol": "AKI",
+      "name": "AKI India Limited",
+      "cmp": 4.86,
+      "dayChangePct": -4.71,
+      "bandPct": 5,
+      "volume": 134238
     },
     {
       "symbol": "BNAGROCHEM",
       "name": "BN Agrochem Limited",
-      "cmp": 13.23,
+      "cmp": 12.57,
+      "dayChangePct": -4.99,
+      "bandPct": 5,
+      "volume": 126640
+    },
+    {
+      "symbol": "VIJIFIN",
+      "name": "Viji Finance Limited",
+      "cmp": 13.03,
       "dayChangePct": -4.96,
       "bandPct": 5,
-      "volume": 30327
+      "volume": 112278
+    },
+    {
+      "symbol": "GRADIENTE",
+      "name": "Gradiente Infotainment Limited",
+      "cmp": 2.06,
+      "dayChangePct": -4.63,
+      "bandPct": 5,
+      "volume": 100314
+    },
+    {
+      "symbol": "ARSHIYA",
+      "name": "Arshiya Limited",
+      "cmp": 0.77,
+      "dayChangePct": -4.94,
+      "bandPct": 5,
+      "volume": 89769
+    },
+    {
+      "symbol": "SUPREMEINF",
+      "name": "Supreme Infrastructure India Limited",
+      "cmp": 58.92,
+      "dayChangePct": -4.89,
+      "bandPct": 5,
+      "volume": 55830
+    },
+    {
+      "symbol": "AGASTYAEN",
+      "name": "Agastya Energy and Infrastructure Limited",
+      "cmp": 46.04,
+      "dayChangePct": -1.98,
+      "bandPct": 2,
+      "volume": 40557
+    },
+    {
+      "symbol": "ANSALAPI",
+      "name": "Ansal Properties & Infrastructure Limited",
+      "cmp": 3.04,
+      "dayChangePct": -1.94,
+      "bandPct": 2,
+      "volume": 36653
+    },
+    {
+      "symbol": "IL&FSTRANS",
+      "name": "IL&FS Transportation Networks Limited",
+      "cmp": 1.46,
+      "dayChangePct": -2.01,
+      "bandPct": 5,
+      "volume": 25723
+    },
+    {
+      "symbol": "PARSVNATH",
+      "name": "Parsvnath Developers Limited",
+      "cmp": 2.35,
+      "dayChangePct": -1.67,
+      "bandPct": 2,
+      "volume": 23094
+    },
+    {
+      "symbol": "VERANDA",
+      "name": "Veranda Learning Solutions Limited",
+      "cmp": 23.54,
+      "dayChangePct": -4.97,
+      "bandPct": 5,
+      "volume": 17106
+    },
+    {
+      "symbol": "VALIANTLAB",
+      "name": "Valiant Laboratories Limited",
+      "cmp": 91.16,
+      "dayChangePct": -2,
+      "bandPct": 2,
+      "volume": 14184
     }
   ],
   "nseFoSnapshot": {
-    "tradeDate": "2026-11-23",
+    "tradeDate": "2026-11-25",
     "indexPcr": [
       {
         "symbol": "NIFTY",
         "isIndex": true,
-        "underlyingPrice": 25349.65,
-        "ceOi": 396535740,
-        "peOi": 325347735,
-        "futOi": 16796130,
-        "totalOi": 738679605,
-        "totalChgOi": 73657950,
-        "chgOiPct": 11.08,
-        "pcrOi": 0.82
+        "underlyingPrice": 25819.25,
+        "ceOi": 215792820,
+        "peOi": 220677320,
+        "futOi": 13013910,
+        "totalOi": 449484050,
+        "totalChgOi": 91549745,
+        "chgOiPct": 25.58,
+        "pcrOi": 1.02
       },
       {
         "symbol": "BANKNIFTY",
         "isIndex": true,
-        "underlyingPrice": 62585.35,
-        "ceOi": 42468870,
-        "peOi": 31690710,
-        "futOi": 2285520,
-        "totalOi": 76445100,
-        "totalChgOi": 12135450,
-        "chgOiPct": 18.87,
-        "pcrOi": 0.75
+        "underlyingPrice": 63703.25,
+        "ceOi": 12469410,
+        "peOi": 11109330,
+        "futOi": 1618290,
+        "totalOi": 25197030,
+        "totalChgOi": 3739290,
+        "chgOiPct": 17.43,
+        "pcrOi": 0.89
       },
       {
         "symbol": "MIDCPNIFTY",
         "isIndex": true,
-        "underlyingPrice": 14199.6,
-        "ceOi": 10498800,
-        "peOi": 10006320,
-        "futOi": 2309160,
-        "totalOi": 22814280,
-        "totalChgOi": -2551200,
-        "chgOiPct": -10.06,
-        "pcrOi": 0.95
+        "underlyingPrice": 14236.1,
+        "ceOi": 3409680,
+        "peOi": 2490960,
+        "futOi": 1840560,
+        "totalOi": 7741200,
+        "totalChgOi": 1848120,
+        "chgOiPct": 31.36,
+        "pcrOi": 0.73
       },
       {
         "symbol": "FINNIFTY",
         "isIndex": true,
-        "underlyingPrice": 28153.5,
-        "ceOi": 1306680,
-        "peOi": 1336080,
-        "futOi": 23520,
-        "totalOi": 2666280,
-        "totalChgOi": 521700,
-        "chgOiPct": 24.33,
-        "pcrOi": 1.02
+        "underlyingPrice": 28764.95,
+        "ceOi": 60720,
+        "peOi": 55140,
+        "futOi": 10260,
+        "totalOi": 126120,
+        "totalChgOi": 74940,
+        "chgOiPct": 146.42,
+        "pcrOi": 0.91
       },
       {
         "symbol": "NIFTYFPI",
         "isIndex": true,
-        "underlyingPrice": 1600.25,
-        "ceOi": 75900,
-        "peOi": 62700,
-        "futOi": 27500,
-        "totalOi": 166100,
-        "totalChgOi": 22000,
-        "chgOiPct": 15.27,
-        "pcrOi": 0.83
+        "underlyingPrice": 1622,
+        "ceOi": 2200,
+        "peOi": 2200,
+        "futOi": 11000,
+        "totalOi": 15400,
+        "totalChgOi": -5500,
+        "chgOiPct": -26.32,
+        "pcrOi": 1
       },
       {
         "symbol": "NIFTYNXT50",
         "isIndex": true,
-        "underlyingPrice": 72245.4,
-        "ceOi": 8175,
-        "peOi": 3425,
-        "futOi": 16150,
-        "totalOi": 27750,
-        "totalChgOi": 5350,
-        "chgOiPct": 23.88,
-        "pcrOi": 0.42
+        "underlyingPrice": 72788.05,
+        "ceOi": 300,
+        "peOi": 0,
+        "futOi": 14275,
+        "totalOi": 14575,
+        "totalChgOi": 550,
+        "chgOiPct": 3.92,
+        "pcrOi": 0
       }
     ],
     "topStockOi": [
       {
         "symbol": "IDEA",
         "isIndex": false,
-        "underlyingPrice": 11.91,
-        "ceOi": 1795012150,
-        "peOi": 860967650,
-        "futOi": 6436880100,
-        "totalOi": 9092859900,
-        "totalChgOi": 169442150,
-        "chgOiPct": 1.9,
-        "pcrOi": 0.48
+        "underlyingPrice": 11.69,
+        "ceOi": 1031075375,
+        "peOi": 585831525,
+        "futOi": 6290154275,
+        "totalOi": 7907061175,
+        "totalChgOi": 242271775,
+        "chgOiPct": 3.16,
+        "pcrOi": 0.57
       },
       {
         "symbol": "YESBANK",
         "isIndex": false,
-        "underlyingPrice": 17.73,
-        "ceOi": 621689000,
-        "peOi": 319521400,
-        "futOi": 1279982700,
-        "totalOi": 2221193100,
-        "totalChgOi": -16918400,
-        "chgOiPct": -0.76,
+        "underlyingPrice": 17.71,
+        "ceOi": 296725100,
+        "peOi": 152110100,
+        "futOi": 1233830300,
+        "totalOi": 1682665500,
+        "totalChgOi": 60427300,
+        "chgOiPct": 3.72,
         "pcrOi": 0.51
-      },
-      {
-        "symbol": "SUZLON",
-        "isIndex": false,
-        "underlyingPrice": 35.86,
-        "ceOi": 211112100,
-        "peOi": 111823500,
-        "futOi": 459282800,
-        "totalOi": 782218400,
-        "totalChgOi": 1054100,
-        "chgOiPct": 0.13,
-        "pcrOi": 0.53
       },
       {
         "symbol": "TATASTEEL",
         "isIndex": false,
-        "underlyingPrice": 163.01,
-        "ceOi": 182187500,
-        "peOi": 103048000,
-        "futOi": 385079750,
-        "totalOi": 670315250,
-        "totalChgOi": 121266750,
-        "chgOiPct": 22.09,
-        "pcrOi": 0.57
+        "underlyingPrice": 159.3,
+        "ceOi": 200662000,
+        "peOi": 96343500,
+        "futOi": 356122250,
+        "totalOi": 653127750,
+        "totalChgOi": 98560000,
+        "chgOiPct": 17.77,
+        "pcrOi": 0.48
+      },
+      {
+        "symbol": "SUZLON",
+        "isIndex": false,
+        "underlyingPrice": 36.13,
+        "ceOi": 82435700,
+        "peOi": 57162700,
+        "futOi": 445668400,
+        "totalOi": 585266800,
+        "totalChgOi": 9525000,
+        "chgOiPct": 1.65,
+        "pcrOi": 0.69
       },
       {
         "symbol": "IDFCFIRSTB",
         "isIndex": false,
-        "underlyingPrice": 85.4,
-        "ceOi": 104863150,
-        "peOi": 90588925,
-        "futOi": 356169275,
-        "totalOi": 551621350,
-        "totalChgOi": -4006800,
-        "chgOiPct": -0.72,
-        "pcrOi": 0.86
-      },
-      {
-        "symbol": "HDFCBANK",
-        "isIndex": false,
-        "underlyingPrice": 817.8,
-        "ceOi": 134621250,
-        "peOi": 113829200,
-        "futOi": 299796400,
-        "totalOi": 548246850,
-        "totalChgOi": -11674600,
-        "chgOiPct": -2.09,
-        "pcrOi": 0.85
+        "underlyingPrice": 87.47,
+        "ceOi": 65138325,
+        "peOi": 53108650,
+        "futOi": 343230650,
+        "totalOi": 461477625,
+        "totalChgOi": 16240525,
+        "chgOiPct": 3.65,
+        "pcrOi": 0.82
       },
       {
         "symbol": "CANBK",
         "isIndex": false,
-        "underlyingPrice": 133.75,
-        "ceOi": 108614250,
-        "peOi": 89950500,
-        "futOi": 346632750,
-        "totalOi": 545197500,
-        "totalChgOi": 972000,
-        "chgOiPct": 0.18,
-        "pcrOi": 0.83
+        "underlyingPrice": 133.46,
+        "ceOi": 75654000,
+        "peOi": 46264500,
+        "futOi": 333632250,
+        "totalOi": 455550750,
+        "totalChgOi": 21120750,
+        "chgOiPct": 4.86,
+        "pcrOi": 0.61
       },
       {
         "symbol": "NMDC",
         "isIndex": false,
-        "underlyingPrice": 67.4,
-        "ceOi": 75235500,
-        "peOi": 42896250,
-        "futOi": 372802500,
-        "totalOi": 490934250,
-        "totalChgOi": 15984000,
-        "chgOiPct": 3.37,
-        "pcrOi": 0.57
+        "underlyingPrice": 66.69,
+        "ceOi": 54816750,
+        "peOi": 32136750,
+        "futOi": 360848250,
+        "totalOi": 447801750,
+        "totalChgOi": 10523250,
+        "chgOiPct": 2.41,
+        "pcrOi": 0.59
       },
       {
-        "symbol": "ITC",
+        "symbol": "HDFCBANK",
         "isIndex": false,
-        "underlyingPrice": 301,
-        "ceOi": 140112825,
-        "peOi": 100192800,
-        "futOi": 240187400,
-        "totalOi": 480493025,
-        "totalChgOi": -9836725,
-        "chgOiPct": -2.01,
-        "pcrOi": 0.72
-      },
-      {
-        "symbol": "RELIANCE",
-        "isIndex": false,
-        "underlyingPrice": 1351,
-        "ceOi": 120350500,
-        "peOi": 89683500,
-        "futOi": 217476500,
-        "totalOi": 427510500,
-        "totalChgOi": 5135500,
-        "chgOiPct": 1.22,
-        "pcrOi": 0.75
-      },
-      {
-        "symbol": "PNB",
-        "isIndex": false,
-        "underlyingPrice": 149.74,
-        "ceOi": 106688000,
-        "peOi": 110240000,
-        "futOi": 202976000,
-        "totalOi": 419904000,
-        "totalChgOi": -22016000,
-        "chgOiPct": -4.98,
-        "pcrOi": 1.03
+        "underlyingPrice": 846.19,
+        "ceOi": 61818800,
+        "peOi": 40930850,
+        "futOi": 251103950,
+        "totalOi": 353853600,
+        "totalChgOi": -838850,
+        "chgOiPct": -0.24,
+        "pcrOi": 0.66
       },
       {
         "symbol": "JIOFIN",
         "isIndex": false,
-        "underlyingPrice": 219.7,
-        "ceOi": 84764500,
-        "peOi": 72410550,
-        "futOi": 230962700,
-        "totalOi": 388137750,
-        "totalChgOi": 5466100,
-        "chgOiPct": 1.43,
+        "underlyingPrice": 222.85,
+        "ceOi": 54886600,
+        "peOi": 46849600,
+        "futOi": 216526650,
+        "totalOi": 318262850,
+        "totalChgOi": 9726650,
+        "chgOiPct": 3.15,
         "pcrOi": 0.85
+      },
+      {
+        "symbol": "RELIANCE",
+        "isIndex": false,
+        "underlyingPrice": 1373.89,
+        "ceOi": 68009000,
+        "peOi": 44347000,
+        "futOi": 195385000,
+        "totalOi": 307741000,
+        "totalChgOi": 24589000,
+        "chgOiPct": 8.68,
+        "pcrOi": 0.65
       },
       {
         "symbol": "ASHOKLEY",
         "isIndex": false,
-        "underlyingPrice": 158.7,
-        "ceOi": 114750000,
-        "peOi": 90495000,
-        "futOi": 160990000,
-        "totalOi": 366235000,
-        "totalChgOi": -30310000,
-        "chgOiPct": -7.64,
-        "pcrOi": 0.79
+        "underlyingPrice": 158,
+        "ceOi": 74975000,
+        "peOi": 54760000,
+        "futOi": 154545000,
+        "totalOi": 284280000,
+        "totalChgOi": 19225000,
+        "chgOiPct": 7.25,
+        "pcrOi": 0.73
+      },
+      {
+        "symbol": "ITC",
+        "isIndex": false,
+        "underlyingPrice": 309.24,
+        "ceOi": 62388150,
+        "peOi": 38930975,
+        "futOi": 180858975,
+        "totalOi": 282178100,
+        "totalChgOi": 10615350,
+        "chgOiPct": 3.91,
+        "pcrOi": 0.62
+      },
+      {
+        "symbol": "PNB",
+        "isIndex": false,
+        "underlyingPrice": 148.61,
+        "ceOi": 65264000,
+        "peOi": 46256000,
+        "futOi": 169216000,
+        "totalOi": 280736000,
+        "totalChgOi": 18088000,
+        "chgOiPct": 6.89,
+        "pcrOi": 0.71
       },
       {
         "symbol": "ADANIPOWER",
         "isIndex": false,
-        "underlyingPrice": 207.9,
-        "ceOi": 37008750,
-        "peOi": 33643350,
-        "futOi": 214366750,
-        "totalOi": 285018850,
-        "totalChgOi": -13820150,
-        "chgOiPct": -4.62,
-        "pcrOi": 0.91
+        "underlyingPrice": 206,
+        "ceOi": 25180150,
+        "peOi": 19262300,
+        "futOi": 202073100,
+        "totalOi": 246515550,
+        "totalChgOi": 9379100,
+        "chgOiPct": 3.96,
+        "pcrOi": 0.76
       },
       {
         "symbol": "TMPV",
         "isIndex": false,
-        "underlyingPrice": 259,
-        "ceOi": 91637050,
-        "peOi": 50995850,
-        "futOi": 112036600,
-        "totalOi": 254669500,
-        "totalChgOi": 956450,
-        "chgOiPct": 0.38,
-        "pcrOi": 0.56
+        "underlyingPrice": 262.1,
+        "ceOi": 55264050,
+        "peOi": 34994300,
+        "futOi": 105427300,
+        "totalOi": 195685650,
+        "totalChgOi": 11683350,
+        "chgOiPct": 6.35,
+        "pcrOi": 0.63
       },
       {
-        "symbol": "IOC",
+        "symbol": "WIPRO",
         "isIndex": false,
-        "underlyingPrice": 145,
-        "ceOi": 54468375,
-        "peOi": 69571125,
-        "futOi": 130396500,
-        "totalOi": 254436000,
-        "totalChgOi": 999375,
-        "chgOiPct": 0.39,
-        "pcrOi": 1.28
+        "underlyingPrice": 189.05,
+        "ceOi": 30558000,
+        "peOi": 19608000,
+        "futOi": 145503000,
+        "totalOi": 195669000,
+        "totalChgOi": 7134000,
+        "chgOiPct": 3.78,
+        "pcrOi": 0.64
       },
       {
-        "symbol": "KOTAKBANK",
+        "symbol": "SAIL",
         "isIndex": false,
-        "underlyingPrice": 502.85,
-        "ceOi": 55186000,
-        "peOi": 51948000,
-        "futOi": 145422000,
-        "totalOi": 252556000,
-        "totalChgOi": -11510000,
-        "chgOiPct": -4.36,
-        "pcrOi": 0.94
+        "underlyingPrice": 161.1,
+        "ceOi": 8582200,
+        "peOi": 5978400,
+        "futOi": 174393500,
+        "totalOi": 188954100,
+        "totalChgOi": 1254900,
+        "chgOiPct": 0.67,
+        "pcrOi": 0.7
       },
       {
-        "symbol": "ETERNAL",
+        "symbol": "MOTHERSON",
         "isIndex": false,
-        "underlyingPrice": 362.11,
-        "ceOi": 64175200,
-        "peOi": 45299000,
-        "futOi": 131619300,
-        "totalOi": 241093500,
-        "totalChgOi": -487425,
-        "chgOiPct": -0.2,
-        "pcrOi": 0.71
+        "underlyingPrice": 166.26,
+        "ceOi": 24126450,
+        "peOi": 14987550,
+        "futOi": 147544650,
+        "totalOi": 186658650,
+        "totalChgOi": 7029450,
+        "chgOiPct": 3.91,
+        "pcrOi": 0.62
       },
       {
         "symbol": "IRFC",
         "isIndex": false,
-        "underlyingPrice": 80.8,
-        "ceOi": 81337250,
-        "peOi": 49328525,
-        "futOi": 109979900,
-        "totalOi": 240645675,
-        "totalChgOi": -18418350,
-        "chgOiPct": -7.11,
-        "pcrOi": 0.61
+        "underlyingPrice": 81.05,
+        "ceOi": 48863225,
+        "peOi": 32042975,
+        "futOi": 103401100,
+        "totalOi": 184307300,
+        "totalChgOi": 5821275,
+        "chgOiPct": 3.26,
+        "pcrOi": 0.66
       },
       {
-        "symbol": "BANKBARODA",
+        "symbol": "IOC",
         "isIndex": false,
-        "underlyingPrice": 275.58,
-        "ceOi": 59710950,
-        "peOi": 48332700,
-        "futOi": 122303025,
-        "totalOi": 230346675,
-        "totalChgOi": -10369125,
-        "chgOiPct": -4.31,
-        "pcrOi": 0.81
+        "underlyingPrice": 147.77,
+        "ceOi": 30064125,
+        "peOi": 40506375,
+        "futOi": 112802625,
+        "totalOi": 183373125,
+        "totalChgOi": 3690375,
+        "chgOiPct": 2.05,
+        "pcrOi": 1.35
       }
     ],
     "topOiGainers": [
       {
         "symbol": "APLAPOLLO",
         "isIndex": false,
-        "underlyingPrice": 1669.96,
-        "ceOi": 19065200,
-        "peOi": 10557050,
-        "futOi": 19668250,
-        "totalOi": 49290500,
-        "totalChgOi": 24061450,
-        "chgOiPct": 95.37,
-        "pcrOi": 0.55
+        "underlyingPrice": 1476.09,
+        "ceOi": 23764650,
+        "peOi": 13795950,
+        "futOi": 23271150,
+        "totalOi": 60831750,
+        "totalChgOi": 18914350,
+        "chgOiPct": 45.12,
+        "pcrOi": 0.58
+      },
+      {
+        "symbol": "OBEROIRLTY",
+        "isIndex": false,
+        "underlyingPrice": 1868.49,
+        "ceOi": 772100,
+        "peOi": 2122750,
+        "futOi": 3688650,
+        "totalOi": 6583500,
+        "totalChgOi": 1951250,
+        "chgOiPct": 42.12,
+        "pcrOi": 2.75
+      },
+      {
+        "symbol": "RADICO",
+        "isIndex": false,
+        "underlyingPrice": 4699.18,
+        "ceOi": 466200,
+        "peOi": 215700,
+        "futOi": 1288050,
+        "totalOi": 1969950,
+        "totalChgOi": 521400,
+        "chgOiPct": 35.99,
+        "pcrOi": 0.46
+      },
+      {
+        "symbol": "MARICO",
+        "isIndex": false,
+        "underlyingPrice": 935.25,
+        "ceOi": 4750800,
+        "peOi": 3483600,
+        "futOi": 10344000,
+        "totalOi": 18578400,
+        "totalChgOi": 4627200,
+        "chgOiPct": 33.17,
+        "pcrOi": 0.73
+      },
+      {
+        "symbol": "KARURVYSYA",
+        "isIndex": false,
+        "underlyingPrice": 378.76,
+        "ceOi": 1247750,
+        "peOi": 1447700,
+        "futOi": 5336650,
+        "totalOi": 8032100,
+        "totalChgOi": 1934400,
+        "chgOiPct": 31.72,
+        "pcrOi": 1.16
+      },
+      {
+        "symbol": "KAYNES",
+        "isIndex": false,
+        "underlyingPrice": 2699.08,
+        "ceOi": 1215600,
+        "peOi": 761550,
+        "futOi": 4380150,
+        "totalOi": 6357300,
+        "totalChgOi": 1449450,
+        "chgOiPct": 29.53,
+        "pcrOi": 0.63
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "isIndex": false,
+        "underlyingPrice": 1924.98,
+        "ceOi": 4326000,
+        "peOi": 3099600,
+        "futOi": 9809700,
+        "totalOi": 17235300,
+        "totalChgOi": 3599700,
+        "chgOiPct": 26.4,
+        "pcrOi": 0.72
+      },
+      {
+        "symbol": "OFSS",
+        "isIndex": false,
+        "underlyingPrice": 9274.89,
+        "ceOi": 298100,
+        "peOi": 237250,
+        "futOi": 782750,
+        "totalOi": 1318100,
+        "totalChgOi": 273900,
+        "chgOiPct": 26.23,
+        "pcrOi": 0.8
+      },
+      {
+        "symbol": "ENRIN",
+        "isIndex": false,
+        "underlyingPrice": 2970.02,
+        "ceOi": 334250,
+        "peOi": 229775,
+        "futOi": 1283975,
+        "totalOi": 1848000,
+        "totalChgOi": 365400,
+        "chgOiPct": 24.65,
+        "pcrOi": 0.69
+      },
+      {
+        "symbol": "DATAPATTNS",
+        "isIndex": false,
+        "underlyingPrice": 4135.22,
+        "ceOi": 126125,
+        "peOi": 81875,
+        "futOi": 416625,
+        "totalOi": 624625,
+        "totalChgOi": 112625,
+        "chgOiPct": 22,
+        "pcrOi": 0.65
+      },
+      {
+        "symbol": "DABUR",
+        "isIndex": false,
+        "underlyingPrice": 429.98,
+        "ceOi": 11455375,
+        "peOi": 7037250,
+        "futOi": 21795750,
+        "totalOi": 40288375,
+        "totalChgOi": 6891625,
+        "chgOiPct": 20.64,
+        "pcrOi": 0.61
+      },
+      {
+        "symbol": "COFORGE",
+        "isIndex": false,
+        "underlyingPrice": 2059.93,
+        "ceOi": 6707950,
+        "peOi": 2958775,
+        "futOi": 10982000,
+        "totalOi": 20648725,
+        "totalChgOi": 3496475,
+        "chgOiPct": 20.38,
+        "pcrOi": 0.44
+      },
+      {
+        "symbol": "MFSL",
+        "isIndex": false,
+        "underlyingPrice": 1443.98,
+        "ceOi": 1408000,
+        "peOi": 578400,
+        "futOi": 5955200,
+        "totalOi": 7941600,
+        "totalChgOi": 1306000,
+        "chgOiPct": 19.68,
+        "pcrOi": 0.41
+      },
+      {
+        "symbol": "COROMANDEL",
+        "isIndex": false,
+        "underlyingPrice": 1940,
+        "ceOi": 116100,
+        "peOi": 45000,
+        "futOi": 675900,
+        "totalOi": 837000,
+        "totalChgOi": 137100,
+        "chgOiPct": 19.59,
+        "pcrOi": 0.39
       },
       {
         "symbol": "TATASTEEL",
         "isIndex": false,
-        "underlyingPrice": 163.01,
-        "ceOi": 182187500,
-        "peOi": 103048000,
-        "futOi": 385079750,
-        "totalOi": 670315250,
-        "totalChgOi": 121266750,
-        "chgOiPct": 22.09,
-        "pcrOi": 0.57
-      },
-      {
-        "symbol": "NATIONALUM",
-        "isIndex": false,
-        "underlyingPrice": 298.65,
-        "ceOi": 19820625,
-        "peOi": 15746250,
-        "futOi": 50568750,
-        "totalOi": 86135625,
-        "totalChgOi": 4991250,
-        "chgOiPct": 6.15,
-        "pcrOi": 0.79
-      },
-      {
-        "symbol": "HYUNDAI",
-        "isIndex": false,
-        "underlyingPrice": 2154.96,
-        "ceOi": 1953325,
-        "peOi": 1476475,
-        "futOi": 6023600,
-        "totalOi": 9453400,
-        "totalChgOi": 529375,
-        "chgOiPct": 5.93,
-        "pcrOi": 0.76
-      },
-      {
-        "symbol": "UJJIVANSFB",
-        "isIndex": false,
-        "underlyingPrice": 60.5,
-        "ceOi": 26600000,
-        "peOi": 23456000,
-        "futOi": 57048000,
-        "totalOi": 107104000,
-        "totalChgOi": 5632000,
-        "chgOiPct": 5.55,
-        "pcrOi": 0.88
-      },
-      {
-        "symbol": "AMBUJACEM",
-        "isIndex": false,
-        "underlyingPrice": 391.95,
-        "ceOi": 10391850,
-        "peOi": 6934500,
-        "futOi": 96400200,
-        "totalOi": 113726550,
-        "totalChgOi": 5920200,
-        "chgOiPct": 5.49,
-        "pcrOi": 0.67
-      },
-      {
-        "symbol": "CUB",
-        "isIndex": false,
-        "underlyingPrice": 245.56,
-        "ceOi": 4517475,
-        "peOi": 3022500,
-        "futOi": 8558325,
-        "totalOi": 16098300,
-        "totalChgOi": 778875,
-        "chgOiPct": 5.08,
-        "pcrOi": 0.67
-      },
-      {
-        "symbol": "INDUSTOWER",
-        "isIndex": false,
-        "underlyingPrice": 380.25,
-        "ceOi": 20617600,
-        "peOi": 16751800,
-        "futOi": 89564500,
-        "totalOi": 126933900,
-        "totalChgOi": 5887100,
-        "chgOiPct": 4.86,
-        "pcrOi": 0.81
-      },
-      {
-        "symbol": "COLPAL",
-        "isIndex": false,
-        "underlyingPrice": 1755.51,
-        "ceOi": 2448600,
-        "peOi": 2124375,
-        "futOi": 5884450,
-        "totalOi": 10457425,
-        "totalChgOi": 355850,
-        "chgOiPct": 3.52,
-        "pcrOi": 0.87
-      },
-      {
-        "symbol": "NMDC",
-        "isIndex": false,
-        "underlyingPrice": 67.4,
-        "ceOi": 75235500,
-        "peOi": 42896250,
-        "futOi": 372802500,
-        "totalOi": 490934250,
-        "totalChgOi": 15984000,
-        "chgOiPct": 3.37,
-        "pcrOi": 0.57
-      },
-      {
-        "symbol": "NHPC",
-        "isIndex": false,
-        "underlyingPrice": 75.36,
-        "ceOi": 43965700,
-        "peOi": 25013050,
-        "futOi": 124731650,
-        "totalOi": 193710400,
-        "totalChgOi": 6039550,
-        "chgOiPct": 3.22,
-        "pcrOi": 0.57
-      },
-      {
-        "symbol": "FORTIS",
-        "isIndex": false,
-        "underlyingPrice": 809.01,
-        "ceOi": 6756450,
-        "peOi": 3475875,
-        "futOi": 12037300,
-        "totalOi": 22269625,
-        "totalChgOi": 688975,
-        "chgOiPct": 3.19,
-        "pcrOi": 0.51
-      },
-      {
-        "symbol": "UNIONBANK",
-        "isIndex": false,
-        "underlyingPrice": 208.2,
-        "ceOi": 46484625,
-        "peOi": 32041425,
-        "futOi": 94739250,
-        "totalOi": 173265300,
-        "totalChgOi": 5057775,
-        "chgOiPct": 3.01,
-        "pcrOi": 0.69
-      },
-      {
-        "symbol": "JSWENERGY",
-        "isIndex": false,
-        "underlyingPrice": 502.55,
-        "ceOi": 6944500,
-        "peOi": 6893975,
-        "futOi": 27386700,
-        "totalOi": 41225175,
-        "totalChgOi": 1185725,
-        "chgOiPct": 2.96,
-        "pcrOi": 0.99
-      },
-      {
-        "symbol": "RVNL",
-        "isIndex": false,
-        "underlyingPrice": 185.13,
-        "ceOi": 29623150,
-        "peOi": 18171300,
-        "futOi": 43994325,
-        "totalOi": 91788775,
-        "totalChgOi": 2428575,
-        "chgOiPct": 2.72,
-        "pcrOi": 0.61
+        "underlyingPrice": 159.3,
+        "ceOi": 200662000,
+        "peOi": 96343500,
+        "futOi": 356122250,
+        "totalOi": 653127750,
+        "totalChgOi": 98560000,
+        "chgOiPct": 17.77,
+        "pcrOi": 0.48
       }
     ]
   },
