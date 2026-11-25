@@ -239,4 +239,134 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 80);
     });
   });
+
+  // 4. Homepage 3-Indices Strip (NIFTY 50, SENSEX, BANK NIFTY) - 15-Minute Delayed Quotes
+  (function initHomeIndicesStrip() {
+    const listEl = document.getElementById("home-indices-list");
+    const metaEl = document.getElementById("home-indices-meta");
+    if (!listEl) return;
+
+    const CACHE_KEY = "stocks360_home_indices_cache_v1";
+    const REFRESH_MS = 15 * 60 * 1000; // 15 minutes
+    const PROXY_BASE = "https://stocks360-quotes.stocks360-app.workers.dev/quote";
+
+    const KEY_INDICES = [
+      { label: "NIFTY 50", symbol: "^NSEI" },
+      { label: "SENSEX", symbol: "^BSESN" },
+      { label: "BANK NIFTY", symbol: "^NSEBANK" }
+    ];
+
+    function isMarketHoursIST() {
+      try {
+        const now = new Date();
+        const ist = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+        const day = ist.getDay();
+        if (day === 0 || day === 6) return false;
+        const mins = ist.getHours() * 60 + ist.getMinutes();
+        return mins >= 555 && mins <= 930; // 09:15 to 15:30 IST
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function fmtNum(v) {
+      return Number(v).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderIndices(items, updatedTs) {
+      if (!Array.isArray(items) || items.length === 0) return;
+
+      listEl.innerHTML = items.map(function (item) {
+        const hasVal = typeof item.cmp === "number" && Number.isFinite(item.cmp);
+        const chg = typeof item.dayChange === "number" ? item.dayChange : 0;
+        const chgPct = typeof item.dayChangePct === "number" ? item.dayChangePct : 0;
+        const isUp = chg >= 0;
+        const color = !hasVal ? "#64748b" : isUp ? "#15803d" : "#b91c1c";
+        const bg = !hasVal ? "#f8fafc" : isUp ? "#f0fdf4" : "#fef2f2";
+        const border = !hasVal ? "#e2e8f0" : isUp ? "#bbf7d0" : "#fecaca";
+        const sign = isUp ? "+" : "";
+        const priceTxt = hasVal ? fmtNum(item.cmp) : "--";
+        const chgTxt = hasVal ? `${sign}${chg.toFixed(2)} (${sign}${chgPct.toFixed(2)}%)` : "--";
+        const a11yText = hasVal
+          ? `${item.label}: ${priceTxt}, ${isUp ? "up" : "down"} ${Math.abs(chg).toFixed(2)} points or ${Math.abs(chgPct).toFixed(2)} percent`
+          : `${item.label}: loading`;
+
+        return `
+          <div role="text" aria-label="${a11yText}" style="display:flex; justify-content:space-between; align-items:center; gap:8px; padding:7px 11px; background:${bg}; border:1px solid ${border}; border-radius:8px; font-size:0.86rem; white-space:nowrap; overflow:hidden;">
+            <strong style="color:#0f172a; font-weight:800; letter-spacing:0.2px;">${item.label}</strong>
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              <span style="font-weight:800; color:#0f172a;">${priceTxt}</span>
+              <span style="font-weight:700; color:${color}; font-size:0.8rem;">${chgTxt}</span>
+            </span>
+          </div>
+        `;
+      }).join("");
+
+      if (metaEl && updatedTs) {
+        try {
+          const timeStr = new Date(updatedTs).toLocaleTimeString("en-IN", {
+            timeZone: "Asia/Kolkata",
+            hour: "2-digit",
+            minute: "2-digit"
+          });
+          metaEl.textContent = `15-min delayed • Updated ${timeStr} IST`;
+        } catch (_) {
+          metaEl.textContent = "15-min delayed quotes";
+        }
+      }
+    }
+
+    async function fetchAllIndices() {
+      try {
+        const results = await Promise.all(
+          KEY_INDICES.map(async function (idx) {
+            try {
+              const res = await fetch(`${PROXY_BASE}?symbol=${encodeURIComponent(idx.symbol)}&exchange=INDEX`);
+              if (!res.ok) return { label: idx.label, symbol: idx.symbol };
+              const data = await res.json();
+              return {
+                label: idx.label,
+                symbol: idx.symbol,
+                cmp: data.cmp,
+                dayChange: data.dayChange,
+                dayChangePct: data.dayChangePct
+              };
+            } catch (_) {
+              return { label: idx.label, symbol: idx.symbol };
+            }
+          })
+        );
+
+        if (results.some(function (r) { return typeof r.cmp === "number"; })) {
+          const now = Date.now();
+          renderIndices(results, now);
+          try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: now, items: results }));
+          } catch (_) {}
+        }
+      } catch (_) {}
+    }
+
+    // 1. Render cached values immediately if available
+    let cacheAge = Infinity;
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+      if (cached && Array.isArray(cached.items) && cached.items.length === 3) {
+        cacheAge = Date.now() - Number(cached.timestamp || 0);
+        renderIndices(cached.items, cached.timestamp);
+      }
+    } catch (_) {}
+
+    // 2. Fetch fresh 15-min delayed quotes if cache is older than 15 mins (or missing)
+    if (cacheAge >= REFRESH_MS) {
+      fetchAllIndices();
+    }
+
+    // 3. Auto-refresh every 15 minutes during Indian market hours
+    setInterval(function () {
+      if (isMarketHoursIST()) {
+        fetchAllIndices();
+      }
+    }, REFRESH_MS);
+  })();
 });

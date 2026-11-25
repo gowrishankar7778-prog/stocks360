@@ -48,6 +48,28 @@
   <!-- 3. SEARCH FOR STOCKS SECTION (GLOBAL COMPANY SEARCH & ANALYSIS) -->
   <section class="top-search-section" aria-label="Search for Stocks">
     <div class="container">
+      <!-- KEY INDICES STRIP (15-MINUTE DELAYED) -->
+      <div id="home-indices-strip" class="home-indices-strip" role="region" aria-label="Key Market Indices (15-minute delayed)" style="margin-bottom: 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px 14px; box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid #f1f5f9;">
+          <span style="font-size:0.78rem; font-weight:800; color:#475569; text-transform:uppercase; letter-spacing:0.4px;">Market Indices</span>
+          <span id="home-indices-meta" style="font-size:0.74rem; color:#64748b; font-weight:600;">15-min delayed quotes</span>
+        </div>
+        <div id="home-indices-list" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; font-size:0.88rem; white-space:nowrap;">
+            <strong style="color:#0f172a;">NIFTY 50</strong>
+            <span style="color:#64748b;">Loading...</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; font-size:0.88rem; white-space:nowrap;">
+            <strong style="color:#0f172a;">SENSEX</strong>
+            <span style="color:#64748b;">Loading...</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; font-size:0.88rem; white-space:nowrap;">
+            <strong style="color:#0f172a;">BANK NIFTY</strong>
+            <span style="color:#64748b;">Loading...</span>
+          </div>
+        </div>
+      </div>
+
       <div class="stock-search-card">
         <label for="stock-search" class="search-label" style="font-weight:700; color:#1e293b; display:block; margin-bottom:8px;">
           Search Companies for Detailed Analysis &amp; News
@@ -123,7 +145,7 @@
   <script src="js/auth.js?v=102"></script>
   <script src="js/data-store.js?v=102"></script>
   <script src="js/gemini-ai.js?v=107"></script>
-  <script src="js/main.js?v=107"></script>
+  <script src="js/main.js?v=108"></script>
   <script src="js/accessibility.js?v=102"></script>
   <script src="js/screener-index.js?v=104"></script>
   <script src="js/stock-search.js?v=104"></script>

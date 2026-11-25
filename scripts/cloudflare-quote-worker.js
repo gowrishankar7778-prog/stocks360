@@ -29,6 +29,11 @@ function buildTickerCandidates(rawSym, exchange, bseCode) {
     }
   };
 
+  if (rawSym.startsWith('^') || exchange === 'INDEX') {
+    pushUnique(rawSym.startsWith('^') ? rawSym : `^${rawSym}`);
+    return candidates;
+  }
+
   if (exchange === 'BSE') {
     if (/[A-Z]/.test(rawSym)) {
       pushUnique(`${rawSym}.BO`);

@@ -61,6 +61,113 @@
     return (v > 0 ? "+₹ " : v < 0 ? "-₹ " : "₹ ") + abs + " Cr";
   }
 
+  const QUOTE_PROXY_BASE = "https://stocks360-quotes.stocks360-app.workers.dev/quote";
+
+  function isIndianMarketHours() {
+    try {
+      const now = new Date();
+      const ist = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+      const day = ist.getDay();
+      if (day === 0 || day === 6) return false;
+      const mins = ist.getHours() * 60 + ist.getMinutes();
+      return mins >= 555 && mins <= 930; // 09:15 to 15:30 IST
+    } catch (_) {
+      return false;
+    }
+  }
+
+  const INDEX_YAHOO_MAP = {
+    "NIFTY 50": "^NSEI",
+    "BSE SENSEX": "^BSESN",
+    "NIFTY BANK": "^NSEBANK",
+    "NIFTY IT": "^CNXIT",
+    "NIFTY AUTO": "^CNXAUTO",
+    "NIFTY PHARMA": "^CNXPHARMA",
+    "NIFTY FMCG": "^CNXFMCG",
+    "NIFTY METAL": "^CNXMETAL",
+    "NIFTY ENERGY": "^CNXENERGY",
+    "NIFTY REALTY": "^CNXREALTY",
+    "NIFTY PSU BANK": "^CNXPSUBANK",
+    "NIFTY MEDIA": "^CNXMEDIA",
+    "NIFTY FINANCIAL SERVICES": "^CNXFIN",
+    "NIFTY INFRASTRUCTURE": "^CNXINFRA",
+    "NIFTY 100": "^CNX100",
+    "NIFTY 500": "^CRSLDX",
+    "INDIA VIX": "^INDIAVIX"
+  };
+
+  function getSectorYahooSymbol(sectorName) {
+    const s = String(sectorName || "").toLowerCase();
+    if (s.includes("information technology") || s === "it" || s.includes("software")) return "^CNXIT";
+    if (s.includes("bank") && s.includes("psu")) return "^CNXPSUBANK";
+    if (s.includes("bank") || s.includes("financial")) return "^CNXFIN";
+    if (s.includes("auto")) return "^CNXAUTO";
+    if (s.includes("pharma") || s.includes("health")) return "^CNXPHARMA";
+    if (s.includes("fmcg") || s.includes("consumer") || s.includes("retail")) return "^CNXFMCG";
+    if (s.includes("metal") || s.includes("mining")) return "^CNXMETAL";
+    if (s.includes("energy") || s.includes("oil") || s.includes("power")) return "^CNXENERGY";
+    if (s.includes("realty") || s.includes("real estate") || s.includes("housing")) return "^CNXREALTY";
+    if (s.includes("media") || s.includes("telecom")) return "^CNXMEDIA";
+    if (s.includes("infra") || s.includes("capital goods") || s.includes("construction")) return "^CNXINFRA";
+    return null;
+  }
+
+  async function refreshSegmentDelayedQuotes(segId) {
+    if ((segId !== "indices" && segId !== "sectors") || !isIndianMarketHours() || typeof fetch !== "function") {
+      return;
+    }
+    const panel = document.getElementById("snapshot-segment-panel");
+    if (!panel || panel.hidden) return;
+
+    const rows = Array.from(panel.querySelectorAll("tr[data-quote-sym]"));
+    if (rows.length === 0) return;
+
+    const uniqueSyms = Array.from(new Set(rows.map((r) => r.getAttribute("data-quote-sym")).filter(Boolean)));
+    const subtitleEl = document.getElementById("snapshot-segment-subtitle");
+
+    let updatedCount = 0;
+    const batchSize = 5;
+    for (let i = 0; i < uniqueSyms.length; i += batchSize) {
+      if (activeSegment !== segId) return;
+      const batch = uniqueSyms.slice(i, i + batchSize);
+      await Promise.all(
+        batch.map(async (sym) => {
+          try {
+            const res = await fetch(`${QUOTE_PROXY_BASE}?symbol=${encodeURIComponent(sym)}&exchange=INDEX`);
+            if (!res || !res.ok) return;
+            const q = await res.json();
+            if (!q || typeof q.cmp !== "number" || activeSegment !== segId) return;
+
+            const matchingRows = panel.querySelectorAll(`tr[data-quote-sym="${sym}"]`);
+            matchingRows.forEach((tr) => {
+              const lastCell = tr.querySelector("[data-quote-last]");
+              const pctCell = tr.querySelector("[data-quote-pct]");
+              const rangeCell = tr.querySelector("[data-quote-range]");
+              const chgColor = q.dayChangePct > 0 ? "#16a34a" : q.dayChangePct < 0 ? "#dc2626" : "#475569";
+
+              if (lastCell) {
+                lastCell.textContent = Number(q.cmp).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+              }
+              if (pctCell) {
+                pctCell.textContent = fmtPct(q.dayChangePct);
+                pctCell.style.color = chgColor;
+              }
+              if (rangeCell && typeof q.dayHigh === "number" && typeof q.dayLow === "number") {
+                rangeCell.textContent = `${q.dayHigh.toLocaleString("en-IN")} / ${q.dayLow.toLocaleString("en-IN")}`;
+              }
+            });
+            updatedCount++;
+          } catch (_) {}
+        })
+      );
+    }
+
+    if (updatedCount > 0 && subtitleEl && activeSegment === segId) {
+      const timeStr = new Date().toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit" });
+      subtitleEl.textContent = `15-min delayed live quotes active • Updated ${timeStr} IST`;
+    }
+  }
+
   function getExchangeStocks(exchange) {
     const allStocks = Array.isArray(window.STOCKS_SCREENER_DATASET) ? window.STOCKS_SCREENER_DATASET : [];
     return allStocks.filter((s) => (exchange === "BSE" ? s && (s.exchanges === "BSE" || !!s.bseCode) : s && s.exchanges !== "BSE"));
@@ -223,7 +330,7 @@
         <div style="padding:14px 16px; border-bottom:1px solid #e2e8f0; background:#f8fafc; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
           <div>
             <h2 id="snapshot-segment-heading" tabindex="-1" style="margin:0; font-size:1.15rem; color:#0f172a; font-weight:800;">${esc(title)}</h2>
-            <p style="margin:3px 0 0 0; font-size:0.8rem; color:#64748b;">${esc(subtitle)}</p>
+            <p id="snapshot-segment-subtitle" style="margin:3px 0 0 0; font-size:0.8rem; color:#64748b;">${esc(subtitle)}</p>
           </div>
           <button type="button" id="btn-close-snapshot-segment" class="btn-secondary" style="padding:6px 12px; font-size:0.82rem; font-weight:700; border-radius:6px; cursor:pointer;">
             Close Table &#10005;
@@ -279,16 +386,18 @@
               </thead>
               <tbody>
                 ${rows
-                  .map(
-                    (sec) => `
-                  <tr style="border-bottom:1px solid #f1f5f9;">
+                  .map((sec) => {
+                    const ySym = getSectorYahooSymbol(sec.sector);
+                    const rowAttr = ySym ? ` data-quote-sym="${esc(ySym)}"` : "";
+                    return `
+                  <tr${rowAttr} style="border-bottom:1px solid #f1f5f9;">
                     <td style="padding:10px 14px; font-weight:700; color:#0f172a;">${esc(sec.sector)}</td>
                     <td style="padding:10px 14px; text-align:right;">${sec.count}</td>
                     <td style="padding:10px 14px; text-align:right;"><span style="color:#16a34a; font-weight:700;">${sec.adv}</span> / <span style="color:#dc2626; font-weight:700;">${sec.dec}</span></td>
-                    <td style="padding:10px 14px; text-align:right; font-weight:800; color:${sec.avgPct >= 0 ? "#16a34a" : "#dc2626"};">${fmtPct(sec.avgPct)}</td>
+                    <td data-quote-pct style="padding:10px 14px; text-align:right; font-weight:800; color:${sec.avgPct >= 0 ? "#16a34a" : "#dc2626"};">${fmtPct(sec.avgPct)}</td>
                   </tr>
-                `
-                  )
+                `;
+                  })
                   .join("")}
               </tbody>
             </table>
@@ -411,12 +520,14 @@
                         activeExchange === "BSE"
                           ? (idx.yearHigh != null && idx.yearLow != null ? `${idx.yearHigh.toLocaleString("en-IN")} / ${idx.yearLow.toLocaleString("en-IN")}` : "--")
                           : (idx.pe != null ? idx.pe.toFixed(2) : "--");
+                      const ySym = INDEX_YAHOO_MAP[String(idx.index || "").toUpperCase()] || null;
+                      const rowAttr = ySym ? ` data-quote-sym="${esc(ySym)}"` : "";
                       return `
-                        <tr style="border-bottom:1px solid #f1f5f9;">
+                        <tr${rowAttr} style="border-bottom:1px solid #f1f5f9;">
                           <td style="padding:10px 14px; font-weight:700; color:#0f172a;">${esc(idx.index)}</td>
-                          <td style="padding:10px 14px; text-align:right; font-weight:700;">${Number(idx.last).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                          <td style="padding:10px 14px; text-align:right; font-weight:800; color:${chgColor};">${fmtPct(idx.percentChange)}</td>
-                          <td style="padding:10px 14px; text-align:right; color:#475569; white-space:nowrap;">${idx.high != null ? idx.high.toLocaleString("en-IN") : "--"} / ${idx.low != null ? idx.low.toLocaleString("en-IN") : "--"}</td>
+                          <td data-quote-last style="padding:10px 14px; text-align:right; font-weight:700;">${Number(idx.last).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                          <td data-quote-pct style="padding:10px 14px; text-align:right; font-weight:800; color:${chgColor};">${fmtPct(idx.percentChange)}</td>
+                          <td data-quote-range style="padding:10px 14px; text-align:right; color:#475569; white-space:nowrap;">${idx.high != null ? idx.high.toLocaleString("en-IN") : "--"} / ${idx.low != null ? idx.low.toLocaleString("en-IN") : "--"}</td>
                           <td style="padding:10px 14px; text-align:right; color:#475569; white-space:nowrap;">${extraVal}</td>
                         </tr>
                       `;
@@ -551,6 +662,8 @@
     if (closeBtn) {
       closeBtn.addEventListener("click", () => closeActiveSegment(true));
     }
+
+    refreshSegmentDelayedQuotes(segId);
 
     if (shouldScroll) {
       const segMeta = SEGMENTS.find((s) => s.id === segId);
