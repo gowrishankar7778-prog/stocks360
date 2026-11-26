@@ -550,7 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   })();
 
-  // Homepage Precious Metals Strip (Gold 10g & Silver 1kg Global Spot INR Equiv., 15-min delayed)
+  // Homepage Precious Metals Strip (Gold & Silver Global Spot USD/oz, 15-min delayed)
   (function initHomeMetalsStrip() {
     const stripEl = document.getElementById("home-metals-strip");
     const listEl = document.getElementById("home-metals-list");
@@ -558,17 +558,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const metaEl = document.getElementById("home-metals-meta");
     if (!stripEl || !listEl || !detailEl) return;
 
-    const CACHE_KEY = "stocks360_home_metals_cache_v1";
+    const CACHE_KEY = "stocks360_home_metals_cache_v2";
     const SLOT_MS = 15 * 60 * 1000;
-    const TROY_OUNCE_GRAMS = 31.1034768;
     const PROXY_BASE = "https://stocks360-quotes.stocks360-app.workers.dev/quote";
 
-    let metalsState = { gold: null, silver: null, usdinr: null, updatedTs: 0 };
+    let metalsState = { gold: null, silver: null, updatedTs: 0 };
     let activeMetalKey = null;
     let lastSlotStart = 0;
     let refreshTimerId = null;
     let metalRetryCount = 0;
-    let indexRetryCount = 0;
 
     function getIstClock(nowMs) {
       try {
@@ -607,43 +605,26 @@ document.addEventListener("DOMContentLoaded", function () {
       return Math.floor(ts / SLOT_MS) * SLOT_MS;
     }
 
-    function fmtInr(v, decimals) {
-      if (typeof v !== "number" || !Number.isFinite(v)) return "--";
-      return "₹ " + v.toLocaleString("en-IN", {
-        minimumFractionDigits: typeof decimals === "number" ? decimals : 0,
-        maximumFractionDigits: typeof decimals === "number" ? decimals : 0
-      });
-    }
-
     function fmtUsd(v) {
       if (typeof v !== "number" || !Number.isFinite(v)) return "--";
       return "$" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    function convertMetalQuote(raw, usdinr, gramsUnit, label, subLabel) {
-      if (!raw || typeof raw.cmp !== "number" || typeof usdinr !== "number") return null;
-      const factor = (usdinr / TROY_OUNCE_GRAMS) * gramsUnit;
-      const conv = function (val) {
-        return typeof val === "number" && Number.isFinite(val) ? Math.round(val * factor) : null;
-      };
-      const cmpInr = conv(raw.cmp);
-      const prevInr = conv(raw.prevClose);
-      const chgInr = cmpInr !== null && prevInr !== null ? cmpInr - prevInr : 0;
-      const chgPct = typeof raw.dayChangePct === "number" ? raw.dayChangePct : (prevInr ? (chgInr / prevInr) * 100 : 0);
+    function buildMetalQuote(raw, label, subLabel) {
+      if (!raw || typeof raw.cmp !== "number") return null;
+      const chg = typeof raw.dayChange === "number" ? raw.dayChange : 0;
+      const chgPct = typeof raw.dayChangePct === "number" ? raw.dayChangePct : 0;
       return {
         label: label,
         subLabel: subLabel,
-        cmpInr: cmpInr,
-        dayOpenInr: conv(raw.dayOpen),
-        dayHighInr: conv(raw.dayHigh),
-        dayLowInr: conv(raw.dayLow),
-        prevCloseInr: prevInr,
-        high52Inr: conv(raw.high52),
-        low52Inr: conv(raw.low52),
-        cmpUsd: raw.cmp,
-        high52Usd: raw.high52,
-        low52Usd: raw.low52,
-        dayChangeInr: chgInr,
+        cmp: raw.cmp,
+        dayOpen: raw.dayOpen,
+        dayHigh: raw.dayHigh,
+        dayLow: raw.dayLow,
+        prevClose: raw.prevClose,
+        high52: raw.high52,
+        low52: raw.low52,
+        dayChange: chg,
         dayChangePct: Number(chgPct.toFixed(2))
       };
     }
@@ -676,12 +657,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const pillBorder = isUp ? "#bbf7d0" : "#fecaca";
       const sign = isUp ? "+" : "-";
       const cards = [
-        { label: "Today's Open", val: fmtInr(m.dayOpenInr) },
-        { label: "Today's High", val: fmtInr(m.dayHighInr), color: "#15803d" },
-        { label: "Today's Low", val: fmtInr(m.dayLowInr), color: "#b91c1c" },
-        { label: "Previous Close", val: fmtInr(m.prevCloseInr) },
-        { label: "52-Week High", val: fmtInr(m.high52Inr), sub: m.high52Usd ? `${fmtUsd(m.high52Usd)}/oz` : "", color: "#15803d" },
-        { label: "52-Week Low", val: fmtInr(m.low52Inr), sub: m.low52Usd ? `${fmtUsd(m.low52Usd)}/oz` : "", color: "#b91c1c" }
+        { label: "Today's Open", val: fmtUsd(m.dayOpen) },
+        { label: "Today's High", val: fmtUsd(m.dayHigh), color: "#15803d" },
+        { label: "Today's Low", val: fmtUsd(m.dayLow), color: "#b91c1c" },
+        { label: "Previous Close", val: fmtUsd(m.prevClose) },
+        { label: "52-Week High", val: fmtUsd(m.high52), color: "#15803d" },
+        { label: "52-Week Low", val: fmtUsd(m.low52), color: "#b91c1c" }
       ];
 
       detailEl.hidden = false;
@@ -691,11 +672,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
               <strong style="font-size:0.96rem; color:#0f172a;">${m.subLabel}</strong>
               <span style="font-size:0.82rem; font-weight:700; padding:2px 8px; border-radius:999px; background:${pillBg}; color:${pillColor}; border:1px solid ${pillBorder};">
-                ${sign}${fmtInr(Math.abs(m.dayChangeInr)).replace("₹ ", "₹")} (${isUp ? "+" : ""}${m.dayChangePct.toFixed(2)}%)
+                ${sign}${fmtUsd(Math.abs(m.dayChange))} (${isUp ? "+" : ""}${m.dayChangePct.toFixed(2)}%)
               </span>
             </div>
             <div style="font-size:0.75rem; color:#64748b; margin-top:3px;">
-              Spot: ${fmtUsd(m.cmpUsd)}/oz &bull; USD/INR: ₹${Number(metalsState.usdinr || 0).toFixed(2)} &bull; Excludes customs duty &amp; GST
+              International COMEX Futures (USD per troy ounce) &bull; 15-min delayed
             </div>
           </div>
           <button type="button" id="home-metals-close-btn" aria-label="Close metal details" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:3px 9px; font-size:0.78rem; font-weight:700; color:#475569; cursor:pointer;">Close &times;</button>
@@ -706,7 +687,6 @@ document.addEventListener("DOMContentLoaded", function () {
               <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 10px;">
                 <div style="font-size:0.72rem; color:#64748b; font-weight:600;">${c.label}</div>
                 <div style="font-size:0.9rem; font-weight:800; color:${c.color || "#0f172a"}; margin-top:2px;">${c.val}</div>
-                ${c.sub ? `<div style="font-size:0.69rem; color:#94a3b8;">${c.sub}</div>` : ""}
               </div>
             `;
           }).join("")}
@@ -723,8 +703,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderMetalButtons() {
       [
-        { key: "gold", btnId: "metal-btn-gold", title: "Gold (10g)", baseBg: "#fffbeb", baseBorder: "#fde68a", titleColor: "#92400e" },
-        { key: "silver", btnId: "metal-btn-silver", title: "Silver (1kg)", baseBg: "#f8fafc", baseBorder: "#e2e8f0", titleColor: "#334155" }
+        { key: "gold", btnId: "metal-btn-gold", title: "Gold (oz)", baseBg: "#fffbeb", baseBorder: "#fde68a", titleColor: "#92400e" },
+        { key: "silver", btnId: "metal-btn-silver", title: "Silver (oz)", baseBg: "#f8fafc", baseBorder: "#e2e8f0", titleColor: "#334155" }
       ].forEach(function (cfg) {
         const btn = document.getElementById(cfg.btnId);
         if (!btn) return;
@@ -740,11 +720,11 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.style.background = isUp && cfg.key === "silver" ? "#f0fdf4" : (!isUp && cfg.key === "silver" ? "#fef2f2" : cfg.baseBg);
         btn.style.borderColor = isOpen ? "#2563eb" : cfg.baseBorder;
         btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        btn.setAttribute("aria-label", `${cfg.title}: ${fmtInr(m.cmpInr)}, ${sign}${m.dayChangePct.toFixed(2)} percent. Click for high, low, and 52-week range.`);
+        btn.setAttribute("aria-label", `${cfg.title}: ${fmtUsd(m.cmp)} per ounce, ${sign}${m.dayChangePct.toFixed(2)} percent. Click for high, low, and 52-week range.`);
         btn.innerHTML = `
           <strong style="color:${cfg.titleColor}; font-weight:800;">${cfg.title}</strong>
           <span style="display:inline-flex; align-items:center; gap:6px;">
-            <span style="font-weight:800; color:#0f172a;">${fmtInr(m.cmpInr)}</span>
+            <span style="font-weight:800; color:#0f172a;">${fmtUsd(m.cmp)}</span>
             <span style="font-weight:700; color:${chgColor}; font-size:0.8rem;">(${sign}${m.dayChangePct.toFixed(2)}%)</span>
             <span aria-hidden="true" style="font-size:0.7rem; color:#64748b;">${isOpen ? "&#9650;" : "&#9660;"}</span>
           </span>
@@ -800,18 +780,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const targetSlot = getTargetMetalSlotMs(now);
       const slotParam = targetSlot ? `&slot=${targetSlot}` : "";
       try {
-        const [goldRes, silverRes, fxRes] = await Promise.all([
+        const [goldRes, silverRes] = await Promise.all([
           fetch(`${PROXY_BASE}?symbol=GC%3DF&exchange=COMMODITY${slotParam}`, { cache: "no-store" }),
-          fetch(`${PROXY_BASE}?symbol=SI%3DF&exchange=COMMODITY${slotParam}`, { cache: "no-store" }),
-          fetch(`${PROXY_BASE}?symbol=USDINR%3DX&exchange=FX${slotParam}`, { cache: "no-store" })
+          fetch(`${PROXY_BASE}?symbol=SI%3DF&exchange=COMMODITY${slotParam}`, { cache: "no-store" })
         ]);
-        const [goldRaw, silverRaw, fxRaw] = await Promise.all([
+        const [goldRaw, silverRaw] = await Promise.all([
           goldRes.ok ? goldRes.json() : null,
-          silverRes.ok ? silverRes.json() : null,
-          fxRes.ok ? fxRes.json() : null
+          silverRes.ok ? silverRes.json() : null
         ]);
-        const usdinr = fxRaw && typeof fxRaw.cmp === "number" ? fxRaw.cmp : null;
-        if (usdinr && (goldRaw || silverRaw)) {
+        if (goldRaw || silverRaw) {
           metalRetryCount = 0;
           const rawMktSec = Math.max(
             (goldRaw && typeof goldRaw.marketTime === "number") ? goldRaw.marketTime : 0,
@@ -819,9 +796,8 @@ document.addEventListener("DOMContentLoaded", function () {
           );
           const displayTs = targetSlot || (rawMktSec > 0 ? rawMktSec * 1000 : now);
           metalsState = {
-            gold: convertMetalQuote(goldRaw, usdinr, 10, "Gold (10g)", "Gold 24K (Global Spot • per 10g)"),
-            silver: convertMetalQuote(silverRaw, usdinr, 1000, "Silver (1kg)", "Silver (Global Spot • per 1kg)"),
-            usdinr: usdinr,
+            gold: buildMetalQuote(goldRaw, "Gold (oz)", "Gold (Global Spot • per troy oz)"),
+            silver: buildMetalQuote(silverRaw, "Silver (oz)", "Silver (Global Spot • per troy oz)"),
             updatedTs: displayTs
           };
           if (targetSlot) lastSlotStart = targetSlot;

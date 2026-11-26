@@ -486,8 +486,7 @@ export default {
     const slot = Math.floor(now / (EDGE_CACHE_SECONDS * 1000)) * (EDGE_CACHE_SECONDS * 1000);
     const warmList = [
       { symbol: 'GC=F', exchange: 'COMMODITY' },
-      { symbol: 'SI=F', exchange: 'COMMODITY' },
-      { symbol: 'USDINR=X', exchange: 'FX' }
+      { symbol: 'SI=F', exchange: 'COMMODITY' }
     ];
 
     if (totalMins >= 555 && totalMins <= 945) {
