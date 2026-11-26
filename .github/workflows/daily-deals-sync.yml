@@ -13,6 +13,8 @@ permissions:
 jobs:
   sync-bulk-block-deals:
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_SA_SET: ${{ secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
 
     steps:
       - name: Checkout Repository
@@ -76,3 +78,12 @@ jobs:
           else
             echo "Notice: Set GitHub repo secret RENDER_DEPLOY_HOOK_URL to enable automatic Render deploys."
           fi
+
+      - name: Deploy to Firebase Hosting (stocks360.web.app)
+        if: steps.market_check.outputs.is_open == 'true' && steps.git_push.outputs.pushed == 'true' && env.FIREBASE_SA_SET == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: project-b005dc8f-09b3-4af6-b2b

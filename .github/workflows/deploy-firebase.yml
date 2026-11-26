@@ -1,0 +1,31 @@
+name: Auto-Deploy to Firebase Hosting on Push
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-firebase-hosting:
+    runs-on: ubuntu-latest
+    env:
+      FIREBASE_SA_SET: ${{ secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Live Site to Firebase Hosting (stocks360.web.app)
+        if: env.FIREBASE_SA_SET == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: project-b005dc8f-09b3-4af6-b2b
+
+      - name: Notice if Secret Missing
+        if: env.FIREBASE_SA_SET != 'true'
+        run: |
+          echo "Notice: Add GitHub repository secret FIREBASE_SERVICE_ACCOUNT to enable automatic Firebase Hosting deployments to stocks360.web.app."
