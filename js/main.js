@@ -291,18 +291,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Returns the active 15-min IST slot start timestamp (09:15, 09:30, 09:45, ..., 15:45 IST),
-    // clamping post-15:45 times (before EOD sync) to today's 15:45 IST closing-delay slot.
+    // clamping post-15:45 times to today's 15:45 IST closing-delay slot so browsers always fetch the closing quote.
     function getTargetIndexSlotMs(nowMs) {
       const ts = typeof nowMs === "number" ? nowMs : Date.now();
       const clk = getIstClockParts(ts);
       if (!clk || clk.isWeekend) return null;
       if (clk.totalMins < 555) return null; // Before 09:15 AM IST
-      if (isEodSyncedForToday()) return null; // Official EOD dataset already synced for today
       const currentSlot = Math.floor(ts / SLOT_MS) * SLOT_MS;
       if (clk.totalMins <= 945) {
         return currentSlot; // 09:15, 09:30, 09:45 ... 15:45 IST
       }
-      // After 15:45 IST (and before EOD sync): clamp to today's 15:45 IST slot
+      // After 15:45 IST: clamp to today's 15:45 IST slot
       const minsPast1545 = clk.totalMins - 945;
       const msPast1545 = (minsPast1545 * 60 + clk.sec) * 1000 + (ts % 1000);
       return Math.round((ts - msPast1545) / SLOT_MS) * SLOT_MS;
@@ -390,7 +389,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (metaEl && updatedTs) {
         try {
-          const isLiveSlot = Boolean(getTargetIndexSlotMs(Date.now()));
+          const clkNow = getIstClockParts(Date.now());
+          const isLiveSlot = Boolean(clkNow && !clkNow.isWeekend && clkNow.totalMins >= 555 && clkNow.totalMins < 945 && !isEodSyncedForToday());
           const timeStr = new Date(updatedTs).toLocaleTimeString("en-IN", {
             timeZone: "Asia/Kolkata",
             hour: "2-digit",
@@ -521,18 +521,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 1. Render cached values immediately if available
     let hasCachedItems = false;
+    let cachedTs = 0;
     try {
       const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
       if (cached && Array.isArray(cached.items) && cached.items.length === 3) {
         hasCachedItems = true;
         lastSlotStart = Number(cached.slotStart || 0);
+        cachedTs = Number(cached.timestamp || 0);
         renderIndices(cached.items, cached.slotStart || cached.timestamp);
       }
     } catch (_) {}
 
-    // 2. Fetch if current 15-min IST slot (09:15, 09:30, 09:45...) hasn't been fetched yet, or if no cache exists
+    // 2. Fetch if current 15-min IST slot (09:15, 09:30, 09:45...) hasn't been fetched yet, if no cache exists, or if weekend/pre-market cache is >6h stale
     const initialTargetSlot = getTargetIndexSlotMs(Date.now());
-    if ((initialTargetSlot && lastSlotStart !== initialTargetSlot) || !hasCachedItems) {
+    const isStaleOffHours = !initialTargetSlot && hasCachedItems && (Date.now() - cachedTs > 6 * 3600 * 1000);
+    if ((initialTargetSlot && lastSlotStart !== initialTargetSlot) || !hasCachedItems || isStaleOffHours) {
       fetchAllIndices();
     } else {
       scheduleNextRefresh();
