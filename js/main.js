@@ -390,12 +390,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (metaEl && updatedTs) {
         try {
+          const isLiveSlot = Boolean(getTargetIndexSlotMs(Date.now()));
           const timeStr = new Date(updatedTs).toLocaleTimeString("en-IN", {
             timeZone: "Asia/Kolkata",
             hour: "2-digit",
             minute: "2-digit"
           });
-          metaEl.textContent = `15-min delayed • Updated ${timeStr} IST`;
+          if (isLiveSlot) {
+            metaEl.textContent = `15-min delayed • Updated ${timeStr} IST`;
+          } else {
+            const dateStr = new Date(updatedTs).toLocaleDateString("en-IN", {
+              timeZone: "Asia/Kolkata",
+              day: "2-digit",
+              month: "short",
+              year: "numeric"
+            });
+            metaEl.textContent = `Market Closed • Last Updated ${dateStr}, ${timeStr} IST`;
+          }
         } catch (_) {
           metaEl.textContent = "15-min delayed quotes";
         }
@@ -462,6 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cmp: data.cmp,
                 dayChange: data.dayChange,
                 dayChangePct: data.dayChangePct,
+                marketTime: data.marketTime,
                 timestamp: data.timestamp
               };
             } catch (_) {
@@ -472,7 +484,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (results.some(function (r) { return typeof r.cmp === "number"; })) {
           indexRetryCount = 0;
-          const displayTs = targetSlot || results.reduce(function (acc, r) {
+          const mktTs = results.reduce(function (acc, r) {
+            const mt = typeof r.marketTime === "number" && r.marketTime > 0 ? r.marketTime * 1000 : 0;
+            return mt > acc ? mt : acc;
+          }, 0);
+          const displayTs = targetSlot || mktTs || results.reduce(function (acc, r) {
             return typeof r.timestamp === "number" && r.timestamp > acc ? r.timestamp : acc;
           }, 0) || Date.now();
           if (targetSlot) {
@@ -737,12 +753,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (metaEl && metalsState.updatedTs) {
         try {
+          const isLiveSlot = Boolean(getTargetMetalSlotMs(Date.now()));
           const tStr = new Date(metalsState.updatedTs).toLocaleTimeString("en-IN", {
             timeZone: "Asia/Kolkata",
             hour: "2-digit",
             minute: "2-digit"
           });
-          metaEl.textContent = `15-min delayed • Updated ${tStr} IST • Click for details`;
+          if (isLiveSlot) {
+            metaEl.textContent = `15-min delayed • Updated ${tStr} IST • Click for details`;
+          } else {
+            const dStr = new Date(metalsState.updatedTs).toLocaleDateString("en-IN", {
+              timeZone: "Asia/Kolkata",
+              day: "2-digit",
+              month: "short",
+              year: "numeric"
+            });
+            metaEl.textContent = `Last Updated ${dStr}, ${tStr} IST • Click for details`;
+          }
         } catch (_) {}
       }
 
@@ -786,7 +813,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const usdinr = fxRaw && typeof fxRaw.cmp === "number" ? fxRaw.cmp : null;
         if (usdinr && (goldRaw || silverRaw)) {
           metalRetryCount = 0;
-          const displayTs = targetSlot || now;
+          const rawMktSec = Math.max(
+            (goldRaw && typeof goldRaw.marketTime === "number") ? goldRaw.marketTime : 0,
+            (silverRaw && typeof silverRaw.marketTime === "number") ? silverRaw.marketTime : 0
+          );
+          const displayTs = targetSlot || (rawMktSec > 0 ? rawMktSec * 1000 : now);
           metalsState = {
             gold: convertMetalQuote(goldRaw, usdinr, 10, "Gold (10g)", "Gold 24K (Global Spot • per 10g)"),
             silver: convertMetalQuote(silverRaw, usdinr, 1000, "Silver (1kg)", "Silver (Global Spot • per 1kg)"),

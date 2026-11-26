@@ -454,17 +454,50 @@ export default {
     }
   },
 
-  // Automated 15-minute cron warmer for key indices & precious metals
+  // Automated 15-minute cron warmer for key indices (09:15-15:45 IST) & metals (09:00-23:55 IST), Mon-Fri only
   async scheduled(event, env, ctx) {
-    const slot = Math.floor(Date.now() / (EDGE_CACHE_SECONDS * 1000)) * (EDGE_CACHE_SECONDS * 1000);
+    const now = Date.now();
+    let isWeekend = false;
+    let totalMins = -1;
+    try {
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Kolkata',
+        weekday: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        hourCycle: 'h23'
+      }).formatToParts(new Date(now));
+      const getVal = (t) => (parts.find((p) => p.type === t) || {}).value || '';
+      const wd = getVal('weekday');
+      isWeekend = wd === 'Sat' || wd === 'Sun';
+      const hrRaw = parseInt(getVal('hour'), 10);
+      const hr = hrRaw === 24 ? 0 : hrRaw;
+      const min = parseInt(getVal('minute'), 10);
+      if (Number.isFinite(hr) && Number.isFinite(min)) {
+        totalMins = hr * 60 + min;
+      }
+    } catch (_) {}
+
+    if (isWeekend || totalMins < 540 || totalMins > 1435) {
+      return; // Skip weekends and 23:56-08:59 IST
+    }
+
+    const slot = Math.floor(now / (EDGE_CACHE_SECONDS * 1000)) * (EDGE_CACHE_SECONDS * 1000);
     const warmList = [
-      { symbol: '^NSEI', exchange: 'INDEX' },
-      { symbol: '^BSESN', exchange: 'INDEX' },
-      { symbol: '^NSEBANK', exchange: 'INDEX' },
       { symbol: 'GC=F', exchange: 'COMMODITY' },
       { symbol: 'SI=F', exchange: 'COMMODITY' },
       { symbol: 'USDINR=X', exchange: 'FX' }
     ];
+
+    if (totalMins >= 555 && totalMins <= 945) {
+      warmList.push(
+        { symbol: '^NSEI', exchange: 'INDEX' },
+        { symbol: '^BSESN', exchange: 'INDEX' },
+        { symbol: '^NSEBANK', exchange: 'INDEX' }
+      );
+    }
+
     ctx.waitUntil(
       Promise.all(
         warmList.map((item) =>
