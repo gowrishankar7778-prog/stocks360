@@ -390,23 +390,30 @@ document.addEventListener("DOMContentLoaded", function () {
       if (metaEl && updatedTs) {
         try {
           const clkNow = getIstClockParts(Date.now());
-          const isLiveSlot = Boolean(clkNow && !clkNow.isWeekend && clkNow.totalMins >= 555 && clkNow.totalMins < 945 && !isEodSyncedForToday());
-          const timeStr = new Date(updatedTs).toLocaleTimeString("en-IN", {
+          const eodReady = isEodSyncedForToday() || Boolean(lastLoadedIsEod);
+          const isLiveSlot = Boolean(clkNow && !clkNow.isWeekend && clkNow.totalMins >= 555 && clkNow.totalMins < 945 && !eodReady);
+          const dateStr = new Date(updatedTs).toLocaleDateString("en-IN", {
             timeZone: "Asia/Kolkata",
-            hour: "2-digit",
-            minute: "2-digit"
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
           });
-          if (isLiveSlot) {
+          if (eodReady) {
+            metaEl.textContent = `Official EOD • ${dateStr}`;
+          } else if (isLiveSlot) {
+            const timeStr = new Date(updatedTs).toLocaleTimeString("en-IN", {
+              timeZone: "Asia/Kolkata",
+              hour: "2-digit",
+              minute: "2-digit"
+            });
             metaEl.textContent = `15-min delayed • Updated ${timeStr} IST`;
           } else {
-            const dateStr = new Date(updatedTs).toLocaleDateString("en-IN", {
+            const timeStr = new Date(updatedTs).toLocaleTimeString("en-IN", {
               timeZone: "Asia/Kolkata",
-              day: "2-digit",
-              month: "short",
-              year: "numeric"
+              hour: "2-digit",
+              minute: "2-digit"
             });
-            const eodTag = isEodSyncedForToday() ? "Official EOD" : "Market Closed";
-            metaEl.textContent = `${eodTag} • Last Updated ${dateStr}, ${timeStr} IST`;
+            metaEl.textContent = `Market Closed • Last Updated ${dateStr}, ${timeStr} IST`;
           }
         } catch (_) {
           metaEl.textContent = "15-min delayed quotes";
@@ -415,6 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let lastSlotStart = 0;
+    let lastLoadedIsEod = false;
     let refreshTimerId = null;
     let indexRetryCount = 0;
 
@@ -489,6 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const displayTs = Number.isFinite(eodTs) ? eodTs : Date.now();
         const targetSlot = getTargetIndexSlotMs(Date.now()) || displayTs;
         lastSlotStart = targetSlot;
+        lastLoadedIsEod = true;
         renderIndices(results, displayTs);
         try {
           localStorage.setItem(
@@ -509,8 +518,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function fetchAllIndices() {
       const clkNow = getIstClockParts(Date.now());
-      const offMarketHours = !clkNow || clkNow.isWeekend || clkNow.totalMins < 555 || clkNow.totalMins >= 945;
-      if (isEodSyncedForToday() || offMarketHours) {
+      const preOpenOrWeekend = !clkNow || clkNow.isWeekend || clkNow.totalMins < 555;
+      if (isEodSyncedForToday() || preOpenOrWeekend) {
         const usedEod = await fetchOfficialEodIndices();
         if (usedEod) {
           scheduleNextRefresh();
@@ -558,6 +567,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (targetSlot) {
             lastSlotStart = targetSlot;
           }
+          lastLoadedIsEod = false;
           renderIndices(results, displayTs);
           try {
             localStorage.setItem(
@@ -594,6 +604,7 @@ document.addEventListener("DOMContentLoaded", function () {
         lastSlotStart = Number(cached.slotStart || 0);
         cachedTs = Number(cached.timestamp || 0);
         cachedIsEod = Boolean(cached.isEod);
+        lastLoadedIsEod = cachedIsEod;
         renderIndices(cached.items, cached.slotStart || cached.timestamp);
       }
     } catch (_) {}
