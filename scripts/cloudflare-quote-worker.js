@@ -34,6 +34,11 @@ function buildTickerCandidates(rawSym, exchange, bseCode) {
     return candidates;
   }
 
+  if (rawSym.includes('=') || exchange === 'COMMODITY' || exchange === 'FX' || exchange === 'GLOBAL') {
+    pushUnique(rawSym);
+    return candidates;
+  }
+
   if (exchange === 'BSE') {
     if (/[A-Z]/.test(rawSym)) {
       pushUnique(`${rawSym}.BO`);
@@ -403,6 +408,12 @@ export default {
       const dayHigh = typeof meta.regularMarketDayHigh === 'number' ? Number(meta.regularMarketDayHigh.toFixed(2)) : cmp;
       const dayLow = typeof meta.regularMarketDayLow === 'number' ? Number(meta.regularMarketDayLow.toFixed(2)) : cmp;
       const prevClose = Number((meta.chartPreviousClose || meta.previousClose || cmp).toFixed(2));
+      const high52 = typeof meta.fiftyTwoWeekHigh === 'number' && Number.isFinite(meta.fiftyTwoWeekHigh)
+        ? Number(meta.fiftyTwoWeekHigh.toFixed(2))
+        : null;
+      const low52 = typeof meta.fiftyTwoWeekLow === 'number' && Number.isFinite(meta.fiftyTwoWeekLow)
+        ? Number(meta.fiftyTwoWeekLow.toFixed(2))
+        : null;
       const dayChange = Number((cmp - prevClose).toFixed(2));
       const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
 
@@ -414,6 +425,8 @@ export default {
         dayHigh,
         dayLow,
         prevClose,
+        high52,
+        low52,
         dayChange,
         dayChangePct,
         isGain: dayChange >= 0,

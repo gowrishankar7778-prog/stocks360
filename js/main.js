@@ -522,4 +522,339 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   })();
+
+  // Homepage Precious Metals Strip (Gold 10g & Silver 1kg Global Spot INR Equiv., 15-min delayed)
+  (function initHomeMetalsStrip() {
+    const stripEl = document.getElementById("home-metals-strip");
+    const listEl = document.getElementById("home-metals-list");
+    const detailEl = document.getElementById("home-metals-detail");
+    const metaEl = document.getElementById("home-metals-meta");
+    if (!stripEl || !listEl || !detailEl) return;
+
+    const CACHE_KEY = "stocks360_home_metals_cache_v1";
+    const SLOT_MS = 15 * 60 * 1000;
+    const TROY_OUNCE_GRAMS = 31.1034768;
+    const PROXY_BASE = "https://stocks360-quotes.stocks360-app.workers.dev/quote";
+
+    let metalsState = { gold: null, silver: null, usdinr: null, updatedTs: 0 };
+    let activeMetalKey = null;
+    let lastSlotStart = 0;
+    let refreshTimerId = null;
+
+    function getIstClock(nowMs) {
+      try {
+        const dt = new Date(nowMs || Date.now());
+        const parts = new Intl.DateTimeFormat("en-US", {
+          timeZone: "Asia/Kolkata",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+          hourCycle: "h23"
+        }).formatToParts(dt);
+        const getVal = function (type) {
+          const p = parts.find(function (x) { return x.type === type; });
+          return p ? p.value : "";
+        };
+        const wd = getVal("weekday");
+        const hrRaw = parseInt(getVal("hour"), 10);
+        const hr = hrRaw === 24 ? 0 : hrRaw;
+        const min = parseInt(getVal("minute"), 10);
+        const sec = parseInt(getVal("second"), 10) || 0;
+        if (!Number.isFinite(hr) || !Number.isFinite(min)) return null;
+        return { isWeekend: wd === "Sat" || wd === "Sun", totalMins: hr * 60 + min, sec: sec };
+      } catch (_) {
+        return null;
+      }
+    }
+
+    // MCX Gold/Silver hours: 09:00 AM to 11:55 PM IST (Mon-Fri)
+    function getTargetMetalSlotMs(nowMs) {
+      const ts = typeof nowMs === "number" ? nowMs : Date.now();
+      const clk = getIstClock(ts);
+      if (!clk || clk.isWeekend) return null;
+      if (clk.totalMins < 540 || clk.totalMins > 1435) return null; // Outside 09:00 - 23:55 IST
+      return Math.floor(ts / SLOT_MS) * SLOT_MS;
+    }
+
+    function fmtInr(v, decimals) {
+      if (typeof v !== "number" || !Number.isFinite(v)) return "--";
+      return "₹ " + v.toLocaleString("en-IN", {
+        minimumFractionDigits: typeof decimals === "number" ? decimals : 0,
+        maximumFractionDigits: typeof decimals === "number" ? decimals : 0
+      });
+    }
+
+    function fmtUsd(v) {
+      if (typeof v !== "number" || !Number.isFinite(v)) return "--";
+      return "$" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function convertMetalQuote(raw, usdinr, gramsUnit, label, subLabel) {
+      if (!raw || typeof raw.cmp !== "number" || typeof usdinr !== "number") return null;
+      const factor = (usdinr / TROY_OUNCE_GRAMS) * gramsUnit;
+      const conv = function (val) {
+        return typeof val === "number" && Number.isFinite(val) ? Math.round(val * factor) : null;
+      };
+      const cmpInr = conv(raw.cmp);
+      const prevInr = conv(raw.prevClose);
+      const chgInr = cmpInr !== null && prevInr !== null ? cmpInr - prevInr : 0;
+      const chgPct = typeof raw.dayChangePct === "number" ? raw.dayChangePct : (prevInr ? (chgInr / prevInr) * 100 : 0);
+      return {
+        label: label,
+        subLabel: subLabel,
+        cmpInr: cmpInr,
+        dayOpenInr: conv(raw.dayOpen),
+        dayHighInr: conv(raw.dayHigh),
+        dayLowInr: conv(raw.dayLow),
+        prevCloseInr: prevInr,
+        high52Inr: conv(raw.high52),
+        low52Inr: conv(raw.low52),
+        cmpUsd: raw.cmp,
+        high52Usd: raw.high52,
+        low52Usd: raw.low52,
+        dayChangeInr: chgInr,
+        dayChangePct: Number(chgPct.toFixed(2))
+      };
+    }
+
+    function collapseMetalDetail(restoreFocus) {
+      if (!activeMetalKey) return;
+      const prevBtn = document.getElementById(activeMetalKey === "gold" ? "metal-btn-gold" : "metal-btn-silver");
+      activeMetalKey = null;
+      detailEl.hidden = true;
+      detailEl.innerHTML = "";
+      listEl.querySelectorAll("button[data-metal]").forEach(function (btn) {
+        btn.setAttribute("aria-expanded", "false");
+        btn.style.boxShadow = "none";
+      });
+      if (restoreFocus && prevBtn && typeof prevBtn.focus === "function") {
+        prevBtn.focus();
+      }
+    }
+
+    function renderMetalDetail(key) {
+      const m = metalsState[key];
+      if (!m) {
+        detailEl.hidden = false;
+        detailEl.innerHTML = `<p style="margin:0; font-size:0.85rem; color:#64748b;">Loading ${key === "gold" ? "Gold" : "Silver"} quote details...</p>`;
+        return;
+      }
+      const isUp = m.dayChangePct >= 0;
+      const pillBg = isUp ? "#f0fdf4" : "#fef2f2";
+      const pillColor = isUp ? "#15803d" : "#b91c1c";
+      const pillBorder = isUp ? "#bbf7d0" : "#fecaca";
+      const sign = isUp ? "+" : "-";
+      const cards = [
+        { label: "Today's Open", val: fmtInr(m.dayOpenInr) },
+        { label: "Today's High", val: fmtInr(m.dayHighInr), color: "#15803d" },
+        { label: "Today's Low", val: fmtInr(m.dayLowInr), color: "#b91c1c" },
+        { label: "Previous Close", val: fmtInr(m.prevCloseInr) },
+        { label: "52-Week High", val: fmtInr(m.high52Inr), sub: m.high52Usd ? `${fmtUsd(m.high52Usd)}/oz` : "", color: "#15803d" },
+        { label: "52-Week Low", val: fmtInr(m.low52Inr), sub: m.low52Usd ? `${fmtUsd(m.low52Usd)}/oz` : "", color: "#b91c1c" }
+      ];
+
+      detailEl.hidden = false;
+      detailEl.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid #e2e8f0;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <strong style="font-size:0.96rem; color:#0f172a;">${m.subLabel}</strong>
+              <span style="font-size:0.82rem; font-weight:700; padding:2px 8px; border-radius:999px; background:${pillBg}; color:${pillColor}; border:1px solid ${pillBorder};">
+                ${sign}${fmtInr(Math.abs(m.dayChangeInr)).replace("₹ ", "₹")} (${isUp ? "+" : ""}${m.dayChangePct.toFixed(2)}%)
+              </span>
+            </div>
+            <div style="font-size:0.75rem; color:#64748b; margin-top:3px;">
+              Spot: ${fmtUsd(m.cmpUsd)}/oz &bull; USD/INR: ₹${Number(metalsState.usdinr || 0).toFixed(2)} &bull; Excludes customs duty &amp; GST
+            </div>
+          </div>
+          <button type="button" id="home-metals-close-btn" aria-label="Close metal details" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:3px 9px; font-size:0.78rem; font-weight:700; color:#475569; cursor:pointer;">Close &times;</button>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
+          ${cards.map(function (c) {
+            return `
+              <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 10px;">
+                <div style="font-size:0.72rem; color:#64748b; font-weight:600;">${c.label}</div>
+                <div style="font-size:0.9rem; font-weight:800; color:${c.color || "#0f172a"}; margin-top:2px;">${c.val}</div>
+                ${c.sub ? `<div style="font-size:0.69rem; color:#94a3b8;">${c.sub}</div>` : ""}
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+
+      const closeBtn = document.getElementById("home-metals-close-btn");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+          collapseMetalDetail(true);
+        });
+      }
+    }
+
+    function renderMetalButtons() {
+      [
+        { key: "gold", btnId: "metal-btn-gold", title: "Gold (10g)", baseBg: "#fffbeb", baseBorder: "#fde68a", titleColor: "#92400e" },
+        { key: "silver", btnId: "metal-btn-silver", title: "Silver (1kg)", baseBg: "#f8fafc", baseBorder: "#e2e8f0", titleColor: "#334155" }
+      ].forEach(function (cfg) {
+        const btn = document.getElementById(cfg.btnId);
+        if (!btn) return;
+        const m = metalsState[cfg.key];
+        if (!m) {
+          btn.innerHTML = `<strong style="color:${cfg.titleColor}; font-weight:800;">${cfg.title}</strong><span style="color:#64748b; font-size:0.82rem;">--</span>`;
+          return;
+        }
+        const isUp = m.dayChangePct >= 0;
+        const chgColor = isUp ? "#15803d" : "#b91c1c";
+        const sign = isUp ? "+" : "";
+        const isOpen = activeMetalKey === cfg.key;
+        btn.style.background = isUp && cfg.key === "silver" ? "#f0fdf4" : (!isUp && cfg.key === "silver" ? "#fef2f2" : cfg.baseBg);
+        btn.style.borderColor = isOpen ? "#2563eb" : cfg.baseBorder;
+        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        btn.setAttribute("aria-label", `${cfg.title}: ${fmtInr(m.cmpInr)}, ${sign}${m.dayChangePct.toFixed(2)} percent. Click for high, low, and 52-week range.`);
+        btn.innerHTML = `
+          <strong style="color:${cfg.titleColor}; font-weight:800;">${cfg.title}</strong>
+          <span style="display:inline-flex; align-items:center; gap:6px;">
+            <span style="font-weight:800; color:#0f172a;">${fmtInr(m.cmpInr)}</span>
+            <span style="font-weight:700; color:${chgColor}; font-size:0.8rem;">(${sign}${m.dayChangePct.toFixed(2)}%)</span>
+            <span aria-hidden="true" style="font-size:0.7rem; color:#64748b;">${isOpen ? "&#9650;" : "&#9660;"}</span>
+          </span>
+        `;
+      });
+
+      if (metaEl && metalsState.updatedTs) {
+        try {
+          const tStr = new Date(metalsState.updatedTs).toLocaleTimeString("en-IN", {
+            timeZone: "Asia/Kolkata",
+            hour: "2-digit",
+            minute: "2-digit"
+          });
+          metaEl.textContent = `15-min delayed • Updated ${tStr} IST • Click for details`;
+        } catch (_) {}
+      }
+
+      if (activeMetalKey) {
+        renderMetalDetail(activeMetalKey);
+      }
+    }
+
+    function scheduleNextMetalRefresh() {
+      if (refreshTimerId) {
+        clearTimeout(refreshTimerId);
+        refreshTimerId = null;
+      }
+      const now = Date.now();
+      const clk = getIstClock(now);
+      if (!clk || clk.isWeekend || clk.totalMins > 1435) return;
+      if (clk.totalMins < 540) {
+        const secsTo0900 = (540 - clk.totalMins) * 60 - clk.sec;
+        refreshTimerId = setTimeout(fetchMetals, Math.max(2000, secsTo0900 * 1000 + 2000));
+        return;
+      }
+      const nextBoundaryMs = (Math.floor(now / SLOT_MS) + 1) * SLOT_MS;
+      refreshTimerId = setTimeout(fetchMetals, Math.max(2000, nextBoundaryMs - now + 2000));
+    }
+
+    async function fetchMetals() {
+      const now = Date.now();
+      const targetSlot = getTargetMetalSlotMs(now);
+      const slotParam = targetSlot ? `&slot=${targetSlot}` : "";
+      try {
+        const [goldRes, silverRes, fxRes] = await Promise.all([
+          fetch(`${PROXY_BASE}?symbol=GC%3DF&exchange=COMMODITY${slotParam}`, { cache: "no-store" }),
+          fetch(`${PROXY_BASE}?symbol=SI%3DF&exchange=COMMODITY${slotParam}`, { cache: "no-store" }),
+          fetch(`${PROXY_BASE}?symbol=USDINR%3DX&exchange=FX${slotParam}`, { cache: "no-store" })
+        ]);
+        const [goldRaw, silverRaw, fxRaw] = await Promise.all([
+          goldRes.ok ? goldRes.json() : null,
+          silverRes.ok ? silverRes.json() : null,
+          fxRes.ok ? fxRes.json() : null
+        ]);
+        const usdinr = fxRaw && typeof fxRaw.cmp === "number" ? fxRaw.cmp : null;
+        if (usdinr && (goldRaw || silverRaw)) {
+          const displayTs = targetSlot || now;
+          metalsState = {
+            gold: convertMetalQuote(goldRaw, usdinr, 10, "Gold (10g)", "Gold 24K (Global Spot • per 10g)"),
+            silver: convertMetalQuote(silverRaw, usdinr, 1000, "Silver (1kg)", "Silver (Global Spot • per 1kg)"),
+            usdinr: usdinr,
+            updatedTs: displayTs
+          };
+          if (targetSlot) lastSlotStart = targetSlot;
+          renderMetalButtons();
+          try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ slotStart: targetSlot || 0, state: metalsState }));
+          } catch (_) {}
+        }
+      } catch (_) {}
+      scheduleNextMetalRefresh();
+    }
+
+    listEl.addEventListener("click", function (e) {
+      const btn = e.target.closest("button[data-metal]");
+      if (!btn) return;
+      const key = btn.getAttribute("data-metal");
+      if (!key) return;
+      if (activeMetalKey === key) {
+        collapseMetalDetail(false);
+        renderMetalButtons();
+      } else {
+        activeMetalKey = key;
+        renderMetalButtons();
+      }
+    });
+
+    // Collapse when clicking/tapping outside the metals strip
+    document.addEventListener("click", function (e) {
+      if (activeMetalKey && !stripEl.contains(e.target)) {
+        collapseMetalDetail(false);
+        renderMetalButtons();
+      }
+    });
+
+    // Collapse when keyboard focus leaves the metals strip
+    stripEl.addEventListener("focusout", function (e) {
+      if (!activeMetalKey) return;
+      if (e.relatedTarget && !stripEl.contains(e.relatedTarget)) {
+        collapseMetalDetail(false);
+        renderMetalButtons();
+      }
+    });
+
+    // Collapse on Escape key
+    document.addEventListener("keydown", function (e) {
+      if ((e.key === "Escape" || e.key === "Esc") && activeMetalKey) {
+        collapseMetalDetail(true);
+        renderMetalButtons();
+      }
+    });
+
+    // Load cached metals immediately
+    let hasCache = false;
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+      if (cached && cached.state && (cached.state.gold || cached.state.silver)) {
+        hasCache = true;
+        lastSlotStart = Number(cached.slotStart || 0);
+        metalsState = cached.state;
+        renderMetalButtons();
+      }
+    } catch (_) {}
+
+    const initialSlot = getTargetMetalSlotMs(Date.now());
+    if ((initialSlot && lastSlotStart !== initialSlot) || !hasCache) {
+      fetchMetals();
+    } else {
+      scheduleNextMetalRefresh();
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) return;
+      const currentSlot = getTargetMetalSlotMs(Date.now());
+      if (currentSlot && lastSlotStart !== currentSlot) {
+        fetchMetals();
+      } else {
+        scheduleNextMetalRefresh();
+      }
+    });
+  })();
 });
