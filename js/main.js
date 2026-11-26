@@ -720,7 +720,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.style.background = isUp && cfg.key === "silver" ? "#f0fdf4" : (!isUp && cfg.key === "silver" ? "#fef2f2" : cfg.baseBg);
         btn.style.borderColor = isOpen ? "#2563eb" : cfg.baseBorder;
         btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        btn.setAttribute("aria-label", `${cfg.title}: ${fmtUsd(m.cmp)} per ounce, ${sign}${m.dayChangePct.toFixed(2)} percent. Click for high, low, and 52-week range.`);
+        btn.setAttribute("aria-label", `${cfg.title}: ${fmtUsd(m.cmp)} per ounce, ${sign}${m.dayChangePct.toFixed(2)} percent`);
         btn.innerHTML = `
           <strong style="color:${cfg.titleColor}; font-weight:800;">${cfg.title}</strong>
           <span style="display:inline-flex; align-items:center; gap:6px;">
@@ -740,7 +740,7 @@ document.addEventListener("DOMContentLoaded", function () {
             minute: "2-digit"
           });
           if (isLiveSlot) {
-            metaEl.textContent = `15-min delayed • Updated ${tStr} IST • Click for details`;
+            metaEl.textContent = `15-min delayed • Updated ${tStr} IST`;
           } else {
             const dStr = new Date(metalsState.updatedTs).toLocaleDateString("en-IN", {
               timeZone: "Asia/Kolkata",
@@ -748,7 +748,7 @@ document.addEventListener("DOMContentLoaded", function () {
               month: "short",
               year: "numeric"
             });
-            metaEl.textContent = `Last Updated ${dStr}, ${tStr} IST • Click for details`;
+            metaEl.textContent = `Last Updated ${dStr}, ${tStr} IST`;
           }
         } catch (_) {}
       }
@@ -848,6 +848,24 @@ document.addEventListener("DOMContentLoaded", function () {
         collapseMetalDetail(false);
         renderMetalButtons();
       }
+    });
+
+    // Collapse when cursor leaves the metals strip area (brief grace delay avoids accidental 1px flicker)
+    let hoverLeaveTimer = null;
+    stripEl.addEventListener("mouseenter", function () {
+      if (hoverLeaveTimer) {
+        clearTimeout(hoverLeaveTimer);
+        hoverLeaveTimer = null;
+      }
+    });
+    stripEl.addEventListener("mouseleave", function () {
+      if (!activeMetalKey) return;
+      hoverLeaveTimer = setTimeout(function () {
+        if (activeMetalKey) {
+          collapseMetalDetail(false);
+          renderMetalButtons();
+        }
+      }, 150);
     });
 
     // Collapse on Escape key
