@@ -407,7 +407,7 @@ export default {
       const dayOpen = extractDayOpen(result, meta, cmp);
       const dayHigh = typeof meta.regularMarketDayHigh === 'number' ? Number(meta.regularMarketDayHigh.toFixed(2)) : cmp;
       const dayLow = typeof meta.regularMarketDayLow === 'number' ? Number(meta.regularMarketDayLow.toFixed(2)) : cmp;
-      const prevClose = Number((meta.chartPreviousClose || meta.previousClose || cmp).toFixed(2));
+      const prevClose = Number((meta.regularMarketPreviousClose || meta.previousClose || meta.chartPreviousClose || cmp).toFixed(2));
       const high52 = typeof meta.fiftyTwoWeekHigh === 'number' && Number.isFinite(meta.fiftyTwoWeekHigh)
         ? Number(meta.fiftyTwoWeekHigh.toFixed(2))
         : null;

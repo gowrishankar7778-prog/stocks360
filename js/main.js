@@ -405,7 +405,8 @@ document.addEventListener("DOMContentLoaded", function () {
               month: "short",
               year: "numeric"
             });
-            metaEl.textContent = `Market Closed • Last Updated ${dateStr}, ${timeStr} IST`;
+            const eodTag = isEodSyncedForToday() ? "Official EOD" : "Market Closed";
+            metaEl.textContent = `${eodTag} • Last Updated ${dateStr}, ${timeStr} IST`;
           }
         } catch (_) {
           metaEl.textContent = "15-min delayed quotes";
@@ -453,7 +454,70 @@ document.addEventListener("DOMContentLoaded", function () {
       }, delay);
     }
 
+    async function fetchOfficialEodIndices() {
+      try {
+        const res = await fetch(`data/market-pulse.json?t=${Date.now()}`, { cache: "no-store" });
+        if (!res.ok) return false;
+        const mp = await res.json();
+        const nseList = Array.isArray(mp.nseIndices) ? mp.nseIndices : [];
+        const bseList = Array.isArray(mp.bseIndices) ? mp.bseIndices : [];
+
+        const nifty = nseList.find(function (x) { return x && x.index === "NIFTY 50"; });
+        const sensex = bseList.find(function (x) { return x && x.index === "BSE SENSEX"; });
+        const bankNifty = nseList.find(function (x) { return x && x.index === "NIFTY BANK"; });
+
+        if (!nifty && !sensex && !bankNifty) return false;
+
+        const mapIdx = function (label, symbol, row) {
+          if (!row || typeof row.last !== "number") return { label: label, symbol: symbol };
+          return {
+            label: label,
+            symbol: symbol,
+            cmp: row.last,
+            dayChange: typeof row.variation === "number" ? row.variation : 0,
+            dayChangePct: typeof row.percentChange === "number" ? row.percentChange : 0
+          };
+        };
+
+        const results = [
+          mapIdx("NIFTY 50", "^NSEI", nifty),
+          mapIdx("SENSEX", "^BSESN", sensex),
+          mapIdx("BANK NIFTY", "^NSEBANK", bankNifty)
+        ];
+
+        const eodTs = mp.updatedAt ? Date.parse(mp.updatedAt) : Date.now();
+        const displayTs = Number.isFinite(eodTs) ? eodTs : Date.now();
+        const targetSlot = getTargetIndexSlotMs(Date.now()) || displayTs;
+        lastSlotStart = targetSlot;
+        renderIndices(results, displayTs);
+        try {
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({
+              slotStart: targetSlot,
+              timestamp: displayTs,
+              isEod: true,
+              items: results
+            })
+          );
+        } catch (_) {}
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
     async function fetchAllIndices() {
+      const clkNow = getIstClockParts(Date.now());
+      const offMarketHours = !clkNow || clkNow.isWeekend || clkNow.totalMins < 555 || clkNow.totalMins >= 945;
+      if (isEodSyncedForToday() || offMarketHours) {
+        const usedEod = await fetchOfficialEodIndices();
+        if (usedEod) {
+          scheduleNextRefresh();
+          return;
+        }
+      }
+
       const now = Date.now();
       const targetSlot = getTargetIndexSlotMs(now);
       const slotParam = targetSlot ? `&slot=${targetSlot}` : "";
@@ -522,20 +586,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // 1. Render cached values immediately if available
     let hasCachedItems = false;
     let cachedTs = 0;
+    let cachedIsEod = false;
     try {
       const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
       if (cached && Array.isArray(cached.items) && cached.items.length === 3) {
         hasCachedItems = true;
         lastSlotStart = Number(cached.slotStart || 0);
         cachedTs = Number(cached.timestamp || 0);
+        cachedIsEod = Boolean(cached.isEod);
         renderIndices(cached.items, cached.slotStart || cached.timestamp);
       }
     } catch (_) {}
 
-    // 2. Fetch if current 15-min IST slot (09:15, 09:30, 09:45...) hasn't been fetched yet, if no cache exists, or if weekend/pre-market cache is >6h stale
+    // 2. Fetch if current 15-min IST slot hasn't been fetched yet, if EOD is synced and cache isn't EOD, if no cache exists, or if off-hours cache is >6h stale
     const initialTargetSlot = getTargetIndexSlotMs(Date.now());
+    const needsEodUpgrade = isEodSyncedForToday() && !cachedIsEod;
     const isStaleOffHours = !initialTargetSlot && hasCachedItems && (Date.now() - cachedTs > 6 * 3600 * 1000);
-    if ((initialTargetSlot && lastSlotStart !== initialTargetSlot) || !hasCachedItems || isStaleOffHours) {
+    if ((initialTargetSlot && lastSlotStart !== initialTargetSlot) || needsEodUpgrade || !hasCachedItems || isStaleOffHours) {
       fetchAllIndices();
     } else {
       scheduleNextRefresh();
