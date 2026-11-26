@@ -452,5 +452,27 @@ export default {
         headers: { ...headers, 'Content-Type': 'application/json' }
       });
     }
+  },
+
+  // Automated 15-minute cron warmer for key indices & precious metals
+  async scheduled(event, env, ctx) {
+    const slot = Math.floor(Date.now() / (EDGE_CACHE_SECONDS * 1000)) * (EDGE_CACHE_SECONDS * 1000);
+    const warmList = [
+      { symbol: '^NSEI', exchange: 'INDEX' },
+      { symbol: '^BSESN', exchange: 'INDEX' },
+      { symbol: '^NSEBANK', exchange: 'INDEX' },
+      { symbol: 'GC=F', exchange: 'COMMODITY' },
+      { symbol: 'SI=F', exchange: 'COMMODITY' },
+      { symbol: 'USDINR=X', exchange: 'FX' }
+    ];
+    ctx.waitUntil(
+      Promise.all(
+        warmList.map((item) =>
+          fetch(
+            `https://stocks360-quotes.stocks360-app.workers.dev/quote?symbol=${encodeURIComponent(item.symbol)}&exchange=${item.exchange}&slot=${slot}`
+          ).catch(() => {})
+        )
+      )
+    );
   }
 };

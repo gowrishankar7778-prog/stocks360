@@ -404,6 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let lastSlotStart = 0;
     let refreshTimerId = null;
+    let indexRetryCount = 0;
 
     function scheduleNextRefresh() {
       if (refreshTimerId) {
@@ -470,6 +471,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         if (results.some(function (r) { return typeof r.cmp === "number"; })) {
+          indexRetryCount = 0;
           const displayTs = targetSlot || results.reduce(function (acc, r) {
             return typeof r.timestamp === "number" && r.timestamp > acc ? r.timestamp : acc;
           }, 0) || Date.now();
@@ -487,8 +489,17 @@ document.addEventListener("DOMContentLoaded", function () {
               })
             );
           } catch (_) {}
+          scheduleNextRefresh();
+          return;
         }
       } catch (_) {}
+
+      // If first load failed transiently, retry quickly (up to 3 attempts, 3s apart)
+      if (!hasCachedItems && indexRetryCount < 3) {
+        indexRetryCount += 1;
+        refreshTimerId = setTimeout(fetchAllIndices, 3000);
+        return;
+      }
       scheduleNextRefresh();
     }
 
@@ -540,6 +551,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let activeMetalKey = null;
     let lastSlotStart = 0;
     let refreshTimerId = null;
+    let metalRetryCount = 0;
+    let indexRetryCount = 0;
 
     function getIstClock(nowMs) {
       try {
@@ -772,6 +785,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ]);
         const usdinr = fxRaw && typeof fxRaw.cmp === "number" ? fxRaw.cmp : null;
         if (usdinr && (goldRaw || silverRaw)) {
+          metalRetryCount = 0;
           const displayTs = targetSlot || now;
           metalsState = {
             gold: convertMetalQuote(goldRaw, usdinr, 10, "Gold (10g)", "Gold 24K (Global Spot • per 10g)"),
@@ -784,14 +798,23 @@ document.addEventListener("DOMContentLoaded", function () {
           try {
             localStorage.setItem(CACHE_KEY, JSON.stringify({ slotStart: targetSlot || 0, state: metalsState }));
           } catch (_) {}
+          scheduleNextMetalRefresh();
+          return;
         }
       } catch (_) {}
+
+      if (!hasCache && metalRetryCount < 3) {
+        metalRetryCount += 1;
+        refreshTimerId = setTimeout(fetchMetals, 3000);
+        return;
+      }
       scheduleNextMetalRefresh();
     }
 
     listEl.addEventListener("click", function (e) {
       const btn = e.target.closest("button[data-metal]");
       if (!btn) return;
+      e.stopPropagation();
       const key = btn.getAttribute("data-metal");
       if (!key) return;
       if (activeMetalKey === key) {
