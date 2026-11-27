@@ -17,7 +17,6 @@ const fs = require('fs');
 const path = require('path');
 
 const HOLIDAYS_FILE = path.join(__dirname, '..', 'data', 'market', 'nse-holidays.json');
-const SYNC_STATE_FILE = path.join(__dirname, '..', 'data', 'market', 'sync-state.json');
 const NSE_HOLIDAY_API = 'https://www.nseindia.com/api/holiday-master?type=trading';
 
 const MONTHS = {
@@ -129,20 +128,6 @@ function loadLocalHolidays() {
   }
 }
 
-function loadSyncState() {
-  if (!fs.existsSync(SYNC_STATE_FILE)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(SYNC_STATE_FILE, 'utf8')) || {};
-  } catch (_) {
-    return {};
-  }
-}
-
-function saveSyncState(state) {
-  fs.mkdirSync(path.dirname(SYNC_STATE_FILE), { recursive: true });
-  fs.writeFileSync(SYNC_STATE_FILE, JSON.stringify(state, null, 2) + '\n', 'utf8');
-}
-
 function writeGithubOutput(key, value) {
   const outputPath = process.env.GITHUB_OUTPUT;
   if (outputPath) {
@@ -155,21 +140,6 @@ async function main() {
   const doSync = args.includes('--sync');
   const dateArg = args.find((a) => a.startsWith('--date='));
   const overrideDate = dateArg ? dateArg.split('=')[1] : null;
-  const syncKeyArg = args.find((a) => a.startsWith('--sync-key='));
-  const syncKey = syncKeyArg ? syncKeyArg.split('=')[1] : null;
-  const markSyncedArg = args.find((a) => a.startsWith('--mark-synced='));
-  const markSyncedKey = markSyncedArg ? markSyncedArg.split('=')[1] : null;
-
-  const ist = getIstDateInfo(overrideDate);
-
-  if (markSyncedKey) {
-    const state = loadSyncState();
-    state[markSyncedKey] = ist.isoDate;
-    state[`${markSyncedKey}UpdatedAt`] = new Date().toISOString();
-    saveSyncState(state);
-    console.log(`Marked '${markSyncedKey}' as synced for IST date ${ist.isoDate}.`);
-    return;
-  }
 
   if (doSync) {
     await syncHolidaysFromNse();
@@ -178,6 +148,7 @@ async function main() {
     }
   }
 
+  const ist = getIstDateInfo(overrideDate);
   let holidayData = loadLocalHolidays();
 
   // Auto-refresh if local file is missing or doesn't cover the current year
@@ -210,15 +181,6 @@ async function main() {
   if (!isOpen && isManualDispatch) {
     console.log('Manual workflow_dispatch detected: overriding holiday gate so manual run proceeds.');
     isOpen = true;
-  }
-
-  if (isOpen && syncKey && !isManualDispatch) {
-    const state = loadSyncState();
-    if (state[syncKey] === ist.isoDate) {
-      console.log(`Already synced '${syncKey}' for ${ist.isoDate}. Skipping redundant backup cron run.`);
-      isOpen = false;
-      reason = `Already synced today (${ist.isoDate})`;
-    }
   }
 
   writeGithubOutput('is_open', isOpen ? 'true' : 'false');

@@ -1,18 +1,11 @@
 name: Daily Mutual Funds AMFI NAV Sync (9:32 PM IST)
 
-# Runs automatically every weekday (Monday through Friday), skipping NSE holidays.
-# Staggered backup crons ensure reliability if GitHub Actions drops a scheduled slot.
-# 16:02 UTC = 9:32 PM IST | 16:39 UTC = 10:09 PM IST | 17:17 UTC = 10:47 PM IST
+# Runs automatically at 9:32 PM IST every weekday (Monday through Friday), skipping NSE holidays
+# 9:32 PM IST = 16:02 UTC (16:02 + 5:30 = 21:32 IST)
 on:
   schedule:
     - cron: '2 16 * * 1-5'
-    - cron: '39 16 * * 1-5'
-    - cron: '17 17 * * 1-5'
   workflow_dispatch: # Allows manual 1-click trigger anytime from GitHub Actions tab
-
-concurrency:
-  group: sync-mf
-  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -32,10 +25,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Verify Trading Day & Daily Idempotency (Skip Weekends, Holidays & Already-Synced)
+      - name: Verify Trading Day (Skip Weekends & NSE Holidays)
         id: market_check
         run: |
-          node scripts/check-market-open.js --sync-key=mf
+          node scripts/check-market-open.js
 
       - name: Fetch AMFI 9:00 PM Daily NAVs & Update Mutual Fund Schemes
         if: steps.market_check.outputs.is_open == 'true'
@@ -46,10 +39,9 @@ jobs:
         if: steps.market_check.outputs.is_open == 'true'
         id: git_push
         run: |
-          node scripts/check-market-open.js --mark-synced=mf
           git config user.name "Stocks 360 AMFI NAV Bot"
           git config user.email "bot@stocks360.local"
-          git add data/mutual-funds/top-mutual-funds.json data/market/nse-holidays.json data/market/sync-state.json
+          git add data/mutual-funds/top-mutual-funds.json data/market/nse-holidays.json
           if git diff --staged --quiet; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No AMFI NAV changes detected today."
