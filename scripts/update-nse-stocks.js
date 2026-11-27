@@ -435,6 +435,19 @@ async function updateAllStocks() {
   console.log(`✓ Rebuilt js/screener-index.js (${(indexBytes / 1024).toFixed(1)} KB) with official NSE Bhavcopy prices!`);
 
   await syncMarketSummaryToFirestore(stocks, lastUpdatedLabel);
+
+  // Record the exact Bhavcopy trade date (isoTradeDate) so backup crons only skip once today's Bhavcopy is synced
+  try {
+    const syncStatePath = path.join(__dirname, '..', 'data', 'market', 'sync-state.json');
+    let state = {};
+    if (fs.existsSync(syncStatePath)) {
+      try { state = JSON.parse(fs.readFileSync(syncStatePath, 'utf8')) || {}; } catch (_) {}
+    }
+    state.stock = isoTradeDate;
+    state.stockUpdatedAt = new Date().toISOString();
+    fs.writeFileSync(syncStatePath, JSON.stringify(state, null, 2) + '\n', 'utf8');
+    console.log(`✓ Recorded stock Bhavcopy sync date: ${isoTradeDate}`);
+  } catch (_) {}
 }
 
 updateAllStocks().catch((err) => {
