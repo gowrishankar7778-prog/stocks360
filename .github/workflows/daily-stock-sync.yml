@@ -1,11 +1,20 @@
 name: Daily Stock Screener Auto-Sync
 
-# Runs automatically at 4:37 PM IST every weekday (Monday through Friday), skipping NSE holidays
-# 4:37 PM IST = 11:07 UTC (11:07 + 5:30 = 16:37 IST)
+# Runs automatically every weekday (Monday through Friday), skipping NSE holidays.
+# Staggered off-peak crons protect against GitHub Actions scheduler drops/delays;
+# check-market-open.js --sync-key=stock skips backup runs once today's sync succeeds.
+# 10:37 UTC = 4:07 PM IST | 11:19 UTC = 4:49 PM IST | 11:53 UTC = 5:23 PM IST | 12:41 UTC = 6:11 PM IST
 on:
   schedule:
-    - cron: '7 11 * * 1-5'
+    - cron: '37 10 * * 1-5'
+    - cron: '19 11 * * 1-5'
+    - cron: '53 11 * * 1-5'
+    - cron: '41 12 * * 1-5'
   workflow_dispatch: # Allows manual 1-click trigger anytime from GitHub Actions tab
+
+concurrency:
+  group: sync-stocks
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -25,10 +34,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Verify Trading Day (Skip Weekends & NSE Holidays)
+      - name: Verify Trading Day & Daily Idempotency (Skip Weekends, Holidays & Already-Synced)
         id: market_check
         run: |
-          node scripts/check-market-open.js
+          node scripts/check-market-open.js --sync-key=stock
 
       - name: Auto-Discover New NSE IPOs & Equity Listings
         if: steps.market_check.outputs.is_open == 'true'
@@ -69,9 +78,10 @@ jobs:
         if: steps.market_check.outputs.is_open == 'true'
         id: git_push
         run: |
+          node scripts/check-market-open.js --mark-synced=stock
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
-          git add js/screener-index.js js/market-pulse-data.js js/ipo-data.js data/market-pulse.json data/market/ipo-tracker.json data/market/nse-holidays.json data/bse/ data/news/ data/profiles/ data/mutual-funds/
+          git add js/screener-index.js js/market-pulse-data.js js/ipo-data.js data/market-pulse.json data/market/ipo-tracker.json data/market/nse-holidays.json data/market/nse-ohlcv-history.json.gz data/market/sync-state.json data/bse/ data/news/ data/profiles/ data/mutual-funds/
           if git diff --staged --quiet; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No price, indicator, or corporate filing changes detected today."

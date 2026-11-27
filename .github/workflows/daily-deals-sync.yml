@@ -1,11 +1,18 @@
 name: Daily NSE Bulk & Block Deals Sync (6:43 PM IST)
 
-# Runs automatically at 6:43 PM IST every weekday (Monday through Friday), skipping NSE holidays
-# 6:43 PM IST = 13:13 UTC (13:13 + 5:30 = 18:43 IST)
+# Runs automatically every weekday (Monday through Friday), skipping NSE holidays.
+# Staggered backup crons ensure reliability if GitHub Actions drops a scheduled slot.
+# 13:13 UTC = 6:43 PM IST | 13:47 UTC = 7:17 PM IST | 14:23 UTC = 7:53 PM IST
 on:
   schedule:
     - cron: '13 13 * * 1-5'
+    - cron: '47 13 * * 1-5'
+    - cron: '23 14 * * 1-5'
   workflow_dispatch: # Allows manual 1-click trigger anytime from GitHub Actions tab
+
+concurrency:
+  group: sync-deals
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -25,10 +32,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Verify Trading Day (Skip Weekends & NSE Holidays)
+      - name: Verify Trading Day & Daily Idempotency (Skip Weekends, Holidays & Already-Synced)
         id: market_check
         run: |
-          node scripts/check-market-open.js
+          node scripts/check-market-open.js --sync-key=deals
 
       - name: Fetch Official NSE Bulk & Block Deals (6:43 PM IST)
         if: steps.market_check.outputs.is_open == 'true'
@@ -54,9 +61,10 @@ jobs:
         if: steps.market_check.outputs.is_open == 'true'
         id: git_push
         run: |
+          node scripts/check-market-open.js --mark-synced=deals
           git config user.name "Stocks 360 Market Bot"
           git config user.email "bot@stocks360.local"
-          git add data/market/bulk-block-deals.json data/market/insider-trading.json data/market/ipo-tracker.json data/market/nse-holidays.json data/market-pulse.json js/market-pulse-data.js js/ipo-data.js
+          git add data/market/bulk-block-deals.json data/market/insider-trading.json data/market/ipo-tracker.json data/market/nse-holidays.json data/market/sync-state.json data/market-pulse.json js/market-pulse-data.js js/ipo-data.js
           if git diff --staged --quiet; then
             echo "pushed=false" >> "$GITHUB_OUTPUT"
             echo "No new Bulk or Block Deals detected today."
