@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const zlib = require('zlib');
 const {
   loadScreenerDataset,
   normalizeSectorName,
@@ -125,6 +126,102 @@ async function fetchLatestBseBhavcopy() {
   return null;
 }
 
+function fetchBuffer(url, headers = {}, redirectsLeft = 3) {
+  return new Promise((resolve) => {
+    if (redirectsLeft <= 0) return resolve({ status: 0, buffer: null });
+    const req = https.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': '*/*',
+        'Referer': 'https://www.bseindia.com/',
+        ...headers
+      },
+      timeout: 25000
+    }, (res) => {
+      if ([301, 302, 307, 308].includes(res.statusCode) && res.headers.location) {
+        const nextUrl = res.headers.location.startsWith('http')
+          ? res.headers.location
+          : new URL(res.headers.location, url).href;
+        res.resume();
+        return resolve(fetchBuffer(nextUrl, headers, redirectsLeft - 1));
+      }
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        res.resume();
+        return resolve({ status: res.statusCode, buffer: null });
+      }
+      const chunks = [];
+      res.on('data', (c) => chunks.push(c));
+      res.on('end', () => resolve({ status: res.statusCode, buffer: Buffer.concat(chunks) }));
+    });
+    req.on('error', () => resolve({ status: 0, buffer: null }));
+    req.on('timeout', () => { req.destroy(); resolve({ status: 0, buffer: null }); });
+  });
+}
+
+function extractFirstZipEntryText(zipBuf) {
+  if (!zipBuf || zipBuf.length < 30 || zipBuf.readUInt32LE(0) !== 0x04034b50) {
+    return '';
+  }
+  const compressionMethod = zipBuf.readUInt16LE(8);
+  const compSize = zipBuf.readUInt32LE(18);
+  const nameLen = zipBuf.readUInt16LE(26);
+  const extraLen = zipBuf.readUInt16LE(28);
+  const dataStart = 30 + nameLen + extraLen;
+  const dataEnd = compSize > 0 ? dataStart + compSize : zipBuf.length;
+  const slice = zipBuf.subarray(dataStart, dataEnd);
+  if (compressionMethod === 0) return slice.toString('utf8');
+  if (compressionMethod === 8) return zlib.inflateRawSync(slice).toString('utf8');
+  return '';
+}
+
+async function fetchLatestBseDeliveryMap() {
+  const nowUtc = Date.now();
+  const istNow = new Date(nowUtc + 5.5 * 3600 * 1000);
+
+  for (let daysBack = 0; daysBack <= 7; daysBack++) {
+    const d = new Date(istNow.getTime() - daysBack * 86400000);
+    const yyyy = d.getUTCFullYear();
+    const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(d.getUTCDate()).padStart(2, '0');
+    const url = `https://www.bseindia.com/BSEDATA/gross/${yyyy}/SCBSEALL${dd}${mm}.zip`;
+
+    const res = await fetchBuffer(url);
+    if (res.status === 200 && res.buffer && res.buffer.length > 500) {
+      try {
+        const text = extractFirstZipEntryText(res.buffer);
+        const lines = text.split(/\r?\n/).filter(Boolean);
+        if (lines.length < 10) continue;
+
+        const headers = lines[0].split('|').map((h) => h.trim().toUpperCase());
+        const codeIdx = headers.indexOf('SCRIP CODE');
+        const delivQtyIdx = headers.indexOf('DELIVERY QTY');
+        const delivPctIdx = headers.indexOf('DELV. PER.');
+        if (codeIdx === -1 || delivQtyIdx === -1 || delivPctIdx === -1) continue;
+
+        const map = new Map();
+        for (let i = 1; i < lines.length; i++) {
+          const cols = lines[i].split('|');
+          const code = String(cols[codeIdx] || '').trim();
+          const delivQty = Number(cols[delivQtyIdx]);
+          const delivPct = Number(cols[delivPctIdx]);
+          if (!code || !Number.isFinite(delivQty) || delivQty <= 0 || !Number.isFinite(delivPct) || delivPct <= 0 || delivPct > 100) {
+            continue;
+          }
+          map.set(code, {
+            deliveryVolume: Math.round(delivQty),
+            deliveryPct: Number(delivPct.toFixed(2))
+          });
+        }
+        if (map.size > 50) {
+          console.log(`✓ Downloaded official BSE Delivery data for ${dd}-${mm}-${yyyy} (${map.size} scrips)`);
+          return { map, tradeDate: `${dd}-${mm}-${yyyy}` };
+        }
+      } catch (_) {}
+    }
+  }
+  return null;
+}
+
 async function runBseSync() {
   console.log('Stocks 360: Starting Official BSE India Equities & Bhavcopy Synchronizer...');
   const now = new Date();
@@ -163,6 +260,8 @@ async function runBseSync() {
     console.warn('Warning: BSE Bhavcopy unavailable right now. Existing BSE shards left untouched.');
     return;
   }
+  const delivRes = await fetchLatestBseDeliveryMap();
+  const bseDelivMap = delivRes ? delivRes.map : new Map();
 
   const headers = parseCsvLine(bhav.csvLines[0]);
   const idx = {
@@ -203,6 +302,7 @@ async function runBseSync() {
     const dayChange = Number((close - prevClose).toFixed(2));
     const dayChangePct = prevClose > 0 ? Number(((dayChange / prevClose) * 100).toFixed(2)) : 0;
     const isGain = dayChange >= 0;
+    const bseDeliv = bseDelivMap.get(bseCode);
 
     let targetStock = (isin && isinToStock.get(isin)) || bseCodeToStock.get(bseCode) || null;
 
@@ -227,6 +327,10 @@ async function runBseSync() {
             : volume;
           targetStock.volume = volume;
           targetStock.volumeSurge = targetStock.avgVolume > 0 ? Number((volume / targetStock.avgVolume).toFixed(2)) : 1.0;
+        }
+        if (bseDeliv) {
+          targetStock.deliveryVolume = bseDeliv.deliveryVolume;
+          targetStock.deliveryPct = bseDeliv.deliveryPct;
         }
         targetStock.dma50 = targetStock.dma50 > 0 ? Number(((targetStock.dma50 * 49 + close) / 50).toFixed(2)) : close;
         targetStock.dma200 = targetStock.dma200 > 0 ? Number(((targetStock.dma200 * 199 + close) / 200).toFixed(2)) : close;
@@ -267,6 +371,8 @@ async function runBseSync() {
         volume,
         avgVolume: volume,
         volumeSurge: 1.0,
+        deliveryVolume: bseDeliv ? bseDeliv.deliveryVolume : undefined,
+        deliveryPct: bseDeliv ? bseDeliv.deliveryPct : undefined,
         dayOpen: open,
         dayHigh: high,
         dayLow: low,
@@ -296,6 +402,8 @@ async function runBseSync() {
       dayChangePct,
       isGain,
       volume,
+      deliveryVolume: bseDeliv ? bseDeliv.deliveryVolume : undefined,
+      deliveryPct: bseDeliv ? bseDeliv.deliveryPct : undefined,
       tradeDate: bhav.tradeDate,
       lastUpdated: `BSE ${bhav.tradeDate}`
     };

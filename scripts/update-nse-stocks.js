@@ -200,11 +200,13 @@ async function fetchLatestNseDeliveryMap() {
       const headers = parseCsvLine(lines[0]).map((h) => h.toUpperCase());
       const symIdx = headers.indexOf('SYMBOL');
       const serIdx = headers.indexOf('SERIES');
+      const ttlQtyIdx = headers.indexOf('TTL_TRD_QNTY');
       const delivQtyIdx = headers.indexOf('DELIV_QTY');
       const delivPctIdx = headers.indexOf('DELIV_PER');
       if (symIdx === -1 || delivQtyIdx === -1 || delivPctIdx === -1) continue;
 
       const allowedSeries = new Set(['EQ', 'BE', 'BZ', 'SM', 'ST']);
+      const t2tSeries = new Set(['BE', 'BZ', 'SM', 'ST']);
       const map = new Map();
 
       for (let i = 1; i < lines.length; i++) {
@@ -214,8 +216,18 @@ async function fetchLatestNseDeliveryMap() {
         if (!symbol || !allowedSeries.has(series)) continue;
         if (map.has(symbol) && series !== 'EQ') continue;
 
-        const delivQty = Number(cols[delivQtyIdx]);
-        const delivPct = Number(cols[delivPctIdx]);
+        let delivQty = Number(cols[delivQtyIdx]);
+        let delivPct = Number(cols[delivPctIdx]);
+
+        // NSE marks Trade-to-Trade (BE, BZ, SM, ST) delivery columns as '-' because 100% of traded quantity is compulsory delivery
+        if ((!Number.isFinite(delivQty) || delivQty <= 0) && t2tSeries.has(series) && ttlQtyIdx !== -1) {
+          const ttlQty = Number(cols[ttlQtyIdx]);
+          if (Number.isFinite(ttlQty) && ttlQty > 0) {
+            delivQty = ttlQty;
+            delivPct = 100;
+          }
+        }
+
         if (!Number.isFinite(delivQty) || delivQty <= 0 || !Number.isFinite(delivPct) || delivPct <= 0 || delivPct > 100) {
           continue;
         }
